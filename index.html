@@ -78,11 +78,6 @@
   .inv-items{color:#94a3b8;font-size:12px;line-height:1.5}
   .footer{margin-top:40px;padding-top:14px;border-top:1px solid #1e293b;display:flex;justify-content:space-between;font-size:11px;color:#475569;font-family:'IBM Plex Mono',monospace;flex-wrap:wrap;gap:8px}
 
-  .email-status{padding:12px 16px;border-radius:6px;font-size:13px;font-family:'IBM Plex Mono',monospace;margin-top:10px;display:none}
-  .email-status.sending{background:rgba(0,229,255,.06);border:1px solid rgba(0,229,255,.15);color:#00e5ff;display:block}
-  .email-status.success{background:rgba(105,240,174,.06);border:1px solid rgba(105,240,174,.2);color:#69f0ae;display:block}
-  .email-status.error{background:rgba(255,145,0,.06);border:1px solid rgba(255,145,0,.2);color:#ff9100;display:block}
-
   @media(max-width:700px){
     .tier-grid{grid-template-columns:repeat(2,1fr)}
     .header{flex-direction:column;align-items:flex-start}
@@ -118,7 +113,6 @@
       <div class="scan-bar" style="margin-top:8px"><div class="scan-bar-fill"></div></div>
     </div>
     <div id="errorArea" style="display:none" class="error-box"></div>
-    <div id="emailStatus" class="email-status"></div>
   </div>
 
   <!-- RESULTS SECTION (hidden initially) -->
@@ -502,23 +496,26 @@ async function nvdFetch(url) {
 }
 
 async function loadFromJSON() {
-  // Try loading pre-scanned results (from GitHub Actions)
-  const res = await fetch("scan-results.json?t=" + Date.now());
-  if (!res.ok) return false;
-  const data = await res.json();
-  if (!data.vulnerabilities) return false;
+  try {
+    const res = await fetch("scan-results.json?t=" + Date.now());
+    if (!res.ok) return false;
+    const text = await res.text();
+    if (!text.trim().startsWith("{")) return false; // Got HTML 404, not JSON
+    const data = JSON.parse(text);
+    if (!data.vulnerabilities || data.vulnerabilities.length === 0) return false;
 
-  scanTime = data.scanTime || "Unknown";
-  for (const v of data.vulnerabilities) {
-    allVulns.push({
-      id: v.id, description: v.description,
-      cvss: v.cvss, tier: v.tier ?? 3,
-      matchedProducts: v.matchedProducts || [],
-      references: v.references || [],
-      published: v.published,
-    });
-  }
-  return true;
+    scanTime = data.scanTime || "Unknown";
+    for (const v of data.vulnerabilities) {
+      allVulns.push({
+        id: v.id, description: v.description,
+        cvss: v.cvss, tier: v.tier ?? 3,
+        matchedProducts: v.matchedProducts || [],
+        references: v.references || [],
+        published: v.published,
+      });
+    }
+    return true;
+  } catch(e) { return false; }
 }
 
 async function scanDirectNVD() {
@@ -564,7 +561,6 @@ async function startScan() {
   document.getElementById("resultsSection").style.display = "none";
   document.getElementById("allClearSection").style.display = "none";
   document.getElementById("preScanSection").style.display = "none";
-  document.getElementById("emailStatus").style.display = "none";
 
   try {
     // Try loading pre-scanned JSON first (works on GitHub Pages)
@@ -609,15 +605,9 @@ async function startScan() {
 
       document.getElementById("briefingText").textContent = briefLines.join("\n");
       document.getElementById("briefingArea").style.display = "block";
-
-      // AUTO-SEND EMAIL REPORT
-      await sendEmailReport(briefLines.join("\n"));
     } else {
       document.getElementById("allClearSection").style.display = "block";
       document.getElementById("clearScanTime").textContent = "Scan completed at " + scanTime;
-
-      // Send all-clear email too
-      await sendEmailReport("ALL CLEAR: No new vulnerabilities found in the last 24 hours for any tracked products.");
     }
 
     hideProgress();
@@ -632,201 +622,60 @@ async function startScan() {
 }
 
 // ─── EMAIL REPORT ───
-let lastEmailHTML = "";
-
-function buildEmailBody(briefingText) {
-  const tierCounts = [0,1,2,3].map(t => allVulns.filter(v=>(v.tier??3)===t).length);
-  const tierNames = {0:"Emergency",1:"High",2:"Medium",3:"Low"};
-  const tierColors = {0:"#ff1744",1:"#ff9100",2:"#ffd600",3:"#69f0ae"};
-
-  let vulnRows = "";
-  allVulns.slice(0, 30).forEach(v => {
-    const tier = v.tier??3;
-    const products = (v.matchedProducts||[]).join(", ");
-    const refs = (v.references||[]).map(u => `<a href="${u}" style="color:#2563eb">${u}</a>`).join("<br>");
-    vulnRows += `<tr style="border-bottom:1px solid #e2e8f0">
-      <td style="padding:8px;font-family:monospace;font-weight:700;color:#1e40af">${esc(v.id)}</td>
-      <td style="padding:8px;color:${tierColors[tier]};font-weight:700">TIER ${tier}</td>
-      <td style="padding:8px;font-weight:700">${v.cvss?.score?.toFixed(1) ?? "N/A"}</td>
-      <td style="padding:8px;color:#6366f1;font-size:13px">${esc(products)}</td>
-      <td style="padding:8px;color:#475569;font-size:12px">${esc((v.description||"").slice(0,180))}</td>
-      <td style="padding:8px;font-size:12px">${refs}</td>
-    </tr>`;
-  });
-
-  return `<div style="font-family:Arial,sans-serif;max-width:900px;margin:0 auto;background:#ffffff;color:#1e293b;padding:24px">
-    <h1 style="color:#1e40af;font-size:22px;margin:0 0 4px">🛡️ VULN INTEL — 24h Vulnerability Report</h1>
-    <p style="color:#64748b;font-size:13px;margin:0 0 20px">Scan completed: ${scanTime}</p>
-    <table style="width:100%;margin-bottom:20px"><tr>
-      ${[0,1,2,3].map(t => `<td style="text-align:center;padding:12px;border:1px solid #e2e8f0;border-radius:6px">
-        <div style="font-size:28px;font-weight:800;color:${tierColors[t]}">${tierCounts[t]}</div>
-        <div style="font-size:11px;color:#64748b">TIER ${t} — ${tierNames[t].toUpperCase()}</div>
-      </td>`).join("")}
-    </tr></table>
-    <div style="background:#f0f9ff;border:1px solid #bae6fd;border-radius:6px;padding:16px;margin-bottom:20px">
-      <h3 style="color:#1e40af;font-size:14px;margin:0 0 8px">EXECUTIVE BRIEFING</h3>
-      <pre style="color:#334155;font-size:13px;white-space:pre-wrap;font-family:Arial,sans-serif;margin:0;line-height:1.6">${esc(briefingText)}</pre>
-    </div>
-    ${allVulns.length > 0 ? `
-    <h3 style="color:#1e293b;font-size:14px;margin-bottom:10px">VULNERABILITY DETAILS (${Math.min(allVulns.length,30)} of ${allVulns.length})</h3>
-    <table style="width:100%;border-collapse:collapse;border:1px solid #e2e8f0;font-size:13px">
-      <thead><tr style="background:#f1f5f9">
-        <th style="padding:8px;text-align:left;color:#64748b;font-size:11px">CVE ID</th>
-        <th style="padding:8px;text-align:left;color:#64748b;font-size:11px">TIER</th>
-        <th style="padding:8px;text-align:left;color:#64748b;font-size:11px">CVSS</th>
-        <th style="padding:8px;text-align:left;color:#64748b;font-size:11px">PRODUCTS</th>
-        <th style="padding:8px;text-align:left;color:#64748b;font-size:11px">DESCRIPTION</th>
-        <th style="padding:8px;text-align:left;color:#64748b;font-size:11px">REFERENCES</th>
-      </tr></thead>
-      <tbody>${vulnRows}</tbody>
-    </table>` : ""}
-    <p style="margin-top:20px;color:#94a3b8;font-size:11px">Sources: NVD (NIST) · CISA KEV · Vendor Advisories | ${ALL_PRODUCTS.length} products monitored</p>
-  </div>`;
-}
-
-async function sendEmailReport(briefingText) {
-  const statusEl = document.getElementById("emailStatus");
-  statusEl.style.display = "block";
-
-  const subject = `[VULN INTEL] ${allVulns.length > 0 ? allVulns.length + " CVEs Found" : "All Clear"} — ${new Date().toLocaleDateString()}`;
-  const plainText = buildPlainTextReport(briefingText);
-  lastEmailHTML = buildEmailBody(briefingText);
-
-  // Copy report to clipboard automatically
-  try { await navigator.clipboard.writeText(plainText); } catch(e) {}
-
-  // Auto-open Outlook via mailto
-  const mailtoUrl = `mailto:parth.sharma@casepoint.in?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(plainText)}`;
-  window.open(mailtoUrl, "_blank");
-
-  statusEl.className = "email-status success";
-  statusEl.innerHTML = `✅ Outlook opened with report — just hit Send! &nbsp;
-    <button onclick="copyHTMLReport()" style="background:#1e293b;color:#00e5ff;border:1px solid #00e5ff;border-radius:4px;padding:6px 12px;cursor:pointer;font-family:'IBM Plex Mono',monospace;font-size:12px;margin-left:6px" title="For richer formatting, copy HTML and paste into Outlook">📋 Copy Rich Report</button>
-    <button onclick="downloadReport()" style="background:#1e293b;color:#00e5ff;border:1px solid #00e5ff;border-radius:4px;padding:6px 12px;cursor:pointer;font-family:'IBM Plex Mono',monospace;font-size:12px;margin-left:6px" title="Download as HTML file to attach to email">💾 Download .html</button>
-    <button onclick="openOutlookAgain()" style="background:#1e293b;color:#00e5ff;border:1px solid #00e5ff;border-radius:4px;padding:6px 12px;cursor:pointer;font-family:'IBM Plex Mono',monospace;font-size:12px;margin-left:6px">📧 Reopen Outlook</button>`;
-}
-
-function buildPlainTextReport(briefingText) {
-  const tierNames = {0:"EMERGENCY",1:"HIGH",2:"MEDIUM",3:"LOW"};
-  const tierCounts = [0,1,2,3].map(t => allVulns.filter(v=>(v.tier??3)===t).length);
-  let text = "═══════════════════════════════════════════\n";
-  text += "  🛡️ VULN INTEL — 24h Vulnerability Report\n";
-  text += "═══════════════════════════════════════════\n\n";
-  text += "Scan completed: " + scanTime + "\n";
-  text += `Total: ${allVulns.length} CVEs | Emergency: ${tierCounts[0]} | High: ${tierCounts[1]} | Medium: ${tierCounts[2]} | Low: ${tierCounts[3]}\n\n`;
-  text += "───────────────────────────────────────────\n";
-  text += "EXECUTIVE BRIEFING\n";
-  text += "───────────────────────────────────────────\n\n";
-  text += briefingText + "\n\n";
-  text += "───────────────────────────────────────────\n";
-  text += "VULNERABILITY DETAILS\n";
-  text += "───────────────────────────────────────────\n";
-  allVulns.forEach((v, i) => {
-    const tier = v.tier ?? 3;
-    text += `\n[${tierNames[tier]}] ${v.id} — CVSS: ${v.cvss?.score?.toFixed(1)??"N/A"}\n`;
-    text += `  Products: ${(v.matchedProducts||[]).join(", ")}\n`;
-    text += `  ${(v.description||"").slice(0,200)}\n`;
-    if ((v.references||[]).length > 0) text += `  Link: ${v.references[0]}\n`;
-    text += `  NVD: https://nvd.nist.gov/vuln/detail/${v.id}\n`;
-  });
-  text += "\n───────────────────────────────────────────\n";
-  text += `Sources: NVD (NIST) · ${ALL_PRODUCTS.length} products monitored\n`;
-  text += "Automated report from VULN INTEL Dashboard\n";
-  return text;
-}
-
-function copyHTMLReport() {
-  // Copy rich HTML to clipboard so it can be pasted into Outlook with formatting
-  const blob = new Blob([lastEmailHTML], {type: "text/html"});
-  const plain = new Blob([buildPlainTextReport(document.getElementById("briefingText")?.textContent || "")], {type: "text/plain"});
-  navigator.clipboard.write([
-    new ClipboardItem({ "text/html": blob, "text/plain": plain })
-  ]).then(() => {
-    const statusEl = document.getElementById("emailStatus");
-    statusEl.innerHTML = statusEl.innerHTML.replace("📋 Copy Rich Report", "✅ Copied!");
-    setTimeout(() => { statusEl.innerHTML = statusEl.innerHTML.replace("✅ Copied!", "📋 Copy Rich Report"); }, 2000);
-  }).catch(() => {
-    // Fallback
-    const ta = document.createElement("textarea");
-    ta.value = buildPlainTextReport(document.getElementById("briefingText")?.textContent || "");
-    document.body.appendChild(ta);
-    ta.select();
-    document.execCommand("copy");
-    document.body.removeChild(ta);
-    alert("Plain text report copied to clipboard!");
-  });
-}
-
-function downloadReport() {
-  const blob = new Blob([lastEmailHTML], {type: "text/html"});
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = `vuln-report-${new Date().toISOString().split("T")[0]}.html`;
-  a.click();
-  URL.revokeObjectURL(url);
-}
-
-function openOutlookAgain() {
-  const subject = `[VULN INTEL] ${allVulns.length > 0 ? allVulns.length + " CVEs Found" : "All Clear"} — ${new Date().toLocaleDateString()}`;
-  const plainText = buildPlainTextReport(document.getElementById("briefingText")?.textContent || "");
-  window.open(`mailto:parth.sharma@casepoint.in?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(plainText)}`, "_blank");
-}
-
-function copyReportToClipboard() {
-  const text = buildPlainTextReport(document.getElementById("briefingText")?.textContent || "");
-  navigator.clipboard.writeText(text).then(() => {
-    alert("Report copied to clipboard!");
-  }).catch(() => {
-    const ta = document.createElement("textarea");
-    ta.value = text;
-    document.body.appendChild(ta);
-    ta.select();
-    document.execCommand("copy");
-    document.body.removeChild(ta);
-    alert("Report copied to clipboard!");
-  });
-}
-
-// Auto-load latest results when page opens (for GitHub Pages)
+// Auto-load latest results when page opens
 (async function autoLoad() {
-  try {
-    const res = await fetch("scan-results.json?t=" + Date.now());
-    if (!res.ok) return;
-    const data = await res.json();
-    if (!data.vulnerabilities || data.vulnerabilities.length === 0) return;
+  // Try multiple paths for the JSON (handles different hosting setups)
+  const urls = [
+    "scan-results.json?t=" + Date.now(),
+    "./scan-results.json?t=" + Date.now(),
+  ];
 
-    allVulns = data.vulnerabilities.map(v => ({
-      id:v.id, description:v.description, cvss:v.cvss, tier:v.tier??3,
-      matchedProducts:v.matchedProducts||[], references:v.references||[], published:v.published,
-    }));
-    scanTime = data.scanTime || "Unknown";
-
-    document.getElementById("totalCount").textContent = allVulns.length;
-    document.getElementById("emergCount").textContent = allVulns.filter(v=>v.tier===0).length;
-    document.getElementById("scanTimeLabel").textContent = scanTime;
-    document.getElementById("preScanSection").style.display = "none";
-
-    if (allVulns.length > 0) {
-      document.getElementById("resultsSection").style.display = "block";
-      renderProductFilter();
-      renderCards();
-
-      const tierCounts = [0,1,2,3].map(t => allVulns.filter(v=>(v.tier??3)===t).length);
-      const top = allVulns.slice(0,15);
-      let brief = `SITUATION: ${allVulns.length} vulnerabilities found across ${[...new Set(allVulns.flatMap(v=>v.matchedProducts))].length} products. ${tierCounts[0]} Emergency, ${tierCounts[1]} High.\n\n`;
-      const urgent = top.filter(v=>v.tier<=1).slice(0,5);
-      if (urgent.length) {
-        brief += "IMMEDIATE ACTION:\n";
-        urgent.forEach((v,i) => { brief += `  ${i+1}. ${v.id} — ${v.matchedProducts.join(", ")} — CVSS ${v.cvss?.score??'N/A'}\n`; });
+  let data = null;
+  for (const url of urls) {
+    try {
+      const res = await fetch(url);
+      if (res.ok) {
+        const text = await res.text();
+        // Make sure it's actually JSON, not an HTML 404 page
+        if (text.trim().startsWith("{")) {
+          data = JSON.parse(text);
+          break;
+        }
       }
-      document.getElementById("briefingText").textContent = brief;
-      document.getElementById("briefingArea").style.display = "block";
-    } else {
-      document.getElementById("allClearSection").style.display = "block";
-      document.getElementById("clearScanTime").textContent = "Last scan: " + scanTime;
-    }
-  } catch(e) { /* no cached results, show landing page */ }
+    } catch(e) { continue; }
+  }
+
+  if (!data || !data.vulnerabilities || data.vulnerabilities.length === 0) {
+    // No results — keep showing the landing page
+    return;
+  }
+
+  allVulns = data.vulnerabilities.map(v => ({
+    id:v.id, description:v.description, cvss:v.cvss, tier:v.tier??3,
+    matchedProducts:v.matchedProducts||[], references:v.references||[], published:v.published,
+  }));
+  scanTime = data.scanTime || "Unknown";
+
+  document.getElementById("totalCount").textContent = allVulns.length;
+  document.getElementById("emergCount").textContent = allVulns.filter(v=>v.tier===0).length;
+  document.getElementById("scanTimeLabel").textContent = scanTime;
+  document.getElementById("preScanSection").style.display = "none";
+
+  document.getElementById("resultsSection").style.display = "block";
+  renderProductFilter();
+  renderCards();
+
+  const tierCounts = [0,1,2,3].map(t => allVulns.filter(v=>(v.tier??3)===t).length);
+  const top = allVulns.slice(0,15);
+  let brief = `SITUATION: ${allVulns.length} vulnerabilities found across ${[...new Set(allVulns.flatMap(v=>v.matchedProducts))].length} products in the last 24 hours. ${tierCounts[0]} Emergency, ${tierCounts[1]} High, ${tierCounts[2]} Medium, ${tierCounts[3]} Low.\n\n`;
+  brief += "IMMEDIATE ACTION REQUIRED:\n";
+  top.filter(v=>v.tier<=1).slice(0,5).forEach((v,i) => {
+    brief += `  ${i+1}. ${v.id} — ${v.matchedProducts.join(", ")} — CVSS ${v.cvss?.score??'N/A'} — ${(v.description||"").slice(0,120)}\n`;
+  });
+  brief += "\nREMEDIATION: Apply vendor patches for all Tier 0 and Tier 1 items immediately. Review Tier 2 items within 72 hours.\n";
+  brief += "\nDETECTION: Monitor endpoint and network logs for exploit attempts against the listed CVEs. Update IDS/IPS signatures.";
+  document.getElementById("briefingText").textContent = brief;
+  document.getElementById("briefingArea").style.display = "block";
 })();
 </script>
 </body>
