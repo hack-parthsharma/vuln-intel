@@ -290,7 +290,7 @@ jobs:
               color = tier_colors.get(str(tier), "#69f0ae")
               products = ", ".join(v.get("matchedProducts", []))
               score = v.get("cvss", {}).get("score")
-              score_str = f"{score:.1f}" if score else "N/A"
+              score_str = f"{score:.1f}" if score is not None else "N/A"
               desc = (v.get("description", ""))[:200]
               cve_id = v.get("id", "N/A")
               refs = v.get("references", [])
@@ -317,7 +317,8 @@ jobs:
           for i, v in enumerate(vulns[:5]):
               if v.get("tier", 3) <= 1:
                   score = v.get("cvss",{}).get("score")
-                  briefing += f"  {i+1}. {v['id']} — {', '.join(v.get('matchedProducts',[]))} — CVSS {score:.1f if score else 'N/A'}\n"
+                  score_display = f"{score:.1f}" if score is not None else "N/A"
+                  briefing += f"  {i+1}. {v['id']} — {', '.join(v.get('matchedProducts',[]))} — CVSS {score_display}\n"
           briefing += "\nREMEDIATION: Apply vendor patches for Tier 0 and Tier 1 immediately. Review Tier 2 within 72 hours.\n"
           briefing += "DETECTION: Monitor endpoint/network logs. Update IDS/IPS signatures."
 
