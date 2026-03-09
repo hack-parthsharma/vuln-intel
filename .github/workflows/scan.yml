@@ -80,74 +80,200 @@ jobs:
           from datetime import datetime
           
           KEYWORDS = {
+            # ===== NETWORK / FIREWALL / SECURITY APPLIANCES =====
             "Cisco Nexus": ["cisco nexus","nexus 5500","nexus 9000","nx-os"],
             "Cisco UCS": ["cisco ucs","ucs fabric","fxos","unified computing"],
             "Cisco Fabric Extender": ["fabric extender","fex-2"],
             "SonicWall": ["sonicwall","sma 1000","sma 8200","nsa 5600","nsa 4600","sonicos"],
+            "Dell SonicWall": ["dell sonicwall","dell nsa"],
             "Fortigate/FortiOS": ["fortigate","fortios","fortinet","fortiproxy"],
+            "Barracuda": ["barracuda"],
+
+            # ===== OPERATING SYSTEMS =====
             "Windows Server 2012 R2": ["windows server 2012"],
             "Windows 10": ["windows 10","windows_10"],
-            "VMware ESXi": ["vmware esxi","vsphere","esxi 6."],
-            "VMware vCenter": ["vcenter","vmware vcenter"],
+            "Ubuntu": ["ubuntu"],
+
+            # ===== BROWSERS =====
             "Google Chrome": ["google chrome","chromium"],
             "Mozilla Firefox": ["firefox","mozilla firefox"],
-            "Microsoft Edge": ["microsoft edge"],
-            "PostgreSQL": ["postgresql","postgres"],
-            "MySQL": ["mysql"],
+            "Microsoft Edge": ["microsoft edge","edge webview2"],
+
+            # ===== DATABASES =====
+            "PostgreSQL": ["postgresql","postgres","postgresql-14"],
+            "MySQL": ["mysql","mysql workbench"],
             "MSSQL": ["sql server","mssql","microsoft sql"],
             "MongoDB": ["mongodb"],
-            "Redis": ["redis"],
+            "Redis": ["redis","redisinsight"],
             "Elasticsearch": ["elasticsearch"],
-            "RabbitMQ": ["rabbitmq"],
-            "Apache HTTP Server": ["apache http","httpd","apache/2."],
+            "OpenSearch": ["opensearch","open search"],
+
+            # ===== DATABASE TOOLS =====
+            "PgBouncer": ["pgbouncer"],
+            "pgAdmin": ["pgadmin"],
+            "pgBadger": ["pgbadger"],
+
+            # ===== MESSAGE QUEUES / STREAMING =====
+            "RabbitMQ": ["rabbitmq","rabbitmq-server"],
+            "Erlang/OTP": ["erlang","erlang/otp","erlang otp"],
+
+            # ===== WEB SERVERS =====
+            "Apache HTTP Server": ["apache http","httpd","apache/2.","apache2"],
             "Apache Tomcat": ["apache tomcat","tomcat"],
+            "IIS": ["iis 10","iis url rewrite","iis express"],
+            "Cerberus FTP Server": ["cerberus ftp"],
+            "hMailServer": ["hmailserver"],
+            "ONLYOFFICE": ["onlyoffice"],
+            "Nginx": ["nginx"],
+
+            # ===== PROGRAMMING LANGUAGES / RUNTIMES =====
             "Node.js": ["node.js","nodejs"],
-            "WordPress": ["wordpress","wp-"],
-            "OpenSSL": ["openssl"],
-            "Samba": ["samba"],
-            "cPanel": ["cpanel"],
+            "Python": ["python 3.","python launcher","python 2."],
+            "OpenJDK": ["openjdk","open jdk","hotspot"],
+            "Oracle Java": ["oracle java","jdk","jre ","java se development kit","java 8 update"],
+            "Microsoft .NET": ["microsoft .net","asp.net","dotnet",".net framework",".net runtime",".net sdk"],
+            "PowerShell": ["powershell"],
+
+            # ===== VIRTUALIZATION =====
+            "VMware ESXi": ["vmware esxi","vsphere","esxi 6."],
+            "VMware vCenter": ["vcenter","vmware vcenter"],
+            "VMware Tools": ["vmware tools"],
+
+            # ===== MONITORING / OBSERVABILITY =====
+            "Grafana": ["grafana"],
+            "Kibana": ["kibana"],
+            "Prometheus": ["prometheus","node_exporter","windows_exporter"],
+            "Graylog": ["graylog-server","graylog server"],
+            "Graylog Sidecar": ["graylog-sidecar","graylog sidecar"],
+            "SolarWinds": ["solarwinds","ipmonitor"],
+            "PRTG Network Monitor": ["prtg","paessler"],
+            "Site24x7": ["site24x7"],
+            "Fluentd": ["fluentd","td-agent"],
+            "Filebeat": ["filebeat"],
+            "Logstash": ["logstash"],
+            "Monit": ["monit"],
+            "sysstat": ["sysstat"],
+
+            # ===== SECURITY / ENDPOINT =====
             "ESET": ["eset"],
             "Cortex XDR": ["cortex xdr","palo alto cortex"],
             "Imperva": ["imperva","incapsula"],
+            "Tenable Nessus": ["tenable nessus","nessus"],
+            "KnowBe4": ["knowbe4"],
+            "Securden": ["securden"],
+            "SecurEnvoy": ["securenvoy"],
+            "VeraCrypt": ["veracrypt"],
+            "KeePass/KeeWeb": ["keepass","keeweb"],
+            "Windows Defender": ["windows defender"],
+            "Npcap": ["npcap"],
+            "OpenSSL": ["openssl"],
+
+            # ===== REMOTE ACCESS =====
+            "PuTTY": ["putty"],
+            "WinSCP": ["winscp"],
+            "XRDP": ["xrdp"],
+            "SplashTop": ["splashtop"],
+            "JumpCloud": ["jumpcloud"],
+
+            # ===== COLLABORATION / PRODUCTIVITY =====
+            "Microsoft Office": ["microsoft office","microsoft 365","office 365","office ltsc","office professional"],
             "Adobe Acrobat": ["adobe acrobat","acrobat reader","acrobat dc"],
             "Adobe Photoshop": ["adobe photoshop"],
-            "Microsoft Office": ["microsoft office","microsoft 365","office 365"],
+            "Adobe Creative Cloud": ["adobe creative cloud","adobe robohelp"],
+            "LibreOffice": ["libreoffice"],
             "Zoom": ["zoom video","zoom client","zoom workplace"],
             "Slack": ["slack"],
-            "Grafana": ["grafana"],
-            "Kibana": ["kibana"],
-            "Prometheus": ["prometheus"],
-            "Graylog": ["graylog"],
-            "SolarWinds": ["solarwinds","ipmonitor"],
-            "Hikvision": ["hikvision"],
-            "ManageEngine": ["manageengine","desktop central"],
-            "Oracle Java": ["oracle java","jdk","jre "],
+            "Postman": ["postman"],
+
+            # ===== CMS / WEB APPS =====
+            "WordPress": ["wordpress","wp-"],
+            "Yoast SEO": ["yoast"],
+            "Advanced Custom Fields": ["advanced custom fields","acf pro"],
+            "Zendesk": ["zendesk"],
+            "SupportPal": ["supportpal"],
+            "FormTools": ["form tools","formtools"],
+
+            # ===== DEV TOOLS / IDEs =====
             "Visual Studio": ["visual studio"],
+            "Visual Studio Code": ["visual studio code","vs code","vscode"],
             "Notepad++": ["notepad++"],
             "SonarQube": ["sonarqube"],
+            "Git": ["git for windows","git version"],
+            "PyCharm": ["pycharm"],
+            "Burp Suite": ["burp suite","portswigger"],
+            "WinMerge": ["winmerge"],
+
+            # ===== INFRASTRUCTURE / DEVOPS =====
+            "Ansible": ["ansible"],
+            "Certbot": ["certbot","let's encrypt","letsencrypt"],
+            "Microsoft Azure AD Connect": ["azure ad connect","entra connect"],
+            "Veeam": ["veeam"],
+            "Landscape Server": ["landscape-server","landscape server","canonical landscape"],
+            "TFS / Azure DevOps": ["team foundation server","tfs 2018","azure devops server"],
+
+            # ===== FILE / ARCHIVE TOOLS =====
+            "7-Zip": ["7-zip","7zip"],
+            "WinRAR": ["winrar"],
+            "WinZip": ["winzip"],
+            "FileZilla": ["filezilla"],
+
+            # ===== NETWORK TOOLS / UTILITIES =====
             "Ubiquiti/UniFi": ["ubiquiti","unifi"],
-            "JumpCloud": ["jumpcloud"],
-            "SplashTop": ["splashtop"],
+            "Cato Networks": ["cato networks","cato client"],
+            "OpenSSH": ["openssh"],
+            "Chrony": ["chrony"],
+            "NFS": ["nfs-common","nfs-kernel-server","nfs server"],
+            "CIFS/SMB Utils": ["cifs-utils","cifs utils"],
+            "LVM2": ["lvm2"],
+            "Samba": ["samba"],
+
+            # ===== CAMERAS / HARDWARE =====
+            "Hikvision": ["hikvision"],
+
+            # ===== CLOUD / BACKUP =====
+            "SQLBackupAndFTP": ["sqlbackupandftp"],
             "Jamf Protect": ["jamf"],
-            "Fluentd": ["fluentd"],
+
+            # ===== PDF / IMAGING =====
             "Nitro PDF": ["nitro pdf","nitro pro"],
-            "Zendesk": ["zendesk"],
-            "PgBouncer": ["pgbouncer"],
-            "Securden": ["securden"],
+            "CutePDF": ["cutepdf"],
+            "TIFF Image Printer": ["tiff image printer"],
+            "Informatik PDF": ["informatik"],
+
+            # ===== FORENSICS / EDISCOVERY =====
+            "AccessData FTK": ["accessdata","ftk imager"],
+            "Concordance": ["concordance"],
+            "dtSearch": ["dtsearch"],
+            "Passware Kit": ["passware"],
+
+            # ===== GPU / COMPUTE =====
+            "NVIDIA CUDA": ["nvidia cuda","cudnn","nvidia graphics driver","nvidia nsight","nvidia rtx"],
+
+            # ===== OTHER TOOLS =====
+            "cPanel": ["cpanel"],
+            "ManageEngine": ["manageengine","desktop central"],
             "Mmonit": ["mmonit","m/monit"],
             "Rebex": ["rebex"],
-            "SecurEnvoy": ["securenvoy"],
-            "Cato Networks": ["cato networks","cato client"],
             "ShareX": ["sharex"],
             "Gliffy": ["gliffy"],
             "IBM Notes": ["ibm notes","lotus notes","hcl notes"],
-            "Burp Suite": ["burp suite","portswigger"],
-            "KnowBe4": ["knowbe4"],
-            "TFS / Azure DevOps": ["team foundation server","tfs 2018","azure devops server"],
-            "Yoast SEO": ["yoast"],
-            "Advanced Custom Fields": ["advanced custom fields","acf pro"],
-            "Dell SonicWall": ["dell sonicwall","dell nsa"],
             "ipSentry": ["ipsentry"],
+            "GParted": ["gparted"],
+            "Fio": ["fio benchmark","fio "],
+            "ncdu": ["ncdu"],
+            "iotop": ["iotop"],
+            "PDQ Deploy/Inventory": ["pdq deploy","pdq inventory"],
+            "TreeSize": ["treesize"],
+            "IrfanView": ["irfanview"],
+            "Process Hacker": ["process hacker"],
+            "RVTools": ["rvtools"],
+            "MATE Desktop": ["mate-desktop","mate desktop"],
+            "eDrawings": ["edrawings"],
+            "DigiCert": ["digicert"],
+            "Laserfiche": ["laserfiche"],
+            "SAP Crystal Reports": ["crystal reports","sap crystal"],
+            "n2pdf": ["n2pdf"],
+            "Bvckup": ["bvckup"],
           }
           
           def match_products(text):
@@ -217,9 +343,11 @@ jobs:
           all_vulns.sort(key=lambda v: (v["tier"], -(v["cvss"]["score"] or 0)))
           
           # Build output
+          product_count = len(KEYWORDS)
           result = {
               "scanTime": datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S UTC"),
               "totalMatched": len(all_vulns),
+              "productsMonitored": product_count,
               "tierCounts": {str(t): len([v for v in all_vulns if v["tier"]==t]) for t in range(4)},
               "vulnerabilities": all_vulns,
           }
@@ -227,7 +355,7 @@ jobs:
           with open("scan-results.json", "w") as f:
               json.dump(result, f, indent=2)
           
-          print(f"✅ Found {len(all_vulns)} matching vulnerabilities")
+          print(f"✅ Found {len(all_vulns)} matching vulnerabilities ({product_count} products monitored)")
           for t in range(4):
               c = len([v for v in all_vulns if v["tier"]==t])
               if c: print(f"   Tier {t}: {c}")
@@ -261,6 +389,7 @@ jobs:
           scan_time = data.get("scanTime", "Unknown")
           total = data.get("totalMatched", 0)
           tiers = data.get("tierCounts", {})
+          products_monitored = data.get("productsMonitored", "120+")
 
           GMAIL_USER = os.environ.get("GMAIL_USER", "casepoint.vulnbot@gmail.com")
           GMAIL_PASS = os.environ.get("GMAIL_APP_PASSWORD", "")
@@ -329,7 +458,7 @@ jobs:
                   <p style="color:#64748b;font-size:13px">Scan completed: {scan_time}</p>
                   <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:20px;margin:16px 0;text-align:center">
                       <p style="font-size:18px;color:#16a34a;font-weight:700">✅ No new vulnerabilities found</p>
-                      <p style="color:#64748b;font-size:14px">No CVEs published in the last 24 hours match your 82+ tracked products.</p>
+                      <p style="color:#64748b;font-size:14px">No CVEs published in the last 24 hours match your {products_monitored} tracked products.</p>
                   </div>
                   <p style="color:#94a3b8;font-size:11px">Automated report from VULN INTEL Dashboard</p>
               </div>'''
@@ -359,7 +488,7 @@ jobs:
                       <tbody>{vuln_rows}</tbody>
                   </table>
 
-                  <p style="margin-top:24px;color:#94a3b8;font-size:11px">Sources: NVD (NIST) · CISA KEV · Vendor Advisories | 82+ products monitored</p>
+                  <p style="margin-top:24px;color:#94a3b8;font-size:11px">Sources: NVD (NIST) · CISA KEV · Vendor Advisories | {products_monitored} products monitored</p>
                   <p style="color:#94a3b8;font-size:11px">Automated report from VULN INTEL Dashboard</p>
               </div>'''
 
