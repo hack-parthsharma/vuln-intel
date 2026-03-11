@@ -1,38 +1,315 @@
 {
-  "scanTime": "2026-03-10 04:54:47 UTC",
-  "totalMatched": 5,
+  "scanTime": "2026-03-11 04:56:04 UTC",
+  "totalMatched": 96,
   "productsMonitored": 147,
   "tierCounts": {
-    "0": 0,
-    "1": 3,
-    "2": 0,
-    "3": 2
+    "0": 15,
+    "1": 39,
+    "2": 32,
+    "3": 10
   },
   "vulnerabilities": [
     {
-      "id": "CVE-2026-3807",
-      "description": "A security vulnerability has been detected in Tenda FH1202 1.2.0.14(408). Impacted is the function formWrlsafeset of the file /goform/AdvSetWrlsafeset. Such manipulation of the argument mit_ssid/mit_ssid_index leads to stack-based buffer overflow. The attack can be launched remotely. The exploit has been disclosed publicly and may be used.",
+      "id": "CVE-2026-30966",
+      "description": "Parse Server is an open source backend that can be deployed to any infrastructure that can run Node.js. Prior to 9.5.2-alpha.7 and 8.6.20, Parse Server's internal tables, which store Relation field mappings such as role memberships, can be directly accessed via the REST API or GraphQL API by any client using only the application key. No master key is required. An attacker can create, read, update, or delete records in any internal relationship table. Exploiting this allows the attacker to inject",
       "cvss": {
-        "score": 8.8,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "score": 10.0,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:L",
+        "severity": "CRITICAL"
+      },
+      "tier": 0,
+      "matchedProducts": [
+        "Node.js"
+      ],
+      "references": [
+        "https://github.com/parse-community/parse-server/releases/tag/8.6.20",
+        "https://github.com/parse-community/parse-server/releases/tag/9.5.2-alpha.7",
+        "https://github.com/parse-community/parse-server/security/advisories/GHSA-5f92-jrq3-28rc"
+      ],
+      "published": "2026-03-10T21:16:48.980"
+    },
+    {
+      "id": "CVE-2026-30887",
+      "description": "OneUptime is a solution for monitoring and managing online services. Prior to 10.0.18, OneUptime allows project members to run custom Playwright/JavaScript code via Synthetic Monitors to test websites. However, the system executes this untrusted user code inside the insecure Node.js vm module. By leveraging a standard prototype-chain escape (this.constructor.constructor), an attacker can bypass the sandbox, gain access to the underlying Node.js process object, and execute arbitrary system comman",
+      "cvss": {
+        "score": 9.9,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+        "severity": "CRITICAL"
+      },
+      "tier": 0,
+      "matchedProducts": [
+        "Node.js",
+        "Monit"
+      ],
+      "references": [
+        "https://github.com/OneUptime/oneuptime/security/advisories/GHSA-h343-gg57-2q67",
+        "https://github.com/OneUptime/oneuptime/security/advisories/GHSA-h343-gg57-2q67"
+      ],
+      "published": "2026-03-10T17:40:14.887"
+    },
+    {
+      "id": "CVE-2026-30921",
+      "description": "OneUptime is a solution for monitoring and managing online services. Prior to 10.0.20, OneUptime Synthetic Monitors allow low-privileged project users to submit custom Playwright code that is executed on the oneuptime-probe service. In the current implementation, this untrusted code is run inside Node's vm and is given live host Playwright objects such as browser and page. This creates a distinct server-side RCE primitive: the attacker does not need the classic this.constructor.constructor(...) ",
+      "cvss": {
+        "score": 9.9,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+        "severity": "CRITICAL"
+      },
+      "tier": 0,
+      "matchedProducts": [
+        "Monit"
+      ],
+      "references": [
+        "https://github.com/OneUptime/oneuptime/security/advisories/GHSA-4j36-39gm-8vq8"
+      ],
+      "published": "2026-03-10T17:40:16.160"
+    },
+    {
+      "id": "CVE-2026-30956",
+      "description": "OneUptime is a solution for monitoring and managing online services. Prior to 10.0.21, a low\u2011privileged user can bypass authorization and tenant isolation in OneUptime v10.0.20 and earlier by sending a forged is-multi-tenant-query header together with a controlled projectid header. Because the server trusts this client-supplied header, internal permission checks in BasePermission are skipped and tenant scoping is disabled. This allows attackers to access project data belonging to other tenants, ",
+      "cvss": {
+        "score": 9.9,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+        "severity": "CRITICAL"
+      },
+      "tier": 0,
+      "matchedProducts": [
+        "Monit",
+        "ESET"
+      ],
+      "references": [
+        "https://github.com/OneUptime/oneuptime/releases/tag/10.0.21",
+        "https://github.com/OneUptime/oneuptime/security/advisories/GHSA-r5v6-2599-9g3m"
+      ],
+      "published": "2026-03-10T18:18:54.587"
+    },
+    {
+      "id": "CVE-2026-30957",
+      "description": "OneUptime is a solution for monitoring and managing online services. Prior to 10.0.21, OneUptime Synthetic Monitors allow a low-privileged authenticated project user to execute arbitrary commands on the oneuptime-probe server/container. The root cause is that untrusted Synthetic Monitor code is executed inside Node's vm while live host-realm Playwright browser and page objects are exposed to it. A malicious user can call Playwright APIs on the injected browser object and cause the probe to spawn",
+      "cvss": {
+        "score": 9.9,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+        "severity": "CRITICAL"
+      },
+      "tier": 0,
+      "matchedProducts": [
+        "Monit"
+      ],
+      "references": [
+        "https://github.com/OneUptime/oneuptime/releases/tag/10.0.21",
+        "https://github.com/OneUptime/oneuptime/security/advisories/GHSA-jw8q-gjvg-8w4q"
+      ],
+      "published": "2026-03-10T18:18:54.737"
+    },
+    {
+      "id": "CVE-2026-0953",
+      "description": "The Tutor LMS Pro plugin for WordPress is vulnerable to authentication bypass in all versions up to, and including, 3.9.5 via the Social Login addon. This is due to the plugin failing to verify that the email provided in the authentication request matches the email from the validated OAuth token. This makes it possible for unauthenticated attackers to log in as any existing user, including administrators, by supplying a valid OAuth token from their own account along with the victim's email addre",
+      "cvss": {
+        "score": 9.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "CRITICAL"
+      },
+      "tier": 0,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://tutorlms.com/releases/id/393/",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/92a120ac-66ae-4678-a87a-e62da885d50b?source=cve"
+      ],
+      "published": "2026-03-10T17:31:40.537"
+    },
+    {
+      "id": "CVE-2026-28292",
+      "description": "`simple-git`, an interface for running git commands in any node.js application, has an issue in versions 3.15.0 through 3.32.2 that allows an attacker to bypass two prior CVE fixes (CVE-2022-25860 and CVE-2022-25912) and achieve full remote code execution on the host machine. Version 3.23.0 contains an updated fix for the vulnerability.",
+      "cvss": {
+        "score": 9.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "CRITICAL"
+      },
+      "tier": 0,
+      "matchedProducts": [
+        "Node.js"
+      ],
+      "references": [
+        "https://github.com/steveukx/git-js/commit/f7042088aa2dac59e3c49a84d7a2f4b26048a257",
+        "https://www.codeant.ai/security-research/security-research-simple-git-remote-code-execution-cve-2026-28292"
+      ],
+      "published": "2026-03-10T19:17:20.840"
+    },
+    {
+      "id": "CVE-2026-23813",
+      "description": "A vulnerability has been identified in the web-based management interface of AOS-CX switches that could potentially allow an unauthenticated remote actor to circumvent existing authentication controls. In some cases this could enable resetting the admin password.",
+      "cvss": {
+        "score": 9.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "CRITICAL"
+      },
+      "tier": 0,
+      "matchedProducts": [
+        "ESET"
+      ],
+      "references": [
+        "https://support.hpe.com/hpesc/public/docDisplay?docId=hpesbnw05027en_us&docLocale=en_US"
+      ],
+      "published": "2026-03-11T04:17:34.677"
+    },
+    {
+      "id": "CVE-2026-24017",
+      "description": "An Improper Control of Interaction Frequency vulnerability [CWE-799] vulnerability in Fortinet FortiWeb 8.0.0 through 8.0.2, FortiWeb 7.6.0 through 7.6.5, FortiWeb 7.4.0 through 7.4.10, FortiWeb 7.2.0 through 7.2.11, FortiWeb 7.0.0 through 7.0.11 may allow a remote unauthenticated attacker to bypass the authentication rate-limit via crafted requests. The success of the attack depends on the attacker's resources and the password target complexity.",
+      "cvss": {
+        "score": 8.1,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
         "severity": "HIGH"
+      },
+      "tier": 0,
+      "matchedProducts": [
+        "Fortigate/FortiOS"
+      ],
+      "references": [
+        "https://fortiguard.fortinet.com/psirt/FG-IR-26-082"
+      ],
+      "published": "2026-03-10T18:18:17.400"
+    },
+    {
+      "id": "CVE-2026-1781",
+      "description": "The MC4WP: Mailchimp for WordPress plugin for WordPress is vulnerable to Missing Authorization in all versions up to, and including, 4.11.1. This is due to the plugin trusting the `_mc4wp_action` POST parameter without validation, allowing unauthenticated attackers to force the form to process unsubscribe actions instead of subscribe actions. This makes it possible for unauthenticated attackers to arbitrarily unsubscribe any email address from the connected Mailchimp audience via the `_mc4wp_act",
+      "cvss": {
+        "score": 6.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:L",
+        "severity": "MEDIUM"
+      },
+      "tier": 0,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://cwe.mitre.org/data/definitions/862.html",
+        "https://github.com/ibericode/mailchimp-for-wordpress/commit/5fdebc2a5e22d11287d011697a6b09331bd96fa5",
+        "https://plugins.trac.wordpress.org/browser/mailchimp-for-wp/tags/4.11.1/includes/forms/class-form-listener.php#L207",
+        "https://plugins.trac.wordpress.org/browser/mailchimp-for-wp/tags/4.11.1/includes/forms/class-form-listener.php#L53",
+        "https://plugins.trac.wordpress.org/browser/mailchimp-for-wp/tags/4.11.1/includes/forms/class-form.php#L461"
+      ],
+      "published": "2026-03-11T02:16:03.493"
+    },
+    {
+      "id": "CVE-2026-30939",
+      "description": "Parse Server is an open source backend that can be deployed to any infrastructure that can run Node.js. Prior to 8.6.13 and 9.5.1-alpha.2, an unauthenticated attacker can crash the Parse Server process by calling a Cloud Function endpoint with a prototype property name as the function name. The server recurses infinitely, causing a call stack size error that terminates the process. Other prototype property names bypass Cloud Function dispatch validation and return HTTP 200 responses, even though",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 0,
+      "matchedProducts": [
+        "Node.js"
+      ],
+      "references": [
+        "https://github.com/parse-community/parse-server/releases/tag/8.6.13",
+        "https://github.com/parse-community/parse-server/releases/tag/9.5.1-alpha.2",
+        "https://github.com/parse-community/parse-server/security/advisories/GHSA-5j86-7r7m-p8h6"
+      ],
+      "published": "2026-03-10T18:18:53.780"
+    },
+    {
+      "id": "CVE-2026-30941",
+      "description": "Parse Server is an open source backend that can be deployed to any infrastructure that can run Node.js. Prior to 8.6.14 and 9.5.2-alpha.1, NoSQL injection vulnerability allows an unauthenticated attacker to inject MongoDB query operators via the token field in the password reset and email verification resend endpoints. The token value is passed to database queries without type validation and can be used to extract password reset and email verification tokens. Any Parse Server deployment using Mo",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 0,
+      "matchedProducts": [
+        "MongoDB",
+        "Node.js",
+        "ESET"
+      ],
+      "references": [
+        "https://github.com/parse-community/parse-server/releases/tag/8.6.14",
+        "https://github.com/parse-community/parse-server/releases/tag/9.5.2-alpha.1",
+        "https://github.com/parse-community/parse-server/security/advisories/GHSA-vgjh-hmwf-c588"
+      ],
+      "published": "2026-03-10T18:18:53.943"
+    },
+    {
+      "id": "CVE-2026-30946",
+      "description": "Parse Server is an open source backend that can be deployed to any infrastructure that can run Node.js. Prior 9.5.2-alpha.2 and 8.6.15, an unauthenticated attacker can exhaust Parse Server resources (CPU, memory, database connections) through crafted queries that exploit the lack of complexity limits in the REST and GraphQL APIs. All Parse Server deployments using the REST or GraphQL API are affected. This vulnerability is fixed in 9.5.2-alpha.2 and 8.6.15.",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 0,
+      "matchedProducts": [
+        "Node.js"
+      ],
+      "references": [
+        "https://github.com/parse-community/parse-server/releases/tag/8.6.15",
+        "https://github.com/parse-community/parse-server/releases/tag/9.5.2-alpha.2",
+        "https://github.com/parse-community/parse-server/security/advisories/GHSA-cmj3-wx7h-ffvg"
+      ],
+      "published": "2026-03-10T21:16:47.333"
+    },
+    {
+      "id": "CVE-2026-30947",
+      "description": "Parse Server is an open source backend that can be deployed to any infrastructure that can run Node.js. Prior to 9.5.2-alpha.3 and 8.6.16, class-level permissions (CLP) are not enforced for LiveQuery subscriptions. An unauthenticated or unauthorized client can subscribe to any LiveQuery-enabled class and receive real-time events for all objects, regardless of CLP restrictions. All Parse Server deployments that use LiveQuery with class-level permissions are affected. Data intended to be restricte",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 0,
+      "matchedProducts": [
+        "Node.js"
+      ],
+      "references": [
+        "https://github.com/parse-community/parse-server/releases/tag/8.6.16",
+        "https://github.com/parse-community/parse-server/releases/tag/9.5.2-alpha.3",
+        "https://github.com/parse-community/parse-server/security/advisories/GHSA-7ch5-98q2-7289"
+      ],
+      "published": "2026-03-10T21:16:47.500"
+    },
+    {
+      "id": "CVE-2026-30965",
+      "description": "Parse Server is an open source backend that can be deployed to any infrastructure that can run Node.js. Prior to 9.5.2-alpha.8 and 8.6.21, a vulnerability in Parse Server's query handling allows an authenticated or unauthenticated attacker to exfiltrate session tokens of other users by exploiting the redirectClassNameForKey query parameter. Exfiltrated session tokens can be used to take over user accounts. The vulnerability requires the attacker to be able to create or update an object with a ne",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 0,
+      "matchedProducts": [
+        "Node.js"
+      ],
+      "references": [
+        "https://github.com/parse-community/parse-server/releases/tag/8.6.21",
+        "https://github.com/parse-community/parse-server/releases/tag/9.5.2-alpha.8",
+        "https://github.com/parse-community/parse-server/security/advisories/GHSA-6r2j-cxgf-495f"
+      ],
+      "published": "2026-03-10T21:16:48.820"
+    },
+    {
+      "id": "CVE-2025-69614",
+      "description": "Incorrect Access Control via activation token reuse on the password-reset endpoint allowing unauthorized password resets and full account takeover. Affected Product: Deutsche Telekom AG Telekom Account Management Portal, versions before 2025-10-27, fixed 2025-10-31.",
+      "cvss": {
+        "score": 9.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:L",
+        "severity": "CRITICAL"
       },
       "tier": 1,
       "matchedProducts": [
         "ESET"
       ],
       "references": [
-        "https://github.com/Svigo-o/Tenda_vul/tree/main/tenda-fh1202-advsetwrlsafeset-mit-ssid-buffer-overflow",
-        "https://vuldb.com/?ctiid.349773",
-        "https://vuldb.com/?id.349773",
-        "https://vuldb.com/?submit.769019",
-        "https://vuldb.com/?submit.769020"
+        "https://gist.github.com/ethicalrohitt/b3e6d071aac8530459e8b3a5720bb832",
+        "https://www.telekom.com/en/company/data-privacy-and-security/news/acknowledgements-358300#R"
       ],
-      "published": "2026-03-09T07:16:04.147"
+      "published": "2026-03-10T18:18:01.610"
     },
     {
-      "id": "CVE-2026-3288",
-      "description": "A security issue was discovered in ingress-nginx where the `nginx.ingress.kubernetes.io/rewrite-target` Ingress annotation can be used to inject configuration into nginx. This can lead to arbitrary code execution in the context of the ingress-nginx controller, and disclosure of Secrets accessible to the controller. (Note that in the default installation, the controller can access all Secrets cluster-wide.)",
+      "id": "CVE-2026-21262",
+      "description": "Improper access control in SQL Server allows an authorized attacker to elevate privileges over a network.",
       "cvss": {
         "score": 8.8,
         "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
@@ -40,55 +317,1351 @@
       },
       "tier": 1,
       "matchedProducts": [
-        "Nginx"
+        "MSSQL"
       ],
       "references": [
-        "https://github.com/kubernetes/kubernetes/issues/137560"
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-21262"
       ],
-      "published": "2026-03-09T21:16:20.900"
+      "published": "2026-03-10T18:18:06.190"
     },
     {
-      "id": "CVE-2026-25866",
-      "description": "MobaXterm versions prior to 26.1 contain an uncontrolled search path element vulnerability. The application calls WinExec to execute Notepad++ without a fully qualified executable path when opening remote files. An attacker can exploit the search path behavior by placing a malicious executable earlier in the search order, resulting in arbitrary code execution in the context of the affected user.",
+      "id": "CVE-2026-22627",
+      "description": "A buffer copy without checking size of input ('classic buffer overflow') vulnerability in Fortinet FortiSwitchAXFixed 1.0.0 through 1.0.1 may allow an unauthenticated attacker within the same adjacent network to execute unauthorized code or commands on the device via sending a crafted LLDP packet.",
+      "cvss": {
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Fortigate/FortiOS"
+      ],
+      "references": [
+        "https://fortiguard.fortinet.com/psirt/FG-IR-26-086"
+      ],
+      "published": "2026-03-10T18:18:12.570"
+    },
+    {
+      "id": "CVE-2026-26106",
+      "description": "Improper input validation in Microsoft Office SharePoint allows an authorized attacker to execute code over a network.",
+      "cvss": {
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Microsoft Office"
+      ],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-26106"
+      ],
+      "published": "2026-03-10T18:18:38.647"
+    },
+    {
+      "id": "CVE-2026-26114",
+      "description": "Deserialization of untrusted data in Microsoft Office SharePoint allows an authorized attacker to execute code over a network.",
+      "cvss": {
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Microsoft Office"
+      ],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-26114"
+      ],
+      "published": "2026-03-10T18:18:40.413"
+    },
+    {
+      "id": "CVE-2026-26115",
+      "description": "Improper validation of specified type of input in SQL Server allows an authorized attacker to elevate privileges over a network.",
+      "cvss": {
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "MSSQL"
+      ],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-26115"
+      ],
+      "published": "2026-03-10T18:18:40.590"
+    },
+    {
+      "id": "CVE-2026-26116",
+      "description": "Improper neutralization of special elements used in an sql command ('sql injection') in SQL Server allows an authorized attacker to elevate privileges over a network.",
+      "cvss": {
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "MSSQL"
+      ],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-26116"
+      ],
+      "published": "2026-03-10T18:18:40.827"
+    },
+    {
+      "id": "CVE-2026-3845",
+      "description": "Heap buffer overflow in the Audio/Video: Playback component in Firefox for Android. This vulnerability affects Firefox < 148.0.2.",
+      "cvss": {
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Mozilla Firefox"
+      ],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2020174",
+        "https://www.mozilla.org/security/advisories/mfsa2026-19/"
+      ],
+      "published": "2026-03-10T18:19:05.507"
+    },
+    {
+      "id": "CVE-2026-3847",
+      "description": "Memory safety bugs present in Firefox 148.0.2. Some of these bugs showed evidence of memory corruption and we presume that with enough effort some of these could have been exploited to run arbitrary code. This vulnerability affects Firefox < 148.0.2.",
+      "cvss": {
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Mozilla Firefox"
+      ],
+      "references": [
+        "https://bugzilla.mozilla.org/buglist.cgi?bug_id=2017513%2C2017622%2C2019341",
+        "https://www.mozilla.org/security/advisories/mfsa2026-19/"
+      ],
+      "published": "2026-03-10T18:19:05.837"
+    },
+    {
+      "id": "CVE-2026-30920",
+      "description": "OneUptime is a solution for monitoring and managing online services. Prior to 10.0.19, OneUptime's GitHub App callback trusts attacker-controlled state and installation_id values and updates Project.gitHubAppInstallationId with isRoot: true without validating that the caller is authorized for the target project. This allows an attacker to overwrite another project's GitHub App installation binding. Related GitHub endpoints also lack effective authorization, so a valid installation ID can be used",
+      "cvss": {
+        "score": 8.6,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:H/A:L",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Monit"
+      ],
+      "references": [
+        "https://github.com/OneUptime/oneuptime/security/advisories/GHSA-656w-6f6c-m9r6"
+      ],
+      "published": "2026-03-10T17:40:16.000"
+    },
+    {
+      "id": "CVE-2026-26109",
+      "description": "Out-of-bounds read in Microsoft Office Excel allows an unauthorized attacker to execute code locally.",
+      "cvss": {
+        "score": 8.4,
+        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Microsoft Office"
+      ],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-26109"
+      ],
+      "published": "2026-03-10T18:18:39.270"
+    },
+    {
+      "id": "CVE-2026-26110",
+      "description": "Access of resource using incompatible type ('type confusion') in Microsoft Office allows an unauthorized attacker to execute code locally.",
+      "cvss": {
+        "score": 8.4,
+        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Microsoft Office"
+      ],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-26110"
+      ],
+      "published": "2026-03-10T18:18:39.480"
+    },
+    {
+      "id": "CVE-2026-26113",
+      "description": "Untrusted pointer dereference in Microsoft Office allows an unauthorized attacker to execute code locally.",
+      "cvss": {
+        "score": 8.4,
+        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Microsoft Office"
+      ],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-26113"
+      ],
+      "published": "2026-03-10T18:18:40.177"
+    },
+    {
+      "id": "CVE-2025-54820",
+      "description": "A Stack-based Buffer Overflow vulnerability [CWE-121] vulnerability in Fortinet FortiManager 7.4.0 through 7.4.2, FortiManager 7.2.0 through 7.2.10, FortiManager 6.4 all versions may allow a remote unauthenticated attacker to execute unauthorized commands via crafted requests, if the service is enabled. The success of the attack depends on the ability to bypass the stack protection mechanisms.",
+      "cvss": {
+        "score": 8.1,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Fortigate/FortiOS"
+      ],
+      "references": [
+        "https://fortiguard.fortinet.com/psirt/FG-IR-26-098"
+      ],
+      "published": "2026-03-10T18:17:58.363"
+    },
+    {
+      "id": "CVE-2026-26105",
+      "description": "Improper neutralization of input during web page generation ('cross-site scripting') in Microsoft Office SharePoint allows an unauthorized attacker to perform spoofing over a network.",
+      "cvss": {
+        "score": 8.1,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:N",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Microsoft Office"
+      ],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-26105"
+      ],
+      "published": "2026-03-10T18:18:38.473"
+    },
+    {
+      "id": "CVE-2026-3453",
+      "description": "The ProfilePress plugin for WordPress is vulnerable to Insecure Direct Object Reference in all versions up to, and including, 4.16.11. This is due to missing ownership validation on the change_plan_sub_id parameter in the process_checkout() function. The ppress_process_checkout AJAX handler accepts a user-controlled subscription ID intended for plan upgrades, loads the subscription record, and cancels/expires it without verifying the subscription belongs to the requesting user. This makes it pos",
+      "cvss": {
+        "score": 8.1,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/wp-user-avatar/tags/4.16.9/src/Membership/Controllers/CheckoutController.php#L237",
+        "https://plugins.trac.wordpress.org/browser/wp-user-avatar/tags/4.16.9/src/Membership/Controllers/CheckoutController.php#L334",
+        "https://plugins.trac.wordpress.org/browser/wp-user-avatar/tags/4.16.9/src/Membership/Controllers/CheckoutController.php#L342",
+        "https://plugins.trac.wordpress.org/changeset/3474509/wp-user-avatar/trunk/src/Membership/Controllers/CheckoutController.php",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/74e4808f-bd6f-4e62-91cb-31c86a427498?source=cve"
+      ],
+      "published": "2026-03-11T03:15:56.227"
+    },
+    {
+      "id": "CVE-2026-27220",
+      "description": "Acrobat Reader versions 24.001.30307, 24.001.30308, 25.001.21265 and earlier are affected by a Use After Free vulnerability that could result in arbitrary code execution in the context of the current user. Exploitation of this issue requires user interaction in that a victim must open a malicious file.",
+      "cvss": {
+        "score": 7.8,
+        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Adobe Acrobat"
+      ],
+      "references": [
+        "https://helpx.adobe.com/security/products/acrobat/apsb26-26.html"
+      ],
+      "published": "2026-03-10T22:16:17.927"
+    },
+    {
+      "id": "CVE-2026-27278",
+      "description": "Acrobat Reader versions 24.001.30307, 24.001.30308, 25.001.21265 and earlier are affected by a Use After Free vulnerability that could result in arbitrary code execution in the context of the current user. Exploitation of this issue requires user interaction in that a victim must open a malicious file.",
+      "cvss": {
+        "score": 7.8,
+        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Adobe Acrobat"
+      ],
+      "references": [
+        "https://helpx.adobe.com/security/products/acrobat/apsb26-26.html"
+      ],
+      "published": "2026-03-10T22:16:18.257"
+    },
+    {
+      "id": "CVE-2026-26130",
+      "description": "Allocation of resources without limits or throttling in ASP.NET Core allows an unauthorized attacker to deny service over a network.",
+      "cvss": {
+        "score": 7.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Microsoft .NET"
+      ],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-26130"
+      ],
+      "published": "2026-03-10T18:18:42.223"
+    },
+    {
+      "id": "CVE-2025-66413",
+      "description": "Git for Windows is the Windows port of Git. Prior to 2.53.0(2), it is possible to obtain a user's NTLM hash by tricking them into cloning from a malicious server. Since NTLM hashing is weak, it is possible for the attacker to brute-force the user's account name and password. This vulnerability is fixed in 2.53.0(2).",
+      "cvss": {
+        "score": 7.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:N/A:N",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Git"
+      ],
+      "references": [
+        "https://github.com/git-for-windows/git/releases/tag/v2.53.0.windows.2",
+        "https://github.com/git-for-windows/git/security/advisories/GHSA-hv9c-4jm9-jh3x"
+      ],
+      "published": "2026-03-10T21:16:40.680"
+    },
+    {
+      "id": "CVE-2026-31834",
+      "description": "Umbraco is an ASP.NET CMS. From 15.3.1 to before 16.5.1 and 17.2.2, A privilege escalation vulnerability has been identified in Umbraco CMS. Under certain conditions, authenticated backoffice users with permission to manage users, may be able to elevate their privileges due to insufficient authorization enforcement when modifying user group memberships. The affected functionality does not properly validate whether a user has sufficient privileges to assign highly privileged roles. This vulnerabi",
+      "cvss": {
+        "score": 7.2,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Microsoft .NET"
+      ],
+      "references": [
+        "https://github.com/umbraco/Umbraco-CMS/security/advisories/GHSA-rhcg-3h8r-v6vp"
+      ],
+      "published": "2026-03-10T22:16:21.567"
+    },
+    {
+      "id": "CVE-2026-24640",
+      "description": "A Stack-based Buffer Overflow vulnerability [CWE-121] vulnerability in Fortinet FortiWeb 8.0.0 through 8.0.2, FortiWeb 7.6.0 through 7.6.6, FortiWeb 7.4 all versions, FortiWeb 7.2 all versions, FortiWeb 7.0.2 through 7.0.12 may allow a remote authenticated attacker who can bypass stack protection and ASLR to execute arbitrary code or commands via crafted HTTP requests.",
+      "cvss": {
+        "score": 6.6,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "MEDIUM"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Fortigate/FortiOS"
+      ],
+      "references": [
+        "https://fortiguard.fortinet.com/psirt/FG-IR-26-087"
+      ],
+      "published": "2026-03-10T18:18:28.470"
+    },
+    {
+      "id": "CVE-2026-30897",
+      "description": "A stack-based buffer overflow vulnerability in Fortinet FortiWeb 8.0.0 through 8.0.3, FortiWeb 7.6.0 through 7.6.6, FortiWeb 7.4.0 through 7.4.11, FortiWeb 7.2 all versions, FortiWeb 7.0 all versions may allow a remote authenticated attacker who can bypass stack protection and ASLR to execute arbitrary code or commands via crafted HTTP requests.",
+      "cvss": {
+        "score": 6.6,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "MEDIUM"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Fortigate/FortiOS"
+      ],
+      "references": [
+        "https://fortiguard.fortinet.com/psirt/FG-IR-26-093"
+      ],
+      "published": "2026-03-10T18:18:51.227"
+    },
+    {
+      "id": "CVE-2026-26311",
+      "description": "Envoy is a high-performance edge/middle/service proxy. Prior to 1.37.1, 1.36.5, 1.35.8, and 1.34.13, a logic vulnerability in Envoy's HTTP connection manager (FilterManager) that allows for Zombie Stream Filter Execution. This issue creates a \"Use-After-Free\" (UAF) or state-corruption window where filter callbacks are invoked on an HTTP stream that has already been logically reset and cleaned up. The vulnerability resides in source/common/http/filter_manager.cc within the FilterManager::decodeDa",
+      "cvss": {
+        "score": 5.9,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H",
+        "severity": "MEDIUM"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "ESET"
+      ],
+      "references": [
+        "https://github.com/envoyproxy/envoy/security/advisories/GHSA-84xm-r438-86px"
+      ],
+      "published": "2026-03-10T20:16:36.183"
+    },
+    {
+      "id": "CVE-2026-31832",
+      "description": "Umbraco is an ASP.NET CMS. From 14.0.0 to before 16.5.1 and 17.2.2, A broken object-level authorization vulnerability exists in a backoffice API endpoint that allows authenticated users to assign domain-related data to content nodes without proper authorization checks. The issue is caused by insufficient authorization enforcement on the affected API endpoint, whereby via an API call, domains can be set on content nodes that the editor does not have permission to access (either via user group pri",
+      "cvss": {
+        "score": 5.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:L",
+        "severity": "MEDIUM"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Microsoft .NET"
+      ],
+      "references": [
+        "https://github.com/umbraco/Umbraco-CMS/security/advisories/GHSA-fpvf-fvp5-996r"
+      ],
+      "published": "2026-03-10T22:16:21.257"
+    },
+    {
+      "id": "CVE-2026-22629",
+      "description": "An improper restriction of excessive authentication attempts vulnerability in Fortinet FortiAnalyzer 7.6.0 through 7.6.4, FortiAnalyzer 7.4 all versions, FortiAnalyzer 7.2 all versions, FortiAnalyzer 7.0 all versions, FortiAnalyzer 6.4 all versions, FortiAnalyzer Cloud 7.6.2, FortiAnalyzer Cloud 7.4.1 through 7.4.7, FortiAnalyzer Cloud 7.2.1 through 7.2.10, FortiAnalyzer Cloud 7.0.1 through 7.0.14, FortiAnalyzer Cloud 6.4 all versions, FortiManager 7.6.0 through 7.6.4, FortiManager 7.4 all versi",
+      "cvss": {
+        "score": 3.7,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:N",
+        "severity": "LOW"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Fortigate/FortiOS"
+      ],
+      "references": [
+        "https://fortiguard.fortinet.com/psirt/FG-IR-26-079"
+      ],
+      "published": "2026-03-10T18:18:12.880"
+    },
+    {
+      "id": "CVE-2026-30925",
+      "description": "Parse Server is an open source backend that can be deployed to any infrastructure that can run Node.js. Prior to 9.5.0-alpha.14 and 8.6.11, a malicious client can subscribe to a LiveQuery with a crafted $regex pattern that causes catastrophic backtracking, blocking the Node.js event loop. This makes the entire Parse Server unresponsive, affecting all clients. Any Parse Server deployment with LiveQuery enabled is affected. The attacker only needs the application ID and JavaScript key, both of whi",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Node.js"
+      ],
+      "references": [
+        "https://github.com/parse-community/parse-server/releases/tag/8.6.11",
+        "https://github.com/parse-community/parse-server/releases/tag/9.5.0-alpha.14",
+        "https://github.com/parse-community/parse-server/security/advisories/GHSA-mf3j-86qx-cq5j"
+      ],
+      "published": "2026-03-10T17:40:16.313"
+    },
+    {
+      "id": "CVE-2025-13957",
+      "description": "CWE-798: Use of Hard-coded Credentials vulnerability exists that could cause information disclosure and remote code execution when SOCKS Proxy is enabled, and administrator credentials and PostgreSQL database credentials are known. SOCKS Proxy is disabled by default.",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "PostgreSQL"
+      ],
+      "references": [
+        "https://download.schneider-electric.com/files?p_Doc_Ref=SEVD-2026-069-05&p_enDocType=Security+and+Safety+Notice&p_File_Name=SEVD-2026-069-05.pdf"
+      ],
+      "published": "2026-03-10T18:17:52.377"
+    },
+    {
+      "id": "CVE-2026-2741",
+      "description": "Specially crafted ZIP archives can escape the intended extraction directory during Node.js download and extraction in Vaadin 14.2.0 through 14.14.0, 23.0.0 through 23.6.6, 24.0.0 through 24.9.8, and 25.0.0 through 25.0.2. \n\nVaadin\u2019s build process can automatically download and extract Node.js if it is not installed locally. If an attacker can intercept or control this download via DNS hijacking, a MITM attack, a compromised mirror, or a supply chain attack, they can serve a malicious archive con",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Node.js"
+      ],
+      "references": [
+        "https://github.com/vaadin/flow/pull/23125",
+        "https://github.com/vaadin/flow/pull/23130",
+        "https://github.com/vaadin/flow/pull/23131",
+        "https://github.com/vaadin/flow/pull/23133",
+        "https://github.com/vaadin/flow/pull/23135"
+      ],
+      "published": "2026-03-10T18:18:48.953"
+    },
+    {
+      "id": "CVE-2026-30928",
+      "description": "Glances is an open-source system cross-platform monitoring tool. Prior to 4.5.1, the /api/4/config REST API endpoint returns the entire parsed Glances configuration file (glances.conf) via self.config.as_dict() with no filtering of sensitive values. The configuration file contains credentials for all configured backend services including database passwords, API tokens, JWT signing keys, and SSL key passwords. This vulnerability is fixed in 4.5.1.",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Monit"
+      ],
+      "references": [
+        "https://github.com/nicolargo/glances/commit/306a7136154ba5c1531489c99f8306d84eae37da",
+        "https://github.com/nicolargo/glances/releases/tag/v4.5.1",
+        "https://github.com/nicolargo/glances/security/advisories/GHSA-gh4x-f7cq-wwx6"
+      ],
+      "published": "2026-03-10T18:18:52.627"
+    },
+    {
+      "id": "CVE-2026-30930",
+      "description": "Glances is an open-source system cross-platform monitoring tool. Prior to 4.5.1, The TimescaleDB export module constructs SQL queries using string concatenation with unsanitized system monitoring data. The normalize() method wraps string values in single quotes but does not escape embedded single quotes, making SQL injection trivial via attacker-controlled data such as process names, filesystem mount points, network interface names, or container names. This vulnerability is fixed in 4.5.1.",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Monit"
+      ],
+      "references": [
+        "https://github.com/nicolargo/glances/commit/39161f0d6fd723d83f534b48f24cdca722573336",
+        "https://github.com/nicolargo/glances/releases/tag/v4.5.1",
+        "https://github.com/nicolargo/glances/security/advisories/GHSA-x46r-mf5g-xpr6"
+      ],
+      "published": "2026-03-10T18:18:52.837"
+    },
+    {
+      "id": "CVE-2026-30938",
+      "description": "Parse Server is an open source backend that can be deployed to any infrastructure that can run Node.js. Prior to 8.6.12 and 9.5.1-alpha.1, the requestKeywordDenylist security control can be bypassed by placing any nested object or array before a prohibited keyword in the request payload. This is caused by a logic bug that stops scanning sibling keys after encountering the first nested value. Any custom requestKeywordDenylist entries configured by the developer are equally by-passable using the s",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Node.js"
+      ],
+      "references": [
+        "https://github.com/parse-community/parse-server/releases/tag/8.6.12",
+        "https://github.com/parse-community/parse-server/releases/tag/9.5.1-alpha.1",
+        "https://github.com/parse-community/parse-server/security/advisories/GHSA-q342-9w2p-57fp"
+      ],
+      "published": "2026-03-10T18:18:53.610"
+    },
+    {
+      "id": "CVE-2026-30948",
+      "description": "Parse Server is an open source backend that can be deployed to any infrastructure that can run Node.js. Prior to 9.5.2-alpha.4 and 8.6.17, a stored cross-site scripting (XSS) vulnerability allows any authenticated user to upload an SVG file containing JavaScript. The file is served inline with Content-Type: image/svg+xml and without protective headers, causing the browser to execute embedded scripts in the Parse Server origin. This can be exploited to steal session tokens from localStorage and a",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Node.js"
+      ],
+      "references": [
+        "https://github.com/parse-community/parse-server/releases/tag/8.6.17",
+        "https://github.com/parse-community/parse-server/releases/tag/9.5.2-alpha.4",
+        "https://github.com/parse-community/parse-server/security/advisories/GHSA-hcj7-6gxh-24ww"
+      ],
+      "published": "2026-03-10T21:16:47.660"
+    },
+    {
+      "id": "CVE-2026-30949",
+      "description": "Parse Server is an open source backend that can be deployed to any infrastructure that can run Node.js. Prior to 9.5.2-alpha.5 and 8.6.18, the Keycloak authentication adapter does not validate the azp (authorized party) claim of Keycloak access tokens against the configured client-id. A valid access token issued by the same Keycloak realm for a different client application can be used to authenticate as any user on the Parse Server that uses the Keycloak adapter. This enables cross-application a",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Node.js"
+      ],
+      "references": [
+        "https://github.com/parse-community/parse-server/releases/tag/8.6.18",
+        "https://github.com/parse-community/parse-server/releases/tag/9.5.2-alpha.5",
+        "https://github.com/parse-community/parse-server/security/advisories/GHSA-48mh-j4p5-7j9v"
+      ],
+      "published": "2026-03-10T21:16:47.847"
+    },
+    {
+      "id": "CVE-2026-30962",
+      "description": "Parse Server is an open source backend that can be deployed to any infrastructure that can run Node.js. Prior to 9.5.2-alpha.6 and 8.6.19, the validation for protected fields only checks top-level query keys. By wrapping a query constraint on a protected field inside a logical operator, the check is bypassed entirely. This allows any authenticated user to query on protected fields to extract field values. All Parse Server deployments have default protected fields and are vulnerable. This vulnera",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Node.js"
+      ],
+      "references": [
+        "https://github.com/parse-community/parse-server/releases/tag/8.6.19",
+        "https://github.com/parse-community/parse-server/releases/tag/9.5.2-alpha.6",
+        "https://github.com/parse-community/parse-server/security/advisories/GHSA-72hp-qff8-4pvv"
+      ],
+      "published": "2026-03-10T21:16:48.663"
+    },
+    {
+      "id": "CVE-2026-30967",
+      "description": "Parse Server is an open source backend that can be deployed to any infrastructure that can run Node.js. Prior to 9.5.2-alpha.9. and 8.6.22, the OAuth2 authentication adapter, when configured without the useridField option, only verifies that a token is active via the provider's token introspection endpoint, but does not verify that the token belongs to the user identified by authData.id. An attacker with any valid OAuth2 token from the same provider can authenticate as any other user. This affec",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Node.js"
+      ],
+      "references": [
+        "https://github.com/parse-community/parse-server/releases/tag/8.6.22",
+        "https://github.com/parse-community/parse-server/releases/tag/9.5.2-alpha.9",
+        "https://github.com/parse-community/parse-server/security/advisories/GHSA-fr88-w35c-r596"
+      ],
+      "published": "2026-03-10T21:16:49.183"
+    },
+    {
+      "id": "CVE-2026-30972",
+      "description": "Parse Server is an open source backend that can be deployed to any infrastructure that can run Node.js. Prior o 9.5.2-alpha.10 and 8.6.23, Parse Server's rate limiting middleware is applied at the Express middleware layer, but the batch request endpoint (/batch) processes sub-requests internally by routing them directly through the Promise router, bypassing Express middleware including rate limiting. An attacker can bundle multiple requests targeting a rate-limited endpoint into a single batch r",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Node.js"
+      ],
+      "references": [
+        "https://github.com/parse-community/parse-server/releases/tag/8.6.23",
+        "https://github.com/parse-community/parse-server/releases/tag/9.5.2-alpha.10",
+        "https://github.com/parse-community/parse-server/security/advisories/GHSA-775h-3xrc-c228"
+      ],
+      "published": "2026-03-10T21:16:49.517"
+    },
+    {
+      "id": "CVE-2026-31800",
+      "description": "Parse Server is an open source backend that can be deployed to any infrastructure that can run Node.js. Prior to 9.5.2-alpha.12 and 8.6.25, the _GraphQLConfig and _Audience internal classes can be read, modified, and deleted via the generic /classes/_GraphQLConfig and /classes/_Audience REST API routes without master key authentication. This bypasses the master key enforcement that exists on the dedicated /graphql-config and /push_audiences endpoints. An attacker can read, modify and delete Grap",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Node.js"
+      ],
+      "references": [
+        "https://github.com/parse-community/parse-server/releases/tag/8.6.25",
+        "https://github.com/parse-community/parse-server/releases/tag/9.5.2-alpha.12",
+        "https://github.com/parse-community/parse-server/security/advisories/GHSA-7xg7-rqf6-pw6c"
+      ],
+      "published": "2026-03-10T21:16:49.683"
+    },
+    {
+      "id": "CVE-2026-31828",
+      "description": "Parse Server is an open source backend that can be deployed to any infrastructure that can run Node.js. Prior to 9.5.2-alpha.13 and 8.6.26, the LDAP authentication adapter is vulnerable to LDAP injection. User-supplied input (authData.id) is interpolated directly into LDAP Distinguished Names (DN) and group search filters without escaping special characters. This allows an attacker with valid LDAP credentials to manipulate the bind DN structure and to bypass group membership checks. This enables",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Node.js"
+      ],
+      "references": [
+        "https://github.com/parse-community/parse-server/releases/tag/8.6.26",
+        "https://github.com/parse-community/parse-server/releases/tag/9.5.2-alpha.13",
+        "https://github.com/parse-community/parse-server/security/advisories/GHSA-7m6r-fhh7-r47c"
+      ],
+      "published": "2026-03-10T22:16:20.783"
+    },
+    {
+      "id": "CVE-2026-24018",
+      "description": "A UNIX symbolic link (Symlink) following vulnerability in Fortinet FortiClientLinux 7.4.0 through 7.4.4, FortiClientLinux 7.2.2 through 7.2.12 may allow a local and unprivileged user to escalate their privileges to root.",
       "cvss": {
         "score": 7.8,
         "vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
         "severity": "HIGH"
       },
-      "tier": 1,
+      "tier": 2,
       "matchedProducts": [
-        "Notepad++"
+        "Fortigate/FortiOS"
       ],
       "references": [
-        "https://mobaxterm.mobatek.net/download-home-edition.html",
-        "https://www.vulncheck.com/advisories/mobaxterm-notepad-unquoted-service-path"
+        "https://fortiguard.fortinet.com/psirt/FG-IR-26-083"
       ],
-      "published": "2026-03-09T16:16:18.970"
+      "published": "2026-03-10T18:18:17.560"
     },
     {
-      "id": "CVE-2026-3816",
-      "description": "A security vulnerability has been detected in OWASP DefectDojo up to 2.55.4. This vulnerability affects the function input_zip.read of the file parser.py of the component SonarQubeParser/MSDefenderParser. The manipulation leads to denial of service. The attack can be initiated remotely. The exploit has been disclosed publicly and may be used. Upgrading to version 2.56.0 is able to resolve this issue. The identifier of the patch is e8f1e5131535b8fd80a7b1b3085d676295fdcd41. Upgrading the affected ",
+      "id": "CVE-2026-26107",
+      "description": "Use after free in Microsoft Office Excel allows an unauthorized attacker to execute code locally.",
       "cvss": {
-        "score": 4.3,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:L",
+        "score": 7.8,
+        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "Microsoft Office"
+      ],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-26107"
+      ],
+      "published": "2026-03-10T18:18:38.820"
+    },
+    {
+      "id": "CVE-2026-26108",
+      "description": "Heap-based buffer overflow in Microsoft Office Excel allows an unauthorized attacker to execute code locally.",
+      "cvss": {
+        "score": 7.8,
+        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "Microsoft Office"
+      ],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-26108"
+      ],
+      "published": "2026-03-10T18:18:39.030"
+    },
+    {
+      "id": "CVE-2026-26112",
+      "description": "Untrusted pointer dereference in Microsoft Office Excel allows an unauthorized attacker to execute code locally.",
+      "cvss": {
+        "score": 7.8,
+        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "Microsoft Office"
+      ],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-26112"
+      ],
+      "published": "2026-03-10T18:18:39.947"
+    },
+    {
+      "id": "CVE-2026-26134",
+      "description": "Integer overflow or wraparound in Microsoft Office allows an authorized attacker to elevate privileges locally.",
+      "cvss": {
+        "score": 7.8,
+        "vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "Microsoft Office"
+      ],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-26134"
+      ],
+      "published": "2026-03-10T18:18:42.803"
+    },
+    {
+      "id": "CVE-2026-3585",
+      "description": "The The Events Calendar plugin for WordPress is vulnerable to Path Traversal in all versions up to, and including, 6.15.17 via the 'ajax_create_import' function. This makes it possible for authenticated attackers, with Author-level access and above, to read the contents of arbitrary files on the server, which can contain sensitive information.",
+      "cvss": {
+        "score": 7.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+        "severity": "HIGH"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/the-events-calendar/tags/6.15.17/src/Tribe/Aggregator/Tabs/New.php#L466",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/92e404ab-fe2b-45b3-b8ff-672f7888b747?source=cve"
+      ],
+      "published": "2026-03-10T17:40:37.773"
+    },
+    {
+      "id": "CVE-2026-26144",
+      "description": "Improper neutralization of input during web page generation ('cross-site scripting') in Microsoft Office Excel allows an unauthorized attacker to disclose information over a network.",
+      "cvss": {
+        "score": 7.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+        "severity": "HIGH"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "Microsoft Office"
+      ],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-26144"
+      ],
+      "published": "2026-03-10T18:18:43.110"
+    },
+    {
+      "id": "CVE-2026-30951",
+      "description": "Sequelize is a Node.js ORM tool. Prior to 6.37.8, there is SQL injection via unescaped cast type in JSON/JSONB where clause processing. The _traverseJSON() function splits JSON path keys on :: to extract a cast type, which is interpolated raw into CAST(... AS <type>) SQL. An attacker who controls JSON object keys can inject arbitrary SQL and exfiltrate data from any table. This vulnerability is fixed in 6.37.8.",
+      "cvss": {
+        "score": 7.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+        "severity": "HIGH"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "Node.js"
+      ],
+      "references": [
+        "https://github.com/sequelize/sequelize/security/advisories/GHSA-6457-6jrx-69cr"
+      ],
+      "published": "2026-03-10T21:16:48.030"
+    },
+    {
+      "id": "CVE-2025-66178",
+      "description": "A improper neutralization of special elements used in an os command ('os command injection') vulnerability in Fortinet FortiWeb 8.0.0 through 8.0.1, FortiWeb 7.6.0 through 7.6.5, FortiWeb 7.4.0 through 7.4.11, FortiWeb 7.2.0 through 7.2.12, FortiWeb 7.0.0 through 7.0.12 may allow an authenticated attacked to execute arbitrary commands via a specialy crafted HTTP request.",
+      "cvss": {
+        "score": 7.2,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "Fortigate/FortiOS"
+      ],
+      "references": [
+        "https://fortiguard.fortinet.com/psirt/FG-IR-26-088"
+      ],
+      "published": "2026-03-10T18:17:59.413"
+    },
+    {
+      "id": "CVE-2025-68648",
+      "description": "A use of externally-controlled format string vulnerability in Fortinet FortiAnalyzer 7.6.0 through 7.6.4, FortiAnalyzer 7.4.0 through 7.4.7, FortiAnalyzer 7.2 all versions, FortiAnalyzer 7.0 all versions, FortiAnalyzer Cloud 7.6.0 through 7.6.4, FortiAnalyzer Cloud 7.4.0 through 7.4.7, FortiAnalyzer Cloud 7.2 all versions, FortiAnalyzer Cloud 7.0 all versions, FortiManager 7.6.0 through 7.6.4, FortiManager 7.4.0 through 7.4.7, FortiManager 7.2 all versions, FortiManager 7.0 all versions, FortiMa",
+      "cvss": {
+        "score": 7.2,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "Fortigate/FortiOS"
+      ],
+      "references": [
+        "https://fortiguard.fortinet.com/psirt/FG-IR-26-092"
+      ],
+      "published": "2026-03-10T18:18:00.720"
+    },
+    {
+      "id": "CVE-2026-1261",
+      "description": "The MetForm Pro plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the Quiz feature in all versions up to, and including, 3.9.6 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+      "cvss": {
+        "score": 7.2,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N",
+        "severity": "HIGH"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/metform-pro/tags/3.9.5/core/features/quiz/loader.php#L121",
+        "https://plugins.trac.wordpress.org/browser/metform-pro/tags/3.9.5/core/features/quiz/loader.php#L69",
+        "https://plugins.trac.wordpress.org/browser/metform-pro/tags/3.9.5/core/features/quiz/loader.php#L85",
+        "https://wpmet.com/plugin/metform/roadmaps/",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/e6361ada-f2ba-404e-b9d3-b169da44aa90?source=cve"
+      ],
+      "published": "2026-03-10T18:18:04.723"
+    },
+    {
+      "id": "CVE-2026-22572",
+      "description": "An authentication bypass using an alternate path or channel vulnerability in Fortinet FortiAnalyzer 7.6.0 through 7.6.3, FortiAnalyzer 7.4.0 through 7.4.7, FortiAnalyzer 7.2.2 through 7.2.11, FortiAnalyzer Cloud 7.6.0 through 7.6.3, FortiAnalyzer Cloud 7.4.0 through 7.4.7, FortiAnalyzer Cloud 7.2.2 through 7.2.10, FortiManager 7.6.0 through 7.6.3, FortiManager 7.4.0 through 7.4.7, FortiManager 7.2.2 through 7.2.11, FortiManager Cloud 7.6.0 through 7.6.3, FortiManager Cloud 7.4.0 through 7.4.7, F",
+      "cvss": {
+        "score": 7.2,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "Fortigate/FortiOS"
+      ],
+      "references": [
+        "https://fortiguard.fortinet.com/psirt/FG-IR-26-090"
+      ],
+      "published": "2026-03-10T18:18:12.250"
+    },
+    {
+      "id": "CVE-2026-25836",
+      "description": "An improper neutralization of special elements used in an os command ('os command injection') vulnerability in Fortinet FortiSandbox Cloud 5.0.4 may allow  a privileged attacker with super-admin profile and CLI access to execute unauthorized code or commands via crafted HTTP requests.",
+      "cvss": {
+        "score": 7.2,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "Fortigate/FortiOS"
+      ],
+      "references": [
+        "https://fortiguard.fortinet.com/psirt/FG-IR-26-096"
+      ],
+      "published": "2026-03-10T18:18:38.090"
+    },
+    {
+      "id": "CVE-2026-2724",
+      "description": "The Unlimited Elements for Elementor plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the form entry fields in all versions up to, and including, 2.0.5. This is due to insufficient input sanitization and output escaping on form submission data displayed in the admin Form Entries Trash view. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever an administrator views the trashed form entries.",
+      "cvss": {
+        "score": 7.2,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N",
+        "severity": "HIGH"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/unlimited-elements-for-elementor/tags/2.0.5/inc_php/unitecreator_form.class.php#L1151",
+        "https://plugins.trac.wordpress.org/browser/unlimited-elements-for-elementor/tags/2.0.5/views/objects/form_entries_view.class.php#L336",
+        "https://plugins.trac.wordpress.org/browser/unlimited-elements-for-elementor/trunk/inc_php/unitecreator_form.class.php#L1151",
+        "https://plugins.trac.wordpress.org/browser/unlimited-elements-for-elementor/trunk/views/objects/form_entries_view.class.php#L336",
+        "https://plugins.trac.wordpress.org/changeset/3470240/unlimited-elements-for-elementor/trunk/inc_php/unitecreator_form.class.php?old=3403331&old_path=unlimited-elements-for-elementor%2Ftrunk%2Finc_php%2Funitecreator_form.class.php"
+      ],
+      "published": "2026-03-10T18:18:48.757"
+    },
+    {
+      "id": "CVE-2026-30958",
+      "description": "OneUptime is a solution for monitoring and managing online services. Prior to 10.0.21, an unauthenticated path traversal in the /workflow/docs/:componentName endpoint allows reading arbitrary files from the server filesystem. The componentName route parameter is concatenated directly into a file path passed to res.sendFile() in orker/FeatureSet/Workflow/Index.ts with no sanitization or authentication middleware. This vulnerability is fixed in 10.0.21.",
+      "cvss": {
+        "score": 7.2,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N",
+        "severity": "HIGH"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "Monit",
+        "ESET"
+      ],
+      "references": [
+        "https://github.com/OneUptime/oneuptime/releases/tag/10.0.21",
+        "https://github.com/OneUptime/oneuptime/security/advisories/GHSA-p2wh-9pw8-hvff"
+      ],
+      "published": "2026-03-10T18:18:54.883"
+    },
+    {
+      "id": "CVE-2025-68482",
+      "description": "A improper certificate validation vulnerability in Fortinet FortiAnalyzer 7.6.0 through 7.6.4, FortiAnalyzer 7.4.0 through 7.4.8, FortiAnalyzer 7.2 all versions, FortiAnalyzer 7.0 all versions, FortiAnalyzer 6.4 all versions, FortiManager 7.6.0 through 7.6.4, FortiManager 7.4.0 through 7.4.8, FortiManager 7.2 all versions, FortiManager 7.0 all versions, FortiManager 6.4 all versions may allow a remote unauthenticated attacker to view confidential information via a man in the middle [MiTM] attack",
+      "cvss": {
+        "score": 6.9,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "Fortigate/FortiOS"
+      ],
+      "references": [
+        "https://fortiguard.fortinet.com/psirt/FG-IR-26-078"
+      ],
+      "published": "2026-03-10T18:17:59.903"
+    },
+    {
+      "id": "CVE-2025-48418",
+      "description": "A hidden functionality vulnerability in Fortinet FortiAnalyzer 7.6.0 through 7.6.3, FortiAnalyzer 7.4.0 through 7.4.7, FortiAnalyzer 7.2.0 through 7.2.10, FortiAnalyzer 7.0.0 through 7.0.14, FortiAnalyzer 6.4 all versions, FortiAnalyzer Cloud 7.6.2, FortiAnalyzer Cloud 7.4.1 through 7.4.7, FortiAnalyzer Cloud 7.2.1 through 7.2.10, FortiAnalyzer Cloud 7.0.1 through 7.0.14, FortiAnalyzer Cloud 6.4 all versions, FortiManager 7.6.0 through 7.6.3, FortiManager 7.4.0 through 7.4.7, FortiManager 7.2.0 ",
+      "cvss": {
+        "score": 6.7,
+        "vector": "CVSS:3.1/AV:L/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "Fortigate/FortiOS"
+      ],
+      "references": [
+        "https://fortiguard.fortinet.com/psirt/FG-IR-26-081"
+      ],
+      "published": "2026-03-10T18:17:56.793"
+    },
+    {
+      "id": "CVE-2026-31833",
+      "description": "Umbraco is an ASP.NET CMS. From 16.2.0 to before 16.5.1 and 17.2.2, An authenticated backoffice user with access to Settings can inject malicious HTML into property type descriptions. Due to an overly permissive attributeNameCheck configuration (/.+/) in the UFM DOMPurify instance, event handler attributes such as onclick and onload, when used within Umbraco web components (umb-*, uui-*, ufm-*) were not filtered. This vulnerability is fixed in 16.5.1 and 17.2.2.",
+      "cvss": {
+        "score": 6.7,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:L",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "Microsoft .NET"
+      ],
+      "references": [
+        "https://github.com/umbraco/Umbraco-CMS/security/advisories/GHSA-vrqc-59mw-qqg7"
+      ],
+      "published": "2026-03-10T22:16:21.410"
+    },
+    {
+      "id": "CVE-2026-25689",
+      "description": "An improper neutralization of argument delimiters in a command ('argument injection') vulnerability in Fortinet FortiDeceptor 6.2.0, FortiDeceptor 6.0 all versions, FortiDeceptor 5.3 all versions, FortiDeceptor 5.2 all versions, FortiDeceptor 5.1 all versions, FortiDeceptor 5.0 all versions, FortiDeceptor 4.3 all versions, FortiDeceptor 4.2 all versions, FortiDeceptor 4.1 all versions, FortiDeceptor 4.0 all versions may allow a privileged attacker with super-admin profile and CLI access to delet",
+      "cvss": {
+        "score": 6.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:H/A:H",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "Fortigate/FortiOS"
+      ],
+      "references": [
+        "https://fortiguard.fortinet.com/psirt/FG-IR-26-094"
+      ],
+      "published": "2026-03-10T18:18:37.893"
+    },
+    {
+      "id": "CVE-2026-3846",
+      "description": "Same-origin policy bypass in the CSS Parsing and Computation component. This vulnerability affects Firefox < 148.0.2.",
+      "cvss": {
+        "score": 6.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:H/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "Mozilla Firefox"
+      ],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2018400",
+        "https://www.mozilla.org/security/advisories/mfsa2026-19/"
+      ],
+      "published": "2026-03-10T18:19:05.673"
+    },
+    {
+      "id": "CVE-2026-3228",
+      "description": "The NextScripts: Social Networks Auto-Poster plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the `[nxs_fbembed]` shortcode in all versions up to, and including, 4.4.6. This is due to insufficient input sanitization and output escaping on the `snapFB` post meta value. This makes it possible for authenticated attackers, with Contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+      "cvss": {
+        "score": 6.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/social-networks-auto-poster-facebook-twitter-g/tags/4.4.6/inc-cl/fb.php#L581",
+        "https://plugins.trac.wordpress.org/browser/social-networks-auto-poster-facebook-twitter-g/trunk/inc-cl/fb.php#L581",
+        "https://plugins.trac.wordpress.org/changeset/3470727/social-networks-auto-poster-facebook-twitter-g/trunk/inc-cl/fb.php",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/923c51ba-0ec2-4e32-a86e-404f3fe2ac7c?source=cve"
+      ],
+      "published": "2026-03-10T18:19:00.777"
+    },
+    {
+      "id": "CVE-2026-2569",
+      "description": "The Dear Flipbook \u2013 PDF Flipbook, 3D Flipbook, PDF embed, PDF viewer plugin for WordPress is vulnerable to Stored Cross-Site Scripting via PDF page labels in all versions up to, and including, 2.4.20 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with Author-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+      "cvss": {
+        "score": 6.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/changeset/3473595/",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/4d89a4ca-c867-43bf-aace-295de8533fcd?source=cve"
+      ],
+      "published": "2026-03-11T00:16:20.047"
+    },
+    {
+      "id": "CVE-2025-12473",
+      "description": "The RTMKit plugin for WordPress is vulnerable to Reflected Cross-Site Scripting via the 'themebuilder' parameter in all versions up to, and including, 1.6.8 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that execute if they can successfully trick a site administrator into performing an action such as clicking on a link.",
+      "cvss": {
+        "score": 6.1,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/rometheme-for-elementor/tags/1.6.5/modules/themebuilder/views/themebuilder.php#L24",
+        "https://plugins.trac.wordpress.org/browser/rometheme-for-elementor/tags/1.6.5/modules/themebuilder/views/themebuilder.php#L26",
+        "https://plugins.trac.wordpress.org/changeset?old_path=/rometheme-for-elementor/tags/1.6.8&new_path=/rometheme-for-elementor/tags/2.0.0",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/fb1dbbec-c8c0-4934-ba07-b5b188886bac?source=cve"
+      ],
+      "published": "2026-03-11T02:16:02.437"
+    },
+    {
+      "id": "CVE-2026-2324",
+      "description": "The LatePoint \u2013 Calendar Booking Plugin for Appointments and Events plugin for WordPress is vulnerable to Cross-Site Request Forgery in all versions up to, and including, 5.2.7. This is due to missing or incorrect nonce validation on the reload_preview() function. This makes it possible for unauthenticated attackers to update settings and inject malicious web scripts via a forged request granted they can trick a site administrator into performing an action such as clicking on a link.",
+      "cvss": {
+        "score": 6.1,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/changeset/3463945/latepoint",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/b3ae93da-57ee-4966-83af-b8c57f9ad7d9?source=cve"
+      ],
+      "published": "2026-03-11T02:16:03.673"
+    },
+    {
+      "id": "CVE-2025-49784",
+      "description": "An improper neutralization of special elements used in an sql command ('sql injection') vulnerability in Fortinet FortiAnalyzer 7.6.0 through 7.6.4, FortiAnalyzer 7.4.0 through 7.4.7, FortiAnalyzer 7.2 all versions, FortiAnalyzer 7.0 all versions, FortiAnalyzer 6.4 all versions, FortiAnalyzer-BigData 7.6.0, FortiAnalyzer-BigData 7.4.0 through 7.4.4, FortiAnalyzer-BigData 7.2 all versions, FortiAnalyzer-BigData 7.0 all versions, FortiAnalyzer-BigData 6.4 all versions, FortiAnalyzer-BigData 6.2 al",
+      "cvss": {
+        "score": 6.0,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:L/A:L",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "Fortigate/FortiOS"
+      ],
+      "references": [
+        "https://fortiguard.fortinet.com/psirt/FG-IR-26-095"
+      ],
+      "published": "2026-03-10T18:17:57.427"
+    },
+    {
+      "id": "CVE-2025-54659",
+      "description": "An Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal') vulnerability [CWE-22] vulnerability in Fortinet FortiSOAR Agent Communication Bridge 1.1.0, FortiSOAR Agent Communication Bridge 1.0 all versions may allow an unauthenticated attacker to read files accessible to the fortisoar user on a system where the agent is deployed, via sending a crafted request to the agent port.",
+      "cvss": {
+        "score": 5.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:N/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "Fortigate/FortiOS"
+      ],
+      "references": [
+        "https://fortiguard.fortinet.com/psirt/FG-IR-26-084"
+      ],
+      "published": "2026-03-10T18:17:58.200"
+    },
+    {
+      "id": "CVE-2026-27221",
+      "description": "Acrobat Reader versions 24.001.30307, 24.001.30308, 25.001.21265 and earlier are affected by an Improper Certificate Validation vulnerability that could result in a Security feature bypass. An attacker could leverage this vulnerability to spoof the identity of a signer. Exploitation of this issue requires user interaction.",
+      "cvss": {
+        "score": 5.5,
+        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:H/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "Adobe Acrobat"
+      ],
+      "references": [
+        "https://helpx.adobe.com/security/products/acrobat/apsb26-26.html"
+      ],
+      "published": "2026-03-10T22:16:18.090"
+    },
+    {
+      "id": "CVE-2026-1919",
+      "description": "The Booking Calendar for Appointments and Service Businesses \u2013 Booktics plugin for WordPress is vulnerable to unauthorized access of data due to a missing capability check on multiple REST API endpoints in all versions up to, and including, 1.0.16. This makes it possible for unauthenticated attackers to query sensitive data.",
+      "cvss": {
+        "score": 5.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/booktics/tags/1.0.15/core/appointment/controllers/appointment-controller.php#L549",
+        "https://plugins.trac.wordpress.org/browser/booktics/tags/1.0.15/core/customer/controllers/customer-controller.php#L229",
+        "https://plugins.trac.wordpress.org/browser/booktics/tags/1.0.15/core/order/controllers/order-controller.php#L889",
+        "https://plugins.trac.wordpress.org/browser/booktics/tags/1.0.15/core/team-member/controllers/team-member-controller.php#L235",
+        "https://plugins.trac.wordpress.org/changeset/3477898/booktics"
+      ],
+      "published": "2026-03-10T17:32:45.850"
+    },
+    {
+      "id": "CVE-2026-1920",
+      "description": "The Booking Calendar for Appointments and Service Businesses \u2013 Booktics plugin for WordPress is vulnerable to unauthorized modification of data due to a missing capability check on the 'Extension_Controller::update_item_permissions_check' function in all versions up to, and including, 1.0.16. This makes it possible for unauthenticated attackers to install addon plugins.",
+      "cvss": {
+        "score": 5.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/booktics/tags/1.0.15/core/extensions/controllers/extension-controller.php#L110",
+        "https://plugins.trac.wordpress.org/changeset/3477898/booktics/trunk/core/extensions/controllers/extension-controller.php",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/ab051f4a-030a-44aa-8cbf-665c6c6d31a7?source=cve"
+      ],
+      "published": "2026-03-10T17:32:46.630"
+    },
+    {
+      "id": "CVE-2025-48840",
+      "description": "An authentication bypass by spoofing vulnerability in Fortinet FortiWeb 7.6.0 through 7.6.3, FortiWeb 7.4.0 through 7.4.8, FortiWeb 7.2 all versions, FortiWeb 7.0 all versions may allow a remote unauthenticated attacker to bypass hostname restrictions via a specially crafted request.",
+      "cvss": {
+        "score": 5.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "Fortigate/FortiOS"
+      ],
+      "references": [
+        "https://fortiguard.fortinet.com/psirt/FG-IR-26-097"
+      ],
+      "published": "2026-03-10T18:17:57.207"
+    },
+    {
+      "id": "CVE-2026-22628",
+      "description": "An improper access control vulnerability in Fortinet FortiSwitchAXFixed 1.0.0 through 1.0.1 may allow an authenticated admin to execute system commands via a specifically crafted SSH config file.",
+      "cvss": {
+        "score": 5.3,
+        "vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "Fortigate/FortiOS"
+      ],
+      "references": [
+        "https://fortiguard.fortinet.com/psirt/FG-IR-26-085"
+      ],
+      "published": "2026-03-10T18:18:12.720"
+    },
+    {
+      "id": "CVE-2026-31808",
+      "description": "file-type detects the file type of a file, stream, or data. Prior to 21.3.1, a denial of service vulnerability exists in the ASF (WMV/WMA) file type detection parser. When parsing a crafted input where an ASF sub-header has a size field of zero, the parser enters an infinite loop. The payload value becomes negative (-24), causing tokenizer.ignore(payload) to move the read position backwards, so the same sub-header is read repeatedly forever. Any application that uses file-type to detect the type",
+      "cvss": {
+        "score": 5.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "Node.js"
+      ],
+      "references": [
+        "https://github.com/sindresorhus/file-type/commit/319abf871b50ba2fa221b4a7050059f1ae096f4f",
+        "https://github.com/sindresorhus/file-type/security/advisories/GHSA-5v7r-6r5c-r473"
+      ],
+      "published": "2026-03-10T21:16:50.173"
+    },
+    {
+      "id": "CVE-2025-53608",
+      "description": "An Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability [CWE-79] vulnerability in Fortinet FortiSandbox 5.0.0 through 5.0.2, FortiSandbox 4.4.0 through 4.4.7, FortiSandbox 4.2 all versions, FortiSandbox 4.0 all versions may allow an authenticated privileged attacker to execute code via crafted requests.",
+      "cvss": {
+        "score": 4.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:R/S:C/C:L/I:L/A:N",
         "severity": "MEDIUM"
       },
       "tier": 3,
       "matchedProducts": [
-        "SonarQube"
+        "Fortigate/FortiOS"
       ],
       "references": [
-        "https://github.com/DefectDojo/django-DefectDojo/commit/e8f1e5131535b8fd80a7b1b3085d676295fdcd41",
-        "https://github.com/DefectDojo/django-DefectDojo/pull/14408",
-        "https://github.com/DefectDojo/django-DefectDojo/releases/tag/2.56.0",
-        "https://github.com/henrrrychau/cve-bug-bounty/blob/main/dfdj_zip_bomb_dos_oom/dfdj_zip_bomb_dos_oom.md",
-        "https://github.com/henrrrychau/cve-bug-bounty/blob/main/dfdj_zip_bomb_dos_oom/dfdj_zip_bomb_dos_oom.md#supporting-materialreferences"
+        "https://fortiguard.fortinet.com/psirt/FG-IR-26-091"
       ],
-      "published": "2026-03-09T11:16:06.450"
+      "published": "2026-03-10T18:17:57.970"
     },
     {
-      "id": "CVE-2026-25041",
-      "description": "Budibase is a low code platform for creating internal tools, workflows, and admin panels. In 3.23.22 and earlier, the PostgreSQL integration constructs shell commands using user-controlled configuration values (database name, host, password, etc.) without proper sanitization. The password and other connection parameters are directly interpolated into a shell command. This affects packages/server/src/integrations/postgres.ts.",
+      "id": "CVE-2026-1508",
+      "description": "The Court Reservation  WordPress plugin before 1.10.9 does not have CSRF check in place when deleting events, which could allow attackers to make a logged in admin delete them via a CSRF attack",
+      "cvss": {
+        "score": 4.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://wpscan.com/vulnerability/fc1d577b-abf9-4c15-a96d-14ebd894debc/"
+      ],
+      "published": "2026-03-10T17:32:18.333"
+    },
+    {
+      "id": "CVE-2026-25972",
+      "description": "An improper neutralization of input during web page generation ('cross-site scripting') vulnerability in Fortinet FortiSIEM 7.4.0, FortiSIEM 7.3.0 through 7.3.4 may allow a remote unauthenticated attacker to provide arbitrary data enabling a social engineering attack via spoofed URL parameters.",
+      "cvss": {
+        "score": 4.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "Fortigate/FortiOS"
+      ],
+      "references": [
+        "https://fortiguard.fortinet.com/psirt/FG-IR-26-077"
+      ],
+      "published": "2026-03-10T18:18:38.323"
+    },
+    {
+      "id": "CVE-2026-27661",
+      "description": "A vulnerability has been identified in SINEC Security Monitor (All versions < V4.9.0). The affected application leaks confidential information in metadata, and files such as information on contributors and email address, on `SSM Server`.",
+      "cvss": {
+        "score": 4.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "Monit"
+      ],
+      "references": [
+        "https://cert-portal.siemens.com/productcert/html/ssa-430425.html"
+      ],
+      "published": "2026-03-10T18:18:44.767"
+    },
+    {
+      "id": "CVE-2025-55717",
+      "description": "A cleartext storage of sensitive information vulnerability [CWE-312] vulnerability in Fortinet FortiMail 7.6.0 through 7.6.2, FortiMail 7.4.0 through 7.4.4, FortiMail 7.2.0 through 7.2.7, FortiMail 7.0.0 through 7.0.8, FortiRecorder 7.2.0 through 7.2.3, FortiRecorder 7.0 all versions, FortiRecorder 6.4 all versions, FortiVoice 7.2.0, FortiVoice 7.0.0 through 7.0.6 may allow an authenticated malicious administrator to obtain user's secrets via CLI commands. Practical exploitability is limited by ",
+      "cvss": {
+        "score": 4.0,
+        "vector": "CVSS:3.1/AV:L/AC:H/PR:H/UI:R/S:U/C:H/I:N/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "Fortigate/FortiOS"
+      ],
+      "references": [
+        "https://fortiguard.fortinet.com/psirt/FG-IR-26-080"
+      ],
+      "published": "2026-03-10T18:17:58.543"
+    },
+    {
+      "id": "CVE-2026-24641",
+      "description": "A NULL Pointer Dereference vulnerability [CWE-476] vulnerability in Fortinet FortiWeb 8.0.0 through 8.0.2, FortiWeb 7.6.0 through 7.6.6, FortiWeb 7.4 all versions, FortiWeb 7.2 all versions, FortiWeb 7.0 all versions may allow an authenticated attacker to crash the HTTP daemon via crafted HTTP requests.",
+      "cvss": {
+        "score": 2.7,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:N/A:L",
+        "severity": "LOW"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "Fortigate/FortiOS"
+      ],
+      "references": [
+        "https://fortiguard.fortinet.com/psirt/FG-IR-26-089"
+      ],
+      "published": "2026-03-10T18:18:28.687"
+    },
+    {
+      "id": "CVE-2026-31802",
+      "description": "node-tar is a full-featured Tar for Node.js. Prior to version 7.5.11, tar (npm) can be tricked into creating a symlink that points outside the extraction directory by using a drive-relative symlink target such as C:../../../target.txt, which enables file overwrite outside cwd during normal tar.x() extraction. This vulnerability is fixed in 7.5.11.",
       "cvss": {
         "score": null,
         "vector": null,
@@ -96,14 +1669,67 @@
       },
       "tier": 3,
       "matchedProducts": [
-        "PostgreSQL"
+        "Node.js"
       ],
       "references": [
-        "https://github.com/Budibase/budibase/blob/f34d545602a7c94427bae63312a5ee9bf2aa6c85/packages/server/src/integrations/postgres.ts#L529-L531",
-        "https://github.com/Budibase/budibase/commit/9fdbff32fb9e69650ba899a799e13f80d9b09e93",
-        "https://github.com/Budibase/budibase/security/advisories/GHSA-726g-59wr-cj4c"
+        "https://github.com/isaacs/node-tar/commit/f48b5fa3b7985ddab96dc0f2125a4ffc9911b6ad",
+        "https://github.com/isaacs/node-tar/security/advisories/GHSA-9ppj-qmqm-q256",
+        "https://github.com/isaacs/node-tar/security/advisories/GHSA-9ppj-qmqm-q256"
       ],
-      "published": "2026-03-09T20:16:07.147"
+      "published": "2026-03-10T07:44:58.020"
+    },
+    {
+      "id": "CVE-2026-30959",
+      "description": "OneUptime is a solution for monitoring and managing online services. The resend-verification-code endpoint allows any authenticated user to trigger a verification code resend for any UserWhatsApp record by ID. Ownership is not validated (unlike the verify endpoint). This affects the UserWhatsAppAPI.ts endpoint and the UserWhatsAppService.ts service.",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "Monit"
+      ],
+      "references": [
+        "https://github.com/OneUptime/oneuptime/releases/tag/10.0.21",
+        "https://github.com/OneUptime/oneuptime/security/advisories/GHSA-cw6x-mw64-q6pv",
+        "https://github.com/OneUptime/oneuptime/security/advisories/GHSA-cw6x-mw64-q6pv"
+      ],
+      "published": "2026-03-10T18:18:55.047"
+    },
+    {
+      "id": "CVE-2026-29793",
+      "description": "Feathersjs is a framework for creating web APIs and real-time applications with TypeScript or JavaScript.  From 5.0.0 to before 5.0.42, Socket.IO clients can send arbitrary JavaScript objects as the id argument to any service method (get, patch, update, remove). The transport layer performs no type checking on this argument. When the service uses the MongoDB adapter, these objects pass through getObjectId() and land directly in the MongoDB query as operators. Sending {$ne: null} as the id matche",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "MongoDB"
+      ],
+      "references": [
+        "https://github.com/feathersjs/feathers/security/advisories/GHSA-p9xr-7p9p-gpqx"
+      ],
+      "published": "2026-03-10T20:16:39.437"
+    },
+    {
+      "id": "CVE-2026-31827",
+      "description": "Alienbin is an anonymous code and text sharing web service. In 1.0.0 and earlier, the /save endpoint in server.js drops and recreates the MongoDB TTL index on the entire post collection for every new paste submission. When User B submits a paste with a short TTL (e.g., 30 seconds), the TTL index is recreated with expireAfterSeconds: 30 for all documents in the collection. This causes User A's paste (originally set to 7 days) to be deleted after 30 seconds. An attacker can intentionally delete al",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "MongoDB"
+      ],
+      "references": [
+        "https://github.com/Blue-B/Alienbin/security/advisories/GHSA-hqvr-6v89-gwff"
+      ],
+      "published": "2026-03-10T22:16:20.633"
     }
   ]
 }
