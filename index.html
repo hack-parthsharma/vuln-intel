@@ -202,6 +202,7 @@ const PRODUCT_GROUPS = [
 ];
 const ALL_PRODUCTS = PRODUCT_GROUPS.flatMap(g => g.items);
 
+// UPDATED: include "broker vm" synonym to strengthen Cortex XDR matches
 const KEYWORDS = [
   { name:"Cisco Nexus", kw:["cisco nexus","nexus 5500","nexus 9000","nx-os"] },
   { name:"Cisco UCS", kw:["cisco ucs","ucs fabric","fxos"] },
@@ -230,7 +231,8 @@ const KEYWORDS = [
   { name:"Samba", kw:["samba"] },
   { name:"cPanel", kw:["cpanel"] },
   { name:"ESET", kw:["eset"] },
-  { name:"Cortex XDR", kw:["cortex xdr","palo alto cortex"] },
+  // UPDATED: Cortex XDR synonyms
+  { name:"Cortex XDR", kw:["cortex xdr","palo alto cortex","broker vm","cortex_xdr"] },
   { name:"Imperva", kw:["imperva","incapsula"] },
   { name:"Adobe Acrobat", kw:["adobe acrobat","acrobat reader","acrobat dc"] },
   { name:"Adobe Photoshop", kw:["adobe photoshop"] },
@@ -304,11 +306,13 @@ PRODUCT_GROUPS.forEach(g => {
 function getDateRange() {
   const now = new Date();
   const yesterday = new Date(now.getTime() - 24*60*60*1000);
-  // NVD API 2.0 requires ISO 8601 with timezone offset, not trailing Z
+  // NVD API 2.0 requires ISO 8601 with timezone offset
   const pad = n => String(n).padStart(2,'0');
   const fmt = d => `${d.getUTCFullYear()}-${pad(d.getUTCMonth()+1)}-${pad(d.getUTCDate())}T${pad(d.getUTCHours())}:${pad(d.getUTCMinutes())}:${pad(d.getUTCSeconds())}.000%2B00:00`;
   return { start: fmt(yesterday), end: fmt(now) };
 }
+
+function norm(s) { return (s||"").toLowerCase().replace(/[\s_\/\-]+/g,""); }
 
 function matchProducts(text) {
   const lower = (text||"").toLowerCase();
@@ -327,10 +331,10 @@ function matchCPE(vuln) {
   for (const config of configs) {
     for (const node of (config.nodes||[])) {
       for (const cpe of (node.cpeMatch||[])) {
-        const uri = (cpe.criteria||"").toLowerCase();
+        const uri = norm(cpe.criteria||"");
         KEYWORDS.forEach(p => {
           for (const kw of p.kw) {
-            if (uri.includes(kw.replace(/[\/\s]/g,"")) && !matched.includes(p.name)) matched.push(p.name);
+            if (uri.includes(norm(kw)) && !matched.includes(p.name)) matched.push(p.name);
           }
         });
       }
@@ -339,13 +343,21 @@ function matchCPE(vuln) {
   return matched;
 }
 
+// UPDATED: CVSS v4.0 support (checks v4, then v3.1, v3.0, v2)
 function getCVSS(vuln) {
   const m = vuln.cve?.metrics;
-  if (!m) return {score:null,vector:null,severity:"UNKNOWN"};
-  if (m.cvssMetricV31?.length) { const d=m.cvssMetricV31[0].cvssData; return {score:d.baseScore,vector:d.vectorString,severity:d.baseSeverity}; }
-  if (m.cvssMetricV30?.length) { const d=m.cvssMetricV30[0].cvssData; return {score:d.baseScore,vector:d.vectorString,severity:d.baseSeverity}; }
-  if (m.cvssMetricV2?.length) { const d=m.cvssMetricV2[0].cvssData; return {score:d.baseScore,vector:d.vectorString,severity:d.baseScore>=7?"HIGH":d.baseScore>=4?"MEDIUM":"LOW"}; }
-  return {score:null,vector:null,severity:"UNKNOWN"};
+  if (!m) return {score:null,vector:null,severity:"UNKNOWN",version:null};
+  if (m.cvssMetricV40?.length) {
+    const rec = m.cvssMetricV40[0];
+    const d = rec.cvssData;
+    if (d?.baseScore !== undefined) {
+      return { score:d.baseScore, vector:d.vectorString, severity:rec.baseSeverity||"UNKNOWN", version:"4.0" };
+    }
+  }
+  if (m.cvssMetricV31?.length) { const d=m.cvssMetricV31[0].cvssData; return {score:d.baseScore,vector:d.vectorString,severity:d.baseSeverity,version:"3.1"}; }
+  if (m.cvssMetricV30?.length) { const d=m.cvssMetricV30[0].cvssData; return {score:d.baseScore,vector:d.vectorString,severity:d.baseSeverity,version:"3.0"}; }
+  if (m.cvssMetricV2?.length)  { const d=m.cvssMetricV2[0].cvssData; const s=d.baseScore; return {score:s,vector:d.vectorString,severity:s>=7?"HIGH":s>=4?"MEDIUM":"LOW",version:"2.0"}; }
+  return {score:null,vector:null,severity:"UNKNOWN",version:null};
 }
 
 function getDesc(vuln) {
@@ -495,12 +507,13 @@ async function nvdFetch(url) {
   return await r.json();
 }
 
+// Try scan-results.json first (if hosted), else query NVD directly
 async function loadFromJSON() {
   try {
     const res = await fetch("scan-results.json?t=" + Date.now());
     if (!res.ok) return false;
     const text = await res.text();
-    if (!text.trim().startsWith("{")) return false; // Got HTML 404, not JSON
+    if (!text.trim().startsWith("{")) return false; // HTML 404
     const data = JSON.parse(text);
     if (!data.vulnerabilities || data.vulnerabilities.length === 0) return false;
 
@@ -518,37 +531,54 @@ async function loadFromJSON() {
   } catch(e) { return false; }
 }
 
+// UPDATED: direct NVD scan with pub window and lastMod fallback
 async function scanDirectNVD() {
   const { start, end } = getDateRange();
-  let startIndex = 0;
   const pageSize = 200;
-  let totalFetched = 0, totalResults = 0;
 
-  showProgress("Querying NVD API directly…");
+  async function scanWindow(paramStart, paramEnd, label) {
+    let startIndex = 0;
+    let totalFetched = 0, totalResults = 0;
+    showProgress(`Querying NVD (${label})…`);
 
-  while (true) {
-    const url = `https://services.nvd.nist.gov/rest/json/cves/2.0?pubStartDate=${start}&pubEndDate=${end}&startIndex=${startIndex}&resultsPerPage=${pageSize}`;
-    showProgress(`Fetching NVD (offset ${startIndex})…`);
+    while (true) {
+      const url = `https://services.nvd.nist.gov/rest/json/cves/2.0?${label}StartDate=${paramStart}&${label}EndDate=${paramEnd}&startIndex=${startIndex}&resultsPerPage=${pageSize}`;
+      showProgress(`Fetching NVD (${label} offset ${startIndex})…`);
 
-    const data = await nvdFetch(url);
-    const items = data.vulnerabilities || [];
-    totalFetched += items.length;
-    totalResults = data.totalResults || totalFetched;
+      const data = await nvdFetch(url);
+      const items = data.vulnerabilities || [];
+      totalFetched += items.length;
+      totalResults = data.totalResults || totalFetched;
 
-    for (const item of items) {
-      const desc = getDesc(item);
-      const matched = [...new Set([...matchProducts(desc), ...matchCPE(item)])];
-      if (matched.length > 0) {
-        const cvss = getCVSS(item);
-        allVulns.push({ id:item.cve?.id||"UNKNOWN", description:desc, cvss, tier:assignTier(cvss,desc), matchedProducts:matched, references:getRefs(item), published:item.cve?.published });
+      for (const item of items) {
+        const desc = getDesc(item);
+        const matched = [...new Set([...matchProducts(desc), ...matchCPE(item)])];
+        if (matched.length > 0) {
+          const cvss = getCVSS(item);
+          allVulns.push({
+            id:item.cve?.id||"UNKNOWN",
+            description:desc,
+            cvss,
+            tier:assignTier(cvss,desc),
+            matchedProducts:matched,
+            references:getRefs(item),
+            published:item.cve?.published
+          });
+        }
       }
-    }
 
-    showProgress(`Processed ${totalFetched}/${totalResults} CVEs — ${allVulns.length} matched…`);
-    if (items.length < pageSize || startIndex + pageSize >= totalResults) break;
-    startIndex += pageSize;
-    await new Promise(r => setTimeout(r, 6500));
+      showProgress(`Processed ${totalFetched}/${totalResults} CVEs — ${allVulns.length} matched…`);
+      if (items.length < pageSize || startIndex + pageSize >= totalResults) break;
+      startIndex += pageSize;
+      await new Promise(r => setTimeout(r, 1200));
+    }
   }
+
+  // First: published in last 24h
+  await scanWindow(start, end, "pub");
+
+  // Second (fallback): modified in last 24h (helps catch late-enriched records)
+  await scanWindow(start, end, "lastMod");
 }
 
 async function startScan() {
@@ -572,7 +602,11 @@ async function startScan() {
       await scanDirectNVD();
     }
 
-    // Sort
+    // De-duplicate by CVE ID (in case pub + lastMod overlap)
+    const seen = new Set();
+    allVulns = allVulns.filter(v => (v.id && !seen.has(v.id)) ? (seen.add(v.id), true) : false);
+
+    // Sort by tier then score
     allVulns.sort((a, b) => {
       if ((a.tier??3) !== (b.tier??3)) return (a.tier??3) - (b.tier??3);
       return (b.cvss?.score||0) - (a.cvss?.score||0);
@@ -621,10 +655,8 @@ async function startScan() {
   btn.innerHTML = "▶ Launch 24h Vulnerability Scan";
 }
 
-// ─── EMAIL REPORT ───
-// Auto-load latest results when page opens
+// ─── EMAIL REPORT / AUTO-LOAD ───
 (async function autoLoad() {
-  // Try multiple paths for the JSON (handles different hosting setups)
   const urls = [
     "scan-results.json?t=" + Date.now(),
     "./scan-results.json?t=" + Date.now(),
@@ -636,7 +668,6 @@ async function startScan() {
       const res = await fetch(url);
       if (res.ok) {
         const text = await res.text();
-        // Make sure it's actually JSON, not an HTML 404 page
         if (text.trim().startsWith("{")) {
           data = JSON.parse(text);
           break;
@@ -646,37 +677,8 @@ async function startScan() {
   }
 
   if (!data || !data.vulnerabilities || data.vulnerabilities.length === 0) {
-    // No results — keep showing the landing page
     return;
   }
 
   allVulns = data.vulnerabilities.map(v => ({
     id:v.id, description:v.description, cvss:v.cvss, tier:v.tier??3,
-    matchedProducts:v.matchedProducts||[], references:v.references||[], published:v.published,
-  }));
-  scanTime = data.scanTime || "Unknown";
-
-  document.getElementById("totalCount").textContent = allVulns.length;
-  document.getElementById("emergCount").textContent = allVulns.filter(v=>v.tier===0).length;
-  document.getElementById("scanTimeLabel").textContent = scanTime;
-  document.getElementById("preScanSection").style.display = "none";
-
-  document.getElementById("resultsSection").style.display = "block";
-  renderProductFilter();
-  renderCards();
-
-  const tierCounts = [0,1,2,3].map(t => allVulns.filter(v=>(v.tier??3)===t).length);
-  const top = allVulns.slice(0,15);
-  let brief = `SITUATION: ${allVulns.length} vulnerabilities found across ${[...new Set(allVulns.flatMap(v=>v.matchedProducts))].length} products in the last 24 hours. ${tierCounts[0]} Emergency, ${tierCounts[1]} High, ${tierCounts[2]} Medium, ${tierCounts[3]} Low.\n\n`;
-  brief += "IMMEDIATE ACTION REQUIRED:\n";
-  top.filter(v=>v.tier<=1).slice(0,5).forEach((v,i) => {
-    brief += `  ${i+1}. ${v.id} — ${v.matchedProducts.join(", ")} — CVSS ${v.cvss?.score??'N/A'} — ${(v.description||"").slice(0,120)}\n`;
-  });
-  brief += "\nREMEDIATION: Apply vendor patches for all Tier 0 and Tier 1 items immediately. Review Tier 2 items within 72 hours.\n";
-  brief += "\nDETECTION: Monitor endpoint and network logs for exploit attempts against the listed CVEs. Update IDS/IPS signatures.";
-  document.getElementById("briefingText").textContent = brief;
-  document.getElementById("briefingArea").style.display = "block";
-})();
-</script>
-</body>
-</html>
