@@ -5,6 +5,11 @@ on:
     - cron: '30 3 * * *'  # Runs daily at 9:00 AM IST (3:30 AM UTC)
   workflow_dispatch:       # Manual trigger button
 
+# Optional: opt Actions into Node 24 now to silence Node 20 deprecation warnings
+# (You can remove this later once Node 24 becomes the default on GitHub runners)
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 permissions:
   contents: write
 
@@ -18,59 +23,73 @@ jobs:
         env:
           NVD_API_KEY: ${{ secrets.NVD_API_KEY }}
         run: |
+          set -euo pipefail
           echo "🛡️ Starting NVD vulnerability scan..."
           
-          # Date range: last 24 hours
+          # Date range: last 24 hours (UTC)
           END_DATE=$(date -u +"%Y-%m-%dT%H:%M:%S.000%%2B00:00")
           START_DATE=$(date -u -d "24 hours ago" +"%Y-%m-%dT%H:%M:%S.000%%2B00:00")
-          
           echo "Scanning from $START_DATE to $END_DATE"
-          
-          # Fetch all CVEs from last 24h
-          ALL_CVES="[]"
-          START_INDEX=0
-          PAGE_SIZE=200
-          TOTAL=0
-          
-          while true; do
-            URL="https://services.nvd.nist.gov/rest/json/cves/2.0?pubStartDate=${START_DATE}&pubEndDate=${END_DATE}&startIndex=${START_INDEX}&resultsPerPage=${PAGE_SIZE}"
-            
-            echo "Fetching offset $START_INDEX..."
-            
-            if [ -n "$NVD_API_KEY" ]; then
-              RESPONSE=$(curl -s -H "apiKey: $NVD_API_KEY" "$URL")
-            else
-              RESPONSE=$(curl -s "$URL")
-            fi
-            
-            # Check if response is valid JSON
-            if ! echo "$RESPONSE" | python3 -c "import sys,json; json.load(sys.stdin)" 2>/dev/null; then
-              echo "Invalid response, retrying in 10s..."
-              sleep 10
-              continue
-            fi
-            
-            TOTAL=$(echo "$RESPONSE" | python3 -c "import sys,json; print(json.load(sys.stdin).get('totalResults',0))")
-            ITEMS=$(echo "$RESPONSE" | python3 -c "import sys,json; print(len(json.load(sys.stdin).get('vulnerabilities',[])))")
-            
-            echo "Got $ITEMS items (total: $TOTAL)"
-            
-            # Save this page
-            echo "$RESPONSE" > "/tmp/nvd_page_${START_INDEX}.json"
-            
-            START_INDEX=$((START_INDEX + PAGE_SIZE))
-            if [ "$START_INDEX" -ge "$TOTAL" ] || [ "$ITEMS" -eq 0 ]; then
-              break
-            fi
-            
-            # Rate limit
-            if [ -n "$NVD_API_KEY" ]; then
-              sleep 1
-            else
-              sleep 7
-            fi
-          done
-          
+
+          fetch_window () {
+            local label="$1"  # "pub" or "lastMod"
+            local START_INDEX=0
+            local PAGE_SIZE=200
+            local TOTAL=0
+
+            while true; do
+              URL="https://services.nvd.nist.gov/rest/json/cves/2.0?${label}StartDate=${START_DATE}&${label}EndDate=${END_DATE}&startIndex=${START_INDEX}&resultsPerPage=${PAGE_SIZE}"
+              echo "[$label] Fetching offset $START_INDEX…"
+              echo "[$label] URL: $URL"
+
+              if [ -n "$NVD_API_KEY" ]; then
+                RESPONSE=$(curl -sS -H "apiKey: $NVD_API_KEY" "$URL")
+              else
+                RESPONSE=$(curl -sS "$URL")
+              fi
+
+              # Validate JSON
+              if ! echo "$RESPONSE" | python3 - <<'PY' 2>/dev/null
+import sys, json; json.load(sys.stdin)
+PY
+              then
+                echo "[$label] Invalid JSON, retrying in 10s…"
+                sleep 10
+                continue
+              fi
+
+              TOTAL=$(echo "$RESPONSE" | python3 - <<'PY'
+import sys,json; print(json.load(sys.stdin).get('totalResults',0))
+PY
+)
+              ITEMS=$(echo "$RESPONSE" | python3 - <<'PY'
+import sys,json; print(len(json.load(sys.stdin).get('vulnerabilities',[])))
+PY
+)
+              echo "[$label] Got $ITEMS items (total so far: $TOTAL)"
+
+              # Save this page
+              echo "$RESPONSE" > "/tmp/nvd_${label}_page_${START_INDEX}.json"
+
+              START_INDEX=$((START_INDEX + PAGE_SIZE))
+              if [ "$START_INDEX" -ge "$TOTAL" ] || [ "$ITEMS" -eq 0 ]; then
+                break
+              fi
+
+              # Rate limit: with API key we can be faster; without, be conservative
+              if [ -n "$NVD_API_KEY" ]; then
+                sleep 1
+              else
+                sleep 7
+              fi
+            done
+          }
+
+          # Pass 1: published in last 24h
+          fetch_window "pub"
+          # Pass 2: modified in last 24h (helps catch late-enriched records)
+          fetch_window "lastMod"
+
           echo "Fetched all pages. Processing..."
 
       - name: Process and Match Products
@@ -78,9 +97,10 @@ jobs:
           python3 << 'PYTHON_SCRIPT'
           import json, glob, os
           from datetime import datetime
-          
+
+          # ===== INVENTORY KEYWORDS =====
           KEYWORDS = {
-            # ===== NETWORK / FIREWALL / SECURITY APPLIANCES =====
+            # NETWORK / FIREWALL / SECURITY APPLIANCES
             "Cisco Nexus": ["cisco nexus","nexus 5500","nexus 9000","nx-os"],
             "Cisco UCS": ["cisco ucs","ucs fabric","fxos","unified computing"],
             "Cisco Fabric Extender": ["fabric extender","fex-2"],
@@ -89,17 +109,17 @@ jobs:
             "Fortigate/FortiOS": ["fortigate","fortios","fortinet","fortiproxy"],
             "Barracuda": ["barracuda"],
 
-            # ===== OPERATING SYSTEMS =====
+            # OPERATING SYSTEMS
             "Windows Server 2012 R2": ["windows server 2012"],
             "Windows 10": ["windows 10","windows_10"],
             "Ubuntu": ["ubuntu"],
 
-            # ===== BROWSERS =====
+            # BROWSERS
             "Google Chrome": ["google chrome","chromium"],
             "Mozilla Firefox": ["firefox","mozilla firefox"],
             "Microsoft Edge": ["microsoft edge","edge webview2"],
 
-            # ===== DATABASES =====
+            # DATABASES
             "PostgreSQL": ["postgresql","postgres","postgresql-14"],
             "MySQL": ["mysql","mysql workbench"],
             "MSSQL": ["sql server","mssql","microsoft sql"],
@@ -108,16 +128,16 @@ jobs:
             "Elasticsearch": ["elasticsearch"],
             "OpenSearch": ["opensearch","open search"],
 
-            # ===== DATABASE TOOLS =====
+            # DATABASE TOOLS
             "PgBouncer": ["pgbouncer"],
             "pgAdmin": ["pgadmin"],
             "pgBadger": ["pgbadger"],
 
-            # ===== MESSAGE QUEUES / STREAMING =====
+            # MQ / STREAMING
             "RabbitMQ": ["rabbitmq","rabbitmq-server"],
             "Erlang/OTP": ["erlang","erlang/otp","erlang otp"],
 
-            # ===== WEB SERVERS =====
+            # WEB SERVERS
             "Apache HTTP Server": ["apache http","httpd","apache/2.","apache2"],
             "Apache Tomcat": ["apache tomcat","tomcat"],
             "IIS": ["iis 10","iis url rewrite","iis express"],
@@ -126,20 +146,20 @@ jobs:
             "ONLYOFFICE": ["onlyoffice"],
             "Nginx": ["nginx"],
 
-            # ===== PROGRAMMING LANGUAGES / RUNTIMES =====
+            # LANGUAGES / RUNTIMES
             "Node.js": ["node.js","nodejs"],
             "Python": ["python 3.","python launcher","python 2."],
             "OpenJDK": ["openjdk","open jdk","hotspot"],
             "Oracle Java": ["oracle java","jdk","jre ","java se development kit","java 8 update"],
-            "Microsoft .NET": ["microsoft .net","asp.net","dotnet",".net framework",".net runtime",".net sdk"],
+            "Microsoft .NET": [ "microsoft .net","asp.net","dotnet",".net framework",".net runtime",".net sdk"],
             "PowerShell": ["powershell"],
 
-            # ===== VIRTUALIZATION =====
+            # VIRTUALIZATION
             "VMware ESXi": ["vmware esxi","vsphere","esxi 6."],
             "VMware vCenter": ["vcenter","vmware vcenter"],
             "VMware Tools": ["vmware tools"],
 
-            # ===== MONITORING / OBSERVABILITY =====
+            # MONITORING / OBSERVABILITY
             "Grafana": ["grafana"],
             "Kibana": ["kibana"],
             "Prometheus": ["prometheus","node_exporter","windows_exporter"],
@@ -154,9 +174,10 @@ jobs:
             "Monit": ["monit"],
             "sysstat": ["sysstat"],
 
-            # ===== SECURITY / ENDPOINT =====
+            # SECURITY / ENDPOINT
             "ESET": ["eset"],
-            "Cortex XDR": ["cortex xdr","palo alto cortex"],
+            # UPDATED: added synonyms to catch Cortex XDR Broker VM
+            "Cortex XDR": ["cortex xdr","palo alto cortex","broker vm","cortex_xdr"],
             "Imperva": ["imperva","incapsula"],
             "Tenable Nessus": ["tenable nessus","nessus"],
             "KnowBe4": ["knowbe4"],
@@ -168,14 +189,14 @@ jobs:
             "Npcap": ["npcap"],
             "OpenSSL": ["openssl"],
 
-            # ===== REMOTE ACCESS =====
+            # REMOTE ACCESS
             "PuTTY": ["putty"],
             "WinSCP": ["winscp"],
             "XRDP": ["xrdp"],
             "SplashTop": ["splashtop"],
             "JumpCloud": ["jumpcloud"],
 
-            # ===== COLLABORATION / PRODUCTIVITY =====
+            # COLLAB / PRODUCTIVITY
             "Microsoft Office": ["microsoft office","microsoft 365","office 365","office ltsc","office professional"],
             "Adobe Acrobat": ["adobe acrobat","acrobat reader","acrobat dc"],
             "Adobe Photoshop": ["adobe photoshop"],
@@ -185,7 +206,7 @@ jobs:
             "Slack": ["slack"],
             "Postman": ["postman"],
 
-            # ===== CMS / WEB APPS =====
+            # CMS / WEB APPS
             "WordPress": ["wordpress","wp-"],
             "Yoast SEO": ["yoast"],
             "Advanced Custom Fields": ["advanced custom fields","acf pro"],
@@ -193,7 +214,7 @@ jobs:
             "SupportPal": ["supportpal"],
             "FormTools": ["form tools","formtools"],
 
-            # ===== DEV TOOLS / IDEs =====
+            # DEV TOOLS / IDEs
             "Visual Studio": ["visual studio"],
             "Visual Studio Code": ["visual studio code","vs code","vscode"],
             "Notepad++": ["notepad++"],
@@ -203,7 +224,7 @@ jobs:
             "Burp Suite": ["burp suite","portswigger"],
             "WinMerge": ["winmerge"],
 
-            # ===== INFRASTRUCTURE / DEVOPS =====
+            # INFRA / DEVOPS
             "Ansible": ["ansible"],
             "Certbot": ["certbot","let's encrypt","letsencrypt"],
             "Microsoft Azure AD Connect": ["azure ad connect","entra connect"],
@@ -211,301 +232,11 @@ jobs:
             "Landscape Server": ["landscape-server","landscape server","canonical landscape"],
             "TFS / Azure DevOps": ["team foundation server","tfs 2018","azure devops server"],
 
-            # ===== FILE / ARCHIVE TOOLS =====
+            # FILE / ARCHIVE
             "7-Zip": ["7-zip","7zip"],
             "WinRAR": ["winrar"],
             "WinZip": ["winzip"],
             "FileZilla": ["filezilla"],
 
-            # ===== NETWORK TOOLS / UTILITIES =====
+            # NETWORK TOOLS
             "Ubiquiti/UniFi": ["ubiquiti","unifi"],
-            "Cato Networks": ["cato networks","cato client"],
-            "OpenSSH": ["openssh"],
-            "Chrony": ["chrony"],
-            "NFS": ["nfs-common","nfs-kernel-server","nfs server"],
-            "CIFS/SMB Utils": ["cifs-utils","cifs utils"],
-            "LVM2": ["lvm2"],
-            "Samba": ["samba"],
-
-            # ===== CAMERAS / HARDWARE =====
-            "Hikvision": ["hikvision"],
-
-            # ===== CLOUD / BACKUP =====
-            "SQLBackupAndFTP": ["sqlbackupandftp"],
-            "Jamf Protect": ["jamf"],
-
-            # ===== PDF / IMAGING =====
-            "Nitro PDF": ["nitro pdf","nitro pro"],
-            "CutePDF": ["cutepdf"],
-            "TIFF Image Printer": ["tiff image printer"],
-            "Informatik PDF": ["informatik"],
-
-            # ===== FORENSICS / EDISCOVERY =====
-            "AccessData FTK": ["accessdata","ftk imager"],
-            "Concordance": ["concordance"],
-            "dtSearch": ["dtsearch"],
-            "Passware Kit": ["passware"],
-
-            # ===== GPU / COMPUTE =====
-            "NVIDIA CUDA": ["nvidia cuda","cudnn","nvidia graphics driver","nvidia nsight","nvidia rtx"],
-
-            # ===== OTHER TOOLS =====
-            "cPanel": ["cpanel"],
-            "ManageEngine": ["manageengine","desktop central"],
-            "Mmonit": ["mmonit","m/monit"],
-            "Rebex": ["rebex"],
-            "ShareX": ["sharex"],
-            "Gliffy": ["gliffy"],
-            "IBM Notes": ["ibm notes","lotus notes","hcl notes"],
-            "ipSentry": ["ipsentry"],
-            "GParted": ["gparted"],
-            "Fio": ["fio benchmark","fio "],
-            "ncdu": ["ncdu"],
-            "iotop": ["iotop"],
-            "PDQ Deploy/Inventory": ["pdq deploy","pdq inventory"],
-            "TreeSize": ["treesize"],
-            "IrfanView": ["irfanview"],
-            "Process Hacker": ["process hacker"],
-            "RVTools": ["rvtools"],
-            "MATE Desktop": ["mate-desktop","mate desktop"],
-            "eDrawings": ["edrawings"],
-            "DigiCert": ["digicert"],
-            "Laserfiche": ["laserfiche"],
-            "SAP Crystal Reports": ["crystal reports","sap crystal"],
-            "n2pdf": ["n2pdf"],
-            "Bvckup": ["bvckup"],
-          }
-          
-          def match_products(text):
-              lower = (text or "").lower()
-              matched = []
-              for name, kws in KEYWORDS.items():
-                  for kw in kws:
-                      if kw in lower:
-                          matched.append(name)
-                          break
-              return matched
-          
-          def get_cvss(vuln):
-              metrics = vuln.get("cve",{}).get("metrics",{})
-              for key in ["cvssMetricV31","cvssMetricV30"]:
-                  if metrics.get(key):
-                      d = metrics[key][0]["cvssData"]
-                      return {"score":d["baseScore"],"vector":d.get("vectorString"),"severity":d.get("baseSeverity","UNKNOWN")}
-              if metrics.get("cvssMetricV2"):
-                  d = metrics["cvssMetricV2"][0]["cvssData"]
-                  s = d["baseScore"]
-                  return {"score":s,"vector":d.get("vectorString"),"severity":"HIGH" if s>=7 else "MEDIUM" if s>=4 else "LOW"}
-              return {"score":None,"vector":None,"severity":"UNKNOWN"}
-          
-          def assign_tier(cvss, desc):
-              d = (desc or "").lower()
-              rce = "remote code execution" in d or "rce" in d or "arbitrary code" in d
-              unauth = "unauthenticated" in d or "without authentication" in d
-              kev = "exploited in the wild" in d
-              if kev or (rce and unauth) or (cvss["score"] and cvss["score"] >= 9.5): return 0
-              if rce or (cvss["score"] and cvss["score"] >= 8.0): return 1
-              if cvss["score"] and cvss["score"] >= 5.0: return 2
-              return 3
-          
-          # Load all pages
-          all_vulns = []
-          for f in sorted(glob.glob("/tmp/nvd_page_*.json")):
-              with open(f) as fh:
-                  data = json.load(fh)
-                  for item in data.get("vulnerabilities",[]):
-                      descs = item.get("cve",{}).get("descriptions",[])
-                      en = next((d["value"] for d in descs if d["lang"]=="en"), descs[0]["value"] if descs else "")
-                      matched = match_products(en)
-                      # Also check CPE
-                      for config in item.get("cve",{}).get("configurations",[]):
-                          for node in config.get("nodes",[]):
-                              for cpe in node.get("cpeMatch",[]):
-                                  uri = (cpe.get("criteria","")).lower()
-                                  for name, kws in KEYWORDS.items():
-                                      for kw in kws:
-                                          if kw.replace(" ","") in uri.replace(" ","") and name not in matched:
-                                              matched.append(name)
-                      if matched:
-                          cvss = get_cvss(item)
-                          refs = [r["url"] for r in item.get("cve",{}).get("references",[])[:5]]
-                          all_vulns.append({
-                              "id": item.get("cve",{}).get("id","UNKNOWN"),
-                              "description": en[:500],
-                              "cvss": cvss,
-                              "tier": assign_tier(cvss, en),
-                              "matchedProducts": matched,
-                              "references": refs,
-                              "published": item.get("cve",{}).get("published",""),
-                          })
-          
-          # Sort
-          all_vulns.sort(key=lambda v: (v["tier"], -(v["cvss"]["score"] or 0)))
-          
-          # Build output
-          product_count = len(KEYWORDS)
-          result = {
-              "scanTime": datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S UTC"),
-              "totalMatched": len(all_vulns),
-              "productsMonitored": product_count,
-              "tierCounts": {str(t): len([v for v in all_vulns if v["tier"]==t]) for t in range(4)},
-              "vulnerabilities": all_vulns,
-          }
-          
-          with open("scan-results.json", "w") as f:
-              json.dump(result, f, indent=2)
-          
-          print(f"✅ Found {len(all_vulns)} matching vulnerabilities ({product_count} products monitored)")
-          for t in range(4):
-              c = len([v for v in all_vulns if v["tier"]==t])
-              if c: print(f"   Tier {t}: {c}")
-          PYTHON_SCRIPT
-
-      - name: Commit Results
-        run: |
-          git config user.name "VULN INTEL Bot"
-          git config user.email "vulnbot@users.noreply.github.com"
-          git add scan-results.json
-          git diff --cached --quiet || git commit -m "🛡️ Scan $(date -u +%Y-%m-%d) — $(python3 -c 'import json;d=json.load(open("scan-results.json"));print(d["totalMatched"])') CVEs found"
-          git push
-
-      - name: Send Email Report
-        env:
-          GMAIL_USER: ${{ secrets.GMAIL_USER }}
-          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
-          EMAIL_TO: ${{ secrets.EMAIL_TO }}
-        run: |
-          python3 << 'EMAIL_SCRIPT'
-          import json, smtplib, os
-          from email.mime.multipart import MIMEMultipart
-          from email.mime.text import MIMEText
-          from datetime import datetime
-
-          # Load scan results
-          with open("scan-results.json") as f:
-              data = json.load(f)
-
-          vulns = data.get("vulnerabilities", [])
-          scan_time = data.get("scanTime", "Unknown")
-          total = data.get("totalMatched", 0)
-          tiers = data.get("tierCounts", {})
-          products_monitored = data.get("productsMonitored", "120+")
-
-          GMAIL_USER = os.environ.get("GMAIL_USER", "casepoint.vulnbot@gmail.com")
-          GMAIL_PASS = os.environ.get("GMAIL_APP_PASSWORD", "")
-          EMAIL_TO = os.environ.get("EMAIL_TO", "parth.sharma@casepoint.in")
-
-          if not GMAIL_PASS:
-              print("⚠️ GMAIL_APP_PASSWORD not set, skipping email")
-              exit(0)
-
-          # Build HTML email
-          tier_colors = {"0":"#ff1744","1":"#ff9100","2":"#ffd600","3":"#69f0ae"}
-          tier_names = {"0":"Emergency","1":"High","2":"Medium","3":"Low"}
-
-          tier_cards = ""
-          for t in ["0","1","2","3"]:
-              count = tiers.get(t, 0)
-              color = tier_colors[t]
-              name = tier_names[t]
-              tier_cards += f'''<td style="text-align:center;padding:14px;border:1px solid #e2e8f0;border-radius:6px;width:25%">
-                  <div style="font-size:32px;font-weight:800;color:{color}">{count}</div>
-                  <div style="font-size:11px;color:#64748b;letter-spacing:1px">TIER {t} — {name.upper()}</div>
-              </td>'''
-
-          vuln_rows = ""
-          for v in vulns[:30]:
-              tier = v.get("tier", 3)
-              color = tier_colors.get(str(tier), "#69f0ae")
-              products = ", ".join(v.get("matchedProducts", []))
-              score = v.get("cvss", {}).get("score")
-              score_str = f"{score:.1f}" if score is not None else "N/A"
-              desc = (v.get("description", ""))[:200]
-              cve_id = v.get("id", "N/A")
-              refs = v.get("references", [])
-              ref_links = "<br>".join([f'<a href="{r}" style="color:#2563eb;font-size:11px">{r[:80]}</a>' for r in refs[:2]])
-              nvd_link = f'<a href="https://nvd.nist.gov/vuln/detail/{cve_id}" style="color:#2563eb;font-size:11px">NVD Detail</a>'
-
-              vuln_rows += f'''<tr style="border-bottom:1px solid #e2e8f0">
-                  <td style="padding:10px;font-family:monospace;font-weight:700;color:#1e40af;font-size:13px">{cve_id}</td>
-                  <td style="padding:10px;color:{color};font-weight:700;font-size:12px">TIER {tier}</td>
-                  <td style="padding:10px;font-weight:700;font-size:14px;color:{color}">{score_str}</td>
-                  <td style="padding:10px;color:#6366f1;font-size:12px">{products}</td>
-                  <td style="padding:10px;color:#475569;font-size:12px;max-width:300px">{desc}</td>
-                  <td style="padding:10px;font-size:11px">{ref_links}<br>{nvd_link}</td>
-              </tr>'''
-
-          # Executive briefing
-          emergency = tiers.get("0", 0)
-          high = tiers.get("1", 0)
-          products_affected = len(set(p for v in vulns for p in v.get("matchedProducts", [])))
-
-          briefing = f"SITUATION: {total} vulnerabilities found across {products_affected} products in the last 24 hours. "
-          briefing += f"{emergency} Emergency (Tier 0), {high} High (Tier 1).\n\n"
-          briefing += "IMMEDIATE ACTION REQUIRED:\n"
-          for i, v in enumerate(vulns[:5]):
-              if v.get("tier", 3) <= 1:
-                  score = v.get("cvss",{}).get("score")
-                  score_display = f"{score:.1f}" if score is not None else "N/A"
-                  briefing += f"  {i+1}. {v['id']} — {', '.join(v.get('matchedProducts',[]))} — CVSS {score_display}\n"
-          briefing += "\nREMEDIATION: Apply vendor patches for Tier 0 and Tier 1 immediately. Review Tier 2 within 72 hours.\n"
-          briefing += "DETECTION: Monitor endpoint/network logs. Update IDS/IPS signatures."
-
-          if total == 0:
-              subject = f"[VULN INTEL] ✅ All Clear — {datetime.utcnow().strftime('%b %d, %Y')}"
-              body_html = f'''<div style="font-family:Arial,sans-serif;max-width:700px;margin:0 auto;padding:24px">
-                  <h1 style="color:#16a34a;font-size:22px">🛡️ VULN INTEL — All Clear</h1>
-                  <p style="color:#64748b;font-size:13px">Scan completed: {scan_time}</p>
-                  <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:20px;margin:16px 0;text-align:center">
-                      <p style="font-size:18px;color:#16a34a;font-weight:700">✅ No new vulnerabilities found</p>
-                      <p style="color:#64748b;font-size:14px">No CVEs published in the last 24 hours match your {products_monitored} tracked products.</p>
-                  </div>
-                  <p style="color:#94a3b8;font-size:11px">Automated report from VULN INTEL Dashboard</p>
-              </div>'''
-          else:
-              subject = f"[VULN INTEL] 🚨 {total} CVEs Found — {datetime.utcnow().strftime('%b %d, %Y')}"
-              body_html = f'''<div style="font-family:Arial,sans-serif;max-width:900px;margin:0 auto;background:#ffffff;color:#1e293b;padding:24px">
-                  <h1 style="color:#1e40af;font-size:22px;margin:0 0 4px">🛡️ VULN INTEL — 24h Vulnerability Report</h1>
-                  <p style="color:#64748b;font-size:13px;margin:0 0 20px">Scan completed: {scan_time}</p>
-
-                  <table style="width:100%;margin-bottom:20px;border-spacing:8px"><tr>{tier_cards}</tr></table>
-
-                  <div style="background:#f0f9ff;border:1px solid #bae6fd;border-radius:8px;padding:16px;margin-bottom:24px">
-                      <h3 style="color:#1e40af;font-size:14px;margin:0 0 8px">EXECUTIVE BRIEFING</h3>
-                      <pre style="color:#334155;font-size:13px;white-space:pre-wrap;font-family:Arial,sans-serif;margin:0;line-height:1.6">{briefing}</pre>
-                  </div>
-
-                  <h3 style="color:#1e293b;font-size:14px;margin-bottom:10px">VULNERABILITY DETAILS ({min(len(vulns),30)} of {len(vulns)})</h3>
-                  <table style="width:100%;border-collapse:collapse;border:1px solid #e2e8f0;font-size:13px">
-                      <thead><tr style="background:#f1f5f9">
-                          <th style="padding:10px;text-align:left;color:#64748b;font-size:11px;letter-spacing:1px">CVE ID</th>
-                          <th style="padding:10px;text-align:left;color:#64748b;font-size:11px;letter-spacing:1px">TIER</th>
-                          <th style="padding:10px;text-align:left;color:#64748b;font-size:11px;letter-spacing:1px">CVSS</th>
-                          <th style="padding:10px;text-align:left;color:#64748b;font-size:11px;letter-spacing:1px">PRODUCTS</th>
-                          <th style="padding:10px;text-align:left;color:#64748b;font-size:11px;letter-spacing:1px">DESCRIPTION</th>
-                          <th style="padding:10px;text-align:left;color:#64748b;font-size:11px;letter-spacing:1px">REFERENCES</th>
-                      </tr></thead>
-                      <tbody>{vuln_rows}</tbody>
-                  </table>
-
-                  <p style="margin-top:24px;color:#94a3b8;font-size:11px">Sources: NVD (NIST) · CISA KEV · Vendor Advisories | {products_monitored} products monitored</p>
-                  <p style="color:#94a3b8;font-size:11px">Automated report from VULN INTEL Dashboard</p>
-              </div>'''
-
-          # Send email
-          msg = MIMEMultipart("alternative")
-          msg["From"] = f"VULN INTEL Bot <{GMAIL_USER}>"
-          msg["To"] = EMAIL_TO
-          msg["Subject"] = subject
-          msg.attach(MIMEText(briefing, "plain"))
-          msg.attach(MIMEText(body_html, "html"))
-
-          try:
-              with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
-                  server.login(GMAIL_USER, GMAIL_PASS)
-                  server.sendmail(GMAIL_USER, EMAIL_TO.split(","), msg.as_string())
-              print(f"✅ Email sent to {EMAIL_TO}")
-          except Exception as e:
-              print(f"❌ Email failed: {e}")
-              exit(1)
-          EMAIL_SCRIPT
