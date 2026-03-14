@@ -320,16 +320,12 @@ jobs:
           git diff --cached --quiet || git commit -m "🛡️ Scan $(date -u +%Y-%m-%d) — $(python3 -c 'import json;d=json.load(open("scan-results.json"));print(d["totalMatched"])') CVEs found"
           git push
 
-      - name: Send Email Report
+      - name: Send Teams Notification
         env:
-          OUTLOOK_USER: ${{ secrets.OUTLOOK_USER }}
-          OUTLOOK_PASSWORD: ${{ secrets.OUTLOOK_PASSWORD }}
-          EMAIL_TO: ${{ secrets.EMAIL_TO }}
+          TEAMS_WEBHOOK_URL: ${{ secrets.TEAMS_WEBHOOK_URL }}
         run: |
-          python3 << 'EMAIL_SCRIPT'
-          import json, smtplib, os
-          from email.mime.multipart import MIMEMultipart
-          from email.mime.text import MIMEText
+          python3 << 'TEAMS_SCRIPT'
+          import json, os, urllib.request
           from datetime import datetime, timezone
 
           # Load scan results
@@ -342,130 +338,213 @@ jobs:
           tiers = data.get("tierCounts", {})
           products_monitored = data.get("productsMonitored", "120+")
 
-          OUTLOOK_USER = os.environ.get("OUTLOOK_USER", "")
-          OUTLOOK_PASS = os.environ.get("OUTLOOK_PASSWORD", "")
-          EMAIL_TO = os.environ.get("EMAIL_TO", "")
+          WEBHOOK_URL = os.environ.get("TEAMS_WEBHOOK_URL", "")
 
-          if not OUTLOOK_USER or not OUTLOOK_PASS:
-              print("⚠️ OUTLOOK credentials not set, skipping email")
+          if not WEBHOOK_URL:
+              print("⚠️ TEAMS_WEBHOOK_URL not set, skipping notification")
               exit(0)
 
-          if not EMAIL_TO:
-              print("⚠️ EMAIL_TO not set, skipping email")
-              exit(0)
-
-          # ── Build HTML email (same format as your original) ──
-          tier_colors = {"0":"#ff1744","1":"#ff9100","2":"#ffd600","3":"#69f0ae"}
-          tier_names = {"0":"Emergency","1":"High","2":"Medium","3":"Low"}
-
-          tier_cards = ""
-          for t in ["0","1","2","3"]:
-              count = tiers.get(t, 0)
-              color = tier_colors[t]
-              name = tier_names[t]
-              tier_cards += f'''<td style="text-align:center;padding:14px;border:1px solid #e2e8f0;border-radius:6px;width:25%">
-                  <div style="font-size:32px;font-weight:800;color:{color}">{count}</div>
-                  <div style="font-size:11px;color:#64748b;letter-spacing:1px">TIER {t} — {name.upper()}</div>
-              </td>'''
-
-          vuln_rows = ""
-          for v in vulns[:30]:
-              tier = v.get("tier", 3)
-              color = tier_colors.get(str(tier), "#69f0ae")
-              products = ", ".join(v.get("matchedProducts", []))
-              score = v.get("cvss", {}).get("score")
-              score_str = f"{score:.1f}" if score is not None else "N/A"
-              desc = (v.get("description", ""))[:200]
-              cve_id = v.get("id", "N/A")
-              refs = v.get("references", [])
-              ref_links = "<br>".join([f'<a href="{r}" style="color:#2563eb;font-size:11px">{r[:80]}</a>' for r in refs[:2]])
-              nvd_link = f'<a href="https://nvd.nist.gov/vuln/detail/{cve_id}" style="color:#2563eb;font-size:11px">NVD Detail</a>'
-
-              vuln_rows += f'''<tr style="border-bottom:1px solid #e2e8f0">
-                  <td style="padding:10px;font-family:monospace;font-weight:700;color:#1e40af;font-size:13px">{cve_id}</td>
-                  <td style="padding:10px;color:{color};font-weight:700;font-size:12px">TIER {tier}</td>
-                  <td style="padding:10px;font-weight:700;font-size:14px;color:{color}">{score_str}</td>
-                  <td style="padding:10px;color:#6366f1;font-size:12px">{products}</td>
-                  <td style="padding:10px;color:#475569;font-size:12px;max-width:300px">{desc}</td>
-                  <td style="padding:10px;font-size:11px">{ref_links}<br>{nvd_link}</td>
-              </tr>'''
-
-          # Executive briefing
-          emergency = tiers.get("0", 0)
-          high = tiers.get("1", 0)
+          # ── Build Adaptive Card ──
+          tier_names = {"0": "🔴 Emergency", "1": "🟠 High", "2": "🟡 Medium", "3": "🟢 Low"}
           products_affected = len(set(p for v in vulns for p in v.get("matchedProducts", [])))
 
-          briefing = f"SITUATION: {total} vulnerabilities found across {products_affected} products in the last 24 hours. "
-          briefing += f"{emergency} Emergency (Tier 0), {high} High (Tier 1).\n\n"
-          briefing += "IMMEDIATE ACTION REQUIRED:\n"
-          for i, v in enumerate(vulns[:5]):
-              if v.get("tier", 3) <= 1:
-                  score = v.get("cvss",{}).get("score")
-                  score_display = f"{score:.1f}" if score is not None else "N/A"
-                  briefing += f"  {i+1}. {v['id']} — {', '.join(v.get('matchedProducts',[]))} — CVSS {score_display}\n"
-          briefing += "\nREMEDIATION: Apply vendor patches for Tier 0 and Tier 1 immediately. Review Tier 2 within 72 hours.\n"
-          briefing += "DETECTION: Monitor endpoint/network logs. Update IDS/IPS signatures."
+          # Tier summary line
+          tier_summary = " | ".join(
+              [f"**{tier_names[t]}:** {tiers.get(t, 0)}" for t in ["0", "1", "2", "3"]]
+          )
 
-          now = datetime.now(timezone.utc)
+          # Build vulnerability detail rows (top 15)
+          vuln_details = []
+          for v in vulns[:15]:
+              tier = v.get("tier", 3)
+              score = v.get("cvss", {}).get("score")
+              score_str = f"{score:.1f}" if score is not None else "N/A"
+              products = ", ".join(v.get("matchedProducts", []))
+              desc = (v.get("description", ""))[:150]
+              cve_id = v.get("id", "N/A")
+              nvd_url = f"https://nvd.nist.gov/vuln/detail/{cve_id}"
+              tier_emoji = ["🔴", "🟠", "🟡", "🟢"][tier] if tier < 4 else "⚪"
 
+              vuln_details.append({
+                  "type": "Container",
+                  "style": "emphasis" if tier <= 1 else "default",
+                  "items": [
+                      {
+                          "type": "ColumnSet",
+                          "columns": [
+                              {
+                                  "type": "Column",
+                                  "width": "auto",
+                                  "items": [{"type": "TextBlock", "text": f"{tier_emoji} **[{cve_id}]({nvd_url})**", "size": "Small"}]
+                              },
+                              {
+                                  "type": "Column",
+                                  "width": "auto",
+                                  "items": [{"type": "TextBlock", "text": f"CVSS **{score_str}**", "size": "Small", "color": "Attention" if tier <= 1 else "Default"}]
+                              },
+                              {
+                                  "type": "Column",
+                                  "width": "stretch",
+                                  "items": [{"type": "TextBlock", "text": f"🏷️ {products}", "size": "Small", "color": "Accent"}]
+                              }
+                          ]
+                      },
+                      {
+                          "type": "TextBlock",
+                          "text": desc,
+                          "wrap": True,
+                          "size": "Small",
+                          "color": "Default",
+                          "spacing": "Small"
+                      }
+                  ],
+                  "separator": True,
+                  "spacing": "Small"
+              })
+
+          # Determine header color/text
           if total == 0:
-              subject = f"[VULN INTEL] ✅ All Clear — {now.strftime('%b %d, %Y')}"
-              body_html = f'''<div style="font-family:Arial,sans-serif;max-width:700px;margin:0 auto;padding:24px">
-                  <h1 style="color:#16a34a;font-size:22px">🛡️ VULN INTEL — All Clear</h1>
-                  <p style="color:#64748b;font-size:13px">Scan completed: {scan_time}</p>
-                  <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:20px;margin:16px 0;text-align:center">
-                      <p style="font-size:18px;color:#16a34a;font-weight:700">✅ No new vulnerabilities found</p>
-                      <p style="color:#64748b;font-size:14px">No CVEs published in the last 24 hours match your {products_monitored} tracked products.</p>
-                  </div>
-                  <p style="color:#94a3b8;font-size:11px">Automated report from VULN INTEL Dashboard</p>
-              </div>'''
+              header_text = "✅ VULN INTEL — All Clear"
+              summary_text = f"No CVEs published in the last 24 hours match your {products_monitored} tracked products."
           else:
-              subject = f"[VULN INTEL] 🚨 {total} CVEs Found — {now.strftime('%b %d, %Y')}"
-              body_html = f'''<div style="font-family:Arial,sans-serif;max-width:900px;margin:0 auto;background:#ffffff;color:#1e293b;padding:24px">
-                  <h1 style="color:#1e40af;font-size:22px;margin:0 0 4px">🛡️ VULN INTEL — 24h Vulnerability Report</h1>
-                  <p style="color:#64748b;font-size:13px;margin:0 0 20px">Scan completed: {scan_time}</p>
+              emergency = int(tiers.get("0", 0))
+              high = int(tiers.get("1", 0))
+              if emergency > 0:
+                  header_text = f"🚨 VULN INTEL — {total} CVEs Found ({emergency} EMERGENCY)"
+              elif high > 0:
+                  header_text = f"⚠️ VULN INTEL — {total} CVEs Found ({high} HIGH)"
+              else:
+                  header_text = f"🛡️ VULN INTEL — {total} CVEs Found"
+              summary_text = f"**{total}** vulnerabilities across **{products_affected}** products in the last 24 hours."
 
-                  <table style="width:100%;margin-bottom:20px;border-spacing:8px"><tr>{tier_cards}</tr></table>
+          # Action items for Tier 0/1
+          action_items = []
+          for v in vulns[:5]:
+              if v.get("tier", 3) <= 1:
+                  score = v.get("cvss", {}).get("score")
+                  score_str = f"{score:.1f}" if score is not None else "N/A"
+                  action_items.append(
+                      f"- **{v['id']}** — {', '.join(v.get('matchedProducts',[]))} — CVSS {score_str}"
+                  )
 
-                  <div style="background:#f0f9ff;border:1px solid #bae6fd;border-radius:8px;padding:16px;margin-bottom:24px">
-                      <h3 style="color:#1e40af;font-size:14px;margin:0 0 8px">EXECUTIVE BRIEFING</h3>
-                      <pre style="color:#334155;font-size:13px;white-space:pre-wrap;font-family:Arial,sans-serif;margin:0;line-height:1.6">{briefing}</pre>
-                  </div>
+          action_text = "\n".join(action_items) if action_items else "- No Tier 0/1 vulnerabilities requiring immediate action."
 
-                  <h3 style="color:#1e293b;font-size:14px;margin-bottom:10px">VULNERABILITY DETAILS ({min(len(vulns),30)} of {len(vulns)})</h3>
-                  <table style="width:100%;border-collapse:collapse;border:1px solid #e2e8f0;font-size:13px">
-                      <thead><tr style="background:#f1f5f9">
-                          <th style="padding:10px;text-align:left;color:#64748b;font-size:11px;letter-spacing:1px">CVE ID</th>
-                          <th style="padding:10px;text-align:left;color:#64748b;font-size:11px;letter-spacing:1px">TIER</th>
-                          <th style="padding:10px;text-align:left;color:#64748b;font-size:11px;letter-spacing:1px">CVSS</th>
-                          <th style="padding:10px;text-align:left;color:#64748b;font-size:11px;letter-spacing:1px">PRODUCTS</th>
-                          <th style="padding:10px;text-align:left;color:#64748b;font-size:11px;letter-spacing:1px">DESCRIPTION</th>
-                          <th style="padding:10px;text-align:left;color:#64748b;font-size:11px;letter-spacing:1px">REFERENCES</th>
-                      </tr></thead>
-                      <tbody>{vuln_rows}</tbody>
-                  </table>
+          # Assemble Adaptive Card
+          card_body = [
+              {
+                  "type": "TextBlock",
+                  "text": header_text,
+                  "weight": "Bolder",
+                  "size": "Large",
+                  "wrap": True
+              },
+              {
+                  "type": "TextBlock",
+                  "text": f"📅 {scan_time} | {products_monitored} products monitored",
+                  "size": "Small",
+                  "color": "Dark",
+                  "spacing": "None"
+              },
+              {
+                  "type": "TextBlock",
+                  "text": summary_text,
+                  "wrap": True,
+                  "spacing": "Medium"
+              },
+              {
+                  "type": "ColumnSet",
+                  "separator": True,
+                  "spacing": "Medium",
+                  "columns": [
+                      {"type": "Column", "width": "1", "items": [
+                          {"type": "TextBlock", "text": f"🔴 **{tiers.get('0', 0)}**", "horizontalAlignment": "Center"},
+                          {"type": "TextBlock", "text": "Emergency", "size": "Small", "horizontalAlignment": "Center", "color": "Dark"}
+                      ]},
+                      {"type": "Column", "width": "1", "items": [
+                          {"type": "TextBlock", "text": f"🟠 **{tiers.get('1', 0)}**", "horizontalAlignment": "Center"},
+                          {"type": "TextBlock", "text": "High", "size": "Small", "horizontalAlignment": "Center", "color": "Dark"}
+                      ]},
+                      {"type": "Column", "width": "1", "items": [
+                          {"type": "TextBlock", "text": f"🟡 **{tiers.get('2', 0)}**", "horizontalAlignment": "Center"},
+                          {"type": "TextBlock", "text": "Medium", "size": "Small", "horizontalAlignment": "Center", "color": "Dark"}
+                      ]},
+                      {"type": "Column", "width": "1", "items": [
+                          {"type": "TextBlock", "text": f"🟢 **{tiers.get('3', 0)}**", "horizontalAlignment": "Center"},
+                          {"type": "TextBlock", "text": "Low", "size": "Small", "horizontalAlignment": "Center", "color": "Dark"}
+                      ]}
+                  ]
+              },
+              {
+                  "type": "TextBlock",
+                  "text": "**🎯 Immediate Action Required:**",
+                  "spacing": "Medium",
+                  "separator": True
+              },
+              {
+                  "type": "TextBlock",
+                  "text": action_text,
+                  "wrap": True,
+                  "size": "Small",
+                  "spacing": "Small"
+              }
+          ]
 
-                  <p style="margin-top:24px;color:#94a3b8;font-size:11px">Sources: NVD (NIST) · CISA KEV · Vendor Advisories | {products_monitored} products monitored</p>
-                  <p style="color:#94a3b8;font-size:11px">Automated report from VULN INTEL Dashboard</p>
-              </div>'''
+          # Add vulnerability details if any exist
+          if vuln_details:
+              card_body.append({
+                  "type": "TextBlock",
+                  "text": f"**📋 Vulnerability Details** (showing {min(len(vulns), 15)} of {len(vulns)})",
+                  "spacing": "Medium",
+                  "separator": True
+              })
+              card_body.extend(vuln_details)
 
-          # ── Send via Outlook SMTP (STARTTLS on port 587) ──
-          msg = MIMEMultipart("alternative")
-          msg["From"] = f"VULN INTEL Bot <{OUTLOOK_USER}>"
-          msg["To"] = EMAIL_TO
-          msg["Subject"] = subject
-          msg.attach(MIMEText(briefing, "plain"))
-          msg.attach(MIMEText(body_html, "html"))
+          card_body.append({
+              "type": "TextBlock",
+              "text": "Sources: NVD (NIST) · CISA KEV · Vendor Advisories",
+              "size": "Small",
+              "color": "Dark",
+              "spacing": "Medium",
+              "separator": True
+          })
+
+          # Build the payload (Power Automate / Workflows format)
+          payload = {
+              "type": "message",
+              "attachments": [
+                  {
+                      "contentType": "application/vnd.microsoft.card.adaptive",
+                      "contentUrl": None,
+                      "content": {
+                          "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+                          "type": "AdaptiveCard",
+                          "version": "1.4",
+                          "body": card_body
+                      }
+                  }
+              ]
+          }
+
+          # Send to Teams
+          payload_json = json.dumps(payload).encode("utf-8")
+
+          req = urllib.request.Request(
+              WEBHOOK_URL,
+              data=payload_json,
+              headers={"Content-Type": "application/json"},
+              method="POST"
+          )
 
           try:
-              with smtplib.SMTP("smtp.office365.com", 587) as server:
-                  server.ehlo()
-                  server.starttls()
-                  server.ehlo()
-                  server.login(OUTLOOK_USER, OUTLOOK_PASS)
-                  server.sendmail(OUTLOOK_USER, EMAIL_TO.split(","), msg.as_string())
-              print(f"✅ Email sent to {EMAIL_TO}")
-          except Exception as e:
-              print(f"❌ Email failed: {e}")
+              with urllib.request.urlopen(req) as resp:
+                  status = resp.getcode()
+                  body = resp.read().decode("utf-8", errors="replace")
+                  print(f"✅ Teams notification sent (HTTP {status})")
+          except urllib.error.HTTPError as e:
+              body = e.read().decode("utf-8", errors="replace")
+              print(f"❌ Teams webhook failed: HTTP {e.code} — {body}")
               exit(1)
-          EMAIL_SCRIPT
+          except Exception as e:
+              print(f"❌ Teams webhook failed: {e}")
+              exit(1)
+          TEAMS_SCRIPT
