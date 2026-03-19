@@ -1,38 +1,167 @@
 {
-  "scanTime": "2026-03-18 05:12:47 UTC",
-  "totalMatched": 15,
+  "scanTime": "2026-03-19 05:09:40 UTC",
+  "totalMatched": 32,
   "productsMonitored": 147,
   "tierCounts": {
-    "0": 1,
-    "1": 2,
-    "2": 5,
-    "3": 7
+    "0": 7,
+    "1": 17,
+    "2": 6,
+    "3": 2
   },
   "vulnerabilities": [
     {
-      "id": "CVE-2026-1926",
-      "description": "The Subscriptions for WooCommerce plugin for WordPress is vulnerable to unauthorized modification of data due to a missing capability check on the `wps_sfw_admin_cancel_susbcription()` function in all versions up to, and including, 1.9.2. This is due to the function being hooked to the `init` action without any authentication or authorization checks, and only performing a non-empty check on the nonce parameter without actually validating it via `wp_verify_nonce()`. This makes it possible for una",
+      "id": "CVE-2026-32731",
+      "description": "ApostropheCMS is an open-source content management framework. Prior to version 3.5.3 of `@apostrophecms/import-export`,\nThe `extract()` function in `gzip.js` constructs file-write paths using `fs.createWriteStream(path.join(exportPath, header.name))`. `path.join()` does not resolve or sanitise traversal segments such as `../`. It concatenates them as-is, meaning a tar entry named `../../evil.js` resolves to a path outside the intended extraction directory. No canonical-path check is performed be",
       "cvss": {
-        "score": 5.3,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N",
-        "severity": "MEDIUM"
+        "score": 9.9,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+        "severity": "CRITICAL"
+      },
+      "tier": 0,
+      "matchedProducts": [
+        "Node.js"
+      ],
+      "references": [
+        "https://github.com/apostrophecms/apostrophe/security/advisories/GHSA-mwxc-m426-3f78"
+      ],
+      "published": "2026-03-18T23:17:29.543"
+    },
+    {
+      "id": "CVE-2026-2991",
+      "description": "The KiviCare \u2013 Clinic & Patient Management System (EHR) plugin for WordPress is vulnerable to Authentication Bypass in all versions up to, and including, 4.1.2. This is due to the `patientSocialLogin()` function not verifying the social provider access token before authenticating a user. This makes it possible for unauthenticated attackers to log in as any patient registered on the system by providing only their email address and an arbitrary value for the access token, bypassing all credential ",
+      "cvss": {
+        "score": 9.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "CRITICAL"
       },
       "tier": 0,
       "matchedProducts": [
         "WordPress"
       ],
       "references": [
-        "https://plugins.trac.wordpress.org/browser/subscriptions-for-woocommerce/tags/1.9.0/admin/class-subscriptions-for-woocommerce-admin.php#L831",
-        "https://plugins.trac.wordpress.org/browser/subscriptions-for-woocommerce/tags/1.9.0/includes/class-subscriptions-for-woocommerce.php#L248",
-        "https://plugins.trac.wordpress.org/browser/subscriptions-for-woocommerce/trunk/admin/class-subscriptions-for-woocommerce-admin.php#L831",
-        "https://plugins.trac.wordpress.org/browser/subscriptions-for-woocommerce/trunk/includes/class-subscriptions-for-woocommerce.php#L248",
-        "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&new=3470887%40subscriptions-for-woocommerce%2Ftrunk&old=3449291%40subscriptions-for-woocommerce%2Ftrunk&sfp_email=&sfph_mail="
+        "https://plugins.trac.wordpress.org/browser/kivicare-clinic-management-system/trunk/app/controllers/api/AuthController.php#L1852",
+        "https://plugins.trac.wordpress.org/browser/kivicare-clinic-management-system/trunk/app/controllers/api/AuthController.php#L284",
+        "https://plugins.trac.wordpress.org/changeset/3467409/",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/8d22448b-aa8e-4775-b7c5-e7bae94a3f6d?source=cve"
       ],
-      "published": "2026-03-18T04:17:14.887"
+      "published": "2026-03-18T16:16:27.400"
     },
     {
-      "id": "CVE-2026-27811",
-      "description": "Roxy-WI is a web interface for managing Haproxy, Nginx, Apache and Keepalived servers. Prior to version 8.2.6.3, a command injection vulnerability exists in the `/config/compare/<service>/<server_ip>/show` endpoint, allowed authenticated users to execute arbitrary system commands on the app host. The vulnerability exists in `app/modules/config/config.py` on line 362, where user input is directly formatted in the template string that is eventually executed. Version 8.2.6.3 fixes the issue.",
+      "id": "CVE-2026-32633",
+      "description": "Glances is an open-source system cross-platform monitoring tool. Prior to version 4.5.2, in Central Browser mode, the `/api/4/serverslist` endpoint returns raw server objects from `GlancesServersList.get_servers_list()`. Those objects are mutated in-place during background polling and can contain a `uri` field with embedded HTTP Basic credentials for downstream Glances servers, using the reusable pbkdf2-derived Glances authentication secret. If the front Glances Browser/API instance is started w",
+      "cvss": {
+        "score": 9.1,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
+        "severity": "CRITICAL"
+      },
+      "tier": 0,
+      "matchedProducts": [
+        "Monit"
+      ],
+      "references": [
+        "https://github.com/nicolargo/glances/commit/879ef8688ffa1630839549751d3c7ef9961d361e",
+        "https://github.com/nicolargo/glances/releases/tag/v4.5.2",
+        "https://github.com/nicolargo/glances/security/advisories/GHSA-r297-p3v4-wp8m",
+        "https://github.com/nicolargo/glances/security/advisories/GHSA-r297-p3v4-wp8m"
+      ],
+      "published": "2026-03-18T18:16:28.933"
+    },
+    {
+      "id": "CVE-2026-32255",
+      "description": "Kan is an open-source project management tool. In versions 0.5.4 and below, the /api/download/attatchment endpoint has no authentication and no URL validation. The Attachment Download endpoint accepts a user-supplied URL query parameter and passes it directly to fetch() server-side, and returns the full response body. An unauthenticated attacker can use this to make HTTP requests from the server to internal services, cloud metadata endpoints, or private network resources. This issue has been fix",
+      "cvss": {
+        "score": 8.6,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:N/A:N",
+        "severity": "HIGH"
+      },
+      "tier": 0,
+      "matchedProducts": [
+        "Nginx"
+      ],
+      "references": [
+        "https://github.com/kanbn/kan/commit/53397d8e81dc1494d94132848c1f0416f1152bd7",
+        "https://github.com/kanbn/kan/releases/tag/v0.5.5",
+        "https://github.com/kanbn/kan/security/advisories/GHSA-qrx8-9hc6-jvqg"
+      ],
+      "published": "2026-03-19T00:16:18.003"
+    },
+    {
+      "id": "CVE-2026-32596",
+      "description": "Glances is an open-source system cross-platform monitoring tool. Prior to 4.5.2, Glances web server runs without authentication by default when started with `glances -w`, exposing REST API with sensitive system information including process command-lines containing credentials (passwords, API keys, tokens) to any network client. Version 4.5.2 fixes the issue.",
+      "cvss": {
+        "score": 7.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+        "severity": "HIGH"
+      },
+      "tier": 0,
+      "matchedProducts": [
+        "Monit"
+      ],
+      "references": [
+        "https://github.com/nicolargo/glances/commit/208d876118fea5758970f33fd7474908bd403d25",
+        "https://github.com/nicolargo/glances/releases/tag/v4.5.2",
+        "https://github.com/nicolargo/glances/security/advisories/GHSA-wvxv-4j8q-4wjq"
+      ],
+      "published": "2026-03-18T06:16:18.800"
+    },
+    {
+      "id": "CVE-2026-32609",
+      "description": "Glances is an open-source system cross-platform monitoring tool. The GHSA-gh4x fix (commit 5d3de60) addressed unauthenticated configuration secrets exposure on the `/api/v4/config` endpoints by introducing `as_dict_secure()` redaction. However, the `/api/v4/args` and `/api/v4/args/{item}` endpoints were not addressed by this fix. These endpoints return the complete command-line arguments namespace via `vars(self.args)`, which includes the password hash (salt + pbkdf2_hmac), SNMP community string",
+      "cvss": {
+        "score": 7.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+        "severity": "HIGH"
+      },
+      "tier": 0,
+      "matchedProducts": [
+        "Monit"
+      ],
+      "references": [
+        "https://github.com/nicolargo/glances/commit/ff14eb9780ee10ec018c754754b1c8c7bfb6c44f",
+        "https://github.com/nicolargo/glances/releases/tag/v4.5.2",
+        "https://github.com/nicolargo/glances/security/advisories/GHSA-cvwp-r2g2-j824"
+      ],
+      "published": "2026-03-18T15:16:30.780"
+    },
+    {
+      "id": "CVE-2026-32944",
+      "description": "Parse Server is an open source backend that can be deployed to any infrastructure that can run Node.js. Prior to 9.6.0-alpha.21 and 8.6.45, an unauthenticated attacker can crash the Parse Server process by sending a single request with deeply nested query condition operators. This terminates the server and denies service to all connected clients. Starting in version 9.6.0-alpha.21 and 8.6.45, a depth limit for query condition operator nesting has been added via the `requestComplexity.queryDepth`",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 0,
+      "matchedProducts": [
+        "Node.js"
+      ],
+      "references": [
+        "https://github.com/parse-community/parse-server/pull/10202",
+        "https://github.com/parse-community/parse-server/pull/10203",
+        "https://github.com/parse-community/parse-server/security/advisories/GHSA-9xp9-j92r-p88v"
+      ],
+      "published": "2026-03-18T22:16:25.970"
+    },
+    {
+      "id": "CVE-2026-32703",
+      "description": "OpenProject is an open-source, web-based project management software. In versions prior to 16.6.9, 17.0.6, 17.1.3, and 17.2.1, the Repositories module did not properly escape filenames displayed from repositories. This allowed an attacker with push access into the repository to create commits with filenames that included HTML code that was injected in the page without proper sanitation. This allowed a persisted XSS attack against all members of this project that accessed the repositories page to",
+      "cvss": {
+        "score": 9.0,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:H/I:H/A:H",
+        "severity": "CRITICAL"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "ESET"
+      ],
+      "references": [
+        "https://github.com/opf/openproject/security/advisories/GHSA-p423-72h4-fjvp"
+      ],
+      "published": "2026-03-18T22:16:24.517"
+    },
+    {
+      "id": "CVE-2026-1463",
+      "description": "The Photo Gallery, Sliders, Proofing and Themes \u2013 NextGEN Gallery plugin for WordPress is vulnerable to Local File Inclusion in all versions up to, and including, 4.0.3 via the 'template' parameter in gallery shortcodes. This makes it possible for authenticated attackers, with Author-level access and above, to include and execute arbitrary .php files on the server, allowing the execution of any PHP code in those files. This can be used to bypass access controls, obtain sensitive data, or achieve",
       "cvss": {
         "score": 8.8,
         "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
@@ -40,75 +169,328 @@
       },
       "tier": 1,
       "matchedProducts": [
-        "Nginx"
+        "WordPress"
       ],
       "references": [
-        "https://github.com/roxy-wi/roxy-wi/commit/a10ac7306c252014f97a7213db4a9470300fa064",
-        "https://github.com/roxy-wi/roxy-wi/releases/tag/v8.2.6.3",
-        "https://github.com/roxy-wi/roxy-wi/security/advisories/GHSA-jvmv-cw47-jh77"
+        "https://plugins.trac.wordpress.org/browser/nextgen-gallery/tags/4.0.3/src/DisplayType/Controller.php#L369",
+        "https://plugins.trac.wordpress.org/browser/nextgen-gallery/tags/4.0.3/src/DisplayType/LegacyTemplateLocator.php#L140",
+        "https://plugins.trac.wordpress.org/changeset/3460327/nextgen-gallery/trunk/src/DisplayType/LegacyTemplateLocator.php?old=3423202&old_path=nextgen-gallery%2Ftrunk%2Fsrc%2FDisplayType%2FLegacyTemplateLocator.php",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/2d7bc556-cdaf-42a7-8801-ad2e4945a137?source=cve"
       ],
-      "published": "2026-03-18T00:16:19.427"
+      "published": "2026-03-18T17:16:05.510"
     },
     {
-      "id": "CVE-2026-4064",
-      "description": "Missing authorization checks on multiple gRPC service endpoints in PowerShell Universal before 2026.1.4 allows an authenticated user with any valid token to bypass role-based access controls and perform privileged operations \u2014 including reading sensitive data, creating or deleting resources, and disrupting service operations \u2014 via crafted gRPC requests.",
+      "id": "CVE-2026-2992",
+      "description": "The KiviCare \u2013 Clinic & Patient Management System (EHR) plugin for WordPress is vulnerable to Privilege Escalation due to missing authorization on the `/wp-json/kivicare/v1/setup-wizard/clinic` REST API endpoint in all versions up to, and including, 4.1.2. This makes it possible for unauthenticated attackers to create a new clinic and a WordPress user with clinic admin privileges.",
       "cvss": {
-        "score": 8.3,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:L",
+        "score": 8.2,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:H/A:N",
         "severity": "HIGH"
       },
       "tier": 1,
       "matchedProducts": [
-        "PowerShell"
+        "WordPress"
       ],
       "references": [
-        "https://devolutions.net/security/advisories/DEVO-2026-0008"
+        "https://plugins.trac.wordpress.org/browser/kivicare-clinic-management-system/trunk/app/controllers/api/SetupWizardController.php#L162",
+        "https://plugins.trac.wordpress.org/browser/kivicare-clinic-management-system/trunk/app/controllers/api/SetupWizardController.php#L31",
+        "https://plugins.trac.wordpress.org/changeset/3467409/",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/d96743ea-08b1-4b4c-9d62-558b97a6e297?source=cve"
       ],
-      "published": "2026-03-17T20:16:14.717"
+      "published": "2026-03-18T16:16:27.583"
     },
     {
-      "id": "CVE-2026-3888",
-      "description": "Local privilege escalation in snapd on Linux allows local attackers to get root privilege by re-creating snap's private /tmp directory when systemd-tmpfiles is configured to automatically clean up this directory. This issue affects Ubuntu 16.04 LTS, 18.04 LTS, 20.04 LTS, 22.04 LTS, and 24.04 LTS.",
+      "id": "CVE-2026-32610",
+      "description": "Glances is an open-source system cross-platform monitoring tool. Prior to version 4.5.2, the Glances REST API web server ships with a default CORS configuration that sets `allow_origins=[\"*\"]` combined with `allow_credentials=True`. When both of these options are enabled together, Starlette's `CORSMiddleware` reflects the requesting `Origin` header value in the `Access-Control-Allow-Origin` response header instead of returning the literal `*` wildcard. This effectively grants any website the abi",
       "cvss": {
-        "score": 7.8,
-        "vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:C/C:H/I:H/A:H",
+        "score": 8.1,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:N",
         "severity": "HIGH"
       },
-      "tier": 2,
-      "matchedProducts": [
-        "Ubuntu"
-      ],
-      "references": [
-        "https://blog.qualys.com/vulnerabilities-threat-research/2026/03/17/cve-2026-3888-important-snap-flaw-enables-local-privilege-escalation-to-root",
-        "https://cdn2.qualys.com/advisory/2026/03/17/snap-confine-systemd-tmpfiles.txt",
-        "https://discourse.ubuntu.com/t/snapd-local-privilege-escalation-cve-2026-3888",
-        "https://ubuntu.com/security/CVE-2026-3888",
-        "https://ubuntu.com/security/notices/USN-8102-1"
-      ],
-      "published": "2026-03-17T14:16:17.410"
-    },
-    {
-      "id": "CVE-2026-32254",
-      "description": "Kube-router is a turnkey solution for Kubernetes networking. Prior to version 2.8.0, Kube-router's proxy module does not validate externalIPs or loadBalancer IPs before programming them into the node's network configuration. Version 2.8.0 contains a patch for the issue. Available workarounds include enabling DenyServiceExternalIPs feature gate, deploying admission policy, restricting service creation RBAC, monitoring service changes, and applying BGP prefix filtering.",
-      "cvss": {
-        "score": 7.1,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 2,
+      "tier": 1,
       "matchedProducts": [
         "Monit"
       ],
       "references": [
-        "https://github.com/cloudnativelabs/kube-router/commit/a1f0b2eea3ee0f66b9a5b5c49dcb714619ccd456",
-        "https://github.com/cloudnativelabs/kube-router/releases/tag/v2.8.0",
-        "https://github.com/cloudnativelabs/kube-router/security/advisories/GHSA-phqm-jgc3-qf8g"
+        "https://github.com/nicolargo/glances/commit/4465169b71d93991f1e49740fe02428291099832",
+        "https://github.com/nicolargo/glances/releases/tag/v4.5.2",
+        "https://github.com/nicolargo/glances/security/advisories/GHSA-9jfm-9rc6-2hfq"
       ],
-      "published": "2026-03-18T04:17:24.340"
+      "published": "2026-03-18T17:16:06.947"
     },
     {
-      "id": "CVE-2026-4268",
-      "description": "The WP Go Maps (formerly WP Google Maps) plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the \u2018wpgmza_custom_js\u2019 parameter in all versions up to, and including, 10.0.05 due to insufficient input sanitization and output escaping and missing capability check in the 'admin_post_wpgmza_save_settings' hook anonymous function. This makes it possible for authenticated attackers, with Subscriber-level access and above, to inject arbitrary web scripts in pages that will execute whene",
+      "id": "CVE-2026-32634",
+      "description": "Glances is an open-source system cross-platform monitoring tool. Prior to version 4.5.2, in Central Browser mode, Glances stores both the Zeroconf-advertised server name and the discovered IP address for dynamic servers, but later builds connection URIs from the untrusted advertised name instead of the discovered IP. When a dynamic server reports itself as protected, Glances also uses that same untrusted name as the lookup key for saved passwords and the global `[passwords] default` credential. ",
+      "cvss": {
+        "score": 8.1,
+        "vector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Monit"
+      ],
+      "references": [
+        "https://github.com/nicolargo/glances/commit/61d38eec521703e41e4933d18d5a5ef6f854abd5",
+        "https://github.com/nicolargo/glances/releases/tag/v4.5.2",
+        "https://github.com/nicolargo/glances/security/advisories/GHSA-vx5f-957p-qpvm",
+        "https://github.com/nicolargo/glances/security/advisories/GHSA-vx5f-957p-qpvm"
+      ],
+      "published": "2026-03-18T18:16:29.097"
+    },
+    {
+      "id": "CVE-2026-32730",
+      "description": "ApostropheCMS is an open-source content management framework. Prior to version 4.28.0, the bearer token authentication middleware in `@apostrophecms/express/index.js` (lines 386-389) contains an incorrect MongoDB query that allows incomplete login tokens \u2014 where the password was verified but TOTP/MFA requirements were NOT \u2014 to be used as fully authenticated bearer tokens. This completely bypasses multi-factor authentication for any ApostropheCMS deployment using `@apostrophecms/login-totp` or an",
+      "cvss": {
+        "score": 8.1,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "MongoDB"
+      ],
+      "references": [
+        "https://github.com/apostrophecms/apostrophe/security/advisories/GHSA-v9xm-ffx2-7h35"
+      ],
+      "published": "2026-03-18T23:17:29.370"
+    },
+    {
+      "id": "CVE-2026-32608",
+      "description": "Glances is an open-source system cross-platform monitoring tool. The Glances action system allows administrators to configure shell commands that execute when monitoring thresholds are exceeded. These commands support Mustache template variables (e.g., `{{name}}`, `{{key}}`) that are populated with runtime monitoring data. The `secure_popen()` function, which executes these commands, implements its own pipe, redirect, and chain operator handling by splitting the command string before passing eac",
+      "cvss": {
+        "score": 7.0,
+        "vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Monit"
+      ],
+      "references": [
+        "https://github.com/nicolargo/glances/commit/6f4ec53d967478e69917078e6f73f448001bf107",
+        "https://github.com/nicolargo/glances/releases/tag/v4.5.2",
+        "https://github.com/nicolargo/glances/security/advisories/GHSA-vcv2-q258-wrg7"
+      ],
+      "published": "2026-03-18T07:16:21.447"
+    },
+    {
+      "id": "CVE-2026-32611",
+      "description": "Glances is an open-source system cross-platform monitoring tool. The GHSA-x46r fix (commit 39161f0) addressed SQL injection in the TimescaleDB export module by converting all SQL operations to use parameterized queries and `psycopg.sql` composable objects. However, the DuckDB export module (`glances/exports/glances_duckdb/__init__.py`) was not included in this fix and contains the same class of vulnerability: table names and column names derived from monitoring statistics are directly interpolat",
+      "cvss": {
+        "score": 7.0,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:L/A:L",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Monit"
+      ],
+      "references": [
+        "https://github.com/nicolargo/glances/commit/63b7da28895249d775202d639e5531ba63491a5c",
+        "https://github.com/nicolargo/glances/releases/tag/v4.5.2",
+        "https://github.com/nicolargo/glances/security/advisories/GHSA-49g7-2ww7-3vf5",
+        "https://github.com/nicolargo/glances/security/advisories/GHSA-49g7-2ww7-3vf5"
+      ],
+      "published": "2026-03-18T18:16:28.593"
+    },
+    {
+      "id": "CVE-2026-32632",
+      "description": "Glances is an open-source system cross-platform monitoring tool. Glances recently added DNS rebinding protection for the MCP endpoint, but prior to version 4.5.2, the main REST/WebUI FastAPI application still accepts arbitrary `Host` headers and does not apply `TrustedHostMiddleware` or an equivalent host allowlist. As a result, the REST API, WebUI, and token endpoint remain reachable through attacker-controlled domains in classic DNS rebinding scenarios. Once the victim browser has rebound the ",
+      "cvss": {
+        "score": 5.9,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Monit"
+      ],
+      "references": [
+        "https://github.com/nicolargo/glances/commit/5850c564ee10804fdf884823b9c210eb954dd1f9",
+        "https://github.com/nicolargo/glances/releases/tag/v4.5.2",
+        "https://github.com/nicolargo/glances/security/advisories/GHSA-hhcg-r27j-fhv9",
+        "https://github.com/nicolargo/glances/security/advisories/GHSA-hhcg-r27j-fhv9"
+      ],
+      "published": "2026-03-18T18:16:28.760"
+    },
+    {
+      "id": "CVE-2026-32770",
+      "description": "Parse Server is an open source backend that can be deployed to any infrastructure that can run Node.js. Prior to 9.6.0-alpha.19 and 8.6.43, a remote attacker can crash the Parse Server by subscribing to a LiveQuery with an invalid regular expression pattern. The server process terminates when the invalid pattern reaches the regex engine during subscription matching, causing denial of service for all connected clients. The fix in 9.6.0-alpha.19 and 8.6.43 validates regular expression patterns at ",
+      "cvss": {
+        "score": 5.9,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H",
+        "severity": "MEDIUM"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Node.js"
+      ],
+      "references": [
+        "https://github.com/parse-community/parse-server/pull/10197",
+        "https://github.com/parse-community/parse-server/pull/10199",
+        "https://github.com/parse-community/parse-server/security/advisories/GHSA-827p-g5x5-h86c"
+      ],
+      "published": "2026-03-18T22:16:25.343"
+    },
+    {
+      "id": "CVE-2026-32742",
+      "description": "Parse Server is an open source backend that can be deployed to any infrastructure that can run Node.js. Prior to 9.6.0-alpha.17 and 8.6.42, an authenticated user can overwrite server-generated session fields (`sessionToken`, `expiresAt`, `createdWith`) when creating a session object via `POST /classes/_Session`. This allows bypassing the server's session expiration policy by setting an arbitrary far-future expiration date. It also allows setting a predictable session token value. Starting in ver",
+      "cvss": {
+        "score": 4.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Node.js"
+      ],
+      "references": [
+        "https://github.com/parse-community/parse-server/pull/10195",
+        "https://github.com/parse-community/parse-server/pull/10196",
+        "https://github.com/parse-community/parse-server/security/advisories/GHSA-5v7g-9h8f-8pgg"
+      ],
+      "published": "2026-03-18T22:16:25.183"
+    },
+    {
+      "id": "CVE-2026-32728",
+      "description": "Parse Server is an open source backend that can be deployed to any infrastructure that can run Node.js. Prior to 9.6.0-alpha.15 and 8.6.41, an attacker who is allowed to upload files can bypass the file extension filter by appending a MIME parameter (e.g. `;charset=utf-8`) to the `Content-Type` header. This causes the extension validation to fail matching against the blocklist, allowing active content to be stored and served under the application's domain. In addition, certain XML-based file ext",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Node.js"
+      ],
+      "references": [
+        "https://github.com/parse-community/parse-server/commit/4f53ab3cad5502a51a509d53f999e00ff7217b8d",
+        "https://github.com/parse-community/parse-server/commit/c7599c577a02b97eb5e76d4e20517b0283ae73c8",
+        "https://github.com/parse-community/parse-server/pull/10191",
+        "https://github.com/parse-community/parse-server/pull/10192",
+        "https://github.com/parse-community/parse-server/security/advisories/GHSA-42ph-pf9q-cr72"
+      ],
+      "published": "2026-03-18T22:16:24.983"
+    },
+    {
+      "id": "CVE-2026-32878",
+      "description": "Parse Server is an open source backend that can be deployed to any infrastructure that can run Node.js. Prior to 9.6.0-alpha.20 and 8.6.44, an attacker can bypass the default request keyword denylist protection and the class-level permission for adding fields by sending a crafted request that exploits prototype pollution in the deep copy mechanism. This allows injecting fields into class schemas that have field addition locked down, and can cause permanent schema type conflicts that cannot be re",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Node.js"
+      ],
+      "references": [
+        "https://github.com/parse-community/parse-server/pull/10200",
+        "https://github.com/parse-community/parse-server/pull/10201",
+        "https://github.com/parse-community/parse-server/security/advisories/GHSA-9ccr-fpp6-78qf"
+      ],
+      "published": "2026-03-18T22:16:25.510"
+    },
+    {
+      "id": "CVE-2026-32886",
+      "description": "Parse Server is an open source backend that can be deployed to any infrastructure that can run Node.js. Prior to 9.6.0-alpha.24 and 8.6.47, remote clients can crash the Parse Server process by calling a cloud function endpoint with a crafted function name that traverses the JavaScript prototype chain of a registered cloud function handler, causing a stack overflow. The fix in versions 9.6.0-alpha.24 and 8.6.47 restricts property lookups during cloud function name resolution to own properties onl",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Node.js"
+      ],
+      "references": [
+        "https://github.com/parse-community/parse-server/pull/10210",
+        "https://github.com/parse-community/parse-server/pull/10211",
+        "https://github.com/parse-community/parse-server/security/advisories/GHSA-4263-jgmp-7pf4"
+      ],
+      "published": "2026-03-18T22:16:25.663"
+    },
+    {
+      "id": "CVE-2026-32943",
+      "description": "Parse Server is an open source backend that can be deployed to any infrastructure that can run Node.js. Prior to 9.6.0-alpha.28 and 8.6.48, the password reset mechanism does not enforce single-use guarantees for reset tokens. When a user requests a password reset, the generated token can be consumed by multiple concurrent requests within a short time window. An attacker who has intercepted a password reset token can race the legitimate user's password reset request, causing both requests to succ",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Node.js",
+        "ESET"
+      ],
+      "references": [
+        "https://github.com/parse-community/parse-server/pull/10216",
+        "https://github.com/parse-community/parse-server/pull/10217",
+        "https://github.com/parse-community/parse-server/security/advisories/GHSA-r3xq-68wh-gwvh"
+      ],
+      "published": "2026-03-18T22:16:25.810"
+    },
+    {
+      "id": "CVE-2026-33042",
+      "description": "Parse Server is an open source backend that can be deployed to any infrastructure that can run Node.js. Prior to 9.6.0-alpha.29 and 8.6.49, a user can sign up without providing credentials by sending an empty `authData` object, bypassing the username and password requirement. This allows the creation of authenticated sessions without proper credentials, even when anonymous users are disabled. The fix in 9.6.0-alpha.29 and 8.6.49 ensures that empty or non-actionable `authData` is treated the same",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Node.js"
+      ],
+      "references": [
+        "https://github.com/parse-community/parse-server/pull/10219",
+        "https://github.com/parse-community/parse-server/pull/10220",
+        "https://github.com/parse-community/parse-server/security/advisories/GHSA-wjqw-r9x4-j59v"
+      ],
+      "published": "2026-03-18T22:16:26.120"
+    },
+    {
+      "id": "CVE-2026-33163",
+      "description": "Parse Server is an open source backend that can be deployed to any infrastructure that can run Node.js. Prior to 9.6.0-alpha.35 and 8.6.50, when a `Parse.Cloud.afterLiveQueryEvent` trigger is registered for a class, the LiveQuery server leaks protected fields and `authData` to all subscribers of that class. Fields configured as protected via Class-Level Permissions (`protectedFields`) are included in LiveQuery event payloads for all event types (create, update, delete, enter, leave). Any user wi",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Node.js"
+      ],
+      "references": [
+        "https://github.com/parse-community/parse-server/pull/10232",
+        "https://github.com/parse-community/parse-server/pull/10233",
+        "https://github.com/parse-community/parse-server/security/advisories/GHSA-5hmj-jcgp-6hff"
+      ],
+      "published": "2026-03-18T22:16:26.270"
+    },
+    {
+      "id": "CVE-2026-3090",
+      "description": "The Post SMTP \u2013 Complete Email Deliverability and SMTP Solution with Email Logs, Alerts, Backup SMTP & Mobile App plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the \u2018event_type\u2019 parameter in all versions up to, and including, 3.8.0 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. The vulnerability is only expl",
+      "cvss": {
+        "score": 7.2,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N",
+        "severity": "HIGH"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/post-smtp/trunk/Postman/PostmanEmailLogs.php#L459",
+        "https://plugins.trac.wordpress.org/changeset/3484515/",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/3f8cbbbb-2089-4966-8fd3-da4f76fb2517?source=cve"
+      ],
+      "published": "2026-03-18T16:16:28.560"
+    },
+    {
+      "id": "CVE-2026-2512",
+      "description": "The Code Embed plugin for WordPress is vulnerable to Stored Cross-Site Scripting via custom field meta values in all versions up to, and including, 2.5.1. This is due to the plugin's sanitization function `sec_check_post_fields()` only running on the `save_post` hook, while WordPress allows custom fields to be added via the `wp_ajax_add_meta` AJAX endpoint without triggering `save_post`. The `ce_filter()` function then outputs these unsanitized meta values directly into page content without esca",
       "cvss": {
         "score": 6.4,
         "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
@@ -119,14 +501,17 @@
         "WordPress"
       ],
       "references": [
-        "https://plugins.trac.wordpress.org/browser/wp-google-maps/tags/10.0.04/includes/class.settings-page.php#L145",
-        "https://www.wordfence.com/threat-intel/vulnerabilities/id/d5599101-a7bd-4aa7-91da-f11694bdc000?source=cve"
+        "https://plugins.trac.wordpress.org/browser/simple-embed-code/trunk/includes/add-embeds.php#L20",
+        "https://plugins.trac.wordpress.org/browser/simple-embed-code/trunk/includes/add-embeds.php#L84",
+        "https://plugins.trac.wordpress.org/browser/simple-embed-code/trunk/includes/secure.php#L25",
+        "https://plugins.trac.wordpress.org/changeset/3482994/",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/375ed04b-a3cb-4e60-83c8-18bff583aaf4?source=cve"
       ],
-      "published": "2026-03-18T02:16:25.047"
+      "published": "2026-03-18T16:16:27.030"
     },
     {
-      "id": "CVE-2026-1780",
-      "description": "The [CR]Paid Link Manager plugin for WordPress is vulnerable to Reflected Cross-Site Scripting via the URL path in all versions up to, and including, 0.5 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that execute if they can successfully trick a user into performing an action such as clicking on a link.",
+      "id": "CVE-2026-3512",
+      "description": "The Writeprint Stylometry plugin for WordPress is vulnerable to Reflected Cross-Site Scripting via the 'p' GET parameter in all versions up to and including 0.1. This is due to insufficient input sanitization and output escaping in the bjl_wprintstylo_comments_nav() function. The function directly outputs the $_GET['p'] parameter into an HTML href attribute without any escaping. This makes it possible for authenticated attackers with Contributor-level permissions or higher to inject arbitrary we",
       "cvss": {
         "score": 6.1,
         "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
@@ -137,67 +522,95 @@
         "WordPress"
       ],
       "references": [
-        "https://plugins.trac.wordpress.org/log/crpaid-link-manager/tags?rev=3479722",
-        "https://www.wordfence.com/threat-intel/vulnerabilities/id/e5b00388-48b8-4e82-ab52-1cd3d02177b7?source=cve"
+        "https://plugins.trac.wordpress.org/browser/writeprint-stylometry/tags/0.1/writeprint-stylometry.php#L341",
+        "https://plugins.trac.wordpress.org/browser/writeprint-stylometry/tags/0.1/writeprint-stylometry.php#L345",
+        "https://plugins.trac.wordpress.org/browser/writeprint-stylometry/trunk/writeprint-stylometry.php#L341",
+        "https://plugins.trac.wordpress.org/browser/writeprint-stylometry/trunk/writeprint-stylometry.php#L345",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/5a614ce5-faa4-4b27-84bd-f15f8652d477?source=cve"
       ],
-      "published": "2026-03-18T04:17:14.073"
+      "published": "2026-03-18T07:16:21.633"
     },
     {
-      "id": "CVE-2026-3563",
-      "description": "Improper input validation in the apps and endpoints configuration in PowerShell Universal before 2026.1.4 allows an authenticated user with permissions to create or modify Apps or Endpoints to override existing application or system routes, resulting in unintended request routing and denial of service via a conflicting URL path.",
+      "id": "CVE-2025-15363",
+      "description": "The Get Use APIs  WordPress plugin before 2.0.10 executes imported JSON, which could allow users with a role as low as contributor to perform Cross-Site Scripting attacks under certain server configurations.",
       "cvss": {
-        "score": 5.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:H/A:L",
+        "score": 5.9,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:R/S:C/C:L/I:L/A:L",
         "severity": "MEDIUM"
       },
       "tier": 2,
       "matchedProducts": [
-        "PowerShell"
+        "WordPress"
       ],
       "references": [
-        "https://devolutions.net/security/advisories/DEVO-2026-0008"
+        "https://wpscan.com/vulnerability/428d08bb-5329-4406-a785-131bae4ed085/"
       ],
-      "published": "2026-03-17T20:16:14.587"
+      "published": "2026-03-18T07:16:21.187"
     },
     {
-      "id": "CVE-2026-32839",
-      "description": "Edimax GS-5008PL firmware version 1.00.54 and prior contain a cross-site request forgery vulnerability that allows remote attackers to perform unauthorized administrative actions by inducing logged-in administrators to visit malicious pages. Attackers can exploit the lack of anti-CSRF tokens and request validation to change passwords, upload firmware, reboot the device, perform factory resets, or modify network configurations.",
+      "id": "CVE-2026-1217",
+      "description": "The Yoast Duplicate Post plugin for WordPress is vulnerable to unauthorized modification of data due to a missing capability check on the clone_bulk_action_handler() and republish_request() functions in all versions up to, and including, 4.5. This makes it possible for authenticated attackers, with Contributor-level access and above, to duplicate any post on the site including private, draft, and trashed posts they shouldn't have access to. Additionally, attackers with Author-level access and ab",
       "cvss": {
-        "score": 4.3,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N",
+        "score": 5.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N",
         "severity": "MEDIUM"
       },
+      "tier": 2,
+      "matchedProducts": [
+        "WordPress",
+        "Yoast SEO"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/duplicate-post/tags/4.5/src/handlers/bulk-handler.php#L115",
+        "https://plugins.trac.wordpress.org/browser/duplicate-post/tags/4.5/src/post-republisher.php#L128",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/05f175e6-08a9-4199-948c-5bd8b3caaa39?source=cve"
+      ],
+      "published": "2026-03-18T10:16:23.960"
+    },
+    {
+      "id": "CVE-2026-2559",
+      "description": "The Post SMTP plugin for WordPress is vulnerable to unauthorized modification of data due to a missing capability check on the `handle_office365_oauth_redirect()` function in all versions up to, and including, 3.8.0. This is due to the function being hooked to `admin_init` without any `current_user_can()` check or nonce verification. This makes it possible for authenticated attackers, with Subscriber-level access and above, to overwrite the site's Office 365 OAuth mail configuration (access toke",
+      "cvss": {
+        "score": 5.3,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:N/I:H/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "Microsoft Office",
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/post-smtp/trunk/Postman/Wizard/NewWizard.php#L104",
+        "https://plugins.trac.wordpress.org/browser/post-smtp/trunk/Postman/Wizard/NewWizard.php#L2109",
+        "https://plugins.trac.wordpress.org/changeset/3484515/",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/323436b5-fbfe-4923-8b08-93c1fcabc016?source=cve"
+      ],
+      "published": "2026-03-18T16:16:27.217"
+    },
+    {
+      "id": "CVE-2026-23253",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: dvb-core: fix wrong reinitialization of ringbuffer on reopen\n\ndvb_dvr_open() calls dvb_ringbuffer_init() when a new reader opens the\nDVR device.  dvb_ringbuffer_init() calls init_waitqueue_head(), which\nreinitializes the waitqueue list head to empty.\n\nSince dmxdev->dvr_buffer.queue is a shared waitqueue (all opens of the\nsame DVR device share it), this orphans any existing waitqueue entries\nfrom io_uring poll or epoll, l",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
       "tier": 3,
       "matchedProducts": [
         "ESET"
       ],
       "references": [
-        "https://www.edimax.com/edimax/merchandise/merchandise_detail/data/edimax/us/smb_legacy_switches/gs-5008pl/",
-        "https://www.edimax.com/edimax/merchandise/merchandise_list/data/edimax/us/smb_legacy_products/",
-        "https://www.vulncheck.com/advisories/edimax-gs-5008pl-csrf-via-management-cgi-endpoints"
+        "https://git.kernel.org/stable/c/32eb8e4adc207ef31bc6e5ae56bab940b0176066",
+        "https://git.kernel.org/stable/c/bfbc0b5b32a8f28ce284add619bf226716a59bc0",
+        "https://git.kernel.org/stable/c/cfd94642025e6f71c8f754bdec0800ee95e4f3dd",
+        "https://git.kernel.org/stable/c/d71781bad59b1c9d60d7068004581f9bf19c0c9d"
       ],
-      "published": "2026-03-17T22:16:14.673"
+      "published": "2026-03-18T18:16:23.383"
     },
     {
-      "id": "CVE-2026-4359",
-      "description": "A compromised third party cloud server or man-in-the-middle attacker could send a malformed HTTP response and cause a crash in applications using the MongoDB C driver.",
-      "cvss": {
-        "score": 2.0,
-        "vector": "CVSS:3.1/AV:N/AC:H/PR:H/UI:R/S:U/C:N/I:N/A:L",
-        "severity": "LOW"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "MongoDB"
-      ],
-      "references": [
-        "https://jira.mongodb.org/browse/CDRIVER-6251"
-      ],
-      "published": "2026-03-17T20:16:15.233"
-    },
-    {
-      "id": "CVE-2026-4208",
-      "description": "The extension fails to properly reset the generated MFA code after successful authentication. This leads to a possible MFA bypass for future login attempts by providing an empty string as MFA code to the extensions MFA provider.",
+      "id": "CVE-2025-58112",
+      "description": "Microsoft Dynamics 365 Customer Engagement (on-premises) 1612 (9.0.2.3034) allows the generation of customized reports via raw SQL queries in an upload of a .rdl (Report Definition Language) file; this is then processed by the SQL Server Reporting Service. An account with the privilege Add Reporting Services Reports can upload a malicious rdl file. If the malicious rdl file is already loaded and it is executable by the user, the Add Reporting Services Reports privilege is not required. A malicio",
       "cvss": {
         "score": null,
         "vector": null,
@@ -205,87 +618,13 @@
       },
       "tier": 3,
       "matchedProducts": [
-        "ESET"
+        "MSSQL"
       ],
       "references": [
-        "https://typo3.org/security/advisory/typo3-ext-sa-2026-007"
+        "https://gist.github.com/Redteam-LongwaveSpa/141f6c52ce49f9c0f49989c7d6940abd",
+        "https://microsoft.com"
       ],
-      "published": "2026-03-17T09:16:14.810"
-    },
-    {
-      "id": "CVE-2026-30707",
-      "description": "An issue was discovered in SpeedExam Online Examination System (SaaS) after v.FEV2026. It allows Broken Access Control via the ReviewAnswerDetails ASP.NET PageMethod. Authenticated attackers can bypass client-side restrictions and invoke this method directly to retrieve the full answer key",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "Microsoft .NET"
-      ],
-      "references": [
-        "https://github.com/Maarckz/VulnReports/blob/main/CVE-2026-30707.md",
-        "https://github.com/Maarckz/VulnReports/blob/main/SpeedExam%20%28SECOPS.GROUP%29.md"
-      ],
-      "published": "2026-03-17T20:16:13.870"
-    },
-    {
-      "id": "CVE-2026-26004",
-      "description": "Sentry is a developer-first error tracking and performance monitoring tool. Versions prior to 26.1.0 have a cross-organization Insecure Direct Object Reference (IDOR) vulnerability in Sentry's GroupEventJsonView endpoint. Version 26.1.0 patches the issue.",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "Monit"
-      ],
-      "references": [
-        "https://github.com/getsentry/sentry/commit/45bc78fd57514a04eb62e73dd1eeb3ca2d723997",
-        "https://github.com/getsentry/sentry/pull/105601",
-        "https://securitylab.github.com/advisories/GHSL-2025-130_Sentry/"
-      ],
-      "published": "2026-03-18T00:16:18.943"
-    },
-    {
-      "id": "CVE-2026-27448",
-      "description": "pyOpenSSL is a Python wrapper around the OpenSSL library. Starting in version 0.14.0 and prior to version 26.0.0, if a user provided callback to `set_tlsext_servername_callback` raised an unhandled exception, this would result in a connection being accepted. If a user was relying on this callback for any security-sensitive behavior, this could allow bypassing it. Starting in version 26.0.0, unhandled exceptions now result in rejecting the connection.",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "OpenSSL"
-      ],
-      "references": [
-        "https://github.com/pyca/pyopenssl/blob/358cbf29c4e364c59930e53a270116249581eaa3/CHANGELOG.rst#L27",
-        "https://github.com/pyca/pyopenssl/commit/d41a814759a9fb49584ca8ab3f7295de49a85aa0",
-        "https://github.com/pyca/pyopenssl/security/advisories/GHSA-vp96-hxj8-p424"
-      ],
-      "published": "2026-03-18T00:16:19.107"
-    },
-    {
-      "id": "CVE-2026-27459",
-      "description": "pyOpenSSL is a Python wrapper around the OpenSSL library. Starting in version 22.0.0 and prior to version 26.0.0, if a user provided callback to `set_cookie_generate_callback` returned a cookie value greater than 256 bytes, pyOpenSSL would overflow an OpenSSL provided buffer. Starting in version 26.0.0, cookie values that are too long are now rejected.",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "OpenSSL"
-      ],
-      "references": [
-        "https://github.com/pyca/pyopenssl/blob/358cbf29c4e364c59930e53a270116249581eaa3/CHANGELOG.rst",
-        "https://github.com/pyca/pyopenssl/commit/57f09bb4bb051d3bc2a1abd36e9525313d5cd408",
-        "https://github.com/pyca/pyopenssl/security/advisories/GHSA-5pwr-322w-8jr4"
-      ],
-      "published": "2026-03-18T00:16:19.273"
+      "published": "2026-03-18T19:16:03.497"
     }
   ]
 }
