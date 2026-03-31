@@ -1,20 +1,255 @@
 {
-  "scanTime": "2026-03-30 05:36:38 UTC",
-  "totalMatched": 2,
+  "scanTime": "2026-03-31 05:23:36 UTC",
+  "totalMatched": 30,
   "productsMonitored": 147,
   "tierCounts": {
-    "0": 0,
-    "1": 0,
-    "2": 2,
-    "3": 0
+    "0": 4,
+    "1": 9,
+    "2": 12,
+    "3": 5
   },
   "vulnerabilities": [
     {
-      "id": "CVE-2026-3124",
-      "description": "The Download Monitor plugin for WordPress is vulnerable to Insecure Direct Object Reference in all versions up to, and including, 5.1.7 via the executePayment() function due to missing validation on a user controlled key. This makes it possible for unauthenticated attackers to complete arbitrary pending orders by exploiting a mismatch between the PayPal transaction token and the local order, allowing theft of paid digital goods by paying a minimal amount for a low-cost item and using that paymen",
+      "id": "CVE-2026-33032",
+      "description": "Nginx UI is a web user interface for the Nginx web server. In versions 2.3.5 and prior, the nginx-ui MCP (Model Context Protocol) integration exposes two HTTP endpoints: /mcp and /mcp_message. While /mcp requires both IP whitelisting and authentication (AuthRequired() middleware), the /mcp_message endpoint only applies IP whitelisting - and the default IP whitelist is empty, which the middleware treats as \"allow all\". This means any network attacker can invoke all MCP tools without authenticatio",
+      "cvss": {
+        "score": 9.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "CRITICAL"
+      },
+      "tier": 0,
+      "matchedProducts": [
+        "Nginx"
+      ],
+      "references": [
+        "https://github.com/0xJacky/nginx-ui/security/advisories/GHSA-h6c2-x2m2-mwhf",
+        "https://github.com/0xJacky/nginx-ui/security/advisories/GHSA-h6c2-x2m2-mwhf"
+      ],
+      "published": "2026-03-30T18:16:19.410"
+    },
+    {
+      "id": "CVE-2026-4257",
+      "description": "The Contact Form by Supsystic plugin for WordPress is vulnerable to Server-Side Template Injection (SSTI) leading to Remote Code Execution (RCE) in all versions up to, and including, 1.7.36. This is due to the plugin using the Twig `Twig_Loader_String` template engine without sandboxing, combined with the `cfsPreFill` prefill functionality that allows unauthenticated users to inject arbitrary Twig expressions into form field values via GET parameters. This makes it possible for unauthenticated a",
+      "cvss": {
+        "score": 9.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "CRITICAL"
+      },
+      "tier": 0,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/contact-form-by-supsystic/tags/1.7.36/modules/forms/views/forms.php#L323",
+        "https://plugins.trac.wordpress.org/changeset/3491826/contact-form-by-supsystic",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/415c9658-bfb2-453b-a697-c63c08b0ca61?source=cve"
+      ],
+      "published": "2026-03-30T22:16:20.313"
+    },
+    {
+      "id": "CVE-2026-3300",
+      "description": "The Everest Forms Pro plugin for WordPress is vulnerable to Remote Code Execution via PHP Code Injection in all versions up to, and including, 1.9.12. This is due to the Calculation Addon's process_filter() function concatenating user-submitted form field values into a PHP code string without proper escaping before passing it to eval(). The sanitize_text_field() function applied to input does not escape single quotes or other PHP code context characters. This makes it possible for unauthenticate",
+      "cvss": {
+        "score": 9.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "CRITICAL"
+      },
+      "tier": 0,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://everestforms.net/changelog/",
+        "https://plugins.trac.wordpress.org/browser/everest-forms/tags/3.4.3/includes/class-evf-form-task.php#L584",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/389c0b89-e408-4ad5-9723-a16b745771f0?source=cve"
+      ],
+      "published": "2026-03-31T02:15:59.267"
+    },
+    {
+      "id": "CVE-2026-1710",
+      "description": "The WooPayments: Integrated WooCommerce Payments plugin for WordPress is vulnerable to unauthorized modification of data due to a missing capability check on the 'save_upe_appearance_ajax' function in all versions up to, and including, 10.5.1. This makes it possible for unauthenticated attackers to update plugin settings.",
+      "cvss": {
+        "score": 6.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:L",
+        "severity": "MEDIUM"
+      },
+      "tier": 0,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/woocommerce-payments/tags/10.4.0/includes/class-wc-payment-gateway-wcpay.php#L4125",
+        "https://plugins.trac.wordpress.org/changeset/3480315/woocommerce-payments/trunk/includes/class-wc-payment-gateway-wcpay.php",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/cec13225-baa3-4f26-b2d2-af6106888c74?source=cve"
+      ],
+      "published": "2026-03-31T05:16:10.690"
+    },
+    {
+      "id": "CVE-2026-33030",
+      "description": "Nginx UI is a web user interface for the Nginx web server. In versions 2.3.3 and prior, Nginx-UI contains an Insecure Direct Object Reference (IDOR) vulnerability that allows any authenticated user to access, modify, and delete resources belonging to other users. The application's base Model struct lacks a user_id field, and all resource endpoints perform queries by ID without verifying user ownership, enabling complete authorization bypass in multi-user environments. At time of publication, the",
+      "cvss": {
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Nginx"
+      ],
+      "references": [
+        "https://github.com/0xJacky/nginx-ui/security/advisories/GHSA-5hf2-vhj6-gj9m"
+      ],
+      "published": "2026-03-30T18:16:19.243"
+    },
+    {
+      "id": "CVE-2026-28228",
+      "description": "OpenOlat is an open source web-based e-learning platform for teaching, learning, assessment and communication. Prior to versions 19.1.31, 20.1.18, and 20.2.5, an authenticated user with the Author role can inject Velocity directives into a reminder email template. When the reminder is processed (either triggered manually or via the daily cron job), the injected directives are evaluated server-side. By chaining Velocity's #set directive with Java reflection, an attacker can instantiate arbitrary ",
+      "cvss": {
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Apache Tomcat"
+      ],
+      "references": [
+        "https://github.com/OpenOLAT/OpenOLAT/security/advisories/GHSA-55qg-vvgj-ffh4"
+      ],
+      "published": "2026-03-30T21:17:08.740"
+    },
+    {
+      "id": "CVE-2026-5130",
+      "description": "The Debugger & Troubleshooter plugin for WordPress was vulnerable to Unauthenticated Privilege Escalation in versions up to and including 1.3.2. This was due to the plugin accepting the wp_debug_troubleshoot_simulate_user cookie value directly as a user ID without any cryptographic validation or authorization checks. The cookie value was used to override the determine_current_user filter, which allowed unauthenticated attackers to impersonate any user by simply setting the cookie to their target",
+      "cvss": {
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/debugger-troubleshooter/tags/1.3.2/debug-troubleshooter.php#L827",
+        "https://plugins.trac.wordpress.org/browser/debugger-troubleshooter/tags/1.3.2/debug-troubleshooter.php#L849",
+        "https://plugins.trac.wordpress.org/changeset/3486202/debugger-troubleshooter/trunk/debug-troubleshooter.php",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/3e037931-870f-45eb-973c-0276911682ad?source=cve"
+      ],
+      "published": "2026-03-30T23:17:04.177"
+    },
+    {
+      "id": "CVE-2026-34054",
+      "description": "vcpkg is a free and open-source C/C++ package manager. Prior to version 3.6.1#3, vcpkg's Windows builds of OpenSSL set openssldir to a path on the build machine, making that path be attackable later on customer machines. This issue has been patched in version 3.6.1#3.",
+      "cvss": {
+        "score": 7.8,
+        "vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "OpenSSL"
+      ],
+      "references": [
+        "https://github.com/microsoft/vcpkg/commit/5111afdf55cc1429d9951e4c7b02010e659346a9",
+        "https://github.com/microsoft/vcpkg/pull/50518",
+        "https://github.com/microsoft/vcpkg/security/advisories/GHSA-p322-v6vw-vrq9"
+      ],
+      "published": "2026-03-31T03:15:58.593"
+    },
+    {
+      "id": "CVE-2026-21710",
+      "description": "A flaw in Node.js HTTP request handling causes an uncaught `TypeError` when a request is received with a header named `__proto__` and the application accesses `req.headersDistinct`.\r\n\r\nWhen this occurs, `dest[\"__proto__\"]` resolves to `Object.prototype` rather than `undefined`, causing `.push()` to be called on a non-array. This exception is thrown synchronously inside a property getter and cannot be intercepted by `error` event listeners, meaning it cannot be handled without wrapping every `req",
       "cvss": {
         "score": 7.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N",
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Node.js"
+      ],
+      "references": [
+        "https://nodejs.org/en/blog/vulnerability/march-2026-security-releases"
+      ],
+      "published": "2026-03-30T20:16:18.210"
+    },
+    {
+      "id": "CVE-2026-21711",
+      "description": "A flaw in Node.js Permission Model network enforcement leaves Unix Domain Socket (UDS) server operations without the required permission checks, while all comparable network paths correctly enforce them.\r\n\r\nAs a result, code running under `--permission` without `--allow-net` can create and expose local IPC endpoints, allowing communication with other processes on the same host outside of the intended network restriction boundary.\r\n\r\nThis vulnerability affects Node.js **25.x** processes using the",
+      "cvss": {
+        "score": 5.3,
+        "vector": "CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L",
+        "severity": "MEDIUM"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Node.js"
+      ],
+      "references": [
+        "https://nodejs.org/en/blog/vulnerability/march-2026-security-releases"
+      ],
+      "published": "2026-03-30T20:16:19.260"
+    },
+    {
+      "id": "CVE-2026-21715",
+      "description": "A flaw in Node.js Permission Model filesystem enforcement leaves `fs.realpathSync.native()` without the required read permission checks, while all comparable filesystem functions correctly enforce them.\r\n\r\nAs a result, code running under `--permission` with restricted `--allow-fs-read` can still use `fs.realpathSync.native()` to check file existence, resolve symlink targets, and enumerate filesystem paths outside of permitted directories.\r\n\r\nThis vulnerability affects **20.x, 22.x, 24.x, and 25.",
+      "cvss": {
+        "score": 3.3,
+        "vector": "CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N",
+        "severity": "LOW"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Node.js"
+      ],
+      "references": [
+        "https://nodejs.org/en/blog/vulnerability/march-2026-security-releases"
+      ],
+      "published": "2026-03-30T20:16:19.703"
+    },
+    {
+      "id": "CVE-2026-33028",
+      "description": "Nginx UI is a web user interface for the Nginx web server. Prior to version 2.3.4, the nginx-ui application is vulnerable to a Race Condition. Due to the complete absence of synchronization mechanisms (Mutex) and non-atomic file writes, concurrent requests lead to the severe corruption of the primary configuration file (app.ini). This vulnerability results in a persistent Denial of Service (DoS) and introduces a non-deterministic path for Remote Code Execution (RCE) through configuration cross-c",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Nginx"
+      ],
+      "references": [
+        "https://github.com/0xJacky/nginx-ui/releases/tag/v2.3.4",
+        "https://github.com/0xJacky/nginx-ui/security/advisories/GHSA-m468-xcm6-fxg4"
+      ],
+      "published": "2026-03-30T18:16:18.947"
+    },
+    {
+      "id": "CVE-2026-30313",
+      "description": "DSAI-Cline's command auto-approval module contains a critical OS command injection vulnerability that renders its whitelist security mechanism completely ineffective. The system relies on string-based parsing to validate commands; while it intercepts dangerous operators such as ;, &&, ||, |, and command substitution patterns, it fails to account for raw newline characters embedded within the input. An attacker can construct a payload by embedding a literal newline between a whitelisted command a",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "PowerShell"
+      ],
+      "references": [
+        "https://github.com/Secsys-FDU/LLM-Tool-Calling-CVEs/issues/9",
+        "https://github.com/necboy/cline-DSAI"
+      ],
+      "published": "2026-03-30T21:17:09.230"
+    },
+    {
+      "id": "CVE-2026-4020",
+      "description": "The Gravity SMTP plugin for WordPress is vulnerable to Sensitive Information Exposure in all versions up to, and including, 2.1.4. This is due to a REST API endpoint registered at /wp-json/gravitysmtp/v1/tests/mock-data with a permission_callback that unconditionally returns true, allowing any unauthenticated visitor to access it. When the ?page=gravitysmtp-settings query parameter is appended, the plugin's register_connector_data() method populates internal connector data, causing the endpoint ",
+      "cvss": {
+        "score": 7.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
         "severity": "HIGH"
       },
       "tier": 2,
@@ -22,17 +257,56 @@
         "WordPress"
       ],
       "references": [
-        "https://plugins.trac.wordpress.org/changeset/3470119/download-monitor",
-        "https://www.wordfence.com/threat-intel/vulnerabilities/id/45527d6c-6866-44e6-85c2-5be984afbbc9?source=cve"
+        "https://docs.gravitysmtp.com/gravity-smtp-changelog/",
+        "https://plugins.trac.wordpress.org/browser/gravitysmtp/tags/2.1.4/vendor/gravityforms/gravity-tools/src/Providers/class-config-collection-service-provider.php#L103",
+        "https://plugins.trac.wordpress.org/browser/gravitysmtp/tags/2.1.4/vendor/gravityforms/gravity-tools/src/Providers/class-config-collection-service-provider.php#L86",
+        "https://plugins.trac.wordpress.org/browser/gravitysmtp/trunk/vendor/gravityforms/gravity-tools/src/Providers/class-config-collection-service-provider.php#L103",
+        "https://plugins.trac.wordpress.org/browser/gravitysmtp/trunk/vendor/gravityforms/gravity-tools/src/Providers/class-config-collection-service-provider.php#L86"
       ],
-      "published": "2026-03-30T02:16:15.630"
+      "published": "2026-03-31T02:15:59.487"
     },
     {
-      "id": "CVE-2026-32919",
-      "description": "OpenClaw before 2026.3.11 contains an authorization bypass vulnerability allowing write-scoped callers to reach admin-only session reset logic. Attackers with operator.write scope can issue agent requests containing /new or /reset slash commands to reset targeted conversation state without holding operator.admin privileges.",
+      "id": "CVE-2026-29953",
+      "description": "SQL Injection vulnerability in SchemaHero 0.23.0 via the column parameter to the columnAsInsert function in file plugins/postgres/lib/column.go.",
       "cvss": {
-        "score": 6.1,
-        "vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:H",
+        "score": 7.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:L",
+        "severity": "HIGH"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "PostgreSQL"
+      ],
+      "references": [
+        "https://gist.github.com/b0b0haha/fb59199fb1fdf9414e76442e0599bfed",
+        "https://github.com/b0b0haha/SchemaHero--Sqlinjection/blob/main/README.md"
+      ],
+      "published": "2026-03-30T16:16:04.433"
+    },
+    {
+      "id": "CVE-2026-33643",
+      "description": "SQL Injection vulnerability in SchemaHero 0.23.0 via the column parameter to the mysqlColumnAsInsert function in file plugins/mysql/lib/column.go.",
+      "cvss": {
+        "score": 7.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:L",
+        "severity": "HIGH"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "MySQL"
+      ],
+      "references": [
+        "https://gist.github.com/b0b0haha/fb59199fb1fdf9414e76442e0599bfed",
+        "https://github.com/b0b0haha/SchemaHero--Sqlinjection/blob/main/README.md"
+      ],
+      "published": "2026-03-30T16:16:06.880"
+    },
+    {
+      "id": "CVE-2026-5165",
+      "description": "A flaw was found in virtio-win, specifically within the VirtIO Block (BLK) device. When the device undergoes a reset, it fails to properly manage memory, resulting in a use-after-free vulnerability. This issue could allow a local attacker to corrupt system memory, potentially leading to system instability or unexpected behavior.",
+      "cvss": {
+        "score": 6.7,
+        "vector": "CVSS:3.1/AV:L/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
         "severity": "MEDIUM"
       },
       "tier": 2,
@@ -40,10 +314,243 @@
         "ESET"
       ],
       "references": [
-        "https://github.com/openclaw/openclaw/security/advisories/GHSA-jf6w-m8jw-jfxc",
-        "https://www.vulncheck.com/advisories/openclaw-unauthorized-session-reset-via-agent-slash-commands"
+        "https://access.redhat.com/security/cve/CVE-2026-5165",
+        "https://bugzilla.redhat.com/show_bug.cgi?id=2453015",
+        "https://github.com/virtio-win/kvm-guest-drivers-windows/pull/1493"
       ],
-      "published": "2026-03-29T13:17:00.380"
+      "published": "2026-03-30T15:16:36.520"
+    },
+    {
+      "id": "CVE-2026-4146",
+      "description": "The Loco Translate plugin for WordPress is vulnerable to Reflected Cross-Site Scripting via the \u2018update_href\u2019 parameter in all versions up to, and including, 2.8.2 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that execute if they can successfully trick a user into performing an action such as clicking on a link.",
+      "cvss": {
+        "score": 6.1,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/loco-translate/tags/2.8.2/src/mvc/View.php#L259",
+        "https://plugins.trac.wordpress.org/browser/loco-translate/tags/2.8.2/tpl/admin/config/version.php#L17",
+        "https://plugins.trac.wordpress.org/changeset/3482475/loco-translate",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/faa6c744-7586-47ee-b2ce-af972ee8b4f7?source=cve"
+      ],
+      "published": "2026-03-31T05:16:11.453"
+    },
+    {
+      "id": "CVE-2026-21713",
+      "description": "A flaw in Node.js HMAC verification uses a non-constant-time comparison when validating user-provided signatures, potentially leaking timing information proportional to the number of matching bytes. Under certain threat models where high-resolution timing measurements are possible, this behavior could be exploited as a timing oracle to infer HMAC values.\r\n\r\nNode.js already provides timing-safe comparison primitives used elsewhere in the codebase, indicating this is an oversight rather than an in",
+      "cvss": {
+        "score": 5.9,
+        "vector": "CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "Node.js"
+      ],
+      "references": [
+        "https://nodejs.org/en/blog/vulnerability/march-2026-security-releases"
+      ],
+      "published": "2026-03-30T20:16:19.397"
+    },
+    {
+      "id": "CVE-2026-21717",
+      "description": "A flaw in V8's string hashing mechanism causes integer-like strings to be hashed to their numeric value, making hash collisions trivially predictable. By crafting a request that causes many such collisions in V8's internal string table, an attacker can significantly degrade performance of the Node.js process.\r\n\r\nThe most common trigger is any endpoint that calls `JSON.parse()` on attacker-controlled input, as JSON parsing automatically internalizes short strings into the affected hash table.\r\n\r\n",
+      "cvss": {
+        "score": 5.9,
+        "vector": "CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "Node.js"
+      ],
+      "references": [
+        "https://nodejs.org/en/blog/vulnerability/march-2026-security-releases"
+      ],
+      "published": "2026-03-30T20:16:20.010"
+    },
+    {
+      "id": "CVE-2026-21712",
+      "description": "A flaw in Node.js URL processing causes an assertion failure in native code when `url.format()` is called with a malformed internationalized domain name (IDN) containing invalid characters, crashing the Node.js process.",
+      "cvss": {
+        "score": 5.7,
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:L/UI:R/S:U/C:N/I:N/A:H",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "Node.js"
+      ],
+      "references": [
+        "https://hackerone.com/reports/3546390",
+        "https://nodejs.org/en/blog/vulnerability/march-2026-security-releases"
+      ],
+      "published": "2026-03-30T16:16:03.510"
+    },
+    {
+      "id": "CVE-2026-5170",
+      "description": "A user with access to the cluster with a limited set of privilege actions can trigger a crash of a\u00a0mongod process during the limited and unpredictable window when the cluster is being promoted from a replica set to a sharded cluster. This may cause a denial of service by taking down the primary of the replica set.\n\nThis issue affects MongoDB Server v8.2 versions prior to 8.2.2, MongoDB Server v8.0 versions between 8.0.18, MongoDB Server v7.0 versions between 7.0.31.",
+      "cvss": {
+        "score": 5.3,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:N/I:N/A:H",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "MongoDB"
+      ],
+      "references": [
+        "https://jira.mongodb.org/browse/SERVER-101758"
+      ],
+      "published": "2026-03-30T16:16:10.610"
+    },
+    {
+      "id": "CVE-2026-21714",
+      "description": "A memory leak occurs in Node.js HTTP/2 servers when a client sends WINDOW_UPDATE frames on stream 0 (connection-level) that cause the flow control window to exceed the maximum value of 2\u00b3\u00b9-1. The server correctly sends a GOAWAY frame, but the Http2Session object is never cleaned up.\r\n\r\nThis vulnerability affects HTTP2 users on Node.js 20, 22, 24 and 25.",
+      "cvss": {
+        "score": 5.3,
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "Node.js"
+      ],
+      "references": [
+        "https://nodejs.org/en/blog/vulnerability/march-2026-security-releases"
+      ],
+      "published": "2026-03-30T20:16:19.573"
+    },
+    {
+      "id": "CVE-2026-33995",
+      "description": "FreeRDP is a free implementation of the Remote Desktop Protocol. Prior to version 3.24.2, a double-free vulnerability in kerberos_AcceptSecurityContext() and kerberos_InitializeSecurityContextA() (WinPR, winpr/libwinpr/sspi/Kerberos/kerberos.c) can cause a crash in any FreeRDP clients on systems where Kerberos and/or Kerberos U2U is configured (Samba AD member, or krb5 for NFS). The crash is triggered during NLA connection teardown and requires a failed authentication attempt. This issue has bee",
+      "cvss": {
+        "score": 5.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "Samba"
+      ],
+      "references": [
+        "https://github.com/FreeRDP/FreeRDP/commit/8078b8af1359055972e4fb2f509f543b69169391",
+        "https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-mv25-f4p2-5mxx"
+      ],
+      "published": "2026-03-30T22:16:20.167"
+    },
+    {
+      "id": "CVE-2026-1797",
+      "description": "The Appointment Booking and Scheduler Plugin \u2013 Truebooker plugin for WordPress is vulnerable to Sensitive Information Exposure in all versions up to, and including, 1.1.4 through views php files. This makes it possible for unauthenticated attackers to view potentially sensitive information contained in the exposed views php files via direct access.",
+      "cvss": {
+        "score": 5.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/truebooker-appointment-booking/tags/1.1.2/main/views/truebooker-user.php",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/4ebe8b63-ea43-4e39-9fdf-e28fb4638433?source=cve"
+      ],
+      "published": "2026-03-31T05:16:10.867"
+    },
+    {
+      "id": "CVE-2025-3716",
+      "description": "User enumeration in ESET Protect (on-prem) via\u00a0Response Timing.",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "ESET"
+      ],
+      "references": [
+        "https://help.eset.com/changelogs/?product=protect&lang=en-US"
+      ],
+      "published": "2026-03-30T08:16:16.380"
+    },
+    {
+      "id": "CVE-2026-33027",
+      "description": "Nginx UI is a web user interface for the Nginx web server. Prior to version 2.3.4, the nginx-ui configuration improperly handles URL-encoded traversal sequences. When specially crafted paths are supplied, the backend resolves them to the base Nginx configuration directory and executes the operation on the base directory (/etc/nginx). In particular, this allows an authenticated user to remove the entire /etc/nginx directory, resulting in a partial Denial of Service. This issue has been patched in",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "Nginx"
+      ],
+      "references": [
+        "https://github.com/0xJacky/nginx-ui/releases/tag/v2.3.4",
+        "https://github.com/0xJacky/nginx-ui/security/advisories/GHSA-m8p8-53vf-8357",
+        "https://github.com/0xJacky/nginx-ui/security/advisories/GHSA-m8p8-53vf-8357"
+      ],
+      "published": "2026-03-30T18:16:18.783"
+    },
+    {
+      "id": "CVE-2026-33029",
+      "description": "Nginx UI is a web user interface for the Nginx web server. Prior to version 2.3.4, an input validation vulnerability in the logrotate configuration allows an authenticated user to cause a complete Denial of Service (DoS). By submitting a negative integer for the rotation interval, the backend enters an infinite loop or an invalid state, rendering the web interface unresponsive. This issue has been patched in version 2.3.4.",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "Nginx"
+      ],
+      "references": [
+        "https://github.com/0xJacky/nginx-ui/releases/tag/v2.3.4",
+        "https://github.com/0xJacky/nginx-ui/security/advisories/GHSA-cp8r-8jvw-v3qg"
+      ],
+      "published": "2026-03-30T18:16:19.097"
+    },
+    {
+      "id": "CVE-2026-33026",
+      "description": "Nginx UI is a web user interface for the Nginx web server. Prior to version 2.3.4, the nginx-ui backup restore mechanism allows attackers to tamper with encrypted backup archives and inject malicious configuration during restoration. This issue has been patched in version 2.3.4.",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "Nginx"
+      ],
+      "references": [
+        "https://github.com/0xJacky/nginx-ui/releases/tag/v2.3.4",
+        "https://github.com/0xJacky/nginx-ui/security/advisories/GHSA-fhh2-gg7w-gwpq"
+      ],
+      "published": "2026-03-30T20:16:22.130"
+    },
+    {
+      "id": "CVE-2026-34060",
+      "description": "Ruby LSP is an implementation of the language server protocol for Ruby. Prior to Shopify.ruby-lsp version 0.10.2 and ruby-lsp version 0.26.9, the rubyLsp.branch VS Code workspace setting was interpolated without sanitization into a generated Gemfile, allowing arbitrary Ruby code execution when a user opens a project containing a malicious .vscode/settings.json. This issue has been patched in Shopify.ruby-lsp version 0.10.2 and ruby-lsp version 0.26.9.",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "Visual Studio Code"
+      ],
+      "references": [
+        "https://github.com/Shopify/ruby-lsp/releases/tag/v0.26.9",
+        "https://github.com/Shopify/ruby-lsp/security/advisories/GHSA-c4r5-fxqw-vh93"
+      ],
+      "published": "2026-03-31T03:15:58.773"
     }
   ]
 }
