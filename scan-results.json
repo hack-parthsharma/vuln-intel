@@ -1,86 +1,151 @@
 {
-  "scanTime": "2026-04-02 05:17:47 UTC",
-  "totalMatched": 11,
+  "scanTime": "2026-04-03 05:19:27 UTC",
+  "totalMatched": 24,
   "productsMonitored": 147,
   "tierCounts": {
-    "0": 4,
-    "1": 2,
-    "2": 3,
-    "3": 2
+    "0": 3,
+    "1": 5,
+    "2": 8,
+    "3": 8
   },
   "vulnerabilities": [
     {
-      "id": "CVE-2025-15484",
-      "description": "The Order Notification for WooCommerce  WordPress plugin before 3.6.3 overrides WooCommerce's permission checks to grant full access to all unauthenticated requests, enabling complete read/write access to store resources like products, coupons, and customers.",
+      "id": "CVE-2026-4347",
+      "description": "The MW WP Form plugin for WordPress is vulnerable to arbitrary file moving due to insufficient file path validation via the 'generate_user_filepath' function and the 'move_temp_file_to_upload_dir' function in all versions up to, and including, 5.1.0. This makes it possible for unauthenticated attackers to move arbitrary files on the server, which can easily lead to remote code execution when the right file is moved (such as wp-config.php). The vulnerability is only exploitable if a file upload f",
       "cvss": {
-        "score": 9.1,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
-        "severity": "CRITICAL"
+        "score": 8.1,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
       },
       "tier": 0,
       "matchedProducts": [
         "WordPress"
       ],
       "references": [
-        "https://wpscan.com/vulnerability/ee9f1c0c-86bb-4922-9eb5-8aae78003eff/"
+        "https://plugins.trac.wordpress.org/browser/mw-wp-form/tags/5.1.0/classes/controllers/class.main.php#L271",
+        "https://plugins.trac.wordpress.org/browser/mw-wp-form/tags/5.1.0/classes/models/class.directory.php#L138",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/194ee4a0-87c3-42e5-9676-8dd355838b78?source=cve"
       ],
-      "published": "2026-04-01T06:16:14.133"
+      "published": "2026-04-02T06:16:23.297"
     },
     {
-      "id": "CVE-2026-34751",
-      "description": "Payload is a free and open source headless content management system. Prior to version 3.79.1 in @payloadcms/graphql and payload, a vulnerability in the password recovery flow could allow an unauthenticated attacker to perform actions on behalf of a user who initiates a password reset. This issue has been patched in version 3.79.1 for @payloadcms/graphql and payload.",
+      "id": "CVE-2026-5032",
+      "description": "The W3 Total Cache plugin for WordPress is vulnerable to information exposure in all versions up to, and including, 2.9.3. This is due to the plugin bypassing its entire output buffering and processing pipeline when the request's User-Agent header contains \"W3 Total Cache\", which causes raw mfunc/mclude dynamic fragment HTML comments \u2014 including the W3TC_DYNAMIC_SECURITY security token \u2014 to be rendered in the page source. This makes it possible for unauthenticated attackers to discover the value",
       "cvss": {
-        "score": 9.1,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
-        "severity": "CRITICAL"
+        "score": 7.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+        "severity": "HIGH"
       },
       "tier": 0,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/w3-total-cache/tags/2.9.3/Generic_Plugin.php#L1016",
+        "https://plugins.trac.wordpress.org/changeset/3495959/w3-total-cache",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/a65eb62d-847b-4f3a-848b-1290e3118c01?source=cve"
+      ],
+      "published": "2026-04-02T08:16:28.493"
+    },
+    {
+      "id": "CVE-2026-34759",
+      "description": "OneUptime is an open-source monitoring and observability platform. Prior to version 10.0.42, multiple notification API endpoints are registered without authentication middleware, while sibling endpoints in the same codebase correctly use ClusterKeyAuthorization.isAuthorizedServiceMiddleware. These endpoints are externally reachable via the Nginx proxy at /notification/. Combined with a projectId leak from the public Status Page API, an unauthenticated attacker can purchase phone numbers on the v",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 0,
+      "matchedProducts": [
+        "Nginx"
+      ],
+      "references": [
+        "https://github.com/OneUptime/oneuptime/commit/9adbd04538714740506708d6fa610e433be4d2a4",
+        "https://github.com/OneUptime/oneuptime/releases/tag/10.0.42",
+        "https://github.com/OneUptime/oneuptime/security/advisories/GHSA-6wc5-rhvj-cx7f"
+      ],
+      "published": "2026-04-02T19:21:33.833"
+    },
+    {
+      "id": "CVE-2026-28805",
+      "description": "OpenSTAManager is an open source management software for technical assistance and invoicing. Prior to version 2.10.2, multiple AJAX select handlers in OpenSTAManager are vulnerable to Time-Based Blind SQL Injection through the options[stato] GET parameter. The user-supplied value is read from $superselect['stato'] and concatenated directly into SQL WHERE clauses as a bare expression, without any sanitization, parameterization, or allowlist validation. An authenticated attacker can inject arbitra",
+      "cvss": {
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "MySQL"
+      ],
+      "references": [
+        "https://github.com/devcode-it/openstamanager/commit/50b9089c506ba2ca249afb1dfead2af5d42c10e7",
+        "https://github.com/devcode-it/openstamanager/commit/679c40fa5b3acad4263b537f367c0695ff9666dc",
+        "https://github.com/devcode-it/openstamanager/releases/tag/v2.10.2",
+        "https://github.com/devcode-it/openstamanager/security/advisories/GHSA-3gw8-3mg3-jmpc"
+      ],
+      "published": "2026-04-02T14:16:26.400"
+    },
+    {
+      "id": "CVE-2026-35168",
+      "description": "OpenSTAManager is an open source management software for technical assistance and invoicing. Prior to version 2.10.2, the Aggiornamenti (Updates) module in OpenSTAManager contains a database conflict resolution feature (op=risolvi-conflitti-database) that accepts a JSON array of SQL statements via POST and executes them directly against the database without any validation, allowlist, or sanitization. An authenticated attacker with access to the Aggiornamenti module can execute arbitrary SQL stat",
+      "cvss": {
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "MySQL",
+        "MSSQL"
+      ],
+      "references": [
+        "https://github.com/devcode-it/openstamanager/commit/43970676bcd6636ff8663652fd82579f737abb74",
+        "https://github.com/devcode-it/openstamanager/releases/tag/v2.10.2",
+        "https://github.com/devcode-it/openstamanager/security/advisories/GHSA-2fr7-cc4f-wh98",
+        "https://github.com/devcode-it/openstamanager/security/advisories/GHSA-2fr7-cc4f-wh98"
+      ],
+      "published": "2026-04-02T14:16:31.543"
+    },
+    {
+      "id": "CVE-2026-34840",
+      "description": "OneUptime is an open-source monitoring and observability platform. Prior to version 10.0.42, OneUptime's SAML SSO implementation (App/FeatureSet/Identity/Utils/SSO.ts) has decoupled signature verification and identity extraction. isSignatureValid() verifies the first <Signature> element in the XML DOM using xml-crypto, while getEmail() always reads from assertion[0] via xml2js. An attacker can prepend an unsigned assertion containing an arbitrary identity before a legitimately signed assertion, ",
+      "cvss": {
+        "score": 8.1,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N",
+        "severity": "HIGH"
+      },
+      "tier": 1,
       "matchedProducts": [
         "ESET"
       ],
       "references": [
-        "https://github.com/payloadcms/payload/releases/tag/v3.79.1",
-        "https://github.com/payloadcms/payload/security/advisories/GHSA-hp5w-3hxx-vmwf"
+        "https://github.com/OneUptime/oneuptime/commit/2fd7ede52f60444710628d6c1b34dee2ef9e57d1",
+        "https://github.com/OneUptime/oneuptime/releases/tag/10.0.42",
+        "https://github.com/OneUptime/oneuptime/security/advisories/GHSA-5w5c-766x-265g"
       ],
-      "published": "2026-04-01T18:16:31.277"
+      "published": "2026-04-02T20:16:28.357"
     },
     {
-      "id": "CVE-2026-20041",
-      "description": "A vulnerability in Cisco Nexus Dashboard and Cisco Nexus Dashboard Insights could allow an unauthenticated, remote attacker to conduct a server-side request forgery (SSRF) attack through an affected device.\r\n\r\nThis vulnerability is due to improper input validation for specific HTTP requests. An attacker could exploit this vulnerability by persuading an authenticated user of the device management interface to click a crafted link. A successful exploit could allow the attacker to send arbitrary ne",
+      "id": "CVE-2026-1540",
+      "description": "The Spam Protect for Contact Form 7 WordPress plugin before 1.2.10 allows logging to a PHP file, which could allow an attacker with editor access to achieve Remote Code Execution by using a crafted header",
       "cvss": {
-        "score": 6.1,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
-        "severity": "MEDIUM"
+        "score": 7.2,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
       },
-      "tier": 0,
-      "matchedProducts": [
-        "Cisco Nexus"
-      ],
-      "references": [
-        "https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-nd-ssrf-NAen4O7r"
-      ],
-      "published": "2026-04-01T17:28:25.917"
-    },
-    {
-      "id": "CVE-2026-2696",
-      "description": "The Export All URLs WordPress plugin before 5.1 generates CSV filenames containing posts URLS (including private posts) in a predictable pattern using a random 6-digit number. These files are stored in the publicly accessible wp-content/uploads/ directory. As a result, any unauthenticated user can brute-force the filenames to gain access to sensitive data contained within the exported files.",
-      "cvss": {
-        "score": 5.3,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 0,
+      "tier": 1,
       "matchedProducts": [
         "WordPress"
       ],
       "references": [
-        "https://wpscan.com/vulnerability/55d627c1-ad05-4cd1-ae7b-932d84c19313/"
+        "https://wpscan.com/vulnerability/ad00d1bb-ea8d-44a3-9064-6412804d9e95/"
       ],
-      "published": "2026-04-01T06:16:15.380"
+      "published": "2026-04-02T06:16:22.337"
     },
     {
-      "id": "CVE-2026-0522",
-      "description": "A local file inclusion vulnerability in the upload/download flow of the VertiGIS FM application allows authenticated attackers to read arbitrary files from the server by manipulating a file's path during its upload. When the file is subsequently downloaded, the file in the attacker controlled path is returned. Due to the application's ASP.NET architecture, this could potentially lead to remote code execution when the \"web.config\" file is obtained. Furthermore, the application resolves UNC paths ",
+      "id": "CVE-2026-34593",
+      "description": "Ash Framework is a declarative, extensible framework for building Elixir applications. Prior to version 3.22.0, Ash.Type.Module.cast_input/2 unconditionally creates a new Erlang atom via Module.concat([value]) for any user-supplied binary string that starts with \"Elixir.\", before verifying whether the referenced module exists. Because Erlang atoms are never garbage-collected and the BEAM atom table has a hard default limit of approximately 1,048,576 entries, an attacker who can submit values to ",
       "cvss": {
         "score": null,
         "vector": null,
@@ -88,54 +153,76 @@
       },
       "tier": 1,
       "matchedProducts": [
-        "Microsoft .NET"
+        "Erlang/OTP"
       ],
       "references": [
-        "https://support.vertigis.com/hc/en-us/articles/31214433137042-Security-Vulnerability-VertiGIS-FM",
-        "https://www.redguard.ch/blog/2026/04/01/advisory-vertigis-vertigisfm/"
+        "https://github.com/ash-project/ash/releases/tag/v3.22.0",
+        "https://github.com/ash-project/ash/security/advisories/GHSA-jjf9-w5vj-r6vp"
       ],
-      "published": "2026-04-01T14:16:26.397"
+      "published": "2026-04-02T18:16:31.360"
     },
     {
-      "id": "CVE-2026-34455",
-      "description": "Hi.Events is an open-source event management and ticket selling platform. From version 0.8.0-beta.1 to before version 1.7.1-beta, multiple repository classes pass the user-supplied sort_by query parameter directly to Eloquent's orderBy() without validation, enabling SQL injection. The application uses PostgreSQL which supports stacked queries. This issue has been patched in version 1.7.1-beta.",
+      "id": "CVE-2026-35385",
+      "description": "In OpenSSH before 10.3, a file downloaded by scp may be installed setuid or setgid, an outcome contrary to some users' expectations, if the download is performed as root with -O (legacy scp protocol) and without -p (preserve mode).",
       "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "PostgreSQL"
-      ],
-      "references": [
-        "https://github.com/HiEventsDev/Hi.Events/commit/01e1aee28d7249f235fdcca8e3a34e88214dcde9",
-        "https://github.com/HiEventsDev/Hi.Events/pull/1128",
-        "https://github.com/HiEventsDev/Hi.Events/releases/tag/v1.7.1-beta",
-        "https://github.com/HiEventsDev/Hi.Events/security/advisories/GHSA-2qcp-24fh-fx6p"
-      ],
-      "published": "2026-04-01T20:16:25.957"
-    },
-    {
-      "id": "CVE-2026-20042",
-      "description": "A vulnerability in the configuration backup feature of Cisco Nexus Dashboard could allow an attacker who has the encryption password and access to Full or Config-only backup files to access sensitive information.\r\n\r\nThis vulnerability exists because authentication details are included in the encrypted backup files. An attacker with a valid backup file and encryption password from an affected device could decrypt the backup file. The attacker could then use the authentication details in the backu",
-      "cvss": {
-        "score": 6.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:N",
-        "severity": "MEDIUM"
+        "score": 7.5,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
       },
       "tier": 2,
       "matchedProducts": [
-        "Cisco Nexus"
+        "OpenSSH"
       ],
       "references": [
-        "https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-nd-cbid-5YqkOSHu"
+        "https://marc.info/?l=openssh-unix-dev&m=177513443901484&w=2",
+        "https://www.openssh.org/releasenotes.html#10.3p1",
+        "https://www.openwall.com/lists/oss-security/2026/04/02/3"
       ],
-      "published": "2026-04-01T17:28:26.173"
+      "published": "2026-04-02T17:16:27.450"
     },
     {
-      "id": "CVE-2025-13535",
-      "description": "The King Addons for Elementor plugin for WordPress is vulnerable to multiple Contributor+ DOM-Based Stored Cross-Site Scripting vulnerabilities in all versions up to, and including, 51.1.38. This is due to insufficient input sanitization and output escaping across multiple widgets and features. The plugin uses esc_attr() and esc_url() within JavaScript inline event handlers (onclick attributes), which allows HTML entities to be decoded by the DOM, enabling attackers to break out of the JavaScrip",
+      "id": "CVE-2026-0686",
+      "description": "The Webmention plugin for WordPress is vulnerable to Server-Side Request Forgery in all versions up to, and including, 5.6.2 in the 'MF2::parse_authorpage' function via the 'Receiver::post' function. This makes it possible for unauthenticated attackers to make web requests to arbitrary locations originating from the web application and can be used to query and modify information from internal services.",
+      "cvss": {
+        "score": 7.2,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N",
+        "severity": "HIGH"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://github.com/pfefferle/wordpress-webmention/blob/057223cee18a9e93b017d0f21db6ea77a7686489/includes/handler/class-mf2.php#L878",
+        "https://plugins.trac.wordpress.org/browser/webmention/tags/5.6.2/includes/class-receiver.php#L260",
+        "https://plugins.trac.wordpress.org/browser/webmention/tags/5.6.2/includes/handler/class-mf2.php#L877",
+        "https://plugins.trac.wordpress.org/changeset/3494831/webmention",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/08d15c46-d15f-4803-80be-90bf33335c18?source=cve"
+      ],
+      "published": "2026-04-02T08:16:27.850"
+    },
+    {
+      "id": "CVE-2026-34828",
+      "description": "listmonk is a standalone, self-hosted, newsletter and mailing list manager. From version 4.1.0 to before version 6.1.0, a session management vulnerability allows previously issued authenticated sessions to remain valid after sensitive account security changes, specifically password reset and password change. As a result, an attacker who has already obtained a valid session cookie can retain access to the account even after the victim changes or resets their password. This weakens account recover",
+      "cvss": {
+        "score": 7.1,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:N",
+        "severity": "HIGH"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "ESET"
+      ],
+      "references": [
+        "https://github.com/knadh/listmonk/commit/db82035d619348949512dafdaf60c86037cafc9e",
+        "https://github.com/knadh/listmonk/releases/tag/v6.1.0",
+        "https://github.com/knadh/listmonk/security/advisories/GHSA-h5j9-cvrw-v5qh"
+      ],
+      "published": "2026-04-02T18:16:33.713"
+    },
+    {
+      "id": "CVE-2026-0688",
+      "description": "The Webmention plugin for WordPress is vulnerable to Server-Side Request Forgery in all versions up to, and including, 5.6.2 via the 'Tools::read' function. This makes it possible for authenticated attackers, with Subscriber-level access and above, to make web requests to arbitrary locations originating from the web application and can be used to query and modify information from internal services.",
       "cvss": {
         "score": 6.4,
         "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
@@ -146,20 +233,19 @@
         "WordPress"
       ],
       "references": [
-        "https://plugins.trac.wordpress.org/browser/king-addons/tags/51.1.38/includes/assets/libraries/lightgallery/lightgallery.js",
-        "https://plugins.trac.wordpress.org/browser/king-addons/tags/51.1.38/includes/features/Wrapper_Link/Wrapper_Link.php#L85",
-        "https://plugins.trac.wordpress.org/browser/king-addons/tags/51.1.38/includes/widgets/Countdown/script.js#L119",
-        "https://plugins.trac.wordpress.org/browser/king-addons/tags/51.1.38/includes/widgets/Image_Accordion/script.js#L141",
-        "https://plugins.trac.wordpress.org/browser/king-addons/tags/51.1.38/includes/widgets/Off_Canvas_Content/Off_Canvas_Content.php#L629"
+        "https://github.com/pfefferle/wordpress-webmention/blob/057223cee18a9e93b017d0f21db6ea77a7686489/includes/class-tools.php#L81",
+        "https://plugins.trac.wordpress.org/browser/webmention/tags/5.6.2/includes/class-tools.php#L81",
+        "https://plugins.trac.wordpress.org/changeset/3494831/webmention",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/02c9beba-dfa5-4a30-8355-62ff9a2630f7?source=cve"
       ],
-      "published": "2026-04-01T15:16:21.743"
+      "published": "2026-04-02T08:16:28.057"
     },
     {
-      "id": "CVE-2025-66483",
-      "description": "IBM Aspera Shares 1.9.9 through 1.11.0 does not invalidate session after a password reset which could allow an authenticated user to impersonate another user on the system.",
+      "id": "CVE-2026-35507",
+      "description": "Shynet before 0.14.0 allows Host header injection in the password reset flow.",
       "cvss": {
-        "score": 6.3,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L",
+        "score": 6.4,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:H/A:L",
         "severity": "MEDIUM"
       },
       "tier": 2,
@@ -167,30 +253,188 @@
         "ESET"
       ],
       "references": [
-        "https://www.ibm.com/support/pages/node/7267848"
+        "https://github.com/milesmcc/shynet/pull/345",
+        "https://github.com/milesmcc/shynet/releases/tag/v0.14.0"
       ],
-      "published": "2026-04-01T23:17:01.940"
+      "published": "2026-04-03T02:16:15.170"
     },
     {
-      "id": "CVE-2026-20174",
-      "description": "A vulnerability in the Metadata update feature of Cisco Nexus Dashboard Insights could allow an authenticated, remote attacker to write arbitrary files to an affected system.\r\n\r\nThis vulnerability is due to insufficient validation of the metadata update file. An attacker could exploit this vulnerability by crafting a metadata update file and manually uploading it to an affected device. A successful exploit could allow the attacker to write arbitrary files to the underlying operating system as th",
+      "id": "CVE-2026-34830",
+      "description": "Rack is a modular Ruby web server interface. Prior to versions 2.2.23, 3.1.21, and 3.2.6, Rack::Sendfile#map_accel_path interpolates the value of the X-Accel-Mapping request header directly into a regular expression when rewriting file paths for X-Accel-Redirect. Because the header value is not escaped, an attacker who can supply X-Accel-Mapping to the backend can inject regex metacharacters and control the generated X-Accel-Redirect response header. In deployments using Rack::Sendfile with x-ac",
       "cvss": {
-        "score": 4.9,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:H/A:N",
+        "score": 5.9,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "Nginx"
+      ],
+      "references": [
+        "https://github.com/rack/rack/security/advisories/GHSA-qv7j-4883-hwh7"
+      ],
+      "published": "2026-04-02T17:16:26.267"
+    },
+    {
+      "id": "CVE-2026-4325",
+      "description": "A flaw was found in Keycloak. The SingleUseObjectProvider, a global key-value store, lacks proper type and namespace isolation. This vulnerability allows an attacker to delete arbitrary single-use entries, which can enable the replay of consumed action tokens, such as password reset links. This could lead to unauthorized access or account compromise.",
+      "cvss": {
+        "score": 5.3,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:N/I:H/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "ESET"
+      ],
+      "references": [
+        "https://access.redhat.com/errata/RHSA-2026:6475",
+        "https://access.redhat.com/errata/RHSA-2026:6476",
+        "https://access.redhat.com/errata/RHSA-2026:6477",
+        "https://access.redhat.com/errata/RHSA-2026:6478",
+        "https://access.redhat.com/security/cve/CVE-2026-4325"
+      ],
+      "published": "2026-04-02T13:16:26.863"
+    },
+    {
+      "id": "CVE-2026-26895",
+      "description": "User enumeration vulnerability in /pwreset.php in osTicket v1.18.2 allows remote attackers to enumerate valid usernames registered in the platform.",
+      "cvss": {
+        "score": 5.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "ESET"
+      ],
+      "references": [
+        "http://osticket.com",
+        "https://csacyber.com/blog/osticket-timing-vulnerability-understanding-the-risk"
+      ],
+      "published": "2026-04-02T17:16:21.833"
+    },
+    {
+      "id": "CVE-2026-5417",
+      "description": "A vulnerability was determined in Dataease SQLbot up to 1.6.0. This issue affects the function get_es_data_by_http of the file backend/apps/db/es_engine.py of the component Elasticsearch Handler. This manipulation of the argument address causes server-side request forgery. The attack may be initiated remotely. The exploit has been publicly disclosed and may be utilized. Upgrading to version 1.7.0 is capable of addressing this issue. You should upgrade the affected component. The vendor was conta",
+      "cvss": {
+        "score": 4.7,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:L/I:L/A:L",
         "severity": "MEDIUM"
       },
       "tier": 3,
       "matchedProducts": [
-        "Cisco Nexus"
+        "Elasticsearch"
       ],
       "references": [
-        "https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-ndi-afw-rJuRC5dZ"
+        "https://github.com/dataease/SQLBot/releases/tag/v1.7.0",
+        "https://vuldb.com/submit/756043",
+        "https://vuldb.com/vuln/354854",
+        "https://vuldb.com/vuln/354854/cti",
+        "https://www.notion.so/SQLbot-SSRF-in-Elasticsearch-Unvalidated-Requests-2afea92a3c4180bea524f1a253f8d9a0"
       ],
-      "published": "2026-04-01T17:28:31.937"
+      "published": "2026-04-02T19:21:36.497"
     },
     {
-      "id": "CVE-2026-5199",
-      "description": "A writer role user in an attacker-controlled namespace could signal, delete, and reset workflows or activities in a victim namespace on the same cluster. Exploitation requires the attacker to know or guess specific victim workflow ID(s) and, for signal operations, signal names. This was due to a bug introduced in Temporal Server v1.29.0 which inadvertently allowed an attacker to control the namespace name value instead of using the server's own trusted name value within the batch activity code. ",
+      "id": "CVE-2026-35414",
+      "description": "OpenSSH before 10.3 mishandles the authorized_keys principals option in uncommon scenarios involving a principals list in conjunction with a Certificate Authority that makes certain use of comma characters.",
+      "cvss": {
+        "score": 4.2,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:L/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "OpenSSH"
+      ],
+      "references": [
+        "https://marc.info/?l=openssh-unix-dev&m=177513443901484&w=2",
+        "https://www.openssh.org/releasenotes.html#10.3p1",
+        "https://www.openwall.com/lists/oss-security/2026/04/02/3"
+      ],
+      "published": "2026-04-02T18:16:34.690"
+    },
+    {
+      "id": "CVE-2026-35537",
+      "description": "An issue was discovered in Roundcube Webmail before 1.5.14 and 1.6.14. Unsafe deserialization in the redis/memcache session handler may lead to arbitrary file write operations by unauthenticated attackers via crafted session data.",
+      "cvss": {
+        "score": 3.7,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:N",
+        "severity": "LOW"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "Redis"
+      ],
+      "references": [
+        "https://github.com/roundcube/roundcubemail/commit/618c5428edc69fb088e7ac6c89e506dd39df3",
+        "https://github.com/roundcube/roundcubemail/commit/6d586cfa4d8a31f7957f7a445aaedd52592a0e74",
+        "https://github.com/roundcube/roundcubemail/commit/a4ead994d2f0ea92e4a1603196a197e0d5df1620",
+        "https://github.com/roundcube/roundcubemail/releases/tag/1.5.14",
+        "https://github.com/roundcube/roundcubemail/releases/tag/1.6.14"
+      ],
+      "published": "2026-04-03T04:17:10.313"
+    },
+    {
+      "id": "CVE-2026-35386",
+      "description": "In OpenSSH before 10.3, command execution can occur via shell metacharacters in a username within a command line. This requires a scenario where the username on the command line is untrusted, and also requires a non-default configurations of % in ssh_config.",
+      "cvss": {
+        "score": 3.6,
+        "vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:L/I:L/A:N",
+        "severity": "LOW"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "OpenSSH"
+      ],
+      "references": [
+        "https://marc.info/?l=openssh-unix-dev&m=177513443901484&w=2",
+        "https://www.openssh.org/releasenotes.html#10.3p1",
+        "https://www.openwall.com/lists/oss-security/2026/04/02/3"
+      ],
+      "published": "2026-04-02T17:16:27.623"
+    },
+    {
+      "id": "CVE-2026-35387",
+      "description": "OpenSSH before 10.3 can use unintended ECDSA algorithms. Listing of any ECDSA algorithm in PubkeyAcceptedAlgorithms or HostbasedAcceptedAlgorithms is misinterpreted to mean all ECDSA algorithms.",
+      "cvss": {
+        "score": 3.1,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:N/I:L/A:N",
+        "severity": "LOW"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "OpenSSH"
+      ],
+      "references": [
+        "https://marc.info/?l=openssh-unix-dev&m=177513443901484&w=2",
+        "https://www.openssh.org/releasenotes.html#10.3p1",
+        "https://www.openwall.com/lists/oss-security/2026/04/02/3"
+      ],
+      "published": "2026-04-02T17:16:27.790"
+    },
+    {
+      "id": "CVE-2026-35388",
+      "description": "OpenSSH before 10.3 omits connection multiplexing confirmation for proxy-mode multiplexing sessions.",
+      "cvss": {
+        "score": 2.5,
+        "vector": "CVSS:3.1/AV:L/AC:H/PR:N/UI:R/S:U/C:N/I:L/A:N",
+        "severity": "LOW"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "OpenSSH"
+      ],
+      "references": [
+        "https://marc.info/?l=openssh-unix-dev&m=177513443901484&w=2",
+        "https://www.openssh.org/releasenotes.html#10.3p1",
+        "https://www.openwall.com/lists/oss-security/2026/04/02/3"
+      ],
+      "published": "2026-04-02T17:16:27.947"
+    },
+    {
+      "id": "CVE-2026-29139",
+      "description": "SEPPmail Secure Email Gateway before version 15.0.3 allows account takeover by abusing GINA account initialization to reset a victim account password.",
       "cvss": {
         "score": null,
         "vector": null,
@@ -201,10 +445,27 @@
         "ESET"
       ],
       "references": [
-        "https://github.com/temporalio/temporal/releases/tag/v1.29.5",
-        "https://github.com/temporalio/temporal/releases/tag/v1.30.3"
+        "https://downloads.seppmail.com/extrelnotes/150/ERN15.0.html#seppmail-vulnerability-disclosure-1503"
       ],
-      "published": "2026-04-01T18:16:31.703"
+      "published": "2026-04-02T09:16:22.467"
+    },
+    {
+      "id": "CVE-2026-34752",
+      "description": "Haraka is a Node.js mail server. Prior to version 3.1.4, sending an email with __proto__: as a header name crashes the Haraka worker process. This issue has been patched in version 3.1.4.",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "Node.js"
+      ],
+      "references": [
+        "https://github.com/haraka/Haraka/releases/tag/v3.1.4",
+        "https://github.com/haraka/Haraka/security/advisories/GHSA-xph3-r2jf-4vp3"
+      ],
+      "published": "2026-04-02T19:21:33.517"
     }
   ]
 }
