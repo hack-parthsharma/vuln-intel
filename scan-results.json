@@ -1,137 +1,113 @@
 {
-  "scanTime": "2026-04-03 05:19:27 UTC",
-  "totalMatched": 24,
+  "scanTime": "2026-04-04 05:07:47 UTC",
+  "totalMatched": 23,
   "productsMonitored": 147,
   "tierCounts": {
     "0": 3,
-    "1": 5,
-    "2": 8,
-    "3": 8
+    "1": 3,
+    "2": 12,
+    "3": 5
   },
   "vulnerabilities": [
     {
-      "id": "CVE-2026-4347",
-      "description": "The MW WP Form plugin for WordPress is vulnerable to arbitrary file moving due to insufficient file path validation via the 'generate_user_filepath' function and the 'move_temp_file_to_upload_dir' function in all versions up to, and including, 5.1.0. This makes it possible for unauthenticated attackers to move arbitrary files on the server, which can easily lead to remote code execution when the right file is moved (such as wp-config.php). The vulnerability is only exploitable if a file upload f",
+      "id": "CVE-2026-34612",
+      "description": "Kestra is an open-source, event-driven orchestration platform. Prior to version 1.3.7, Kestra (default docker-compose deployment) contains a SQL Injection vulnerability that leads to Remote Code Execution (RCE) in the following endpoint \"GET /api/v1/main/flows/search\". Once a user is authenticated, simply visiting a crafted link is enough to trigger the vulnerability. The injected payload is executed by PostgreSQL using COPY ... TO PROGRAM ..., which in turn runs arbitrary OS commands on the hos",
       "cvss": {
-        "score": 8.1,
-        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
-        "severity": "HIGH"
+        "score": 9.9,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+        "severity": "CRITICAL"
       },
       "tier": 0,
       "matchedProducts": [
-        "WordPress"
+        "PostgreSQL"
       ],
       "references": [
-        "https://plugins.trac.wordpress.org/browser/mw-wp-form/tags/5.1.0/classes/controllers/class.main.php#L271",
-        "https://plugins.trac.wordpress.org/browser/mw-wp-form/tags/5.1.0/classes/models/class.directory.php#L138",
-        "https://www.wordfence.com/threat-intel/vulnerabilities/id/194ee4a0-87c3-42e5-9676-8dd355838b78?source=cve"
+        "https://github.com/kestra-io/kestra/commit/3926762795df8ad3e03924b370c51832ed3a21d3",
+        "https://github.com/kestra-io/kestra/releases/tag/v1.3.7",
+        "https://github.com/kestra-io/kestra/security/advisories/GHSA-365w-2m69-mp9x"
       ],
-      "published": "2026-04-02T06:16:23.297"
+      "published": "2026-04-03T23:17:04.587"
     },
     {
-      "id": "CVE-2026-5032",
-      "description": "The W3 Total Cache plugin for WordPress is vulnerable to information exposure in all versions up to, and including, 2.9.3. This is due to the plugin bypassing its entire output buffering and processing pipeline when the request's User-Agent header contains \"W3 Total Cache\", which causes raw mfunc/mclude dynamic fragment HTML comments \u2014 including the W3TC_DYNAMIC_SECURITY security token \u2014 to be rendered in the page source. This makes it possible for unauthenticated attackers to discover the value",
+      "id": "CVE-2026-35616",
+      "description": "A improper access control vulnerability in Fortinet FortiClientEMS 7.4.5 through 7.4.6 may allow an unauthenticated attacker to execute unauthorized code or commands via crafted requests.",
       "cvss": {
-        "score": 7.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
-        "severity": "HIGH"
+        "score": 9.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "CRITICAL"
       },
       "tier": 0,
       "matchedProducts": [
-        "WordPress"
+        "Fortigate/FortiOS"
       ],
       "references": [
-        "https://plugins.trac.wordpress.org/browser/w3-total-cache/tags/2.9.3/Generic_Plugin.php#L1016",
-        "https://plugins.trac.wordpress.org/changeset/3495959/w3-total-cache",
-        "https://www.wordfence.com/threat-intel/vulnerabilities/id/a65eb62d-847b-4f3a-848b-1290e3118c01?source=cve"
+        "https://fortiguard.fortinet.com/psirt/FG-IR-26-099"
       ],
-      "published": "2026-04-02T08:16:28.493"
+      "published": "2026-04-04T01:16:39.720"
     },
     {
-      "id": "CVE-2026-34759",
-      "description": "OneUptime is an open-source monitoring and observability platform. Prior to version 10.0.42, multiple notification API endpoints are registered without authentication middleware, while sibling endpoints in the same codebase correctly use ClusterKeyAuthorization.isAuthorizedServiceMiddleware. These endpoints are externally reachable via the Nginx proxy at /notification/. Combined with a projectId leak from the public Status Page API, an unauthenticated attacker can purchase phone numbers on the v",
+      "id": "CVE-2026-25043",
+      "description": "Budibase is an open-source low-code platform. Prior to version 3.23.25, a business logic vulnerability exists in Budibase\u2019s password reset functionality due to the absence of rate limiting, CAPTCHA, or abuse prevention mechanisms on the \u201cForgot Password\u201d endpoint. An unauthenticated attacker can repeatedly trigger password reset requests for the same email address, resulting in hundreds of password reset emails being sent in a short time window. This enables large-scale email flooding, user hara",
       "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
+        "score": 5.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+        "severity": "MEDIUM"
       },
       "tier": 0,
-      "matchedProducts": [
-        "Nginx"
-      ],
-      "references": [
-        "https://github.com/OneUptime/oneuptime/commit/9adbd04538714740506708d6fa610e433be4d2a4",
-        "https://github.com/OneUptime/oneuptime/releases/tag/10.0.42",
-        "https://github.com/OneUptime/oneuptime/security/advisories/GHSA-6wc5-rhvj-cx7f"
-      ],
-      "published": "2026-04-02T19:21:33.833"
-    },
-    {
-      "id": "CVE-2026-28805",
-      "description": "OpenSTAManager is an open source management software for technical assistance and invoicing. Prior to version 2.10.2, multiple AJAX select handlers in OpenSTAManager are vulnerable to Time-Based Blind SQL Injection through the options[stato] GET parameter. The user-supplied value is read from $superselect['stato'] and concatenated directly into SQL WHERE clauses as a bare expression, without any sanitization, parameterization, or allowlist validation. An authenticated attacker can inject arbitra",
-      "cvss": {
-        "score": 8.8,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "MySQL"
-      ],
-      "references": [
-        "https://github.com/devcode-it/openstamanager/commit/50b9089c506ba2ca249afb1dfead2af5d42c10e7",
-        "https://github.com/devcode-it/openstamanager/commit/679c40fa5b3acad4263b537f367c0695ff9666dc",
-        "https://github.com/devcode-it/openstamanager/releases/tag/v2.10.2",
-        "https://github.com/devcode-it/openstamanager/security/advisories/GHSA-3gw8-3mg3-jmpc"
-      ],
-      "published": "2026-04-02T14:16:26.400"
-    },
-    {
-      "id": "CVE-2026-35168",
-      "description": "OpenSTAManager is an open source management software for technical assistance and invoicing. Prior to version 2.10.2, the Aggiornamenti (Updates) module in OpenSTAManager contains a database conflict resolution feature (op=risolvi-conflitti-database) that accepts a JSON array of SQL statements via POST and executes them directly against the database without any validation, allowlist, or sanitization. An authenticated attacker with access to the Aggiornamenti module can execute arbitrary SQL stat",
-      "cvss": {
-        "score": 8.8,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "MySQL",
-        "MSSQL"
-      ],
-      "references": [
-        "https://github.com/devcode-it/openstamanager/commit/43970676bcd6636ff8663652fd82579f737abb74",
-        "https://github.com/devcode-it/openstamanager/releases/tag/v2.10.2",
-        "https://github.com/devcode-it/openstamanager/security/advisories/GHSA-2fr7-cc4f-wh98",
-        "https://github.com/devcode-it/openstamanager/security/advisories/GHSA-2fr7-cc4f-wh98"
-      ],
-      "published": "2026-04-02T14:16:31.543"
-    },
-    {
-      "id": "CVE-2026-34840",
-      "description": "OneUptime is an open-source monitoring and observability platform. Prior to version 10.0.42, OneUptime's SAML SSO implementation (App/FeatureSet/Identity/Utils/SSO.ts) has decoupled signature verification and identity extraction. isSignatureValid() verifies the first <Signature> element in the XML DOM using xml-crypto, while getEmail() always reads from assertion[0] via xml2js. An attacker can prepend an unsigned assertion containing an arbitrary identity before a legitimately signed assertion, ",
-      "cvss": {
-        "score": 8.1,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N",
-        "severity": "HIGH"
-      },
-      "tier": 1,
       "matchedProducts": [
         "ESET"
       ],
       "references": [
-        "https://github.com/OneUptime/oneuptime/commit/2fd7ede52f60444710628d6c1b34dee2ef9e57d1",
-        "https://github.com/OneUptime/oneuptime/releases/tag/10.0.42",
-        "https://github.com/OneUptime/oneuptime/security/advisories/GHSA-5w5c-766x-265g"
+        "https://github.com/Budibase/budibase/commit/21bc3f812b2312f082f7683c2abc22d1ecc880c7",
+        "https://github.com/Budibase/budibase/security/advisories/GHSA-277c-prw2-rqgh",
+        "https://github.com/Budibase/budibase/security/advisories/GHSA-277c-prw2-rqgh"
       ],
-      "published": "2026-04-02T20:16:28.357"
+      "published": "2026-04-03T16:16:35.607"
     },
     {
-      "id": "CVE-2026-1540",
-      "description": "The Spam Protect for Contact Form 7 WordPress plugin before 1.2.10 allows logging to a PHP file, which could allow an attacker with editor access to achieve Remote Code Execution by using a crafted header",
+      "id": "CVE-2026-35214",
+      "description": "Budibase is an open-source low-code platform. Prior to version 3.33.4, the plugin file upload endpoint (POST /api/plugin/upload) passes the user-supplied filename directly to createTempFolder() without sanitizing path traversal sequences. An attacker with Global Builder privileges can craft a multipart upload with a filename containing ../ to delete arbitrary directories via rmSync and write arbitrary files via tarball extraction to any filesystem path the Node.js process can access. This issue ",
       "cvss": {
-        "score": 7.2,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
+        "score": 8.7,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:N/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Node.js"
+      ],
+      "references": [
+        "https://github.com/Budibase/budibase/commit/6344d06d703660fd05995e61d581593c2349c879",
+        "https://github.com/Budibase/budibase/pull/18240",
+        "https://github.com/Budibase/budibase/releases/tag/3.33.4",
+        "https://github.com/Budibase/budibase/security/advisories/GHSA-2wfh-rcwf-wh23",
+        "https://github.com/Budibase/budibase/security/advisories/GHSA-2wfh-rcwf-wh23"
+      ],
+      "published": "2026-04-03T16:16:41.607"
+    },
+    {
+      "id": "CVE-2026-34780",
+      "description": "Electron is a framework for writing cross-platform desktop applications using JavaScript, HTML and CSS. From versions 39.0.0-alpha.1 to before 39.8.0, 40.0.0-alpha.1 to before 40.7.0, and 41.0.0-alpha.1 to before 41.0.0-beta.8, apps that pass VideoFrame objects (from the WebCodecs API) across the contextBridge are vulnerable to a context isolation bypass. An attacker who can execute JavaScript in the main world (for example, via XSS) can use a bridged VideoFrame to gain access to the isolated wo",
+      "cvss": {
+        "score": 8.3,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Node.js"
+      ],
+      "references": [
+        "https://github.com/electron/electron/security/advisories/GHSA-jfqg-hf23-qpw2"
+      ],
+      "published": "2026-04-04T01:16:39.540"
+    },
+    {
+      "id": "CVE-2026-4350",
+      "description": "The Perfmatters plugin for WordPress is vulnerable to arbitrary file deletion via path traversal in all versions up to, and including, 2.5.9.1. This is due to the `PMCS::action_handler()` method processing the `$_GET['delete']` parameter without any sanitization, authorization check, or nonce verification. The unsanitized filename is concatenated with the storage directory path and passed to `unlink()`. This makes it possible for authenticated attackers, with Subscriber-level access and above, t",
+      "cvss": {
+        "score": 8.1,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:H",
         "severity": "HIGH"
       },
       "tier": 1,
@@ -139,90 +115,185 @@
         "WordPress"
       ],
       "references": [
-        "https://wpscan.com/vulnerability/ad00d1bb-ea8d-44a3-9064-6412804d9e95/"
+        "https://perfmatters.io/docs/changelog/",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/58b9dab8-8539-4b53-b08d-f6ee3e1e744c?source=cve"
       ],
-      "published": "2026-04-02T06:16:22.337"
+      "published": "2026-04-03T08:16:17.547"
     },
     {
-      "id": "CVE-2026-34593",
-      "description": "Ash Framework is a declarative, extensible framework for building Elixir applications. Prior to version 3.22.0, Ash.Type.Module.cast_input/2 unconditionally creates a new Erlang atom via Module.concat([value]) for any user-supplied binary string that starts with \"Elixir.\", before verifying whether the referenced module exists. Because Erlang atoms are never garbage-collected and the BEAM atom table has a hard default limit of approximately 1,048,576 entries, an attacker who can submit values to ",
+      "id": "CVE-2026-28754",
+      "description": "Zohocorp ManageEngine Exchange Reporter Plus\u00a0versions before 5802 are vulnerable to\u00a0Stored XSS\u00a0in\u00a0Distribution Lists\u00a0report.",
       "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "Erlang/OTP"
-      ],
-      "references": [
-        "https://github.com/ash-project/ash/releases/tag/v3.22.0",
-        "https://github.com/ash-project/ash/security/advisories/GHSA-jjf9-w5vj-r6vp"
-      ],
-      "published": "2026-04-02T18:16:31.360"
-    },
-    {
-      "id": "CVE-2026-35385",
-      "description": "In OpenSSH before 10.3, a file downloaded by scp may be installed setuid or setgid, an outcome contrary to some users' expectations, if the download is performed as root with -O (legacy scp protocol) and without -p (preserve mode).",
-      "cvss": {
-        "score": 7.5,
-        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H",
+        "score": 7.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:N",
         "severity": "HIGH"
       },
       "tier": 2,
       "matchedProducts": [
-        "OpenSSH"
+        "ManageEngine"
       ],
       "references": [
-        "https://marc.info/?l=openssh-unix-dev&m=177513443901484&w=2",
-        "https://www.openssh.org/releasenotes.html#10.3p1",
-        "https://www.openwall.com/lists/oss-security/2026/04/02/3"
+        "https://www.manageengine.com/products/exchange-reports/advisory/CVE-2026-28754.html"
       ],
-      "published": "2026-04-02T17:16:27.450"
+      "published": "2026-04-03T11:17:05.543"
     },
     {
-      "id": "CVE-2026-0686",
-      "description": "The Webmention plugin for WordPress is vulnerable to Server-Side Request Forgery in all versions up to, and including, 5.6.2 in the 'MF2::parse_authorpage' function via the 'Receiver::post' function. This makes it possible for unauthenticated attackers to make web requests to arbitrary locations originating from the web application and can be used to query and modify information from internal services.",
+      "id": "CVE-2026-28756",
+      "description": "Zohocorp ManageEngine Exchange Reporter Plus\u00a0versions before 5802 are vulnerable to\u00a0Stored XSS\u00a0in\u00a0Permissions based on Distribution Groups\u00a0report.",
       "cvss": {
-        "score": 7.2,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N",
+        "score": 7.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:N",
         "severity": "HIGH"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "ManageEngine"
+      ],
+      "references": [
+        "https://www.manageengine.com/products/exchange-reports/advisory/CVE-2026-28756.html"
+      ],
+      "published": "2026-04-03T11:17:05.767"
+    },
+    {
+      "id": "CVE-2026-28703",
+      "description": "Zohocorp ManageEngine Exchange Reporter Plus\u00a0versions before 5802 are vulnerable to\u00a0Stored XSS\u00a0in\u00a0Mails Exchanged Between Users\u00a0report.",
+      "cvss": {
+        "score": 7.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:N",
+        "severity": "HIGH"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "ManageEngine"
+      ],
+      "references": [
+        "https://www.manageengine.com/products/exchange-reports/advisory/CVE-2026-28703.html"
+      ],
+      "published": "2026-04-03T12:16:17.490"
+    },
+    {
+      "id": "CVE-2026-3879",
+      "description": "Zohocorp ManageEngine Exchange Reporter Plus versions before 5802 are vulnerable to Stored XSS in\u00a0Equipment Mailbox Details\u00a0report.",
+      "cvss": {
+        "score": 7.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:N",
+        "severity": "HIGH"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "ManageEngine"
+      ],
+      "references": [
+        "https://www.manageengine.com/products/exchange-reports/advisory/CVE-2026-3879.html"
+      ],
+      "published": "2026-04-03T12:16:18.743"
+    },
+    {
+      "id": "CVE-2026-3880",
+      "description": "Zohocorp ManageEngine Exchange Reporter Plus versions before 5802 are vulnerable to Stored XSS in\u00a0Public Folder Client Permissions\u00a0report.",
+      "cvss": {
+        "score": 7.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:N",
+        "severity": "HIGH"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "ManageEngine"
+      ],
+      "references": [
+        "https://www.manageengine.com/products/exchange-reports/advisory/CVE-2026-3880.html"
+      ],
+      "published": "2026-04-03T12:16:18.933"
+    },
+    {
+      "id": "CVE-2026-4107",
+      "description": "Zohocorp ManageEngine Exchange Reporter Plus versions before 5802 are vulnerable to Stored XSS in\u00a0Folder Message Count and Size\u00a0report.",
+      "cvss": {
+        "score": 7.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:N",
+        "severity": "HIGH"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "ManageEngine"
+      ],
+      "references": [
+        "https://www.manageengine.com/products/exchange-reports/advisory/CVE-2026-4107.html"
+      ],
+      "published": "2026-04-03T12:16:19.067"
+    },
+    {
+      "id": "CVE-2026-4108",
+      "description": "Zohocorp ManageEngine Exchange Reporter Plus versions before 5802 are vulnerable to Stored XSS in\u00a0Non-Owner Mailbox\u00a0Permission\u00a0report.",
+      "cvss": {
+        "score": 7.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:N",
+        "severity": "HIGH"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "ManageEngine"
+      ],
+      "references": [
+        "https://www.manageengine.com/products/exchange-reports/advisory/CVE-2026-4108.html"
+      ],
+      "published": "2026-04-03T12:16:19.207"
+    },
+    {
+      "id": "CVE-2026-27655",
+      "description": "Zohocorp ManageEngine Exchange Reporter Plus versions before 5802 are vulnerable to Stored XSS in\u00a0Permissions Based on Mailboxes\u00a0report.",
+      "cvss": {
+        "score": 7.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:N",
+        "severity": "HIGH"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "ManageEngine"
+      ],
+      "references": [
+        "https://www.manageengine.com/products/exchange-reports/advisory/CVE-2026-27655.html"
+      ],
+      "published": "2026-04-03T13:17:07.903"
+    },
+    {
+      "id": "CVE-2026-34775",
+      "description": "Electron is a framework for writing cross-platform desktop applications using JavaScript, HTML and CSS. Prior to versions 38.8.6, 39.8.4, 40.8.4, and 41.0.0, the nodeIntegrationInWorker webPreference was not correctly scoped in all configurations. In certain process-sharing scenarios, workers spawned in frames configured with nodeIntegrationInWorker: false could still receive Node.js integration. Apps are only affected if they enable nodeIntegrationInWorker. Apps that do not use nodeIntegrationI",
+      "cvss": {
+        "score": 6.8,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "Node.js"
+      ],
+      "references": [
+        "https://github.com/electron/electron/security/advisories/GHSA-xwr5-m59h-vwqr"
+      ],
+      "published": "2026-04-04T00:16:18.597"
+    },
+    {
+      "id": "CVE-2026-3571",
+      "description": "The Pie Register \u2013 User Registration, Profiles & Content Restriction plugin for WordPress is vulnerable to unauthorized modification of data due to a missing capability check on the pie_main() function in all versions up to, and including, 3.8.4.8. This makes it possible for unauthenticated attackers to change registration form status.",
+      "cvss": {
+        "score": 6.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:L",
+        "severity": "MEDIUM"
       },
       "tier": 2,
       "matchedProducts": [
         "WordPress"
       ],
       "references": [
-        "https://github.com/pfefferle/wordpress-webmention/blob/057223cee18a9e93b017d0f21db6ea77a7686489/includes/handler/class-mf2.php#L878",
-        "https://plugins.trac.wordpress.org/browser/webmention/tags/5.6.2/includes/class-receiver.php#L260",
-        "https://plugins.trac.wordpress.org/browser/webmention/tags/5.6.2/includes/handler/class-mf2.php#L877",
-        "https://plugins.trac.wordpress.org/changeset/3494831/webmention",
-        "https://www.wordfence.com/threat-intel/vulnerabilities/id/08d15c46-d15f-4803-80be-90bf33335c18?source=cve"
+        "https://plugins.trac.wordpress.org/changeset/3494602/pie-register",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/3137a85e-82e3-4111-ae60-1bcf1abd0c0b?source=cve"
       ],
-      "published": "2026-04-02T08:16:27.850"
+      "published": "2026-04-04T02:15:59.310"
     },
     {
-      "id": "CVE-2026-34828",
-      "description": "listmonk is a standalone, self-hosted, newsletter and mailing list manager. From version 4.1.0 to before version 6.1.0, a session management vulnerability allows previously issued authenticated sessions to remain valid after sensitive account security changes, specifically password reset and password change. As a result, an attacker who has already obtained a valid session cookie can retain access to the account even after the victim changes or resets their password. This weakens account recover",
-      "cvss": {
-        "score": 7.1,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:N",
-        "severity": "HIGH"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://github.com/knadh/listmonk/commit/db82035d619348949512dafdaf60c86037cafc9e",
-        "https://github.com/knadh/listmonk/releases/tag/v6.1.0",
-        "https://github.com/knadh/listmonk/security/advisories/GHSA-h5j9-cvrw-v5qh"
-      ],
-      "published": "2026-04-02T18:16:33.713"
-    },
-    {
-      "id": "CVE-2026-0688",
-      "description": "The Webmention plugin for WordPress is vulnerable to Server-Side Request Forgery in all versions up to, and including, 5.6.2 via the 'Tools::read' function. This makes it possible for authenticated attackers, with Subscriber-level access and above, to make web requests to arbitrary locations originating from the web application and can be used to query and modify information from internal services.",
+      "id": "CVE-2026-2924",
+      "description": "The Gutenverse \u2013 Ultimate WordPress FSE Blocks Addons & Ecosystem plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'imageLoad' parameter in versions up to, and including, 3.4.6 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
       "cvss": {
         "score": 6.4,
         "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
@@ -233,208 +304,74 @@
         "WordPress"
       ],
       "references": [
-        "https://github.com/pfefferle/wordpress-webmention/blob/057223cee18a9e93b017d0f21db6ea77a7686489/includes/class-tools.php#L81",
-        "https://plugins.trac.wordpress.org/browser/webmention/tags/5.6.2/includes/class-tools.php#L81",
-        "https://plugins.trac.wordpress.org/changeset/3494831/webmention",
-        "https://www.wordfence.com/threat-intel/vulnerabilities/id/02c9beba-dfa5-4a30-8355-62ff9a2630f7?source=cve"
+        "https://plugins.trac.wordpress.org/changeset/3468383/gutenverse",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/950f7493-4ccb-4a8a-9cc2-23b9ba3a9cd0?source=cve"
       ],
-      "published": "2026-04-02T08:16:28.057"
+      "published": "2026-04-04T04:17:13.790"
     },
     {
-      "id": "CVE-2026-35507",
-      "description": "Shynet before 0.14.0 allows Host header injection in the password reset flow.",
+      "id": "CVE-2026-2949",
+      "description": "The Xpro Addons \u2014 140+ Widgets for Elementor plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the Icon Box widget in versions up to, and including, 1.4.24 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
       "cvss": {
         "score": 6.4,
-        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:H/A:L",
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
         "severity": "MEDIUM"
       },
       "tier": 2,
       "matchedProducts": [
-        "ESET"
+        "WordPress"
       ],
       "references": [
-        "https://github.com/milesmcc/shynet/pull/345",
-        "https://github.com/milesmcc/shynet/releases/tag/v0.14.0"
+        "https://plugins.trac.wordpress.org/changeset/3470049/xpro-elementor-addons",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/a1192c12-a898-46d9-9eee-6f611e644676?source=cve"
       ],
-      "published": "2026-04-03T02:16:15.170"
+      "published": "2026-04-04T04:17:14.723"
     },
     {
-      "id": "CVE-2026-34830",
-      "description": "Rack is a modular Ruby web server interface. Prior to versions 2.2.23, 3.1.21, and 3.2.6, Rack::Sendfile#map_accel_path interpolates the value of the X-Accel-Mapping request header directly into a regular expression when rewriting file paths for X-Accel-Redirect. Because the header value is not escaped, an attacker who can supply X-Accel-Mapping to the backend can inject regex metacharacters and control the generated X-Accel-Redirect response header. In deployments using Rack::Sendfile with x-ac",
+      "id": "CVE-2026-23427",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: fix use-after-free in durable v2 replay of active file handles\n\nparse_durable_handle_context() unconditionally assigns dh_info->fp->conn\nto the current connection when handling a DURABLE_REQ_V2 context with\nSMB2_FLAGS_REPLAY_OPERATION. ksmbd_lookup_fd_cguid() does not filter by\nfp->conn, so it returns file handles that are already actively connected.\nThe unconditional overwrite replaces fp->conn, and when the overwriting",
       "cvss": {
-        "score": 5.9,
-        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Nginx"
-      ],
-      "references": [
-        "https://github.com/rack/rack/security/advisories/GHSA-qv7j-4883-hwh7"
-      ],
-      "published": "2026-04-02T17:16:26.267"
-    },
-    {
-      "id": "CVE-2026-4325",
-      "description": "A flaw was found in Keycloak. The SingleUseObjectProvider, a global key-value store, lacks proper type and namespace isolation. This vulnerability allows an attacker to delete arbitrary single-use entries, which can enable the replay of consumed action tokens, such as password reset links. This could lead to unauthorized access or account compromise.",
-      "cvss": {
-        "score": 5.3,
-        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:N/I:H/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://access.redhat.com/errata/RHSA-2026:6475",
-        "https://access.redhat.com/errata/RHSA-2026:6476",
-        "https://access.redhat.com/errata/RHSA-2026:6477",
-        "https://access.redhat.com/errata/RHSA-2026:6478",
-        "https://access.redhat.com/security/cve/CVE-2026-4325"
-      ],
-      "published": "2026-04-02T13:16:26.863"
-    },
-    {
-      "id": "CVE-2026-26895",
-      "description": "User enumeration vulnerability in /pwreset.php in osTicket v1.18.2 allows remote attackers to enumerate valid usernames registered in the platform.",
-      "cvss": {
-        "score": 5.3,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "http://osticket.com",
-        "https://csacyber.com/blog/osticket-timing-vulnerability-understanding-the-risk"
-      ],
-      "published": "2026-04-02T17:16:21.833"
-    },
-    {
-      "id": "CVE-2026-5417",
-      "description": "A vulnerability was determined in Dataease SQLbot up to 1.6.0. This issue affects the function get_es_data_by_http of the file backend/apps/db/es_engine.py of the component Elasticsearch Handler. This manipulation of the argument address causes server-side request forgery. The attack may be initiated remotely. The exploit has been publicly disclosed and may be utilized. Upgrading to version 1.7.0 is capable of addressing this issue. You should upgrade the affected component. The vendor was conta",
-      "cvss": {
-        "score": 4.7,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:L/I:L/A:L",
-        "severity": "MEDIUM"
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
       },
       "tier": 3,
       "matchedProducts": [
-        "Elasticsearch"
+        "Ubuntu"
       ],
       "references": [
-        "https://github.com/dataease/SQLBot/releases/tag/v1.7.0",
-        "https://vuldb.com/submit/756043",
-        "https://vuldb.com/vuln/354854",
-        "https://vuldb.com/vuln/354854/cti",
-        "https://www.notion.so/SQLbot-SSRF-in-Elasticsearch-Unvalidated-Requests-2afea92a3c4180bea524f1a253f8d9a0"
+        "https://git.kernel.org/stable/c/568a25fd7bcdfb2790f7d42aa2a440dca4435c96",
+        "https://git.kernel.org/stable/c/9b0792c3eacf01e67f356d6ef9707b0ae5022419",
+        "https://git.kernel.org/stable/c/a5828c14a9e3d5eeed0bcc0a58f0f3fbca0cdcb2",
+        "https://git.kernel.org/stable/c/b0158d9d6f4ec5941e49a0b812735db2844f9975",
+        "https://git.kernel.org/stable/c/b425e4d0eb321a1116ddbf39636333181675d8f4"
       ],
-      "published": "2026-04-02T19:21:36.497"
+      "published": "2026-04-03T16:16:23.797"
     },
     {
-      "id": "CVE-2026-35414",
-      "description": "OpenSSH before 10.3 mishandles the authorized_keys principals option in uncommon scenarios involving a principals list in conjunction with a Certificate Authority that makes certain use of comma characters.",
+      "id": "CVE-2026-23428",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: fix use-after-free of share_conf in compound request\n\nsmb2_get_ksmbd_tcon() reuses work->tcon in compound requests without\nvalidating tcon->t_state. ksmbd_tree_conn_lookup() checks t_state ==\nTREE_CONNECTED on the initial lookup path, but the compound reuse path\nbypasses this check entirely.\n\nIf a prior command in the compound (SMB2_TREE_DISCONNECT) sets t_state\nto TREE_DISCONNECTED and frees share_conf via ksmbd_share_c",
       "cvss": {
-        "score": 4.2,
-        "vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:L/I:L/A:N",
-        "severity": "MEDIUM"
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
       },
       "tier": 3,
       "matchedProducts": [
-        "OpenSSH"
+        "Ubuntu"
       ],
       "references": [
-        "https://marc.info/?l=openssh-unix-dev&m=177513443901484&w=2",
-        "https://www.openssh.org/releasenotes.html#10.3p1",
-        "https://www.openwall.com/lists/oss-security/2026/04/02/3"
+        "https://git.kernel.org/stable/c/7f7468fd2a7554cea91b7d430335a3dbf01dcc09",
+        "https://git.kernel.org/stable/c/806f13752652216db0c309392b4db3e64eeed4f2",
+        "https://git.kernel.org/stable/c/a5929c2020ce54e1dcbd1078c0f30b8aaf73c105",
+        "https://git.kernel.org/stable/c/c33615f995aee80657b9fdfbc4ee7f49c2bd733d",
+        "https://git.kernel.org/stable/c/c742b46a153d3ff95ff0825ab1950c87b9e14470"
       ],
-      "published": "2026-04-02T18:16:34.690"
+      "published": "2026-04-03T16:16:23.993"
     },
     {
-      "id": "CVE-2026-35537",
-      "description": "An issue was discovered in Roundcube Webmail before 1.5.14 and 1.6.14. Unsafe deserialization in the redis/memcache session handler may lead to arbitrary file write operations by unauthenticated attackers via crafted session data.",
-      "cvss": {
-        "score": 3.7,
-        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:N",
-        "severity": "LOW"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "Redis"
-      ],
-      "references": [
-        "https://github.com/roundcube/roundcubemail/commit/618c5428edc69fb088e7ac6c89e506dd39df3",
-        "https://github.com/roundcube/roundcubemail/commit/6d586cfa4d8a31f7957f7a445aaedd52592a0e74",
-        "https://github.com/roundcube/roundcubemail/commit/a4ead994d2f0ea92e4a1603196a197e0d5df1620",
-        "https://github.com/roundcube/roundcubemail/releases/tag/1.5.14",
-        "https://github.com/roundcube/roundcubemail/releases/tag/1.6.14"
-      ],
-      "published": "2026-04-03T04:17:10.313"
-    },
-    {
-      "id": "CVE-2026-35386",
-      "description": "In OpenSSH before 10.3, command execution can occur via shell metacharacters in a username within a command line. This requires a scenario where the username on the command line is untrusted, and also requires a non-default configurations of % in ssh_config.",
-      "cvss": {
-        "score": 3.6,
-        "vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:L/I:L/A:N",
-        "severity": "LOW"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "OpenSSH"
-      ],
-      "references": [
-        "https://marc.info/?l=openssh-unix-dev&m=177513443901484&w=2",
-        "https://www.openssh.org/releasenotes.html#10.3p1",
-        "https://www.openwall.com/lists/oss-security/2026/04/02/3"
-      ],
-      "published": "2026-04-02T17:16:27.623"
-    },
-    {
-      "id": "CVE-2026-35387",
-      "description": "OpenSSH before 10.3 can use unintended ECDSA algorithms. Listing of any ECDSA algorithm in PubkeyAcceptedAlgorithms or HostbasedAcceptedAlgorithms is misinterpreted to mean all ECDSA algorithms.",
-      "cvss": {
-        "score": 3.1,
-        "vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:N/I:L/A:N",
-        "severity": "LOW"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "OpenSSH"
-      ],
-      "references": [
-        "https://marc.info/?l=openssh-unix-dev&m=177513443901484&w=2",
-        "https://www.openssh.org/releasenotes.html#10.3p1",
-        "https://www.openwall.com/lists/oss-security/2026/04/02/3"
-      ],
-      "published": "2026-04-02T17:16:27.790"
-    },
-    {
-      "id": "CVE-2026-35388",
-      "description": "OpenSSH before 10.3 omits connection multiplexing confirmation for proxy-mode multiplexing sessions.",
-      "cvss": {
-        "score": 2.5,
-        "vector": "CVSS:3.1/AV:L/AC:H/PR:N/UI:R/S:U/C:N/I:L/A:N",
-        "severity": "LOW"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "OpenSSH"
-      ],
-      "references": [
-        "https://marc.info/?l=openssh-unix-dev&m=177513443901484&w=2",
-        "https://www.openssh.org/releasenotes.html#10.3p1",
-        "https://www.openwall.com/lists/oss-security/2026/04/02/3"
-      ],
-      "published": "2026-04-02T17:16:27.947"
-    },
-    {
-      "id": "CVE-2026-29139",
-      "description": "SEPPmail Secure Email Gateway before version 15.0.3 allows account takeover by abusing GINA account initialization to reset a victim account password.",
+      "id": "CVE-2026-23449",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/sched: teql: Fix double-free in teql_master_xmit\n\nWhenever a TEQL devices has a lockless Qdisc as root, qdisc_reset should\nbe called using the seq_lock to avoid racing with the datapath. Failure\nto do so may cause crashes like the following:\n\n[  238.028993][  T318] BUG: KASAN: double-free in skb_release_data (net/core/skbuff.c:1139)\n[  238.029328][  T318] Free of addr ffff88810c67ec00 by task poc_teql_uaf_ke/318\n[  238.0297",
       "cvss": {
         "score": null,
         "vector": null,
@@ -445,13 +382,17 @@
         "ESET"
       ],
       "references": [
-        "https://downloads.seppmail.com/extrelnotes/150/ERN15.0.html#seppmail-vulnerability-disclosure-1503"
+        "https://git.kernel.org/stable/c/21c89a0a8de7eadad8d385645a95b3233f23130e",
+        "https://git.kernel.org/stable/c/4a233447b941db451ea5f5a0942cffd0f7f7eaae",
+        "https://git.kernel.org/stable/c/4e8ebc4c18ea8213d28e6cb867d18fcc67daca21",
+        "https://git.kernel.org/stable/c/66360460cab63c248ca5b1070a01c0c29133b960",
+        "https://git.kernel.org/stable/c/afbc79a7770b230a9f24bd39271209d6b3682c5f"
       ],
-      "published": "2026-04-02T09:16:22.467"
+      "published": "2026-04-03T16:16:31.037"
     },
     {
-      "id": "CVE-2026-34752",
-      "description": "Haraka is a Node.js mail server. Prior to version 3.1.4, sending an email with __proto__: as a header name crashes the Haraka worker process. This issue has been patched in version 3.1.4.",
+      "id": "CVE-2026-23470",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/imagination: Fix deadlock in soft reset sequence\n\nThe soft reset sequence is currently executed from the threaded IRQ\nhandler, hence it cannot call disable_irq() which internally waits\nfor IRQ handlers, i.e. itself, to complete.\n\nUse disable_irq_nosync() during a soft reset instead.",
       "cvss": {
         "score": null,
         "vector": null,
@@ -459,13 +400,36 @@
       },
       "tier": 3,
       "matchedProducts": [
-        "Node.js"
+        "ESET"
       ],
       "references": [
-        "https://github.com/haraka/Haraka/releases/tag/v3.1.4",
-        "https://github.com/haraka/Haraka/security/advisories/GHSA-xph3-r2jf-4vp3"
+        "https://git.kernel.org/stable/c/6f39b48a2d3b1fe83f99477250cd0cd67ca1e1c6",
+        "https://git.kernel.org/stable/c/9497b1f309436971726e229aa6026954ea7c28e9",
+        "https://git.kernel.org/stable/c/a55c2a5c8d680156495b7b1e2a9f5a3e313ba524",
+        "https://git.kernel.org/stable/c/f99e8b813ae5ce8ffd62c33f5753bf0a008af4b1"
       ],
-      "published": "2026-04-02T19:21:33.517"
+      "published": "2026-04-03T16:16:34.630"
+    },
+    {
+      "id": "CVE-2026-31392",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb: client: fix krb5 mount with username option\n\nCustomer reported that some of their krb5 mounts were failing against\na single server as the client was trying to mount the shares with\nwrong credentials.  It turned out the client was reusing SMB session\nfrom first mount to try mounting the other shares, even though a\ndifferent username= option had been specified to the other mounts.\n\nBy using username mount option along with s",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "CIFS/SMB Utils"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/12b4c5d98cd7ca46d5035a57bcd995df614c14e1",
+        "https://git.kernel.org/stable/c/6e9ff1eb7feedcf46ff2d0503759960ab58e7775",
+        "https://git.kernel.org/stable/c/9229709ec8bf85ae7ca53aeee9aa14814cdc1bd2",
+        "https://git.kernel.org/stable/c/9ee803bfdba0cf739038dbdabdd4c02582c8f2b2",
+        "https://git.kernel.org/stable/c/d33cbf0bf8979d779900da9be2505d68d9d8da25"
+      ],
+      "published": "2026-04-03T16:16:37.300"
     }
   ]
 }
