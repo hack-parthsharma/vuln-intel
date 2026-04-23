@@ -1,633 +1,233 @@
 {
-  "scanTime": "2026-04-22 05:37:00 UTC",
-  "totalMatched": 93,
+  "scanTime": "2026-04-23 05:41:43 UTC",
+  "totalMatched": 63,
   "productsMonitored": 147,
   "tierCounts": {
-    "0": 6,
-    "1": 9,
-    "2": 48,
-    "3": 30
+    "0": 4,
+    "1": 7,
+    "2": 26,
+    "3": 26
   },
   "vulnerabilities": [
     {
-      "id": "CVE-2026-40906",
-      "description": "Electric is a Postgres sync engine. From 1.1.12 to before 1.5.0, the order_by parameter in the ElectricSQL /v1/shape API is vulnerable to error-based SQL injection, allowing any authenticated user to read, write, and destroy the full contents of the underlying PostgreSQL database through crafted ORDER BY expressions. This vulnerability is fixed in 1.5.0.",
+      "id": "CVE-2026-41679",
+      "description": "Paperclip is a Node.js server and React UI that orchestrates a team of AI agents to run a business. Prior to version 2026.416.0, an unauthenticated attacker can achieve full remote code execution on any network-accessible Paperclip instance running in `authenticated` mode with default configuration. No user interaction, no credentials, just the target's address. The chain consists of six API calls. The attack is fully automated, requires no user interaction, and works against the default deploym",
       "cvss": {
-        "score": 9.9,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+        "score": 10.0,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
         "severity": "CRITICAL"
       },
       "tier": 0,
+      "matchedProducts": [
+        "Node.js"
+      ],
+      "references": [
+        "https://github.com/paperclipai/paperclip/security/advisories/GHSA-68qg-g8mg-6pr7"
+      ],
+      "published": "2026-04-23T02:16:19.180"
+    },
+    {
+      "id": "CVE-2026-6235",
+      "description": "The Sendmachine for WordPress plugin for WordPress is vulnerable to authorization bypass via the 'manage_admin_requests' function in all versions up to, and including, 1.0.20. This is due to the plugin not properly verifying that a user is authorized to perform an action. This makes it possible for unauthenticated attackers to overwrite the plugin's SMTP configuration, which can be leveraged to intercept all outbound emails from the site (including password reset emails).",
+      "cvss": {
+        "score": 9.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "CRITICAL"
+      },
+      "tier": 0,
+      "matchedProducts": [
+        "ESET",
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/sendmachine/tags/1.0.20/includes/sendmachine_email_manager.php#L39",
+        "https://plugins.trac.wordpress.org/browser/sendmachine/tags/1.0.20/sendmachine_wp_admin.php#L174",
+        "https://plugins.trac.wordpress.org/browser/sendmachine/tags/1.0.20/sendmachine_wp_admin.php#L183",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/7889e071-84a8-46ec-abe5-5c98980ce275?source=cve"
+      ],
+      "published": "2026-04-22T09:16:26.263"
+    },
+    {
+      "id": "CVE-2026-3844",
+      "description": "The Breeze Cache plugin for WordPress is vulnerable to arbitrary file uploads due to missing file type validation in the 'fetch_gravatar_from_remote' function in all versions up to, and including, 2.4.4. This makes it possible for unauthenticated attackers to upload arbitrary files on the affected site's server which may make remote code execution possible. The vulnerability can only be exploited if \"Host Files Locally - Gravatars\" is enabled, which is disabled by default.",
+      "cvss": {
+        "score": 9.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "CRITICAL"
+      },
+      "tier": 0,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/breeze/tags/2.4.1/inc/class-breeze-cache-cronjobs.php#L119",
+        "https://plugins.trac.wordpress.org/browser/breeze/tags/2.4.1/inc/class-breeze-cache-cronjobs.php#L89",
+        "https://plugins.trac.wordpress.org/changeset/3511463/breeze",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/e342b1c0-6e7f-4e2c-8a52-018df12c12a0?source=cve"
+      ],
+      "published": "2026-04-23T03:16:17.527"
+    },
+    {
+      "id": "CVE-2026-4140",
+      "description": "The Ni WooCommerce Order Export plugin for WordPress is vulnerable to Cross-Site Request Forgery in all versions up to and including 3.1.6. This is due to missing nonce validation in the ni_order_export_action() AJAX handler function. The handler processes settings updates when the 'page' parameter is set to 'nioe-order-settings', delegating to Ni_Order_Setting::page_ajax() which calls update_option('ni_order_export_option', $_REQUEST) without verifying any nonce or checking user capabilities. T",
+      "cvss": {
+        "score": 4.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 0,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/ni-woocommerce-order-export/tags/3.1.6/include/ni-order-export.php#L136",
+        "https://plugins.trac.wordpress.org/browser/ni-woocommerce-order-export/tags/3.1.6/include/ni-order-setting.php#L59",
+        "https://plugins.trac.wordpress.org/browser/ni-woocommerce-order-export/trunk/include/ni-order-export.php#L136",
+        "https://plugins.trac.wordpress.org/browser/ni-woocommerce-order-export/trunk/include/ni-order-setting.php#L59",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/2d62c49c-3a33-4865-abcc-22d8e38ac198?source=cve"
+      ],
+      "published": "2026-04-22T09:16:24.857"
+    },
+    {
+      "id": "CVE-2026-4119",
+      "description": "The Create DB Tables plugin for WordPress is vulnerable to authorization bypass in all versions up to and including 1.2.1. The plugin registers admin_post action hooks for creating tables (admin_post_add_table) and deleting tables (admin_post_delete_db_table) without implementing any capability checks via current_user_can() or nonce verification via wp_verify_nonce()/check_admin_referer(). The admin_post hook only requires the user to be logged in, meaning any authenticated user including Subscr",
+      "cvss": {
+        "score": 9.1,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:H",
+        "severity": "CRITICAL"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/create-db-tables/tags/1.2.1/create-db-tables.php#L370",
+        "https://plugins.trac.wordpress.org/browser/create-db-tables/tags/1.2.1/create-db-tables.php#L376",
+        "https://plugins.trac.wordpress.org/browser/create-db-tables/tags/1.2.1/create-db-tables.php#L405",
+        "https://plugins.trac.wordpress.org/browser/create-db-tables/tags/1.2.1/create-db-tables.php#L408",
+        "https://plugins.trac.wordpress.org/browser/create-db-tables/tags/1.2.1/create-new-table.php#L14"
+      ],
+      "published": "2026-04-22T09:16:23.330"
+    },
+    {
+      "id": "CVE-2026-41167",
+      "description": "Jellystat is a free and open source Statistics App for Jellyfin. Prior to version 1.1.10, multiple API endpoints in Jellystat build SQL queries by interpolating unsanitized request-body fields directly into raw SQL strings. An authenticated user can inject arbitrary SQL via `POST /api/getUserDetails` and `POST /api/getLibrary`, enabling full read of any table in the database - including `app_config`, which stores the Jellystat admin credentials, the Jellyfin API key, and the Jellyfin host URL. B",
+      "cvss": {
+        "score": 9.1,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H",
+        "severity": "CRITICAL"
+      },
+      "tier": 1,
       "matchedProducts": [
         "PostgreSQL"
       ],
       "references": [
-        "https://github.com/electric-sql/electric/pull/4081",
-        "https://github.com/electric-sql/electric/security/advisories/GHSA-h5rg-pxx7-r2hj"
+        "https://github.com/CyferShepard/Jellystat/commit/735fe7c6eb0e3e34e92a8a82fd21914d76693665",
+        "https://github.com/CyferShepard/Jellystat/security/advisories/GHSA-fj7c-2p5q-g56m"
       ],
-      "published": "2026-04-21T21:16:44.697"
+      "published": "2026-04-22T21:17:09.303"
     },
     {
-      "id": "CVE-2026-6748",
-      "description": "Uninitialized memory in the Audio/Video: Web Codecs component. This vulnerability was fixed in Firefox 150, Firefox ESR 140.10, Thunderbird 150, and Thunderbird 140.10.",
-      "cvss": {
-        "score": 9.8,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-        "severity": "CRITICAL"
-      },
-      "tier": 0,
-      "matchedProducts": [
-        "Mozilla Firefox"
-      ],
-      "references": [
-        "https://bugzilla.mozilla.org/show_bug.cgi?id=2022604",
-        "https://www.mozilla.org/security/advisories/mfsa2026-30/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-32/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-33/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-34/"
-      ],
-      "published": "2026-04-21T13:16:20.910"
-    },
-    {
-      "id": "CVE-2026-6768",
-      "description": "Mitigation bypass in the Networking: Cookies component. This vulnerability was fixed in Firefox 150 and Thunderbird 150.",
-      "cvss": {
-        "score": 9.8,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-        "severity": "CRITICAL"
-      },
-      "tier": 0,
-      "matchedProducts": [
-        "Mozilla Firefox"
-      ],
-      "references": [
-        "https://bugzilla.mozilla.org/show_bug.cgi?id=2023615",
-        "https://www.mozilla.org/security/advisories/mfsa2026-30/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-33/"
-      ],
-      "published": "2026-04-21T13:16:22.667"
-    },
-    {
-      "id": "CVE-2026-6771",
-      "description": "Mitigation bypass in the DOM: Security component. This vulnerability was fixed in Firefox 150, Firefox ESR 140.10, Thunderbird 150, and Thunderbird 140.10.",
-      "cvss": {
-        "score": 9.8,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-        "severity": "CRITICAL"
-      },
-      "tier": 0,
-      "matchedProducts": [
-        "Mozilla Firefox"
-      ],
-      "references": [
-        "https://bugzilla.mozilla.org/show_bug.cgi?id=2025067",
-        "https://www.mozilla.org/security/advisories/mfsa2026-30/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-32/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-33/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-34/"
-      ],
-      "published": "2026-04-21T13:16:22.927"
-    },
-    {
-      "id": "CVE-2026-40887",
-      "description": "Vendure is an open-source headless commerce platform. Starting in version 1.7.4 and prior to versions 2.3.4, 3.5.7, and 3.6.2, an unauthenticated SQL injection vulnerability exists in the Vendure Shop API. A user-controlled query string parameter is interpolated directly into a raw SQL expression without parameterization or validation, allowing an attacker to execute arbitrary SQL against the database. This affects all supported database backends (PostgreSQL, MySQL/MariaDB, SQLite). The Admin AP",
+      "id": "CVE-2026-41229",
+      "description": "Froxlor is open source server administration software. Prior to version 2.3.6, `PhpHelper::parseArrayToString()` writes string values into single-quoted PHP string literals without escaping single quotes. When an admin with `change_serversettings` permission adds or updates a MySQL server via the API, the `privileged_user` parameter (which has no input validation) is written unescaped into `lib/userdata.inc.php`. Since this file is `require`d on every request via `Database::getDB()`, an attacker",
       "cvss": {
         "score": 9.1,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:H",
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H",
         "severity": "CRITICAL"
       },
-      "tier": 0,
+      "tier": 1,
       "matchedProducts": [
-        "PostgreSQL",
-        "MySQL"
+        "MySQL",
+        "MSSQL"
       ],
       "references": [
-        "https://github.com/vendurehq/vendure/security/advisories/GHSA-9pp3-53p2-ww9v"
+        "https://github.com/froxlor/froxlor/commit/3589ddf93ab59eb2a8971f0f56cbf6266d03c4ae",
+        "https://github.com/froxlor/froxlor/releases/tag/2.3.6",
+        "https://github.com/froxlor/froxlor/security/advisories/GHSA-gc9w-cc93-rjv8"
       ],
-      "published": "2026-04-21T20:17:02.397"
+      "published": "2026-04-23T04:16:19.563"
     },
     {
-      "id": "CVE-2026-40872",
-      "description": "mailcow: dockerized is an open source groupware/email suite based on docker. In versions prior to 2026-03b, the admin dashboard's Autodiscover logs render the EMailAddress value (logged as the \"user\" field) without HTML escaping. By submitting an unauthenticated Autodiscover request with a crafted EMailAddress containing HTML/JS, the payload is stored in Redis and executed when an admin views the Autodiscover logs. Version 2026-03b fixes the vulnerability.",
+      "id": "CVE-2026-41208",
+      "description": "Paperclip is a Node.js server and React UI that orchestrates a team of AI agents to run a business. Versions of @paperclipai/server prior to 2026.416.0 contain a privilege escalation vulnerability that allows an attacker with an Agent API key to execute arbitrary OS commands on the Paperclip server host. An attacker with an agent credential can escalate privileges from the agent runtime to the Paperclip server host. The vulnerability occurs because agents are allowed to update their own adapterC",
+      "cvss": {
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Node.js"
+      ],
+      "references": [
+        "https://github.com/paperclipai/paperclip/security/advisories/GHSA-265w-rf2w-cjh4"
+      ],
+      "published": "2026-04-23T02:16:18.670"
+    },
+    {
+      "id": "CVE-2026-4132",
+      "description": "The HTTP Headers plugin for WordPress is vulnerable to External Control of File Name or Path leading to Remote Code Execution in all versions up to and including 1.19.2. This is due to insufficient validation of the file path stored in the 'hh_htpasswd_path' option and lack of sanitization on the 'hh_www_authenticate_user' option value. The plugin allows administrators to set an arbitrary file path for the htpasswd file location and does not validate that the path has a safe file extension (e.g.",
+      "cvss": {
+        "score": 7.2,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/http-headers/tags/1.19.2/http-headers.php#L1296",
+        "https://plugins.trac.wordpress.org/browser/http-headers/tags/1.19.2/http-headers.php#L1298",
+        "https://plugins.trac.wordpress.org/browser/http-headers/tags/1.19.2/http-headers.php#L1403",
+        "https://plugins.trac.wordpress.org/browser/http-headers/tags/1.19.2/http-headers.php#L671",
+        "https://plugins.trac.wordpress.org/browser/http-headers/tags/1.19.2/http-headers.php#L722"
+      ],
+      "published": "2026-04-22T09:16:24.240"
+    },
+    {
+      "id": "CVE-2026-32885",
+      "description": "DDEV is an open-source tool for running local web development environments for PHP and Node.js. Versions prior to 1.25.2 have unsanitized extraction in both `Untar()` and `Unzip()` functions in `pkg/archive/archive.go`. Downloads and extracts archives from remote sources without path validation. Version 1.25.2 patches the issue.",
+      "cvss": {
+        "score": 6.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:H/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Node.js"
+      ],
+      "references": [
+        "https://github.com/ddev/ddev/releases/tag/v1.25.2",
+        "https://github.com/ddev/ddev/security/advisories/GHSA-x2xq-qhjf-5mvg",
+        "https://github.com/ddev/ddev/security/advisories/GHSA-x2xq-qhjf-5mvg"
+      ],
+      "published": "2026-04-22T17:16:34.770"
+    },
+    {
+      "id": "CVE-2026-31441",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndmaengine: idxd: Fix memory leak when a wq is reset\n\nidxd_wq_disable_cleanup() which is called from the reset path for a\nworkqueue, sets the wq type to NONE, which for other parts of the\ndriver mean that the wq is empty (all its resources were released).\n\nOnly set the wq type to NONE after its resources are released.",
       "cvss": {
         "score": null,
         "vector": null,
         "severity": "UNKNOWN"
       },
-      "tier": 0,
-      "matchedProducts": [
-        "Redis"
-      ],
-      "references": [
-        "https://github.com/mailcow/mailcow-dockerized/security/advisories/GHSA-f9xf-vc72-rcgm"
-      ],
-      "published": "2026-04-21T20:17:00.673"
-    },
-    {
-      "id": "CVE-2026-40372",
-      "description": "Improper verification of cryptographic signature in ASP.NET Core allows an unauthorized attacker to elevate privileges over a network.",
-      "cvss": {
-        "score": 9.1,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
-        "severity": "CRITICAL"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "Microsoft .NET"
-      ],
-      "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-40372"
-      ],
-      "published": "2026-04-21T20:16:59.133"
-    },
-    {
-      "id": "CVE-2026-40575",
-      "description": "OAuth2 Proxy is a reverse proxy that provides authentication using OAuth2 providers. Versions 7.5.0 through 7.15.1 may trust a client-supplied `X-Forwarded-Uri` header when `--reverse-proxy` is enabled and `--skip-auth-regex` or `--skip-auth-route` is configured. An attacker can spoof this header so OAuth2 Proxy evaluates authentication and skip-auth rules against a different path than the one actually sent to the upstream application. This can result in an unauthenticated remote attacker bypass",
-      "cvss": {
-        "score": 9.1,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
-        "severity": "CRITICAL"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "Nginx"
-      ],
-      "references": [
-        "https://github.com/oauth2-proxy/oauth2-proxy/security/advisories/GHSA-7x63-xv5r-3p2x"
-      ],
-      "published": "2026-04-22T00:16:27.817"
-    },
-    {
-      "id": "CVE-2026-6750",
-      "description": "Privilege escalation in the Graphics: WebRender component. This vulnerability was fixed in Firefox 150, Firefox ESR 115.35, Firefox ESR 140.10, Thunderbird 150, and Thunderbird 140.10.",
-      "cvss": {
-        "score": 8.8,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "Mozilla Firefox"
-      ],
-      "references": [
-        "https://bugzilla.mozilla.org/show_bug.cgi?id=2023407",
-        "https://www.mozilla.org/security/advisories/mfsa2026-30/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-31/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-32/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-33/"
-      ],
-      "published": "2026-04-21T13:16:21.073"
-    },
-    {
-      "id": "CVE-2026-6761",
-      "description": "Privilege escalation in the Networking component. This vulnerability was fixed in Firefox 150, Firefox ESR 140.10, Thunderbird 150, and Thunderbird 140.10.",
-      "cvss": {
-        "score": 8.8,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "Mozilla Firefox"
-      ],
-      "references": [
-        "https://bugzilla.mozilla.org/show_bug.cgi?id=2017857",
-        "https://www.mozilla.org/security/advisories/mfsa2026-30/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-32/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-33/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-34/"
-      ],
-      "published": "2026-04-21T13:16:22.040"
-    },
-    {
-      "id": "CVE-2026-6769",
-      "description": "Privilege escalation in the Debugger component. This vulnerability was fixed in Firefox 150, Firefox ESR 140.10, Thunderbird 150, and Thunderbird 140.10.",
-      "cvss": {
-        "score": 8.8,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "Mozilla Firefox"
-      ],
-      "references": [
-        "https://bugzilla.mozilla.org/show_bug.cgi?id=2023753",
-        "https://www.mozilla.org/security/advisories/mfsa2026-30/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-32/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-33/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-34/"
-      ],
-      "published": "2026-04-21T13:16:22.753"
-    },
-    {
-      "id": "CVE-2026-40611",
-      "description": "Let's Encrypt client and ACME library written in Go (Lego). Prior to 4.34.0, the webroot HTTP-01 challenge provider in lego is vulnerable to arbitrary file write and deletion via path traversal. A malicious ACME server can supply a crafted challenge token containing ../ sequences, causing lego to write attacker-influenced content to any path writable by the lego process. This vulnerability is fixed in 4.34.0.",
-      "cvss": {
-        "score": 8.8,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "Certbot"
-      ],
-      "references": [
-        "https://github.com/go-acme/lego/security/advisories/GHSA-qqx8-2xmm-jrv8",
-        "https://github.com/go-acme/lego/security/advisories/GHSA-qqx8-2xmm-jrv8"
-      ],
-      "published": "2026-04-21T18:16:52.457"
-    },
-    {
-      "id": "CVE-2026-24189",
-      "description": "NVIDIA CUDA-Q contains a vulnerability in an endpoint, where an unauthenticated attacker could cause an out-of-bounds read by sending a maliciously crafted request. A successful exploit of this vulnerability might lead to denial of service and information disclosure.",
-      "cvss": {
-        "score": 8.2,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "NVIDIA CUDA"
-      ],
-      "references": [
-        "https://nvd.nist.gov/vuln/detail/CVE-2026-24189",
-        "https://nvidia.custhelp.com/app/answers/detail/a_id/5820",
-        "https://www.cve.org/CVERecord?id=CVE-2026-24189"
-      ],
-      "published": "2026-04-21T17:16:23.933"
-    },
-    {
-      "id": "CVE-2026-40905",
-      "description": "LinkAce is a self-hosted archive to collect website links. Prior to 2.5.4, a password reset poisoning vulnerability was identified in the application due to improper trust of user-controlled HTTP headers. The application uses the X-Forwarded-Host header when generating password reset URLs. By manipulating this header during a password reset request, an attacker can inject an attacker-controlled domain into the reset link sent via email. As a result, the victim receives a password reset email con",
-      "cvss": {
-        "score": 8.1,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:N",
-        "severity": "HIGH"
-      },
       "tier": 1,
       "matchedProducts": [
         "ESET"
       ],
       "references": [
-        "https://github.com/Kovah/LinkAce/security/advisories/GHSA-48wv-jpf4-vjfv"
+        "https://git.kernel.org/stable/c/0c3d3ac57e3c52b570b8c695903306bff07e04c8",
+        "https://git.kernel.org/stable/c/39c1504e0e76bcfb93991fd94288a83e05d13b51",
+        "https://git.kernel.org/stable/c/54d77cc0c40ca2f894859dc7b3c52997574f1a2a",
+        "https://git.kernel.org/stable/c/a16098a2f0c11ee5e04e23aa7478ca1fcfb0f658",
+        "https://git.kernel.org/stable/c/a9e7815d38629bcf59d3005001f1f315424a58de"
       ],
-      "published": "2026-04-21T21:16:44.503"
+      "published": "2026-04-22T14:16:37.530"
     },
     {
-      "id": "CVE-2026-6784",
-      "description": "Memory safety bugs present in Firefox 149 and Thunderbird 149. Some of these bugs showed evidence of memory corruption and we presume that with enough effort some of these could have been exploited to run arbitrary code. This vulnerability was fixed in Firefox 150 and Thunderbird 150.",
-      "cvss": {
-        "score": 7.5,
-        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "Mozilla Firefox"
-      ],
-      "references": [
-        "https://bugzilla.mozilla.org/buglist.cgi?bug_id=1536243%2C1745382%2C1851073%2C1893400%2C1963301%2C2001319%2C2002899%2C2012436%2C2014435%2C2016901%2C2019916%2C2020486%2C2020612%2C2020817%2C2021788%2C2022051%2C2022367%2C2022431%2C2023302%2C2023670%2C2024225%2C2024238%2C2024240%2C2024265%2C2024367%2C2024369%2C2024424%2C2024760%2C2025281%2C2025361%2C2025387%2C2025466%2C2025954%2C2025958%2C2026278%2C2026292%2C2026297%2C2026378%2C2027148%2C2027287%2C2027341%2C2027384%2C2027427%2C2027694%2C2027993%2C2028009%2C2028270%2C2028416%2C2028524%2C2029295%2C2029301%2C2029461%2C2029699%2C2029800%2C2029801",
-        "https://www.mozilla.org/security/advisories/mfsa2026-30/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-33/"
-      ],
-      "published": "2026-04-21T13:16:24.020"
-    },
-    {
-      "id": "CVE-2026-6776",
-      "description": "Incorrect boundary conditions in the WebRTC: Networking component. This vulnerability was fixed in Firefox 150, Firefox ESR 140.10, Thunderbird 150, and Thunderbird 140.10.",
-      "cvss": {
-        "score": 7.8,
-        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Mozilla Firefox"
-      ],
-      "references": [
-        "https://bugzilla.mozilla.org/show_bug.cgi?id=2021770",
-        "https://www.mozilla.org/security/advisories/mfsa2026-30/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-32/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-33/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-34/"
-      ],
-      "published": "2026-04-21T13:16:23.350"
-    },
-    {
-      "id": "CVE-2026-6746",
-      "description": "Use-after-free in the DOM: Core & HTML component. This vulnerability was fixed in Firefox 150, Firefox ESR 115.35, Firefox ESR 140.10, Thunderbird 150, and Thunderbird 140.10.",
-      "cvss": {
-        "score": 7.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Mozilla Firefox"
-      ],
-      "references": [
-        "https://bugzilla.mozilla.org/show_bug.cgi?id=2014596",
-        "https://www.mozilla.org/security/advisories/mfsa2026-30/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-31/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-32/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-33/"
-      ],
-      "published": "2026-04-21T13:16:20.720"
-    },
-    {
-      "id": "CVE-2026-6747",
-      "description": "Use-after-free in the WebRTC component. This vulnerability was fixed in Firefox 150, Firefox ESR 140.10, Thunderbird 150, and Thunderbird 140.10.",
-      "cvss": {
-        "score": 7.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Mozilla Firefox"
-      ],
-      "references": [
-        "https://bugzilla.mozilla.org/show_bug.cgi?id=2021769",
-        "https://www.mozilla.org/security/advisories/mfsa2026-30/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-32/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-33/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-34/"
-      ],
-      "published": "2026-04-21T13:16:20.813"
-    },
-    {
-      "id": "CVE-2026-6749",
-      "description": "Information disclosure due to uninitialized memory in the Graphics: Canvas2D component. This vulnerability was fixed in Firefox 150, Firefox ESR 115.35, Firefox ESR 140.10, Thunderbird 150, and Thunderbird 140.10.",
-      "cvss": {
-        "score": 7.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
-        "severity": "HIGH"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Mozilla Firefox"
-      ],
-      "references": [
-        "https://bugzilla.mozilla.org/show_bug.cgi?id=2022610",
-        "https://www.mozilla.org/security/advisories/mfsa2026-30/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-31/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-32/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-33/"
-      ],
-      "published": "2026-04-21T13:16:20.993"
-    },
-    {
-      "id": "CVE-2026-6754",
-      "description": "Use-after-free in the JavaScript Engine component. This vulnerability was fixed in Firefox 150, Firefox ESR 115.35, Firefox ESR 140.10, Thunderbird 150, and Thunderbird 140.10.",
-      "cvss": {
-        "score": 7.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Mozilla Firefox"
-      ],
-      "references": [
-        "https://bugzilla.mozilla.org/show_bug.cgi?id=2027541",
-        "https://www.mozilla.org/security/advisories/mfsa2026-30/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-31/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-32/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-33/"
-      ],
-      "published": "2026-04-21T13:16:21.420"
-    },
-    {
-      "id": "CVE-2026-6758",
-      "description": "Use-after-free in the JavaScript: WebAssembly component. This vulnerability was fixed in Firefox 150 and Thunderbird 150.",
-      "cvss": {
-        "score": 7.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Mozilla Firefox"
-      ],
-      "references": [
-        "https://bugzilla.mozilla.org/show_bug.cgi?id=2013619",
-        "https://www.mozilla.org/security/advisories/mfsa2026-30/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-33/"
-      ],
-      "published": "2026-04-21T13:16:21.770"
-    },
-    {
-      "id": "CVE-2026-6759",
-      "description": "Use-after-free in the Widget: Cocoa component. This vulnerability was fixed in Firefox 150, Firefox ESR 140.10, Thunderbird 150, and Thunderbird 140.10.",
-      "cvss": {
-        "score": 7.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Mozilla Firefox"
-      ],
-      "references": [
-        "https://bugzilla.mozilla.org/show_bug.cgi?id=2016164",
-        "https://www.mozilla.org/security/advisories/mfsa2026-30/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-32/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-33/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-34/"
-      ],
-      "published": "2026-04-21T13:16:21.857"
-    },
-    {
-      "id": "CVE-2026-6766",
-      "description": "Incorrect boundary conditions in the Libraries component in NSS. This vulnerability was fixed in Firefox 150, Firefox ESR 140.10, Thunderbird 150, and Thunderbird 140.10.",
-      "cvss": {
-        "score": 7.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
-        "severity": "HIGH"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Mozilla Firefox"
-      ],
-      "references": [
-        "https://bugzilla.mozilla.org/show_bug.cgi?id=2023207",
-        "https://www.mozilla.org/security/advisories/mfsa2026-30/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-32/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-33/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-34/"
-      ],
-      "published": "2026-04-21T13:16:22.493"
-    },
-    {
-      "id": "CVE-2026-6772",
-      "description": "Incorrect boundary conditions in the Libraries component in NSS. This vulnerability was fixed in Firefox 150, Firefox ESR 115.35, Firefox ESR 140.10, Thunderbird 150, and Thunderbird 140.10.",
-      "cvss": {
-        "score": 7.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
-        "severity": "HIGH"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Mozilla Firefox"
-      ],
-      "references": [
-        "https://bugzilla.mozilla.org/show_bug.cgi?id=2026089",
-        "https://www.mozilla.org/security/advisories/mfsa2026-30/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-31/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-32/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-33/"
-      ],
-      "published": "2026-04-21T13:16:23.007"
-    },
-    {
-      "id": "CVE-2026-6773",
-      "description": "Denial-of-service due to integer overflow in the Graphics: WebGPU component. This vulnerability was fixed in Firefox 150 and Thunderbird 150.",
-      "cvss": {
-        "score": 7.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Mozilla Firefox"
-      ],
-      "references": [
-        "https://bugzilla.mozilla.org/show_bug.cgi?id=2015959",
-        "https://www.mozilla.org/security/advisories/mfsa2026-30/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-33/"
-      ],
-      "published": "2026-04-21T13:16:23.087"
-    },
-    {
-      "id": "CVE-2026-6780",
-      "description": "Denial-of-service in the Audio/Video: Playback component. This vulnerability was fixed in Firefox 150 and Thunderbird 150.",
-      "cvss": {
-        "score": 7.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Mozilla Firefox"
-      ],
-      "references": [
-        "https://bugzilla.mozilla.org/show_bug.cgi?id=2025179",
-        "https://www.mozilla.org/security/advisories/mfsa2026-30/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-33/"
-      ],
-      "published": "2026-04-21T13:16:23.683"
-    },
-    {
-      "id": "CVE-2026-6781",
-      "description": "Denial-of-service in the Audio/Video: Playback component. This vulnerability was fixed in Firefox 150 and Thunderbird 150.",
-      "cvss": {
-        "score": 7.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Mozilla Firefox"
-      ],
-      "references": [
-        "https://bugzilla.mozilla.org/show_bug.cgi?id=2025583",
-        "https://www.mozilla.org/security/advisories/mfsa2026-30/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-33/"
-      ],
-      "published": "2026-04-21T13:16:23.770"
-    },
-    {
-      "id": "CVE-2026-6782",
-      "description": "Information disclosure in the IP Protection component. This vulnerability was fixed in Firefox 150 and Thunderbird 150.",
-      "cvss": {
-        "score": 7.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
-        "severity": "HIGH"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Mozilla Firefox"
-      ],
-      "references": [
-        "https://bugzilla.mozilla.org/show_bug.cgi?id=2026571",
-        "https://www.mozilla.org/security/advisories/mfsa2026-30/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-33/"
-      ],
-      "published": "2026-04-21T13:16:23.847"
-    },
-    {
-      "id": "CVE-2026-40879",
-      "description": "Nest is a framework for building scalable Node.js server-side applications. Prior to 11.1.19, when an attacker sends many small, valid JSON messages in one TCP frame, handleData() recurses once per message; the buffer shrinks each call. maxBufferSize is never reached; call stack overflows instead. A ~47 KB payload is sufficient to trigger RangeError. This vulnerability is fixed in 11.1.19.",
-      "cvss": {
-        "score": 7.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Node.js"
-      ],
-      "references": [
-        "https://github.com/nestjs/nest/security/advisories/GHSA-hpwf-8g29-85qm"
-      ],
-      "published": "2026-04-21T20:17:01.533"
-    },
-    {
-      "id": "CVE-2026-22016",
-      "description": "Vulnerability in the Oracle Java SE, Oracle GraalVM for JDK, Oracle GraalVM Enterprise Edition product of Oracle Java SE (component: JAXP).  Supported versions that are affected are Oracle Java SE: 8u481, 8u481-b50, 8u481-perf, 11.0.30, 17.0.18, 21.0.10, 25.0.2, 26; Oracle GraalVM for JDK: 17.0.18 and  21.0.10; Oracle GraalVM Enterprise Edition: 21.3.17. Easily exploitable vulnerability allows unauthenticated attacker with network access via multiple protocols to compromise Oracle Java SE, Oracl",
-      "cvss": {
-        "score": 7.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
-        "severity": "HIGH"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Oracle Java"
-      ],
-      "references": [
-        "https://www.oracle.com/security-alerts/cpuapr2026.html"
-      ],
-      "published": "2026-04-21T21:16:28.470"
-    },
-    {
-      "id": "CVE-2026-34282",
-      "description": "Vulnerability in the Oracle Java SE, Oracle GraalVM for JDK, Oracle GraalVM Enterprise Edition product of Oracle Java SE (component: Networking).  Supported versions that are affected are Oracle Java SE: 8u481-perf, 11.0.30, 17.0.18, 21.0.10, 25.0.2, 26; Oracle GraalVM for JDK: 17.0.18 and  21.0.10; Oracle GraalVM Enterprise Edition: 21.3.17. Easily exploitable vulnerability allows unauthenticated attacker with network access via multiple protocols to compromise Oracle Java SE, Oracle GraalVM fo",
-      "cvss": {
-        "score": 7.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Oracle Java"
-      ],
-      "references": [
-        "https://www.oracle.com/security-alerts/cpuapr2026.html"
-      ],
-      "published": "2026-04-21T21:16:32.643"
-    },
-    {
-      "id": "CVE-2026-40585",
-      "description": "blueprintUE is a tool to help Unreal Engine developers. Prior to 4.2.0, when a password reset is initiated, a 128-character CSPRNG token is generated and stored alongside a password_reset_at timestamp. However, the token redemption function findUserIDFromEmailAndToken() queries only for a matching email + password_reset token pair \u2014 it does not check whether the password_reset_at timestamp has elapsed any maximum window. A generated reset token is valid indefinitely until it is explicitly consum",
-      "cvss": {
-        "score": 7.4,
-        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N",
-        "severity": "HIGH"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://github.com/blueprintue/blueprintue-self-hosted-edition/security/advisories/GHSA-qr65-6vp8-whjf",
-        "https://github.com/blueprintue/blueprintue-self-hosted-edition/security/advisories/GHSA-qr65-6vp8-whjf"
-      ],
-      "published": "2026-04-21T17:16:56.380"
-    },
-    {
-      "id": "CVE-2026-6751",
-      "description": "Uninitialized memory in the Audio/Video: Web Codecs component. This vulnerability was fixed in Firefox 150, Firefox ESR 140.10, Thunderbird 150, and Thunderbird 140.10.",
+      "id": "CVE-2026-40542",
+      "description": "Missing critical step in authentication in Apache HttpClient 5.6 allows an attacker to cause the client to accept SCRAM-SHA-256 authentication without proper mutual authentication verification. Users are recommended to upgrade to version 5.6.1, which fixes this issue.",
       "cvss": {
         "score": 7.3,
         "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L",
@@ -635,304 +235,398 @@
       },
       "tier": 2,
       "matchedProducts": [
-        "Mozilla Firefox"
+        "Apache HTTP Server"
       ],
       "references": [
-        "https://bugzilla.mozilla.org/show_bug.cgi?id=2025883",
-        "https://www.mozilla.org/security/advisories/mfsa2026-30/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-32/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-33/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-34/"
+        "https://lists.apache.org/thread/tfmgv86xr0z1y096vs3z0y315t1v3o97",
+        "http://www.openwall.com/lists/oss-security/2026/04/22/5"
       ],
-      "published": "2026-04-21T13:16:21.163"
+      "published": "2026-04-22T08:16:12.780"
     },
     {
-      "id": "CVE-2026-6752",
-      "description": "Incorrect boundary conditions in the WebRTC component. This vulnerability was fixed in Firefox 150, Firefox ESR 115.35, Firefox ESR 140.10, Thunderbird 150, and Thunderbird 140.10.",
-      "cvss": {
-        "score": 7.3,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L",
-        "severity": "HIGH"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Mozilla Firefox"
-      ],
-      "references": [
-        "https://bugzilla.mozilla.org/show_bug.cgi?id=2027499",
-        "https://www.mozilla.org/security/advisories/mfsa2026-30/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-31/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-32/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-33/"
-      ],
-      "published": "2026-04-21T13:16:21.250"
-    },
-    {
-      "id": "CVE-2026-6755",
-      "description": "Mitigation bypass in the DOM: postMessage component. This vulnerability was fixed in Firefox 150 and Thunderbird 150.",
+      "id": "CVE-2026-4280",
+      "description": "The Breaking News WP plugin for WordPress is vulnerable to Local File Inclusion in all versions up to, and including, 1.3. This is due to the brnwp_ajax_form AJAX endpoint lacking both authorization checks and CSRF verification, combined with insufficient path validation when the brnwp_theme option value is passed directly to an include() statement in the brnwp_show_breaking_news_wp() shortcode handler. While sanitize_text_field() is applied to user input, it does not strip directory traversal s",
       "cvss": {
         "score": 6.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
         "severity": "MEDIUM"
       },
       "tier": 2,
       "matchedProducts": [
-        "Mozilla Firefox"
+        "WordPress"
       ],
       "references": [
-        "https://bugzilla.mozilla.org/show_bug.cgi?id=1880429",
-        "https://www.mozilla.org/security/advisories/mfsa2026-30/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-33/"
+        "https://plugins.trac.wordpress.org/browser/breaking-news-wp/tags/1.3/breaking-news.php#L366",
+        "https://plugins.trac.wordpress.org/browser/breaking-news-wp/tags/1.3/breaking-news.php#L372",
+        "https://plugins.trac.wordpress.org/browser/breaking-news-wp/tags/1.3/breaking-news.php#L85",
+        "https://plugins.trac.wordpress.org/browser/breaking-news-wp/trunk/breaking-news.php#L366",
+        "https://plugins.trac.wordpress.org/browser/breaking-news-wp/trunk/breaking-news.php#L372"
       ],
-      "published": "2026-04-21T13:16:21.510"
+      "published": "2026-04-22T09:16:25.310"
     },
     {
-      "id": "CVE-2026-6763",
-      "description": "Mitigation bypass in the File Handling component. This vulnerability was fixed in Firefox 150, Firefox ESR 140.10, Thunderbird 150, and Thunderbird 140.10.",
+      "id": "CVE-2026-4074",
+      "description": "The Quran Live Multilanguage plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'cheikh' and 'lang' shortcode attributes in all versions up to, and including, 1.0.3. This is due to insufficient input sanitization and output escaping on user-supplied shortcode attributes. The quran_live_render() function of quran-live.php receives shortcode attributes and passes them directly through shortcode_atts() and extract() without any sanitization. These values are then passed to Re",
       "cvss": {
-        "score": 6.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N",
+        "score": 6.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
         "severity": "MEDIUM"
       },
       "tier": 2,
       "matchedProducts": [
-        "Mozilla Firefox"
+        "WordPress"
       ],
       "references": [
-        "https://bugzilla.mozilla.org/show_bug.cgi?id=2021666",
-        "https://www.mozilla.org/security/advisories/mfsa2026-30/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-32/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-33/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-34/"
+        "https://plugins.trac.wordpress.org/browser/quran-live/tags/1.0.3/inc/Class_QuranLive.php#L191",
+        "https://plugins.trac.wordpress.org/browser/quran-live/tags/1.0.3/inc/Class_QuranLive.php#L216",
+        "https://plugins.trac.wordpress.org/browser/quran-live/tags/1.0.3/inc/Class_QuranLive.php#L217",
+        "https://plugins.trac.wordpress.org/browser/quran-live/tags/1.0.3/inc/Class_QuranLive.php#L245",
+        "https://plugins.trac.wordpress.org/browser/quran-live/tags/1.0.3/inc/Class_QuranLive.php#L246"
       ],
-      "published": "2026-04-21T13:16:22.227"
+      "published": "2026-04-22T09:16:21.947"
     },
     {
-      "id": "CVE-2026-6764",
-      "description": "Incorrect boundary conditions in the DOM: Device Interfaces component. This vulnerability was fixed in Firefox 150, Firefox ESR 140.10, Thunderbird 150, and Thunderbird 140.10.",
+      "id": "CVE-2026-4076",
+      "description": "The Slider Bootstrap Carousel plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'category' and 'template' shortcode attributes in all versions up to and including 1.0.7. This is due to insufficient input sanitization and output escaping on user-supplied shortcode attributes. The plugin uses extract() on shortcode_atts() to parse attributes, then directly outputs the $category variable into multiple HTML attributes (id, data-target, href) on lines 38, 47, 109, and 113 with",
       "cvss": {
-        "score": 6.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:L",
+        "score": 6.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
         "severity": "MEDIUM"
       },
       "tier": 2,
       "matchedProducts": [
-        "Mozilla Firefox"
+        "WordPress"
       ],
       "references": [
-        "https://bugzilla.mozilla.org/show_bug.cgi?id=2022162",
-        "https://www.mozilla.org/security/advisories/mfsa2026-30/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-32/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-33/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-34/"
+        "https://plugins.trac.wordpress.org/browser/slider-bootstrap-carousel/tags/1.0.7/includes/sbc-shortcode.php#L109",
+        "https://plugins.trac.wordpress.org/browser/slider-bootstrap-carousel/tags/1.0.7/includes/sbc-shortcode.php#L113",
+        "https://plugins.trac.wordpress.org/browser/slider-bootstrap-carousel/tags/1.0.7/includes/sbc-shortcode.php#L38",
+        "https://plugins.trac.wordpress.org/browser/slider-bootstrap-carousel/tags/1.0.7/includes/sbc-shortcode.php#L47",
+        "https://plugins.trac.wordpress.org/browser/slider-bootstrap-carousel/tags/1.0.7/includes/sbc-shortcode.php#L7"
       ],
-      "published": "2026-04-21T13:16:22.313"
+      "published": "2026-04-22T09:16:22.117"
     },
     {
-      "id": "CVE-2026-6770",
-      "description": "Other issue in the Storage: IndexedDB component. This vulnerability was fixed in Firefox 150, Firefox ESR 140.10, Thunderbird 150, and Thunderbird 140.10.",
+      "id": "CVE-2026-4082",
+      "description": "The ER Swiffy Insert plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the [swiffy] shortcode in all versions up to and including 1.0.0. This is due to insufficient input sanitization and output escaping on user-supplied shortcode attributes ('n', 'w', 'h'). These attributes are extracted using extract() and directly interpolated into the HTML output without any escaping such as esc_attr(). This makes it possible for authenticated attackers, with Contributor-level access and ",
       "cvss": {
-        "score": 6.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:L",
+        "score": 6.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
         "severity": "MEDIUM"
       },
       "tier": 2,
       "matchedProducts": [
-        "Mozilla Firefox"
+        "WordPress"
       ],
       "references": [
-        "https://bugzilla.mozilla.org/show_bug.cgi?id=2024220",
-        "https://www.mozilla.org/security/advisories/mfsa2026-30/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-32/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-33/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-34/"
+        "https://plugins.trac.wordpress.org/browser/er-swiffy-insert/tags/1.0.0/er-swiffy-insert.php#L49",
+        "https://plugins.trac.wordpress.org/browser/er-swiffy-insert/tags/1.0.0/er-swiffy-insert.php#L56",
+        "https://plugins.trac.wordpress.org/browser/er-swiffy-insert/trunk/er-swiffy-insert.php#L49",
+        "https://plugins.trac.wordpress.org/browser/er-swiffy-insert/trunk/er-swiffy-insert.php#L56",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/074d9712-9b26-47da-9e24-49854fd7257c?source=cve"
       ],
-      "published": "2026-04-21T13:16:22.840"
+      "published": "2026-04-22T09:16:22.273"
     },
     {
-      "id": "CVE-2026-40587",
-      "description": "blueprintUE is a tool to help Unreal Engine developers. Prior to 4.2.0, when a user changes their password via the profile edit page, or when a password reset is completed via the reset link, neither operation invalidates existing authenticated sessions for that user. A server-side session store associates userID \u2192 session; the current password change/reset flow updates only the password column in the users table and does not destroy or mark invalid any active sessions. As a result, an attacker ",
+      "id": "CVE-2026-4085",
+      "description": "The Easy Social Photos Gallery plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'wrapper_class' shortcode attribute of the 'my-instagram-feed' shortcode in all versions up to, and including, 3.1.2. This is due to insufficient input sanitization and output escaping on user supplied attributes. Specifically, the plugin uses sanitize_text_field() instead of esc_attr() when outputting the 'wrapper_class' attribute inside a double-quoted HTML class attribute. Since sanitize_t",
       "cvss": {
-        "score": 6.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:N",
+        "score": 6.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
         "severity": "MEDIUM"
       },
       "tier": 2,
       "matchedProducts": [
-        "ESET"
+        "WordPress"
       ],
       "references": [
-        "https://github.com/blueprintue/blueprintue-self-hosted-edition/security/advisories/GHSA-gqpq-x62g-p4mg",
-        "https://github.com/blueprintue/blueprintue-self-hosted-edition/security/advisories/GHSA-gqpq-x62g-p4mg"
+        "https://plugins.trac.wordpress.org/browser/my-instagram-feed/tags/3.1.2/frontend/class-my-instagram-feed-frontend.php#L53",
+        "https://plugins.trac.wordpress.org/browser/my-instagram-feed/tags/3.1.2/frontend/views/feed.php#L102",
+        "https://plugins.trac.wordpress.org/browser/my-instagram-feed/trunk/frontend/class-my-instagram-feed-frontend.php#L53",
+        "https://plugins.trac.wordpress.org/browser/my-instagram-feed/trunk/frontend/views/feed.php#L102",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/8640724c-0bd4-4684-9fd1-027f2af64e67?source=cve"
       ],
-      "published": "2026-04-21T18:16:51.073"
+      "published": "2026-04-22T09:16:22.417"
     },
     {
-      "id": "CVE-2026-22009",
-      "description": "Vulnerability in the MySQL Server product of Oracle MySQL (component: Server: Optimizer).  Supported versions that are affected are 8.0.0-8.0.45, 8.4.0-8.4.8 and  9.0.0-9.6.0. Easily exploitable vulnerability allows low privileged attacker with network access via multiple protocols to compromise MySQL Server.  Successful attacks of this vulnerability can result in unauthorized ability to cause a hang or frequently repeatable crash (complete DOS) of MySQL Server. CVSS 3.1 Base Score 6.5 (Availabi",
+      "id": "CVE-2026-4088",
+      "description": "The Switch CTA Box plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'wppw_cta_box' shortcode in all versions up to, and including, 1.1. This is due to insufficient input sanitization and output escaping on user-supplied post meta values including 'cta_box_button_link', 'cta_box_button_id', 'cta_box_button_text', and 'cta_box_description'. The shortcode reads post meta from a user-specified post ID and echoes these values directly into HTML output without any escaping fun",
       "cvss": {
-        "score": 6.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+        "score": 6.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
         "severity": "MEDIUM"
       },
       "tier": 2,
       "matchedProducts": [
-        "MySQL",
-        "MSSQL"
+        "WordPress"
       ],
       "references": [
-        "https://www.oracle.com/security-alerts/cpuapr2026.html"
+        "https://plugins.trac.wordpress.org/browser/switch-cta-box/tags/1.1/inc/box_display_template.php#L14",
+        "https://plugins.trac.wordpress.org/browser/switch-cta-box/tags/1.1/inc/box_display_template.php#L18",
+        "https://plugins.trac.wordpress.org/browser/switch-cta-box/tags/1.1/inc/box_display_template.php#L2",
+        "https://plugins.trac.wordpress.org/browser/switch-cta-box/tags/1.1/inc/shortcode_setup.php#L8",
+        "https://plugins.trac.wordpress.org/browser/switch-cta-box/trunk/inc/box_display_template.php#L14"
       ],
-      "published": "2026-04-21T21:16:27.353"
+      "published": "2026-04-22T09:16:22.560"
     },
     {
-      "id": "CVE-2026-22017",
-      "description": "Vulnerability in the MySQL Server product of Oracle MySQL (component: Server: Optimizer).  Supported versions that are affected are 8.0.0-8.0.45, 8.4.0-8.4.8 and  9.0.0-9.6.0. Easily exploitable vulnerability allows low privileged attacker with network access via multiple protocols to compromise MySQL Server.  Successful attacks of this vulnerability can result in unauthorized ability to cause a hang or frequently repeatable crash (complete DOS) of MySQL Server. CVSS 3.1 Base Score 6.5 (Availabi",
+      "id": "CVE-2026-4089",
+      "description": "The Twittee Text Tweet plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'id' shortcode attribute in all versions up to and including 1.0.8. This is due to insufficient input sanitization and output escaping on user-supplied shortcode attributes. The ttt_twittee_tweeter() function uses extract() to pull shortcode attributes into local variables and then directly concatenates them into HTML output without any escaping. Specifically, the $id parameter is inserted into an HT",
       "cvss": {
-        "score": 6.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+        "score": 6.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
         "severity": "MEDIUM"
       },
       "tier": 2,
       "matchedProducts": [
-        "MySQL",
-        "MSSQL"
+        "WordPress"
       ],
       "references": [
-        "https://www.oracle.com/security-alerts/cpuapr2026.html"
+        "https://plugins.trac.wordpress.org/browser/twittee-text-tweet/tags/1.0.8/ttt-twittee-text-tweet.php#L55",
+        "https://plugins.trac.wordpress.org/browser/twittee-text-tweet/tags/1.0.8/ttt-twittee-text-tweet.php#L87",
+        "https://plugins.trac.wordpress.org/browser/twittee-text-tweet/trunk/ttt-twittee-text-tweet.php#L55",
+        "https://plugins.trac.wordpress.org/browser/twittee-text-tweet/trunk/ttt-twittee-text-tweet.php#L87",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/4d678e97-f466-4640-83ee-a3a24550e8d8?source=cve"
       ],
-      "published": "2026-04-21T21:16:28.670"
+      "published": "2026-04-22T09:16:22.713"
     },
     {
-      "id": "CVE-2026-34270",
-      "description": "Vulnerability in the MySQL Server product of Oracle MySQL (component: Server: Group Replication Plugin).  Supported versions that are affected are 8.0.0-8.0.45, 8.4.0-8.4.8 and  9.0.0-9.6.0. Easily exploitable vulnerability allows low privileged attacker with network access via multiple protocols to compromise MySQL Server.  Successful attacks of this vulnerability can result in unauthorized ability to cause a hang or frequently repeatable crash (complete DOS) of MySQL Server. CVSS 3.1 Base Scor",
+      "id": "CVE-2026-4125",
+      "description": "The WPMK Block plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'class' shortcode attribute in all versions up to and including 1.0.1. This is due to insufficient input sanitization and output escaping on user-supplied shortcode attributes. Specifically, in the wpmk_block_shortcode() function, the 'class' attribute is extracted from user-controllable shortcode attributes and directly concatenated into an HTML div element's class attribute without any escaping (e.g., esc_",
       "cvss": {
-        "score": 6.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+        "score": 6.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
         "severity": "MEDIUM"
       },
       "tier": 2,
       "matchedProducts": [
-        "MySQL",
-        "MSSQL"
+        "WordPress"
       ],
       "references": [
-        "https://www.oracle.com/security-alerts/cpuapr2026.html"
+        "https://plugins.trac.wordpress.org/browser/wpmk-block/tags/1.0.1/classes/wpmk-block-class.php#L82",
+        "https://plugins.trac.wordpress.org/browser/wpmk-block/tags/1.0.1/classes/wpmk-block-class.php#L97",
+        "https://plugins.trac.wordpress.org/browser/wpmk-block/trunk/classes/wpmk-block-class.php#L82",
+        "https://plugins.trac.wordpress.org/browser/wpmk-block/trunk/classes/wpmk-block-class.php#L97",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/5e397c7a-2aef-4c23-a224-e324ea4bb4b1?source=cve"
       ],
-      "published": "2026-04-21T21:16:30.717"
+      "published": "2026-04-22T09:16:23.633"
     },
     {
-      "id": "CVE-2026-34271",
-      "description": "Vulnerability in the MySQL Server product of Oracle MySQL (component: Server: Group Replication Plugin).  Supported versions that are affected are 8.0.0-8.0.45, 8.4.0-8.4.8 and  9.0.0-9.6.0. Easily exploitable vulnerability allows low privileged attacker with network access via multiple protocols to compromise MySQL Server.  Successful attacks of this vulnerability can result in unauthorized ability to cause a hang or frequently repeatable crash (complete DOS) of MySQL Server. CVSS 3.1 Base Scor",
+      "id": "CVE-2026-4279",
+      "description": "The Bread & Butter plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'breadbutter-customevent-button' shortcode in all versions up to, and including, 8.2.0.25. This is due to insufficient input sanitization and output escaping on the 'event' shortcode attribute. The customEventShortCodeButton() function takes the 'event' attribute value and directly interpolates it into a JavaScript string within an onclick HTML attribute without applying esc_attr() or esc_js(). Notably, ",
       "cvss": {
-        "score": 6.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+        "score": 6.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
         "severity": "MEDIUM"
       },
       "tier": 2,
       "matchedProducts": [
-        "MySQL",
-        "MSSQL"
+        "WordPress"
       ],
       "references": [
-        "https://www.oracle.com/security-alerts/cpuapr2026.html"
+        "https://plugins.trac.wordpress.org/browser/bread-butter/tags/8.2.0.25/src/Base/Shortcode.php#L364",
+        "https://plugins.trac.wordpress.org/browser/bread-butter/tags/8.2.0.25/src/Base/Shortcode.php#L380",
+        "https://plugins.trac.wordpress.org/browser/bread-butter/trunk/src/Base/Shortcode.php#L364",
+        "https://plugins.trac.wordpress.org/browser/bread-butter/trunk/src/Base/Shortcode.php#L380",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/0728b42b-5ec7-46a2-a9a5-3316107e9324?source=cve"
       ],
-      "published": "2026-04-21T21:16:30.910"
+      "published": "2026-04-22T09:16:25.160"
     },
     {
-      "id": "CVE-2026-34272",
-      "description": "Vulnerability in the MySQL Server product of Oracle MySQL (component: Server: Optimizer).  Supported versions that are affected are 9.0.0-9.6.0. Easily exploitable vulnerability allows low privileged attacker with network access via multiple protocols to compromise MySQL Server.  Successful attacks of this vulnerability can result in unauthorized ability to cause a hang or frequently repeatable crash (complete DOS) of MySQL Server. CVSS 3.1 Base Score 6.5 (Availability impacts).  CVSS Vector: (C",
+      "id": "CVE-2026-4353",
+      "description": "The CI HUB Connector plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'id' attribute of the `cihub_metadata` shortcode in all versions up to, and including, 1.2.106 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with Contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
       "cvss": {
-        "score": 6.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+        "score": 6.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
         "severity": "MEDIUM"
       },
       "tier": 2,
       "matchedProducts": [
-        "MySQL",
-        "MSSQL"
+        "WordPress"
       ],
       "references": [
-        "https://www.oracle.com/security-alerts/cpuapr2026.html"
+        "https://plugins.trac.wordpress.org/browser/ci-hub-connector/tags/1.2.106/ci-hub-wordpress-connector.php#L645",
+        "https://plugins.trac.wordpress.org/browser/ci-hub-connector/trunk/ci-hub-wordpress-connector.php#L645",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/f4b36468-319a-4de3-9112-bd4a3cf7d637?source=cve"
       ],
-      "published": "2026-04-21T21:16:31.087"
+      "published": "2026-04-22T09:16:25.457"
     },
     {
-      "id": "CVE-2026-34276",
-      "description": "Vulnerability in the MySQL Server product of Oracle MySQL (component: Server: Group Replication Plugin).  Supported versions that are affected are 8.0.0-8.0.45, 8.4.0-8.4.8 and  9.0.0-9.6.0. Easily exploitable vulnerability allows low privileged attacker with network access via multiple protocols to compromise MySQL Server.  Successful attacks of this vulnerability can result in unauthorized ability to cause a hang or frequently repeatable crash (complete DOS) of MySQL Server. CVSS 3.1 Base Scor",
+      "id": "CVE-2026-5748",
+      "description": "The Text Snippets plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the plugin's `ts` shortcode in all versions up to, and including, 0.0.1 due to insufficient input sanitization and output escaping on user supplied attributes. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
       "cvss": {
-        "score": 6.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+        "score": 6.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
         "severity": "MEDIUM"
       },
       "tier": 2,
       "matchedProducts": [
-        "MySQL",
-        "MSSQL"
+        "WordPress"
       ],
       "references": [
-        "https://www.oracle.com/security-alerts/cpuapr2026.html"
+        "https://plugins.trac.wordpress.org/browser/text-snippet/tags/0.0.1/text-snippet.php#L78",
+        "https://plugins.trac.wordpress.org/browser/text-snippet/trunk/text-snippet.php#L78",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/8cc7a0f3-6a58-4e42-9341-aecf55d2ccb1?source=cve"
       ],
-      "published": "2026-04-21T21:16:31.693"
+      "published": "2026-04-22T09:16:25.700"
     },
     {
-      "id": "CVE-2026-34303",
-      "description": "Vulnerability in the MySQL Server product of Oracle MySQL (component: Server: Optimizer).  Supported versions that are affected are 8.0.0-8.0.45, 8.4.0-8.4.8 and  9.0.0-9.6.0. Easily exploitable vulnerability allows low privileged attacker with network access via multiple protocols to compromise MySQL Server.  Successful attacks of this vulnerability can result in unauthorized ability to cause a hang or frequently repeatable crash (complete DOS) of MySQL Server. CVSS 3.1 Base Score 6.5 (Availabi",
+      "id": "CVE-2026-5767",
+      "description": "The SlideShowPro SC plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the plugin's `slideShowProSC` shortcode in all versions up to, and including, 1.0.2 due to insufficient input sanitization and output escaping on user supplied attributes. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
       "cvss": {
-        "score": 6.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+        "score": 6.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
         "severity": "MEDIUM"
       },
       "tier": 2,
       "matchedProducts": [
-        "MySQL",
-        "MSSQL"
+        "WordPress"
       ],
       "references": [
-        "https://www.oracle.com/security-alerts/cpuapr2026.html"
+        "https://plugins.trac.wordpress.org/browser/slideshowpro-shortcode/tags/1.0.2/slideshowpro_sc.php#L287",
+        "https://plugins.trac.wordpress.org/browser/slideshowpro-shortcode/trunk/slideshowpro_sc.php#L287",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/51467cef-9624-4dd9-a368-d3b5fac7bb3d?source=cve"
       ],
-      "published": "2026-04-21T21:16:35.547"
+      "published": "2026-04-22T09:16:25.840"
     },
     {
-      "id": "CVE-2026-34308",
-      "description": "Vulnerability in the MySQL Server product of Oracle MySQL (component: Server: JSON).  Supported versions that are affected are 8.0.0-8.0.45, 8.4.0-8.4.8 and  9.0.0-9.6.0. Easily exploitable vulnerability allows low privileged attacker with network access via multiple protocols to compromise MySQL Server.  Successful attacks of this vulnerability can result in unauthorized ability to cause a hang or frequently repeatable crash (complete DOS) of MySQL Server. CVSS 3.1 Base Score 6.5 (Availability ",
+      "id": "CVE-2026-5820",
+      "description": "The Zypento Blocks plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the Table of Contents block in all versions up to, and including, 1.0.6. This is due to the front-end TOC rendering script reading heading text via `innerText` and inserting it into the page using `innerHTML` without proper sanitization. This makes it possible for authenticated attackers, with Author-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses a",
       "cvss": {
-        "score": 6.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+        "score": 6.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
         "severity": "MEDIUM"
       },
       "tier": 2,
       "matchedProducts": [
-        "MySQL",
-        "MSSQL"
+        "WordPress"
       ],
       "references": [
-        "https://www.oracle.com/security-alerts/cpuapr2026.html"
+        "https://plugins.trac.wordpress.org/browser/zypento-blocks/tags/1.0.6/assets/js/src/blocks/table-of-contents/view.js#L57",
+        "https://plugins.trac.wordpress.org/browser/zypento-blocks/tags/1.0.6/assets/js/src/blocks/table-of-contents/view.js#L71",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/024a6a0f-f819-40e7-9618-71219c27aa64?source=cve"
       ],
-      "published": "2026-04-21T21:16:36.253"
+      "published": "2026-04-22T09:16:25.977"
     },
     {
-      "id": "CVE-2026-40608",
-      "description": "Next AI Draw.io is a next.js web application that integrates AI capabilities with draw.io diagrams. Prior to 0.4.15, the embedded HTTP sidecar contains three POST handlers (/api/state, /api/restore, and /api/history-svg) that process incoming requests by accumulating the entire request body into a JavaScript string without any size limitations. Node.js buffers the entire payload in the V8 heap. Sending a sufficiently large body (e.g., 500 MiB or more) will exhaust the process heap memory, leadin",
+      "id": "CVE-2026-6236",
+      "description": "The Posts map plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'name' shortcode attribute in all versions up to, and including, 0.1.3 due to insufficient input sanitization and output escaping on user supplied attributes. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
       "cvss": {
-        "score": 6.2,
-        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+        "score": 6.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
         "severity": "MEDIUM"
       },
       "tier": 2,
       "matchedProducts": [
-        "Node.js"
+        "WordPress"
       ],
       "references": [
-        "https://github.com/DayuanJiang/next-ai-draw-io/commit/31819f413cc4b329a1cb81e5fccd0cd98c1fd665",
-        "https://github.com/DayuanJiang/next-ai-draw-io/security/advisories/GHSA-9q7h-wgfw-p378",
-        "https://github.com/DayuanJiang/next-ai-draw-io/security/advisories/GHSA-9q7h-wgfw-p378"
+        "https://plugins.trac.wordpress.org/browser/posts-map/tags/0.1.3/posts-map.php#L33",
+        "https://plugins.trac.wordpress.org/browser/posts-map/tags/0.1.3/posts-map.php#L78",
+        "https://wordpress.org/plugins/posts-map/",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/e02c5817-7a54-4958-a076-71e5e7729cda?source=cve"
       ],
-      "published": "2026-04-21T18:16:52.280"
+      "published": "2026-04-22T09:16:26.400"
     },
     {
-      "id": "CVE-2026-6711",
-      "description": "The Website LLMs.txt plugin for WordPress is vulnerable to Reflected Cross-Site Scripting via the 'tab' parameter in all versions up to, and including, 8.2.6. This is due to the use of filter_input() without a sanitization filter and insufficient output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that execute if they can successfully trick an administrator into performing an action such as clicking on a link.",
+      "id": "CVE-2026-6246",
+      "description": "The Simple Random Posts Shortcode plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'container_right_width' attribute of the 'simple_random_posts' shortcode in all versions up to, and including, 0.3 due to insufficient input sanitization and output escaping on user supplied attributes. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected ",
+      "cvss": {
+        "score": 6.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/simple-random-posts-shortcode/tags/0.3/simple-random-posts-shortcode.php#L54",
+        "https://plugins.trac.wordpress.org/browser/simple-random-posts-shortcode/trunk/simple-random-posts-shortcode.php#L54",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/7d61e6ea-4975-452a-8f9c-1c6d428372ac?source=cve"
+      ],
+      "published": "2026-04-22T09:16:26.540"
+    },
+    {
+      "id": "CVE-2026-1395",
+      "description": "The Gutentools plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the Post Slider block's block_id attribute in all versions up to, and including, 1.1.3. This is due to insufficient input sanitization and output escaping combined with a custom unescaping routine that reintroduces dangerous characters. This makes it possible for authenticated attackers, with Contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses a",
+      "cvss": {
+        "score": 6.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/gutentools/tags/1.1.3/core/blocks/post-slider.php#L232",
+        "https://plugins.trac.wordpress.org/browser/gutentools/trunk/core/blocks/post-slider.php#L232",
+        "https://plugins.trac.wordpress.org/browser/gutentools/trunk/core/gutentools_block.php#L123",
+        "https://plugins.trac.wordpress.org/changeset/3476597/gutentools/trunk/core/blocks/post-slider.php",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/b2683b4e-b993-4c84-b7cc-a2cb511b4097?source=cve"
+      ],
+      "published": "2026-04-22T10:16:50.437"
+    },
+    {
+      "id": "CVE-2026-1913",
+      "description": "The Gallagher Website Design plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the plugin's login_link shortcode in all versions up to, and including, 2.6.4 due to insufficient input sanitization and output escaping on the 'prefix' attribute. This makes it possible for authenticated attackers, with Contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+      "cvss": {
+        "score": 6.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/gallagher-website-design/tags/2.6.4/gallagher-website-design.php#L203",
+        "https://plugins.trac.wordpress.org/browser/gallagher-website-design/trunk/gallagher-website-design.php#L203",
+        "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&old=3454227%40gallagher-website-design&new=3454227%40gallagher-website-design&sfp_email=&sfph_mail=",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/d8d013ae-a512-454a-bcfc-8725a6928fee?source=cve"
+      ],
+      "published": "2026-04-22T10:16:50.853"
+    },
+    {
+      "id": "CVE-2026-1923",
+      "description": "The Social Rocket \u2013 Social Sharing Plugin plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the \u2018id\u2019 parameter in all versions up to, and including, 1.3.4.2 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with Subscriber-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+      "cvss": {
+        "score": 6.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/changeset/3467694/social-rocket",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/d92fc04e-201e-4fc3-bbf0-4f2f3de3ee95?source=cve"
+      ],
+      "published": "2026-04-23T02:16:15.737"
+    },
+    {
+      "id": "CVE-2026-3361",
+      "description": "The WP Store Locator plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'wpsl_address' post meta value in versions up to, and including, 2.2.261 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page and opens an injected map marker info window.",
+      "cvss": {
+        "score": 6.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/changeset/3482539/wp-store-locator",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/b4b6cbb5-d82d-4035-b0c8-5c1aaee31993?source=cve"
+      ],
+      "published": "2026-04-23T04:16:18.807"
+    },
+    {
+      "id": "CVE-2026-4090",
+      "description": "The Inquiry Cart plugin for WordPress is vulnerable to Cross-Site Request Forgery in all versions up to, and including, 3.4.2. This is due to missing nonce verification in the rd_ic_settings_page function when processing settings form submissions. This makes it possible for unauthenticated attackers to update the plugin's settings, including injecting malicious scripts that will be stored and executed in the admin area, via a forged request granted they can trick an administrator into performing",
       "cvss": {
         "score": 6.1,
         "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
@@ -943,49 +637,77 @@
         "WordPress"
       ],
       "references": [
-        "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&old=3482210%40website-llms-txt&new=3482210%40website-llms-txt&sfp_email=&sfph_mail=",
-        "https://www.wordfence.com/threat-intel/vulnerabilities/id/f5af155b-b65e-4cb1-a748-fc0fc5c6176d?source=cve"
+        "https://plugins.trac.wordpress.org/browser/inquiry-cart/tags/0.0.0.0/includes/inquiry-cart-shortcode.php#L32",
+        "https://plugins.trac.wordpress.org/browser/inquiry-cart/tags/0.0.0.0/includes/inquiry-cart-shortcode.php#L34",
+        "https://plugins.trac.wordpress.org/browser/inquiry-cart/tags/0.0.0.0/includes/settings-page.php#L21",
+        "https://plugins.trac.wordpress.org/browser/inquiry-cart/tags/0.0.0.0/includes/settings-page.php#L46",
+        "https://plugins.trac.wordpress.org/browser/inquiry-cart/tags/0.0.0.0/includes/settings-page.php#L47"
       ],
-      "published": "2026-04-21T07:16:09.743"
+      "published": "2026-04-22T09:16:22.867"
     },
     {
-      "id": "CVE-2026-22003",
-      "description": "Vulnerability in the Oracle Java SE, Oracle GraalVM Enterprise Edition product of Oracle Java SE (component: Hotspot).  Supported versions that are affected are Oracle Java SE: 8u481 and  8u481-b50; Oracle GraalVM Enterprise Edition: 21.3.17. Difficult to exploit vulnerability allows low privileged attacker with logon to the infrastructure where Oracle Java SE, Oracle GraalVM Enterprise Edition executes to compromise Oracle Java SE, Oracle GraalVM Enterprise Edition.  Successful attacks require ",
+      "id": "CVE-2026-4131",
+      "description": "The WP Responsive Popup + Optin plugin for WordPress is vulnerable to Cross-Site Request Forgery in all versions up to and including 1.4. This is due to the settings form on the admin page (wpo_admin_page.php) lacking nonce generation (wp_nonce_field) and verification (wp_verify_nonce/check_admin_referer). This makes it possible for unauthenticated attackers to update all plugin settings including the 'wpo_image_url' parameter via a forged request, granted they can trick a site administrator int",
       "cvss": {
-        "score": 6.0,
-        "vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:R/S:U/C:N/I:H/A:H",
+        "score": 6.1,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
         "severity": "MEDIUM"
       },
       "tier": 2,
       "matchedProducts": [
-        "OpenJDK",
-        "Oracle Java"
+        "WordPress"
       ],
       "references": [
-        "https://www.oracle.com/security-alerts/cpuapr2026.html"
+        "https://plugins.trac.wordpress.org/browser/wp-popup-optin/tags/1.4/wp-popup-optin.php#L218",
+        "https://plugins.trac.wordpress.org/browser/wp-popup-optin/tags/1.4/wpo_admin_page.php#L103",
+        "https://plugins.trac.wordpress.org/browser/wp-popup-optin/tags/1.4/wpo_admin_page.php#L104",
+        "https://plugins.trac.wordpress.org/browser/wp-popup-optin/tags/1.4/wpo_admin_page.php#L15",
+        "https://plugins.trac.wordpress.org/browser/wp-popup-optin/tags/1.4/wpo_admin_page.php#L43"
       ],
-      "published": "2026-04-21T21:16:25.650"
+      "published": "2026-04-22T09:16:24.080"
     },
     {
-      "id": "CVE-2026-34318",
-      "description": "Vulnerability in the MySQL Shell product of Oracle MySQL (component: Shell: Core Client).  Supported versions that are affected are 8.0.0-8.0.45, 8.4.0-8.4.8 and  9.0.0-9.6.0. Difficult to exploit vulnerability allows high privileged attacker with network access via multiple protocols to compromise MySQL Shell.  While the vulnerability is in MySQL Shell, attacks may significantly impact additional products (scope change).  Successful attacks of this vulnerability can result in  unauthorized acce",
+      "id": "CVE-2026-1845",
+      "description": "The Real Estate Pro plugin for WordPress is vulnerable to Stored Cross-Site Scripting via admin settings in all versions up to, and including, 1.0.9 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with administrator-level permissions and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. This only affects multi-site installations and installations where unfiltered_html has be",
       "cvss": {
-        "score": 5.8,
-        "vector": "CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:C/C:H/I:N/A:N",
+        "score": 5.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:L/I:L/A:N",
         "severity": "MEDIUM"
       },
       "tier": 2,
       "matchedProducts": [
-        "MySQL"
+        "WordPress"
       ],
       "references": [
-        "https://www.oracle.com/security-alerts/cpuapr2026.html"
+        "https://wordpress.org/plugins/re-pro/",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/1978fd4f-f130-4e72-85df-24a6f9aebfe2?source=cve"
       ],
-      "published": "2026-04-21T21:16:37.327"
+      "published": "2026-04-22T09:16:20.650"
     },
     {
-      "id": "CVE-2026-6774",
-      "description": "Mitigation bypass in the DOM: Security component. This vulnerability was fixed in Firefox 150 and Thunderbird 150.",
+      "id": "CVE-2026-2717",
+      "description": "The HTTP Headers plugin for WordPress is vulnerable to CRLF Injection in all versions up to, and including, 1.19.2. This is due to insufficient sanitization of custom header name and value fields before writing them to the Apache .htaccess file via `insert_with_markers()`. This makes it possible for authenticated attackers, with Administrator-level access and above, to inject arbitrary newline characters and additional Apache directives into the .htaccess configuration file via the 'Custom Heade",
+      "cvss": {
+        "score": 5.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:L/A:H",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/http-headers/tags/1.19.2/http-headers.php#L1098",
+        "https://plugins.trac.wordpress.org/browser/http-headers/tags/1.19.2/http-headers.php#L745",
+        "https://plugins.trac.wordpress.org/browser/http-headers/trunk/http-headers.php#L1098",
+        "https://plugins.trac.wordpress.org/browser/http-headers/trunk/http-headers.php#L745",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/7716e77f-e899-4046-9421-86fc0c36c245?source=cve"
+      ],
+      "published": "2026-04-22T09:16:20.987"
+    },
+    {
+      "id": "CVE-2026-2951",
+      "description": "The Gutentor \u2013 Gutenberg Blocks \u2013 Page Builder for Gutenberg Editor plugin for WordPress is vulnerable to Stored Cross-Site Scripting in versions up to, and including, 3.5.5 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
       "cvss": {
         "score": 5.4,
         "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N",
@@ -993,136 +715,17 @@
       },
       "tier": 2,
       "matchedProducts": [
-        "Mozilla Firefox"
+        "WordPress"
       ],
       "references": [
-        "https://bugzilla.mozilla.org/show_bug.cgi?id=2016915",
-        "https://www.mozilla.org/security/advisories/mfsa2026-30/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-33/"
+        "https://plugins.trac.wordpress.org/changeset/3495930/gutentor",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/d7c639b8-35f5-4eaf-a663-1adab3ba2a16?source=cve"
       ],
-      "published": "2026-04-21T13:16:23.173"
+      "published": "2026-04-23T03:16:16.360"
     },
     {
-      "id": "CVE-2026-6765",
-      "description": "Information disclosure in the Form Autofill component. This vulnerability was fixed in Firefox 150, Firefox ESR 140.10, Thunderbird 150, and Thunderbird 140.10.",
-      "cvss": {
-        "score": 5.3,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Mozilla Firefox"
-      ],
-      "references": [
-        "https://bugzilla.mozilla.org/show_bug.cgi?id=2022419",
-        "https://www.mozilla.org/security/advisories/mfsa2026-30/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-32/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-33/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-34/"
-      ],
-      "published": "2026-04-21T13:16:22.390"
-    },
-    {
-      "id": "CVE-2026-6767",
-      "description": "Other issue in the Libraries component in NSS. This vulnerability was fixed in Firefox 150, Firefox ESR 115.35, Firefox ESR 140.10, Thunderbird 150, and Thunderbird 140.10.",
-      "cvss": {
-        "score": 5.3,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Mozilla Firefox"
-      ],
-      "references": [
-        "https://bugzilla.mozilla.org/show_bug.cgi?id=2023209",
-        "https://www.mozilla.org/security/advisories/mfsa2026-30/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-31/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-32/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-33/"
-      ],
-      "published": "2026-04-21T13:16:22.577"
-    },
-    {
-      "id": "CVE-2026-6775",
-      "description": "Incorrect boundary conditions in the WebRTC component. This vulnerability was fixed in Firefox 150 and Thunderbird 150.",
-      "cvss": {
-        "score": 5.3,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Mozilla Firefox"
-      ],
-      "references": [
-        "https://bugzilla.mozilla.org/show_bug.cgi?id=2021768",
-        "https://www.mozilla.org/security/advisories/mfsa2026-30/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-33/"
-      ],
-      "published": "2026-04-21T13:16:23.260"
-    },
-    {
-      "id": "CVE-2026-6777",
-      "description": "Other issue in the Networking: DNS component. This vulnerability was fixed in Firefox 150 and Thunderbird 150.",
-      "cvss": {
-        "score": 5.3,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Mozilla Firefox"
-      ],
-      "references": [
-        "https://bugzilla.mozilla.org/show_bug.cgi?id=2022726",
-        "https://www.mozilla.org/security/advisories/mfsa2026-30/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-33/"
-      ],
-      "published": "2026-04-21T13:16:23.430"
-    },
-    {
-      "id": "CVE-2026-6778",
-      "description": "Invalid pointer in the Audio/Video: Playback component. This vulnerability was fixed in Firefox 150 and Thunderbird 150.",
-      "cvss": {
-        "score": 5.3,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Mozilla Firefox"
-      ],
-      "references": [
-        "https://bugzilla.mozilla.org/show_bug.cgi?id=2022746",
-        "https://www.mozilla.org/security/advisories/mfsa2026-30/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-33/"
-      ],
-      "published": "2026-04-21T13:16:23.513"
-    },
-    {
-      "id": "CVE-2026-6779",
-      "description": "Other issue in the JavaScript Engine component. This vulnerability was fixed in Firefox 150 and Thunderbird 150.",
-      "cvss": {
-        "score": 5.3,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Mozilla Firefox"
-      ],
-      "references": [
-        "https://bugzilla.mozilla.org/show_bug.cgi?id=2023343",
-        "https://www.mozilla.org/security/advisories/mfsa2026-30/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-33/"
-      ],
-      "published": "2026-04-21T13:16:23.600"
-    },
-    {
-      "id": "CVE-2026-6783",
-      "description": "Incorrect boundary conditions, integer overflow in the Audio/Video: Playback component. This vulnerability was fixed in Firefox 150 and Thunderbird 150.",
+      "id": "CVE-2026-4117",
+      "description": "The CalJ plugin for WordPress is vulnerable to Missing Authorization in all versions up to, and including, 1.5. This is due to a missing capability check in the CalJSettingsPage class constructor, which processes the 'save-obtained-key' operation directly from POST data without verifying that the requesting user has the 'manage_options' capability, and without any nonce verification. The plugin bootstrap file (calj.php) instantiates CalJSettingsPage whenever is_admin() returns true, which is the",
       "cvss": {
         "score": 5.3,
         "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N",
@@ -1130,356 +733,20 @@
       },
       "tier": 2,
       "matchedProducts": [
-        "Mozilla Firefox"
+        "WordPress"
       ],
       "references": [
-        "https://bugzilla.mozilla.org/show_bug.cgi?id=2027564",
-        "https://www.mozilla.org/security/advisories/mfsa2026-30/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-33/"
+        "https://plugins.trac.wordpress.org/browser/calj/tags/1.5/CalJSettingsPage.php#L25",
+        "https://plugins.trac.wordpress.org/browser/calj/tags/1.5/CalJSettingsPage.php#L30",
+        "https://plugins.trac.wordpress.org/browser/calj/tags/1.5/calj.php#L17",
+        "https://plugins.trac.wordpress.org/browser/calj/trunk/CalJSettingsPage.php#L25",
+        "https://plugins.trac.wordpress.org/browser/calj/trunk/CalJSettingsPage.php#L30"
       ],
-      "published": "2026-04-21T13:16:23.930"
+      "published": "2026-04-22T09:16:23.027"
     },
     {
-      "id": "CVE-2026-22013",
-      "description": "Vulnerability in the Oracle Java SE, Oracle GraalVM for JDK, Oracle GraalVM Enterprise Edition product of Oracle Java SE (component: JGSS).  Supported versions that are affected are Oracle Java SE: 8u481, 8u481-b50, 8u481-perf, 11.0.30, 17.0.18, 21.0.10, 25.0.2, 26; Oracle GraalVM for JDK: 17.0.18 and  21.0.10; Oracle GraalVM Enterprise Edition: 21.3.17. Difficult to exploit vulnerability allows unauthenticated attacker with network access via multiple protocols to compromise Oracle Java SE, Ora",
-      "cvss": {
-        "score": 5.3,
-        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:N/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Oracle Java"
-      ],
-      "references": [
-        "https://www.oracle.com/security-alerts/cpuapr2026.html"
-      ],
-      "published": "2026-04-21T21:16:27.923"
-    },
-    {
-      "id": "CVE-2026-22021",
-      "description": "Vulnerability in the Oracle Java SE, Oracle GraalVM for JDK, Oracle GraalVM Enterprise Edition product of Oracle Java SE (component: JSSE).  Supported versions that are affected are Oracle Java SE: 8u481, 8u481-b50, 8u481-perf, 11.0.30, 17.0.18, 21.0.10, 25.0.2, 26; Oracle GraalVM for JDK: 17.0.18 and  21.0.10; Oracle GraalVM Enterprise Edition: 21.3.17. Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTPS to compromise Oracle Java SE, Oracle GraalVM for",
-      "cvss": {
-        "score": 5.3,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Oracle Java"
-      ],
-      "references": [
-        "https://www.oracle.com/security-alerts/cpuapr2026.html"
-      ],
-      "published": "2026-04-21T21:16:29.193"
-    },
-    {
-      "id": "CVE-2026-34317",
-      "description": "Vulnerability in the MySQL Shell product of Oracle MySQL (component: Shell: Core Client).  Supported versions that are affected are 8.0.0-8.0.45, 8.4.0-8.4.8 and  9.0.0-9.6.0. Easily exploitable vulnerability allows low privileged attacker with logon to the infrastructure where MySQL Shell executes to compromise MySQL Shell.  Successful attacks require human interaction from a person other than the attacker. Successful attacks of this vulnerability can result in unauthorized ability to cause a h",
-      "cvss": {
-        "score": 5.0,
-        "vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:R/S:U/C:N/I:N/A:H",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "MySQL"
-      ],
-      "references": [
-        "https://www.oracle.com/security-alerts/cpuapr2026.html"
-      ],
-      "published": "2026-04-21T21:16:37.183"
-    },
-    {
-      "id": "CVE-2026-34319",
-      "description": "Vulnerability in the MySQL Shell product of Oracle MySQL (component: Shell: Core Client).  Supported versions that are affected are 8.0.0-8.0.45, 8.4.0-8.4.8 and  9.0.0-9.6.0. Easily exploitable vulnerability allows low privileged attacker with logon to the infrastructure where MySQL Shell executes to compromise MySQL Shell.  Successful attacks require human interaction from a person other than the attacker. Successful attacks of this vulnerability can result in unauthorized ability to cause a h",
-      "cvss": {
-        "score": 5.0,
-        "vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:R/S:U/C:N/I:N/A:H",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "MySQL"
-      ],
-      "references": [
-        "https://www.oracle.com/security-alerts/cpuapr2026.html"
-      ],
-      "published": "2026-04-21T21:16:37.487"
-    },
-    {
-      "id": "CVE-2026-21998",
-      "description": "Vulnerability in the MySQL Server product of Oracle MySQL (component: Server: Optimizer).  Supported versions that are affected are 8.0.0-8.0.45, 8.4.0-8.4.8 and  9.0.0-9.6.0. Easily exploitable vulnerability allows high privileged attacker with network access via multiple protocols to compromise MySQL Server.  Successful attacks of this vulnerability can result in unauthorized ability to cause a hang or frequently repeatable crash (complete DOS) of MySQL Server. CVSS 3.1 Base Score 4.9 (Availab",
-      "cvss": {
-        "score": 4.9,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:N/A:H",
-        "severity": "MEDIUM"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "MySQL",
-        "MSSQL"
-      ],
-      "references": [
-        "https://www.oracle.com/security-alerts/cpuapr2026.html"
-      ],
-      "published": "2026-04-21T21:16:24.863"
-    },
-    {
-      "id": "CVE-2026-22002",
-      "description": "Vulnerability in the MySQL Server product of Oracle MySQL (component: Server: Optimizer).  Supported versions that are affected are 8.0.0-8.0.45, 8.4.0-8.4.8 and  9.0.0-9.6.0. Easily exploitable vulnerability allows high privileged attacker with network access via multiple protocols to compromise MySQL Server.  Successful attacks of this vulnerability can result in unauthorized ability to cause a hang or frequently repeatable crash (complete DOS) of MySQL Server. CVSS 3.1 Base Score 4.9 (Availab",
-      "cvss": {
-        "score": 4.9,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:N/A:H",
-        "severity": "MEDIUM"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "MySQL",
-        "MSSQL"
-      ],
-      "references": [
-        "https://www.oracle.com/security-alerts/cpuapr2026.html"
-      ],
-      "published": "2026-04-21T21:16:25.453"
-    },
-    {
-      "id": "CVE-2026-22004",
-      "description": "Vulnerability in the MySQL Server product of Oracle MySQL (component: InnoDB).  Supported versions that are affected are 8.0.0-8.0.45, 8.4.0-8.4.8 and  9.0.0-9.6.0. Easily exploitable vulnerability allows high privileged attacker with network access via multiple protocols to compromise MySQL Server.  Successful attacks of this vulnerability can result in unauthorized ability to cause a hang or frequently repeatable crash (complete DOS) of MySQL Server. CVSS 3.1 Base Score 4.9 (Availability impac",
-      "cvss": {
-        "score": 4.9,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:N/A:H",
-        "severity": "MEDIUM"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "MySQL",
-        "MSSQL"
-      ],
-      "references": [
-        "https://www.oracle.com/security-alerts/cpuapr2026.html"
-      ],
-      "published": "2026-04-21T21:16:25.857"
-    },
-    {
-      "id": "CVE-2026-22005",
-      "description": "Vulnerability in the MySQL Server product of Oracle MySQL (component: Server: Optimizer).  Supported versions that are affected are 8.0.0-8.0.45, 8.4.0-8.4.8 and  9.0.0-9.6.0. Easily exploitable vulnerability allows high privileged attacker with network access via multiple protocols to compromise MySQL Server.  Successful attacks of this vulnerability can result in unauthorized ability to cause a hang or frequently repeatable crash (complete DOS) of MySQL Server. CVSS 3.1 Base Score 4.9 (Availab",
-      "cvss": {
-        "score": 4.9,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:N/A:H",
-        "severity": "MEDIUM"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "MySQL",
-        "MSSQL"
-      ],
-      "references": [
-        "https://www.oracle.com/security-alerts/cpuapr2026.html"
-      ],
-      "published": "2026-04-21T21:16:26.040"
-    },
-    {
-      "id": "CVE-2026-34267",
-      "description": "Vulnerability in the MySQL Server product of Oracle MySQL (component: Server: Optimizer).  Supported versions that are affected are 8.0.0-8.0.45. Easily exploitable vulnerability allows high privileged attacker with network access via multiple protocols to compromise MySQL Server.  Successful attacks of this vulnerability can result in unauthorized ability to cause a hang or frequently repeatable crash (complete DOS) of MySQL Server. CVSS 3.1 Base Score 4.9 (Availability impacts).  CVSS Vector: ",
-      "cvss": {
-        "score": 4.9,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:N/A:H",
-        "severity": "MEDIUM"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "MySQL",
-        "MSSQL"
-      ],
-      "references": [
-        "https://www.oracle.com/security-alerts/cpuapr2026.html"
-      ],
-      "published": "2026-04-21T21:16:30.200"
-    },
-    {
-      "id": "CVE-2026-34278",
-      "description": "Vulnerability in the MySQL Server product of Oracle MySQL (component: Server: Optimizer).  Supported versions that are affected are 8.0.0-8.0.45. Easily exploitable vulnerability allows high privileged attacker with network access via multiple protocols to compromise MySQL Server.  Successful attacks of this vulnerability can result in unauthorized ability to cause a hang or frequently repeatable crash (complete DOS) of MySQL Server. CVSS 3.1 Base Score 4.9 (Availability impacts).  CVSS Vector: ",
-      "cvss": {
-        "score": 4.9,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:N/A:H",
-        "severity": "MEDIUM"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "MySQL",
-        "MSSQL"
-      ],
-      "references": [
-        "https://www.oracle.com/security-alerts/cpuapr2026.html"
-      ],
-      "published": "2026-04-21T21:16:32.027"
-    },
-    {
-      "id": "CVE-2026-34293",
-      "description": "Vulnerability in the MySQL Server product of Oracle MySQL (component: Server: DML).  Supported versions that are affected are 8.0.0-8.0.45. Easily exploitable vulnerability allows high privileged attacker with network access via multiple protocols to compromise MySQL Server.  Successful attacks of this vulnerability can result in unauthorized ability to cause a hang or frequently repeatable crash (complete DOS) of MySQL Server. CVSS 3.1 Base Score 4.9 (Availability impacts).  CVSS Vector: (CVSS:",
-      "cvss": {
-        "score": 4.9,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:N/A:H",
-        "severity": "MEDIUM"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "MySQL",
-        "MSSQL"
-      ],
-      "references": [
-        "https://www.oracle.com/security-alerts/cpuapr2026.html"
-      ],
-      "published": "2026-04-21T21:16:34.223"
-    },
-    {
-      "id": "CVE-2026-34304",
-      "description": "Vulnerability in the MySQL Server product of Oracle MySQL (component: InnoDB).  Supported versions that are affected are 8.0.0-8.0.45, 8.4.0-8.4.8 and  9.0.0-9.6.0. Easily exploitable vulnerability allows high privileged attacker with network access via multiple protocols to compromise MySQL Server.  Successful attacks of this vulnerability can result in unauthorized ability to cause a hang or frequently repeatable crash (complete DOS) of MySQL Server. CVSS 3.1 Base Score 4.9 (Availability impac",
-      "cvss": {
-        "score": 4.9,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:N/A:H",
-        "severity": "MEDIUM"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "MySQL",
-        "MSSQL"
-      ],
-      "references": [
-        "https://www.oracle.com/security-alerts/cpuapr2026.html"
-      ],
-      "published": "2026-04-21T21:16:35.690"
-    },
-    {
-      "id": "CVE-2026-35234",
-      "description": "Vulnerability in the MySQL Server product of Oracle MySQL (component: Server: Partition).  Supported versions that are affected are 9.0.0-9.6.0. Easily exploitable vulnerability allows high privileged attacker with network access via multiple protocols to compromise MySQL Server.  Successful attacks of this vulnerability can result in unauthorized ability to cause a hang or frequently repeatable crash (complete DOS) of MySQL Server. CVSS 3.1 Base Score 4.9 (Availability impacts).  CVSS Vector: (",
-      "cvss": {
-        "score": 4.9,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:N/A:H",
-        "severity": "MEDIUM"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "MySQL",
-        "MSSQL"
-      ],
-      "references": [
-        "https://www.oracle.com/security-alerts/cpuapr2026.html"
-      ],
-      "published": "2026-04-21T21:16:38.993"
-    },
-    {
-      "id": "CVE-2026-35235",
-      "description": "Vulnerability in the MySQL Server product of Oracle MySQL (component: Server: GIS).  Supported versions that are affected are 9.0.0-9.6.0. Easily exploitable vulnerability allows high privileged attacker with network access via multiple protocols to compromise MySQL Server.  Successful attacks of this vulnerability can result in unauthorized ability to cause a hang or frequently repeatable crash (complete DOS) of MySQL Server. CVSS 3.1 Base Score 4.9 (Availability impacts).  CVSS Vector: (CVSS:3",
-      "cvss": {
-        "score": 4.9,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:N/A:H",
-        "severity": "MEDIUM"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "MySQL",
-        "MSSQL"
-      ],
-      "references": [
-        "https://www.oracle.com/security-alerts/cpuapr2026.html"
-      ],
-      "published": "2026-04-21T21:16:39.120"
-    },
-    {
-      "id": "CVE-2026-35236",
-      "description": "Vulnerability in the MySQL Server product of Oracle MySQL (component: InnoDB).  Supported versions that are affected are 8.0.0-8.0.45, 8.4.0-8.4.8 and  9.0.0-9.6.0. Easily exploitable vulnerability allows high privileged attacker with network access via multiple protocols to compromise MySQL Server.  Successful attacks of this vulnerability can result in unauthorized ability to cause a hang or frequently repeatable crash (complete DOS) of MySQL Server. CVSS 3.1 Base Score 4.9 (Availability impac",
-      "cvss": {
-        "score": 4.9,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:N/A:H",
-        "severity": "MEDIUM"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "MySQL",
-        "MSSQL"
-      ],
-      "references": [
-        "https://www.oracle.com/security-alerts/cpuapr2026.html"
-      ],
-      "published": "2026-04-21T21:16:39.250"
-    },
-    {
-      "id": "CVE-2026-35237",
-      "description": "Vulnerability in the MySQL Server product of Oracle MySQL (component: InnoDB).  Supported versions that are affected are 8.0.0-8.0.45, 8.4.0-8.4.8 and  9.0.0-9.6.0. Easily exploitable vulnerability allows high privileged attacker with network access via multiple protocols to compromise MySQL Server.  Successful attacks of this vulnerability can result in unauthorized ability to cause a hang or frequently repeatable crash (complete DOS) of MySQL Server. CVSS 3.1 Base Score 4.9 (Availability impac",
-      "cvss": {
-        "score": 4.9,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:N/A:H",
-        "severity": "MEDIUM"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "MySQL",
-        "MSSQL"
-      ],
-      "references": [
-        "https://www.oracle.com/security-alerts/cpuapr2026.html"
-      ],
-      "published": "2026-04-21T21:16:39.407"
-    },
-    {
-      "id": "CVE-2026-35238",
-      "description": "Vulnerability in the MySQL Server product of Oracle MySQL (component: InnoDB).  Supported versions that are affected are 8.0.0-8.0.45, 8.4.0-8.4.8 and  9.0.0-9.6.0. Easily exploitable vulnerability allows high privileged attacker with network access via multiple protocols to compromise MySQL Server.  Successful attacks of this vulnerability can result in unauthorized ability to cause a hang or frequently repeatable crash (complete DOS) of MySQL Server. CVSS 3.1 Base Score 4.9 (Availability impac",
-      "cvss": {
-        "score": 4.9,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:N/A:H",
-        "severity": "MEDIUM"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "MySQL",
-        "MSSQL"
-      ],
-      "references": [
-        "https://www.oracle.com/security-alerts/cpuapr2026.html"
-      ],
-      "published": "2026-04-21T21:16:39.557"
-    },
-    {
-      "id": "CVE-2026-35239",
-      "description": "Vulnerability in the MySQL Server product of Oracle MySQL (component: Server: DML).  Supported versions that are affected are 8.0.0-8.0.45, 8.4.0-8.4.8 and  9.0.0-9.6.0. Easily exploitable vulnerability allows high privileged attacker with network access via multiple protocols to compromise MySQL Server.  Successful attacks of this vulnerability can result in unauthorized ability to cause a hang or frequently repeatable crash (complete DOS) of MySQL Server. CVSS 3.1 Base Score 4.9 (Availability ",
-      "cvss": {
-        "score": 4.9,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:N/A:H",
-        "severity": "MEDIUM"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "MySQL",
-        "MSSQL"
-      ],
-      "references": [
-        "https://www.oracle.com/security-alerts/cpuapr2026.html"
-      ],
-      "published": "2026-04-21T21:16:39.703"
-    },
-    {
-      "id": "CVE-2026-35240",
-      "description": "Vulnerability in the MySQL Server product of Oracle MySQL (component: Server: Optimizer).  Supported versions that are affected are 8.0.0-8.0.45, 8.4.0-8.4.8 and  9.0.0-9.6.0. Easily exploitable vulnerability allows high privileged attacker with network access via multiple protocols to compromise MySQL Server.  Successful attacks of this vulnerability can result in unauthorized ability to cause a hang or frequently repeatable crash (complete DOS) of MySQL Server. CVSS 3.1 Base Score 4.9 (Availab",
-      "cvss": {
-        "score": 4.9,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:N/A:H",
-        "severity": "MEDIUM"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "MySQL",
-        "MSSQL"
-      ],
-      "references": [
-        "https://www.oracle.com/security-alerts/cpuapr2026.html"
-      ],
-      "published": "2026-04-21T21:16:39.840"
-    },
-    {
-      "id": "CVE-2026-6712",
-      "description": "The Website LLMs.txt plugin for WordPress is vulnerable to Stored Cross-Site Scripting via admin settings in all versions up to, and including, 8.2.6 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with administrator-level permissions and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. This only affects multi-site installations and installations where unfiltered_html has b",
+      "id": "CVE-2026-1379",
+      "description": "The HTTP Headers plugin for WordPress is vulnerable to Stored Cross-Site Scripting via admin settings in all versions up to, and including, 1.19.2 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with administrator-level permissions and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. This only affects multi-site installations and installations where unfiltered_html has been",
       "cvss": {
         "score": 4.4,
         "vector": "CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:C/C:L/I:L/A:N",
@@ -1490,14 +757,177 @@
         "WordPress"
       ],
       "references": [
-        "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&old=3482210%40website-llms-txt&new=3482210%40website-llms-txt&sfp_email=&sfph_mail=",
-        "https://www.wordfence.com/threat-intel/vulnerabilities/id/2ab86a42-2a8f-4cbc-a754-a3e307b1b73f?source=cve"
+        "https://plugins.trac.wordpress.org/browser/http-headers/tags/1.19.2/views/manual.php#L18",
+        "https://plugins.trac.wordpress.org/browser/http-headers/trunk/views/manual.php#L18",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/02e63068-02a8-4106-b64e-430c24815e55?source=cve"
       ],
-      "published": "2026-04-21T07:16:09.880"
+      "published": "2026-04-22T09:16:19.667"
     },
     {
-      "id": "CVE-2026-6703",
-      "description": "The Responsive Blocks \u2013 Page Builder for Blocks & Patterns plugin for WordPress is vulnerable to unauthorized access in all versions up to, and including, 2.2.1. This is due to the plugin not properly verifying that a user is authorized to perform an action. This makes it possible for authenticated attackers, with contributor-level access and above, to modify global site-wide plugin configuration options, including toggling custom CSS, disabling blocks, changing layout defaults such as content w",
+      "id": "CVE-2026-2714",
+      "description": "The Institute Management plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'Enquiry Form Title' setting in all versions up to, and including, 5.5. This is due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with Administrator-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. This only affects multi-site installations and installations whe",
+      "cvss": {
+        "score": 4.4,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:C/C:L/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/institute-management/tags/5.5/admin/inc/wl_im_settings.php#L47",
+        "https://plugins.trac.wordpress.org/browser/institute-management/trunk/admin/inc/wl_im_settings.php#L47",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/1fd62c3d-2c15-4d1c-9210-4c2aca379fe3?source=cve"
+      ],
+      "published": "2026-04-22T09:16:20.817"
+    },
+    {
+      "id": "CVE-2026-2719",
+      "description": "The Private WP suite plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'Exceptions' setting in all versions up to, and including, 0.4.1. This is due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with Administrator-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. This only affects multi-site installations and installations where unfilte",
+      "cvss": {
+        "score": 4.4,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:C/C:L/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/private-wp-suite/tags/0.4.1/private-wp-suite.php#L153",
+        "https://plugins.trac.wordpress.org/browser/private-wp-suite/trunk/private-wp-suite.php#L153",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/af88a631-c4ec-47ec-ad9b-1ef38ea1be09?source=cve"
+      ],
+      "published": "2026-04-22T09:16:21.130"
+    },
+    {
+      "id": "CVE-2026-3362",
+      "description": "The Short Comment Filter plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'Minimum Count' settings field in all versions up to and including 2.2. This is due to insufficient input sanitization (no sanitize callback on register_setting) and missing output escaping (no esc_attr() on the echoed value in the input's value attribute). The option value is stored via update_option() and rendered unescaped in an HTML attribute context. This makes it possible for authenticated at",
+      "cvss": {
+        "score": 4.4,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:C/C:L/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/short-comment-filter/tags/2.2/classes/short-comment-filter-settings.php#L21",
+        "https://plugins.trac.wordpress.org/browser/short-comment-filter/tags/2.2/classes/short-comment-filter-settings.php#L54",
+        "https://plugins.trac.wordpress.org/browser/short-comment-filter/tags/2.2/classes/short-comment-filter-settings.php#L61",
+        "https://plugins.trac.wordpress.org/browser/short-comment-filter/tags/2.2/views/settings.php#L25",
+        "https://plugins.trac.wordpress.org/browser/short-comment-filter/trunk/classes/short-comment-filter-settings.php#L21"
+      ],
+      "published": "2026-04-22T09:16:21.757"
+    },
+    {
+      "id": "CVE-2026-4142",
+      "description": "The Sentence To SEO (keywords, description and tags) plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'Permanent keywords' field in all versions up to and including 1.0. This is due to insufficient input sanitization and output escaping. The plugin reads user input via filter_input_array(INPUT_POST) which applies no HTML sanitization (FILTER_DEFAULT), stores it unsanitized to the WordPress options table via update_option(), and then outputs the stored value directly into",
+      "cvss": {
+        "score": 4.4,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:C/C:L/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/sentence-to-seo/tags/1.0/index.php#L262",
+        "https://plugins.trac.wordpress.org/browser/sentence-to-seo/tags/1.0/index.php#L50",
+        "https://plugins.trac.wordpress.org/browser/sentence-to-seo/tags/1.0/index.php#L75",
+        "https://plugins.trac.wordpress.org/browser/sentence-to-seo/tags/1.0/index.php#L81",
+        "https://plugins.trac.wordpress.org/browser/sentence-to-seo/tags/1.0/index.php#L87"
+      ],
+      "published": "2026-04-22T09:16:25.000"
+    },
+    {
+      "id": "CVE-2026-6041",
+      "description": "The Buzz Comments plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'Custom Buzz Avatar' (buzz_comments_avatar_image) setting in all versions up to, and including, 0.9.4. This is due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with Administrator-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses the plugin settings page.",
+      "cvss": {
+        "score": 4.4,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:C/C:L/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/buzz-comments/trunk/admin.tpl.php#L36",
+        "https://plugins.trac.wordpress.org/browser/buzz-comments/trunk/buzzComments_class.php#L187",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/1516ebe7-4d16-4e97-9baa-bc5857f95126?source=cve"
+      ],
+      "published": "2026-04-22T09:16:26.123"
+    },
+    {
+      "id": "CVE-2026-4118",
+      "description": "The Call To Action Plugin plugin for WordPress is vulnerable to Cross-Site Request Forgery in all versions up to, and including, 3.1.3. This is due to missing nonce validation in the cbox_options_page() function which handles saving, creating, and deleting plugin settings. The form rendered on the settings page does not include a wp_nonce_field(), and the save handler does not call wp_verify_nonce() or check_admin_referer() before processing settings updates via $wpdb->update(). This makes it po",
+      "cvss": {
+        "score": 4.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/call-to-action-plugin/tags/3.1.3/call-to-action-plugin.php#L41",
+        "https://plugins.trac.wordpress.org/browser/call-to-action-plugin/tags/3.1.3/call-to-action-plugin.php#L55",
+        "https://plugins.trac.wordpress.org/browser/call-to-action-plugin/tags/3.1.3/call-to-action-plugin.php#L69",
+        "https://plugins.trac.wordpress.org/browser/call-to-action-plugin/tags/3.1.3/call-to-action-plugin.php#L76",
+        "https://plugins.trac.wordpress.org/browser/call-to-action-plugin/trunk/call-to-action-plugin.php#L41"
+      ],
+      "published": "2026-04-22T09:16:23.180"
+    },
+    {
+      "id": "CVE-2026-4121",
+      "description": "The Kcaptcha plugin for WordPress is vulnerable to Cross-Site Request Forgery in all versions up to and including 1.0.1. This is due to missing nonce validation in the plugin's settings page handler (admin/setting.php). The settings form does not include a wp_nonce_field() and the form processing code does not call wp_verify_nonce() or check_admin_referer() before saving settings to the database via $wpdb->update(). This makes it possible for unauthenticated attackers to modify the plugin's CAPT",
+      "cvss": {
+        "score": 4.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/kcaptcha/tags/1.0.1/admin/setting.php#L12",
+        "https://plugins.trac.wordpress.org/browser/kcaptcha/tags/1.0.1/admin/setting.php#L30",
+        "https://plugins.trac.wordpress.org/browser/kcaptcha/tags/1.0.1/admin/setting.php#L47",
+        "https://plugins.trac.wordpress.org/browser/kcaptcha/trunk/admin/setting.php#L12",
+        "https://plugins.trac.wordpress.org/browser/kcaptcha/trunk/admin/setting.php#L30"
+      ],
+      "published": "2026-04-22T09:16:23.490"
+    },
+    {
+      "id": "CVE-2026-4126",
+      "description": "The Table Manager plugin for WordPress is vulnerable to Sensitive Information Exposure in all versions up to, and including, 1.0.0 via the 'table_manager' shortcode. The shortcode handler `tablemanager_render_table_shortcode()` takes a user-controlled `table` attribute, applies only `sanitize_key()` for sanitization, and concatenates the value with `$wpdb->prefix` to form a full database table name. It then executes `DESC` and `SELECT *` queries against this table and renders all rows and column",
+      "cvss": {
+        "score": 4.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/table-manager/tags/1.0.0/table-manager.php#L561",
+        "https://plugins.trac.wordpress.org/browser/table-manager/tags/1.0.0/table-manager.php#L572",
+        "https://plugins.trac.wordpress.org/browser/table-manager/tags/1.0.0/table-manager.php#L573",
+        "https://plugins.trac.wordpress.org/browser/table-manager/trunk/table-manager.php#L561",
+        "https://plugins.trac.wordpress.org/browser/table-manager/trunk/table-manager.php#L572"
+      ],
+      "published": "2026-04-22T09:16:23.777"
+    },
+    {
+      "id": "CVE-2026-4128",
+      "description": "The TP Restore Categories And Taxonomies plugin for WordPress is vulnerable to Missing Authorization in all versions up to, and including, 1.0.1. The delete_term() function, which handles the 'tpmcattt_delete_term' AJAX action, does not perform any capability check (e.g., current_user_can()) to verify the user has sufficient permissions. While it does verify a nonce via check_ajax_referer(), this nonce is generated for all authenticated users via the admin_enqueue_scripts hook and exposed on any",
       "cvss": {
         "score": 4.3,
         "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N",
@@ -1508,121 +938,143 @@
         "WordPress"
       ],
       "references": [
-        "https://plugins.trac.wordpress.org/browser/responsive-block-editor-addons/tags/2.2.0/includes/class-responsive-block-editor-addons.php#L1730",
-        "https://plugins.trac.wordpress.org/browser/responsive-block-editor-addons/tags/2.2.0/includes/class-responsive-block-editor-addons.php#L1814",
-        "https://plugins.trac.wordpress.org/browser/responsive-block-editor-addons/tags/2.2.0/includes/class-responsive-block-editor-addons.php#L668",
-        "https://plugins.trac.wordpress.org/browser/responsive-block-editor-addons/trunk/includes/class-responsive-block-editor-addons.php#L1730",
-        "https://plugins.trac.wordpress.org/browser/responsive-block-editor-addons/trunk/includes/class-responsive-block-editor-addons.php#L1814"
+        "https://plugins.trac.wordpress.org/browser/tp-restore-categories-and-taxonomies/tags/1.0.1/admin/class-tp-move-categories-and-taxonomies-to-trash-admin.php#L474",
+        "https://plugins.trac.wordpress.org/browser/tp-restore-categories-and-taxonomies/tags/1.0.1/includes/class-tp-move-categories-and-taxonomies-to-trash.php#L169",
+        "https://plugins.trac.wordpress.org/browser/tp-restore-categories-and-taxonomies/trunk/admin/class-tp-move-categories-and-taxonomies-to-trash-admin.php#L474",
+        "https://plugins.trac.wordpress.org/browser/tp-restore-categories-and-taxonomies/trunk/includes/class-tp-move-categories-and-taxonomies-to-trash.php#L169",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/53a0749f-86e9-4f62-9de2-a6759c78ba2f?source=cve"
       ],
-      "published": "2026-04-21T07:16:09.547"
+      "published": "2026-04-22T09:16:23.930"
     },
     {
-      "id": "CVE-2026-22015",
-      "description": "Vulnerability in the MySQL Server product of Oracle MySQL (component: Server: Information Schema).  Supported versions that are affected are 8.0.0-8.0.45, 8.4.0-8.4.8 and  9.0.0-9.6.0. Easily exploitable vulnerability allows low privileged attacker with network access via multiple protocols to compromise MySQL Server.  Successful attacks of this vulnerability can result in  unauthorized read access to a subset of MySQL Server accessible data. CVSS 3.1 Base Score 4.3 (Confidentiality impacts).  C",
+      "id": "CVE-2026-4133",
+      "description": "The TextP2P Texting Widget plugin for WordPress is vulnerable to Cross-Site Request Forgery in all versions up to and including 1.7. This is due to missing nonce validation in the imTextP2POptionPage() function which processes settings updates. The form at line 314 does not include a wp_nonce_field(), and the POST handler at line 7 does not call check_admin_referer() or wp_verify_nonce() before processing settings changes. This makes it possible for unauthenticated attackers to update all plugin",
       "cvss": {
         "score": 4.3,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N",
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N",
         "severity": "MEDIUM"
       },
       "tier": 3,
       "matchedProducts": [
-        "MySQL",
-        "MSSQL"
+        "WordPress"
       ],
       "references": [
-        "https://www.oracle.com/security-alerts/cpuapr2026.html"
+        "https://plugins.trac.wordpress.org/browser/textp2p-texting-widget/tags/1.7/inc/admin/im-textp2p-options.php#L299",
+        "https://plugins.trac.wordpress.org/browser/textp2p-texting-widget/tags/1.7/inc/admin/im-textp2p-options.php#L7",
+        "https://plugins.trac.wordpress.org/browser/textp2p-texting-widget/trunk/inc/admin/im-textp2p-options.php#L299",
+        "https://plugins.trac.wordpress.org/browser/textp2p-texting-widget/trunk/inc/admin/im-textp2p-options.php#L7",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/2d36fa25-108b-462b-b84e-2e77943b1871?source=cve"
       ],
-      "published": "2026-04-21T21:16:28.310"
+      "published": "2026-04-22T09:16:24.400"
     },
     {
-      "id": "CVE-2026-22008",
-      "description": "Vulnerability in Oracle Java SE (component: Libraries).   The supported version that is affected is Oracle Java SE: 25.0.1. Difficult to exploit vulnerability allows unauthenticated attacker with network access via multiple protocols to compromise Oracle Java SE.  Successful attacks of this vulnerability can result in  unauthorized update, insert or delete access to some of Oracle Java SE accessible data. Note: This vulnerability applies to Java deployments, typically in clients running sandboxe",
+      "id": "CVE-2026-4138",
+      "description": "The DX Unanswered Comments plugin for WordPress is vulnerable to Cross-Site Request Forgery in all versions up to, and including, 1.7. This is due to missing nonce validation on the plugin's settings form in the dxuc-unanswered-comments-admin-page.php file. This makes it possible for unauthenticated attackers to modify plugin settings (dxuc_authors_list and dxuc_comment_count) via a forged request granted they can trick a site administrator into performing an action such as clicking on a link.",
       "cvss": {
-        "score": 3.7,
-        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:N",
-        "severity": "LOW"
+        "score": 4.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N",
+        "severity": "MEDIUM"
       },
       "tier": 3,
       "matchedProducts": [
-        "Oracle Java"
+        "WordPress"
       ],
       "references": [
-        "https://www.oracle.com/security-alerts/cpuapr2026.html"
+        "https://plugins.trac.wordpress.org/browser/dx-unanswered-comments/tags/1.7/dxuc-unanswered-comments-admin-page.php#L13",
+        "https://plugins.trac.wordpress.org/browser/dx-unanswered-comments/tags/1.7/dxuc-unanswered-comments-admin-page.php#L21",
+        "https://plugins.trac.wordpress.org/browser/dx-unanswered-comments/tags/1.7/dxuc-unanswered-comments-admin-page.php#L25",
+        "https://plugins.trac.wordpress.org/browser/dx-unanswered-comments/tags/1.7/dxuc-unanswered-comments-admin-page.php#L40",
+        "https://plugins.trac.wordpress.org/browser/dx-unanswered-comments/trunk/dxuc-unanswered-comments-admin-page.php#L13"
       ],
-      "published": "2026-04-21T21:16:26.690"
+      "published": "2026-04-22T09:16:24.547"
     },
     {
-      "id": "CVE-2026-22018",
-      "description": "Vulnerability in the Oracle Java SE, Oracle GraalVM for JDK, Oracle GraalVM Enterprise Edition product of Oracle Java SE (component: Libraries).  Supported versions that are affected are Oracle Java SE: 8u481, 8u481-b50, 8u481-perf, 11.0.30, 17.0.18, 21.0.10, 25.0.2, 26; Oracle GraalVM for JDK: 17.0.18 and  21.0.10; Oracle GraalVM Enterprise Edition: 21.3.17. Difficult to exploit vulnerability allows unauthenticated attacker with network access via multiple protocols to compromise Oracle Java SE",
+      "id": "CVE-2026-4139",
+      "description": "The mCatFilter plugin for WordPress is vulnerable to Cross-Site Request Forgery in all versions up to and including 0.5.2. This is due to the complete absence of nonce verification and capability checks in the compute_post() function, which processes settings updates. The compute_post() function is called in the plugin constructor on every page load via the plugins_loaded hook, and it directly processes $_POST data to modify plugin settings via update_option() without any CSRF token validation. ",
       "cvss": {
-        "score": 3.7,
-        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:L",
-        "severity": "LOW"
+        "score": 4.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N",
+        "severity": "MEDIUM"
       },
       "tier": 3,
       "matchedProducts": [
-        "Oracle Java"
+        "WordPress"
       ],
       "references": [
-        "https://www.oracle.com/security-alerts/cpuapr2026.html"
+        "https://plugins.trac.wordpress.org/browser/mcatfilter/tags/0.5.2/mcatfilter.php#L138",
+        "https://plugins.trac.wordpress.org/browser/mcatfilter/tags/0.5.2/mcatfilter.php#L320",
+        "https://plugins.trac.wordpress.org/browser/mcatfilter/tags/0.5.2/mcatfilter.php#L339",
+        "https://plugins.trac.wordpress.org/browser/mcatfilter/trunk/mcatfilter.php#L138",
+        "https://plugins.trac.wordpress.org/browser/mcatfilter/trunk/mcatfilter.php#L320"
       ],
-      "published": "2026-04-21T21:16:28.833"
+      "published": "2026-04-22T09:16:24.707"
     },
     {
-      "id": "CVE-2026-22007",
-      "description": "Vulnerability in the Oracle Java SE, Oracle GraalVM for JDK, Oracle GraalVM Enterprise Edition product of Oracle Java SE (component: Security).  Supported versions that are affected are Oracle Java SE: 8u481, 8u481-b50, 8u481-perf, 11.0.30, 17.0.18, 21.0.10, 25.0.2, 26; Oracle GraalVM for JDK: 17.0.18 and  21.0.10; Oracle GraalVM Enterprise Edition: 21.3.17. Difficult to exploit vulnerability allows unauthenticated attacker with logon to the infrastructure where Oracle Java SE, Oracle GraalVM fo",
+      "id": "CVE-2026-6294",
+      "description": "The Google PageRank Display plugin for WordPress is vulnerable to Cross-Site Request Forgery in versions up to and including 1.4. This is due to missing nonce validation in the gpdisplay_option() function, which handles the plugin settings page. The settings form does not include a wp_nonce_field(), and the form handler does not call check_admin_referer() or wp_verify_nonce() before processing the POST request. This makes it possible for unauthenticated attackers to trick a logged-in administrat",
       "cvss": {
-        "score": 2.9,
-        "vector": "CVSS:3.1/AV:L/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:N",
-        "severity": "LOW"
+        "score": 4.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N",
+        "severity": "MEDIUM"
       },
       "tier": 3,
       "matchedProducts": [
-        "Oracle Java"
+        "WordPress"
       ],
       "references": [
-        "https://www.oracle.com/security-alerts/cpuapr2026.html"
+        "https://plugins.trac.wordpress.org/browser/google-pagerank-display/tags/1.4/gpdisplay.php#L32",
+        "https://plugins.trac.wordpress.org/browser/google-pagerank-display/tags/1.4/gpdisplay.php#L56",
+        "https://plugins.trac.wordpress.org/browser/google-pagerank-display/trunk/gpdisplay.php#L32",
+        "https://plugins.trac.wordpress.org/browser/google-pagerank-display/trunk/gpdisplay.php#L56",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/e39ebe27-7780-48b6-8dca-7da7a78fce69?source=cve"
       ],
-      "published": "2026-04-21T21:16:26.440"
+      "published": "2026-04-22T09:16:26.677"
     },
     {
-      "id": "CVE-2026-34268",
-      "description": "Vulnerability in the Oracle Java SE, Oracle GraalVM for JDK, Oracle GraalVM Enterprise Edition product of Oracle Java SE (component: Security).  Supported versions that are affected are Oracle Java SE: 8u481, 8u481-b50, 8u481-perf, 11.0.30, 17.0.18, 21.0.10, 25.0.2, 26; Oracle GraalVM for JDK: 17.0.18 and  21.0.10; Oracle GraalVM Enterprise Edition: 21.3.17. Difficult to exploit vulnerability allows unauthenticated attacker with logon to the infrastructure where Oracle Java SE, Oracle GraalVM fo",
+      "id": "CVE-2026-6396",
+      "description": "The Fast & Fancy Filter \u2013 3F plugin for WordPress is vulnerable to Cross-Site Request Forgery in versions up to and including 1.2.2. This is due to missing nonce verification in the saveFields() function, which handles the fff_save_settins AJAX action. This makes it possible for unauthenticated attackers to modify plugin filter settings, update arbitrary options, or create new filter posts via a forged request granted they can trick a site administrator into performing an action such as clicking",
       "cvss": {
-        "score": 2.9,
-        "vector": "CVSS:3.1/AV:L/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:N",
-        "severity": "LOW"
+        "score": 4.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N",
+        "severity": "MEDIUM"
       },
       "tier": 3,
       "matchedProducts": [
-        "Oracle Java"
+        "WordPress"
       ],
       "references": [
-        "https://www.oracle.com/security-alerts/cpuapr2026.html"
+        "https://plugins.trac.wordpress.org/browser/fast-fancy-filter-3f/tags/1.2.2/includes/admin/class-admin.php#L24",
+        "https://plugins.trac.wordpress.org/browser/fast-fancy-filter-3f/tags/1.2.2/includes/admin/class-admin.php#L419",
+        "https://plugins.trac.wordpress.org/browser/fast-fancy-filter-3f/trunk/includes/admin/class-admin.php#L24",
+        "https://plugins.trac.wordpress.org/browser/fast-fancy-filter-3f/trunk/includes/admin/class-admin.php#L419",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/4b5fbf2c-1231-482f-b5a5-819f31da3524?source=cve"
       ],
-      "published": "2026-04-21T21:16:30.353"
+      "published": "2026-04-22T09:16:26.810"
     },
     {
-      "id": "CVE-2026-22001",
-      "description": "Vulnerability in the MySQL Server product of Oracle MySQL (component: Server: Information Schema).  Supported versions that are affected are 8.0.0-8.0.45, 8.4.0-8.4.8 and  9.0.0-9.6.0. Easily exploitable vulnerability allows high privileged attacker with network access via multiple protocols to compromise MySQL Server.  Successful attacks of this vulnerability can result in  unauthorized read access to a subset of MySQL Server accessible data. CVSS 3.1 Base Score 2.7 (Confidentiality impacts).  ",
+      "id": "CVE-2026-1930",
+      "description": "The Emailchef plugin for WordPress is vulnerable to unauthorized modification of data due to a missing capability check on the page_options_ajax_disconnect() function in all versions up to, and including, 3.5.1. This makes it possible for authenticated attackers, with Subscriber-level access and above, to delete the plugin's settings via the 'emailchef_disconnect' AJAX action.",
       "cvss": {
-        "score": 2.7,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:L/I:N/A:N",
-        "severity": "LOW"
+        "score": 4.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N",
+        "severity": "MEDIUM"
       },
       "tier": 3,
       "matchedProducts": [
-        "MySQL",
-        "MSSQL"
+        "WordPress"
       ],
       "references": [
-        "https://www.oracle.com/security-alerts/cpuapr2026.html"
+        "https://plugins.trac.wordpress.org/browser/emailchef/tags/3.5.1/admin/class-emailchef-admin.php#L121",
+        "https://plugins.trac.wordpress.org/browser/emailchef/tags/3.5.1/admin/class-emailchef-admin.php#L200",
+        "https://plugins.trac.wordpress.org/browser/emailchef/trunk/admin/class-emailchef-admin.php#L121",
+        "https://plugins.trac.wordpress.org/browser/emailchef/trunk/admin/class-emailchef-admin.php#L200",
+        "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&old=3474353%40emailchef&new=3474353%40emailchef&sfp_email=&sfph_mail="
       ],
-      "published": "2026-04-21T21:16:25.253"
+      "published": "2026-04-22T10:16:51.000"
     },
     {
-      "id": "CVE-2025-13826",
-      "description": "Zervit's portable HTTP/web server is vulnerable to remote DoS attacks when a configuration reset request is made. The vulnerability is caused by inadequate validation of user-supplied input. An attacker can exploit this vulnerability by sending malicious requests. If the vulnerability is successfully exploited, the application can be made to stop responding, resulting in a DoS condition. It is possible to manually restart the application.",
+      "id": "CVE-2026-31437",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfs: Fix NULL pointer dereference in netfs_unbuffered_write() on retry\n\nWhen a write subrequest is marked NETFS_SREQ_NEED_RETRY, the retry path\nin netfs_unbuffered_write() unconditionally calls stream->prepare_write()\nwithout checking if it is NULL.\n\nFilesystems such as 9P do not set the prepare_write operation, so\nstream->prepare_write remains NULL. When get_user_pages() fails with\n-EFAULT and the subrequest is flagged for r",
       "cvss": {
         "score": null,
         "vector": null,
@@ -1633,13 +1085,15 @@
         "ESET"
       ],
       "references": [
-        "https://www.incibe.es/en/incibe-cert/notices/aviso/incorrect-input-validation-zervit-portable-httpweb-server"
+        "https://git.kernel.org/stable/c/7a5482f5ce891decbf36f2e6fab1e9fc4a76a684",
+        "https://git.kernel.org/stable/c/a4d1b4ba9754bac3efebd06f583a44a7af52c0ab",
+        "https://git.kernel.org/stable/c/e9075e420a1eb3b52c60f3b95893a55e77419ce8"
       ],
-      "published": "2026-04-21T09:16:06.087"
+      "published": "2026-04-22T14:16:36.980"
     },
     {
-      "id": "CVE-2026-32147",
-      "description": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal') vulnerability in Erlang OTP ssh (ssh_sftpd module) allows an authenticated SFTP user to modify file attributes outside the configured chroot directory.\n\nThe SFTP daemon (ssh_sftpd) stores the raw, user-supplied path in file handles instead of the chroot-resolved path. When SSH_FXP_FSETSTAT is issued on such a handle, file attributes (permissions, ownership, timestamps) are modified on the real filesystem path, bypassi",
+      "id": "CVE-2026-31440",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndmaengine: idxd: Fix leaking event log memory\n\nDuring the device remove process, the device is reset, causing the\nconfiguration registers to go back to their default state, which is\nzero. As the driver is checking if the event log support was enabled\nbefore deallocating, it will fail if a reset happened before.\n\nDo not check if the support was enabled, the check for 'idxd->evl'\nbeing valid (only allocated if the HW capability i",
       "cvss": {
         "score": null,
         "vector": null,
@@ -1647,20 +1101,19 @@
       },
       "tier": 3,
       "matchedProducts": [
-        "Erlang/OTP"
+        "ESET"
       ],
       "references": [
-        "https://cna.erlef.org/cves/CVE-2026-32147.html",
-        "https://github.com/erlang/otp/commit/28c5d5a6c5f873dc701b597276271763e7d1c004",
-        "https://github.com/erlang/otp/security/advisories/GHSA-28jg-mw9x-hpm5",
-        "https://osv.dev/vulnerability/EEF-CVE-2026-32147",
-        "https://www.erlang.org/doc/system/versions.html#order-of-versions"
+        "https://git.kernel.org/stable/c/9dfa00967e6ef43a9dd0887fe5c3a721a39da92e",
+        "https://git.kernel.org/stable/c/d94f9b0ba28a205caf95902ee88b42bdb8af83d0",
+        "https://git.kernel.org/stable/c/ee66bc29578391c9b48523dc9119af67bd5c7c0f",
+        "https://git.kernel.org/stable/c/facd0012708e942fc12890708738aebde497564e"
       ],
-      "published": "2026-04-21T12:15:58.800"
+      "published": "2026-04-22T14:16:37.390"
     },
     {
-      "id": "CVE-2026-6753",
-      "description": "Incorrect boundary conditions in the WebRTC component. This vulnerability was fixed in Firefox 150, Firefox ESR 140.10, Thunderbird 150, and Thunderbird 140.10.",
+      "id": "CVE-2026-31442",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndmaengine: idxd: Fix possible invalid memory access after FLR\n\nIn the case that the first Function Level Reset (FLR) concludes\ncorrectly, but in the second FLR the scratch area for the saved\nconfiguration cannot be allocated, it's possible for a invalid memory\naccess to happen.\n\nAlways set the deallocated scratch area to NULL after FLR completes.",
       "cvss": {
         "score": null,
         "vector": null,
@@ -1668,20 +1121,18 @@
       },
       "tier": 3,
       "matchedProducts": [
-        "Mozilla Firefox"
+        "ESET"
       ],
       "references": [
-        "https://bugzilla.mozilla.org/show_bug.cgi?id=2027501",
-        "https://www.mozilla.org/security/advisories/mfsa2026-30/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-32/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-33/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-34/"
+        "https://git.kernel.org/stable/c/504c0e6751001ac46917c73e703f2b1b92cfc026",
+        "https://git.kernel.org/stable/c/867d0c801f21370d561420fa32f2ea1a7dc3a22d",
+        "https://git.kernel.org/stable/c/d6077df7b75d26e4edf98983836c05d00ebabd8d"
       ],
-      "published": "2026-04-21T13:16:21.340"
+      "published": "2026-04-22T14:16:37.703"
     },
     {
-      "id": "CVE-2026-6756",
-      "description": "Mitigation bypass in Firefox for Android. This vulnerability was fixed in Firefox 150.",
+      "id": "CVE-2026-31443",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndmaengine: idxd: Fix crash when the event log is disabled\n\nIf reporting errors to the event log is not supported by the hardware,\nand an error that causes Function Level Reset (FLR) is received, the\ndriver will try to restore the event log even if it was not allocated.\n\nAlso, only try to free the event log if it was properly allocated.",
       "cvss": {
         "score": null,
         "vector": null,
@@ -1689,17 +1140,18 @@
       },
       "tier": 3,
       "matchedProducts": [
-        "Mozilla Firefox"
+        "ESET"
       ],
       "references": [
-        "https://bugzilla.mozilla.org/show_bug.cgi?id=1992585",
-        "https://www.mozilla.org/security/advisories/mfsa2026-30/"
+        "https://git.kernel.org/stable/c/0e761079d653c25f838380cf7cef2730832110cc",
+        "https://git.kernel.org/stable/c/52d2edea0d63c935e82631e4b9e4a94eccf97b5b",
+        "https://git.kernel.org/stable/c/aa0ffc6d3990ec35976308a068dc23178037e564"
       ],
-      "published": "2026-04-21T13:16:21.593"
+      "published": "2026-04-22T14:16:37.860"
     },
     {
-      "id": "CVE-2026-6757",
-      "description": "Invalid pointer in the JavaScript: WebAssembly component. This vulnerability was fixed in Firefox 150, Firefox ESR 140.10, Thunderbird 150, and Thunderbird 140.10.",
+      "id": "CVE-2026-31468",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nvfio/pci: Fix double free in dma-buf feature\n\nThe error path through vfio_pci_core_feature_dma_buf() ignores its\nown advice to only use dma_buf_put() after dma_buf_export(), instead\nfalling through the entire unwind chain.  In the unlikely event that\nwe encounter file descriptor exhaustion, this can result in an\nunbalanced refcount on the vfio device and double free of allocated\nobjects.\n\nAvoid this by moving the \"put\" directly",
       "cvss": {
         "score": null,
         "vector": null,
@@ -1707,20 +1159,17 @@
       },
       "tier": 3,
       "matchedProducts": [
-        "Mozilla Firefox"
+        "Fio"
       ],
       "references": [
-        "https://bugzilla.mozilla.org/show_bug.cgi?id=2013588",
-        "https://www.mozilla.org/security/advisories/mfsa2026-30/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-32/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-33/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-34/"
+        "https://git.kernel.org/stable/c/83ad334afc9a645cef1062f5346526b1e36d6516",
+        "https://git.kernel.org/stable/c/e98137f0a874ab36d0946de4707aa48cb7137d1c"
       ],
-      "published": "2026-04-21T13:16:21.690"
+      "published": "2026-04-22T14:16:43.143"
     },
     {
-      "id": "CVE-2026-6760",
-      "description": "Mitigation bypass in the Networking: Cookies component. This vulnerability was fixed in Firefox 150 and Thunderbird 150.",
+      "id": "CVE-2026-31486",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nhwmon: (pmbus/core) Protect regulator operations with mutex\n\nThe regulator operations pmbus_regulator_get_voltage(),\npmbus_regulator_set_voltage(), and pmbus_regulator_list_voltage()\naccess PMBus registers and shared data but were not protected by\nthe update_lock mutex. This could lead to race conditions.\n\nHowever, adding mutex protection directly to these functions causes\na deadlock because pmbus_regulator_notify() (which call",
       "cvss": {
         "score": null,
         "vector": null,
@@ -1728,18 +1177,18 @@
       },
       "tier": 3,
       "matchedProducts": [
-        "Mozilla Firefox"
+        "ESET"
       ],
       "references": [
-        "https://bugzilla.mozilla.org/show_bug.cgi?id=2016923",
-        "https://www.mozilla.org/security/advisories/mfsa2026-30/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-33/"
+        "https://git.kernel.org/stable/c/2c77ae315f3ce9d2c8e1609be74c9358c1fe4e07",
+        "https://git.kernel.org/stable/c/4e9d723d9f198b86f6882a84c501ba1f39e8d055",
+        "https://git.kernel.org/stable/c/754bd2b4a084b90b5e7b630e1f423061a9b9b761"
       ],
-      "published": "2026-04-21T13:16:21.950"
+      "published": "2026-04-22T14:16:46.160"
     },
     {
-      "id": "CVE-2026-6762",
-      "description": "Spoofing issue in the DOM: Core & HTML component. This vulnerability was fixed in Firefox 150, Firefox ESR 115.35, Firefox ESR 140.10, Thunderbird 150, and Thunderbird 140.10.",
+      "id": "CVE-2026-31488",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amd/display: Do not skip unrelated mode changes in DSC validation\n\nStarting with commit 17ce8a6907f7 (\"drm/amd/display: Add dsc pre-validation in\natomic check\"), amdgpu resets the CRTC state mode_changed flag to false when\nrecomputing the DSC configuration results in no timing change for a particular\nstream.\n\nHowever, this is incorrect in scenarios where a change in MST/DSC configuration\nhappens in the same KMS commit as an",
       "cvss": {
         "score": null,
         "vector": null,
@@ -1747,16 +1196,74 @@
       },
       "tier": 3,
       "matchedProducts": [
-        "Mozilla Firefox"
+        "ESET"
       ],
       "references": [
-        "https://bugzilla.mozilla.org/show_bug.cgi?id=2021080",
-        "https://www.mozilla.org/security/advisories/mfsa2026-30/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-31/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-32/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-33/"
+        "https://git.kernel.org/stable/c/10862e344b4d6434642a48c87d765813fc0b0ba7",
+        "https://git.kernel.org/stable/c/111208b5b7ebcdadb3f922cc52d8425f0fa91b33",
+        "https://git.kernel.org/stable/c/8a5edc97fd9c6415ff2eff872748439a97e3c3d8",
+        "https://git.kernel.org/stable/c/aed3d041ab061ec8a64f50a3edda0f4db7280025"
       ],
-      "published": "2026-04-21T13:16:22.137"
+      "published": "2026-04-22T14:16:46.453"
+    },
+    {
+      "id": "CVE-2026-31500",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: btintel: serialize btintel_hw_error() with hci_req_sync_lock\n\nbtintel_hw_error() issues two __hci_cmd_sync() calls (HCI_OP_RESET\nand Intel exception-info retrieval) without holding\nhci_req_sync_lock().  This lets it race against\nhci_dev_do_close() -> btintel_shutdown_combined(), which also runs\n__hci_cmd_sync() under the same lock.  When both paths manipulate\nhdev->req_status/req_rsp concurrently, the close path may ",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "ESET"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/5f84e845648dfa86e42de5487f1a774b42f0444d",
+        "https://git.kernel.org/stable/c/66696648af477dc87859e5e4b607112f5f29d010",
+        "https://git.kernel.org/stable/c/94d8e6fe5d0818e9300e514e095a200bd5ff93ae",
+        "https://git.kernel.org/stable/c/e10a4cb72468686ffbe8bb2b0520e37f6be1a0c5",
+        "https://git.kernel.org/stable/c/f7d84737663ad4a120d2d8ef1561a4df91282c2e"
+      ],
+      "published": "2026-04-22T14:16:48.427"
+    },
+    {
+      "id": "CVE-2026-31523",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnvme-pci: ensure we're polling a polled queue\n\nA user can change the polled queue count at run time. There's a brief\nwindow during a reset where a hipri task may try to poll that queue\nbefore the block layer has updated the queue maps, which would race with\nthe now interrupt driven queue and may cause double completions.",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "ESET"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/0685dd9cb855ab77fcf3577b4702ba1d6df1c98d",
+        "https://git.kernel.org/stable/c/166e31d7dbf6aa44829b98aa446bda5c9580f12a",
+        "https://git.kernel.org/stable/c/6f12734c4b619f923a4df0b1a46b8098b187d324",
+        "https://git.kernel.org/stable/c/965e2c943f065122f14282a88d70a8a92e12a4da",
+        "https://git.kernel.org/stable/c/acbc72dd1a09df53cafcf577259f4678be6afd6d"
+      ],
+      "published": "2026-04-22T14:16:52.263"
+    },
+    {
+      "id": "CVE-2026-41211",
+      "description": "Vite+ is a unified toolchain and entry point for web development. Prior to version 0.1.17, `downloadPackageManager()` accepts an untrusted `version` string and uses it directly in filesystem paths. A caller can supply `../` segments or an absolute path to escape the `VP_HOME/package_manager/<pm>/` cache root and make Vite+ delete, replace, and populate directories outside the intended cache location. Version 0.1.17 contains a patch.",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "Ubiquiti/UniFi"
+      ],
+      "references": [
+        "https://github.com/voidzero-dev/vite-plus/security/advisories/GHSA-33r3-4whc-44c2"
+      ],
+      "published": "2026-04-23T02:16:18.860"
     }
   ]
 }
