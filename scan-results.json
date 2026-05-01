@@ -1,17 +1,17 @@
 {
-  "scanTime": "2026-04-30 06:15:01 UTC",
-  "totalMatched": 11,
+  "scanTime": "2026-05-01 06:25:24 UTC",
+  "totalMatched": 9,
   "productsMonitored": 147,
   "tierCounts": {
-    "0": 1,
-    "1": 3,
-    "2": 4,
-    "3": 3
+    "0": 2,
+    "1": 0,
+    "2": 6,
+    "3": 1
   },
   "vulnerabilities": [
     {
-      "id": "CVE-2026-41940",
-      "description": "cPanel and WHM versions after 11.40 contain an authentication bypass vulnerability in the login flow that allows unauthenticated remote attackers to gain unauthorized access to the control panel.",
+      "id": "CVE-2026-7546",
+      "description": "A security vulnerability has been detected in Totolink NR1800X 9.1.0u.6279_B20210910. The impacted element is the function find_host_ip of the component lighttpd. Such manipulation of the argument Host leads to stack-based buffer overflow. The attack can be executed remotely. The exploit has been disclosed publicly and may be used.",
       "cvss": {
         "score": 9.8,
         "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
@@ -19,109 +19,79 @@
       },
       "tier": 0,
       "matchedProducts": [
-        "cPanel"
+        "Apache HTTP Server"
       ],
       "references": [
-        "https://docs.cpanel.net/release-notes/release-notes",
-        "https://docs.wpsquared.com/changelogs/versions/changelog/#13617",
-        "https://support.cpanel.net/hc/en-us/articles/40073787579671-cPanel-WHM-Security-Update-04-28-2026",
-        "https://www.namecheap.com/status-updates/ongoing-critical-security-vulnerability-in-cpanel-april-28-2026",
-        "https://www.vulncheck.com/advisories/cpanel-and-whm-authentication-bypass-via-login-flow"
+        "https://github.com/newym/cve/blob/main/totolinknr1800x.md",
+        "https://vuldb.com/submit/804404",
+        "https://vuldb.com/vuln/360357",
+        "https://vuldb.com/vuln/360357/cti",
+        "https://www.totolink.net/"
       ],
-      "published": "2026-04-29T16:16:25.037"
+      "published": "2026-05-01T03:16:01.270"
     },
     {
-      "id": "CVE-2026-7424",
-      "description": "Integer underflow in the DHCPv6 sub-option parser in FreeRTOS-Plus-TCP before V4.4.1 and V4.2.6 allows an adjacent network actor to corrupt the device's IPv6 address assignment, DNS configuration, and lease times, and to cause a denial of service (permanent IP task freeze requiring hardware reset) by sending a single crafted DHCPv6 packet.\n\n\n\n\n\n\n\n\nThe issue is present whenever DHCPv6 is enabled.\n\n\n\n\n\n\n\n\nTo mitigate this issue, users should upgrade to version V4.2.6 or V4.4.1 or newer.",
+      "id": "CVE-2026-2892",
+      "description": "The Otter Blocks plugin for WordPress is vulnerable to Purchase Verification Bypass in all versions up to, and including, 3.1.4. This is due to the 'get_customer_data' method relying on an unsigned 'o_stripe_data' cookie to determine Stripe product ownership for unauthenticated users. The 'check_purchase' method trusts this cookie data without performing server-side verification against the Stripe API for one-time 'payment' mode purchases. This makes it possible for unauthenticated attackers to ",
       "cvss": {
-        "score": 8.1,
-        "vector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:H",
+        "score": 7.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
         "severity": "HIGH"
       },
-      "tier": 1,
+      "tier": 0,
       "matchedProducts": [
-        "ESET"
+        "WordPress"
       ],
       "references": [
-        "https://aws.amazon.com/security/security-bulletins/2026-022-aws/",
-        "https://github.com/FreeRTOS/FreeRTOS-Plus-TCP/releases/tag/V4.2.6",
-        "https://github.com/FreeRTOS/FreeRTOS-Plus-TCP/releases/tag/V4.4.1",
-        "https://github.com/FreeRTOS/FreeRTOS-Plus-TCP/security/advisories/GHSA-wrhm-c99p-2p8g"
+        "https://plugins.trac.wordpress.org/browser/otter-blocks/trunk/inc/plugins/class-block-conditions.php#L274",
+        "https://plugins.trac.wordpress.org/browser/otter-blocks/trunk/inc/plugins/class-stripe-api.php#L260",
+        "https://plugins.trac.wordpress.org/browser/otter-blocks/trunk/inc/plugins/class-stripe-api.php#L284",
+        "https://plugins.trac.wordpress.org/changeset/3471326/",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/3443950f-1f94-4e0b-8906-1a9b9602a746?source=cve"
       ],
-      "published": "2026-04-29T19:16:26.743"
+      "published": "2026-04-30T14:16:29.760"
     },
     {
-      "id": "CVE-2026-0204",
-      "description": "A vulnerability in the access control mechanism of SonicOS may allow certain management interface functions to be accessible under specific conditions.",
-      "cvss": {
-        "score": 8.0,
-        "vector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "SonicWall"
-      ],
-      "references": [
-        "https://psirt.global.sonicwall.com/vuln-detail/SNWLID-2026-0004"
-      ],
-      "published": "2026-04-29T17:16:40.307"
-    },
-    {
-      "id": "CVE-2026-42198",
-      "description": "pgjdbc is an open source postgresql JDBC Driver. From version 42.2.0 to before version 42.7.11, pgjdbc is vulnerable to a client-side denial of service during SCRAM-SHA-256 authentication. A malicious server can instruct the driver to perform SCRAM authentication with a very large iteration count. With a large enough value, the client spends an unbounded amount of CPU time inside PBKDF2 before authentication can fail. A single attempt ties up a CPU core. Repeated or concurrent attempts exhaust c",
+      "id": "CVE-2026-7164",
+      "description": "Incorrect packet validation allowed unbounded recursion parsing SCTP chunk parameters.  This can eventually result in a stack overflow and panic.\n\nRemote attackers can craft packets which cause affected systems to panic.  This affects any system where pf is configured to process traffic, independent of the configured ruleset.",
       "cvss": {
         "score": 7.5,
         "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
         "severity": "HIGH"
       },
-      "tier": 1,
+      "tier": 2,
       "matchedProducts": [
-        "PostgreSQL"
+        "ESET"
       ],
       "references": [
-        "https://github.com/pgjdbc/pgjdbc/releases/tag/REL42.7.11",
-        "https://github.com/pgjdbc/pgjdbc/security/advisories/GHSA-98qh-xjc8-98pq"
+        "https://security.freebsd.org/advisories/FreeBSD-SA-26:14.pf.asc"
       ],
-      "published": "2026-04-29T16:16:25.427"
+      "published": "2026-04-30T08:16:07.653"
     },
     {
-      "id": "CVE-2026-0205",
-      "description": "A post-authentication Path Traversal vulnerability in SonicOS allows an attacker to interact with usually restricted services.",
+      "id": "CVE-2026-6127",
+      "description": "The Elementor Website Builder plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the _elementor_data meta field in versions up to, and including, 4.0.4. This is due to insufficient input sanitization when processing form-encoded REST API requests. The plugin registers the _elementor_data meta field with show_in_rest but omits a sanitize_callback, relying instead on a rest_pre_insert_post filter (sanitize_post_data function) that only sanitizes JSON-encoded request bodies. When",
       "cvss": {
-        "score": 6.8,
-        "vector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:H",
+        "score": 6.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
         "severity": "MEDIUM"
       },
       "tier": 2,
       "matchedProducts": [
-        "SonicWall"
+        "WordPress"
       ],
       "references": [
-        "https://psirt.global.sonicwall.com/vuln-detail/SNWLID-2026-0004"
+        "https://plugins.trac.wordpress.org/browser/elementor/tags/4.0.1/includes/base/widget-base.php#L794",
+        "https://plugins.trac.wordpress.org/browser/elementor/tags/4.0.1/includes/plugin.php#L840",
+        "https://plugins.trac.wordpress.org/browser/elementor/tags/4.0.1/modules/wp-rest/classes/elementor-post-meta.php#L68",
+        "https://plugins.trac.wordpress.org/browser/elementor/trunk/includes/base/widget-base.php#L794",
+        "https://plugins.trac.wordpress.org/browser/elementor/trunk/includes/plugin.php#L840"
       ],
-      "published": "2026-04-29T17:16:40.480"
+      "published": "2026-05-01T06:16:32.233"
     },
     {
-      "id": "CVE-2026-6914",
-      "description": "Computing the MD5 checksum of a malformed BSON object under specific conditions may cause loss of availability in MongoDB server.\nThis issue affects all MongoDB Server v8.2 versions, all MongoDB Server v8.1 versions, MongoDB Server v8.0 versions prior to 8.0.21, MongoDB Server v7.0 versions prior to 7.0.32",
-      "cvss": {
-        "score": 6.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "MongoDB"
-      ],
-      "references": [
-        "https://jira.mongodb.org/browse/SERVER-119981"
-      ],
-      "published": "2026-04-29T17:16:41.230"
-    },
-    {
-      "id": "CVE-2026-2902",
-      "description": "The WP Meteor Website Speed Optimization Addon plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'frontend_rewrite' function's 'WPMETEOR[N]WPMETEOR' placeholder content in all versions up to, and including, 3.4.16 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+      "id": "CVE-2024-13362",
+      "description": "Multiple plugins and/or themes for WordPress are vulnerable to Reflected Cross-Site Scripting via the url parameter in various versions due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that execute if they can successfully trick a user into performing an action such as clicking on a link.",
       "cvss": {
         "score": 6.1,
         "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
@@ -132,20 +102,59 @@
         "WordPress"
       ],
       "references": [
-        "https://plugins.trac.wordpress.org/browser/wp-meteor/trunk/blocker/FirstInteraction/UltimateReorder.php#L186",
-        "https://plugins.trac.wordpress.org/browser/wp-meteor/trunk/blocker/FirstInteraction/UltimateReorder.php#L68",
-        "https://plugins.trac.wordpress.org/browser/wp-meteor/trunk/frontend/Rewrite.php#L43",
-        "https://plugins.trac.wordpress.org/changeset/3466538/",
-        "https://www.wordfence.com/threat-intel/vulnerabilities/id/dc92b20a-fb9b-477c-8fe4-68897c1fd07e?source=cve"
+        "https://plugins.trac.wordpress.org/browser/add-search-to-menu/trunk/includes/freemius/assets/js/pricing/freemius-pricing.js",
+        "https://plugins.trac.wordpress.org/browser/featured-images-for-rss-feeds/trunk/includes/freemius/assets/js/pricing/freemius-pricing.js",
+        "https://plugins.trac.wordpress.org/browser/foobox-image-lightbox/tags/2.7.33/freemius/assets/js/pricing/freemius-pricing.js",
+        "https://plugins.trac.wordpress.org/browser/foogallery/tags/2.4.27/freemius/assets/js/pricing/freemius-pricing.js",
+        "https://plugins.trac.wordpress.org/browser/independent-analytics/trunk/freemius/assets/js/pricing/freemius-pricing.js"
       ],
-      "published": "2026-04-29T12:16:18.753"
+      "published": "2026-05-01T06:16:30.050"
     },
     {
-      "id": "CVE-2026-4019",
-      "description": "The Complianz \u2013 GDPR/CCPA Cookie Consent plugin for WordPress is vulnerable to unauthorized data access in all versions up to, and including, 7.4.5 This is due to the REST API endpoint at /wp-json/complianz/v1/consent-area/{post_id}/{block_id} using __return_true as the permission_callback, allowing any unauthenticated user to access it. The cmplz_rest_consented_content() function retrieves a post by ID via get_post() and returns the consentedContent attribute of any complianz/consent-area block",
+      "id": "CVE-2026-7554",
+      "description": "A vulnerability was determined in D-Link M60 up to 1.20B02. Affected by this issue is some unknown functionality of the file /usr/bin/httpd. This manipulation causes weak password recovery. The attack can be initiated remotely. A high degree of complexity is needed for the attack. The exploitation is known to be difficult. The exploit has been publicly disclosed and may be utilized.",
+      "cvss": {
+        "score": 5.6,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:L",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "Apache HTTP Server"
+      ],
+      "references": [
+        "https://vuldb.com/submit/805642",
+        "https://vuldb.com/vuln/360362",
+        "https://vuldb.com/vuln/360362/cti",
+        "https://www.dlink.com/",
+        "https://www.yuque.com/iam0range/rle72q/dhs1zsbgtm1ne0y1"
+      ],
+      "published": "2026-05-01T06:16:32.420"
+    },
+    {
+      "id": "CVE-2026-6524",
+      "description": "MySQL protocol dissector crash in Wireshark 4.6.0 to 4.6.4 and 4.4.0 to 4.4.14 allows denial of service",
+      "cvss": {
+        "score": 5.5,
+        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "MySQL"
+      ],
+      "references": [
+        "https://gitlab.com/wireshark/wireshark/-/work_items/21172",
+        "https://www.wireshark.org/security/wnpa-sec-2026-37.html"
+      ],
+      "published": "2026-04-30T07:16:39.637"
+    },
+    {
+      "id": "CVE-2026-6498",
+      "description": "The Five Star Restaurant Reservations plugin for WordPress is vulnerable to a payment bypass via PHP type juggling in versions up to, and including, 2.7.16 This is due to the valid_payment() function using a PHP loose comparison (==) between the attacker-controlled payment_id POST parameter and the booking's stripe_payment_intent_id property. When an unauthenticated attacker submits a request to the nopriv AJAX handler rtb_stripe_pmt_succeed before the Stripe payment intent has been created for ",
       "cvss": {
         "score": 5.3,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N",
         "severity": "MEDIUM"
       },
       "tier": 2,
@@ -153,67 +162,31 @@
         "WordPress"
       ],
       "references": [
-        "https://github.com/complianz/complianz-gdpr/blob/64c09657bd028f62d7b50a54d83ca19b87df2cef/rest-api/rest-api.php#L61",
-        "https://plugins.trac.wordpress.org/browser/complianz-gdpr/tags/7.4.4.2/rest-api/rest-api.php#L54",
-        "https://plugins.trac.wordpress.org/browser/complianz-gdpr/tags/7.4.4.2/rest-api/rest-api.php#L61",
-        "https://plugins.trac.wordpress.org/changeset/3508713/complianz-gdpr/trunk/rest-api/rest-api.php",
-        "https://plugins.trac.wordpress.org/changeset?old_path=%2Fcomplianz-gdpr/tags/7.4.5&new_path=%2Fcomplianz-gdpr/tags/7.4.6"
+        "https://plugins.trac.wordpress.org/browser/restaurant-reservations/tags/2.7.13/includes/PaymentGatewayStripe.class.php#L404",
+        "https://plugins.trac.wordpress.org/browser/restaurant-reservations/tags/2.7.13/includes/PaymentGatewayStripe.class.php#L458",
+        "https://plugins.trac.wordpress.org/browser/restaurant-reservations/trunk/includes/PaymentGatewayStripe.class.php#L404",
+        "https://plugins.trac.wordpress.org/browser/restaurant-reservations/trunk/includes/PaymentGatewayStripe.class.php#L458",
+        "https://plugins.trac.wordpress.org/changeset/3518833/restaurant-reservations/trunk/includes/PaymentGatewayStripe.class.php"
       ],
-      "published": "2026-04-29T09:16:25.173"
+      "published": "2026-04-30T10:16:02.327"
     },
     {
-      "id": "CVE-2026-0206",
-      "description": "A post-authentication Stack-based Buffer Overflow vulnerabilities in SonicOS allows a remote attacker to crash a firewall.",
+      "id": "CVE-2026-6539",
+      "description": "Notepad++ 8.9.3 contains a format string injection vulnerability in the Find Results panel handler that allows attackers to cause denial of service and information disclosure by crafting a malicious nativeLang.xml language pack file. Attackers can distribute a poisoned language pack through community channels that triggers format string interpretation when a user performs search operations, leading to access violations and potential leakage of stack or register contents.",
       "cvss": {
-        "score": 4.9,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:N/A:H",
+        "score": 4.4,
+        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:L",
         "severity": "MEDIUM"
       },
       "tier": 3,
       "matchedProducts": [
-        "SonicWall"
+        "Notepad++"
       ],
       "references": [
-        "https://psirt.global.sonicwall.com/vuln-detail/SNWLID-2026-0004"
+        "https://notepad-plus-plus.org/news/v894-released/",
+        "https://www.vulncheck.com/advisories/notepad-format-string-injection-via-nativelang-xml"
       ],
-      "published": "2026-04-29T17:16:40.633"
-    },
-    {
-      "id": "CVE-2025-50328",
-      "description": "A vulnerability in B1 Free Archiver v1.5.86 allows files extracted from downloaded archives to bypass Windows Mark of the Web (MotW) protections. When an archive is downloaded from the internet and extracted using B1 Free Archiver, the software fails to propagate the 'Zone.Identifier' alternate data stream to the extracted files. As a result, these files can be executed without triggering Windows Defender SmartScreen warnings or security prompts, enabling untrusted code execution without standar",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "Windows Defender"
-      ],
-      "references": [
-        "https://b1.org/",
-        "https://github.com/math69b/B1FREE/blob/main/B1%20Free%20Archiver%20version"
-      ],
-      "published": "2026-04-29T21:16:19.600"
-    },
-    {
-      "id": "CVE-2026-7381",
-      "description": "Plack::Middleware::XSendfile versions through 1.0053 for Perl can allow client-controlled path rewriting.\n\nPlack::Middleware::XSendfile allows the variation setting (sendfile type) to be set by the client via the X-Sendfile-Type header, if it is not considered in the middleware constructor or the Plack environment.\n\nA malicious client can set the X-Sendfile-Type header to \"X-Accel-Redirect\" to services running behind nginx reverse proxies, and then set the X-Accel-Mapping to map the path to an a",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "Nginx"
-      ],
-      "references": [
-        "https://metacpan.org/release/MIYAGAWA/Plack-1.0053/changes",
-        "https://metacpan.org/release/MIYAGAWA/Plack-1.0053/view/lib/Plack/Middleware/XSendfile.pm#DEPRECATION-NOTICE",
-        "https://nvd.nist.gov/vuln/detail/CVE-2025-61780"
-      ],
-      "published": "2026-04-29T23:16:19.897"
+      "published": "2026-04-30T21:16:33.820"
     }
   ]
 }
