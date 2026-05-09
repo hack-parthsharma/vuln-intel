@@ -1,38 +1,53 @@
 {
-  "scanTime": "2026-05-08 05:38:27 UTC",
-  "totalMatched": 15,
+  "scanTime": "2026-05-09 06:03:22 UTC",
+  "totalMatched": 37,
   "productsMonitored": 147,
   "tierCounts": {
-    "0": 0,
-    "1": 5,
-    "2": 7,
-    "3": 3
+    "0": 2,
+    "1": 11,
+    "2": 9,
+    "3": 15
   },
   "vulnerabilities": [
     {
-      "id": "CVE-2026-41139",
-      "description": "Math.js is an extensive math library for JavaScript and Node.js. From version 13.1.0 to before version 15.2.0, arbitrary JavaScript can be executed via the expression parser of mathjs. This issue has been patched in version 15.2.0.",
+      "id": "CVE-2026-41690",
+      "description": "18next-http-middleware is a middleware to be used with Node.js web frameworks like express or Fastify and also for Deno. Versions prior to 3.9.3 allow an unauthenticated HTTP client to pollute Object.prototype in the Node.js process hosting the middleware, via two unvalidated entry points that reach internal object-key writes: getResourcesHandler and missingKeyHandler. This can break authorisation checks (if (user.isAdmin) returning true for any user), cause type-confusion DoS, and depending on ",
       "cvss": {
-        "score": 8.8,
-        "vector": "CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "score": 8.6,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:H/A:L",
         "severity": "HIGH"
       },
-      "tier": 1,
+      "tier": 0,
       "matchedProducts": [
         "Node.js"
       ],
       "references": [
-        "https://github.com/josdejong/mathjs/commit/0aee2f61866e35ffa0aef915221cdf6b026ffdd4",
-        "https://github.com/josdejong/mathjs/commit/bcf0da46f0b8577ec03c9ecd7bff8b5c2543a611",
-        "https://github.com/josdejong/mathjs/pull/3656",
-        "https://github.com/josdejong/mathjs/releases/tag/v15.2.0",
-        "https://github.com/josdejong/mathjs/security/advisories/GHSA-5v89-rwgr-qj6g"
+        "https://github.com/i18next/i18next-http-middleware/security/advisories/GHSA-5fgg-jcpf-8jjw"
       ],
-      "published": "2026-05-07T06:16:04.273"
+      "published": "2026-05-08T16:16:11.473"
     },
     {
-      "id": "CVE-2026-6692",
-      "description": "The Slider Revolution plugin for WordPress is vulnerable to Arbitrary File Upload in versions 7.0.0 to 7.0.10 via the '_get_media_url' and '_check_file_path' function. This is due to insufficient file type validation. This makes it possible for authenticated attackers, with subscriber-level access and above, to upload files that may be executable, which makes remote code execution possible. The vulnerability was partially patched in version 7.0.10 and fully patched in version 7.0.11.",
+      "id": "CVE-2026-42793",
+      "description": "Allocation of Resources Without Limits or Throttling vulnerability in absinthe-graphql absinthe allows unauthenticated denial of service via atom table exhaustion when parsing attacker-controlled GraphQL SDL.\n\nMultiple Blueprint.Draft.convert/2 implementations in Absinthe's SDL language modules call String.to_atom/1 on attacker-controlled names from parsed GraphQL SDL documents, including directive names, field names, type names, and argument names. Because atoms are never garbage-collected and ",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 0,
+      "matchedProducts": [
+        "Erlang/OTP"
+      ],
+      "references": [
+        "https://cna.erlef.org/cves/CVE-2026-42793.html",
+        "https://github.com/absinthe-graphql/absinthe/security/advisories/GHSA-qf4g-9fqq-mmm7",
+        "https://osv.dev/vulnerability/EEF-CVE-2026-42793"
+      ],
+      "published": "2026-05-08T16:16:12.550"
+    },
+    {
+      "id": "CVE-2026-5127",
+      "description": "The User Frontend: AI Powered Frontend Posting, User Directory, Profile, Membership & User Registration plugin for WordPress is vulnerable to Deserialization of Untrusted Data in versions up to, and including, 4.3.1 This is due to insufficient input validation and type checking on the wpuf_files parameter during form submission, combined with unconditional deserialization via maybe_unserialize() when displaying post content. This makes it possible for authenticated attackers, with Subscriber-lev",
       "cvss": {
         "score": 8.8,
         "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
@@ -43,17 +58,37 @@
         "WordPress"
       ],
       "references": [
-        "https://www.sliderrevolution.com/",
-        "https://www.wordfence.com/threat-intel/vulnerabilities/id/a2e802a6-d2f1-47cc-883a-89110e569168?source=cve"
+        "https://plugins.trac.wordpress.org/browser/wp-user-frontend/tags/4.2.10/includes/Ajax/Frontend_Form_Ajax.php#L35",
+        "https://plugins.trac.wordpress.org/browser/wp-user-frontend/tags/4.2.10/includes/Ajax/Frontend_Form_Ajax.php#L36",
+        "https://plugins.trac.wordpress.org/browser/wp-user-frontend/tags/4.2.10/includes/Traits/FieldableTrait.php#L429",
+        "https://plugins.trac.wordpress.org/browser/wp-user-frontend/tags/4.2.10/includes/Traits/FieldableTrait.php#L502",
+        "https://plugins.trac.wordpress.org/browser/wp-user-frontend/tags/4.2.10/includes/Traits/FieldableTrait.php#L679"
       ],
-      "published": "2026-05-07T06:16:05.410"
+      "published": "2026-05-08T09:16:08.803"
     },
     {
-      "id": "CVE-2026-7252",
-      "description": "The WP-Optimize \u2013 Cache, Compress images, Minify & Clean database to boost page speed & performance plugin for WordPress is vulnerable to arbitrary file deletion due to insufficient file path validation in the unscheduled_original_file_deletion function in all versions up to, and including, 4.5.2 This makes it possible for authenticated attackers, with author-level access and above, to delete arbitrary files on the server, which can easily lead to remote code execution when the right file is del",
+      "id": "CVE-2026-29203",
+      "description": "A chmod call in the cPanel Nova plugin's Cpanel::Nova::Connector follows symlinks, allowing setting root permissions on arbitrary system files or directories. That can cause DoS or local privilege escalation when an authenticated cPanel user places a symlink at a user-controlled legacy Nova path under their home directory.",
       "cvss": {
-        "score": 8.1,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:H",
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "cPanel"
+      ],
+      "references": [
+        "https://support.cpanel.net/hc/en-us/articles/40311543760407-Security-CVE-2026-29203-cPanel-WHM-WP2-Security-Update-May-08-2026"
+      ],
+      "published": "2026-05-08T19:16:30.147"
+    },
+    {
+      "id": "CVE-2026-4935",
+      "description": "The OttoKit: All-in-One Automation Platform WordPress plugin before 1.1.23 does not properly sanitize user input before using it in a SQL statement, which could allow unauthenticated attackers to perform SQL injection attacks.",
+      "cvss": {
+        "score": 8.6,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:N/A:N",
         "severity": "HIGH"
       },
       "tier": 1,
@@ -61,35 +96,100 @@
         "WordPress"
       ],
       "references": [
-        "https://plugins.trac.wordpress.org/browser/wp-optimize/tags/4.5.2/includes/class-updraft-smush-manager.php#L1645",
-        "https://plugins.trac.wordpress.org/browser/wp-optimize/tags/4.5.2/includes/class-updraft-smush-manager.php#L1649",
-        "https://plugins.trac.wordpress.org/browser/wp-optimize/tags/4.5.2/includes/class-updraft-smush-manager.php#L81",
-        "https://plugins.trac.wordpress.org/browser/wp-optimize/trunk/includes/class-updraft-smush-manager.php#L1645",
-        "https://plugins.trac.wordpress.org/browser/wp-optimize/trunk/includes/class-updraft-smush-manager.php#L1649"
+        "https://wpscan.com/vulnerability/54bc1bf4-1033-49e2-aff9-a14c834c35bd/"
       ],
-      "published": "2026-05-07T06:16:05.567"
+      "published": "2026-05-08T07:16:29.327"
     },
     {
-      "id": "CVE-2026-8093",
-      "description": "Memory safety bugs present in Firefox 150.0.1. Some of these bugs showed evidence of memory corruption and we presume that with enough effort some of these could have been exploited to run arbitrary code. This vulnerability was fixed in Firefox 150.0.2.",
+      "id": "CVE-2026-41683",
+      "description": "i18next-http-middleware is a middleware to be used with Node.js web frameworks like express or Fastify and also for Deno. Prior to version 3.9.3, i18next-http-middleware wrote user-controlled language values into the Content-Language response header after passing them through utils.escape(), which is an HTML-entity encoder that does not strip carriage return, line feed, or other control characters. When the application used an older i18next (< 19.5.0) that still exercised the backward-compatibil",
       "cvss": {
-        "score": 7.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+        "score": 8.6,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:H/A:L",
         "severity": "HIGH"
       },
       "tier": 1,
       "matchedProducts": [
-        "Mozilla Firefox"
+        "Node.js"
       ],
       "references": [
-        "https://bugzilla.mozilla.org/buglist.cgi?bug_id=1981270%2C2027154%2C2028332%2C2029327%2C2029428%2C2029894%2C2032189%2C2034837%2C2035968%2C2036256",
-        "https://www.mozilla.org/security/advisories/mfsa2026-40/"
+        "https://github.com/i18next/i18next-http-middleware/security/advisories/GHSA-c3h8-g69v-pjrg"
       ],
-      "published": "2026-05-07T13:16:14.317"
+      "published": "2026-05-08T16:16:11.320"
     },
     {
-      "id": "CVE-2026-8092",
-      "description": "Memory safety bugs present in Firefox ESR 115.35.1, Firefox ESR 140.10.1 and Firefox 150.0.1. Some of these bugs showed evidence of memory corruption and we presume that with enough effort some of these could have been exploited to run arbitrary code. This vulnerability was fixed in Firefox 150.0.2, Firefox ESR 140.10.2, and Firefox ESR 115.35.2.",
+      "id": "CVE-2026-41693",
+      "description": "i18next-fs-backend is a backend layer for i18next using in Node.js and for Deno to load translations from the filesystem. Prior to version 2.6.4, i18next-fs-backend substitutes the lng and ns options directly into the configured loadPath / addPath templates and then read / write the resulting file from disk. The interpolation is unencoded and unvalidated, so a crafted lng or ns value \u2014 containing .., a path separator, a control character, a prototype key, or simply an unexpectedly long string \u2014 ",
+      "cvss": {
+        "score": 8.2,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:N",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Node.js"
+      ],
+      "references": [
+        "https://github.com/i18next/i18next-fs-backend/security/advisories/GHSA-8847-338w-5hcj"
+      ],
+      "published": "2026-05-08T16:16:11.613"
+    },
+    {
+      "id": "CVE-2026-42353",
+      "description": "i18next-http-middleware is a middleware to be used with Node.js web frameworks like express or Fastify and also for Deno. Prior to version 3.9.3, i18next-http-middleware passes the user-controlled lng and ns values from getResourcesHandler directly into i18next.services.backendConnector.load(languages, namespaces, \u2026) without any sanitization. Depending on which backend is configured, the unvalidated path segments enable either path traversal or SSRF. This issue has been patched in version 3.9.3.",
+      "cvss": {
+        "score": 8.2,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:N",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Node.js"
+      ],
+      "references": [
+        "https://github.com/i18next/i18next-http-middleware/security/advisories/GHSA-jfgf-83c5-2c4m"
+      ],
+      "published": "2026-05-08T16:16:12.197"
+    },
+    {
+      "id": "CVE-2026-41496",
+      "description": "PraisonAI is a multi-agent teams system. Prior to praisonai version 4.6.9 and praisonaiagents version 1.6.9, the fix for CVE-2026-40315 added input validation to SQLiteConversationStore only. Nine sibling backends \u2014 MySQL, PostgreSQL, async SQLite/MySQL/PostgreSQL, Turso, SingleStore, Supabase, SurrealDB \u2014 pass table_prefix straight into f-string SQL. Same root cause, same code pattern, same exploitation. 52 unvalidated injection points across the codebase. postgres.py additionally accepts an un",
+      "cvss": {
+        "score": 8.1,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "PostgreSQL",
+        "MySQL"
+      ],
+      "references": [
+        "https://github.com/MervinPraison/PraisonAI/security/advisories/GHSA-rg3h-x3jw-7jm5",
+        "https://github.com/MervinPraison/PraisonAI/security/advisories/GHSA-rg3h-x3jw-7jm5"
+      ],
+      "published": "2026-05-08T14:16:33.693"
+    },
+    {
+      "id": "CVE-2026-6665",
+      "description": "The SCRAM code in PgBouncer before 1.25.2 did not check the return value of strlcat() correctly when building the contents of the SCRAM client-final-message. A malicious backend that sends a SCRAM server-final-message with a long nonce can trigger a stack overflow.",
+      "cvss": {
+        "score": 8.1,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "PgBouncer"
+      ],
+      "references": [
+        "https://www.pgbouncer.org/changelog.html#pgbouncer-125x"
+      ],
+      "published": "2026-05-09T01:16:09.013"
+    },
+    {
+      "id": "CVE-2026-43346",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nice: ptp: don't WARN when controlling PF is unavailable\n\nIn VFIO passthrough setups, it is possible to pass through only a PF\nwhich doesn't own the source timer. In that case the PTP controlling PF\n(adapter->ctrl_pf) is never initialized in the VM, so ice_get_ctrl_ptp()\nreturns NULL and triggers WARN_ON() in ice_ptp_setup_pf().\n\nSince this is an expected behavior in that configuration, replace\nWARN_ON() with an informational me",
       "cvss": {
         "score": null,
         "vector": null,
@@ -97,77 +197,78 @@
       },
       "tier": 1,
       "matchedProducts": [
-        "Mozilla Firefox"
+        "Fio"
       ],
       "references": [
-        "https://bugzilla.mozilla.org/buglist.cgi?bug_id=1806249%2C2021977%2C2022576%2C2022722%2C2024439%2C2027883%2C2029463%2C2030323%2C2032042%2C2032043%2C2033270%2C2033637%2C2034422%2C2034496%2C2035879%2C2036516",
-        "https://www.mozilla.org/security/advisories/mfsa2026-40/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-41/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-42/"
+        "https://git.kernel.org/stable/c/bb3f21edc7056cdf44a7f7bd7ba65af40741838c",
+        "https://git.kernel.org/stable/c/c73f365707d3b1b78b7d16e1f029020d1ae50d0f",
+        "https://git.kernel.org/stable/c/e19675b384e9dcaca1bd5e4a67b8ad136eccfbe8"
       ],
-      "published": "2026-05-07T13:16:14.203"
+      "published": "2026-05-08T14:16:44.663"
     },
     {
-      "id": "CVE-2026-42214",
-      "description": "Notepad Next is a cross-platform, reimplementation of Notepad++. Prior to version 0.14, NotepadNext's detectLanguageFromExtension() function interpolates a file's extension directly into a Lua script without sanitization. An attacker can craft a filename whose extension contains Lua code, which executes automatically when the victim opens the file in NotepadNext. Because luaL_openlibs() is called unconditionally, the full os, io, and package libraries are available to the injected code, enabling",
+      "id": "CVE-2026-43447",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\niavf: fix PTP use-after-free during reset\n\nCommit 7c01dbfc8a1c5f (\"iavf: periodically cache PHC time\") introduced a\nworker to cache PHC time, but failed to stop it during reset or disable.\n\nThis creates a race condition where `iavf_reset_task()` or\n`iavf_disable_vf()` free adapter resources (AQ) while the worker is still\nrunning. If the worker triggers `iavf_queue_ptp_cmd()` during teardown, it\naccesses freed memory/locks, lead",
       "cvss": {
-        "score": 7.8,
-        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
-        "severity": "HIGH"
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
       },
-      "tier": 2,
+      "tier": 1,
       "matchedProducts": [
-        "Notepad++"
+        "ESET"
       ],
       "references": [
-        "https://github.com/dail8859/NotepadNext/commit/f3ca1b10aca52f05fd7f4f5ebf9b566d6cd95ccc",
-        "https://github.com/dail8859/NotepadNext/releases/tag/v0.14",
-        "https://github.com/dail8859/NotepadNext/security/advisories/GHSA-m5fq-c9x5-w54g",
-        "https://github.com/dail8859/NotepadNext/security/advisories/GHSA-m5fq-c9x5-w54g"
+        "https://git.kernel.org/stable/c/1b034f2429ce6b45ce74dc266175d277acafc5c4",
+        "https://git.kernel.org/stable/c/90cc8b2add29b57288025b51c70bc647e7cccb12",
+        "https://git.kernel.org/stable/c/efc54fb13d79117a825fef17364315a58682c7ec"
       ],
-      "published": "2026-05-07T19:16:01.497"
+      "published": "2026-05-08T15:16:57.217"
     },
     {
-      "id": "CVE-2026-4348",
-      "description": "The BetterDocs Pro plugin for WordPress is vulnerable to SQL Injection via the `get_current_letter_docs` and `docs_sort_by_letter` AJAX actions in all versions up to, and including, 3.7.0. This is due to the `limit` POST parameter being interpolated directly into a SQL query string before being passed to `$wpdb->prepare()`, which only parameterizes other variables. This makes it possible for unauthenticated attackers to append additional SQL queries into already existing queries that can be used",
+      "id": "CVE-2026-43473",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nscsi: mpi3mr: Add NULL checks when resetting request and reply queues\n\nThe driver encountered a crash during resource cleanup when the reply and\nrequest queues were NULL due to freed memory.  This issue occurred when the\ncreation of reply or request queues failed, and the driver freed the memory\nfirst, but attempted to mem set the content of the freed memory, leading to\na system crash.\n\nAdd NULL pointer checks for reply and req",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "ESET"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/220d7ca70611a73d50ef8e9edac630ed1ececb7c",
+        "https://git.kernel.org/stable/c/78d3f201f8b609928eade53cf03a52df5415aaf7",
+        "https://git.kernel.org/stable/c/7da755e0d02e9ca035065127e108d1fed8950dc8",
+        "https://git.kernel.org/stable/c/7df0296ad4e9253d12c6dbe7f120044dddc95600",
+        "https://git.kernel.org/stable/c/e978a36f332ede78eb4de037b517db16265d420d"
+      ],
+      "published": "2026-05-08T15:17:00.453"
+    },
+    {
+      "id": "CVE-2026-6664",
+      "description": "An integer overflow in network packet parsing code in PgBouncer before 1.25.2 bypasses a boundary check and can lead to a crash. An unauthenticated remote attacker can crash PgBouncer with a malformed SCRAM authentication packet.",
       "cvss": {
         "score": 7.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
         "severity": "HIGH"
       },
       "tier": 2,
       "matchedProducts": [
-        "WordPress"
+        "PgBouncer"
       ],
       "references": [
-        "https://betterdocs.co/changelog/",
-        "https://www.wordfence.com/threat-intel/vulnerabilities/id/5c0f02ad-f5f1-42b1-8116-e391aaa85430?source=cve"
+        "https://www.pgbouncer.org/changelog.html#pgbouncer-125x"
       ],
-      "published": "2026-05-07T06:16:05.240"
+      "published": "2026-05-09T01:16:08.863"
     },
     {
-      "id": "CVE-2026-33111",
-      "description": "Improper neutralization of special elements used in a command ('command injection') in Copilot Chat (Microsoft Edge) allows an unauthorized attacker to disclose information over a network.",
+      "id": "CVE-2026-41311",
+      "description": "LiquidJS is a Shopify / GitHub Pages compatible template engine in pure JavaScript. Prior to version 10.25.7, a circular block reference in {% layout %} / {% block %} causes an infinite recursive loop, consuming all available memory (~4GB) and crashing the Node.js process with FATAL ERROR: JavaScript heap out of memory. This allows any user who can submit a Liquid template to perform a Denial of Service attack. This issue has been patched in version 10.25.7.",
       "cvss": {
         "score": 7.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
-        "severity": "HIGH"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Microsoft Edge"
-      ],
-      "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-33111"
-      ],
-      "published": "2026-05-07T22:16:34.157"
-    },
-    {
-      "id": "CVE-2026-42264",
-      "description": "Axios is a promise based HTTP client for the browser and Node.js. From version 1.0.0 to before version 1.15.2, fFive config properties (auth, baseURL, socketPath, beforeRedirect, and insecureHTTPParser) in the HTTP adapter are read via direct property access without hasOwnProperty guards, making them exploitable as prototype pollution gadgets. When Object.prototype is polluted by another dependency in the same process, axios silently picks up these polluted values on every outbound HTTP request.",
-      "cvss": {
-        "score": 7.4,
-        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N",
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
         "severity": "HIGH"
       },
       "tier": 2,
@@ -175,71 +276,190 @@
         "Node.js"
       ],
       "references": [
-        "https://github.com/axios/axios/commit/47915144662f2733e6c051bdcb895a8c8f0586aa",
-        "https://github.com/axios/axios/pull/10779",
-        "https://github.com/axios/axios/releases/tag/v1.15.2",
-        "https://github.com/axios/axios/security/advisories/GHSA-q8qp-cvcw-x6jj"
+        "https://github.com/harttle/liquidjs/commit/e2311dfd6e82f73509308aa8a3a1fafc92e226f0",
+        "https://github.com/harttle/liquidjs/releases/tag/v10.25.7",
+        "https://github.com/harttle/liquidjs/security/advisories/GHSA-4rc3-7j7w-m548"
       ],
-      "published": "2026-05-08T04:16:20.313"
+      "published": "2026-05-09T04:16:21.913"
     },
     {
-      "id": "CVE-2026-8090",
-      "description": "Use-after-free in the DOM: Networking component. This vulnerability was fixed in Firefox 150.0.2, Firefox ESR 140.10.2, and Firefox ESR 115.35.2.",
-      "cvss": {
-        "score": 7.3,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L",
-        "severity": "HIGH"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Mozilla Firefox"
-      ],
-      "references": [
-        "https://bugzilla.mozilla.org/show_bug.cgi?id=2034352",
-        "https://www.mozilla.org/security/advisories/mfsa2026-40/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-41/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-42/"
-      ],
-      "published": "2026-05-07T13:16:13.967"
-    },
-    {
-      "id": "CVE-2026-7413",
-      "description": "A hidden, persistent backdoor was found in Yarbo firmware v2.3.9 that provides remote, unauthenticated (or weakly authenticated) access to privileged functionality. The backdoor is undocumented, cannot be disabled via user-facing settings, and survives factory reset and ordinary firmware updates.",
+      "id": "CVE-2026-7330",
+      "description": "The Auto Affiliate Links plugin for WordPress is vulnerable to Stored Cross-Site Scripting in versions up to, and including, 6.8.8 This is due to insufficient input sanitization on the 'url' POST parameter in the aal_url_stats_save_action() function and a complete absence of output escaping in aal_display_clicks(), where the stored value is echoed directly into an anchor element's href attribute and inner text without esc_url(), esc_attr(), or esc_html(). This makes it possible for unauthenticat",
       "cvss": {
         "score": 7.2,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N",
         "severity": "HIGH"
       },
       "tier": 2,
       "matchedProducts": [
-        "ESET"
+        "WordPress"
       ],
       "references": [
-        "https://github.com/Bin4ry/yarbo-nat-in-my-back-yard",
-        "https://takeonme.org/gcves/GCVE-1337-2026-00000000000000000000000000000000000000000000000000111111111111111111111110000000000000000000000000000000000000000000000000000000111"
+        "https://plugins.trac.wordpress.org/browser/wp-auto-affiliate-links/tags/6.8.6/aal_stats.php#L225",
+        "https://plugins.trac.wordpress.org/browser/wp-auto-affiliate-links/tags/6.8.6/aal_stats.php#L278",
+        "https://plugins.trac.wordpress.org/browser/wp-auto-affiliate-links/tags/6.8.6/aal_stats.php#L304",
+        "https://plugins.trac.wordpress.org/browser/wp-auto-affiliate-links/tags/6.8.8/aal_stats.php#L225",
+        "https://plugins.trac.wordpress.org/browser/wp-auto-affiliate-links/tags/6.8.8/aal_stats.php#L278"
       ],
-      "published": "2026-05-07T17:15:59.343"
+      "published": "2026-05-08T09:16:10.100"
     },
     {
-      "id": "CVE-2026-8063",
-      "description": "An authenticated user can crash mongod when running $rankFusion or $scoreFusion with an empty pipeline on a view.\n\nWhen resolving a view, the server inspects the aggregation pipeline to determine whether it begins with an Atlas Search stage. For $rankFusion and $scoreFusion, this inspection reads the first element on each stage\u2019s input pipeline array without first verifying that the array is non-empty. Supplying an empty pipeline causes a null pointer dereference and crashes the server.\n\nThis is",
+      "id": "CVE-2026-41885",
+      "description": "i18next-locize-backend is a simple i18next backend for locize.com which can be used in Node.js, in the browser and for Deno. Prior to version 9.0.2, i18next-locize-backend interpolates lng, ns, projectId, and version directly into the configured loadPath / privatePath / addPath / updatePath / getLanguagesPath URL templates with no path-component validation and no encoding. When an application exposes any of these values to user-controlled input (?lng= / ?ns= query parameters via i18next-browser-",
       "cvss": {
         "score": 6.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N",
         "severity": "MEDIUM"
       },
       "tier": 2,
       "matchedProducts": [
-        "MongoDB"
+        "Node.js"
       ],
       "references": [
-        "https://jira.mongodb.org/browse/SERVER-121851"
+        "https://github.com/locize/i18next-locize-backend/security/advisories/GHSA-mgcp-mfp8-3q45"
       ],
-      "published": "2026-05-07T06:16:05.723"
+      "published": "2026-05-08T16:16:11.913"
     },
     {
-      "id": "CVE-2026-4430",
-      "description": "Out-of-bounds write vulnerability in The Document Foundation LibreOffice via crafted OOXML documents with mismatched encryption salt parameters.\n\nThis issue affects\u00a0LibreOffice: from 26.2 before 26.2.3, from 25.8 before 25.8.7.",
+      "id": "CVE-2026-5341",
+      "description": "The NMR Strava activities plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the plugin's `strava_nmr_connect` shortcode in all versions up to, and including, 1.0.14 due to insufficient input sanitization and output escaping on user supplied attributes. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+      "cvss": {
+        "score": 6.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/nmr-strava-activities/tags/1.0.14/nmr-strava-activities.php#L247",
+        "https://plugins.trac.wordpress.org/browser/nmr-strava-activities/tags/1.0.14/nmr-strava-activities.php#L259",
+        "https://plugins.trac.wordpress.org/browser/nmr-strava-activities/tags/1.0.15/nmr-strava-activities.php#L240",
+        "https://plugins.trac.wordpress.org/browser/nmr-strava-activities/tags/1.0.15/nmr-strava-activities.php#L251",
+        "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&new=3524779%40nmr-strava-activities%2Ftrunk&old=3520018%40nmr-strava-activities%2Ftrunk&sfp_email=&sfph_mail="
+      ],
+      "published": "2026-05-08T10:16:28.917"
+    },
+    {
+      "id": "CVE-2026-7475",
+      "description": "The Sky Addons plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the `sky-custom-scripts` custom post type in all versions up to, and including, 3.3.2. This is due to the custom post type being registered with `capability_type => 'post'` and `show_in_rest => true`, combined with insufficient input sanitization on the `sky_script_content` meta field and lack of output escaping when rendering scripts on the frontend. This makes it possible for authenticated attackers, with Auth",
+      "cvss": {
+        "score": 6.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/sky-elementor-addons/tags/3.3.2/includes/custom-scripts/class-custom-scripts-data.php#L128",
+        "https://plugins.trac.wordpress.org/browser/sky-elementor-addons/tags/3.3.2/includes/custom-scripts/class-custom-scripts-loader.php#L270",
+        "https://plugins.trac.wordpress.org/browser/sky-elementor-addons/tags/3.3.3/includes/custom-scripts/class-custom-scripts-data.php#L134",
+        "https://plugins.trac.wordpress.org/browser/sky-elementor-addons/trunk/includes/custom-scripts/class-custom-scripts-data.php#L134",
+        "https://plugins.trac.wordpress.org/browser/sky-elementor-addons/trunk/includes/custom-scripts/class-custom-scripts-loader.php#L237"
+      ],
+      "published": "2026-05-08T10:16:29.440"
+    },
+    {
+      "id": "CVE-2026-7650",
+      "description": "The E2Pdf \u2013 Export Pdf Tool for WordPress plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'id' attribute of the `e2pdf-download` shortcode in all versions up to, and including, 1.32.17. This is due to insufficient input sanitization and output escaping on the shortcode attribute. This makes it possible for authenticated attackers, with Contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page",
+      "cvss": {
+        "score": 6.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/e2pdf/tags/1.32.00/classes/model/e2pdf-shortcode.php#L157",
+        "https://plugins.trac.wordpress.org/browser/e2pdf/tags/1.32.18/classes/model/e2pdf-shortcode.php#L172",
+        "https://plugins.trac.wordpress.org/browser/e2pdf/trunk/classes/model/e2pdf-shortcode.php#L172",
+        "https://plugins.trac.wordpress.org/changeset/3522046/e2pdf/trunk/classes/model/e2pdf-shortcode.php",
+        "https://wordpress.org/plugins/e2pdf"
+      ],
+      "published": "2026-05-08T10:16:29.577"
+    },
+    {
+      "id": "CVE-2026-6666",
+      "description": "A possible null pointer reference in PgBouncer before 1.25.2 could lead to a crash, if a server sends an error response without SQLSTATE field.",
+      "cvss": {
+        "score": 5.9,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "PgBouncer"
+      ],
+      "references": [
+        "https://www.pgbouncer.org/changelog.html#pgbouncer-125x"
+      ],
+      "published": "2026-05-09T01:16:09.153"
+    },
+    {
+      "id": "CVE-2026-7652",
+      "description": "The LatePoint plugin for WordPress is vulnerable to Account Takeover via Weak Password Recovery Mechanism in the unauthenticated guest booking flow in versions up to, and including, 5.5.0 This is due to the save_connected_wordpress_user() function propagating a LatePoint customer's email address to its linked WordPress user account via wp_update_user() without any ownership verification, combined with the guest booking flow's ability to overwrite an existing customer's email through phone-based ",
+      "cvss": {
+        "score": 5.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "ESET",
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/latepoint/tags/5.4.2/latepoint.php#L1165",
+        "https://plugins.trac.wordpress.org/browser/latepoint/tags/5.4.2/lib/helpers/customer_helper.php#L238",
+        "https://plugins.trac.wordpress.org/browser/latepoint/tags/5.4.2/lib/helpers/steps_helper.php#L1940",
+        "https://plugins.trac.wordpress.org/browser/latepoint/tags/5.4.2/lib/helpers/steps_helper.php#L1972",
+        "https://plugins.trac.wordpress.org/browser/latepoint/tags/5.5.0/latepoint.php#L1165"
+      ],
+      "published": "2026-05-09T03:16:15.117"
+    },
+    {
+      "id": "CVE-2026-6667",
+      "description": "PgBouncer before 1.25.2 did not perform an appropriate authorization check for the KILL_CLIENT admin command. All users with access to the administration console (which itself requires authorization) could run this command. It would have been correct to allow only users listed in the admin_users parameter.",
+      "cvss": {
+        "score": 4.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:L",
+        "severity": "MEDIUM"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "PgBouncer"
+      ],
+      "references": [
+        "https://www.pgbouncer.org/changelog.html#pgbouncer-125x"
+      ],
+      "published": "2026-05-09T01:16:09.287"
+    },
+    {
+      "id": "CVE-2026-44987",
+      "description": "SysReptor is a fully customizable pentest reporting platform. Prior to version 2026.29, users with \"User Admin\" permissions can change the email addresses of users with \"Superuser\" permissions. If the SysReptor installation has the \"Forgot Password\" functionality enabled (non-default), they can reset the Superusers' passwords and authenticate, if the Superuser has no MFA enabled. User managers can then access the Django backend (/admin) or manipulate the settings of the SysReptor installation. N",
+      "cvss": {
+        "score": 3.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:L/I:L/A:N",
+        "severity": "LOW"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "ESET"
+      ],
+      "references": [
+        "https://github.com/Syslifters/sysreptor/releases/tag/2026.29",
+        "https://github.com/Syslifters/sysreptor/security/advisories/GHSA-6x8f-v3cf-cvr3"
+      ],
+      "published": "2026-05-08T23:16:39.917"
+    },
+    {
+      "id": "CVE-2026-43298",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu: Skip vcn poison irq release on VF\n\nVF doesn't enable VCN poison irq in VCNv2.5. Skip releasing it and avoid\ncall trace during deinitialization.\n\n[   71.913601] [drm] clean up the vf2pf work item\n[   71.915088] ------------[ cut here ]------------\n[   71.915092] WARNING: CPU: 3 PID: 1079 at /tmp/amd.aFkFvSQl/amd/amdgpu/amdgpu_irq.c:641 amdgpu_irq_put+0xc6/0xe0 [amdgpu]\n[   71.915355] Modules linked in: amdgpu(OE-) am",
       "cvss": {
         "score": null,
         "vector": null,
@@ -247,16 +467,18 @@
       },
       "tier": 3,
       "matchedProducts": [
-        "LibreOffice"
+        "Ubuntu"
       ],
       "references": [
-        "https://www.libreoffice.org/about-us/security/advisories/cve-2026-4430"
+        "https://git.kernel.org/stable/c/8980be03b3f9a4b58197ef95d3b37efa41a25331",
+        "https://git.kernel.org/stable/c/8ee9aa80d4f1893a6699d46c403a1731548b544b",
+        "https://git.kernel.org/stable/c/f1db6fc5a834c8ca9485cc0596dd7df8b8619b64"
       ],
-      "published": "2026-05-07T08:16:00.967"
+      "published": "2026-05-08T14:16:36.970"
     },
     {
-      "id": "CVE-2026-8091",
-      "description": "Incorrect boundary conditions in the Audio/Video: Playback component. This vulnerability was fixed in Firefox 150, Thunderbird 150, Firefox ESR 140.10.1, Thunderbird 140.10.1, and Firefox ESR 115.35.2.",
+      "id": "CVE-2026-43327",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nUSB: dummy-hcd: Fix locking/synchronization error\n\nSyzbot testing was able to provoke an addressing exception and crash\nin the usb_gadget_udc_reset() routine in\ndrivers/usb/gadgets/udc/core.c, resulting from the fact that the\nroutine was called with a second (\"driver\") argument of NULL.  The bad\ncaller was set_link_state() in dummy_hcd.c, and the problem arose\nbecause of a race between a USB reset and driver unbind.\n\nThese sort",
       "cvss": {
         "score": null,
         "vector": null,
@@ -264,20 +486,20 @@
       },
       "tier": 3,
       "matchedProducts": [
-        "Mozilla Firefox"
+        "ESET"
       ],
       "references": [
-        "https://bugzilla.mozilla.org/show_bug.cgi?id=2029301",
-        "https://www.mozilla.org/security/advisories/mfsa2026-30/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-33/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-36/",
-        "https://www.mozilla.org/security/advisories/mfsa2026-39/"
+        "https://git.kernel.org/stable/c/218886b2ef2dea7627d3700ab0abaf4bf9d1161f",
+        "https://git.kernel.org/stable/c/616a63ff495df12863692ab3f9f7b84e3fa7a66d",
+        "https://git.kernel.org/stable/c/6350c7dd33ab481ef41c931a238361490c32d15c",
+        "https://git.kernel.org/stable/c/69ab97a693251d6a6093e630060a3c744fd58524",
+        "https://git.kernel.org/stable/c/791966f85b439b261bf19865cf1c07c065ffb4b4"
       ],
-      "published": "2026-05-07T13:16:14.087"
+      "published": "2026-05-08T14:16:42.243"
     },
     {
-      "id": "CVE-2026-8094",
-      "description": "Other issue in the WebRTC component. This vulnerability was fixed in Firefox ESR 140.10.2.",
+      "id": "CVE-2026-43351",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: arm64: Eagerly init vgic dist/redist on vgic creation\n\nIf vgic_allocate_private_irqs_locked() fails for any odd reason,\nwe exit kvm_vgic_create() early, leaving dist->rd_regions uninitialised.\n\nkvm_vgic_dist_destroy() then comes along and walks into the weeds\ntrying to free the RDs. Got to love this stuff.\n\nSolve it by moving all the static initialisation early, and make\nsure that if we fail halfway, we're in a reasonable ",
       "cvss": {
         "score": null,
         "vector": null,
@@ -285,13 +507,215 @@
       },
       "tier": 3,
       "matchedProducts": [
-        "Mozilla Firefox"
+        "Redis",
+        "ESET"
       ],
       "references": [
-        "https://bugzilla.mozilla.org/show_bug.cgi?id=2035939",
-        "https://www.mozilla.org/security/advisories/mfsa2026-41/"
+        "https://git.kernel.org/stable/c/a24f1d80fbcdbf8b2a7044a00fa12b3972b4c31c",
+        "https://git.kernel.org/stable/c/ac6769c8f948dff33265c50e524aebf9aa6f1be0",
+        "https://git.kernel.org/stable/c/b7493f48c3dba75674a4ee505b4afa8fe5102457"
       ],
-      "published": "2026-05-07T13:16:14.430"
+      "published": "2026-05-08T15:16:45.830"
+    },
+    {
+      "id": "CVE-2026-43352",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ni3c: mipi-i3c-hci: Correct RING_CTRL_ABORT handling in DMA dequeue\n\nThe logic used to abort the DMA ring contains several flaws:\n\n 1. The driver unconditionally issues a ring abort even when the ring has\n    already stopped.\n 2. The completion used to wait for abort completion is never\n    re-initialized, resulting in incorrect wait behavior.\n 3. The abort sequence unintentionally clears RING_CTRL_ENABLE, which\n    resets hardw",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "ESET"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/003df94bcc9227e8e930abd03ac7f63ac10033dc",
+        "https://git.kernel.org/stable/c/5549611888f5ca2db5e8e692b57f30626ddf9898",
+        "https://git.kernel.org/stable/c/b795e68bf3073d67bebbb5a44d93f49efc5b8cc7"
+      ],
+      "published": "2026-05-08T15:16:45.937"
+    },
+    {
+      "id": "CVE-2026-43356",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\niio: imu: adis: Fix NULL pointer dereference in adis_init\n\nThe adis_init() function dereferences adis->ops to check if the\nindividual function pointers (write, read, reset) are NULL, but does\nnot first check if adis->ops itself is NULL.\n\nDrivers like adis16480, adis16490, adis16545 and others do not set\ncustom ops and rely on adis_init() assigning the defaults. Since struct\nadis is zero-initialized by devm_iio_device_alloc(), a",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "ESET"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/1a48f94c63a078e7b6a2e59a637fc0858dc6510c",
+        "https://git.kernel.org/stable/c/9990cd4f8827bd1ae3fb6eb7407630d8d463c430",
+        "https://git.kernel.org/stable/c/ba19dd366528b961430f5195c2e382420703074f"
+      ],
+      "published": "2026-05-08T15:16:46.367"
+    },
+    {
+      "id": "CVE-2026-43363",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nx86/apic: Disable x2apic on resume if the kernel expects so\n\nWhen resuming from s2ram, firmware may re-enable x2apic mode, which may have\nbeen disabled by the kernel during boot either because it doesn't support IRQ\nremapping or for other reasons. This causes the kernel to continue using the\nxapic interface, while the hardware is in x2apic mode, which causes hangs.\nThis happens on defconfig + bare metal + s2ram.\n\nFix this in la",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "ESET"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/11712c4eb384098db4cb08792e223c818b908c1a",
+        "https://git.kernel.org/stable/c/1a85f84214f9d790216547ac6086bf8033cd9e5a",
+        "https://git.kernel.org/stable/c/1d8440c1e7c49715f937416ac90cf260f1f1712c",
+        "https://git.kernel.org/stable/c/3dd0812a7c764cd8f3b0182441ac22da0a7f3b09",
+        "https://git.kernel.org/stable/c/8cc7dd77a1466f0ec58c03478b2e735a5b289b96"
+      ],
+      "published": "2026-05-08T15:16:47.247"
+    },
+    {
+      "id": "CVE-2026-43371",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: macb: Shuffle the tx ring before enabling tx\n\nQuanyang observed that when using an NFS rootfs on an AMD ZynqMp board,\nthe rootfs may take an extended time to recover after a suspend.\nUpon investigation, it was determined that the issue originates from a\nproblem in the macb driver.\n\nAccording to the Zynq UltraScale TRM [1], when transmit is disabled,\nthe transmit buffer queue pointer resets to point to the address\nspecified",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "ESET"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/0a47c3889fcd843c72aa57fa8c4d06f5801fced4",
+        "https://git.kernel.org/stable/c/403182e0771b250cfde0fe7e1081d095ceaf8230",
+        "https://git.kernel.org/stable/c/58f5d34f88e8f00910b692537f7b2efdb8c3705d",
+        "https://git.kernel.org/stable/c/881a0263d502e1a93ebc13a78254e9ad19520232",
+        "https://git.kernel.org/stable/c/88f974fe118cb4653f029929ecbca7cfe06132ae"
+      ],
+      "published": "2026-05-08T15:16:48.187"
+    },
+    {
+      "id": "CVE-2026-43385",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: Fix rcu_tasks stall in threaded busypoll\n\nI was debugging a NIC driver when I noticed that when I enable\nthreaded busypoll, bpftrace hangs when starting up. dmesg showed:\n\n  rcu_tasks_wait_gp: rcu_tasks grace period number 85 (since boot) is 10658 jiffies old.\n  rcu_tasks_wait_gp: rcu_tasks grace period number 85 (since boot) is 40793 jiffies old.\n  rcu_tasks_wait_gp: rcu_tasks grace period number 85 (since boot) is 131273",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "ESET"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/1a86a1f7d88996085934139fa4c063b6299a2dd3",
+        "https://git.kernel.org/stable/c/52459201d0df3fdbb1d281738b7b772e2cacb49c"
+      ],
+      "published": "2026-05-08T15:16:49.830"
+    },
+    {
+      "id": "CVE-2026-43448",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnvme-pci: Fix race bug in nvme_poll_irqdisable()\n\nIn the following scenario, pdev can be disabled between (1) and (3) by\n(2). This sets pdev->msix_enabled = 0. Then, pci_irq_vector() will\nreturn MSI-X IRQ(>15) for (1) whereas return INTx IRQ(<=15) for (2).\nThis causes IRQ warning because it tries to enable INTx IRQ that has\nnever been disabled before.\n\nTo fix this, save IRQ number into a local variable and ensure\ndisable_irq() ",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "ESET"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/265dbc9bc33c29f60f90be3e0afe1c4067ebb70b",
+        "https://git.kernel.org/stable/c/628773eba024d1107cc9ec157a682cbb42ac912a",
+        "https://git.kernel.org/stable/c/843e913cef4e33723663a899727f685a95ab53fe",
+        "https://git.kernel.org/stable/c/b56c49897bdac5cb49e3495ef421c391628ee9bb",
+        "https://git.kernel.org/stable/c/e311d84c62eb76e025e11a44155b402e55950b83"
+      ],
+      "published": "2026-05-08T15:16:57.323"
+    },
+    {
+      "id": "CVE-2026-43449",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnvme-pci: Fix slab-out-of-bounds in nvme_dbbuf_set\n\ndev->online_queues is a count incremented in nvme_init_queue. Thus,\nvalid indices are 0 through dev->online_queues \u2212 1.\n\nThis patch fixes the loop condition to ensure the index stays within the\nvalid range. Index 0 is excluded because it is the admin queue.\n\nKASAN splat:\n\n==================================================================\nBUG: KASAN: slab-out-of-bounds in nvme_",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "ESET"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/2b9d605c3f0d3262142f196249cd3bd58c857c71",
+        "https://git.kernel.org/stable/c/328c551f0cc81ee776b186b86cc6e5253bb6fda7",
+        "https://git.kernel.org/stable/c/50bad78f03a02d3c0f228edf9912b494d3e7acb9",
+        "https://git.kernel.org/stable/c/78279d2d74c58a0ed64e43cf601a02649771182e",
+        "https://git.kernel.org/stable/c/83e6edd6358326c9c2de31a54bb4a1ec50703f1f"
+      ],
+      "published": "2026-05-08T15:16:57.477"
+    },
+    {
+      "id": "CVE-2026-43466",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/mlx5e: Fix DMA FIFO desync on error CQE SQ recovery\n\nIn case of a TX error CQE, a recovery flow is triggered,\nmlx5e_reset_txqsq_cc_pc() resets dma_fifo_cc to 0 but not dma_fifo_pc,\ndesyncing the DMA FIFO producer and consumer.\n\nAfter recovery, the producer pushes new DMA entries at the old\ndma_fifo_pc, while the consumer reads from position 0.\nThis causes us to unmap stale DMA addresses from before the recovery.\n\nThe DMA FI",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "ESET",
+        "Fio"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/1633111d69053512d099658d4a05fc736fab36b0",
+        "https://git.kernel.org/stable/c/383b37c04a4827ba60b2bafc1a6cdfd995aed58f",
+        "https://git.kernel.org/stable/c/6eb68ecc5acc3b319986566c595990b8a7265b23",
+        "https://git.kernel.org/stable/c/6f41f7812bfa7f991b732a4b45c5c52fc4be3b4e",
+        "https://git.kernel.org/stable/c/821f85d619f7f22cda7b9d7de89cf5eeb1d11544"
+      ],
+      "published": "2026-05-08T15:16:59.543"
+    },
+    {
+      "id": "CVE-2026-41889",
+      "description": "pgx is a PostgreSQL driver and toolkit for Go. Prior to version 5.9.2, SQL injection can occur when the non-default simple protocol is used, a dollar quoted string literal is used in the SQL query, that string literal contains text that would be would be interpreted as a placeholder outside of a string literal, and the value of that placeholder is controllable by the attacker. This issue has been patched in version 5.9.2.",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "PostgreSQL"
+      ],
+      "references": [
+        "https://github.com/jackc/pgx/commit/60644f84918a8af66d14a4b0d865d4edafd955da",
+        "https://github.com/jackc/pgx/releases/tag/v5.9.2",
+        "https://github.com/jackc/pgx/security/advisories/GHSA-j88v-2chj-qfwx"
+      ],
+      "published": "2026-05-08T17:16:31.040"
+    },
+    {
+      "id": "CVE-2026-42213",
+      "description": "SolidCAM-GPPL-IDE is an unofficial, independently developed extension, Postprocessor IDE for SolidCAM. From version 1.0.0 to before version 1.0.2, the inc \"filename\" directive in GPPL postprocessor files is resolved by GpplDocumentLinkHandler into a clickable link (VS Code textDocument/documentLink). The handler accepted arbitrary paths \u2014 absolute, relative with parent-directory segments (..\\..\\..\\), UNC (\\\\server\\share\\), and arbitrary subfolders \u2014 and called File.Exists on each to decide wheth",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "Visual Studio Code"
+      ],
+      "references": [
+        "https://github.com/anzory/SolidCAM-GPPL-IDE/commit/9d0ba808afd143ede448026a5dc681bfdc5c138d",
+        "https://github.com/anzory/SolidCAM-GPPL-IDE/releases/tag/v1.0.2",
+        "https://github.com/anzory/SolidCAM-GPPL-IDE/security/advisories/GHSA-xvpx-9p39-g62m"
+      ],
+      "published": "2026-05-08T22:16:32.390"
     }
   ]
 }
