@@ -1,20 +1,77 @@
 {
-  "scanTime": "2026-05-10 06:22:09 UTC",
-  "totalMatched": 3,
+  "scanTime": "2026-05-11 06:52:54 UTC",
+  "totalMatched": 28,
   "productsMonitored": 147,
   "tierCounts": {
-    "0": 0,
-    "1": 1,
-    "2": 2,
-    "3": 0
+    "0": 3,
+    "1": 4,
+    "2": 15,
+    "3": 6
   },
   "vulnerabilities": [
     {
-      "id": "CVE-2026-42606",
-      "description": "AzuraCast is a self-hosted, all-in-one web radio management suite. Prior to version 0.23.6, the ApplyXForwarded middleware unconditionally trusts the client-supplied X-Forwarded-Host HTTP header with no trusted proxy allowlist. An unauthenticated attacker can poison the password reset URL sent to any user by injecting this header when triggering the forgot-password flow. When the victim clicks the poisoned link, their reset token is exfiltrated to the attacker's server. The attacker then uses th",
+      "id": "CVE-2021-47932",
+      "description": "WordPress TheCartPress 1.5.3.6 contains an unauthenticated privilege escalation vulnerability that allows attackers to create administrator accounts by submitting crafted requests to the AJAX handler. Attackers can send POST requests to the tcp_register_and_login_ajax action with tcp_role set to administrator to gain full administrative access without authentication.",
       "cvss": {
-        "score": 8.1,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:N",
+        "score": 9.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "CRITICAL"
+      },
+      "tier": 0,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://wordpress.org/plugin/thecartpress",
+        "https://www.exploit-db.com/exploits/50378",
+        "https://www.vulncheck.com/advisories/wordpress-thecartpress-privilege-escalation-unauthenticated"
+      ],
+      "published": "2026-05-10T13:16:29.427"
+    },
+    {
+      "id": "CVE-2021-47933",
+      "description": "WordPress MStore API 2.0.6 contains an arbitrary file upload vulnerability that allows unauthenticated attackers to upload malicious files by sending POST requests to the REST API endpoint. Attackers can upload PHP files with arbitrary names to the config_file endpoint to achieve remote code execution on the server.",
+      "cvss": {
+        "score": 9.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "CRITICAL"
+      },
+      "tier": 0,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://wordpress.org/plugins/mstore-api/",
+        "https://www.exploit-db.com/exploits/50379",
+        "https://www.vulncheck.com/advisories/wordpress-mstore-api-arbitrary-file-upload"
+      ],
+      "published": "2026-05-10T13:16:29.560"
+    },
+    {
+      "id": "CVE-2021-47940",
+      "description": "WordPress Plugin Download From Files version 1.48 and earlier contains an arbitrary file upload vulnerability that allows unauthenticated attackers to upload malicious files by exploiting the AJAX fileupload action. Attackers can send POST requests to the admin-ajax.php endpoint with the download_from_files_617_fileupload action, manipulating the allowExt parameter to bypass file type restrictions and upload executable files like PHP shells to the web root.",
+      "cvss": {
+        "score": 9.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "CRITICAL"
+      },
+      "tier": 0,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://wordpress.org/plugins/download-from-files/",
+        "https://www.exploit-db.com/exploits/50287",
+        "https://www.vulncheck.com/advisories/wordpress-download-from-files-arbitrary-file-upload"
+      ],
+      "published": "2026-05-10T13:16:30.363"
+    },
+    {
+      "id": "CVE-2026-8260",
+      "description": "A vulnerability was found in D-Link DCS-935L up to 1.10.01. The impacted element is the function SetDeviceSettings of the file /web/cgi-bin/hnap/hnap_service of the component HNAP Service. The manipulation of the argument AdminPassword results in buffer overflow. The attack can be executed remotely. The exploit has been made public and could be used.",
+      "cvss": {
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
         "severity": "HIGH"
       },
       "tier": 1,
@@ -22,35 +79,78 @@
         "ESET"
       ],
       "references": [
-        "https://github.com/AzuraCast/AzuraCast/commit/7c622a18b451533de317e53862b1f84acf4efd85",
-        "https://github.com/AzuraCast/AzuraCast/releases/tag/0.23.6",
-        "https://github.com/AzuraCast/AzuraCast/security/advisories/GHSA-gv7r-3mr9-h5x8"
+        "https://github.com/0xcc12138/DCS-935L-HNAP-Service-CVE",
+        "https://vuldb.com/submit/809888",
+        "https://vuldb.com/vuln/362557",
+        "https://vuldb.com/vuln/362557/cti",
+        "https://www.dlink.com/"
       ],
-      "published": "2026-05-09T20:16:30.170"
+      "published": "2026-05-11T02:16:27.583"
     },
     {
-      "id": "CVE-2026-3828",
-      "description": "Some Hikvision switch products (discontinued since December 2023) are vulnerable to authenticated remote command execution due to insufficient input validation. Attackers with valid credentials can exploit this flaw by sending crafted packets containing malicious commands to affected devices, leading to arbitrary command execution.",
+      "id": "CVE-2021-47928",
+      "description": "Opencart TMD Vendor System 3.x contains a blind SQL injection vulnerability that allows unauthenticated attackers to extract database information by injecting SQL code through the product_id parameter. Attackers can craft malicious SQL queries using time-based or content-based blind injection techniques to enumerate usernames, emails, and password reset codes from the oc_user table.",
       "cvss": {
-        "score": 7.2,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
+        "score": 8.2,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:N",
         "severity": "HIGH"
       },
-      "tier": 2,
+      "tier": 1,
       "matchedProducts": [
-        "Hikvision"
+        "ESET"
       ],
       "references": [
-        "https://www.hikvision.com/en/support/cybersecurity/security-advisory/command-execution-vulnerability-in-some-hikvision-switch-product/"
+        "https://www.exploit-db.com/exploits/50493",
+        "https://www.opencartextensions.in/",
+        "https://www.opencartextensions.in/opencart-multi-vendor-multi-seller-marketplace",
+        "https://www.vulncheck.com/advisories/opencart-tmd-vendor-system-3-x-blind-sql-injection-via-product-route"
       ],
-      "published": "2026-05-09T09:16:09.107"
+      "published": "2026-05-10T13:16:28.863"
     },
     {
-      "id": "CVE-2026-8198",
-      "description": "The Activity Logs, User Activity Tracking, Multisite Activity Log from Logtivity plugin for WordPress is vulnerable to Authentication Bypass to Information Disclosure in versions up to, and including, 3.3.6. This is due to a logic flaw in the verifyAuthorization method where requests without an Authorization header skip Bearer token validation and fall through to an unconditional return true statement, bypassing all authentication checks. This makes it possible for unauthenticated attackers to a",
+      "id": "CVE-2021-47941",
+      "description": "WordPress Plugin Survey & Poll 1.5.7.3 contains an SQL injection vulnerability that allows unauthenticated attackers to execute arbitrary SQL queries by injecting malicious code through the wp_sap cookie parameter. Attackers can craft SQL payloads in the cookie to extract sensitive database information including usernames, passwords, and other confidential data from the WordPress database.",
       "cvss": {
-        "score": 5.3,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+        "score": 8.2,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:N",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "http://modalsurvey.pantherius.com/",
+        "https://www.exploit-db.com/exploits/50269",
+        "https://www.vulncheck.com/advisories/wordpress-plugin-survey-poll-sql-injection-via-sss-params"
+      ],
+      "published": "2026-05-10T13:16:30.493"
+    },
+    {
+      "id": "CVE-2022-50945",
+      "description": "WordPress 3dady real-time web stats plugin 1.0 contains a stored cross-site scripting vulnerability that allows authenticated attackers to inject malicious JavaScript by exploiting unsanitized input fields. Attackers can insert JavaScript payloads in the dady_input_text or dady2_input_text fields via the plugin options panel to execute arbitrary code when the page is viewed.",
+      "cvss": {
+        "score": 6.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://profiles.wordpress.org/3dady/",
+        "https://www.exploit-db.com/exploits/51021",
+        "https://www.vulncheck.com/advisories/wordpress-3dady-real-time-web-stats-stored-xss"
+      ],
+      "published": "2026-05-10T13:16:32.267"
+    },
+    {
+      "id": "CVE-2021-47927",
+      "description": "WordPress Plugin WP Symposium Pro 2021.10 contains a stored cross-site scripting vulnerability that allows authenticated attackers to inject malicious scripts by exploiting insufficient sanitization of the forum name parameter. Attackers can submit POST requests to the admin setup page with JavaScript payloads in the wps_admin_forum_add_name parameter, which are stored and executed when the forum is accessed.",
+      "cvss": {
+        "score": 6.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
         "severity": "MEDIUM"
       },
       "tier": 2,
@@ -58,13 +158,403 @@
         "WordPress"
       ],
       "references": [
-        "https://plugins.trac.wordpress.org/browser/logtivity/tags/3.3.6/Core/Services/Logtivity_Rest_Endpoints.php#L47",
-        "https://plugins.trac.wordpress.org/browser/logtivity/tags/3.3.6/Core/Services/Logtivity_Rest_Endpoints.php#L78",
-        "https://plugins.trac.wordpress.org/browser/logtivity/tags/3.3.7/Core/Services/Logtivity_Rest_Endpoints.php#L47",
-        "https://plugins.trac.wordpress.org/browser/logtivity/tags/3.3.7/Core/Services/Logtivity_Rest_Endpoints.php#L78",
-        "https://plugins.trac.wordpress.org/changeset/3507386/"
+        "http://www.wpsymposiumpro.com/",
+        "https://wordpress.org/plugins/wp-symposium-pro/",
+        "https://www.exploit-db.com/exploits/50514",
+        "https://www.vulncheck.com/advisories/wordpress-plugin-wp-symposium-pro-stored-xss-via-wps-admin-forum-add-name"
       ],
-      "published": "2026-05-09T13:16:43.687"
+      "published": "2026-05-10T13:16:28.707"
+    },
+    {
+      "id": "CVE-2021-47951",
+      "description": "WordPress Picture Gallery 1.4.2 contains a stored cross-site scripting vulnerability that allows authenticated attackers to inject malicious scripts through the Edit Content URL field in the Access Control settings. Attackers can enter JavaScript payloads in the plugin options that are stored in the database and executed when the functionality is triggered, enabling session hijacking or credential theft.",
+      "cvss": {
+        "score": 6.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://wordpress.org/plugins/picture-gallery/",
+        "https://www.exploit-db.com/exploits/50187",
+        "https://www.vulncheck.com/advisories/wordpress-picture-gallery-stored-xss-via-edit-content-url"
+      ],
+      "published": "2026-05-10T13:16:31.720"
+    },
+    {
+      "id": "CVE-2022-50946",
+      "description": "WordPress Plugin Netroics Blog Posts Grid 1.0 contains a stored cross-site scripting vulnerability that allows authenticated editors to inject malicious scripts by failing to sanitize the post_title parameter. Attackers with editor privileges can inject script payloads through the testimonial title field that execute in the browsers of other users viewing the draft post, enabling cookie theft and session hijacking.",
+      "cvss": {
+        "score": 6.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://downloads.wordpress.org/plugin/netroics-blog-posts-grid.zip",
+        "https://www.exploit-db.com/exploits/51008",
+        "https://www.vulncheck.com/advisories/wordpress-plugin-netroics-blog-posts-grid-stored-xss"
+      ],
+      "published": "2026-05-10T13:16:32.400"
+    },
+    {
+      "id": "CVE-2022-50947",
+      "description": "WordPress Plugin Testimonial Slider and Showcase 2.2.6 contains a stored cross-site scripting vulnerability that allows authenticated editors to inject malicious scripts by failing to sanitize the post_title parameter. Attackers with editor privileges can inject JavaScript payloads through the testimonial title field that execute in the browsers of users viewing the draft post, enabling cookie theft and session hijacking.",
+      "cvss": {
+        "score": 6.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://wordpress.org",
+        "https://wordpress.org/plugins/testimonial-slider-and-showcase/",
+        "https://www.exploit-db.com/exploits/51007",
+        "https://www.vulncheck.com/advisories/wordpress-plugin-testimonial-slider-and-showcase-stored-xss"
+      ],
+      "published": "2026-05-10T13:16:32.523"
+    },
+    {
+      "id": "CVE-2022-50949",
+      "description": "WordPress Plugin Videos sync PDF 1.7.4 contains a stored cross-site scripting vulnerability that allows authenticated attackers to inject malicious scripts by exploiting unsanitized nom, pdf, mp4, webm, and ogg parameters. Attackers can inject payloads like autofocus onfocus event handlers through the plugin options panel to execute arbitrary JavaScript when administrators view or edit video settings.",
+      "cvss": {
+        "score": 6.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "http://www.a-j-evolution.com/",
+        "https://www.exploit-db.com/exploits/50874",
+        "https://www.vulncheck.com/advisories/wordpress-plugin-videos-sync-pdf-stored-xss"
+      ],
+      "published": "2026-05-10T13:16:32.790"
+    },
+    {
+      "id": "CVE-2022-50961",
+      "description": "WordPress Plugin IP2Location Country Blocker 2.26.7 contains a stored cross-site scripting vulnerability that allows authenticated users to inject arbitrary JavaScript code through the Frontend Settings interface. Attackers can inject malicious scripts in the URL field of the Display page settings that execute when administrators or other authenticated users visit the plugin settings page.",
+      "cvss": {
+        "score": 6.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://wordpress.org/plugins/ip2location-country-blocker/",
+        "https://www.exploit-db.com/exploits/50709",
+        "https://www.vulncheck.com/advisories/wordpress-plugin-ip2location-country-blocker-stored-xss"
+      ],
+      "published": "2026-05-10T13:16:33.827"
+    },
+    {
+      "id": "CVE-2026-8264",
+      "description": "A weakness has been identified in Tenda AC6 15.03.06.23. Affected by this vulnerability is the function formWifiApScan of the file /goform/WifiApScan of the component httpd. Executing a manipulation of the argument wl2g.public.country/wl5g.public.country can lead to os command injection. It is possible to launch the attack remotely. The exploit has been made available to the public and could be used for attacks.",
+      "cvss": {
+        "score": 6.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "Apache HTTP Server"
+      ],
+      "references": [
+        "https://github.com/dxz0069/WAVLINK-WN530H4-Command-Injection-in-set_add_routing/blob/main/Tenda%20AC6V2%20formWifiApScan%20Command%20Injection%20via%20country%20parameter.md",
+        "https://vuldb.com/submit/810075",
+        "https://vuldb.com/vuln/362561",
+        "https://vuldb.com/vuln/362561/cti",
+        "https://www.tenda.com.cn/"
+      ],
+      "published": "2026-05-11T04:16:17.023"
+    },
+    {
+      "id": "CVE-2022-50954",
+      "description": "WordPress Plugin cab-fare-calculator 1.0.3 contains a local file inclusion vulnerability that allows unauthenticated attackers to read arbitrary files by manipulating the controller parameter in tblight.php. Attackers can supply path traversal sequences through the controller GET parameter to include and execute files outside the intended controllers directory.",
+      "cvss": {
+        "score": 6.2,
+        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://wordpress.org/plugins/cab-fare-calculator/",
+        "https://www.exploit-db.com/exploits/50843",
+        "https://www.vulncheck.com/advisories/wordpress-plugin-cab-fare-calculator-local-file-inclusion"
+      ],
+      "published": "2026-05-10T13:16:32.917"
+    },
+    {
+      "id": "CVE-2022-50956",
+      "description": "WordPress Plugin amministrazione-aperta 3.7.3 contains a local file read vulnerability that allows unauthenticated attackers to read arbitrary files by exploiting insufficient input validation in the open parameter. Attackers can supply file paths through the open GET parameter in dispatcher.php to include and read sensitive files accessible to the web server.",
+      "cvss": {
+        "score": 6.2,
+        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://wordpress.org/plugins/amministrazione-aperta/",
+        "https://www.exploit-db.com/exploits/50838",
+        "https://www.vulncheck.com/advisories/wordpress-plugin-amministrazione-aperta-local-file-read"
+      ],
+      "published": "2026-05-10T13:16:33.180"
+    },
+    {
+      "id": "CVE-2022-50958",
+      "description": "WordPress Plugin Jetpack 9.1 contains a reflected cross-site scripting vulnerability that allows unauthenticated attackers to inject malicious scripts by manipulating the post_id parameter. Attackers can craft URLs to the grunion-form-view.php endpoint with script payloads in the post_id parameter to execute arbitrary JavaScript in victim browsers.",
+      "cvss": {
+        "score": 6.1,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://wordpress.org/plugins/jetpack",
+        "https://www.exploit-db.com/exploits/50735",
+        "https://www.vulncheck.com/advisories/wordpress-plugin-jetpack-cross-site-scripting-via-grunion-form-view-php"
+      ],
+      "published": "2026-05-10T13:16:33.440"
+    },
+    {
+      "id": "CVE-2022-50959",
+      "description": "WordPress Contact Form Builder 1.6.1 contains a reflected cross-site scripting vulnerability that allows unauthenticated attackers to inject malicious scripts by exploiting the form_id parameter. Attackers can craft malicious URLs to code_generator.php with script payloads in the form_id parameter to execute arbitrary JavaScript in victim browsers.",
+      "cvss": {
+        "score": 6.1,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://wordpress.org/plugins/contact-forms-builder/",
+        "https://www.exploit-db.com/exploits/50734",
+        "https://www.vulncheck.com/advisories/wordpress-contact-form-builder-cross-site-scripting-via-code-generator-php"
+      ],
+      "published": "2026-05-10T13:16:33.570"
+    },
+    {
+      "id": "CVE-2022-50960",
+      "description": "WordPress International Sms For Contact Form 7 Integration version 1.2 contains a reflected cross-site scripting vulnerability in the page parameter of the admin settings interface. Attackers can inject malicious scripts through the page parameter in class-sms-log-display.php to execute arbitrary JavaScript in administrator browsers.",
+      "cvss": {
+        "score": 6.1,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://wordpress.org/plugins/cf7-international-sms-integration/",
+        "https://www.exploit-db.com/exploits/50719",
+        "https://www.vulncheck.com/advisories/wordpress-international-sms-contact-form-7-integration-xss"
+      ],
+      "published": "2026-05-10T13:16:33.697"
+    },
+    {
+      "id": "CVE-2021-47948",
+      "description": "WordPress GetPaid Plugin 2.4.6 contains an HTML injection vulnerability that allows authenticated attackers to inject arbitrary HTML code by exploiting the Help Text field in payment forms. Attackers can inject malicious HTML including image tags and scripts into the Help Text field during payment form creation, which gets stored in the database and executed in the browser when the form is viewed.",
+      "cvss": {
+        "score": 5.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://wordpress.org/plugins/invoicing/",
+        "https://www.exploit-db.com/exploits/50246",
+        "https://www.vulncheck.com/advisories/wordpress-getpaid-plugin-html-injection-via-help-text"
+      ],
+      "published": "2026-05-10T13:16:31.323"
+    },
+    {
+      "id": "CVE-2022-50970",
+      "description": "WordPress Plugin AAWP 3.16 contains a reflected cross-site scripting vulnerability that allows authenticated attackers to inject malicious scripts by manipulating the tab parameter. Attackers can craft URLs with XSS payloads in the tab parameter of the aawp-settings admin page to execute arbitrary JavaScript in the context of authenticated users.",
+      "cvss": {
+        "score": 5.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://getaawp.com/",
+        "https://www.exploit-db.com/exploits/50643",
+        "https://www.vulncheck.com/advisories/wordpress-plugin-aawp-reflected-xss-via-tab-parameter"
+      ],
+      "published": "2026-05-10T13:16:34.993"
+    },
+    {
+      "id": "CVE-2021-47946",
+      "description": "OpenCart 3.0.36 contains a cross-site request forgery vulnerability in the /account/edit endpoint that allows unauthenticated attackers to modify victim account details by tricking users into visiting malicious pages. Attackers can craft CSRF payloads that change victim email addresses and account information, then use password reset functionality to gain unauthorized access to compromised accounts.",
+      "cvss": {
+        "score": 5.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "ESET"
+      ],
+      "references": [
+        "https://www.exploit-db.com/exploits/49407",
+        "https://www.opencart.com",
+        "https://www.opencart.com/index.php?route=cms/download",
+        "https://www.vulncheck.com/advisories/opencart-account-takeover-via-cross-site-request-forgery"
+      ],
+      "published": "2026-05-10T13:16:31.027"
+    },
+    {
+      "id": "CVE-2026-8259",
+      "description": "A vulnerability has been found in Tenda AC6 2.0/15.03.06.23. The affected element is an unknown function of the file /goform/telnet of the component httpd. The manipulation of the argument lan.ip leads to os command injection. Remote exploitation of the attack is possible. The exploit has been disclosed to the public and may be used.",
+      "cvss": {
+        "score": 4.7,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:L/I:L/A:L",
+        "severity": "MEDIUM"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "Apache HTTP Server"
+      ],
+      "references": [
+        "https://github.com/dxz0069/WAVLINK-WN530H4-Command-Injection-in-set_add_routing/blob/main/Tenda%20AC6V2%20TendaTelnet%20Command%20Injection.md",
+        "https://vuldb.com/submit/809877",
+        "https://vuldb.com/vuln/362556",
+        "https://vuldb.com/vuln/362556/cti",
+        "https://www.tenda.com.cn/"
+      ],
+      "published": "2026-05-11T02:16:27.417"
+    },
+    {
+      "id": "CVE-2026-8263",
+      "description": "A security flaw has been discovered in Tenda AC6 15.03.06.49_multi_TDE01. Affected is the function fromSetWirelessRepeat of the file /goform/WifiExtraSet of the component httpd. Performing a manipulation of the argument mac/ssid results in os command injection. It is possible to initiate the attack remotely. The exploit has been released to the public and may be used for attacks.",
+      "cvss": {
+        "score": 4.7,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:L/I:L/A:L",
+        "severity": "MEDIUM"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "Apache HTTP Server"
+      ],
+      "references": [
+        "https://github.com/yaoyue123/iot/blob/main/Tenda/AC10U/fromSetWirelessRepeat.md",
+        "https://vuldb.com/submit/810074",
+        "https://vuldb.com/vuln/362560",
+        "https://vuldb.com/vuln/362560/cti",
+        "https://www.tenda.com.cn/"
+      ],
+      "published": "2026-05-11T02:16:28.120"
+    },
+    {
+      "id": "CVE-2026-8265",
+      "description": "A security vulnerability has been detected in Tenda AC6 15.03.06.23. Affected by this issue is the function get_log_file of the file /goform/getLogFile of the component httpd. The manipulation of the argument wans.flag leads to os command injection. The attack can be initiated remotely. The exploit has been disclosed publicly and may be used.",
+      "cvss": {
+        "score": 4.7,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:L/I:L/A:L",
+        "severity": "MEDIUM"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "Apache HTTP Server"
+      ],
+      "references": [
+        "https://github.com/dxz0069/WAVLINK-WN530H4-Command-Injection-in-set_add_routing/blob/main/Tenda%20AC6V2%20get_log_file%20Command%20Injection%20via%20wans.flag.md",
+        "https://vuldb.com/submit/810076",
+        "https://vuldb.com/vuln/362562",
+        "https://vuldb.com/vuln/362562/cti",
+        "https://www.tenda.com.cn/"
+      ],
+      "published": "2026-05-11T04:16:19.860"
+    },
+    {
+      "id": "CVE-2022-50955",
+      "description": "WordPress Plugin Curtain 1.0.2 contains a cross-site request forgery vulnerability that allows attackers to activate or deactivate site maintenance mode by crafting malicious requests. Attackers can trick authenticated administrators into submitting forged requests to the options-general.php page with curtain parameters to toggle maintenance mode without valid nonce validation.",
+      "cvss": {
+        "score": 4.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://wordpress.org/plugins/curtain/",
+        "https://www.exploit-db.com/exploits/50842",
+        "https://www.vulncheck.com/advisories/wordpress-plugin-curtain-cross-site-request-forgery"
+      ],
+      "published": "2026-05-10T13:16:33.047"
+    },
+    {
+      "id": "CVE-2026-8276",
+      "description": "A flaw has been found in bettercap up to 2.41.5. Affected by this issue is some unknown functionality of the file modules/mysql_server/mysql_server.go of the component MySQL Server. Executing a manipulation can lead to integer coercion error. The attack can be launched remotely. The attack requires a high level of complexity. The exploitation is known to be difficult. The exploit has been published and may be used. This patch is called 0eaa375c5e5446bfba94a290eff92967a5deac9e. It is advisable to",
+      "cvss": {
+        "score": 3.7,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:L",
+        "severity": "LOW"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "MySQL",
+        "MSSQL"
+      ],
+      "references": [
+        "https://github.com/bettercap/bettercap/",
+        "https://github.com/bettercap/bettercap/commit/0eaa375c5e5446bfba94a290eff92967a5deac9e",
+        "https://github.com/bettercap/bettercap/issues/1265",
+        "https://github.com/bettercap/bettercap/issues/1265#issue-4287957382",
+        "https://github.com/bettercap/bettercap/pull/1266"
+      ],
+      "published": "2026-05-11T06:16:10.077"
+    },
+    {
+      "id": "CVE-2026-6433",
+      "description": "The Custom css-js-php WordPress plugin through 2.0.7 does not properly sanitize user input before using it in a SQL query, and the result is passed to eval(), allowing unauthenticated users to execute arbitrary PHP code on the server.",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://wpscan.com/vulnerability/a0b1c059-e156-4402-ac8d-67f8ad7386cc/"
+      ],
+      "published": "2026-05-11T06:16:09.707"
     }
   ]
 }
