@@ -1,40 +1,78 @@
 {
-  "scanTime": "2026-05-17 06:33:37 UTC",
-  "totalMatched": 8,
+  "scanTime": "2026-05-18 07:08:41 UTC",
+  "totalMatched": 9,
   "productsMonitored": 147,
   "tierCounts": {
-    "0": 1,
+    "0": 3,
     "1": 2,
-    "2": 4,
-    "3": 1
+    "2": 2,
+    "3": 2
   },
   "vulnerabilities": [
     {
-      "id": "CVE-2021-47977",
-      "description": "WordPress Plugin Anti-Malware Security and Bruteforce Firewall 4.20.59 contains a directory traversal vulnerability that allows unauthenticated attackers to read arbitrary files by manipulating the file parameter. Attackers can send requests to the duplicator_download action via admin-ajax.php with path traversal sequences to access sensitive system files outside the intended directory.",
+      "id": "CVE-2018-25320",
+      "description": "ACL Analytics versions 11.x through 13.0.0.579 contain an arbitrary code execution vulnerability that allows attackers to execute arbitrary commands by leveraging the EXECUTE function. Attackers can use bitsadmin to download malicious PowerShell scripts and execute them with system privileges to establish reverse shells and gain complete system control.",
       "cvss": {
-        "score": 7.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
-        "severity": "HIGH"
+        "score": 9.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "CRITICAL"
+      },
+      "tier": 0,
+      "matchedProducts": [
+        "PowerShell"
+      ],
+      "references": [
+        "https://www.acl.com",
+        "https://www.acl.com/products/acl-analytics/",
+        "https://www.exploit-db.com/exploits/44281",
+        "https://www.vulncheck.com/advisories/acl-analytics-11-x-arbitrary-code-execution"
+      ],
+      "published": "2026-05-17T13:16:43.270"
+    },
+    {
+      "id": "CVE-2018-25335",
+      "description": "WordPress Plugin Peugeot Music 1.0 contains an arbitrary file upload vulnerability that allows unauthenticated attackers to upload malicious files by sending POST requests to the upload.php endpoint. Attackers can upload files with arbitrary extensions by manipulating the 'name' parameter to execute code from the uploads directory.",
+      "cvss": {
+        "score": 9.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "CRITICAL"
       },
       "tier": 0,
       "matchedProducts": [
         "WordPress"
       ],
       "references": [
-        "https://gotmls.net/",
-        "https://gotmls.net/downloads/",
-        "https://www.exploit-db.com/exploits/50107",
-        "https://www.vulncheck.com/advisories/wordpress-anti-malware-security-bruteforce-firewall-directory-traversal"
+        "https://www.exploit-db.com/exploits/44737",
+        "https://www.vulncheck.com/advisories/wordpress-plugin-peugeot-music-arbitrary-file-upload"
       ],
-      "published": "2026-05-16T16:16:23.233"
+      "published": "2026-05-17T13:16:45.220"
     },
     {
-      "id": "CVE-2021-47979",
-      "description": "WordPress Plugin Backup and Restore 1.0.3 contains an arbitrary file deletion vulnerability that allows authenticated attackers to delete files by manipulating parameters in AJAX requests. Attackers can send POST requests to admin-ajax.php with crafted file_name and folder_name parameters to delete arbitrary files from the WordPress installation directory.",
+      "id": "CVE-2018-25324",
+      "description": "Simple Fields 0.2 through 0.3.5 WordPress Plugin contains a local file inclusion vulnerability that allows unauthenticated attackers to read arbitrary files by injecting null bytes into the wp_abspath parameter on PHP versions before 5.3.4. Attackers can supply malicious wp_abspath values to simple_fields.php to include files like /etc/passwd or inject PHP code into Apache logs for remote code execution when allow_url_include is enabled.",
       "cvss": {
-        "score": 8.8,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "score": 6.2,
+        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 0,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "http://simple-fields.com",
+        "https://downloads.wordpress.org/plugin/simple-fields.0.3.5.zip",
+        "https://www.exploit-db.com/exploits/44425",
+        "https://www.vulncheck.com/advisories/simple-fields-local-file-inclusion-via-wp-abspath"
+      ],
+      "published": "2026-05-17T13:16:43.787"
+    },
+    {
+      "id": "CVE-2018-25325",
+      "description": "Woocommerce CSV Importer 3.3.6 contains a path traversal vulnerability that allows any registered user to delete arbitrary files by submitting unescaped filenames through the delete_export_file AJAX action. Attackers can craft POST requests with directory traversal sequences in the filename parameter to delete sensitive files like wp-config.php outside the intended export directory.",
+      "cvss": {
+        "score": 7.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
         "severity": "HIGH"
       },
       "tier": 1,
@@ -42,111 +80,74 @@
         "WordPress"
       ],
       "references": [
-        "https://wordpress.org/plugins/backup-and-restore-for-wp/",
-        "https://www.exploit-db.com/exploits/50503",
-        "https://www.miniorange.com/",
-        "https://www.vulncheck.com/advisories/wordpress-plugin-backup-and-restore-arbitrary-file-deletion"
+        "http://lenonleite.com.br/",
+        "https://www.exploit-db.com/exploits/44433",
+        "https://www.vulncheck.com/advisories/woocommerce-csv-importer-path-traversal-file-deletion"
       ],
-      "published": "2026-05-16T16:16:23.490"
+      "published": "2026-05-17T13:16:43.923"
     },
     {
-      "id": "CVE-2026-8719",
-      "description": "The AI Engine \u2013 The Chatbot, AI Framework & MCP for WordPress plugin for WordPress is vulnerable to Privilege Escalation in version 3.4.9. This is due to missing WordPress capability enforcement in the MCP OAuth bearer-token authorization path, where any valid OAuth token causes MCP access to be granted without verifying administrator privileges. This makes it possible for authenticated (Subscriber+) attackers to invoke admin-level MCP tools and escalate privileges to Administrator.",
+      "id": "CVE-2026-8507",
+      "description": "Crypt::OpenSSL::PKCS12 versions through 1.94 for Perl have out-of-bounds (OOB) write flaws.\n\nWhen parsing a PKCS12 file, with a >= 1 GiB OCTET STRING (or BIT STRING) attribute on a SAFEBAG, via info() or info_as_hash(), a heap out-of-bounds write would be triggered with remote-code-execution potential (RCE) due to a signed integer overflow in the size calculation passed to Renew().",
       "cvss": {
-        "score": 8.8,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
-        "severity": "HIGH"
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
       },
       "tier": 1,
       "matchedProducts": [
-        "WordPress"
+        "OpenSSL"
       ],
       "references": [
-        "https://plugins.trac.wordpress.org/changeset/3533527/ai-engine",
-        "https://www.wordfence.com/threat-intel/vulnerabilities/id/0593c20d-3422-4817-9639-614254b609db?source=cve"
+        "https://github.com/dsully/perl-crypt-openssl-pkcs12/commit/b9d0469c6d8f5b5c6c2a45a3d0647a532b749397.patch",
+        "https://github.com/dsully/perl-crypt-openssl-pkcs12/issues/55",
+        "https://github.com/dsully/perl-crypt-openssl-pkcs12/issues/56",
+        "https://metacpan.org/release/JONASBN/Crypt-OpenSSL-PKCS12-1.95/view/Changes.md",
+        "http://www.openwall.com/lists/oss-security/2026/05/17/5"
       ],
-      "published": "2026-05-17T04:16:42.580"
+      "published": "2026-05-17T19:16:24.590"
     },
     {
-      "id": "CVE-2020-37233",
-      "description": "WordPress Plugin Buddypress 6.2.0 contains a persistent cross-site scripting vulnerability that allows authenticated attackers with moderator privileges to inject malicious script code through the figure parameter in wp:html blocks. Attackers can inject iframe elements with event handlers like onload that execute when administrators or privileged users preview or view the affected page content, enabling session hijacking and persistent phishing attacks.",
+      "id": "CVE-2018-25326",
+      "description": "Google Drive for WordPress 2.2 contains a path traversal vulnerability that allows unauthenticated attackers to read arbitrary files by injecting directory traversal sequences in the file_name parameter. Attackers can send POST requests to gdrive-ajaxs.php with the ajaxstype parameter set to del_fl_bkp and file_name containing traversal sequences ../../wp-config.php to access sensitive configuration files.",
       "cvss": {
-        "score": 6.4,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
-        "severity": "MEDIUM"
+        "score": 7.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+        "severity": "HIGH"
       },
       "tier": 2,
       "matchedProducts": [
         "WordPress"
       ],
       "references": [
-        "https://wordpress.org/plugins/buddypress/",
-        "https://www.exploit-db.com/exploits/49061",
-        "https://www.vulncheck.com/advisories/wordpress-plugin-buddypress-persistent-cross-site-scripting"
+        "http://lenonleite.com.br/",
+        "https://www.exploit-db.com/exploits/44435",
+        "https://www.vulncheck.com/advisories/google-drive-for-wordpress-path-traversal-rce-via-gdrive-ajaxs-php"
       ],
-      "published": "2026-05-16T16:16:19.310"
+      "published": "2026-05-17T13:16:44.050"
     },
     {
-      "id": "CVE-2020-37235",
-      "description": "WordPress Theme Wibar 1.1.8 contains a stored cross-site scripting vulnerability in the Brand component that allows authenticated users to inject malicious scripts by manipulating the Logo URL parameter. Attackers with editor, administrator, contributor, or author privileges can inject base64-encoded script payloads through the ftc_brand_url input field to execute arbitrary JavaScript when users visit the brand page.",
+      "id": "CVE-2018-25329",
+      "description": "WordPress Plugin WP with Spritz 1.0 contains a remote file inclusion vulnerability that allows unauthenticated attackers to read arbitrary files by injecting file paths into the url parameter. Attackers can send GET requests to wp.spritz.content.filter.php with malicious url values to access sensitive files like system configuration and credentials.",
       "cvss": {
-        "score": 6.4,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
-        "severity": "MEDIUM"
+        "score": 7.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+        "severity": "HIGH"
       },
       "tier": 2,
       "matchedProducts": [
         "WordPress"
       ],
       "references": [
-        "http://demo.themeftc.com/wibar",
-        "https://themeforest.net/item/wibar-responsive-woocommerce-wordpress-theme/20994798",
-        "https://www.exploit-db.com/exploits/49107",
-        "https://www.vulncheck.com/advisories/wordpress-theme-wibar-stored-cross-site-scripting-via-brand-component"
+        "https://downloads.wordpress.org/plugin/wp-with-spritz.zip",
+        "https://www.exploit-db.com/exploits/44544",
+        "https://www.vulncheck.com/advisories/wordpress-plugin-wp-with-spritz-remote-file-inclusion"
       ],
-      "published": "2026-05-16T16:16:19.570"
+      "published": "2026-05-17T13:16:44.443"
     },
     {
-      "id": "CVE-2021-47957",
-      "description": "Cookie Law Bar 1.2.1 contains a stored cross-site scripting vulnerability that allows authenticated attackers to inject malicious scripts by submitting unsanitized input to the Bar Message field. Attackers can inject script payloads through the plugin settings page that execute in the browsers of all WordPress users viewing the site, enabling cookie theft and sensitive data exfiltration.",
-      "cvss": {
-        "score": 6.4,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "WordPress"
-      ],
-      "references": [
-        "https://wordpress.org/plugins/cookie-law-bar/",
-        "https://www.cookielawinfo.com/wordpress-plugin/",
-        "https://www.exploit-db.com/exploits/49905",
-        "https://www.vulncheck.com/advisories/wordpress-plugin-cookie-law-bar-stored-xss-via-clb-bar-msg"
-      ],
-      "published": "2026-05-16T16:16:22.037"
-    },
-    {
-      "id": "CVE-2026-8723",
-      "description": "### Summary\n\n\n\n`qs.stringify` throws `TypeError` when called with `arrayFormat: 'comma'` and `encodeValuesOnly: true` on an array containing `null` or `undefined`. The throw is synchronous and not handled by any of qs's null-related options (`skipNulls`, `strictNullHandling`).\n\n\n\n### Details\n\n\n\nIn the comma + `encodeValuesOnly` branch, `lib/stringify.js:145` mapped the array through the raw encoder before joining:\n\n\n\n```js\n\n\n\nobj = utils.maybeMap(obj, encoder);\n\n\n\n```\n\n\n\n`utils.encode` (`lib/uti",
-      "cvss": {
-        "score": 5.3,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Node.js"
-      ],
-      "references": [
-        "https://github.com/ljharb/qs/commit/21f80b33e5c8b3f7eba1034fff0da4a4a37a1d41",
-        "https://github.com/ljharb/qs/security/advisories/GHSA-q8mj-m7cp-5q26"
-      ],
-      "published": "2026-05-17T00:16:21.233"
-    },
-    {
-      "id": "CVE-2025-4202",
-      "description": "The Multicollab: Content Team Collaboration and Editorial Workflow plugin for WordPress is vulnerable to unauthorized modification of data due to a missing capability check on the 'cf_add_comment' function in all versions up to, and including, 5.2. This makes it possible for authenticated attackers, with Subscriber-level access and above, to add comments to arbitrary collaborations.",
+      "id": "CVE-2018-25337",
+      "description": "Joomla JoomOCShop 1.0 contains a cross-site request forgery vulnerability that allows attackers to perform unauthorized actions on behalf of authenticated users. Attackers can craft malicious HTML forms targeting account endpoints like /joomoc2/?route=account/edit and to modify user information or reset passwords without user consent.",
       "cvss": {
         "score": 4.3,
         "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N",
@@ -154,14 +155,33 @@
       },
       "tier": 3,
       "matchedProducts": [
-        "WordPress"
+        "ESET"
       ],
       "references": [
-        "https://plugins.trac.wordpress.org/browser/commenting-feature/tags/4.8.1/admin/classes/class-commenting-block-admin.php#L1239",
-        "https://plugins.trac.wordpress.org/changeset/3519252/",
-        "https://www.wordfence.com/threat-intel/vulnerabilities/id/08ec2376-dfe3-4aeb-8173-01e88309f540?source=cve"
+        "https://extensions.joomla.org/extensions/extension/e-commerce/e-commerce-integrations/joomocshop/",
+        "https://www.exploit-db.com/exploits/44789",
+        "https://www.joomlaextensions.co.in/",
+        "https://www.vulncheck.com/advisories/joomla-joomocshop-cross-site-request-forgery"
       ],
-      "published": "2026-05-16T13:16:16.073"
+      "published": "2026-05-17T13:16:45.470"
+    },
+    {
+      "id": "CVE-2026-8721",
+      "description": "Crypt::OpenSSL::PKCS12 versions through 1.94 for Perl truncates passwords with embedded NULLs.\n\nPassword parameters in PKCS12.xs are declared char *, which routes through Perl's default typemap to SvPV_nolen.  The Perl length is discarded.\n\nThe C code (or OpenSSL internally) calls strlen() on the buffer.  Any password byte at or after the first NULL is silently dropped. Binary / KDF-derived / HMAC-derived passwords lose entropy without any warnings.",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "OpenSSL"
+      ],
+      "references": [
+        "https://metacpan.org/release/JONASBN/Crypt-OpenSSL-PKCS12-1.95/view/Changes.md",
+        "http://www.openwall.com/lists/oss-security/2026/05/17/6"
+      ],
+      "published": "2026-05-17T19:16:25.310"
     }
   ]
 }
