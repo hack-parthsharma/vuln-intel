@@ -1,17 +1,73 @@
 {
-  "scanTime": "2026-06-10 07:50:48 UTC",
-  "totalMatched": 136,
+  "scanTime": "2026-06-11 08:19:04 UTC",
+  "totalMatched": 44,
   "productsMonitored": 147,
   "tierCounts": {
-    "0": 5,
-    "1": 47,
-    "2": 58,
-    "3": 26
+    "0": 8,
+    "1": 12,
+    "2": 13,
+    "3": 11
   },
   "vulnerabilities": [
     {
-      "id": "CVE-2017-20251",
-      "description": "WordPress Insert PHP plugin versions before 3.3.1 contain a PHP code injection vulnerability that allows unauthenticated attackers to execute arbitrary PHP code by injecting malicious shortcodes through the WordPress REST API. Attackers can send POST requests to the wp-json/wp/v2/posts endpoint with crafted content containing insert_php shortcodes to include and execute remote PHP files on the server.",
+      "id": "CVE-2026-45552",
+      "description": "Roxy-WI is a web interface for managing Haproxy, Nginx, Apache and Keepalived servers. In versions 8.2.6.4 and prior, the install blueprint declares only bp.before_request \u2192 @jwt_required() (app/routes/install/routes.py:36-39). The individual endpoints install_exporter, install_waf, install_geoip, check_geoip, get_exporter_version, and get_task_status are not wrapped in page_for_admin and do not call roxywi_common.is_user_has_access_to_its_group(server_ip) or check_is_server_in_group(server_ip).",
+      "cvss": {
+        "score": 9.9,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+        "severity": "CRITICAL"
+      },
+      "tier": 0,
+      "matchedProducts": [
+        "Nginx",
+        "Ansible"
+      ],
+      "references": [
+        "https://github.com/roxy-wi/roxy-wi/security/advisories/GHSA-v3f8-g2v8-jq5h"
+      ],
+      "published": "2026-06-10T15:16:36.303"
+    },
+    {
+      "id": "CVE-2026-45556",
+      "description": "Roxy-WI is a web interface for managing Haproxy, Nginx, Apache and Keepalived servers. In versions 8.2.6.4 and prior, POST /waf/<service>/<server_ip>/rule/<rule_id>/save accepts a config_file_name form field that is passed straight through to config_mod.master_slave_upload_and_restart(...) as the destination path. The validation chain (_replace_config_path_to_correct \u2192 check_is_conf) only requires the path to contain a hard-coded service substring (nginx/haproxy/apache2/httpd/keepalived) and the",
+      "cvss": {
+        "score": 9.9,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+        "severity": "CRITICAL"
+      },
+      "tier": 0,
+      "matchedProducts": [
+        "Apache HTTP Server",
+        "Nginx"
+      ],
+      "references": [
+        "https://github.com/roxy-wi/roxy-wi/security/advisories/GHSA-85gm-773v-x7m4",
+        "https://github.com/roxy-wi/roxy-wi/security/advisories/GHSA-85gm-773v-x7m4"
+      ],
+      "published": "2026-06-10T15:16:36.457"
+    },
+    {
+      "id": "CVE-2026-45558",
+      "description": "Roxy-WI is a web interface for managing Haproxy, Nginx, Apache and Keepalived servers. In versions 8.2.6.4 and prior, the HAProxy section-save endpoints (POST /api/service/haproxy/<server_id>/section/<section_type> and the PUT / global / defaults variants) accept a JSON option field that is not validated, not escaped, and is rendered verbatim into the generated HAProxy configuration via the section.j2, global.j2, and defaults.j2 Ansible templates. Because Roxy-WI then pushes the generated config",
+      "cvss": {
+        "score": 9.9,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+        "severity": "CRITICAL"
+      },
+      "tier": 0,
+      "matchedProducts": [
+        "Nginx",
+        "Ansible"
+      ],
+      "references": [
+        "https://github.com/roxy-wi/roxy-wi/security/advisories/GHSA-w2x4-66jj-3597",
+        "https://github.com/roxy-wi/roxy-wi/security/advisories/GHSA-w2x4-66jj-3597"
+      ],
+      "published": "2026-06-10T15:16:36.600"
+    },
+    {
+      "id": "CVE-2025-6254",
+      "description": "The Doctreat Core plugin for WordPress is vulnerable to Privilege Escalation in all versions up to, and including, 1.6.8. This is due to the doctreat_process_registration() function not properly restricting the roles that a user can register with. This makes it possible for unauthenticated attackers to register as an administrator user.",
       "cvss": {
         "score": 9.8,
         "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
@@ -22,15 +78,14 @@
         "WordPress"
       ],
       "references": [
-        "https://fr.wordpress.org/plugins/insert-php/",
-        "https://www.exploit-db.com/exploits/41308",
-        "https://www.vulncheck.com/advisories/wordpress-insert-php-plugin-php-code-injection-via-rest-api"
+        "https://themeforest.net/item/doctreat-doctors-directory-wordpress-theme/24867777",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/5fa37909-932c-4879-bbf0-8b44cc995cc0?source=cve"
       ],
-      "published": "2026-06-09T13:16:35.140"
+      "published": "2026-06-10T10:16:29.827"
     },
     {
-      "id": "CVE-2026-25089",
-      "description": "A improper neutralization of special elements used in an os command ('os command injection') vulnerability in Fortinet FortiSandbox 5.0.0 through 5.0.5, FortiSandbox 4.4.0 through 4.4.8, FortiSandbox 4.2 all versions, FortiSandbox Cloud 5.0.4 through 5.0.5, FortiSandbox PaaS 5.0.4 through 5.0.5 may allow an unauthenticated attacker to execute unauthorized commands via specifically crafted HTTP requests",
+      "id": "CVE-2026-20253",
+      "description": "In Splunk Enterprise versions below 10.2.4 and 10.0.7, and Splunk Cloud Platform versions below 10.4.2604.3 and 10.2.2510.14, an unauthenticated user could create or truncate arbitrary files through a PostgreSQL sidecar service endpoint.<br><br>The vulnerability exists because the PostgreSQL sidecar service endpoint lacks authentication controls, allowing any network-reachable user to invoke file operations without credentials.",
       "cvss": {
         "score": 9.8,
         "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
@@ -38,55 +93,55 @@
       },
       "tier": 0,
       "matchedProducts": [
-        "Fortigate/FortiOS"
+        "PostgreSQL"
       ],
       "references": [
-        "https://fortiguard.fortinet.com/psirt/FG-IR-26-141"
+        "https://advisory.splunk.com/advisories/SVD-2026-0603"
       ],
-      "published": "2026-06-09T16:16:39.943"
+      "published": "2026-06-10T18:16:40.760"
     },
     {
-      "id": "CVE-2026-45447",
-      "description": "Issue summary: A specially crafted PKCS#7 or S/MIME signed message could\ntrigger a use-after-free during PKCS#7 signature verification.\n\nImpact summary: A use-after-free may result in process crashes, heap\ncorruption, or potentially remote code execution.\n\nWhen processing a PKCS#7 or S/MIME signed message, if the SignedData\ndigestAlgorithms field is present as an empty ASN.1 SET, OpenSSL may\nincorrectly free a caller-owned BIO during PKCS7_verify(). A subsequent\nuse of the BIO by the calling app",
-      "cvss": {
-        "score": 9.8,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-        "severity": "CRITICAL"
-      },
-      "tier": 0,
-      "matchedProducts": [
-        "OpenSSL"
-      ],
-      "references": [
-        "https://github.com/openssl/security/commit/3aad5eb7af4de4ee0633c30a8541a54d9bbde63c",
-        "https://github.com/openssl/security/commit/7d4a980c62258c5910cc883936e0c8dbab4d75a8",
-        "https://github.com/openssl/security/commit/9dfd688ad2290fc5075cacbc9bf0c9a93eefed54",
-        "https://github.com/openssl/security/commit/a541ae8bfe849a30cc885e8780715c0f488e496c",
-        "https://github.com/openssl/security/commit/c505d7559da5d5f9f2c3913c6883a5562ce7273e"
-      ],
-      "published": "2026-06-09T17:17:19.277"
-    },
-    {
-      "id": "CVE-2026-47281",
-      "description": "Improper input validation in Visual Studio Code allows an unauthorized attacker to elevate privileges over a network.",
+      "id": "CVE-2026-53474",
+      "description": "A flaw was found in migration-planner. A remote authenticated attacker could exploit this vulnerability by uploading a specially crafted RVTools .xlsx file. Due to improper input sanitization, malicious SQL embedded within a spreadsheet cell is executed when cluster names are processed. This SQL Injection allows for arbitrary file reading on the system, potentially exposing sensitive information such as Kubernetes service account tokens and other credentials, which could lead to a full compromis",
       "cvss": {
         "score": 9.6,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:N",
         "severity": "CRITICAL"
       },
       "tier": 0,
       "matchedProducts": [
-        "Visual Studio",
-        "Visual Studio Code"
+        "RVTools"
       ],
       "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-47281"
+        "https://access.redhat.com/security/cve/CVE-2026-53474",
+        "https://bugzilla.redhat.com/show_bug.cgi?id=2487231",
+        "https://github.com/kubev2v/migration-planner/pull/1231"
       ],
-      "published": "2026-06-09T17:17:33.950"
+      "published": "2026-06-10T15:16:41.943"
     },
     {
-      "id": "CVE-2026-34182",
-      "description": "Issue Summary: Cryptographic Message Services (CMS) processing fails to perform\nsufficient input validation on the cipher and tag length fields of\nAuthEnvelopedData containers, leading to various potential compromises.\n\nImpact Summary: Attackers making use of these vulnerabilities may achieve\nkey-equivalent functionality for a given CMS recipient and/or bypass integrity\nvalidation for a given message.\n\nIn one use case, an attacker may send a CMS message containing\nAuthEnvelopedData with the ciph",
+      "id": "CVE-2026-10795",
+      "description": "The UpdraftPlus: WP Backup & Migration Plugin plugin for WordPress is vulnerable to Authentication Bypass in all versions up to, and including, 1.26.4 via the UpdraftPlus_Remote_Communications_V2::wp_loaded function. This is due to insufficient validation of the remote communications message format, where signature verification can be bypassed and unchecked decryption return values collapse to a predictable all-zero encryption key. This makes it possible for unauthenticated attackers to forge ar",
+      "cvss": {
+        "score": 8.1,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 0,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.svn.wordpress.org/updraftplus/tags/1.26.4/vendor/team-updraft/common-libs/src/updraft-rpc/class-udrpc.php",
+        "https://plugins.svn.wordpress.org/updraftplus/tags/1.26.4/vendor/team-updraft/common-libs/src/updraft-rpc/class-udrpc2.php",
+        "https://plugins.trac.wordpress.org/changeset/3561938/updraftplus/trunk/vendor/team-updraft/common-libs/src/updraft-rpc/class-udrpc2.php",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/e901c2a0-2477-4b9a-8483-6002419e0a2f?source=cve"
+      ],
+      "published": "2026-06-11T07:16:26.713"
+    },
+    {
+      "id": "CVE-2026-48860",
+      "description": "Reliance on IP Address for Authentication vulnerability in Erlang/OTP ssl (inet_tls_dist module) allows unauthenticated bypass of the distribution-over-TLS LAN allowlist.\n\nThe inet_tls_dist:check_ip/1 function, which enforces a LAN allowlist for Erlang distribution over TLS, calls inet:sockname/1 instead of inet:peername/1 to obtain the peer's IP address. Because inet:sockname/1 returns the local socket address, both the local IP and the supposed peer IP resolve to the same value, causing the su",
       "cvss": {
         "score": null,
         "vector": null,
@@ -94,413 +149,60 @@
       },
       "tier": 0,
       "matchedProducts": [
-        "OpenSSL"
+        "Erlang/OTP"
       ],
       "references": [
-        "https://github.com/openssl/security/commit/03c1f4d45fb963aee7d5833390c507cd290182bc",
-        "https://github.com/openssl/security/commit/439ed7d2c0962ce964482727264668bf277c333f",
-        "https://github.com/openssl/security/commit/7947e6a81eb8776802f159fb6762cb7fcf7e34c7",
-        "https://github.com/openssl/security/commit/9fd97f8cfdc2c0be214998de3b2b55c8edf6c7ac",
-        "https://github.com/openssl/security/commit/d2ca86bcd43e4f17d899f347101766b6107676e0"
+        "https://cna.erlef.org/cves/CVE-2026-48860.html",
+        "https://github.com/erlang/otp/commit/0209a6df65d605552b378273027b3968b35f26b4",
+        "https://github.com/erlang/otp/security/advisories/GHSA-gp7x-mfv6-52cv",
+        "https://osv.dev/vulnerability/EEF-CVE-2026-48860",
+        "https://www.erlang.org/doc/system/versions.html#order-of-versions"
       ],
-      "published": "2026-06-09T17:17:04.857"
+      "published": "2026-06-10T16:17:12.503"
     },
     {
-      "id": "CVE-2026-11616",
-      "description": "The Events Calendar for GeoDirectory plugin for WordPress is vulnerable to Privilege Escalation in versions up to and including 2.3.28. This is due to the ajax_ayi_action() handler  only applying strip_tags(esc_sql()) \u2014 with no allow-list \u2014 to the attacker-controlled $_POST['type'] and $_POST['postid'] values before forwarding them to update_ayi_data(), which calls update_user_meta($current_user->ID, $rsvp_args['type'], $posts). By passing type=wp_capabilities and postid=administrator, an attack",
+      "id": "CVE-2026-53475",
+      "description": "A flaw was found in assisted-migration-agent. The application hardcodes insecure Transport Layer Security (TLS) connections when communicating with vCenter. This vulnerability allows a Man-in-the-Middle (MITM) attacker to intercept and harvest vCenter administrator credentials. This can lead to unauthorized access to vCenter.",
+      "cvss": {
+        "score": 9.3,
+        "vector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:N",
+        "severity": "CRITICAL"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "VMware vCenter"
+      ],
+      "references": [
+        "https://access.redhat.com/security/cve/CVE-2026-53475",
+        "https://bugzilla.redhat.com/show_bug.cgi?id=2487232",
+        "https://github.com/kubev2v/assisted-migration-agent/pull/268"
+      ],
+      "published": "2026-06-10T15:16:42.090"
+    },
+    {
+      "id": "CVE-2026-45550",
+      "description": "Roxy-WI is a web interface for managing Haproxy, Nginx, Apache and Keepalived servers. In versions 8.2.6.4 and prior, PUT /smon/check (app/routes/smon/routes.py:117-138) gates only on roxywi_common.check_user_group_for_flask() \u2014 which validates that the caller has some group, not that the target check_id belongs to it. The downstream SQL update functions update_smon, update_smonHttp, update_smonTcp, update_smonPing, update_smonDns (app/modules/db/smon.py:515-562) all execute WHERE smon_id = ? wi",
+      "cvss": {
+        "score": 9.1,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:H/A:L",
+        "severity": "CRITICAL"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Nginx"
+      ],
+      "references": [
+        "https://github.com/roxy-wi/roxy-wi/security/advisories/GHSA-856h-mvm2-2h2x",
+        "https://github.com/roxy-wi/roxy-wi/security/advisories/GHSA-856h-mvm2-2h2x"
+      ],
+      "published": "2026-06-10T15:16:36.160"
+    },
+    {
+      "id": "CVE-2026-49498",
+      "description": "Ghidra 11.0 before 12.1 contains a SQL injection vulnerability in the changePassword() method of PostgresFunctionDatabase that fails to escape double quotes in usernames interpolated into ALTER ROLE statements. Authenticated attackers can inject SQL commands via crafted username parameters in PasswordChange network messages to escalate to PostgreSQL superuser privileges and gain full database control.",
       "cvss": {
         "score": 8.8,
         "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "WordPress"
-      ],
-      "references": [
-        "https://plugins.trac.wordpress.org/browser/events-for-geodirectory/tags/2.3.28/includes/class-geodir-event-ayi.php#L154",
-        "https://plugins.trac.wordpress.org/browser/events-for-geodirectory/tags/2.3.28/includes/class-geodir-event-ayi.php#L357",
-        "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&old=3533585%40events-for-geodirectory&new=3533585%40events-for-geodirectory&sfp_email=&sfph_mail=",
-        "https://www.wordfence.com/threat-intel/vulnerabilities/id/11ba187b-1fe4-4077-ad9d-a07660133e91?source=cve"
-      ],
-      "published": "2026-06-09T09:16:28.620"
-    },
-    {
-      "id": "CVE-2026-8365",
-      "description": "The Blocksy theme for WordPress is vulnerable to PHP Object Injection leading to Remote Code Execution via the 'blocksy_meta' REST API field and the V200 database migration in versions up to and including 2.1.35. This is due to insufficient input sanitization in the blocksy_sanitize_post_meta_options() function, which only blocks values containing '<' or '>' and does not prevent serialized PHP object strings from being stored in post meta, combined with the SearchReplacer::run_recursively() func",
-      "cvss": {
-        "score": 8.8,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "WordPress"
-      ],
-      "references": [
-        "https://themes.trac.wordpress.org/browser/blocksy/2.1.35/admin/helpers/meta-boxes.php#L104",
-        "https://themes.trac.wordpress.org/browser/blocksy/2.1.35/admin/helpers/validator.php#L75",
-        "https://themes.trac.wordpress.org/browser/blocksy/2.1.35/inc/classes/db-versioning/utils/db-search-replacer.php#L98",
-        "https://themes.trac.wordpress.org/browser/blocksy/2.1.35/inc/classes/raii.php#L12",
-        "https://themes.trac.wordpress.org/browser/blocksy/2.1.41/admin/helpers/meta-boxes.php#L104"
-      ],
-      "published": "2026-06-09T09:16:31.013"
-    },
-    {
-      "id": "CVE-2026-45484",
-      "description": "Deserialization of untrusted data in Microsoft Office SharePoint allows an authorized attacker to elevate privileges over a network.",
-      "cvss": {
-        "score": 8.8,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "Microsoft Office"
-      ],
-      "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-45484"
-      ],
-      "published": "2026-06-09T17:17:22.883"
-    },
-    {
-      "id": "CVE-2026-50635",
-      "description": "LimeSurvey constructs account password-reset links from the client-supplied HTTP Host header without validating it. The optional allowedHosts allowlist that would constrain this is undefined in the default (and documented) configuration, so LSHttpRequest::checkIsAllowedHost() results in no operation. A remote, unauthenticated attacker who submits a forgotten-password request for a known account (requiring only the target's username and email) with a spoofed Host header causes LimeSurvey to email",
-      "cvss": {
-        "score": 8.8,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://github.com/LimeSurvey/LimeSurvey/pull/5032",
-        "https://www.limesurvey.org/",
-        "https://www.vulncheck.com/advisories/limesurvey-password-reset-host-header-injection-discloses-reset-token"
-      ],
-      "published": "2026-06-09T18:17:10.273"
-    },
-    {
-      "id": "CVE-2026-50636",
-      "description": "The RemoteControl API methods invite_participants and remind_participants pass a caller-supplied token-ID array into TokenDynamic::findUninvited(), which concatenates the values directly into a tid IN ('...') SQL clause without parameterization or input validation. A remote, authenticated attacker holding the tokens/update permission on a survey can inject a crafted array element to perform SQL injection. Because LimeSurvey configures its PDO connection with emulated prepared statements (emulate",
-      "cvss": {
-        "score": 8.8,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "MySQL"
-      ],
-      "references": [
-        "https://github.com/LimeSurvey/LimeSurvey/pull/5031",
-        "https://www.limesurvey.org/",
-        "https://www.vulncheck.com/advisories/limesurvey-remotecontrol-invite-participants-remind-participants-sql-injection"
-      ],
-      "published": "2026-06-09T18:17:10.620"
-    },
-    {
-      "id": "CVE-2026-45456",
-      "description": "Access of resource using incompatible type ('type confusion') in Microsoft Office allows an unauthorized attacker to execute code locally.",
-      "cvss": {
-        "score": 8.4,
-        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "Microsoft Office"
-      ],
-      "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-45456"
-      ],
-      "published": "2026-06-09T17:17:19.790"
-    },
-    {
-      "id": "CVE-2026-45458",
-      "description": "Access of resource using incompatible type ('type confusion') in Microsoft Office allows an unauthorized attacker to execute code locally.",
-      "cvss": {
-        "score": 8.4,
-        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "Microsoft Office"
-      ],
-      "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-45458"
-      ],
-      "published": "2026-06-09T17:17:20.060"
-    },
-    {
-      "id": "CVE-2026-45461",
-      "description": "Heap-based buffer overflow in Microsoft Office allows an unauthorized attacker to execute code locally.",
-      "cvss": {
-        "score": 8.4,
-        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "Microsoft Office"
-      ],
-      "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-45461"
-      ],
-      "published": "2026-06-09T17:17:20.450"
-    },
-    {
-      "id": "CVE-2026-45463",
-      "description": "Heap-based buffer overflow in Microsoft Office allows an unauthorized attacker to execute code locally.",
-      "cvss": {
-        "score": 8.4,
-        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "Microsoft Office"
-      ],
-      "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-45463"
-      ],
-      "published": "2026-06-09T17:17:20.707"
-    },
-    {
-      "id": "CVE-2026-45472",
-      "description": "Heap-based buffer overflow in Microsoft Office allows an unauthorized attacker to execute code locally.",
-      "cvss": {
-        "score": 8.4,
-        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "Microsoft Office"
-      ],
-      "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-45472"
-      ],
-      "published": "2026-06-09T17:17:21.740"
-    },
-    {
-      "id": "CVE-2026-45474",
-      "description": "Heap-based buffer overflow in Microsoft Office allows an unauthorized attacker to execute code locally.",
-      "cvss": {
-        "score": 8.4,
-        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "Microsoft Office"
-      ],
-      "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-45474"
-      ],
-      "published": "2026-06-09T17:17:21.877"
-    },
-    {
-      "id": "CVE-2026-45482",
-      "description": "Improper limitation of a pathname to a restricted directory ('path traversal') in GitHub Copilot and Visual Studio Code allows an unauthorized attacker to bypass a security feature locally.",
-      "cvss": {
-        "score": 8.4,
-        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "Visual Studio",
-        "Visual Studio Code"
-      ],
-      "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-45482"
-      ],
-      "published": "2026-06-09T17:17:22.587"
-    },
-    {
-      "id": "CVE-2026-47635",
-      "description": "Access of resource using incompatible type ('type confusion') in Microsoft Office allows an unauthorized attacker to execute code locally.",
-      "cvss": {
-        "score": 8.4,
-        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "Microsoft Office"
-      ],
-      "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-47635"
-      ],
-      "published": "2026-06-09T17:17:35.417"
-    },
-    {
-      "id": "CVE-2016-20062",
-      "description": "Simply Poll 1.4.1 plugin for WordPress contains an SQL injection vulnerability that allows unauthenticated attackers to extract database information by injecting SQL code through the 'pollid' POST parameter. Attackers can send requests to the admin-ajax.php endpoint with the 'spAjaxResults' action and malicious 'pollid' values to execute arbitrary SQL queries and read sensitive data from the WordPress database.",
-      "cvss": {
-        "score": 8.2,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:N",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "WordPress"
-      ],
-      "references": [
-        "https://tad.group",
-        "https://wordpress.org/plugins/simply-poll/",
-        "https://www.exploit-db.com/exploits/40971",
-        "https://www.vulncheck.com/advisories/simply-poll-plugin-for-wordpress-sql-injection"
-      ],
-      "published": "2026-06-09T13:16:32.263"
-    },
-    {
-      "id": "CVE-2016-20065",
-      "description": "Product Catalog 8 1.2 plugin for WordPress contains an SQL injection vulnerability that allows unauthenticated attackers to execute arbitrary SQL queries by injecting malicious code through the selectedCategory parameter. Attackers can submit POST requests to the admin-ajax.php endpoint with the UpdateCategoryList action to extract sensitive database information from WordPress tables.",
-      "cvss": {
-        "score": 8.2,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:N",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "WordPress"
-      ],
-      "references": [
-        "http://lenonleite.com.br/",
-        "https://wordpress.org/plugins/product-catalog-8/",
-        "https://www.exploit-db.com/exploits/40783",
-        "https://www.vulncheck.com/advisories/product-catalog-8-plugin-wordpress-sql-injection"
-      ],
-      "published": "2026-06-09T13:16:33.810"
-    },
-    {
-      "id": "CVE-2017-20243",
-      "description": "WordPress Car Park Booking Plugin version 13 October 17 contains a time-based SQL injection vulnerability that allows unauthenticated attackers to manipulate database queries by injecting SQL code through the space_id parameter. Attackers can send GET requests to the booking-page endpoint with malicious space_id values using AND SLEEP() payloads to extract sensitive database information.",
-      "cvss": {
-        "score": 8.2,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:N",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "WordPress"
-      ],
-      "references": [
-        "https://codecanyon.net/item/car-park-booking-wordpress-plugin/20284035",
-        "https://www.exploit-db.com/exploits/43012",
-        "https://www.vulncheck.com/advisories/wordpress-car-park-booking-plugin-sql-injection-via-space-id"
-      ],
-      "published": "2026-06-09T13:16:33.967"
-    },
-    {
-      "id": "CVE-2017-20244",
-      "description": "Wow Forms WordPress Plugin version 2.1 contains an SQL injection vulnerability that allows unauthenticated attackers to read arbitrary database information by exploiting an unescaped POST parameter. Attackers can inject SQL code through the 'mwpformid' parameter in requests to the admin-ajax.php endpoint with the 'send_mwp_form' action to extract sensitive database contents.",
-      "cvss": {
-        "score": 8.2,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:N",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "WordPress"
-      ],
-      "references": [
-        "http://wow-company.com/",
-        "https://tad.group",
-        "https://wordpress.org/plugins/mwp-forms/",
-        "https://www.exploit-db.com/exploits/41922",
-        "https://www.vulncheck.com/advisories/wow-forms-wordpress-plugin-sql-injection"
-      ],
-      "published": "2026-06-09T13:16:34.123"
-    },
-    {
-      "id": "CVE-2017-20245",
-      "description": "Wow Viral Signups 2.1 WordPress plugin contains an SQL injection vulnerability that allows unauthenticated attackers to extract database information by exploiting the unescaped 'idsignup' POST parameter. Attackers can send crafted requests to the admin-ajax.php endpoint with malicious SQL payloads in the 'idsignup' parameter to read arbitrary data from the database.",
-      "cvss": {
-        "score": 8.2,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:N",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "WordPress"
-      ],
-      "references": [
-        "http://wow-company.com/",
-        "https://tad.group",
-        "https://wordpress.org/plugins/mwp-viral-signup/",
-        "https://www.exploit-db.com/exploits/41921",
-        "https://www.vulncheck.com/advisories/wow-viral-signups-wordpress-plugin-sql-injection"
-      ],
-      "published": "2026-06-09T13:16:34.270"
-    },
-    {
-      "id": "CVE-2017-20246",
-      "description": "KittyCatfish 2.2 plugin for WordPress contains an SQL injection vulnerability that allows unauthenticated attackers to read database contents by exploiting an unescaped GET parameter. Attackers can inject SQL code through the 'kc_ad' parameter in base.css.php or kittycatfish.php to extract sensitive database information using boolean-based blind or time-based blind techniques.",
-      "cvss": {
-        "score": 8.2,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:N",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "WordPress"
-      ],
-      "references": [
-        "https://tad.group",
-        "https://wordpress.org/plugins-wp/kittycatfish/",
-        "https://www.exploit-db.com/exploits/41919",
-        "https://www.vulncheck.com/advisories/kittycatfish-plugin-for-wordpress-sql-injection"
-      ],
-      "published": "2026-06-09T13:16:34.410"
-    },
-    {
-      "id": "CVE-2017-20247",
-      "description": "WordPress Plugin PICA Photo Gallery 1.0 contains an SQL injection vulnerability that allows unauthenticated attackers to execute arbitrary SQL queries by injecting malicious code through the aid parameter. Attackers can send GET requests with crafted SQL payloads in the aid parameter to extract sensitive database information including user credentials and table contents.",
-      "cvss": {
-        "score": 8.2,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:N",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "WordPress"
-      ],
-      "references": [
-        "https://www.apptha.com/",
-        "https://www.exploit-db.com/exploits/41569",
-        "https://www.vulncheck.com/advisories/wordpress-plugin-pica-photo-gallery-sql-injection"
-      ],
-      "published": "2026-06-09T13:16:34.550"
-    },
-    {
-      "id": "CVE-2026-44822",
-      "description": "Out-of-bounds read in Microsoft Office Excel allows an unauthorized attacker to disclose information over a network.",
-      "cvss": {
-        "score": 8.2,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:N",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "Microsoft Office"
-      ],
-      "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-44822"
-      ],
-      "published": "2026-06-09T17:17:18.580"
-    },
-    {
-      "id": "CVE-2026-49948",
-      "description": "Mem0 versions through 0.2.8, fixed in commit ae7f406, contain a missing authorization vulnerability in the self-hosted server component where the POST /configure endpoint modifies global LLM provider and embedder configuration but only verifies authentication via JWT or X-API-Key without validating the caller's role. Any authenticated user holding a distributed API key can redirect all LLM and embedder traffic to an attacker-controlled server, with the malicious configuration persisted to Postgr",
-      "cvss": {
-        "score": 8.1,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N",
         "severity": "HIGH"
       },
       "tier": 1,
@@ -508,58 +210,90 @@
         "PostgreSQL"
       ],
       "references": [
-        "https://github.com/mem0ai/mem0/commit/ae7f4062652df1376990221101d1adbb0819c973",
-        "https://github.com/mem0ai/mem0/issues/5127",
-        "https://github.com/mem0ai/mem0/issues/5384",
-        "https://github.com/mem0ai/mem0/pull/5360",
-        "https://www.vulncheck.com/advisories/mem0-missing-authorization-via-post-configure-endpoint"
+        "https://github.com/NationalSecurityAgency/ghidra/security/advisories/GHSA-vv7r-2rhf-5h7g",
+        "https://www.vulncheck.com/advisories/ghidra-sql-injection-in-postgresql-password-change-via-unescaped-username"
       ],
-      "published": "2026-06-09T16:16:43.450"
+      "published": "2026-06-10T14:16:34.777"
     },
     {
-      "id": "CVE-2026-7383",
-      "description": "Issue summary: A signed integer overflow when sizing the destination\nbuffer for Unicode output in ASN1_mbstring_ncopy() can lead to a heap\nbuffer overflow.\n\nImpact summary: A heap buffer overflow may lead to a crash or possibly\nattacker controlled code execution or other undefined behaviour.\n\nIn ASN1_mbstring_copy() and ASN1_mbstring_ncopy() the destination\nsize for Unicode output is computed in a signed int: by left shift\nof the input character count for BMPSTRING (UTF-16) and\nUNIVERSALSTRING (",
+      "id": "CVE-2026-52758",
+      "description": "Ghidra before 12.1 contains a SQL injection vulnerability in BSim filter types that concatenate user-supplied values directly into SQL queries without escaping or parameterization. Remote attackers can inject arbitrary SQL via the BSim network query protocol to read, modify, or delete data in the PostgreSQL database.",
       "cvss": {
-        "score": 8.1,
-        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
         "severity": "HIGH"
       },
       "tier": 1,
       "matchedProducts": [
-        "OpenSSL"
+        "PostgreSQL"
       ],
       "references": [
-        "https://github.com/openssl/security/commit/4f8d2bddaa2c8e06f9c33390ee1717059a6e4be6",
-        "https://github.com/openssl/security/commit/80c15faaf78042bbb8654a0e234c50c381732f74",
-        "https://github.com/openssl/security/commit/bd17511070fb39a67bfa19682affb765e706a974",
-        "https://github.com/openssl/security/commit/c332adaced43bcbb85f97410597e951c11ec3083",
-        "https://github.com/openssl/security/commit/d32350ae8ef7426718f5aa9e383d4b51398ee255"
+        "https://github.com/NationalSecurityAgency/ghidra/security/advisories/GHSA-8r4f-65cr-fwxm",
+        "https://www.vulncheck.com/advisories/ghidra-sql-injection-via-unescaped-filter-values-in-bsim-search",
+        "https://github.com/NationalSecurityAgency/ghidra/security/advisories/GHSA-8r4f-65cr-fwxm"
       ],
-      "published": "2026-06-09T17:17:50.337"
+      "published": "2026-06-10T14:16:36.170"
     },
     {
-      "id": "CVE-2026-41717",
-      "description": "Spring Data MongoDB contains a SpEL (Spring Expression Language) expression injection vulnerability. The issue occurs during parameter binding when a user-defined repository query method is annotated with @Query and utilizes a capture-all placeholder.\n\nAffected versions:\nSpring Data MongoDB 5.0.0 through 5.0.5; 4.5.0 through 4.5.11; 4.4.0 through 4.4.14; 4.3.0 through 4.3.16; 4.2.0 through 4.2.15; 4.1.0 through 4.1.14; 4.0.0 through 4.0.15; 3.4.0 through 3.4.19.",
+      "id": "CVE-2026-45564",
+      "description": "Roxy-WI is a web interface for managing Haproxy, Nginx, Apache and Keepalived servers. In versions 8.2.6.4 and prior, POST /config/versions/<service>/<server_ip>/<configver>/save interpolates the URL-path configver parameter directly into a config-version path that ends up at os.system(f\"dos2unix -q {cfg}\"). configver is not run through EscapedString (Pydantic doesn't validate path segments declared as str) and the surrounding .. block is the broken tuple-membership patch from GHSA-vapt-004. An ",
       "cvss": {
-        "score": 8.1,
-        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
         "severity": "HIGH"
       },
       "tier": 1,
       "matchedProducts": [
-        "MongoDB"
+        "Nginx"
       ],
       "references": [
-        "https://spring.io/security/cve-2026-41717"
+        "https://github.com/roxy-wi/roxy-wi/security/advisories/GHSA-w42x-3v8j-cmg2",
+        "https://github.com/roxy-wi/roxy-wi/security/advisories/GHSA-w42x-3v8j-cmg2"
       ],
-      "published": "2026-06-10T00:16:51.683"
+      "published": "2026-06-10T15:16:37.307"
     },
     {
-      "id": "CVE-2026-41731",
-      "description": "JsonKafkaHeaderMapper and the deprecated DefaultKafkaHeaderMapper matched type headers against trusted packages using a prefix check, meaning that trusting any package implicitly trusted all of its subpackages. Combined with Jackson's default bean deserialization, a producer could supply crafted header values that caused the consumer to deserialize arbitrary JDK types.\n\nAffected versions:\nSpring for Apache Kafka 4.0.0 through 4.0.5; 3.3.0 through 3.3.15; 3.2.0 through 3.2.13; 2.9.0 through 2.9.1",
+      "id": "CVE-2026-45549",
+      "description": "Roxy-WI is a web interface for managing Haproxy, Nginx, Apache and Keepalived servers. In versions 8.2.6.4 and prior, agent_action (app/routes/smon/agent_routes.py:166-179) has decorators @bp.post('/agent/action/<action>') and @jwt_required() only \u2014 no role check, no group ownership check on the server_ip form field. Any authenticated user, including role 4 (guest), can start, stop, or restart the roxy-wi-smon-agent systemd unit on any server they can name. Roxy-WI executes the systemd action ov",
       "cvss": {
-        "score": 8.1,
-        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "score": 8.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:N/I:L/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Nginx"
+      ],
+      "references": [
+        "https://github.com/roxy-wi/roxy-wi/security/advisories/GHSA-c92j-h72m-ff4j",
+        "https://github.com/roxy-wi/roxy-wi/security/advisories/GHSA-c92j-h72m-ff4j"
+      ],
+      "published": "2026-06-10T15:16:35.997"
+    },
+    {
+      "id": "CVE-2026-45567",
+      "description": "Roxy-WI is a web interface for managing Haproxy, Nginx, Apache and Keepalived servers. In versions 8.2.6.4 and prior, there is an authentication bypass vulnerability via 'api' substring in URL + unauthenticated /api/gpt. At time of publication, there are no publicly available patches.",
+      "cvss": {
+        "score": 8.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:L",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Nginx"
+      ],
+      "references": [
+        "https://github.com/roxy-wi/roxy-wi/security/advisories/GHSA-4fcm-qgg8-w2vf",
+        "https://github.com/roxy-wi/roxy-wi/security/advisories/GHSA-4fcm-qgg8-w2vf"
+      ],
+      "published": "2026-06-10T16:17:07.957"
+    },
+    {
+      "id": "CVE-2026-40998",
+      "description": "Jaxp13XPathTemplate evaluated XPath expressions for StreamSource and SAXSource inputs using a code path that parsed attacker-controlled XML with the JDK's default DocumentBuilderFactory behavior instead of Spring's hardened parser configuration. Applications that evaluate XPath against untrusted XML payloads could therefore be exposed to XML External Entity (XXE) style attacks.\n\nAffected versions:\nSpring Web Services 5.0.0 through 5.0.1; 4.1.0 through 4.1.3; 4.0.0 through 4.0.18; 3.1.0 through 3",
+      "cvss": {
+        "score": 8.2,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:N",
         "severity": "HIGH"
       },
       "tier": 1,
@@ -567,378 +301,66 @@
         "Oracle Java"
       ],
       "references": [
-        "https://spring.io/security/cve-2026-41731"
+        "https://spring.io/security/cve-2026-40998"
       ],
-      "published": "2026-06-10T00:16:52.597"
+      "published": "2026-06-11T07:16:27.787"
     },
     {
-      "id": "CVE-2026-47298",
-      "description": "Improper authorization in Microsoft Office SharePoint allows an authorized attacker to execute code over a network.",
+      "id": "CVE-2026-45565",
+      "description": "Roxy-WI is a web interface for managing Haproxy, Nginx, Apache and Keepalived servers. In versions 8.2.6.4 and prior, EscapedString (app/modules/roxywi/class_models.py:16-30) is the centralised Pydantic validator used on dozens of fields including SSH credential name, username, description, etc. Its if/elif/elif/else flow returns the metacharacter-stripped value without also enforcing the .. block. An attacker who appends a single ;, &, |, $, or backtick to a .. payload routes the value through ",
       "cvss": {
-        "score": 8.0,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H",
+        "score": 8.1,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N",
         "severity": "HIGH"
       },
       "tier": 1,
       "matchedProducts": [
-        "Microsoft Office"
+        "Nginx"
       ],
       "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-47298"
+        "https://github.com/roxy-wi/roxy-wi/security/advisories/GHSA-7qm8-cm8p-9rx3",
+        "https://github.com/roxy-wi/roxy-wi/security/advisories/GHSA-7qm8-cm8p-9rx3"
       ],
-      "published": "2026-06-09T17:17:35.050"
+      "published": "2026-06-10T16:17:07.350"
     },
     {
-      "id": "CVE-2026-47911",
-      "description": "Acrobat Reader versions 24.001.30365, 26.001.21651 and earlier are affected by an out-of-bounds write vulnerability that could result in arbitrary code execution in the context of the current user. Exploitation of this issue requires user interaction in that a victim must open a malicious file.",
+      "id": "CVE-2026-45569",
+      "description": "Roxy-WI is a web interface for managing Haproxy, Nginx, Apache and Keepalived servers. In versions 8.2.6.4 and prior, ommit d4d10006 (\"Expand validation to block .. in config_file_name and configver for improved security\") added a line in app/modules/config/config.py:462. This is tuple-membership, not substring containment \u2014 '..' in (a, b, c) evaluates to True only if any of a, b, c is equal to the literal string '..'. For any realistic path-traversal payload (../../etc/passwd, ..\\\\..\\\\etc\\\\pass",
       "cvss": {
-        "score": 7.8,
-        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+        "score": 8.1,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N",
         "severity": "HIGH"
       },
       "tier": 1,
       "matchedProducts": [
-        "Adobe Acrobat"
+        "Nginx"
       ],
       "references": [
-        "https://helpx.adobe.com/security/products/acrobat/apsb26-63.html"
+        "https://github.com/roxy-wi/roxy-wi/commit/d4d10006",
+        "https://github.com/roxy-wi/roxy-wi/security/advisories/GHSA-j6p4-8532-h9hv"
       ],
-      "published": "2026-06-09T21:17:20.837"
+      "published": "2026-06-10T16:17:08.433"
     },
     {
-      "id": "CVE-2026-47912",
-      "description": "Acrobat Reader versions 24.001.30365, 26.001.21651 and earlier are affected by a Use After Free vulnerability that could result in arbitrary code execution in the context of the current user. Exploitation of this issue requires user interaction in that a victim must open a malicious file.",
+      "id": "CVE-2026-48108",
+      "description": "Russh is a Rust SSH client & server library. From version 0.34.0-beta.1 to before version 0.61.0, russh did not enforce the SSH identification-string rules as deliberately as OpenSSH. In particular, the server-side identification reader used the same permissive path as the client, allowing pre-banner lines from clients, and the reader did not enforce a bounded number of pre-banner lines. For a library server built on russh, this could allow a remote peer to hold connection setup resources in the",
       "cvss": {
-        "score": 7.8,
-        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "Adobe Acrobat"
-      ],
-      "references": [
-        "https://helpx.adobe.com/security/products/acrobat/apsb26-63.html"
-      ],
-      "published": "2026-06-09T21:17:20.990"
-    },
-    {
-      "id": "CVE-2026-47913",
-      "description": "Acrobat Reader versions 24.001.30365, 26.001.21651 and earlier are affected by a Use After Free vulnerability that could result in arbitrary code execution in the context of the current user. Exploitation of this issue requires user interaction in that a victim must open a malicious file.",
-      "cvss": {
-        "score": 7.8,
-        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "Adobe Acrobat"
-      ],
-      "references": [
-        "https://helpx.adobe.com/security/products/acrobat/apsb26-63.html"
-      ],
-      "published": "2026-06-09T21:17:21.117"
-    },
-    {
-      "id": "CVE-2026-47914",
-      "description": "Acrobat Reader versions 24.001.30365, 26.001.21651 and earlier are affected by a Use After Free vulnerability that could result in arbitrary code execution in the context of the current user. Exploitation of this issue requires user interaction in that a victim must open a malicious file.",
-      "cvss": {
-        "score": 7.8,
-        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "Adobe Acrobat"
-      ],
-      "references": [
-        "https://helpx.adobe.com/security/products/acrobat/apsb26-63.html"
-      ],
-      "published": "2026-06-09T21:17:21.230"
-    },
-    {
-      "id": "CVE-2026-47915",
-      "description": "Acrobat Reader versions 24.001.30365, 26.001.21651 and earlier are affected by a Use After Free vulnerability that could result in arbitrary code execution in the context of the current user. Exploitation of this issue requires user interaction in that a victim must open a malicious file.",
-      "cvss": {
-        "score": 7.8,
-        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "Adobe Acrobat"
-      ],
-      "references": [
-        "https://helpx.adobe.com/security/products/acrobat/apsb26-63.html"
-      ],
-      "published": "2026-06-09T21:17:21.357"
-    },
-    {
-      "id": "CVE-2026-47916",
-      "description": "Acrobat Reader versions 24.001.30365, 26.001.21651 and earlier are affected by a Use After Free vulnerability that could result in arbitrary code execution in the context of the current user. Exploitation of this issue requires user interaction in that a victim must open a malicious file.",
-      "cvss": {
-        "score": 7.8,
-        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "Adobe Acrobat"
-      ],
-      "references": [
-        "https://helpx.adobe.com/security/products/acrobat/apsb26-63.html"
-      ],
-      "published": "2026-06-09T21:17:21.477"
-    },
-    {
-      "id": "CVE-2026-47917",
-      "description": "Acrobat Reader versions 24.001.30365, 26.001.21651 and earlier are affected by a Use After Free vulnerability that could result in arbitrary code execution in the context of the current user. Exploitation of this issue requires user interaction in that a victim must open a malicious file.",
-      "cvss": {
-        "score": 7.8,
-        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "Adobe Acrobat"
-      ],
-      "references": [
-        "https://helpx.adobe.com/security/products/acrobat/apsb26-63.html"
-      ],
-      "published": "2026-06-09T21:17:21.590"
-    },
-    {
-      "id": "CVE-2026-47918",
-      "description": "Acrobat Reader versions 24.001.30365, 26.001.21651 and earlier are affected by a Use After Free vulnerability that could result in arbitrary code execution in the context of the current user. Exploitation of this issue requires user interaction in that a victim must open a malicious file.",
-      "cvss": {
-        "score": 7.8,
-        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "Adobe Acrobat"
-      ],
-      "references": [
-        "https://helpx.adobe.com/security/products/acrobat/apsb26-63.html"
-      ],
-      "published": "2026-06-09T21:17:21.710"
-    },
-    {
-      "id": "CVE-2026-47919",
-      "description": "Acrobat Reader versions 24.001.30365, 26.001.21651 and earlier are affected by a Use After Free vulnerability that could result in arbitrary code execution in the context of the current user. Exploitation of this issue requires user interaction in that a victim must open a malicious file.",
-      "cvss": {
-        "score": 7.8,
-        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "Adobe Acrobat"
-      ],
-      "references": [
-        "https://helpx.adobe.com/security/products/acrobat/apsb26-63.html"
-      ],
-      "published": "2026-06-09T21:17:21.833"
-    },
-    {
-      "id": "CVE-2026-47920",
-      "description": "Acrobat Reader versions 24.001.30365, 26.001.21651 and earlier are affected by a Use After Free vulnerability that could result in arbitrary code execution in the context of the current user. Exploitation of this issue requires user interaction in that a victim must open a malicious file.",
-      "cvss": {
-        "score": 7.8,
-        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "Adobe Acrobat"
-      ],
-      "references": [
-        "https://helpx.adobe.com/security/products/acrobat/apsb26-63.html"
-      ],
-      "published": "2026-06-09T21:17:21.950"
-    },
-    {
-      "id": "CVE-2026-47921",
-      "description": "Acrobat Reader versions 24.001.30365, 26.001.21651 and earlier are affected by a Use After Free vulnerability that could result in arbitrary code execution in the context of the current user. Exploitation of this issue requires user interaction in that a victim must open a malicious file.",
-      "cvss": {
-        "score": 7.8,
-        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "Adobe Acrobat"
-      ],
-      "references": [
-        "https://helpx.adobe.com/security/products/acrobat/apsb26-63.html"
-      ],
-      "published": "2026-06-09T21:17:22.087"
-    },
-    {
-      "id": "CVE-2026-47952",
-      "description": "Acrobat Reader versions 24.001.30365, 26.001.21651 and earlier are affected by a Heap-based Buffer Overflow vulnerability that could result in arbitrary code execution in the context of the current user. Exploitation of this issue requires user interaction in that a victim must open a malicious file.",
-      "cvss": {
-        "score": 7.8,
-        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "Adobe Acrobat"
-      ],
-      "references": [
-        "https://helpx.adobe.com/security/products/acrobat/apsb26-63.html"
-      ],
-      "published": "2026-06-09T21:17:23.883"
-    },
-    {
-      "id": "CVE-2026-47955",
-      "description": "Acrobat Reader versions 24.001.30365, 26.001.21651 and earlier are affected by a Use After Free vulnerability that could result in arbitrary code execution in the context of the current user. Exploitation of this issue requires user interaction in that a victim must open a malicious file.",
-      "cvss": {
-        "score": 7.8,
-        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "Adobe Acrobat"
-      ],
-      "references": [
-        "https://helpx.adobe.com/security/products/acrobat/apsb26-63.html"
-      ],
-      "published": "2026-06-09T21:17:24.023"
-    },
-    {
-      "id": "CVE-2026-47959",
-      "description": "Acrobat Reader versions 24.001.30365, 26.001.21651 and earlier are affected by a Stack-based Buffer Overflow vulnerability that could result in arbitrary code execution in the context of the current user. Exploitation of this issue requires user interaction in that a victim must open a malicious file.",
-      "cvss": {
-        "score": 7.8,
-        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "Adobe Acrobat"
-      ],
-      "references": [
-        "https://helpx.adobe.com/security/products/acrobat/apsb26-63.html"
-      ],
-      "published": "2026-06-09T21:17:24.273"
-    },
-    {
-      "id": "CVE-2026-45591",
-      "description": "Uncontrolled resource consumption in ASP.NET Core allows an unauthorized attacker to deny service over a network.",
-      "cvss": {
-        "score": 7.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "Microsoft .NET"
-      ],
-      "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-45591"
-      ],
-      "published": "2026-06-09T17:17:26.933"
-    },
-    {
-      "id": "CVE-2026-47937",
-      "description": "Acrobat Reader versions 24.001.30365, 26.001.21651 and earlier are affected by an Uncontrolled Search Path Element vulnerability that could result in arbitrary code execution in the context of the current user. Exploitation of this issue requires user interaction in that a victim must open a malicious file. Scope is changed.",
-      "cvss": {
-        "score": 7.4,
-        "vector": "CVSS:3.1/AV:L/AC:L/PR:H/UI:R/S:C/C:H/I:H/A:N",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "Adobe Acrobat"
-      ],
-      "references": [
-        "https://helpx.adobe.com/security/products/acrobat/apsb26-63.html"
-      ],
-      "published": "2026-06-09T21:17:23.463"
-    },
-    {
-      "id": "CVE-2026-49818",
-      "description": "The Apache Airflow Samba provider's `GCSToSambaOperator` joined GCS object names to the SMB destination path without a containment check, so an object named with `../` segments resolved a write path outside the configured `destination_path`. An attacker able to write objects into the source GCS bucket \u2014 typically an external data producer distinct from the trusted DAG author \u2014 could write files to arbitrary locations on the Samba target when the operator ran. Upgrade apache-airflow-providers-sam",
-      "cvss": {
-        "score": 6.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N",
+        "score": 5.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
         "severity": "MEDIUM"
       },
       "tier": 1,
       "matchedProducts": [
-        "Samba"
+        "OpenSSH"
       ],
       "references": [
-        "https://github.com/apache/airflow/pull/67857",
-        "https://lists.apache.org/thread/3vs0m3p51psgf54tts18d6336g24x3sf",
-        "http://www.openwall.com/lists/oss-security/2026/06/09/8"
+        "https://github.com/Eugeny/russh/security/advisories/GHSA-76r6-x97p-67vr"
       ],
-      "published": "2026-06-09T09:16:30.443"
+      "published": "2026-06-10T22:17:01.130"
     },
     {
-      "id": "CVE-2026-7542",
-      "description": "The Slider Revolution plugin for WordPress is vulnerable to Sensitive Information Disclosure in versions up to and including 7.0.10. This is due to three compounding design flaws: (1) the plugin leaks a valid backend AJAX nonce (revslider_actions) to all authenticated users including Subscribers via the admin_footer hook; (2) the wordpress.create.image_from_url action is explicitly allowlisted in the $user_allowed array, bypassing the administrator-only access control; (3) the create_wordpress_i",
-      "cvss": {
-        "score": 6.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "WordPress"
-      ],
-      "references": [
-        "https://www.sliderrevolution.com/changelog/",
-        "https://www.wordfence.com/threat-intel/vulnerabilities/id/4f57cac9-5610-454b-affb-86384ea00881?source=cve"
-      ],
-      "published": "2026-06-09T09:16:30.880"
-    },
-    {
-      "id": "CVE-2026-8599",
-      "description": "The MailerPress \u2013 Email Marketing, Newsletter, Email Automation & WooCommerce Emails plugin for WordPress is vulnerable to Stored Cross-Site Scripting via Campaign HTML Content Field in all versions up to, and including, 2.0.4 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with author-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. The public-facing campa",
-      "cvss": {
-        "score": 6.4,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "WordPress"
-      ],
-      "references": [
-        "https://plugins.trac.wordpress.org/browser/mailerpress/tags/2.0.3/src/Actions/Shortcodes/CampaignEmail.php#L161",
-        "https://plugins.trac.wordpress.org/browser/mailerpress/tags/2.0.3/src/Api/Campaigns.php#L2100",
-        "https://plugins.trac.wordpress.org/browser/mailerpress/tags/2.0.3/src/Api/Campaigns.php#L2128",
-        "https://plugins.trac.wordpress.org/browser/mailerpress/tags/2.0.3/src/Api/Campaigns.php#L2137",
-        "https://plugins.trac.wordpress.org/browser/mailerpress/tags/2.0.5/src/Api/Campaigns.php#L2229"
-      ],
-      "published": "2026-06-09T09:16:31.170"
-    },
-    {
-      "id": "CVE-2026-42771",
-      "description": "Issue summary: When the X509_VERIFY_PARAM_set1_email is called by an\napplication to validate a crafted e-mail address, such as during S/MIME\nmessage validation, an out of bounds read can happen.\n\nImpact summary: This out of bounds read will not directly exfiltrate\nthe data read to the attacker so the most likely result is a crash and\na Denial of Service.\n\nAn internal helper function called from X509_VERIFY_PARAM_[set|add]_email()\nused a wrong length when validating the local part of an email add",
-      "cvss": {
-        "score": 6.2,
-        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
-        "severity": "MEDIUM"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "OpenSSL"
-      ],
-      "references": [
-        "https://github.com/openssl/security/commit/6cd187689f8180c1f8a3acde21f88190c4a20de7",
-        "https://openssl-library.org/news/secadv/20260609.txt"
-      ],
-      "published": "2026-06-09T17:17:08.663"
-    },
-    {
-      "id": "CVE-2026-49762",
-      "description": "Uncontrolled Resource Consumption vulnerability in the Elixir standard library's Version module allows an attacker who controls a version string to cause a denial of service through CPU and memory exhaustion.\n\nThe version parser converts numeric version components (major, minor, patch and numeric pre-release/build identifiers) to integers without bounding their length. A single large all-digit component therefore forces a super-linear, non-yielding base-10 to arbitrary-precision integer conversi",
+      "id": "CVE-2026-46529",
+      "description": "Atril Document Viewer is the default document reader of the MATE desktop environment for Linux. A single-click remote code execution vulnerability in versions prior to 1.26.3 and 1.28.4 allows an attacker to achieve arbitrary code execution as the user by tricking them into clicking a link inside a malicious PDF document. The PDF can be packaged as a polyglot file that is simultaneously a valid PDF and a valid ELF shared library, making the attack a single-file, single-click, configuration-indep",
       "cvss": {
         "score": null,
         "vector": null,
@@ -946,241 +368,20 @@
       },
       "tier": 1,
       "matchedProducts": [
-        "Erlang/OTP"
+        "MATE Desktop"
       ],
       "references": [
-        "https://cna.erlef.org/cves/CVE-2026-49762.html",
-        "https://github.com/elixir-lang/elixir/commit/c64417d72fd5c7d09e963ca3ac5fa2b140978d9e",
-        "https://github.com/elixir-lang/elixir/security/advisories/GHSA-w2h8-8x3g-278p",
-        "https://osv.dev/vulnerability/EEF-CVE-2026-49762"
+        "https://github.com/mate-desktop/atril/releases/tag/v1.26.3",
+        "https://github.com/mate-desktop/atril/releases/tag/v1.28.4",
+        "https://github.com/mate-desktop/atril/security/advisories/GHSA-vgv2-m826-8f6f",
+        "http://www.openwall.com/lists/oss-security/2026/05/19/34",
+        "http://www.openwall.com/lists/oss-security/2026/05/21/7"
       ],
-      "published": "2026-06-09T14:16:44.317"
+      "published": "2026-06-10T20:17:28.570"
     },
     {
-      "id": "CVE-2026-44817",
-      "description": "Integer underflow (wrap or wraparound) in Microsoft Office Excel allows an unauthorized attacker to execute code locally.",
-      "cvss": {
-        "score": 7.8,
-        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Microsoft Office"
-      ],
-      "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-44817"
-      ],
-      "published": "2026-06-09T17:17:17.890"
-    },
-    {
-      "id": "CVE-2026-44819",
-      "description": "Heap-based buffer overflow in Microsoft Office allows an unauthorized attacker to execute code locally.",
-      "cvss": {
-        "score": 7.8,
-        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Microsoft Office"
-      ],
-      "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-44819"
-      ],
-      "published": "2026-06-09T17:17:18.180"
-    },
-    {
-      "id": "CVE-2026-44820",
-      "description": "Integer underflow (wrap or wraparound) in Microsoft Office Excel allows an unauthorized attacker to execute code locally.",
-      "cvss": {
-        "score": 7.8,
-        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Microsoft Office"
-      ],
-      "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-44820"
-      ],
-      "published": "2026-06-09T17:17:18.313"
-    },
-    {
-      "id": "CVE-2026-44823",
-      "description": "Integer underflow (wrap or wraparound) in Microsoft Office Excel allows an unauthorized attacker to execute code locally.",
-      "cvss": {
-        "score": 7.8,
-        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Microsoft Office"
-      ],
-      "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-44823"
-      ],
-      "published": "2026-06-09T17:17:18.720"
-    },
-    {
-      "id": "CVE-2026-44824",
-      "description": "Heap-based buffer overflow in Microsoft Office allows an unauthorized attacker to execute code locally.",
-      "cvss": {
-        "score": 7.8,
-        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Microsoft Office"
-      ],
-      "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-44824"
-      ],
-      "published": "2026-06-09T17:17:18.857"
-    },
-    {
-      "id": "CVE-2026-45457",
-      "description": "Untrusted pointer dereference in Microsoft Office Word allows an unauthorized attacker to execute code locally.",
-      "cvss": {
-        "score": 7.8,
-        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Microsoft Office"
-      ],
-      "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-45457"
-      ],
-      "published": "2026-06-09T17:17:19.937"
-    },
-    {
-      "id": "CVE-2026-45469",
-      "description": "Integer underflow (wrap or wraparound) in Microsoft Office Excel allows an unauthorized attacker to execute code locally.",
-      "cvss": {
-        "score": 7.8,
-        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Microsoft Office"
-      ],
-      "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-45469"
-      ],
-      "published": "2026-06-09T17:17:21.460"
-    },
-    {
-      "id": "CVE-2026-45471",
-      "description": "Untrusted pointer dereference in Microsoft Office Word allows an unauthorized attacker to execute code locally.",
-      "cvss": {
-        "score": 7.8,
-        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Microsoft Office"
-      ],
-      "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-45471"
-      ],
-      "published": "2026-06-09T17:17:21.600"
-    },
-    {
-      "id": "CVE-2026-45475",
-      "description": "Heap-based buffer overflow in Microsoft Office allows an unauthorized attacker to execute code locally.",
-      "cvss": {
-        "score": 7.8,
-        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Microsoft Office"
-      ],
-      "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-45475"
-      ],
-      "published": "2026-06-09T17:17:22.007"
-    },
-    {
-      "id": "CVE-2026-45486",
-      "description": "Untrusted pointer dereference in Microsoft Office Word allows an unauthorized attacker to execute code locally.",
-      "cvss": {
-        "score": 7.8,
-        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Microsoft Office"
-      ],
-      "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-45486"
-      ],
-      "published": "2026-06-09T17:17:23.193"
-    },
-    {
-      "id": "CVE-2026-45643",
-      "description": "Untrusted pointer dereference in Microsoft Office Word allows an unauthorized attacker to execute code locally.",
-      "cvss": {
-        "score": 7.8,
-        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Microsoft Office"
-      ],
-      "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-45643"
-      ],
-      "published": "2026-06-09T17:17:31.410"
-    },
-    {
-      "id": "CVE-2026-45645",
-      "description": "Heap-based buffer overflow in Microsoft Office allows an unauthorized attacker to execute code locally.",
-      "cvss": {
-        "score": 7.8,
-        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Microsoft Office"
-      ],
-      "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-45645"
-      ],
-      "published": "2026-06-09T17:17:31.667"
-    },
-    {
-      "id": "CVE-2026-47292",
-      "description": "Inclusion of functionality from untrusted control sphere in Visual Studio Code allows an unauthorized attacker to elevate privileges locally.",
-      "cvss": {
-        "score": 7.8,
-        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Visual Studio",
-        "Visual Studio Code"
-      ],
-      "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-47292"
-      ],
-      "published": "2026-06-09T17:17:34.800"
-    },
-    {
-      "id": "CVE-2017-20250",
-      "description": "Mac Photo Gallery 3.0 contains a path traversal vulnerability that allows unauthenticated attackers to download arbitrary files by manipulating the albid parameter. Attackers can send requests to macdownload.php with directory traversal sequences to access sensitive files like wp-load.php outside the intended plugin directory.",
+      "id": "CVE-2026-3018",
+      "description": "The Newsletters plugin for WordPress is vulnerable to time-based SQL Injection via the \u2018wpmlsubscriber_id\u2019 parameter in all versions up to, and including, 4.13 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query.  This makes it possible for unauthenticated attackers to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database.",
       "cvss": {
         "score": 7.5,
         "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
@@ -1191,15 +392,15 @@
         "WordPress"
       ],
       "references": [
-        "https://www.apptha.com/",
-        "https://www.exploit-db.com/exploits/41566",
-        "https://www.vulncheck.com/advisories/wordpress-plugin-mac-photo-gallery-arbitrary-file-download"
+        "https://plugins.trac.wordpress.org/browser/newsletters-lite/tags/4.11/wp-mailinglist-plugin.php#L6040",
+        "https://plugins.trac.wordpress.org/changeset/3566485/newsletters-lite",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/8e2672b5-64a2-4b30-b0be-2a9303d46ac1?source=cve"
       ],
-      "published": "2026-06-09T13:16:34.993"
+      "published": "2026-06-10T10:16:31.713"
     },
     {
-      "id": "CVE-2026-34180",
-      "description": "Issue summary: Parsing a crafted DER-encoded ASN.1 structure with a primitive\nelement whose content exceeds 2 gigabytes in length may cause a heap buffer\nover-read on 64-bit Unix and Unix-like platforms.\n\nImpact summary: The heap buffer over-read may crash the application (Denial of\nService) or to load into the decoded ASN.1 object contents of memory beyond the\nend of the input buffer.  More typically such ASN.1 elements would instead be\ntruncated.\n\nAn integer truncation in OpenSSL's ASN.1 decod",
+      "id": "CVE-2025-71329",
+      "description": "image-size through 2.0.2 contains a denial of service vulnerability that allows remote attackers to permanently block the Node.js event loop by supplying a specially crafted image buffer with a zero-valued size field in a recognized box-type. Attackers can trigger an infinite loop in the JXL or HEIF image parsers by providing a crafted image containing a box with a size of zero, causing the offset to never advance and permanently hanging the application.",
       "cvss": {
         "score": 7.5,
         "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
@@ -1207,20 +408,37 @@
       },
       "tier": 2,
       "matchedProducts": [
-        "OpenSSL"
+        "Node.js"
       ],
       "references": [
-        "https://github.com/openssl/security/commit/1c6908e4fa5fa568752221d8eaf561a809751e5d",
-        "https://github.com/openssl/security/commit/cbe418ae978539cf14a398a207dba834c0e93e83",
-        "https://github.com/openssl/security/commit/d93853c42110d6319e3df07842b488cb9f7ac5ff",
-        "https://github.com/openssl/security/commit/da5d62af75f69d6fbf7803743d7c56ac75461e43",
-        "https://github.com/openssl/security/commit/f696c73c3e61b8c502d040af62e690c060908a16"
+        "https://joshua.hu/image-size-infinite-loop-dos-vulnerabilities",
+        "https://web.archive.org/web/20260224152152/https://github.com/image-size/image-size/pull/439",
+        "https://www.vulncheck.com/advisories/image-size-denial-of-service-via-infinite-loop-in-jxl-heif-parser"
       ],
-      "published": "2026-06-09T17:17:04.600"
+      "published": "2026-06-10T14:16:30.160"
     },
     {
-      "id": "CVE-2026-40376",
-      "description": "Improper input validation in Visual Studio Code allows an unauthorized attacker to elevate privileges over a network.",
+      "id": "CVE-2025-71330",
+      "description": "image-size through 2.0.2 contains a denial of service vulnerability that allows remote attackers to permanently block the Node.js event loop by supplying a specially crafted ICNS image buffer. Attackers can craft an ICNS buffer containing valid magic bytes and a zero-valued entry length field to trigger an infinite loop in the ICNS parser, as the offset is never incremented when the entry length field is 0, causing the while loop condition to remain true indefinitely.",
+      "cvss": {
+        "score": 7.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "Node.js"
+      ],
+      "references": [
+        "https://joshua.hu/image-size-infinite-loop-dos-vulnerabilities",
+        "https://web.archive.org/web/20260224152152/https://github.com/image-size/image-size/pull/439",
+        "https://www.vulncheck.com/advisories/image-size-denial-of-service-via-malformed-icns-image-parsing"
+      ],
+      "published": "2026-06-10T14:16:30.387"
+    },
+    {
+      "id": "CVE-2026-1220",
+      "description": "Race in V8 in Google Chrome prior to 144.0.7559.99 allowed a remote attacker to potentially exploit type confusion via a crafted HTML page. (Chromium security severity: High)",
       "cvss": {
         "score": 7.5,
         "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H",
@@ -1228,17 +446,18 @@
       },
       "tier": 2,
       "matchedProducts": [
-        "Visual Studio",
-        "Visual Studio Code"
+        "Google Chrome"
       ],
       "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-40376"
+        "https://chromereleases.googleblog.com/2026/01/stable-channel-update-for-desktop_20.html",
+        "https://issues.chromium.org/issues/473851441",
+        "https://issues.chromium.org/issues/473851441"
       ],
-      "published": "2026-06-09T17:17:06.110"
+      "published": "2026-06-10T20:16:38.643"
     },
     {
-      "id": "CVE-2026-42764",
-      "description": "Issue summary: Receiving a QUIC initial packet with an invalid token may\ntrigger a NULL pointer dereference in the OpenSSL QUIC server with\naddress validation disabled.\n\nImpact summary: NULL pointer dereference typically causes abnormal termination\nof the affected QUIC server process and a Denial of Service.\n\nIf the address validation is disabled in the OpenSSL QUIC server\nimplementation, an attacker can crash the server by sending an initial\npacket with an invalid or expired token.\n\nBy default,",
+      "id": "CVE-2026-46679",
+      "description": "libp2p is a JavaScript Implementation of libp2p networking stack. Prior to version 15.0.23, three cooperating omissions in @libp2p/gossipsub allow an unauthenticated single peer to exhaust the Node.js heap of any gossipsub node with default options. This issue has been patched in version 15.0.23.",
       "cvss": {
         "score": 7.5,
         "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
@@ -1246,132 +465,16 @@
       },
       "tier": 2,
       "matchedProducts": [
-        "OpenSSL"
+        "Node.js"
       ],
       "references": [
-        "https://github.com/openssl/security/commit/5e3ed291b8af0b03d5d3b9e56a1da69a187e9729",
-        "https://github.com/openssl/security/commit/a45a0aba8095682c88ff4fc4a784892b8c6f0677",
-        "https://github.com/openssl/security/commit/bf29a458c1a231eca87e384c62b9c2553fa57a91",
-        "https://openssl-library.org/news/secadv/20260609.txt"
+        "https://github.com/libp2p/js-libp2p/security/advisories/GHSA-4f8r-922h-2vgv"
       ],
-      "published": "2026-06-09T17:17:07.693"
+      "published": "2026-06-10T22:17:00.300"
     },
     {
-      "id": "CVE-2026-42765",
-      "description": "Issue summary: When a partial-chain certificate verification is enabled\ntogether with OCSP response checking for the whole chain, a NULL dereference\nwill happen if the verified chain does not have a self-signed trusted anchor,\ncrashing the process.\n\nImpact summary: A NULL pointer dereference can trigger a crash which leads to a\nDenial of Service for an application.\n\nWhen performing OCSP response checking for certificates in the verification\nchain, the code always tries to access the next certifi",
-      "cvss": {
-        "score": 7.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "OpenSSL"
-      ],
-      "references": [
-        "https://github.com/openssl/security/commit/14340b7fa1d444615486bc137014b064e64ec334",
-        "https://github.com/openssl/security/commit/eb345da18ce2216b2f3ade9c2bc23e068487fa97",
-        "https://openssl-library.org/news/secadv/20260609.txt"
-      ],
-      "published": "2026-06-09T17:17:07.843"
-    },
-    {
-      "id": "CVE-2026-45445",
-      "description": "Issue summary: When an application drives an AES-OCB context through the\npublic EVP_Cipher() one-shot interface, the application-supplied\ninitialisation vector (IV) is silently discarded.\n\nImpact summary: Every message encrypted under the same key uses the\nsame effective nonce regardless of the IV supplied by the caller,\nresulting in (key, nonce) reuse and loss of confidentiality.  If the\nsame code path is used to compute the authentication tag, the tag\ndepends only on the (key, IV) pair and not",
-      "cvss": {
-        "score": 7.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
-        "severity": "HIGH"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "OpenSSL"
-      ],
-      "references": [
-        "https://github.com/openssl/security/commit/323f0b6e7d530a4cb4336d50c88cb70f3ac2a451",
-        "https://github.com/openssl/security/commit/787a6dfba81b7b09c1e05ab31396c0cd7c36b3f7",
-        "https://github.com/openssl/security/commit/7ac4715234ee72d9f3c93426a2c08554b5b771af",
-        "https://github.com/openssl/security/commit/843c9b94ca9c2ed248bb30127bb4f3d7af0d607c",
-        "https://github.com/openssl/security/commit/983d54b5cce8d16147548ed1a37892d1720bbab6"
-      ],
-      "published": "2026-06-09T17:17:18.993"
-    },
-    {
-      "id": "CVE-2026-9076",
-      "description": "Issue summary: When CMS password-based decryption (RFC 3211 / PWRI key unwrap)\nprocesses attacker-supplied CMS data, an attacker-chosen stream-mode KEK\ncipher can trigger a heap out-of-bounds read in kek_unwrap_key().\n\nImpact summary: A heap buffer over-read may trigger a crash which leads to\nDenial of Service for an application if the input buffer ends at a memory\npage boundary and the following page is unmapped. There is no information\ndisclosure as the over-read bytes are not revealed to the ",
-      "cvss": {
-        "score": 7.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "OpenSSL"
-      ],
-      "references": [
-        "https://github.com/openssl/security/commit/05b066366842f930fadd9a6e94df98030af431bb",
-        "https://github.com/openssl/security/commit/3d8d5bc1056b2f62da9fede23fedbf47e85187b0",
-        "https://github.com/openssl/security/commit/715349a1d7c6db970e6815dafb90915f07307f98",
-        "https://github.com/openssl/security/commit/77bf00ab13f6ff5e516535432f0328ed70ec0c26",
-        "https://github.com/openssl/security/commit/eecbe330977e8d023aae1ca2d9bdbe983ef3fdc6"
-      ],
-      "published": "2026-06-09T17:17:50.997"
-    },
-    {
-      "id": "CVE-2026-9740",
-      "description": "A vulnerability in MongoDB Server's BSON validation logic allows an unauthenticated user to crash the mongod process by sending a specially crafted message. The BSON validator's handling of certain nested binary data structures permits uncontrolled mutual recursion between validation functions, where each re-entry resets internal depth tracking.",
-      "cvss": {
-        "score": 7.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "MongoDB",
-        "ESET"
-      ],
-      "references": [
-        "https://jira.mongodb.org/browse/SERVER-125063"
-      ],
-      "published": "2026-06-09T23:17:03.437"
-    },
-    {
-      "id": "CVE-2026-45481",
-      "description": "Improper neutralization of input during web page generation ('cross-site scripting') in Microsoft Office SharePoint allows an authorized attacker to perform spoofing over a network.",
-      "cvss": {
-        "score": 7.3,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:N",
-        "severity": "HIGH"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Microsoft Office"
-      ],
-      "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-45481"
-      ],
-      "published": "2026-06-09T17:17:22.417"
-    },
-    {
-      "id": "CVE-2026-47634",
-      "description": "Improper neutralization of input during web page generation ('cross-site scripting') in Microsoft Office SharePoint allows an authorized attacker to perform spoofing over a network.",
-      "cvss": {
-        "score": 7.3,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:N",
-        "severity": "HIGH"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Microsoft Office"
-      ],
-      "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-47634"
-      ],
-      "published": "2026-06-09T17:17:35.300"
-    },
-    {
-      "id": "CVE-2026-11837",
-      "description": "A local privilege escalation vulnerability was found in the ansible.posix authorized_key module. The module's keyfile() function uses os.chown() instead of os.lchown() and opens files without O_NOFOLLOW when managing SSH authorized keys. An unprivileged local user can pre-stage symbolic links in their ~/.ssh directory to redirect file ownership changes to arbitrary system paths when an operator runs the authorized_key task as root, leading to local privilege escalation.",
+      "id": "CVE-2026-11417",
+      "description": "OS command injection in the NodejsFunction local bundling pipeline in aws-cdk-lib before 2.245.0 (2.246.0 on Windows) might allow an actor who controls the value of one or more bundling properties (externalModules, define, loader, inject, or esbuildArgs) to execute arbitrary commands on the host running the CDK toolchain via injected shell metacharacters. This issue requires the threat actor to control the value of one or more of the affected bundling properties in the CDK application.\n\n\n\nTo rem",
       "cvss": {
         "score": 7.3,
         "vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H",
@@ -1379,475 +482,106 @@
       },
       "tier": 2,
       "matchedProducts": [
-        "Ansible"
+        "Node.js"
       ],
       "references": [
-        "https://access.redhat.com/security/cve/CVE-2026-11837",
-        "https://bugzilla.redhat.com/show_bug.cgi?id=2487424"
+        "https://aws.amazon.com/security/security-bulletins/2026-041-aws/",
+        "https://github.com/aws/aws-cdk/releases/tag/v2.245.0",
+        "https://github.com/aws/aws-cdk/security/advisories/GHSA-999r-qq7v-r334"
       ],
-      "published": "2026-06-10T05:16:38.510"
+      "published": "2026-06-10T18:16:39.940"
     },
     {
-      "id": "CVE-2026-24349",
-      "description": "A vulnerability has been identified in SIMATIC WinCC Unified PC Runtime V16 (All versions), SIMATIC WinCC Unified PC Runtime V17 (All versions), SIMATIC WinCC Unified PC Runtime V18 (All versions), SIMATIC WinCC Unified PC Runtime V19 (All versions), SIMATIC WinCC Unified PC Runtime V20 (All versions), SIMATIC WinCC Unified PC Runtime V21 (All versions < V21 Update 2). Insufficient protection of key material in WinCC Certificate Manager that could allow an attacker to extract sensitive informati",
+      "id": "CVE-2026-53689",
+      "description": "libnfs through 6.0.2 before 55c18ea does not validate a string size, leading to an integer overflow during a connection to a crafted NFS server. This occurs in libnfs_zdr_string in lib/libnfs-zdr.c.",
       "cvss": {
         "score": 7.1,
-        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:C/C:H/I:N/A:N",
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:L",
         "severity": "HIGH"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "NFS"
+      ],
+      "references": [
+        "https://github.com/sahlberg/libnfs/commit/55c18ea33a83d667f79f0ef209c96895795c729f"
+      ],
+      "published": "2026-06-10T15:16:42.350"
+    },
+    {
+      "id": "CVE-2026-45561",
+      "description": "Roxy-WI is a web interface for managing Haproxy, Nginx, Apache and Keepalived servers. In versions 8.2.6.4 and prior, the /smon/agent/{version,uptime,status,checks}/<server_ip> family of routes takes the URL path component verbatim into requests.get(f'http://{server_ip}:{agent_port}/...'). The path component is constrained only by Flask's default URL converter, which permits any value (including IPv4 literals like 169.254.169.254, RFC1918 ranges, and 127.0.0.1). At time of publication, there are",
+      "cvss": {
+        "score": 6.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "Nginx"
+      ],
+      "references": [
+        "https://github.com/roxy-wi/roxy-wi/security/advisories/GHSA-2crj-7rqc-x7rq",
+        "https://github.com/roxy-wi/roxy-wi/security/advisories/GHSA-2crj-7rqc-x7rq"
+      ],
+      "published": "2026-06-10T15:16:37.023"
+    },
+    {
+      "id": "CVE-2026-40985",
+      "description": "Applications that configure the WebFlowELExpressionParser are vulnerable to the use of malicious Unified EL expressions.\n\nAffected versions:\nSpring Web Flow 4.0.0; 3.0.0 through 3.0.1; 2.5.0 through 2.5.1.",
+      "cvss": {
+        "score": 6.4,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:R/S:U/C:H/I:H/A:N",
+        "severity": "MEDIUM"
       },
       "tier": 2,
       "matchedProducts": [
         "Ubiquiti/UniFi"
       ],
       "references": [
-        "https://cert-portal.siemens.com/productcert/html/ssa-063511.html"
+        "https://spring.io/security/cve-2026-40985"
       ],
-      "published": "2026-06-09T10:16:42.967"
+      "published": "2026-06-11T05:16:33.757"
     },
     {
-      "id": "CVE-2026-48569",
-      "description": "Improper input validation in Visual Studio Code allows an unauthorized attacker to bypass a security feature locally.",
+      "id": "CVE-2026-45560",
+      "description": "Roxy-WI is a web interface for managing Haproxy, Nginx, Apache and Keepalived servers. In versions 8.2.6.4 and prior, wrap_line (app/modules/common/common.py:181-186) and highlight_word (app/modules/common/common.py:188-192) build raw HTML by string concatenation with no escaping. The frontend (app/static/js/script.js, log-viewer paths) uses .html(data) / .append(data) to inject the response body. Anyone able to write a line into a managed HAProxy/Nginx access log (i.e. anyone who can send an HT",
       "cvss": {
-        "score": 7.1,
-        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:C/C:H/I:L/A:N",
-        "severity": "HIGH"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Visual Studio",
-        "Visual Studio Code"
-      ],
-      "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-48569"
-      ],
-      "published": "2026-06-09T17:17:45.527"
-    },
-    {
-      "id": "CVE-2026-44818",
-      "description": "Integer underflow (wrap or wraparound) in Microsoft Office Excel allows an unauthorized attacker to execute code locally.",
-      "cvss": {
-        "score": 7.0,
-        "vector": "CVSS:3.1/AV:L/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Microsoft Office"
-      ],
-      "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-44818"
-      ],
-      "published": "2026-06-09T17:17:18.040"
-    },
-    {
-      "id": "CVE-2026-47293",
-      "description": "Use after free in Microsoft Office Click-To-Run allows an authorized attacker to elevate privileges locally.",
-      "cvss": {
-        "score": 7.0,
-        "vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Microsoft Office"
-      ],
-      "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-47293"
-      ],
-      "published": "2026-06-09T17:17:34.927"
-    },
-    {
-      "id": "CVE-2025-67862",
-      "description": "An Internal Asset Exposed to Unsafe Debug Access Level or State vulnerability [CWE-1244] vulnerability in Fortinet FortiOS 7.6.0 through 7.6.2, FortiOS 7.4.0 through 7.4.7, FortiOS 7.2.0 through 7.2.10, FortiOS 7.0.0 through 7.0.16, FortiOS 6.4 all versions, FortiProxy 7.6.0 through 7.6.3, FortiProxy 7.4.0 through 7.4.10, FortiProxy 7.2.0 through 7.2.14, FortiProxy 7.0 all versions may allow an authenticated admin to execute lua scripts via crafted CLI commands.",
-      "cvss": {
-        "score": 6.7,
-        "vector": "CVSS:3.1/AV:L/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
+        "score": 6.1,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
         "severity": "MEDIUM"
       },
       "tier": 2,
       "matchedProducts": [
-        "Fortigate/FortiOS"
+        "Nginx"
       ],
       "references": [
-        "https://fortiguard.fortinet.com/psirt/FG-IR-26-143"
+        "https://github.com/roxy-wi/roxy-wi/security/advisories/GHSA-28m4-mmr2-83p6",
+        "https://github.com/roxy-wi/roxy-wi/security/advisories/GHSA-28m4-mmr2-83p6"
       ],
-      "published": "2026-06-09T16:16:35.500"
+      "published": "2026-06-10T15:16:36.883"
     },
     {
-      "id": "CVE-2026-49938",
-      "description": "A improper access control vulnerability in Fortinet FortiPortal 7.4.0 through 7.4.7, FortiPortal 7.2.0 through 7.2.8, FortiPortal 7.0 all versions may allow attacker to improper access control via <insert attack vector here>",
+      "id": "CVE-2026-45566",
+      "description": "Roxy-WI is a web interface for managing Haproxy, Nginx, Apache and Keepalived servers. In versions 8.2.6.4 and prior, the login flow allow-lists next URLs by rejecting strings containing https:// or http:// substrings, then constructs https://{request.host}{next_url} and the JS client redirects via window.location.replace(). The block does not consider the userinfo@host syntax. next=@evil.example/path produces https://victim.example@evil.example/path, which all modern browsers route to evil.exam",
       "cvss": {
-        "score": 6.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
+        "score": 6.1,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
         "severity": "MEDIUM"
       },
       "tier": 2,
       "matchedProducts": [
-        "Fortigate/FortiOS"
+        "Nginx"
       ],
       "references": [
-        "https://fortiguard.fortinet.com/psirt/FG-IR-26-140"
+        "https://github.com/roxy-wi/roxy-wi/security/advisories/GHSA-xw9x-68gg-mp5h",
+        "https://github.com/roxy-wi/roxy-wi/security/advisories/GHSA-xw9x-68gg-mp5h"
       ],
-      "published": "2026-06-09T16:16:43.323"
+      "published": "2026-06-10T16:17:07.600"
     },
     {
-      "id": "CVE-2026-45454",
-      "description": "Improper limitation of a pathname to a restricted directory ('path traversal') in Microsoft Office SharePoint allows an authorized attacker to execute code over a network.",
-      "cvss": {
-        "score": 6.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Microsoft Office"
-      ],
-      "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-45454"
-      ],
-      "published": "2026-06-09T17:17:19.527"
-    },
-    {
-      "id": "CVE-2026-47284",
-      "description": "Exposure of sensitive information to an unauthorized actor in Visual Studio Code allows an unauthorized attacker to disclose information over a network.",
-      "cvss": {
-        "score": 6.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Visual Studio",
-        "Visual Studio Code"
-      ],
-      "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-47284"
-      ],
-      "published": "2026-06-09T17:17:34.077"
-    },
-    {
-      "id": "CVE-2026-47287",
-      "description": "Relative path traversal in Visual Studio Code allows an unauthorized attacker to perform tampering over a network.",
-      "cvss": {
-        "score": 6.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:H/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Visual Studio",
-        "Visual Studio Code"
-      ],
-      "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-47287"
-      ],
-      "published": "2026-06-09T17:17:34.193"
-    },
-    {
-      "id": "CVE-2026-9743",
-      "description": "In MongoDB Server 8.0, an aggregation stage can leave its _subPipeline field null during processing of certain pipelines. If a getMore is subsequently issued on the same cursor, the server may dereference this null sub-pipeline when reattaching to the operation context, accessing an invalid address and crashing the process. This issue allows an authenticated user who can run aggregation pipelines to cause a denial of service by issuing a specially crafted aggregation followed by getMore on affec",
-      "cvss": {
-        "score": 6.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "MongoDB"
-      ],
-      "references": [
-        "https://jira.mongodb.org/browse/SERVER-123688"
-      ],
-      "published": "2026-06-09T23:17:03.853"
-    },
-    {
-      "id": "CVE-2026-9747",
-      "description": "Adding fromRouter:true and runtimeConstants.userRoles could cause aggregations to crash mongodb server.",
-      "cvss": {
-        "score": 6.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "MongoDB"
-      ],
-      "references": [
-        "https://jira.mongodb.org/browse/SERVER-123918"
-      ],
-      "published": "2026-06-09T23:17:04.120"
-    },
-    {
-      "id": "CVE-2026-9750",
-      "description": "An authenticated user can cause a MongoDB server to crash or return incorrect results by creating documents that interfere with internal metadata processing during query execution. This stems from insufficient separation between user-controlled document fields and internal metadata in certain execution paths.",
-      "cvss": {
-        "score": 6.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "MongoDB"
-      ],
-      "references": [
-        "https://jira.mongodb.org/browse/SERVER-123633"
-      ],
-      "published": "2026-06-09T23:17:04.510"
-    },
-    {
-      "id": "CVE-2026-8677",
-      "description": "The Prime Elementor Addons \u2013 Lightweight Elementor Widgets for Faster Pages plugin for WordPress is vulnerable to Stored Cross-Site Scripting via Widget HTML Tag Settings in all versions up to, and including, 1.3.3 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. The exploit succeeds even for ",
-      "cvss": {
-        "score": 6.4,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "WordPress"
-      ],
-      "references": [
-        "https://plugins.trac.wordpress.org/browser/unlimited-elementor-inner-sections-by-boomdevs/tags/1.2.0/includes/Traits/PostGridRenderer.php#L164",
-        "https://plugins.trac.wordpress.org/browser/unlimited-elementor-inner-sections-by-boomdevs/tags/1.2.0/includes/Widgets/AdvancedAccordion.php#L1396",
-        "https://plugins.trac.wordpress.org/browser/unlimited-elementor-inner-sections-by-boomdevs/tags/1.2.0/includes/Widgets/CallToAction.php#L1631",
-        "https://plugins.trac.wordpress.org/browser/unlimited-elementor-inner-sections-by-boomdevs/tags/1.2.0/includes/Widgets/Counter.php#L1079",
-        "https://plugins.trac.wordpress.org/browser/unlimited-elementor-inner-sections-by-boomdevs/tags/1.2.0/includes/Widgets/InfoBox.php#L1623"
-      ],
-      "published": "2026-06-09T09:16:31.310"
-    },
-    {
-      "id": "CVE-2026-41719",
-      "description": "A SpEL Injection vulnerability exists in the Spring Data KeyValue if unsanitized user input is passed as Sort into a repository query method that delegates evaluation to the SpelPropertyComparator.\n\nAffected versions:\nSpring Data KeyValue / Spring Data Redis 4.0.0 through 4.0.5; 3.5.0 through 3.5.11; 3.4.0 through 3.4.14; 3.3.0 through 3.3.16; 3.2.0 through 3.2.15; 3.1.0 through 3.1.14; 3.0.0 through 3.0.15; 2.7.0 through 2.7.19.",
-      "cvss": {
-        "score": 6.4,
-        "vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:L/A:L",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Redis"
-      ],
-      "references": [
-        "https://spring.io/security/cve-2026-41719"
-      ],
-      "published": "2026-06-10T00:16:51.800"
-    },
-    {
-      "id": "CVE-2025-8444",
-      "description": "The Animation Addons for Elementor \u2013 GSAP Powered Elementor Addons & Website Templates plugin for WordPress is vulnerable to DOM-Based Stored Cross-Site Scripting via the multiple parameters in all versions up to, and including, 2.6.7 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with Contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
-      "cvss": {
-        "score": 6.4,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "WordPress"
-      ],
-      "references": [
-        "https://plugins.trac.wordpress.org/browser/animation-addons-for-elementor/trunk/assets/js/wcf-addons.min.js",
-        "https://www.wordfence.com/threat-intel/vulnerabilities/id/9d1cb486-f461-4a06-ae9a-39669109b2c0?source=cve"
-      ],
-      "published": "2026-06-10T05:16:35.840"
-    },
-    {
-      "id": "CVE-2023-43686",
-      "description": "An issue was discovered in Malwarebytes 4.x and 5.x (and Nebula 2020-10-21 and later). A large number of Firefox preference files can cause the parser to ignore other browser configuration files, leading to a denial of service.",
-      "cvss": {
-        "score": 6.2,
-        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Mozilla Firefox"
-      ],
-      "references": [
-        "https://www.malwarebytes.com/secure/cves/cve-2023-43686"
-      ],
-      "published": "2026-06-09T19:16:41.907"
-    },
-    {
-      "id": "CVE-2026-42766",
-      "description": "Issue summary: A specially crafted password-encrypted CMS message\ncan trigger a NULL pointer dereference during CMS decryption.\n\nImpact summary: This NULL pointer dereference leads to an application crash\nand a Denial of Service.\n\nThe CMS PasswordRecipientInfo.keyDerivationAlgorithm field is defined as\nOPTIONAL in the ASN.1 specification and may therefore be absent in specially\ncrafted inputs. During the password-based CMS decryption the OpenSSL\nCMS implementation dereferences this field without",
-      "cvss": {
-        "score": 5.9,
-        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "OpenSSL"
-      ],
-      "references": [
-        "https://github.com/openssl/security/commit/056d06c1918fafbb98c1c85a02e4c47cc4e199ce",
-        "https://github.com/openssl/security/commit/12bc26ffb3a2be728c9b86e1cae277de5b33dfa4",
-        "https://github.com/openssl/security/commit/3ff64913615d648cfbb6a6f1cf5529ae7ea829d7",
-        "https://github.com/openssl/security/commit/ab52d88cb5374876d59aee3c91f9e4ccce2b7ce4",
-        "https://github.com/openssl/security/commit/da26f368732b83e40e9d356fe61c3d3aaab6d2e8"
-      ],
-      "published": "2026-06-09T17:17:07.970"
-    },
-    {
-      "id": "CVE-2026-42767",
-      "description": "Issue summary: An attacker-controlled CMP (Certificate Management Protocol)\nserver could trigger a NULL pointer dereference in a CMP client application.\n\nImpact summary: A NULL pointer dereference causes a crash of the\napplication and a Denial of Service.\n\nAn attacker controlling a CMP server (or acting as a man-in-the-middle) could\ncraft a CMP response containing a CRMF (Certificate Request Message Format)\nCertRepMessage with an EncryptedValue structure where the symmAlg field\nhas an algorithm ",
-      "cvss": {
-        "score": 5.9,
-        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "OpenSSL"
-      ],
-      "references": [
-        "https://github.com/openssl/security/commit/61a86a8cd73546c9fea916f3d304c1293e05c046",
-        "https://github.com/openssl/security/commit/665d5254083affde9982efca7c41dd01cacc8774",
-        "https://github.com/openssl/security/commit/810b722f772652ad48042bcc7ab07e3414b11d0f",
-        "https://github.com/openssl/security/commit/b90ff3b1bd33b1c18e6a09936d097c2eddef8873",
-        "https://github.com/openssl/security/commit/e6f912907fc2ec82a0fd07aae55172c5e5e3d90d"
-      ],
-      "published": "2026-06-09T17:17:08.093"
-    },
-    {
-      "id": "CVE-2026-41696",
-      "description": "Spring Data MongoDB repository query methods annotated with @Query that use regex parameter binding perform insufficient validation of the bound parameter. An attacker can supply a crafted string to break out of the intended regular expression quoting.\n\nAffected versions:\nSpring Data MongoDB 5.0.0 through 5.0.5; 4.5.0 through 4.5.11; 4.4.0 through 4.4.14; 4.3.0 through 4.3.16; 4.2.0 through 4.2.15; 4.1.0 through 4.1.14; 4.0.0 through 4.0.15; 3.4.0 through 3.4.19.",
-      "cvss": {
-        "score": 5.9,
-        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "MongoDB"
-      ],
-      "references": [
-        "https://spring.io/security/cve-2026-41696"
-      ],
-      "published": "2026-06-10T00:16:50.800"
-    },
-    {
-      "id": "CVE-2026-44821",
-      "description": "Out-of-bounds read in Microsoft Office allows an unauthorized attacker to disclose information locally.",
-      "cvss": {
-        "score": 5.5,
-        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Microsoft Office"
-      ],
-      "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-44821"
-      ],
-      "published": "2026-06-09T17:17:18.443"
-    },
-    {
-      "id": "CVE-2026-47923",
-      "description": "Acrobat Reader versions 24.001.30365, 26.001.21651 and earlier are affected by an out-of-bounds read vulnerability that could lead to disclosure of sensitive memory. An attacker could leverage this vulnerability to disclose sensitive information. Exploitation of this issue requires user interaction in that a victim must open a malicious file.",
-      "cvss": {
-        "score": 5.5,
-        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Adobe Acrobat"
-      ],
-      "references": [
-        "https://helpx.adobe.com/security/products/acrobat/apsb26-63.html"
-      ],
-      "published": "2026-06-09T21:17:22.200"
-    },
-    {
-      "id": "CVE-2026-47924",
-      "description": "Acrobat Reader versions 24.001.30365, 26.001.21651 and earlier are affected by a Use After Free vulnerability that could lead to disclosure of sensitive memory. An attacker could leverage this vulnerability to disclose sensitive information. Exploitation of this issue requires user interaction in that a victim must open a malicious file.",
-      "cvss": {
-        "score": 5.5,
-        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Adobe Acrobat"
-      ],
-      "references": [
-        "https://helpx.adobe.com/security/products/acrobat/apsb26-63.html"
-      ],
-      "published": "2026-06-09T21:17:22.330"
-    },
-    {
-      "id": "CVE-2026-47925",
-      "description": "Acrobat Reader versions 24.001.30365, 26.001.21651 and earlier are affected by an Integer Overflow or Wraparound vulnerability that could result in an application denial-of-service. An attacker could exploit this vulnerability to crash the application, leading to a denial-of-service condition. Exploitation of this issue requires user interaction in that a victim must open a malicious file.",
-      "cvss": {
-        "score": 5.5,
-        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Adobe Acrobat"
-      ],
-      "references": [
-        "https://helpx.adobe.com/security/products/acrobat/apsb26-63.html"
-      ],
-      "published": "2026-06-09T21:17:22.457"
-    },
-    {
-      "id": "CVE-2026-47926",
-      "description": "Acrobat Reader versions 24.001.30365, 26.001.21651 and earlier are affected by an out-of-bounds read vulnerability that could lead to disclosure of sensitive memory. An attacker could leverage this vulnerability to disclose sensitive information. Exploitation of this issue requires user interaction in that a victim must open a malicious file.",
-      "cvss": {
-        "score": 5.5,
-        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Adobe Acrobat"
-      ],
-      "references": [
-        "https://helpx.adobe.com/security/products/acrobat/apsb26-63.html"
-      ],
-      "published": "2026-06-09T21:17:22.573"
-    },
-    {
-      "id": "CVE-2026-47961",
-      "description": "Acrobat Reader versions 24.001.30365, 26.001.21651 and earlier are affected by an out-of-bounds read vulnerability that could lead to disclosure of sensitive memory. An attacker could leverage this vulnerability to disclose sensitive information. Exploitation of this issue requires user interaction in that a victim must open a malicious file.",
-      "cvss": {
-        "score": 5.5,
-        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Adobe Acrobat"
-      ],
-      "references": [
-        "https://helpx.adobe.com/security/products/acrobat/apsb26-63.html"
-      ],
-      "published": "2026-06-09T21:17:24.540"
-    },
-    {
-      "id": "CVE-2026-9735",
-      "description": "MongoDB server may log authentication parameters, including credentials, to the server log during SASL authentication. When connection health metric logging is enabled, the full authentication parameters are written to the log without redaction.",
-      "cvss": {
-        "score": 5.5,
-        "vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "MongoDB"
-      ],
-      "references": [
-        "https://jira.mongodb.org/browse/SERVER-126506"
-      ],
-      "published": "2026-06-09T23:17:03.287"
-    },
-    {
-      "id": "CVE-2026-33113",
-      "description": "Improper neutralization of input during web page generation ('cross-site scripting') in Microsoft Office SharePoint allows an authorized attacker to perform spoofing over a network.",
+      "id": "CVE-2026-46616",
+      "description": "Umbraco is an ASP.NET CMS. Prior to versions 13.14.0 and 17.4.0, some of the Surface Controllers in the CMS provide to support member related operations fail to validate redirect URLs, making Razor templates that derive 'RedirectUrl' from user-controlled query parameters vulnerable to malicious redirect attacks. This issue has been patched in versions 13.14.0 and 17.4.0.",
       "cvss": {
         "score": 5.4,
         "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:N",
@@ -1855,178 +589,72 @@
       },
       "tier": 2,
       "matchedProducts": [
-        "Microsoft Office"
+        "Microsoft .NET"
       ],
       "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-33113"
+        "https://github.com/umbraco/Umbraco-CMS/pull/22561",
+        "https://github.com/umbraco/Umbraco-CMS/pull/22565",
+        "https://github.com/umbraco/Umbraco-CMS/security/advisories/GHSA-2qjj-h6wp-c7h7"
       ],
-      "published": "2026-06-09T17:17:04.120"
+      "published": "2026-06-10T17:16:37.387"
     },
     {
-      "id": "CVE-2026-45453",
-      "description": "Improper neutralization of input during web page generation ('cross-site scripting') in Microsoft Office SharePoint allows an authorized attacker to perform spoofing over a network.",
+      "id": "CVE-2026-53740",
+      "description": "Yoast Duplicate Post through 4.6 inserts an unescaped post title and permalink into the Classic Editor scheduled republish notice. Attackers can schedule a republish copy with a crafted title to execute script when an administrator views the resulting notice.",
       "cvss": {
         "score": 5.4,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:N",
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N",
         "severity": "MEDIUM"
       },
       "tier": 2,
       "matchedProducts": [
-        "Microsoft Office"
+        "Yoast SEO"
       ],
       "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-45453"
+        "https://wordpress.org/plugins/duplicate-post/",
+        "https://www.vulncheck.com/advisories/yoast-duplicate-post-through-stored-cross-site-scripting-via-scheduled-republish-notice"
       ],
-      "published": "2026-06-09T17:17:19.407"
+      "published": "2026-06-10T22:17:02.367"
     },
     {
-      "id": "CVE-2026-45464",
-      "description": "Improper neutralization of input during web page generation ('cross-site scripting') in Microsoft Office SharePoint allows an authorized attacker to perform spoofing over a network.",
+      "id": "CVE-2026-45559",
+      "description": "Roxy-WI is a web interface for managing Haproxy, Nginx, Apache and Keepalived servers. In versions 8.2.6.4 and prior, get_ldap_email (app/modules/roxywi/user.py:120-157) builds the LDAP search filter via f-string concatenation. The username URL path parameter is taken verbatim \u2014 no checkAjaxInput, no LDAP escape \u2014 and inserted, a username like *)(mail=*)(cn=* injects additional clauses, allowing the admin to enumerate or harvest attributes outside the intended record. At time of publication, the",
       "cvss": {
-        "score": 5.4,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Microsoft Office"
-      ],
-      "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-45464"
-      ],
-      "published": "2026-06-09T17:17:20.837"
-    },
-    {
-      "id": "CVE-2026-45465",
-      "description": "Improper neutralization of input during web page generation ('cross-site scripting') in Microsoft Office SharePoint allows an authorized attacker to perform spoofing over a network.",
-      "cvss": {
-        "score": 5.4,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Microsoft Office"
-      ],
-      "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-45465"
-      ],
-      "published": "2026-06-09T17:17:20.957"
-    },
-    {
-      "id": "CVE-2026-47636",
-      "description": "Improper neutralization of input during web page generation ('cross-site scripting') in Microsoft Office SharePoint allows an authorized attacker to perform spoofing over a network.",
-      "cvss": {
-        "score": 5.4,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Microsoft Office"
-      ],
-      "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-47636"
-      ],
-      "published": "2026-06-09T17:17:35.533"
-    },
-    {
-      "id": "CVE-2026-47639",
-      "description": "Improper neutralization of input during web page generation ('cross-site scripting') in Microsoft Office SharePoint allows an authorized attacker to perform spoofing over a network.",
-      "cvss": {
-        "score": 5.4,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Microsoft Office"
-      ],
-      "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-47639"
-      ],
-      "published": "2026-06-09T17:17:35.900"
-    },
-    {
-      "id": "CVE-2026-48560",
-      "description": "Improper neutralization of input during web page generation ('cross-site scripting') in Microsoft Office SharePoint allows an authorized attacker to perform spoofing over a network.",
-      "cvss": {
-        "score": 5.4,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Microsoft Office"
-      ],
-      "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-48560"
-      ],
-      "published": "2026-06-09T17:17:44.633"
-    },
-    {
-      "id": "CVE-2026-42769",
-      "description": "Issue Summary: An error in the callback used to verify the certificate\nprovided in a Root CA key update Certificate Management Protocol (CMP)\nmessage response rendered the certificate validation ineffectual, which\ncould lead to escalation of credentials from the Registration Authority (RA)\nlevel to the root Certification Authority (root CA) level.\n\nImpact Summary: The Registration Autority could replace the root CA\ncertificate for the CMP clients with an arbitrary root CA certificate.\n\nOne of th",
-      "cvss": {
-        "score": 5.3,
-        "vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:N/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "OpenSSL"
-      ],
-      "references": [
-        "https://github.com/openssl/security/commit/54d0989997e5fc26057009a9782c3441ce3842fb",
-        "https://github.com/openssl/security/commit/777b363b16fcf2153bb3ded39dc3838713667c44",
-        "https://github.com/openssl/security/commit/d35cd473a271bf3ce7bf3d32af53217fb83ae92c",
-        "https://github.com/openssl/security/commit/d531f21c0fe99067a66fc0ff1161ef127f9cd70b",
-        "https://openssl-library.org/news/secadv/20260609.txt"
-      ],
-      "published": "2026-06-09T17:17:08.377"
-    },
-    {
-      "id": "CVE-2026-45446",
-      "description": "Issue summary: The implementations of AES-SIV (RFC 5297) and AES-GCM-SIV\n(RFC 8452) mishandle the authentication of AAD (Additional Authenticated\nData) with an empty ciphertext allowing a forgery of such messages.\n\nImpact summary: An attacker can forge empty messages with arbitrary AAD\nto the victim's application using these ciphers.\n\nAES-SIV (RFC 5297) and AES-GCM-SIV (RFC 8452) are nonce-misuse-resistant AEAD\nmodes: they accept a key, nonce, optional AAD (bytes that are authenticated\nbut not e",
-      "cvss": {
-        "score": 4.8,
-        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:N",
+        "score": 4.9,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:N/A:N",
         "severity": "MEDIUM"
       },
       "tier": 3,
       "matchedProducts": [
-        "OpenSSL",
-        "ESET"
+        "Nginx"
       ],
       "references": [
-        "https://github.com/openssl/security/commit/25b32cd9d41d2bc01b6abc425bb4baf2c2236fdc",
-        "https://github.com/openssl/security/commit/71e2a5d263518cf5866043bd60ee4994d59e53a3",
-        "https://github.com/openssl/security/commit/7fe3f33a3b3a4c487aa4dcdbc87057f66ffd2b85",
-        "https://github.com/openssl/security/commit/daca0f48e4a69a2892a62262bad59e62a8a76598",
-        "https://github.com/openssl/security/commit/eec5e9bf0d867333b8495e456f5235d225798a68"
+        "https://github.com/roxy-wi/roxy-wi/security/advisories/GHSA-2257-7mhp-grqp",
+        "https://github.com/roxy-wi/roxy-wi/security/advisories/GHSA-2257-7mhp-grqp"
       ],
-      "published": "2026-06-09T17:17:19.137"
+      "published": "2026-06-10T15:16:36.743"
     },
     {
-      "id": "CVE-2026-45460",
-      "description": "Out-of-bounds read in Microsoft Office allows an unauthorized attacker to disclose information locally.",
+      "id": "CVE-2026-2827",
+      "description": "The Open User Map PRO plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'oum_location_notification' parameter in versions up to, and including, 1.4.31 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
       "cvss": {
         "score": 4.7,
-        "vector": "CVSS:3.1/AV:L/AC:H/PR:N/UI:R/S:U/C:H/I:N/A:N",
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:L/I:L/A:N",
         "severity": "MEDIUM"
       },
       "tier": 3,
       "matchedProducts": [
-        "Microsoft Office"
+        "WordPress"
       ],
       "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-45460"
+        "https://www.open-user-map.com/",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/9963e0f8-600c-4b1f-935d-4ac1f967698f?source=cve"
       ],
-      "published": "2026-06-09T17:17:20.323"
+      "published": "2026-06-11T02:16:42.967"
     },
     {
-      "id": "CVE-2026-45462",
-      "description": "Improper neutralization of input during web page generation ('cross-site scripting') in Microsoft Office SharePoint allows an authorized attacker to perform spoofing over a network.",
+      "id": "CVE-2026-46609",
+      "description": "Umbraco is an ASP.NET CMS. From version 14.0.0 to before version 17.4.0, authenticated users are able to inject HTML into an input field, which is rendered in the confirmation dialog without proper output encoding. This issue has been patched in version 17.4.0.",
       "cvss": {
         "score": 4.6,
         "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:L/I:L/A:N",
@@ -2034,276 +662,52 @@
       },
       "tier": 3,
       "matchedProducts": [
-        "Microsoft Office"
+        "Microsoft .NET"
       ],
       "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-45462"
+        "https://github.com/umbraco/Umbraco-CMS/security/advisories/GHSA-vr9v-27gg-qgx4"
       ],
-      "published": "2026-06-09T17:17:20.577"
+      "published": "2026-06-10T17:16:37.123"
     },
     {
-      "id": "CVE-2026-45467",
-      "description": "Improper neutralization of input during web page generation ('cross-site scripting') in Microsoft Office SharePoint allows an authorized attacker to perform spoofing over a network.",
-      "cvss": {
-        "score": 4.6,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:L/I:L/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "Microsoft Office"
-      ],
-      "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-45467"
-      ],
-      "published": "2026-06-09T17:17:21.213"
-    },
-    {
-      "id": "CVE-2026-45468",
-      "description": "Improper neutralization of input during web page generation ('cross-site scripting') in Microsoft Office SharePoint allows an authorized attacker to perform spoofing over a network.",
-      "cvss": {
-        "score": 4.6,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:L/I:L/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "Microsoft Office"
-      ],
-      "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-45468"
-      ],
-      "published": "2026-06-09T17:17:21.340"
-    },
-    {
-      "id": "CVE-2026-45479",
-      "description": "Improper neutralization of input during web page generation ('cross-site scripting') in Microsoft Office SharePoint allows an authorized attacker to perform spoofing over a network.",
-      "cvss": {
-        "score": 4.6,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:L/I:L/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "Microsoft Office"
-      ],
-      "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-45479"
-      ],
-      "published": "2026-06-09T17:17:22.263"
-    },
-    {
-      "id": "CVE-2026-45483",
-      "description": "Improper neutralization of input during web page generation ('cross-site scripting') in Microsoft Office Project Server allows an authorized attacker to perform spoofing over a network.",
-      "cvss": {
-        "score": 4.6,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:L/I:L/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "Microsoft Office"
-      ],
-      "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-45483"
-      ],
-      "published": "2026-06-09T17:17:22.727"
-    },
-    {
-      "id": "CVE-2026-47637",
-      "description": "Improper neutralization of input during web page generation ('cross-site scripting') in Microsoft Office SharePoint allows an authorized attacker to perform spoofing over a network.",
-      "cvss": {
-        "score": 4.6,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:L/I:L/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "Microsoft Office"
-      ],
-      "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-47637"
-      ],
-      "published": "2026-06-09T17:17:35.660"
-    },
-    {
-      "id": "CVE-2026-47638",
-      "description": "Improper neutralization of input during web page generation ('cross-site scripting') in Microsoft Office SharePoint allows an authorized attacker to perform spoofing over a network.",
-      "cvss": {
-        "score": 4.6,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:L/I:L/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "Microsoft Office"
-      ],
-      "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-47638"
-      ],
-      "published": "2026-06-09T17:17:35.777"
-    },
-    {
-      "id": "CVE-2026-47640",
-      "description": "Improper neutralization of input during web page generation ('cross-site scripting') in Microsoft Office SharePoint allows an authorized attacker to perform spoofing over a network.",
-      "cvss": {
-        "score": 4.6,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:L/I:L/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "Microsoft Office"
-      ],
-      "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-47640"
-      ],
-      "published": "2026-06-09T17:17:36.023"
-    },
-    {
-      "id": "CVE-2026-47641",
-      "description": "Improper neutralization of input during web page generation ('cross-site scripting') in Microsoft Office SharePoint allows an authorized attacker to perform spoofing over a network.",
-      "cvss": {
-        "score": 4.6,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:L/I:L/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "Microsoft Office"
-      ],
-      "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-47641"
-      ],
-      "published": "2026-06-09T17:17:36.150"
-    },
-    {
-      "id": "CVE-2026-48562",
-      "description": "Improper neutralization of input during web page generation ('cross-site scripting') in Microsoft Office SharePoint allows an authorized attacker to perform spoofing over a network.",
-      "cvss": {
-        "score": 4.6,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:L/I:L/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "Microsoft Office"
-      ],
-      "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-48562"
-      ],
-      "published": "2026-06-09T17:17:44.760"
-    },
-    {
-      "id": "CVE-2026-4058",
-      "description": "The User Frontend: AI Powered Frontend Posting, User Directory, Profile, Membership & User Registration plugin for WordPress is vulnerable to unauthorized modification of data due to a missing capability check on the user_subscription_cancel() function in all versions up to, and including, 4.3.2. This makes it possible for authenticated attackers, with Subscriber-level access and above, to cancel any user's subscription pack, including administrators.",
+      "id": "CVE-2026-45563",
+      "description": "Roxy-WI is a web interface for managing Haproxy, Nginx, Apache and Keepalived servers. In versions 8.2.6.4 and prior, GET /history/<service>/<server_ip> re-uses the server_ip path parameter as a user-id when service == 'user', with no authorization check. Any authenticated user \u2014 even a guest in an unrelated group \u2014 can list any other user's full action audit trail (server IPs touched, configs deployed, services restarted). At time of publication, there are no publicly available patches.",
       "cvss": {
         "score": 4.3,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N",
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N",
         "severity": "MEDIUM"
       },
       "tier": 3,
       "matchedProducts": [
-        "WordPress"
+        "Nginx"
       ],
       "references": [
-        "https://plugins.trac.wordpress.org/changeset/3528244/",
-        "https://www.wordfence.com/threat-intel/vulnerabilities/id/ffdf34bb-a887-444c-8a76-12901fed6662?source=cve"
+        "https://github.com/roxy-wi/roxy-wi/security/advisories/GHSA-wcmc-cjmw-54x9",
+        "https://github.com/roxy-wi/roxy-wi/security/advisories/GHSA-wcmc-cjmw-54x9"
       ],
-      "published": "2026-06-09T10:16:44.557"
+      "published": "2026-06-10T15:16:37.167"
     },
     {
-      "id": "CVE-2026-42768",
-      "description": "Issue summary: The CMS_decrypt and PKCS7_decrypt functions are vulnerable to\nBleichenbacher-style attack when an attacker is able to provide the CMS or\nS/MIME messages and observe the error code and/or decryption output.\n\nImpact summary: The Bleichenbacher-style attack allows an attacker to use the\nvictim's vulnerable application as a way to decrypt or sign messages with the\nvictim's private RSA key.\n\nThe attack is possible in 2 variants.\n\n1. The decryption API (CMS_decrypt(), PKCS7_decrypt()) i",
+      "id": "CVE-2026-53739",
+      "description": "Yoast Duplicate Post through 4.6 contains a cross-site request forgery vulnerability in the duplicate_post_dismiss_notice handler, which verifies no nonce or capability. Attackers can trick any authenticated user into sending a request that sets the duplicate_post_show_notice site option, suppressing admin notices network-wide.",
       "cvss": {
-        "score": 3.7,
-        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:N",
-        "severity": "LOW"
+        "score": 4.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N",
+        "severity": "MEDIUM"
       },
       "tier": 3,
       "matchedProducts": [
-        "OpenSSL"
+        "Yoast SEO"
       ],
       "references": [
-        "https://github.com/openssl/security/commit/a2ca7b2d73e0ffc1eae183fe6e1741dac767cb4f",
-        "https://github.com/openssl/security/commit/bbb151a83041705d9d001ed2f9c12f5523e1b54d",
-        "https://github.com/openssl/security/commit/dd68364107a58841c0a2546812518b65d3a23abd",
-        "https://github.com/openssl/security/commit/f04b377be3d821741c86d1f4bf84dee09f3d5c3e",
-        "https://openssl-library.org/news/secadv/20260609.txt"
+        "https://wordpress.org/plugins/duplicate-post/",
+        "https://www.vulncheck.com/advisories/yoast-duplicate-post-through-cross-site-request-forgery-via-duplicate-post-dismiss-notice"
       ],
-      "published": "2026-06-09T17:17:08.223"
+      "published": "2026-06-10T22:17:02.230"
     },
     {
-      "id": "CVE-2026-45455",
-      "description": "Out-of-bounds read in Microsoft Office Excel allows an unauthorized attacker to disclose information over a network.",
-      "cvss": {
-        "score": 3.3,
-        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:N",
-        "severity": "LOW"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "Microsoft Office"
-      ],
-      "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-45455"
-      ],
-      "published": "2026-06-09T17:17:19.660"
-    },
-    {
-      "id": "CVE-2026-45459",
-      "description": "Protection mechanism failure in Microsoft Office Excel allows an unauthorized attacker to bypass a security feature locally.",
-      "cvss": {
-        "score": 3.3,
-        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:N",
-        "severity": "LOW"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "Microsoft Office"
-      ],
-      "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-45459"
-      ],
-      "published": "2026-06-09T17:17:20.203"
-    },
-    {
-      "id": "CVE-2026-45466",
-      "description": "Heap-based buffer overflow in Microsoft Office Word allows an unauthorized attacker to disclose information locally.",
-      "cvss": {
-        "score": 3.3,
-        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:N",
-        "severity": "LOW"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "Microsoft Office"
-      ],
-      "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-45466"
-      ],
-      "published": "2026-06-09T17:17:21.077"
-    },
-    {
-      "id": "CVE-2026-45485",
-      "description": "Out-of-bounds read in Microsoft Office allows an unauthorized attacker to disclose information locally.",
-      "cvss": {
-        "score": 3.3,
-        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:N",
-        "severity": "LOW"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "Microsoft Office"
-      ],
-      "references": [
-        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-45485"
-      ],
-      "published": "2026-06-09T17:17:23.010"
-    },
-    {
-      "id": "CVE-2026-46316",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: arm64: vgic-its: Drop the translation cache reference only for the erased entry\n\nvgic_its_invalidate_cache() walks the per-ITS translation cache with\nxa_for_each() and drops the cache's reference on each entry with\nvgic_put_irq(). It puts the iterated pointer, though, rather than the\nvalue returned by xa_erase().\n\nThe function is called from contexts that do not exclude one another: the\nITS command handlers hold its_lock, ",
+      "id": "CVE-2026-48855",
+      "description": "Exposure of Sensitive Information to an Unauthorized Actor vulnerability in Erlang OTP ssh (ssh_sftpd module) allows File Discovery.\n\nThe SSH_FXP_READLINK handler in ssh_sftpd sends the raw result of file:read_link/2 to the client without calling chroot_filename/2 to strip the backend root prefix. An authenticated SFTP client can create a symlink inside the chroot pointing to /; ssh_sftpd resolves the target to the absolute backend root and stores it on disk. Reading the symlink back via SSH_FXP",
       "cvss": {
         "score": null,
         "vector": null,
@@ -2311,19 +715,20 @@
       },
       "tier": 3,
       "matchedProducts": [
-        "Redis"
+        "Erlang/OTP"
       ],
       "references": [
-        "https://git.kernel.org/stable/c/13031fb6b8357fbbcded2a7f4cba73e4781ee594",
-        "https://git.kernel.org/stable/c/2bbc395e81bd29c543a0529a678327e932a7ec69",
-        "https://git.kernel.org/stable/c/9121f4605ab94969f62d1b5714ca3c6c69bd202f",
-        "https://git.kernel.org/stable/c/b7b72e88046328c9fdc638fe887d4240257dd5dc"
+        "https://cna.erlef.org/cves/CVE-2026-48855.html",
+        "https://github.com/erlang/otp/commit/8f4224a0d2676b0653d2c71a889a956e8c2c62d6",
+        "https://github.com/erlang/otp/security/advisories/GHSA-pv7g-pjrq-x2fh",
+        "https://osv.dev/vulnerability/EEF-CVE-2026-48855",
+        "https://www.erlang.org/doc/system/versions.html#order-of-versions"
       ],
-      "published": "2026-06-09T13:16:36.887"
+      "published": "2026-06-10T16:17:09.680"
     },
     {
-      "id": "CVE-2026-34181",
-      "description": "Issue Summary: The PKCS#12 file processing fails to perform sufficient input\nvalidation for files that use Password-Based Message Authentication Code 1\n(PBMAC1) integrity mechanism allowing a certificate and private key forgery.\n\nImpact Summary: An attacker impersonating a user can cause a service reading\nPKCS#12 files to accept forged certificates and private keys with a 1 in 256\nprobability.\n\nIf a service accepting PKCS#12 files is using passwords for authenticating\nthe received files, the att",
+      "id": "CVE-2026-48856",
+      "description": "Sensitive Data Exposure vulnerability in Erlang OTP inets (httpc_response module) allows Retrieve Embedded Sensitive Data.\n\nThe httpc client forwards the Authorization and Proxy-Authorization request headers to redirect targets without checking whether the redirect crosses an origin boundary. httpc_response:redirect/2 constructs the redirected request by updating only the host field of the header record; all other fields (including authorization and proxy_authorization) are copied verbatim. The ",
       "cvss": {
         "score": null,
         "vector": null,
@@ -2331,20 +736,20 @@
       },
       "tier": 3,
       "matchedProducts": [
-        "OpenSSL"
+        "Erlang/OTP"
       ],
       "references": [
-        "https://github.com/openssl/security/commit/0300eb9ddce7a0895bf301a4b0c03a9da2313a0f",
-        "https://github.com/openssl/security/commit/79eb76a937e474bb7610a0a3dc57131dc8dc6610",
-        "https://github.com/openssl/security/commit/85dcbb3abaa4878af5c8fbbe11bce708fcf984a7",
-        "https://github.com/openssl/security/commit/ec36f2417c4ddd8cabce4b4a60a3d7a7365f2d81",
-        "https://openssl-library.org/news/secadv/20260609.txt"
+        "https://cna.erlef.org/cves/CVE-2026-48856.html",
+        "https://github.com/erlang/otp/commit/688d748d6f7a6a06b13b662a1d3de8af97079612",
+        "https://github.com/erlang/otp/security/advisories/GHSA-m75x-4vwg-ggjh",
+        "https://osv.dev/vulnerability/EEF-CVE-2026-48856",
+        "https://www.erlang.org/doc/system/versions.html#order-of-versions"
       ],
-      "published": "2026-06-09T17:17:04.740"
+      "published": "2026-06-10T16:17:10.053"
     },
     {
-      "id": "CVE-2026-34183",
-      "description": "Issue summary: Remote peer may exhaust heap memory of the QUIC\nserver or client by flooding it with packets containing PATH_CHALLENGE\nframes.\n\nImpact summary: A malicious remote peer can cause an unbounded\nmemory allocation which can lead to an abnormal termination of the\napplication acting as a QUIC client or server and a Denial of Service.\n\nA remote peer may exhaust heap memory by flooding the local\nQUIC stack with PATH_CHALLENGE frames. The local QUIC stack\nallocates a PATH_RESPONSE frame for",
+      "id": "CVE-2026-48858",
+      "description": "Server-Side Request Forgery (SSRF) vulnerability in Erlang/OTP ftp (ftp_internal module) allows FTP bounce attacks and SSRF via an unvalidated PASV response IP address.\n\nThe ftp_internal:handle_ctrl_result/2 PASV handler (mode=passive, ipfamily=inet, ftp_extension=false) extracts the IP address from the server's 227 response and passes it directly to gen_tcp:connect/4 without validating it against the control connection peer address. The adjacent EPSV handlers correctly call peername(CSock) to d",
       "cvss": {
         "score": null,
         "vector": null,
@@ -2352,20 +757,20 @@
       },
       "tier": 3,
       "matchedProducts": [
-        "OpenSSL"
+        "Erlang/OTP"
       ],
       "references": [
-        "https://github.com/openssl/security/commit/5b306efb0b3779dfdd0803b4afc9d08c91f11517",
-        "https://github.com/openssl/security/commit/7d06955ebe0ecf8adfd4c1e92018586da47ef9ac",
-        "https://github.com/openssl/security/commit/d2e9efbe4900a373227deb136e8665401404ffac",
-        "https://github.com/openssl/security/commit/fbaa83859c01ad64f497b757aaf51be7d05ed9eb",
-        "https://openssl-library.org/news/secadv/20260609.txt"
+        "https://cna.erlef.org/cves/CVE-2026-48858.html",
+        "https://github.com/erlang/otp/commit/2691a806231ffd0490a8a9e20500dec0c7e73727",
+        "https://github.com/erlang/otp/commit/521bcfa24407ee8cb5614823cf905c37ea3aa605",
+        "https://github.com/erlang/otp/security/advisories/GHSA-24cv-hwgr-37fq",
+        "https://osv.dev/vulnerability/EEF-CVE-2026-48858"
       ],
-      "published": "2026-06-09T17:17:05.000"
+      "published": "2026-06-10T16:17:11.077"
     },
     {
-      "id": "CVE-2026-35188",
-      "description": "Issue summary: A malicious server can exploit TLS OCSP stapling by delivering\na crafted response through the status_request extension, triggering a\ndouble-free in the client's certificate verification path.\n\nImpact summary: Successful exploitation allows an attacker to corrupt heap\nmemory via a double-free, potentially leading to a Denial of Service or\npossibly an attacker controlled code execution or other undefined behavior.\n\nIf OCSP stapling is enabled and the TLS client connects to a malicio",
+      "id": "CVE-2026-48859",
+      "description": "Observable Timing Discrepancy vulnerability in Erlang/OTP ssh (ssh_auth, ssh_options modules) allows unauthenticated remote username enumeration via timing side-channel in password authentication.\n\nWhen the SSH daemon is configured with the user_passwords or password option, ssh_auth:check_password/3 performs a PBKDF2-SHA256 computation with 600,000 iterations (~300ms) for valid usernames, but returns immediately (~0ms) for invalid usernames via the ssh_options:get_password_option/2 path. This t",
       "cvss": {
         "score": null,
         "vector": null,
@@ -2373,18 +778,20 @@
       },
       "tier": 3,
       "matchedProducts": [
-        "OpenSSL"
+        "Erlang/OTP"
       ],
       "references": [
-        "https://github.com/openssl/security/commit/131145d25659e8749a9ed1afb383484854cffb78",
-        "https://github.com/openssl/security/commit/78d0154cffda03aaaac63a087cc523a6b35fa8fd",
-        "https://openssl-library.org/news/secadv/20260609.txt"
+        "https://cna.erlef.org/cves/CVE-2026-48859.html",
+        "https://github.com/erlang/otp/commit/c342092ef4b369bb409d5b71ac8fd83bab74aedf",
+        "https://github.com/erlang/otp/security/advisories/GHSA-3w6p-vwhf-wvp4",
+        "https://osv.dev/vulnerability/EEF-CVE-2026-48859",
+        "https://www.erlang.org/doc/system/versions.html#order-of-versions"
       ],
-      "published": "2026-06-09T17:17:05.437"
+      "published": "2026-06-10T16:17:12.373"
     },
     {
-      "id": "CVE-2026-3326",
-      "description": "The Xstore WordPress theme before 9.7.3 does not properly sanitise and escape a parameter before using it in a SQL statement via an AJAX action available to unauthenticated users, leading to a SQL injection",
+      "id": "CVE-2026-49759",
+      "description": "Stack-based Buffer Overflow vulnerability in Erlang OTP erts (inet_drv) allows an unauthenticated remote attacker to crash the BEAM VM by sending a crafted SCTP ERROR chunk.\n\nThe sctp_parse_error_chunk function in erts/emulator/drivers/common/inet_drv.c parses SCTP ERROR chunks and writes cause codes into a fixed-size stack-allocated ErlDrvTermData spec[] array without checking bounds. A remote attacker who has established an SCTP association to a listening port can send a single crafted SCTP ER",
       "cvss": {
         "score": null,
         "vector": null,
@@ -2392,16 +799,20 @@
       },
       "tier": 3,
       "matchedProducts": [
-        "WordPress"
+        "Erlang/OTP"
       ],
       "references": [
-        "https://wpscan.com/vulnerability/2c5bdb17-8b12-45b5-878b-627056dc8956/"
+        "https://cna.erlef.org/cves/CVE-2026-49759.html",
+        "https://github.com/erlang/otp/commit/3983d495284331c121f600a80bac9fcf4e16381e",
+        "https://github.com/erlang/otp/security/advisories/GHSA-6f4f-chj5-5g97",
+        "https://osv.dev/vulnerability/EEF-CVE-2026-49759",
+        "https://www.erlang.org/doc/system/versions.html#order-of-versions"
       ],
-      "published": "2026-06-10T07:16:25.263"
+      "published": "2026-06-10T16:17:12.797"
     },
     {
-      "id": "CVE-2026-8071",
-      "description": "The Anti-Spam by CleanTalk. Spam protection WordPress plugin before 6.79 does not properly sanitize content within a custom shortcode used in its email-encoding feature, allowing unauthenticated attackers to inject arbitrary web scripts into approved comments that will execute when any user (including administrators) views the post.",
+      "id": "CVE-2026-49760",
+      "description": "Stack-based Buffer Overflow vulnerability in Erlang OTP (erl_interface) allows Stack-based Buffer Overflow.\n\nThis vulnerability is associated with program file lib/erl_interface/src/misc/ei_printterm.c and program routine ei_s_print_term.\n\nThe C function ei_s_print_term uses an internal 2000-character stack buffer to format terms. When called with an encoded Erlang term containing a very large integer (encoded representation exceeding 2000 characters), the buffer overflows. The overflow bytes ar",
       "cvss": {
         "score": null,
         "vector": null,
@@ -2409,46 +820,16 @@
       },
       "tier": 3,
       "matchedProducts": [
-        "WordPress"
+        "Erlang/OTP"
       ],
       "references": [
-        "https://wpscan.com/vulnerability/0d4635b5-2d79-4337-a1ad-6b8d02cfd64b/"
+        "https://cna.erlef.org/cves/CVE-2026-49760.html",
+        "https://github.com/erlang/otp/commit/0bef277b2d39dc8babb9ceb4f5d0a456f3007111",
+        "https://github.com/erlang/otp/security/advisories/GHSA-xcxj-5pg2-v72j",
+        "https://osv.dev/vulnerability/EEF-CVE-2026-49760",
+        "https://www.erlang.org/doc/system/versions.html#order-of-versions"
       ],
-      "published": "2026-06-10T07:16:25.373"
-    },
-    {
-      "id": "CVE-2026-9060",
-      "description": "The Store Locator WordPress plugin before 1.6.6 does not sanitize and escape one of its settings before storing it and outputting it on the Store Locator WordPress plugin before 1.6.6 admin page, allowing high-privileged users such as administrators to perform Stored Cross-Site Scripting attacks even when the `unfiltered_html` capability is disallowed (e.g. in a multisite network where the super admin visits the page).",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "WordPress"
-      ],
-      "references": [
-        "https://wpscan.com/vulnerability/1ed01413-09a2-4a2e-be5b-375f2a327d0d/"
-      ],
-      "published": "2026-06-10T07:16:25.473"
-    },
-    {
-      "id": "CVE-2026-9067",
-      "description": "The Schema & Structured Data for WP & AMP WordPress plugin before 1.60 does not check user capabilities on its frontend AJAX file-upload handlers and does not validate the actual content of uploaded files against the endpoint's intended media type, allowing unauthenticated users to upload any file type accepted by WordPress's media library through endpoints that should only accept images or videos.",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "WordPress"
-      ],
-      "references": [
-        "https://wpscan.com/vulnerability/7fac98eb-f82c-4705-a956-aba650945826/"
-      ],
-      "published": "2026-06-10T07:16:25.580"
+      "published": "2026-06-10T16:17:12.947"
     }
   ]
 }
