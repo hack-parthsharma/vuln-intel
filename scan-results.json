@@ -1,17 +1,36 @@
 {
-  "scanTime": "2026-06-11 08:19:04 UTC",
-  "totalMatched": 44,
+  "scanTime": "2026-06-12 08:06:56 UTC",
+  "totalMatched": 58,
   "productsMonitored": 147,
   "tierCounts": {
-    "0": 8,
-    "1": 12,
-    "2": 13,
-    "3": 11
+    "0": 5,
+    "1": 30,
+    "2": 10,
+    "3": 13
   },
   "vulnerabilities": [
     {
-      "id": "CVE-2026-45552",
-      "description": "Roxy-WI is a web interface for managing Haproxy, Nginx, Apache and Keepalived servers. In versions 8.2.6.4 and prior, the install blueprint declares only bp.before_request \u2192 @jwt_required() (app/routes/install/routes.py:36-39). The individual endpoints install_exporter, install_waf, install_geoip, check_geoip, get_exporter_version, and get_task_status are not wrapped in page_for_admin and do not call roxywi_common.is_user_has_access_to_its_group(server_ip) or check_is_server_in_group(server_ip).",
+      "id": "CVE-2026-49261",
+      "description": "MariaDB server is a community developed fork of MySQL server. Versions 10.6.1 through 10.6.26, 10.11.1 through 10.11.17, 11.4.1 through 11.4.11, 11.8.1 through 11.8.7, and 12.3.1 with  `wsrep_notify_cmd` enabled would execute shell commands embedded in the name of the joiner node. This is fixed in 10.6.27, 10.11.18, 11.4.12, 11.8.8, and 12.3.2. As a workaround, anyone who cannot upgrade now should disable `wsrep_notify_cmd`.",
+      "cvss": {
+        "score": 10.0,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+        "severity": "CRITICAL"
+      },
+      "tier": 0,
+      "matchedProducts": [
+        "MySQL",
+        "MSSQL"
+      ],
+      "references": [
+        "https://github.com/MariaDB/server/security/advisories/GHSA-3p3m-4x7c-p4pw",
+        "https://jira.mariadb.org/browse/MDEV-39721"
+      ],
+      "published": "2026-06-11T18:16:26.553"
+    },
+    {
+      "id": "CVE-2026-47365",
+      "description": "Argument injection vulnerability in WordPress Toolkit before 6.11.0 as used in cPanel & WHM, allows remote authenticated users to bypass cross-tenant authorization and execute arbitrary wp-toolkit CLI commands as another account.",
       "cvss": {
         "score": 9.9,
         "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
@@ -19,17 +38,17 @@
       },
       "tier": 0,
       "matchedProducts": [
-        "Nginx",
-        "Ansible"
+        "WordPress",
+        "cPanel"
       ],
       "references": [
-        "https://github.com/roxy-wi/roxy-wi/security/advisories/GHSA-v3f8-g2v8-jq5h"
+        "https://support.cpanel.net/hc/en-us/articles/41004584983703-WP-Toolkit-CVE-2026-47365"
       ],
-      "published": "2026-06-10T15:16:36.303"
+      "published": "2026-06-12T04:17:05.107"
     },
     {
-      "id": "CVE-2026-45556",
-      "description": "Roxy-WI is a web interface for managing Haproxy, Nginx, Apache and Keepalived servers. In versions 8.2.6.4 and prior, POST /waf/<service>/<server_ip>/rule/<rule_id>/save accepts a config_file_name form field that is passed straight through to config_mod.master_slave_upload_and_restart(...) as the destination path. The validation chain (_replace_config_path_to_correct \u2192 check_is_conf) only requires the path to contain a hard-coded service substring (nginx/haproxy/apache2/httpd/keepalived) and the",
+      "id": "CVE-2026-47369",
+      "description": "A malicious actor with access to the network and low privileges could exploit an Improper Input Validation vulnerability found in certain devices running UniFi OS to escalate privileges within such UniFi OS devices or instances.",
       "cvss": {
         "score": 9.9,
         "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
@@ -37,18 +56,16 @@
       },
       "tier": 0,
       "matchedProducts": [
-        "Apache HTTP Server",
-        "Nginx"
+        "Ubiquiti/UniFi"
       ],
       "references": [
-        "https://github.com/roxy-wi/roxy-wi/security/advisories/GHSA-85gm-773v-x7m4",
-        "https://github.com/roxy-wi/roxy-wi/security/advisories/GHSA-85gm-773v-x7m4"
+        "https://community.ui.com/releases/Security-Advisory-Bulletin-065-065/aa46a22b-fc43-4eae-9382-6fc8feda967a"
       ],
-      "published": "2026-06-10T15:16:36.457"
+      "published": "2026-06-12T04:17:06.513"
     },
     {
-      "id": "CVE-2026-45558",
-      "description": "Roxy-WI is a web interface for managing Haproxy, Nginx, Apache and Keepalived servers. In versions 8.2.6.4 and prior, the HAProxy section-save endpoints (POST /api/service/haproxy/<server_id>/section/<section_type> and the PUT / global / defaults variants) accept a JSON option field that is not validated, not escaped, and is rendered verbatim into the generated HAProxy configuration via the section.j2, global.j2, and defaults.j2 Ansible templates. Because Roxy-WI then pushes the generated config",
+      "id": "CVE-2026-47370",
+      "description": "A malicious actor with access to the network and low privileges could exploit an Improper Input Validation vulnerability found in certain devices running UniFi OS to execute a Command Injection within such UniFi OS devices or instances.",
       "cvss": {
         "score": 9.9,
         "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
@@ -56,311 +73,555 @@
       },
       "tier": 0,
       "matchedProducts": [
-        "Nginx",
-        "Ansible"
+        "Ubiquiti/UniFi"
       ],
       "references": [
-        "https://github.com/roxy-wi/roxy-wi/security/advisories/GHSA-w2x4-66jj-3597",
-        "https://github.com/roxy-wi/roxy-wi/security/advisories/GHSA-w2x4-66jj-3597"
+        "https://community.ui.com/releases/Security-Advisory-Bulletin-065-065/aa46a22b-fc43-4eae-9382-6fc8feda967a"
       ],
-      "published": "2026-06-10T15:16:36.600"
+      "published": "2026-06-12T04:17:06.657"
     },
     {
-      "id": "CVE-2025-6254",
-      "description": "The Doctreat Core plugin for WordPress is vulnerable to Privilege Escalation in all versions up to, and including, 1.6.8. This is due to the doctreat_process_registration() function not properly restricting the roles that a user can register with. This makes it possible for unauthenticated attackers to register as an administrator user.",
+      "id": "CVE-2026-46697",
+      "description": "Fediverse Embeds embeds fediverse posts on WordPress sites. Prior to version 1.5.8, Fediverse Embeds registered an unauthenticated REST route ftf/media-proxy (includes/Media_Proxy.php) with permission_callback => __return_true that accepted a base64-encoded URL and forwarded it to wp_remote_get($url) without enforcing any allowlist. The plugin's source contained a comment block explicitly acknowledging that the request should be validated against allowed fediverse domains, but in 1.5.7 the valid",
       "cvss": {
-        "score": 9.8,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-        "severity": "CRITICAL"
+        "score": 7.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+        "severity": "HIGH"
       },
       "tier": 0,
       "matchedProducts": [
         "WordPress"
       ],
       "references": [
-        "https://themeforest.net/item/doctreat-doctors-directory-wordpress-theme/24867777",
-        "https://www.wordfence.com/threat-intel/vulnerabilities/id/5fa37909-932c-4879-bbf0-8b44cc995cc0?source=cve"
+        "https://github.com/stefanbohacek/fediverse-embeds-wordpress-plugin/commit/2f021faf4dadaccef67eda7b81a0b7ceaef450df",
+        "https://github.com/stefanbohacek/fediverse-embeds-wordpress-plugin/security/advisories/GHSA-mpq6-hjh3-m543"
       ],
-      "published": "2026-06-10T10:16:29.827"
+      "published": "2026-06-11T18:16:25.957"
     },
     {
-      "id": "CVE-2026-20253",
-      "description": "In Splunk Enterprise versions below 10.2.4 and 10.0.7, and Splunk Cloud Platform versions below 10.4.2604.3 and 10.2.2510.14, an unauthenticated user could create or truncate arbitrary files through a PostgreSQL sidecar service endpoint.<br><br>The vulnerability exists because the PostgreSQL sidecar service endpoint lacks authentication controls, allowing any network-reachable user to invoke file operations without credentials.",
+      "id": "CVE-2026-12007",
+      "description": "Use after free in Core in Google Chrome on Windows prior to 149.0.7827.115 allowed a remote attacker to execute arbitrary code via a crafted HTML page. (Chromium security severity: Critical)",
       "cvss": {
-        "score": 9.8,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-        "severity": "CRITICAL"
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
       },
-      "tier": 0,
+      "tier": 1,
       "matchedProducts": [
-        "PostgreSQL"
+        "Google Chrome"
       ],
       "references": [
-        "https://advisory.splunk.com/advisories/SVD-2026-0603"
+        "https://chromereleases.googleblog.com/2026/06/stable-channel-update-for-desktop_01962725236.html",
+        "https://issues.chromium.org/issues/516731749"
       ],
-      "published": "2026-06-10T18:16:40.760"
+      "published": "2026-06-11T22:16:52.117"
     },
     {
-      "id": "CVE-2026-53474",
-      "description": "A flaw was found in migration-planner. A remote authenticated attacker could exploit this vulnerability by uploading a specially crafted RVTools .xlsx file. Due to improper input sanitization, malicious SQL embedded within a spreadsheet cell is executed when cluster names are processed. This SQL Injection allows for arbitrary file reading on the system, potentially exposing sensitive information such as Kubernetes service account tokens and other credentials, which could lead to a full compromis",
+      "id": "CVE-2026-12013",
+      "description": "Use after free in Media in Google Chrome on Windows prior to 149.0.7827.115 allowed a remote attacker to potentially exploit heap corruption via a crafted HTML page. (Chromium security severity: High)",
       "cvss": {
-        "score": 9.6,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:N",
-        "severity": "CRITICAL"
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
       },
-      "tier": 0,
+      "tier": 1,
       "matchedProducts": [
-        "RVTools"
+        "Google Chrome"
       ],
       "references": [
-        "https://access.redhat.com/security/cve/CVE-2026-53474",
-        "https://bugzilla.redhat.com/show_bug.cgi?id=2487231",
-        "https://github.com/kubev2v/migration-planner/pull/1231"
+        "https://chromereleases.googleblog.com/2026/06/stable-channel-update-for-desktop_01962725236.html",
+        "https://issues.chromium.org/issues/514229805"
       ],
-      "published": "2026-06-10T15:16:41.943"
+      "published": "2026-06-11T22:16:53.823"
     },
     {
-      "id": "CVE-2026-10795",
-      "description": "The UpdraftPlus: WP Backup & Migration Plugin plugin for WordPress is vulnerable to Authentication Bypass in all versions up to, and including, 1.26.4 via the UpdraftPlus_Remote_Communications_V2::wp_loaded function. This is due to insufficient validation of the remote communications message format, where signature verification can be bypassed and unchecked decryption return values collapse to a predictable all-zero encryption key. This makes it possible for unauthenticated attackers to forge ar",
+      "id": "CVE-2026-12018",
+      "description": "Inappropriate implementation in Mojo in Google Chrome on Windows prior to 149.0.7827.115 allowed a local attacker to perform OS-level privilege escalation via a malicious file. (Chromium security severity: High)",
+      "cvss": {
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/06/stable-channel-update-for-desktop_01962725236.html",
+        "https://issues.chromium.org/issues/516808201"
+      ],
+      "published": "2026-06-11T22:16:54.373"
+    },
+    {
+      "id": "CVE-2026-12020",
+      "description": "Use after free in Autofill in Google Chrome on Mac prior to 149.0.7827.115 allowed a remote attacker to potentially exploit heap corruption via a crafted HTML page. (Chromium security severity: High)",
+      "cvss": {
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/06/stable-channel-update-for-desktop_01962725236.html",
+        "https://issues.chromium.org/issues/516907083"
+      ],
+      "published": "2026-06-11T22:16:54.590"
+    },
+    {
+      "id": "CVE-2026-11933",
+      "description": "A use-after-free vulnerability exists in MongoDB Server's server-side JavaScript engine when converting BSON documents to JavaScript arrays. An authenticated user with read privileges who is able to run server-side JavaScript (for example, via $where or $function) can cause the server to access memory that has already been freed. This may result in disclosure of information from the mongod process memory or a denial of service through a server crash.",
+      "cvss": {
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "MongoDB"
+      ],
+      "references": [
+        "https://jira.mongodb.org/browse/SERVER-128125"
+      ],
+      "published": "2026-06-12T02:16:38.527"
+    },
+    {
+      "id": "CVE-2026-44494",
+      "description": "Axios is a promise based HTTP client for the browser and Node.js. From 1.0.0 to before 1.16.0, the Axios library is vulnerable to a Prototype Pollution \"Gadget\" attack that allows any Object.prototype pollution in the application's dependency tree to be escalated into a full Man-in-the-Middle (MITM) attack \u2014 intercepting, reading, and modifying all HTTP traffic including authentication credentials. The HTTP adapter at lib/adapters/http.js:670 reads config.proxy via standard property access, whic",
+      "cvss": {
+        "score": 8.7,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:N",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Node.js"
+      ],
+      "references": [
+        "https://github.com/axios/axios/security/advisories/GHSA-35jp-ww65-95wh",
+        "https://github.com/axios/axios/security/advisories/GHSA-35jp-ww65-95wh"
+      ],
+      "published": "2026-06-11T17:16:33.313"
+    },
+    {
+      "id": "CVE-2026-44492",
+      "description": "Axios is a promise based HTTP client for the browser and Node.js. Prior to 0.32.0 and 1.16.0, Axios does not normalise IPv4-mapped IPv6 addresses. When NO_PROXY lists an IPv4 address such as 127.0.0.1 or 169.254.169.254, a request URL using the IPv4-mapped IPv6 form (::ffff:7f00:1, ::ffff:a9fe:a9fe) still routes through the configured proxy. Node.js resolves these addresses to the underlying IPv4 host, so the request reaches the internal service via the proxy rather than being blocked. This vuln",
+      "cvss": {
+        "score": 8.6,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:N/A:N",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Node.js"
+      ],
+      "references": [
+        "https://github.com/axios/axios/security/advisories/GHSA-pjwm-pj3p-43mv"
+      ],
+      "published": "2026-06-11T17:16:33.167"
+    },
+    {
+      "id": "CVE-2026-47368",
+      "description": "A malicious actor with access to the network could exploit a Path Traversal vulnerability found in certain devices running UniFi OS to obtain data from such UniFi OS devices or instances.",
+      "cvss": {
+        "score": 8.6,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:N/A:N",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Ubiquiti/UniFi"
+      ],
+      "references": [
+        "https://community.ui.com/releases/Security-Advisory-Bulletin-065-065/aa46a22b-fc43-4eae-9382-6fc8feda967a"
+      ],
+      "published": "2026-06-12T04:17:06.343"
+    },
+    {
+      "id": "CVE-2026-12008",
+      "description": "Use after free in DigitalCredentials in Google Chrome prior to 149.0.7827.115 allowed a remote attacker who had compromised the renderer process to potentially perform a sandbox escape via a crafted HTML page. (Chromium security severity: Critical)",
+      "cvss": {
+        "score": 8.3,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/06/stable-channel-update-for-desktop_01962725236.html",
+        "https://issues.chromium.org/issues/516942828"
+      ],
+      "published": "2026-06-11T22:16:53.243"
+    },
+    {
+      "id": "CVE-2026-12009",
+      "description": "Insufficient validation of untrusted input in Accessibility in Google Chrome on Mac prior to 149.0.7827.115 allowed a remote attacker who had compromised the renderer process to potentially perform a sandbox escape via a crafted HTML page. (Chromium security severity: Critical)",
+      "cvss": {
+        "score": 8.3,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/06/stable-channel-update-for-desktop_01962725236.html",
+        "https://issues.chromium.org/issues/517332006"
+      ],
+      "published": "2026-06-11T22:16:53.363"
+    },
+    {
+      "id": "CVE-2026-12010",
+      "description": "Heap buffer overflow in GPU in Google Chrome on Android prior to 149.0.7827.115 allowed a remote attacker who had compromised the renderer process to potentially perform a sandbox escape via a crafted HTML page. (Chromium security severity: Critical)",
+      "cvss": {
+        "score": 8.3,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/06/stable-channel-update-for-desktop_01962725236.html",
+        "https://issues.chromium.org/issues/517531647"
+      ],
+      "published": "2026-06-11T22:16:53.480"
+    },
+    {
+      "id": "CVE-2026-12011",
+      "description": "Use after free in WebMIDI in Google Chrome on Windows prior to 149.0.7827.115 allowed a remote attacker who had compromised the renderer process to potentially perform a sandbox escape via a crafted HTML page. (Chromium security severity: Critical)",
+      "cvss": {
+        "score": 8.3,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/06/stable-channel-update-for-desktop_01962725236.html",
+        "https://issues.chromium.org/issues/518108291"
+      ],
+      "published": "2026-06-11T22:16:53.597"
+    },
+    {
+      "id": "CVE-2026-12014",
+      "description": "Use after free in Cast in Google Chrome prior to 149.0.7827.115 allowed an attacker on the local network segment to potentially perform a sandbox escape via malicious network traffic. (Chromium security severity: High)",
+      "cvss": {
+        "score": 8.3,
+        "vector": "CVSS:3.1/AV:A/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/06/stable-channel-update-for-desktop_01962725236.html",
+        "https://issues.chromium.org/issues/514742747"
+      ],
+      "published": "2026-06-11T22:16:53.933"
+    },
+    {
+      "id": "CVE-2026-12016",
+      "description": "Inappropriate implementation in DevTools in Google Chrome prior to 149.0.7827.115 allowed a remote attacker who had compromised the renderer process to potentially perform a sandbox escape via a crafted HTML page. (Chromium security severity: High)",
+      "cvss": {
+        "score": 8.3,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/06/stable-channel-update-for-desktop_01962725236.html",
+        "https://issues.chromium.org/issues/516482138"
+      ],
+      "published": "2026-06-11T22:16:54.157"
+    },
+    {
+      "id": "CVE-2026-12019",
+      "description": "Heap buffer overflow in Codecs in Google Chrome on Linux and ChromeOS prior to 149.0.7827.115 allowed a remote attacker who had compromised the renderer process to potentially perform a sandbox escape via a crafted HTML page. (Chromium security severity: High)",
+      "cvss": {
+        "score": 8.3,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/06/stable-channel-update-for-desktop_01962725236.html",
+        "https://issues.chromium.org/issues/516872067"
+      ],
+      "published": "2026-06-11T22:16:54.477"
+    },
+    {
+      "id": "CVE-2026-12022",
+      "description": "Race in Safe Browsing in Google Chrome on Mac prior to 149.0.7827.115 allowed a remote attacker who had compromised the renderer process to potentially perform a sandbox escape via a malicious file. (Chromium security severity: High)",
+      "cvss": {
+        "score": 8.3,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/06/stable-channel-update-for-desktop_01962725236.html",
+        "https://issues.chromium.org/issues/516929496"
+      ],
+      "published": "2026-06-11T22:16:54.700"
+    },
+    {
+      "id": "CVE-2026-12023",
+      "description": "Use after free in GPU in Google Chrome on Mac prior to 149.0.7827.115 allowed a remote attacker who had compromised the renderer process to potentially perform a sandbox escape via a crafted HTML page. (Chromium security severity: High)",
+      "cvss": {
+        "score": 8.3,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/06/stable-channel-update-for-desktop_01962725236.html",
+        "https://issues.chromium.org/issues/517018374"
+      ],
+      "published": "2026-06-11T22:16:54.817"
+    },
+    {
+      "id": "CVE-2026-12028",
+      "description": "Use after free in GPU in Google Chrome on Android prior to 149.0.7827.115 allowed a remote attacker who had compromised the renderer process to potentially perform a sandbox escape via a crafted HTML page. (Chromium security severity: High)",
+      "cvss": {
+        "score": 8.3,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/06/stable-channel-update-for-desktop_01962725236.html",
+        "https://issues.chromium.org/issues/517555461"
+      ],
+      "published": "2026-06-11T22:16:55.350"
+    },
+    {
+      "id": "CVE-2026-12029",
+      "description": "Use after free in Video in Google Chrome on Windows prior to 149.0.7827.115 allowed a remote attacker who had compromised the renderer process to potentially perform a sandbox escape via a crafted HTML page. (Chromium security severity: High)",
+      "cvss": {
+        "score": 8.3,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/06/stable-channel-update-for-desktop_01962725236.html",
+        "https://issues.chromium.org/issues/518002958"
+      ],
+      "published": "2026-06-11T22:16:55.460"
+    },
+    {
+      "id": "CVE-2026-12030",
+      "description": "Out of bounds write in GPU in Google Chrome on Android prior to 149.0.7827.115 allowed a remote attacker who had compromised the renderer process to potentially perform a sandbox escape via a crafted HTML page. (Chromium security severity: High)",
+      "cvss": {
+        "score": 8.3,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/06/stable-channel-update-for-desktop_01962725236.html",
+        "https://issues.chromium.org/issues/518007423"
+      ],
+      "published": "2026-06-11T22:16:55.567"
+    },
+    {
+      "id": "CVE-2026-12031",
+      "description": "Inappropriate implementation in Views in Google Chrome on Windows prior to 149.0.7827.115 allowed a remote attacker who had compromised the renderer process to potentially perform a sandbox escape via a crafted HTML page. (Chromium security severity: High)",
+      "cvss": {
+        "score": 8.3,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/06/stable-channel-update-for-desktop_01962725236.html",
+        "https://issues.chromium.org/issues/518045638"
+      ],
+      "published": "2026-06-11T22:16:55.677"
+    },
+    {
+      "id": "CVE-2026-12034",
+      "description": "Insufficient validation of untrusted input in Linux Toolkit Theming in Google Chrome on Linux prior to 149.0.7827.115 allowed a remote attacker who had compromised the renderer process to potentially perform a sandbox escape via a malicious file. (Chromium security severity: High)",
+      "cvss": {
+        "score": 8.3,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/06/stable-channel-update-for-desktop_01962725236.html",
+        "https://issues.chromium.org/issues/519258799"
+      ],
+      "published": "2026-06-11T22:16:55.987"
+    },
+    {
+      "id": "CVE-2026-49982",
+      "description": "tmp is a temporary file and directory creator for node.js. In version 0.2.6, the _assertPath guard added to tmp rejects only string values that contain the substring ... It is bypassed when prefix, postfix, or template is supplied as a non-string value (Array, Buffer, or any object) whose includes('..') returns falsy but whose stringification still contains ../. The value flows through Array.prototype.join/String coercion inside _generateTmpName and path.join(tmpDir, opts.dir, name), producing a",
+      "cvss": {
+        "score": 8.2,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:L",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Node.js"
+      ],
+      "references": [
+        "https://github.com/raszi/node-tmp/security/advisories/GHSA-7c78-jf6q-g5cm",
+        "https://github.com/raszi/node-tmp/security/advisories/GHSA-7c78-jf6q-g5cm"
+      ],
+      "published": "2026-06-11T17:16:35.227"
+    },
+    {
+      "id": "CVE-2026-11816",
+      "description": "Keras versions prior to 3.14.0 are vulnerable to a path traversal issue in the archive extraction utilities located in `keras/src/utils/file_utils.py`. The functions `filter_safe_tarinfos()` and `filter_safe_zipinfos()` validate archive member paths against the process current working directory (CWD) instead of the actual extraction destination. When the process runs with CWD set to `/`, which is common in Docker containers, CI/CD runners, and Jupyter environments, the validation boundary become",
+      "cvss": {
+        "score": 8.1,
+        "vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:N",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Python"
+      ],
+      "references": [
+        "https://github.com/keras-team/keras/commit/2465b6657b02c8eed308759b7e800e295ae01888",
+        "https://huntr.com/bounties/a07e3983-7158-4419-af2b-38f1dea01a4f",
+        "https://huntr.com/bounties/a07e3983-7158-4419-af2b-38f1dea01a4f"
+      ],
+      "published": "2026-06-11T14:16:26.557"
+    },
+    {
+      "id": "CVE-2026-12012",
+      "description": "Use after free in Network in Google Chrome prior to 149.0.7827.115 allowed an attacker in a privileged network position to potentially exploit heap corruption via malicious network traffic. (Chromium security severity: High)",
       "cvss": {
         "score": 8.1,
         "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
         "severity": "HIGH"
       },
-      "tier": 0,
-      "matchedProducts": [
-        "WordPress"
-      ],
-      "references": [
-        "https://plugins.svn.wordpress.org/updraftplus/tags/1.26.4/vendor/team-updraft/common-libs/src/updraft-rpc/class-udrpc.php",
-        "https://plugins.svn.wordpress.org/updraftplus/tags/1.26.4/vendor/team-updraft/common-libs/src/updraft-rpc/class-udrpc2.php",
-        "https://plugins.trac.wordpress.org/changeset/3561938/updraftplus/trunk/vendor/team-updraft/common-libs/src/updraft-rpc/class-udrpc2.php",
-        "https://www.wordfence.com/threat-intel/vulnerabilities/id/e901c2a0-2477-4b9a-8483-6002419e0a2f?source=cve"
-      ],
-      "published": "2026-06-11T07:16:26.713"
-    },
-    {
-      "id": "CVE-2026-48860",
-      "description": "Reliance on IP Address for Authentication vulnerability in Erlang/OTP ssl (inet_tls_dist module) allows unauthenticated bypass of the distribution-over-TLS LAN allowlist.\n\nThe inet_tls_dist:check_ip/1 function, which enforces a LAN allowlist for Erlang distribution over TLS, calls inet:sockname/1 instead of inet:peername/1 to obtain the peer's IP address. Because inet:sockname/1 returns the local socket address, both the local IP and the supposed peer IP resolve to the same value, causing the su",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 0,
-      "matchedProducts": [
-        "Erlang/OTP"
-      ],
-      "references": [
-        "https://cna.erlef.org/cves/CVE-2026-48860.html",
-        "https://github.com/erlang/otp/commit/0209a6df65d605552b378273027b3968b35f26b4",
-        "https://github.com/erlang/otp/security/advisories/GHSA-gp7x-mfv6-52cv",
-        "https://osv.dev/vulnerability/EEF-CVE-2026-48860",
-        "https://www.erlang.org/doc/system/versions.html#order-of-versions"
-      ],
-      "published": "2026-06-10T16:17:12.503"
-    },
-    {
-      "id": "CVE-2026-53475",
-      "description": "A flaw was found in assisted-migration-agent. The application hardcodes insecure Transport Layer Security (TLS) connections when communicating with vCenter. This vulnerability allows a Man-in-the-Middle (MITM) attacker to intercept and harvest vCenter administrator credentials. This can lead to unauthorized access to vCenter.",
-      "cvss": {
-        "score": 9.3,
-        "vector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:N",
-        "severity": "CRITICAL"
-      },
       "tier": 1,
       "matchedProducts": [
-        "VMware vCenter"
+        "Google Chrome"
       ],
       "references": [
-        "https://access.redhat.com/security/cve/CVE-2026-53475",
-        "https://bugzilla.redhat.com/show_bug.cgi?id=2487232",
-        "https://github.com/kubev2v/assisted-migration-agent/pull/268"
+        "https://chromereleases.googleblog.com/2026/06/stable-channel-update-for-desktop_01962725236.html",
+        "https://issues.chromium.org/issues/499182801"
       ],
-      "published": "2026-06-10T15:16:42.090"
+      "published": "2026-06-11T22:16:53.700"
     },
     {
-      "id": "CVE-2026-45550",
-      "description": "Roxy-WI is a web interface for managing Haproxy, Nginx, Apache and Keepalived servers. In versions 8.2.6.4 and prior, PUT /smon/check (app/routes/smon/routes.py:117-138) gates only on roxywi_common.check_user_group_for_flask() \u2014 which validates that the caller has some group, not that the target check_id belongs to it. The downstream SQL update functions update_smon, update_smonHttp, update_smonTcp, update_smonPing, update_smonDns (app/modules/db/smon.py:515-562) all execute WHERE smon_id = ? wi",
-      "cvss": {
-        "score": 9.1,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:H/A:L",
-        "severity": "CRITICAL"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "Nginx"
-      ],
-      "references": [
-        "https://github.com/roxy-wi/roxy-wi/security/advisories/GHSA-856h-mvm2-2h2x",
-        "https://github.com/roxy-wi/roxy-wi/security/advisories/GHSA-856h-mvm2-2h2x"
-      ],
-      "published": "2026-06-10T15:16:36.160"
-    },
-    {
-      "id": "CVE-2026-49498",
-      "description": "Ghidra 11.0 before 12.1 contains a SQL injection vulnerability in the changePassword() method of PostgresFunctionDatabase that fails to escape double quotes in usernames interpolated into ALTER ROLE statements. Authenticated attackers can inject SQL commands via crafted username parameters in PasswordChange network messages to escalate to PostgreSQL superuser privileges and gain full database control.",
-      "cvss": {
-        "score": 8.8,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "PostgreSQL"
-      ],
-      "references": [
-        "https://github.com/NationalSecurityAgency/ghidra/security/advisories/GHSA-vv7r-2rhf-5h7g",
-        "https://www.vulncheck.com/advisories/ghidra-sql-injection-in-postgresql-password-change-via-unescaped-username"
-      ],
-      "published": "2026-06-10T14:16:34.777"
-    },
-    {
-      "id": "CVE-2026-52758",
-      "description": "Ghidra before 12.1 contains a SQL injection vulnerability in BSim filter types that concatenate user-supplied values directly into SQL queries without escaping or parameterization. Remote attackers can inject arbitrary SQL via the BSim network query protocol to read, modify, or delete data in the PostgreSQL database.",
-      "cvss": {
-        "score": 8.8,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "PostgreSQL"
-      ],
-      "references": [
-        "https://github.com/NationalSecurityAgency/ghidra/security/advisories/GHSA-8r4f-65cr-fwxm",
-        "https://www.vulncheck.com/advisories/ghidra-sql-injection-via-unescaped-filter-values-in-bsim-search",
-        "https://github.com/NationalSecurityAgency/ghidra/security/advisories/GHSA-8r4f-65cr-fwxm"
-      ],
-      "published": "2026-06-10T14:16:36.170"
-    },
-    {
-      "id": "CVE-2026-45564",
-      "description": "Roxy-WI is a web interface for managing Haproxy, Nginx, Apache and Keepalived servers. In versions 8.2.6.4 and prior, POST /config/versions/<service>/<server_ip>/<configver>/save interpolates the URL-path configver parameter directly into a config-version path that ends up at os.system(f\"dos2unix -q {cfg}\"). configver is not run through EscapedString (Pydantic doesn't validate path segments declared as str) and the surrounding .. block is the broken tuple-membership patch from GHSA-vapt-004. An ",
-      "cvss": {
-        "score": 8.8,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "Nginx"
-      ],
-      "references": [
-        "https://github.com/roxy-wi/roxy-wi/security/advisories/GHSA-w42x-3v8j-cmg2",
-        "https://github.com/roxy-wi/roxy-wi/security/advisories/GHSA-w42x-3v8j-cmg2"
-      ],
-      "published": "2026-06-10T15:16:37.307"
-    },
-    {
-      "id": "CVE-2026-45549",
-      "description": "Roxy-WI is a web interface for managing Haproxy, Nginx, Apache and Keepalived servers. In versions 8.2.6.4 and prior, agent_action (app/routes/smon/agent_routes.py:166-179) has decorators @bp.post('/agent/action/<action>') and @jwt_required() only \u2014 no role check, no group ownership check on the server_ip form field. Any authenticated user, including role 4 (guest), can start, stop, or restart the roxy-wi-smon-agent systemd unit on any server they can name. Roxy-WI executes the systemd action ov",
-      "cvss": {
-        "score": 8.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:N/I:L/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "Nginx"
-      ],
-      "references": [
-        "https://github.com/roxy-wi/roxy-wi/security/advisories/GHSA-c92j-h72m-ff4j",
-        "https://github.com/roxy-wi/roxy-wi/security/advisories/GHSA-c92j-h72m-ff4j"
-      ],
-      "published": "2026-06-10T15:16:35.997"
-    },
-    {
-      "id": "CVE-2026-45567",
-      "description": "Roxy-WI is a web interface for managing Haproxy, Nginx, Apache and Keepalived servers. In versions 8.2.6.4 and prior, there is an authentication bypass vulnerability via 'api' substring in URL + unauthenticated /api/gpt. At time of publication, there are no publicly available patches.",
-      "cvss": {
-        "score": 8.3,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:L",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "Nginx"
-      ],
-      "references": [
-        "https://github.com/roxy-wi/roxy-wi/security/advisories/GHSA-4fcm-qgg8-w2vf",
-        "https://github.com/roxy-wi/roxy-wi/security/advisories/GHSA-4fcm-qgg8-w2vf"
-      ],
-      "published": "2026-06-10T16:17:07.957"
-    },
-    {
-      "id": "CVE-2026-40998",
-      "description": "Jaxp13XPathTemplate evaluated XPath expressions for StreamSource and SAXSource inputs using a code path that parsed attacker-controlled XML with the JDK's default DocumentBuilderFactory behavior instead of Spring's hardened parser configuration. Applications that evaluate XPath against untrusted XML payloads could therefore be exposed to XML External Entity (XXE) style attacks.\n\nAffected versions:\nSpring Web Services 5.0.0 through 5.0.1; 4.1.0 through 4.1.3; 4.0.0 through 4.0.18; 3.1.0 through 3",
-      "cvss": {
-        "score": 8.2,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:N",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "Oracle Java"
-      ],
-      "references": [
-        "https://spring.io/security/cve-2026-40998"
-      ],
-      "published": "2026-06-11T07:16:27.787"
-    },
-    {
-      "id": "CVE-2026-45565",
-      "description": "Roxy-WI is a web interface for managing Haproxy, Nginx, Apache and Keepalived servers. In versions 8.2.6.4 and prior, EscapedString (app/modules/roxywi/class_models.py:16-30) is the centralised Pydantic validator used on dozens of fields including SSH credential name, username, description, etc. Its if/elif/elif/else flow returns the metacharacter-stripped value without also enforcing the .. block. An attacker who appends a single ;, &, |, $, or backtick to a .. payload routes the value through ",
+      "id": "CVE-2026-48610",
+      "description": "Under certain network configurations, a malicious actor with access to network could exploit an Improper Access Control vulnerability found in certain devices running UniFi OS to make unauthorized changes to such UniFi OS devices.",
       "cvss": {
         "score": 8.1,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N",
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
         "severity": "HIGH"
       },
       "tier": 1,
       "matchedProducts": [
-        "Nginx"
+        "Ubiquiti/UniFi"
       ],
       "references": [
-        "https://github.com/roxy-wi/roxy-wi/security/advisories/GHSA-7qm8-cm8p-9rx3",
-        "https://github.com/roxy-wi/roxy-wi/security/advisories/GHSA-7qm8-cm8p-9rx3"
+        "https://community.ui.com/releases/Security-Advisory-Bulletin-065-065/aa46a22b-fc43-4eae-9382-6fc8feda967a"
       ],
-      "published": "2026-06-10T16:17:07.350"
+      "published": "2026-06-12T04:17:06.803"
     },
     {
-      "id": "CVE-2026-45569",
-      "description": "Roxy-WI is a web interface for managing Haproxy, Nginx, Apache and Keepalived servers. In versions 8.2.6.4 and prior, ommit d4d10006 (\"Expand validation to block .. in config_file_name and configver for improved security\") added a line in app/modules/config/config.py:462. This is tuple-membership, not substring containment \u2014 '..' in (a, b, c) evaluates to True only if any of a, b, c is equal to the literal string '..'. For any realistic path-traversal payload (../../etc/passwd, ..\\\\..\\\\etc\\\\pass",
+      "id": "CVE-2026-44488",
+      "description": "Axios is a promise based HTTP client for the browser and Node.js. Axios versions 1.7.0 through 1.15.x did not enforce configured request and response size limits when requests were sent with the fetch adapter. Applications that selected adapter: 'fetch', or ran in environments where axios resolved to the fetch adapter, could receive or send bodies larger than maxContentLength or maxBodyLength despite those limits being explicitly configured. This can cause resource exhaustion in server-side usag",
       "cvss": {
-        "score": 8.1,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N",
+        "score": 7.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
         "severity": "HIGH"
       },
       "tier": 1,
       "matchedProducts": [
-        "Nginx"
+        "Node.js"
       ],
       "references": [
-        "https://github.com/roxy-wi/roxy-wi/commit/d4d10006",
-        "https://github.com/roxy-wi/roxy-wi/security/advisories/GHSA-j6p4-8532-h9hv"
+        "https://github.com/axios/axios/security/advisories/GHSA-777c-7fjr-54vf",
+        "https://github.com/axios/axios/security/advisories/GHSA-777c-7fjr-54vf"
       ],
-      "published": "2026-06-10T16:17:08.433"
+      "published": "2026-06-11T17:16:32.750"
     },
     {
-      "id": "CVE-2026-48108",
-      "description": "Russh is a Rust SSH client & server library. From version 0.34.0-beta.1 to before version 0.61.0, russh did not enforce the SSH identification-string rules as deliberately as OpenSSH. In particular, the server-side identification reader used the same permissive path as the client, allowing pre-banner lines from clients, and the reader did not enforce a bounded number of pre-banner lines. For a library server built on russh, this could allow a remote peer to hold connection setup resources in the",
+      "id": "CVE-2026-44250",
+      "description": "Netty is a network application framework for development of protocol servers and clients. In netty-codec-redis prior to versions 4.1.135.Final and 4.2.15.Final, an attacker can cause DoS by sending a crafted Redis payload with deeply nested arrays. This forces the server to allocate a massive number of state objects and collections, leading to memory exhaustion and an OutOfMemoryError. Versions 4.1.135.Final and 4.2.15.Final patch the issue.",
       "cvss": {
-        "score": 5.3,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
-        "severity": "MEDIUM"
+        "score": 7.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+        "severity": "HIGH"
       },
       "tier": 1,
       "matchedProducts": [
-        "OpenSSH"
+        "Redis"
       ],
       "references": [
-        "https://github.com/Eugeny/russh/security/advisories/GHSA-76r6-x97p-67vr"
+        "https://github.com/netty/netty/releases/tag/netty-4.1.135.Final",
+        "https://github.com/netty/netty/releases/tag/netty-4.2.15.Final",
+        "https://github.com/netty/netty/security/advisories/GHSA-3244-j874-rhc2"
       ],
-      "published": "2026-06-10T22:17:01.130"
+      "published": "2026-06-11T22:16:56.857"
     },
     {
-      "id": "CVE-2026-46529",
-      "description": "Atril Document Viewer is the default document reader of the MATE desktop environment for Linux. A single-click remote code execution vulnerability in versions prior to 1.26.3 and 1.28.4 allows an attacker to achieve arbitrary code execution as the user by tricking them into clicking a link inside a malicious PDF document. The PDF can be packaged as a polyglot file that is simultaneously a valid PDF and a valid ELF shared library, making the attack a single-file, single-click, configuration-indep",
+      "id": "CVE-2026-48546",
+      "description": "KanaDojo before 0.1.18 contains a sandbox escape vulnerability that allows an attacker to execute arbitrary code by exploiting the explicit passing of the global require function into a Node.js vm.runInNewContext() sandbox context in the issue-auto-respond.yml workflow. Attackers can submit a pull request modifying messages.cjs to import arbitrary Node.js modules, bypassing sandbox restrictions and achieving remote code execution with full GitHub Actions runner privileges including access to AUT",
+      "cvss": {
+        "score": 7.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:N",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Node.js"
+      ],
+      "references": [
+        "https://github.com/lingdojo/kana-dojo/commit/31b85a5d7c4b323ddeba3b2dc5e7807558710544",
+        "https://github.com/lingdojo/kana-dojo/releases/tag/v0.1.18",
+        "https://www.vulncheck.com/advisories/kanadojo-sandbox-escape-rce-via-messages-cjs"
+      ],
+      "published": "2026-06-11T18:16:26.390"
+    },
+    {
+      "id": "CVE-2026-12024",
+      "description": "Insufficient policy enforcement in DevTools in Google Chrome prior to 149.0.7827.115 allowed a remote attacker to bypass same origin policy via a crafted HTML page. (Chromium security severity: High)",
       "cvss": {
         "score": null,
         "vector": null,
@@ -368,20 +629,17 @@
       },
       "tier": 1,
       "matchedProducts": [
-        "MATE Desktop"
+        "Google Chrome"
       ],
       "references": [
-        "https://github.com/mate-desktop/atril/releases/tag/v1.26.3",
-        "https://github.com/mate-desktop/atril/releases/tag/v1.28.4",
-        "https://github.com/mate-desktop/atril/security/advisories/GHSA-vgv2-m826-8f6f",
-        "http://www.openwall.com/lists/oss-security/2026/05/19/34",
-        "http://www.openwall.com/lists/oss-security/2026/05/21/7"
+        "https://chromereleases.googleblog.com/2026/06/stable-channel-update-for-desktop_01962725236.html",
+        "https://issues.chromium.org/issues/517086161"
       ],
-      "published": "2026-06-10T20:17:28.570"
+      "published": "2026-06-11T22:16:54.930"
     },
     {
-      "id": "CVE-2026-3018",
-      "description": "The Newsletters plugin for WordPress is vulnerable to time-based SQL Injection via the \u2018wpmlsubscriber_id\u2019 parameter in all versions up to, and including, 4.13 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query.  This makes it possible for unauthenticated attackers to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database.",
+      "id": "CVE-2026-44486",
+      "description": "Axios is a promise based HTTP client for the browser and Node.js. Prior to 0.32.0 and 1.16.0, Axios\u2019 Node.js HTTP adapter can leak proxy credentials to a redirect target in affected versions. When a request is sent through an authenticated proxy, Axios may add a Proxy-Authorization header. If Axios then follows a redirect and the redirected request is no longer sent through that proxy, the stale Proxy-Authorization header can remain on the redirected request and be sent to the redirect target. T",
       "cvss": {
         "score": 7.5,
         "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
@@ -389,447 +647,409 @@
       },
       "tier": 2,
       "matchedProducts": [
+        "Node.js"
+      ],
+      "references": [
+        "https://github.com/axios/axios/security/advisories/GHSA-j5f8-grm9-p9fc"
+      ],
+      "published": "2026-06-11T17:16:32.450"
+    },
+    {
+      "id": "CVE-2026-44496",
+      "description": "Axios is a promise based HTTP client for the browser and Node.js. Axios versions before 0.32.0 on the 0.x line and before 1.16.0 on the 1.x line build a regular expression from the configured XSRF cookie name without escaping regex metacharacters. In standard browser environments, an attacker who can influence the cookie name passed to axios can cause expensive regex backtracking while axios reads document.cookie. The practical impact is client-side availability degradation, such as freezing the",
+      "cvss": {
+        "score": 7.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "Node.js"
+      ],
+      "references": [
+        "https://github.com/axios/axios/security/advisories/GHSA-hfxv-24rg-xrqf",
+        "https://github.com/axios/axios/security/advisories/GHSA-hfxv-24rg-xrqf"
+      ],
+      "published": "2026-06-11T17:16:33.590"
+    },
+    {
+      "id": "CVE-2026-44890",
+      "description": "Netty is a network application framework for development of protocol servers and clients. In netty-codec-redis prior to versions 4.1.135.Final and 4.2.15.Final, an attacker can cause DoS by sending crafted Redis payloads across multiple connections without `\\r\\n`. This exhausts the server's direct memory pool (OutOfDirectMemoryError), preventing legitimate connections from being processed. Versions 4.1.135.Final and 4.2.15.Final patch the issue.",
+      "cvss": {
+        "score": 7.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "Redis"
+      ],
+      "references": [
+        "https://github.com/netty/netty/releases/tag/netty-4.1.135.Final",
+        "https://github.com/netty/netty/releases/tag/netty-4.2.15.Final",
+        "https://github.com/netty/netty/security/advisories/GHSA-6ghj-frrj-jjj3"
+      ],
+      "published": "2026-06-11T22:16:56.997"
+    },
+    {
+      "id": "CVE-2026-44495",
+      "description": "Axios is a promise based HTTP client for the browser and Node.js. From 0.19.0 to before 0.31.1 and 1.15.2, Axios contains prototype-pollution gadgets in request config processing. If another vulnerability in the same JavaScript process has already polluted Object.prototype.transformResponse, affected Axios versions may treat that inherited value as request configuration or as an option validator. Axios does not itself create the prototype pollution. Exploitability requires a separate prototype-p",
+      "cvss": {
+        "score": 7.0,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:L/A:L",
+        "severity": "HIGH"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "Node.js"
+      ],
+      "references": [
+        "https://github.com/axios/axios/security/advisories/GHSA-3g43-6gmg-66jw"
+      ],
+      "published": "2026-06-11T17:16:33.450"
+    },
+    {
+      "id": "CVE-2026-11945",
+      "description": "PostgreSQL Anonymizer contains a vulnerability that allows a user to gain superuser privileges by creating a JSON document and placing malicious code inside a particular key-value pair. If a superuser calls the import_database_rules() or import_roles_rules() functions, the malicious code is executed with superuser privileges. The problem is resolved in PostgreSQL Anonymizer 3.1.1 and further versions",
+      "cvss": {
+        "score": 6.4,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:H/UI:R/S:U/C:H/I:H/A:H",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "PostgreSQL"
+      ],
+      "references": [
+        "https://gitlab.com/dalibo/postgresql_anonymizer/-/issues/643"
+      ],
+      "published": "2026-06-11T17:16:31.837"
+    },
+    {
+      "id": "CVE-2026-9125",
+      "description": "The Presto Player plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'link_url' parameter of the [presto_player_overlay] shortcode in versions up to, and including, 4.2.0 This is due to insufficient input sanitization and output escaping in the getOverlays() function, which copies the link_url shortcode attribute directly into the overlay configuration without scheme validation, allowing javascript: URIs to survive and be rendered as the href of a clickable anchor element ",
+      "cvss": {
+        "score": 6.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
         "WordPress"
       ],
       "references": [
-        "https://plugins.trac.wordpress.org/browser/newsletters-lite/tags/4.11/wp-mailinglist-plugin.php#L6040",
-        "https://plugins.trac.wordpress.org/changeset/3566485/newsletters-lite",
-        "https://www.wordfence.com/threat-intel/vulnerabilities/id/8e2672b5-64a2-4b30-b0be-2a9303d46ac1?source=cve"
+        "https://plugins.trac.wordpress.org/browser/presto-player/tags/4.1.1/dist/components/collection/components/core/features/presto-dynamic-overlays/component/presto-dynamic-overlays.js#L1",
+        "https://plugins.trac.wordpress.org/browser/presto-player/tags/4.1.1/inc/Services/Shortcodes.php#L464",
+        "https://plugins.trac.wordpress.org/browser/presto-player/tags/4.1.1/inc/Services/Shortcodes.php#L513",
+        "https://plugins.trac.wordpress.org/browser/presto-player/tags/4.1.1/templates/video.php#L16",
+        "https://plugins.trac.wordpress.org/browser/presto-player/tags/4.1.4/dist/components/collection/components/core/features/presto-dynamic-overlays/component/presto-dynamic-overlays.js#L1"
       ],
-      "published": "2026-06-10T10:16:31.713"
+      "published": "2026-06-12T02:16:42.373"
     },
     {
-      "id": "CVE-2025-71329",
-      "description": "image-size through 2.0.2 contains a denial of service vulnerability that allows remote attackers to permanently block the Node.js event loop by supplying a specially crafted image buffer with a zero-valued size field in a recognized box-type. Attackers can trigger an infinite loop in the JXL or HEIF image parsers by providing a crafted image containing a box with a size of zero, causing the offset to never advance and permanently hanging the application.",
+      "id": "CVE-2026-46698",
+      "description": "Fediverse Embeds embeds fediverse posts on WordPress sites. Prior to version 1.5.9, Fediverse Embeds registered the unauthenticated AJAX action wp_ajax_nopriv_ftf_get_site_info (includes/Site_Info.php) that verified a nonce ftf-fediverse-embeds-nonce and then called file_get_html($site_url) on the attacker-supplied URL. The same nonce was enqueued onto every public page containing a fediverse embed (via includes/Enqueue_Assets.php lines 41-46 + includes/Helpers.php lines 64-83), so the nonce gat",
       "cvss": {
-        "score": 7.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
-        "severity": "HIGH"
+        "score": 5.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+        "severity": "MEDIUM"
       },
       "tier": 2,
       "matchedProducts": [
-        "Node.js"
+        "WordPress"
       ],
       "references": [
-        "https://joshua.hu/image-size-infinite-loop-dos-vulnerabilities",
-        "https://web.archive.org/web/20260224152152/https://github.com/image-size/image-size/pull/439",
-        "https://www.vulncheck.com/advisories/image-size-denial-of-service-via-infinite-loop-in-jxl-heif-parser"
+        "https://github.com/stefanbohacek/fediverse-embeds-wordpress-plugin/commit/93821405790ccc7a80528e91b34b624606b54969",
+        "https://github.com/stefanbohacek/fediverse-embeds-wordpress-plugin/security/advisories/GHSA-cr42-rgq6-whjh",
+        "https://github.com/stefanbohacek/fediverse-embeds-wordpress-plugin/security/advisories/GHSA-cr42-rgq6-whjh"
       ],
-      "published": "2026-06-10T14:16:30.160"
+      "published": "2026-06-11T18:16:26.093"
     },
     {
-      "id": "CVE-2025-71330",
-      "description": "image-size through 2.0.2 contains a denial of service vulnerability that allows remote attackers to permanently block the Node.js event loop by supplying a specially crafted ICNS image buffer. Attackers can craft an ICNS buffer containing valid magic bytes and a zero-valued entry length field to trigger an infinite loop in the ICNS parser, as the offset is never incremented when the entry length field is 0, causing the while loop condition to remain true indefinitely.",
+      "id": "CVE-2026-12015",
+      "description": "Use after free in Autofill in Google Chrome prior to 149.0.7827.115 allowed a remote attacker who had compromised the renderer process to obtain potentially sensitive information from process memory via a crafted HTML page. (Chromium security severity: High)",
       "cvss": {
-        "score": 7.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Node.js"
-      ],
-      "references": [
-        "https://joshua.hu/image-size-infinite-loop-dos-vulnerabilities",
-        "https://web.archive.org/web/20260224152152/https://github.com/image-size/image-size/pull/439",
-        "https://www.vulncheck.com/advisories/image-size-denial-of-service-via-malformed-icns-image-parsing"
-      ],
-      "published": "2026-06-10T14:16:30.387"
-    },
-    {
-      "id": "CVE-2026-1220",
-      "description": "Race in V8 in Google Chrome prior to 144.0.7559.99 allowed a remote attacker to potentially exploit type confusion via a crafted HTML page. (Chromium security severity: High)",
-      "cvss": {
-        "score": 7.5,
-        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H",
-        "severity": "HIGH"
+        "score": 5.3,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:N/A:N",
+        "severity": "MEDIUM"
       },
       "tier": 2,
       "matchedProducts": [
         "Google Chrome"
       ],
       "references": [
-        "https://chromereleases.googleblog.com/2026/01/stable-channel-update-for-desktop_20.html",
-        "https://issues.chromium.org/issues/473851441",
-        "https://issues.chromium.org/issues/473851441"
+        "https://chromereleases.googleblog.com/2026/06/stable-channel-update-for-desktop_01962725236.html",
+        "https://issues.chromium.org/issues/515463295"
       ],
-      "published": "2026-06-10T20:16:38.643"
+      "published": "2026-06-11T22:16:54.047"
     },
     {
-      "id": "CVE-2026-46679",
-      "description": "libp2p is a JavaScript Implementation of libp2p networking stack. Prior to version 15.0.23, three cooperating omissions in @libp2p/gossipsub allow an unauthenticated single peer to exhaust the Node.js heap of any gossipsub node with default options. This issue has been patched in version 15.0.23.",
+      "id": "CVE-2026-12025",
+      "description": "Insufficient validation of untrusted input in Network in Google Chrome prior to 149.0.7827.115 allowed a remote attacker who had compromised the renderer process to leak cross-origin data via a crafted HTML page. (Chromium security severity: High)",
       "cvss": {
-        "score": 7.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Node.js"
-      ],
-      "references": [
-        "https://github.com/libp2p/js-libp2p/security/advisories/GHSA-4f8r-922h-2vgv"
-      ],
-      "published": "2026-06-10T22:17:00.300"
-    },
-    {
-      "id": "CVE-2026-11417",
-      "description": "OS command injection in the NodejsFunction local bundling pipeline in aws-cdk-lib before 2.245.0 (2.246.0 on Windows) might allow an actor who controls the value of one or more bundling properties (externalModules, define, loader, inject, or esbuildArgs) to execute arbitrary commands on the host running the CDK toolchain via injected shell metacharacters. This issue requires the threat actor to control the value of one or more of the affected bundling properties in the CDK application.\n\n\n\nTo rem",
-      "cvss": {
-        "score": 7.3,
-        "vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Node.js"
-      ],
-      "references": [
-        "https://aws.amazon.com/security/security-bulletins/2026-041-aws/",
-        "https://github.com/aws/aws-cdk/releases/tag/v2.245.0",
-        "https://github.com/aws/aws-cdk/security/advisories/GHSA-999r-qq7v-r334"
-      ],
-      "published": "2026-06-10T18:16:39.940"
-    },
-    {
-      "id": "CVE-2026-53689",
-      "description": "libnfs through 6.0.2 before 55c18ea does not validate a string size, leading to an integer overflow during a connection to a crafted NFS server. This occurs in libnfs_zdr_string in lib/libnfs-zdr.c.",
-      "cvss": {
-        "score": 7.1,
-        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:L",
-        "severity": "HIGH"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "NFS"
-      ],
-      "references": [
-        "https://github.com/sahlberg/libnfs/commit/55c18ea33a83d667f79f0ef209c96895795c729f"
-      ],
-      "published": "2026-06-10T15:16:42.350"
-    },
-    {
-      "id": "CVE-2026-45561",
-      "description": "Roxy-WI is a web interface for managing Haproxy, Nginx, Apache and Keepalived servers. In versions 8.2.6.4 and prior, the /smon/agent/{version,uptime,status,checks}/<server_ip> family of routes takes the URL path component verbatim into requests.get(f'http://{server_ip}:{agent_port}/...'). The path component is constrained only by Flask's default URL converter, which permits any value (including IPv4 literals like 169.254.169.254, RFC1918 ranges, and 127.0.0.1). At time of publication, there are",
-      "cvss": {
-        "score": 6.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
+        "score": 5.3,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:N/A:N",
         "severity": "MEDIUM"
       },
       "tier": 2,
       "matchedProducts": [
-        "Nginx"
+        "Google Chrome"
       ],
       "references": [
-        "https://github.com/roxy-wi/roxy-wi/security/advisories/GHSA-2crj-7rqc-x7rq",
-        "https://github.com/roxy-wi/roxy-wi/security/advisories/GHSA-2crj-7rqc-x7rq"
+        "https://chromereleases.googleblog.com/2026/06/stable-channel-update-for-desktop_01962725236.html",
+        "https://issues.chromium.org/issues/517153191"
       ],
-      "published": "2026-06-10T15:16:37.023"
+      "published": "2026-06-11T22:16:55.040"
     },
     {
-      "id": "CVE-2026-40985",
-      "description": "Applications that configure the WebFlowELExpressionParser are vulnerable to the use of malicious Unified EL expressions.\n\nAffected versions:\nSpring Web Flow 4.0.0; 3.0.0 through 3.0.1; 2.5.0 through 2.5.1.",
+      "id": "CVE-2026-12033",
+      "description": "Out of bounds read in VideoCapture in Google Chrome prior to 149.0.7827.115 allowed a remote attacker who had compromised the GPU process to obtain potentially sensitive information from process memory via a crafted HTML page. (Chromium security severity: High)",
       "cvss": {
-        "score": 6.4,
-        "vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:R/S:U/C:H/I:H/A:N",
+        "score": 5.3,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:N/A:N",
         "severity": "MEDIUM"
       },
       "tier": 2,
       "matchedProducts": [
-        "Ubiquiti/UniFi"
+        "Google Chrome"
       ],
       "references": [
-        "https://spring.io/security/cve-2026-40985"
+        "https://chromereleases.googleblog.com/2026/06/stable-channel-update-for-desktop_01962725236.html",
+        "https://issues.chromium.org/issues/519248779"
       ],
-      "published": "2026-06-11T05:16:33.757"
+      "published": "2026-06-11T22:16:55.880"
     },
     {
-      "id": "CVE-2026-45560",
-      "description": "Roxy-WI is a web interface for managing Haproxy, Nginx, Apache and Keepalived servers. In versions 8.2.6.4 and prior, wrap_line (app/modules/common/common.py:181-186) and highlight_word (app/modules/common/common.py:188-192) build raw HTML by string concatenation with no escaping. The frontend (app/static/js/script.js, log-viewer paths) uses .html(data) / .append(data) to inject the response body. Anyone able to write a line into a managed HAProxy/Nginx access log (i.e. anyone who can send an HT",
+      "id": "CVE-2026-44490",
+      "description": "Axios is a promise based HTTP client for the browser and Node.js. Prior to 0.32.0 and 1.16.0, axios exposes two read-side prototype-pollution gadgets. When Object.prototype is polluted by an upstream dependency in the same process (e.g. lodash _.merge / CVE-2018-16487), axios silently picks up the polluted values. (1) lib/utils.js line 406 builds merge()'s accumulator as result = {}, so result[targetKey] (line 414) walks Object.prototype and the polluted bucket's own keys are copied into the mer",
       "cvss": {
-        "score": 6.1,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Nginx"
-      ],
-      "references": [
-        "https://github.com/roxy-wi/roxy-wi/security/advisories/GHSA-28m4-mmr2-83p6",
-        "https://github.com/roxy-wi/roxy-wi/security/advisories/GHSA-28m4-mmr2-83p6"
-      ],
-      "published": "2026-06-10T15:16:36.883"
-    },
-    {
-      "id": "CVE-2026-45566",
-      "description": "Roxy-WI is a web interface for managing Haproxy, Nginx, Apache and Keepalived servers. In versions 8.2.6.4 and prior, the login flow allow-lists next URLs by rejecting strings containing https:// or http:// substrings, then constructs https://{request.host}{next_url} and the JS client redirects via window.location.replace(). The block does not consider the userinfo@host syntax. next=@evil.example/path produces https://victim.example@evil.example/path, which all modern browsers route to evil.exam",
-      "cvss": {
-        "score": 6.1,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Nginx"
-      ],
-      "references": [
-        "https://github.com/roxy-wi/roxy-wi/security/advisories/GHSA-xw9x-68gg-mp5h",
-        "https://github.com/roxy-wi/roxy-wi/security/advisories/GHSA-xw9x-68gg-mp5h"
-      ],
-      "published": "2026-06-10T16:17:07.600"
-    },
-    {
-      "id": "CVE-2026-46616",
-      "description": "Umbraco is an ASP.NET CMS. Prior to versions 13.14.0 and 17.4.0, some of the Surface Controllers in the CMS provide to support member related operations fail to validate redirect URLs, making Razor templates that derive 'RedirectUrl' from user-controlled query parameters vulnerable to malicious redirect attacks. This issue has been patched in versions 13.14.0 and 17.4.0.",
-      "cvss": {
-        "score": 5.4,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Microsoft .NET"
-      ],
-      "references": [
-        "https://github.com/umbraco/Umbraco-CMS/pull/22561",
-        "https://github.com/umbraco/Umbraco-CMS/pull/22565",
-        "https://github.com/umbraco/Umbraco-CMS/security/advisories/GHSA-2qjj-h6wp-c7h7"
-      ],
-      "published": "2026-06-10T17:16:37.387"
-    },
-    {
-      "id": "CVE-2026-53740",
-      "description": "Yoast Duplicate Post through 4.6 inserts an unescaped post title and permalink into the Classic Editor scheduled republish notice. Attackers can schedule a republish copy with a crafted title to execute script when an administrator views the resulting notice.",
-      "cvss": {
-        "score": 5.4,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Yoast SEO"
-      ],
-      "references": [
-        "https://wordpress.org/plugins/duplicate-post/",
-        "https://www.vulncheck.com/advisories/yoast-duplicate-post-through-stored-cross-site-scripting-via-scheduled-republish-notice"
-      ],
-      "published": "2026-06-10T22:17:02.367"
-    },
-    {
-      "id": "CVE-2026-45559",
-      "description": "Roxy-WI is a web interface for managing Haproxy, Nginx, Apache and Keepalived servers. In versions 8.2.6.4 and prior, get_ldap_email (app/modules/roxywi/user.py:120-157) builds the LDAP search filter via f-string concatenation. The username URL path parameter is taken verbatim \u2014 no checkAjaxInput, no LDAP escape \u2014 and inserted, a username like *)(mail=*)(cn=* injects additional clauses, allowing the admin to enumerate or harvest attributes outside the intended record. At time of publication, the",
-      "cvss": {
-        "score": 4.9,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:N/A:N",
+        "score": 4.8,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:L",
         "severity": "MEDIUM"
       },
       "tier": 3,
       "matchedProducts": [
-        "Nginx"
+        "Node.js"
       ],
       "references": [
-        "https://github.com/roxy-wi/roxy-wi/security/advisories/GHSA-2257-7mhp-grqp",
-        "https://github.com/roxy-wi/roxy-wi/security/advisories/GHSA-2257-7mhp-grqp"
+        "https://github.com/axios/axios/security/advisories/GHSA-898c-q2cr-xwhg",
+        "https://github.com/axios/axios/security/advisories/GHSA-898c-q2cr-xwhg"
       ],
-      "published": "2026-06-10T15:16:36.743"
+      "published": "2026-06-11T17:16:33.027"
     },
     {
-      "id": "CVE-2026-2827",
-      "description": "The Open User Map PRO plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'oum_location_notification' parameter in versions up to, and including, 1.4.31 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+      "id": "CVE-2026-44489",
+      "description": "Axios is a promise based HTTP client for the browser and Node.js. From 1.15.2 to before 1.16.0, nested objects created by utils.merge() (e.g., config.proxy) are still constructed as plain {} with Object.prototype in their chain. The setProxy() function at lib/adapters/http.js:209-223 reads proxy.username, proxy.password, and proxy.auth without hasOwnProperty checks. When Object.prototype.username is polluted, setProxy() constructs a Proxy-Authorization header with attacker-controlled credentials",
       "cvss": {
-        "score": 4.7,
-        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:L/I:L/A:N",
-        "severity": "MEDIUM"
+        "score": 3.7,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:N",
+        "severity": "LOW"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "Node.js"
+      ],
+      "references": [
+        "https://github.com/axios/axios/security/advisories/GHSA-654m-c8p4-x5fp",
+        "https://github.com/axios/axios/security/advisories/GHSA-654m-c8p4-x5fp"
+      ],
+      "published": "2026-06-11T17:16:32.883"
+    },
+    {
+      "id": "CVE-2026-12017",
+      "description": "Inappropriate implementation in Extensions in Google Chrome prior to 149.0.7827.115 allowed a remote attacker who had compromised the renderer process to bypass site isolation via a crafted HTML page. (Chromium security severity: High)",
+      "cvss": {
+        "score": 3.1,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:N/A:N",
+        "severity": "LOW"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/06/stable-channel-update-for-desktop_01962725236.html",
+        "https://issues.chromium.org/issues/516797143"
+      ],
+      "published": "2026-06-11T22:16:54.270"
+    },
+    {
+      "id": "CVE-2026-12032",
+      "description": "Inappropriate implementation in Passwords in Google Chrome on Android prior to 149.0.7827.115 allowed a remote attacker who had compromised the renderer process to bypass site isolation via a crafted HTML page. (Chromium security severity: High)",
+      "cvss": {
+        "score": 3.1,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:N/A:N",
+        "severity": "LOW"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/06/stable-channel-update-for-desktop_01962725236.html",
+        "https://issues.chromium.org/issues/518128953"
+      ],
+      "published": "2026-06-11T22:16:55.773"
+    },
+    {
+      "id": "CVE-2026-44487",
+      "description": "Axios is a promise based HTTP client for the browser and Node.js. Prior to 0.32.0 and 1.16.0, Axios\u2019s Node.js HTTP adapter may forward a Proxy-Authorization header to a redirected origin during specific proxy-to-direct redirect flows. This affects Node.js usage, where an initial HTTP request is sent through an authenticated HTTP proxy, redirects are followed, and the redirected URL is no longer proxied. Under affected redirect shapes, the final origin can receive the proxy credential that was in",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "Node.js"
+      ],
+      "references": [
+        "https://github.com/axios/axios/security/advisories/GHSA-p92q-9vqr-4j8v",
+        "https://github.com/axios/axios/security/advisories/GHSA-p92q-9vqr-4j8v"
+      ],
+      "published": "2026-06-11T17:16:32.607"
+    },
+    {
+      "id": "CVE-2026-44705",
+      "description": "tmp is a temporary file and directory creator for node.js. Prior to 0.2.6, the tmp npm package contains a path traversal vulnerability that allows escaping the intended temporary directory when untrusted data flows into the prefix, postfix, or dir options. By embedding traversal sequences (e.g., ../) or path separators in these parameters, attackers can cause files to be created outside the configured temporary base directory at attacker-controlled locations with the privileges of the running pr",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "Node.js"
+      ],
+      "references": [
+        "https://github.com/raszi/node-tmp/security/advisories/GHSA-ph9p-34f9-6g65"
+      ],
+      "published": "2026-06-11T17:16:33.853"
+    },
+    {
+      "id": "CVE-2026-47181",
+      "description": "PenguinMod-BackendApi is the backend api for penguinmod. Prior to version 1.0.0, a NoSQL injection vulnerability in the password reset endpoint allows any authenticated user to change the password of an account, leading to full account takeover. An attacker only needs a registered account and a valid password reset token for their own account. This issue has been patched in version 1.0.0.",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "ESET"
+      ],
+      "references": [
+        "https://github.com/PenguinMod/PenguinMod-BackendApi/security/advisories/GHSA-wwwc-jwrc-3pj8"
+      ],
+      "published": "2026-06-11T19:16:46.280"
+    },
+    {
+      "id": "CVE-2026-12026",
+      "description": "Out of bounds read in Video in Google Chrome on ChromeOS prior to 149.0.7827.115 allowed a remote attacker who had compromised the renderer process to obtain potentially sensitive information from process memory via a crafted HTML page. (Chromium security severity: High)",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/06/stable-channel-update-for-desktop_01962725236.html",
+        "https://issues.chromium.org/issues/517347084"
+      ],
+      "published": "2026-06-11T22:16:55.147"
+    },
+    {
+      "id": "CVE-2026-12027",
+      "description": "Inappropriate implementation in Headless in Google Chrome prior to 149.0.7827.115 allowed a remote attacker who had compromised the renderer process to potentially perform a sandbox escape via a crafted HTML page. (Chromium security severity: High)",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/06/stable-channel-update-for-desktop_01962725236.html",
+        "https://issues.chromium.org/issues/517517155"
+      ],
+      "published": "2026-06-11T22:16:55.253"
+    },
+    {
+      "id": "CVE-2026-12035",
+      "description": "Use after free in Views in Google Chrome on Windows prior to 149.0.7827.115 allowed a remote attacker to potentially exploit heap corruption via a crafted HTML page. (Chromium security severity: High)",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/06/stable-channel-update-for-desktop_01962725236.html",
+        "https://issues.chromium.org/issues/520210566"
+      ],
+      "published": "2026-06-11T22:16:56.093"
+    },
+    {
+      "id": "CVE-2026-45173",
+      "description": "Idira Identity Browser Extension (Chrome, Firefox, and Edge builds) versions prior to 26.8.1 exhibit an origin validation flaw within its internal web-page verification routines. If an authenticated user navigates to a specially crafted webpage, this interaction could potentially allow a remote attacker to trigger unauthorized application interaction or execution parameters within the context of that authenticated browser session. CyberArk Security Bulletin: CA26-21",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "Mozilla Firefox"
+      ],
+      "references": [
+        "https://docs.cyberark.com/find-identity-administration-docs/latest/en/content/getstarted/identity-new-doc-location.htm"
+      ],
+      "published": "2026-06-11T22:16:57.470"
+    },
+    {
+      "id": "CVE-2026-6250",
+      "description": "An\nauthenticated format string vulnerability exists in the ONVIF service of Tapo\nC110 v2 due to improper handling of user-controlled input.\u00a0 Externally controlled data is interpreted as\na format string, which can be used to manipulate stack memory, including\ncontrol flow data such as return addresses.\n\n\n\n\n\nA remote\nauthenticated attacker may redirect execution flow to existing internal\nfunctions, triggering an unauthorized factory reset, leading to loss of\nconfiguration, deletion of stored crede",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "ESET"
+      ],
+      "references": [
+        "https://www.tp-link.com/en/support/download/tapo-c110/v2/#Firmware-Release-Notes",
+        "https://www.tp-link.com/kr/support/download/tapo-c110/v2/#Firmware-Release-Notes",
+        "https://www.tp-link.com/us/support/download/tapo-c110/v2/#Firmware-Release-Notes",
+        "https://www.tp-link.com/us/support/faq/5128/"
+      ],
+      "published": "2026-06-11T22:16:57.870"
+    },
+    {
+      "id": "CVE-2026-9269",
+      "description": "The Secure Copy Content Protection and Content Locking WordPress plugin before 5.1.5 does not sanitise and escape some of its settings, which could allow high privilege users such as admin to perform Stored Cross-Site Scripting attacks even when the unfiltered_html capability is disallowed (for example in multisite setup).",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
       },
       "tier": 3,
       "matchedProducts": [
         "WordPress"
       ],
       "references": [
-        "https://www.open-user-map.com/",
-        "https://www.wordfence.com/threat-intel/vulnerabilities/id/9963e0f8-600c-4b1f-935d-4ac1f967698f?source=cve"
+        "https://wpscan.com/vulnerability/61a3f41d-f031-4dba-b5cf-4ca3bce71b1b/"
       ],
-      "published": "2026-06-11T02:16:42.967"
-    },
-    {
-      "id": "CVE-2026-46609",
-      "description": "Umbraco is an ASP.NET CMS. From version 14.0.0 to before version 17.4.0, authenticated users are able to inject HTML into an input field, which is rendered in the confirmation dialog without proper output encoding. This issue has been patched in version 17.4.0.",
-      "cvss": {
-        "score": 4.6,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:L/I:L/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "Microsoft .NET"
-      ],
-      "references": [
-        "https://github.com/umbraco/Umbraco-CMS/security/advisories/GHSA-vr9v-27gg-qgx4"
-      ],
-      "published": "2026-06-10T17:16:37.123"
-    },
-    {
-      "id": "CVE-2026-45563",
-      "description": "Roxy-WI is a web interface for managing Haproxy, Nginx, Apache and Keepalived servers. In versions 8.2.6.4 and prior, GET /history/<service>/<server_ip> re-uses the server_ip path parameter as a user-id when service == 'user', with no authorization check. Any authenticated user \u2014 even a guest in an unrelated group \u2014 can list any other user's full action audit trail (server IPs touched, configs deployed, services restarted). At time of publication, there are no publicly available patches.",
-      "cvss": {
-        "score": 4.3,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "Nginx"
-      ],
-      "references": [
-        "https://github.com/roxy-wi/roxy-wi/security/advisories/GHSA-wcmc-cjmw-54x9",
-        "https://github.com/roxy-wi/roxy-wi/security/advisories/GHSA-wcmc-cjmw-54x9"
-      ],
-      "published": "2026-06-10T15:16:37.167"
-    },
-    {
-      "id": "CVE-2026-53739",
-      "description": "Yoast Duplicate Post through 4.6 contains a cross-site request forgery vulnerability in the duplicate_post_dismiss_notice handler, which verifies no nonce or capability. Attackers can trick any authenticated user into sending a request that sets the duplicate_post_show_notice site option, suppressing admin notices network-wide.",
-      "cvss": {
-        "score": 4.3,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "Yoast SEO"
-      ],
-      "references": [
-        "https://wordpress.org/plugins/duplicate-post/",
-        "https://www.vulncheck.com/advisories/yoast-duplicate-post-through-cross-site-request-forgery-via-duplicate-post-dismiss-notice"
-      ],
-      "published": "2026-06-10T22:17:02.230"
-    },
-    {
-      "id": "CVE-2026-48855",
-      "description": "Exposure of Sensitive Information to an Unauthorized Actor vulnerability in Erlang OTP ssh (ssh_sftpd module) allows File Discovery.\n\nThe SSH_FXP_READLINK handler in ssh_sftpd sends the raw result of file:read_link/2 to the client without calling chroot_filename/2 to strip the backend root prefix. An authenticated SFTP client can create a symlink inside the chroot pointing to /; ssh_sftpd resolves the target to the absolute backend root and stores it on disk. Reading the symlink back via SSH_FXP",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "Erlang/OTP"
-      ],
-      "references": [
-        "https://cna.erlef.org/cves/CVE-2026-48855.html",
-        "https://github.com/erlang/otp/commit/8f4224a0d2676b0653d2c71a889a956e8c2c62d6",
-        "https://github.com/erlang/otp/security/advisories/GHSA-pv7g-pjrq-x2fh",
-        "https://osv.dev/vulnerability/EEF-CVE-2026-48855",
-        "https://www.erlang.org/doc/system/versions.html#order-of-versions"
-      ],
-      "published": "2026-06-10T16:17:09.680"
-    },
-    {
-      "id": "CVE-2026-48856",
-      "description": "Sensitive Data Exposure vulnerability in Erlang OTP inets (httpc_response module) allows Retrieve Embedded Sensitive Data.\n\nThe httpc client forwards the Authorization and Proxy-Authorization request headers to redirect targets without checking whether the redirect crosses an origin boundary. httpc_response:redirect/2 constructs the redirected request by updating only the host field of the header record; all other fields (including authorization and proxy_authorization) are copied verbatim. The ",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "Erlang/OTP"
-      ],
-      "references": [
-        "https://cna.erlef.org/cves/CVE-2026-48856.html",
-        "https://github.com/erlang/otp/commit/688d748d6f7a6a06b13b662a1d3de8af97079612",
-        "https://github.com/erlang/otp/security/advisories/GHSA-m75x-4vwg-ggjh",
-        "https://osv.dev/vulnerability/EEF-CVE-2026-48856",
-        "https://www.erlang.org/doc/system/versions.html#order-of-versions"
-      ],
-      "published": "2026-06-10T16:17:10.053"
-    },
-    {
-      "id": "CVE-2026-48858",
-      "description": "Server-Side Request Forgery (SSRF) vulnerability in Erlang/OTP ftp (ftp_internal module) allows FTP bounce attacks and SSRF via an unvalidated PASV response IP address.\n\nThe ftp_internal:handle_ctrl_result/2 PASV handler (mode=passive, ipfamily=inet, ftp_extension=false) extracts the IP address from the server's 227 response and passes it directly to gen_tcp:connect/4 without validating it against the control connection peer address. The adjacent EPSV handlers correctly call peername(CSock) to d",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "Erlang/OTP"
-      ],
-      "references": [
-        "https://cna.erlef.org/cves/CVE-2026-48858.html",
-        "https://github.com/erlang/otp/commit/2691a806231ffd0490a8a9e20500dec0c7e73727",
-        "https://github.com/erlang/otp/commit/521bcfa24407ee8cb5614823cf905c37ea3aa605",
-        "https://github.com/erlang/otp/security/advisories/GHSA-24cv-hwgr-37fq",
-        "https://osv.dev/vulnerability/EEF-CVE-2026-48858"
-      ],
-      "published": "2026-06-10T16:17:11.077"
-    },
-    {
-      "id": "CVE-2026-48859",
-      "description": "Observable Timing Discrepancy vulnerability in Erlang/OTP ssh (ssh_auth, ssh_options modules) allows unauthenticated remote username enumeration via timing side-channel in password authentication.\n\nWhen the SSH daemon is configured with the user_passwords or password option, ssh_auth:check_password/3 performs a PBKDF2-SHA256 computation with 600,000 iterations (~300ms) for valid usernames, but returns immediately (~0ms) for invalid usernames via the ssh_options:get_password_option/2 path. This t",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "Erlang/OTP"
-      ],
-      "references": [
-        "https://cna.erlef.org/cves/CVE-2026-48859.html",
-        "https://github.com/erlang/otp/commit/c342092ef4b369bb409d5b71ac8fd83bab74aedf",
-        "https://github.com/erlang/otp/security/advisories/GHSA-3w6p-vwhf-wvp4",
-        "https://osv.dev/vulnerability/EEF-CVE-2026-48859",
-        "https://www.erlang.org/doc/system/versions.html#order-of-versions"
-      ],
-      "published": "2026-06-10T16:17:12.373"
-    },
-    {
-      "id": "CVE-2026-49759",
-      "description": "Stack-based Buffer Overflow vulnerability in Erlang OTP erts (inet_drv) allows an unauthenticated remote attacker to crash the BEAM VM by sending a crafted SCTP ERROR chunk.\n\nThe sctp_parse_error_chunk function in erts/emulator/drivers/common/inet_drv.c parses SCTP ERROR chunks and writes cause codes into a fixed-size stack-allocated ErlDrvTermData spec[] array without checking bounds. A remote attacker who has established an SCTP association to a listening port can send a single crafted SCTP ER",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "Erlang/OTP"
-      ],
-      "references": [
-        "https://cna.erlef.org/cves/CVE-2026-49759.html",
-        "https://github.com/erlang/otp/commit/3983d495284331c121f600a80bac9fcf4e16381e",
-        "https://github.com/erlang/otp/security/advisories/GHSA-6f4f-chj5-5g97",
-        "https://osv.dev/vulnerability/EEF-CVE-2026-49759",
-        "https://www.erlang.org/doc/system/versions.html#order-of-versions"
-      ],
-      "published": "2026-06-10T16:17:12.797"
-    },
-    {
-      "id": "CVE-2026-49760",
-      "description": "Stack-based Buffer Overflow vulnerability in Erlang OTP (erl_interface) allows Stack-based Buffer Overflow.\n\nThis vulnerability is associated with program file lib/erl_interface/src/misc/ei_printterm.c and program routine ei_s_print_term.\n\nThe C function ei_s_print_term uses an internal 2000-character stack buffer to format terms. When called with an encoded Erlang term containing a very large integer (encoded representation exceeding 2000 characters), the buffer overflows. The overflow bytes ar",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "Erlang/OTP"
-      ],
-      "references": [
-        "https://cna.erlef.org/cves/CVE-2026-49760.html",
-        "https://github.com/erlang/otp/commit/0bef277b2d39dc8babb9ceb4f5d0a456f3007111",
-        "https://github.com/erlang/otp/security/advisories/GHSA-xcxj-5pg2-v72j",
-        "https://osv.dev/vulnerability/EEF-CVE-2026-49760",
-        "https://www.erlang.org/doc/system/versions.html#order-of-versions"
-      ],
-      "published": "2026-06-10T16:17:12.947"
+      "published": "2026-06-12T07:16:21.237"
     }
   ]
 }
