@@ -1,17 +1,17 @@
 {
-  "scanTime": "2026-06-23 07:03:24 UTC",
-  "totalMatched": 21,
+  "scanTime": "2026-06-24 06:59:31 UTC",
+  "totalMatched": 40,
   "productsMonitored": 147,
   "tierCounts": {
-    "0": 2,
-    "1": 2,
-    "2": 6,
-    "3": 11
+    "0": 5,
+    "1": 13,
+    "2": 15,
+    "3": 7
   },
   "vulnerabilities": [
     {
-      "id": "CVE-2026-28381",
-      "description": "The Snowflake datasource allows for GET/PUT commands, which can allow any user with access to run queries against the data source to read/write files between the local grafana server and the connected Snowflake host.",
+      "id": "CVE-2026-11807",
+      "description": "A missing authorization vulnerability was found in the Event-Driven Ansible (EDA) websocket API. The /api/eda/ws/ansible-rulebook endpoint does not verify user permissions when processing Worker messages. Any authenticated user can send a forged message with an arbitrary activation_id to receive plaintext credentials associated with that activation, including OAuth tokens, vault passwords, and SSH keys.",
       "cvss": {
         "score": 9.6,
         "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:N",
@@ -19,72 +19,327 @@
       },
       "tier": 0,
       "matchedProducts": [
-        "Grafana"
+        "Ansible"
       ],
       "references": [
-        "https://grafana.com/security/security-advisories/cve-2026-28381"
+        "https://access.redhat.com/errata/RHSA-2026:28376",
+        "https://access.redhat.com/errata/RHSA-2026:28377",
+        "https://access.redhat.com/errata/RHSA-2026:28492",
+        "https://access.redhat.com/errata/RHSA-2026:28497",
+        "https://access.redhat.com/security/cve/CVE-2026-11807"
       ],
-      "published": "2026-06-22T14:16:35.820"
+      "published": "2026-06-23T21:16:54.350"
     },
     {
-      "id": "CVE-2026-12249",
-      "description": "An issue was discovered in Canonical ADSys upstream versions through v0.16.2. During Active Directory Certificate Services (AD CS) certificate auto-enrollment via the vendored Samba client script (internal/policies/certificate/python/vendor_samba/gp/gp_cert_auto_enroll_ext.py), ADSys utilizes a plaintext HTTP connection (http://) instead of a secure HTTPS connection (https://) to request the CA certificate from the Active Directory Certificate Services server (GetCACert). An unauthenticated netw",
+      "id": "CVE-2026-53755",
+      "description": "Crawl4AI is an open-source LLM friendly web crawler & scraper. Prior to 0.8.9, the Docker API server applied its SSRF destination check to the crawl target URL only, not to the proxy address. An unauthenticated request could supply a proxy pointing at an internal IP and route the browser through it, reaching internal services and cloud-metadata endpoints, while using a perfectly valid crawl URL. The Docker API is unauthenticated by default. /crawl, /crawl/stream, and /crawl/job accept a browser_",
+      "cvss": {
+        "score": 8.6,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:N/A:N",
+        "severity": "HIGH"
+      },
+      "tier": 0,
+      "matchedProducts": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://github.com/unclecode/crawl4ai/security/advisories/GHSA-6qhc-x826-342c"
+      ],
+      "published": "2026-06-23T19:17:07.477"
+    },
+    {
+      "id": "CVE-2026-8379",
+      "description": "The Frontend File Manager Plugin WordPress plugin through 23.6 does not properly enforce its nonce check on the file download handler, allowing unauthenticated attackers to download files uploaded by any user through the Frontend File Manager Plugin WordPress plugin through 23.6 by iterating identifiers.",
+      "cvss": {
+        "score": 7.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+        "severity": "HIGH"
+      },
+      "tier": 0,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://wpscan.com/vulnerability/71619406-19bb-437f-9538-fdf73de98827/"
+      ],
+      "published": "2026-06-23T07:16:21.203"
+    },
+    {
+      "id": "CVE-2026-56248",
+      "description": "Cap-go capgo (capgo-backend) before 12.128.12 contains an unauthenticated denial-of-service vulnerability arising from the audit_logs table's Row-Level Security (RLS) policy when accessed via the Supabase PostgREST API. Because the PostgreSQL query planner executes costly logic before RLS rejection, unfiltered queries to the public.audit_logs endpoint using the public anon key consistently trigger statement timeouts (PostgREST error 57014). Under concurrency, this exhausts database resources and",
+      "cvss": {
+        "score": 7.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 0,
+      "matchedProducts": [
+        "PostgreSQL"
+      ],
+      "references": [
+        "https://github.com/Cap-go/capgo/security/advisories/GHSA-5vgv-rqj5-5748",
+        "https://www.vulncheck.com/advisories/capgo-unauthenticated-denial-of-service-via-audit-logs-rls-policy",
+        "https://github.com/Cap-go/capgo/security/advisories/GHSA-5vgv-rqj5-5748"
+      ],
+      "published": "2026-06-23T13:16:44.687"
+    },
+    {
+      "id": "CVE-2026-27604",
+      "description": "FOSSBilling is a free, open-source billing and client management system. Starting in version 0.5.4 and prior to version 0.8.0, an authorization bypass in the API role handling allows unauthenticated access to privileged `/api/system/*` endpoints. Because `system` resolves to the cron admin identity, attackers can invoke admin API methods without valid credentials, session, or CSRF token. Version 0.8.0 patches the issue. Some workarounds are available. Block external access to `/api/system/*` at ",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 0,
+      "matchedProducts": [
+        "ESET"
+      ],
+      "references": [
+        "https://github.com/FOSSBilling/FOSSBilling/security/advisories/GHSA-57mv-jm88-66jc",
+        "https://github.com/FOSSBilling/FOSSBilling/security/advisories/GHSA-78x5-c8gw-8279",
+        "https://www.vulncheck.com/blog/fossbilling-auth-bypass-ssti-rce"
+      ],
+      "published": "2026-06-23T15:16:33.700"
+    },
+    {
+      "id": "CVE-2026-11374",
+      "description": "In ManageEngine ADSelfService Plus, RecoveryManager Plus, M365 Manager Plus, and ADAudit Plus, the SSO tickets generated to authenticate that session could be predicted\n by an unauthenticated user, leading to account takeover.",
       "cvss": {
         "score": 9.0,
         "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:H",
         "severity": "CRITICAL"
       },
-      "tier": 0,
+      "tier": 1,
       "matchedProducts": [
-        "Ubuntu",
-        "Samba"
+        "ManageEngine"
       ],
       "references": [
-        "https://github.com/ubuntu/adsys/commit/8b1939f96d3827b4426eb06c1ced5bf317b0a99d",
-        "https://ubuntu.com/security/CVE-2026-12249"
+        "https://www.manageengine.com/products/self-service-password/advisory/CVE-2026-11374.html"
       ],
-      "published": "2026-06-22T18:16:31.917"
+      "published": "2026-06-23T09:16:28.477"
     },
     {
-      "id": "CVE-2026-55388",
-      "description": "piscina is a node.js worker pool implementation. Prior to 6.0.0-rc.2, 5.2.0, and 4.9.3, piscina's constructor and run() paths read the filename option via plain member access. Both reads fall through the prototype chain when the caller's options object doesn't have filename as an own property. When Object.prototype.filename is polluted upstream the inherited value flows to worker_threads.Worker import and the attacker's .mjs runs in the worker. This vulnerability is fixed in 6.0.0-rc.2, 5.2.0, a",
+      "id": "CVE-2026-8163",
+      "description": "The Infility Global WordPress plugin before 2.15.19 does not properly sanitize and escape some parameters before using them in SQL statements, leading to a SQL Injection vulnerability exploitable by authenticated users with Subscriber-level access and above.",
+      "cvss": {
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://wpscan.com/vulnerability/e471516a-6f43-4a89-8486-7a638845e197/"
+      ],
+      "published": "2026-06-23T07:16:20.910"
+    },
+    {
+      "id": "CVE-2026-41862",
+      "description": "Spring Statemachine's Kryo-based persistence backends (JPA, MongoDB, Redis and ZooKeeper) deserialise persisted state-machine contexts without enforcing a class allowlist (CWE-502, deserialisation of untrusted data), which can lead to remote code execution inside the application JVM.\n\nAffected versions:\nSpring Statemachine 4.0.0 through 4.0.1\nSpring Statemachine 3.2.0 through 3.2.4",
+      "cvss": {
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "MongoDB",
+        "Redis"
+      ],
+      "references": [
+        "https://spring.io/security/cve-2026-41862"
+      ],
+      "published": "2026-06-23T21:16:57.820"
+    },
+    {
+      "id": "CVE-2026-54639",
+      "description": "Style Dictionary, a build system for creating cross-platform styles, has a prototype pollution vulnerability starting in version 4.3.0 and prior to version 5.4.4. Impact users have: direct usage of `convertTokenData(tokens, { output: 'object' });`; indirect usage, via using Expand API; and/or indirect usage via SD's transform lifecycle. Impact is high for this when style-dictionary is used as an integration in a NodeJS server application. Impact is moderate for when style-dictionary is used as a",
+      "cvss": {
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Node.js"
+      ],
+      "references": [
+        "https://github.com/style-dictionary/style-dictionary/commit/209085d9782cfc0783c4d983f3f1bb2c515954ec",
+        "https://github.com/style-dictionary/style-dictionary/commit/23b5e8dda143441f0d6b8e2b4222e2da98058bc5",
+        "https://github.com/style-dictionary/style-dictionary/pull/1702",
+        "https://github.com/style-dictionary/style-dictionary/security/advisories/GHSA-vj5c-m527-mpff"
+      ],
+      "published": "2026-06-24T01:16:25.363"
+    },
+    {
+      "id": "CVE-2025-71337",
+      "description": "Flowise before 3.0.10 (affected versions 3.0.7 and earlier) contains an unverified email change vulnerability. An authenticated user can change the account email address, used as a login identifier and password-recovery channel, via the account profile endpoint without confirming the change to the original email address or re-entering the current password. By changing the recovery email, an attacker can take over the account and abuse password reset mechanisms.",
+      "cvss": {
+        "score": 8.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:L",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "ESET"
+      ],
+      "references": [
+        "https://github.com/FlowiseAI/Flowise/security/advisories/GHSA-x39m-3393-3qp4",
+        "https://www.vulncheck.com/advisories/flowise-unverified-email-change-via-account-profile-endpoint",
+        "https://github.com/FlowiseAI/Flowise/security/advisories/GHSA-x39m-3393-3qp4"
+      ],
+      "published": "2026-06-23T13:16:38.233"
+    },
+    {
+      "id": "CVE-2026-56243",
+      "description": "Capgo before 12.128.2 contains a security control bypass vulnerability where the PostgREST/RLS plane accepts plaintext API keys through the capgkey header despite enforce_hashed_api_keys being enabled. Attackers can bypass org-level hashed-key enforcement by sending plaintext API keys directly to the PostgREST/RLS plane to access protected resources.",
       "cvss": {
         "score": 8.1,
-        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N",
         "severity": "HIGH"
       },
       "tier": 1,
       "matchedProducts": [
-        "Node.js"
+        "PostgreSQL"
       ],
       "references": [
-        "https://github.com/piscinajs/piscina/security/advisories/GHSA-x9g3-xrwr-cwfg"
+        "https://github.com/Cap-go/capgo/security/advisories/GHSA-6g74-8cpq-g2c8",
+        "https://www.vulncheck.com/advisories/capgo-hashed-api-key-enforcement-bypass-via-postgrest-rls-plane",
+        "https://github.com/Cap-go/capgo/security/advisories/GHSA-6g74-8cpq-g2c8"
       ],
-      "published": "2026-06-22T18:16:47.930"
+      "published": "2026-06-23T13:16:44.553"
     },
     {
-      "id": "CVE-2026-54298",
-      "description": "Astro is a web framework. Prior to 6.4.6, the spreadAttributes function in Astro's server-side rendering pipeline iterates over object keys and passes them directly to addAttribute, which interpolates the key into the HTML output without escaping. When a developer uses the spread syntax {...props} on an HTML element and the object keys come from an untrusted source (API, CMS, URL parameters), an attacker can inject arbitrary HTML attributes including event handlers like onmousemove, onclick, or ",
+      "id": "CVE-2020-9695",
+      "description": "Acrobat Reader versions 2020.009.20074, 2020.001.30002, 2017.011.30171, 2015.006.30523 and earlier are affected by an out-of-bounds write vulnerability that could result in arbitrary code execution in the context of the current user. Exploitation of this issue requires user interaction in that a victim must open a malicious file.",
       "cvss": {
-        "score": 4.2,
-        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:L/A:N",
-        "severity": "MEDIUM"
+        "score": 7.8,
+        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
       },
       "tier": 1,
       "matchedProducts": [
-        "Node.js"
+        "Adobe Acrobat"
       ],
       "references": [
-        "https://github.com/withastro/astro/security/advisories/GHSA-jrpj-wcv7-9fh9"
+        "https://helpx.adobe.com/security/products/acrobat/apsb20-48.html"
       ],
-      "published": "2026-06-22T19:17:21.120"
+      "published": "2026-06-23T18:17:31.403"
     },
     {
-      "id": "CVE-2026-55603",
-      "description": "http-proxy-middleware is node.js http-proxy middleware. From 3.0.4 until 3.0.7 and 4.1.1, fixRequestBody() is the library's documented helper for re-emitting a request body that was already consumed by a body parser. When the outgoing Content-Type is multipart/form-data, it rebuilds the body with handlerFormDataBodyData(), which interpolates each req.body key and value directly into the multipart wire format without neutralizing CR/LF. A \\r\\n inside a value (or key) lets an attacker close the cu",
+      "id": "CVE-2023-54365",
+      "description": "Traefik before 2.10.5 and 3.0.0-beta4 is affected by a denial-of-service vulnerability in HTTP/2 request handling inherited from the Go standard library's HTTP/2 implementation (CVE-2023-44487 / CVE-2023-39325, the 'Rapid Reset' technique). A remote attacker can rapidly create and cancel HTTP/2 streams to exhaust server resources and cause service unavailability.",
       "cvss": {
         "score": 7.5,
-        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:L/I:H/A:N",
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "ESET"
+      ],
+      "references": [
+        "https://github.com/traefik/traefik/security/advisories/GHSA-7v4p-328v-8v5g",
+        "https://www.vulncheck.com/advisories/traefik-denial-of-service-via-http-2-request-handling"
+      ],
+      "published": "2026-06-23T13:16:30.420"
+    },
+    {
+      "id": "CVE-2026-11819",
+      "description": "Module: plugins/modules/keyring_info.py \n\nCVSS 3.1: 5.5 MEDIUM \u2014 AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N \n\nIssue: The module retrieves a passphrase from the OS native keyring (GNOME Keyring, macOS Keychain, Windows Credential Manager) and places it directly into result[\"passphrase\"] with no output suppression, no no_log protection, and no documentation warning. \n\nRoot Cause:\n\nLine 105 (protected): keyring_password=dict(type=\"str\", required=True, no_log=True)\nLine 127 (NOT protected): result[\"passphr",
+      "cvss": {
+        "score": 5.5,
+        "vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Redis",
+        "Ansible"
+      ],
+      "references": [
+        "https://access.redhat.com/security/cve/CVE-2026-11819",
+        "https://bugzilla.redhat.com/show_bug.cgi?id=2487251"
+      ],
+      "published": "2026-06-23T21:16:54.473"
+    },
+    {
+      "id": "CVE-2026-54310",
+      "description": "n8n is an open source workflow automation platform. Prior to 2.25.7 and 2.26.2, an authenticated user with permission to create or modify workflows could supply a crafted parameters to the TimescaleDB and/or legacy Postgres v1 node's allowing arbitrary SQL to be injected and executed against the connected database within the privileges of the configured database account. This vulnerability is fixed in 2.25.7 and 2.26.2.",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "PostgreSQL"
+      ],
+      "references": [
+        "https://github.com/n8n-io/n8n/security/advisories/GHSA-c37g-w77q-m4vp"
+      ],
+      "published": "2026-06-23T16:17:01.990"
+    },
+    {
+      "id": "CVE-2026-54312",
+      "description": "n8n is an open source workflow automation platform. Prior to 2.24.0, an authenticated user with permission to create or modify workflows could achieve global prototype pollution via the Microsoft SQL node by supplying a crafted value as the table parameter. This pollutes Object.prototype process-wide for the lifetime of the n8n server process, causing application-wide validation failures and rendering the n8n instance completely non-functional until restarted. This vulnerability is fixed in 2.24",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "MSSQL"
+      ],
+      "references": [
+        "https://github.com/n8n-io/n8n/security/advisories/GHSA-x6p3-m6h9-fx7r"
+      ],
+      "published": "2026-06-23T16:17:02.297"
+    },
+    {
+      "id": "CVE-2026-54313",
+      "description": "n8n is an open source workflow automation platform. Prior to 2.24.0, an authenticated user with workflow edit access could supply a malicious filter value in the MongoDB node's Find And Replace operation. The value was not validated before being passed to MongoDB as a query filter, allowing unintended documents to be matched and overwritten with attacker-controlled content. This vulnerability is fixed in 2.24.0.",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "MongoDB"
+      ],
+      "references": [
+        "https://github.com/n8n-io/n8n/security/advisories/GHSA-jpq7-226w-6cxx"
+      ],
+      "published": "2026-06-23T16:17:02.587"
+    },
+    {
+      "id": "CVE-2026-44792",
+      "description": "n8n is an open source workflow automation platform. Prior to 1.123.43, 2.22.1, and 2.20.7, an attacker with write access to the git repository connected to an n8n Source Control configuration could commit a malicious Data Table JSON file containing a crafted column name. When an administrator performed a Source Control Pull, n8n imported the file and could lead to SQL injection on the internal PostgreSQL instance. Exploitation requires the n8n instance uses PostgreSQL as its database backend, th",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "PostgreSQL"
+      ],
+      "references": [
+        "https://github.com/n8n-io/n8n/security/advisories/GHSA-mhrx-qhrj-673w"
+      ],
+      "published": "2026-06-23T17:16:59.670"
+    },
+    {
+      "id": "CVE-2026-44726",
+      "description": "Deno is a JavaScript, TypeScript, and WebAssembly runtime. From 2.0.0 until 2.7.8, a flaw in Deno's Node.js tls compatibility layer could cause a TLS client to transmit application data in plaintext after a connection retry. When `autoSelectFamily was enabled and the first address-family attempt failed, the socket reinitialization path reused a stale TLS upgrade hook that was bound to the original, failed handle. As a result, the replacement TCP connection was never upgraded to TLS, and any data",
+      "cvss": {
+        "score": 7.4,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N",
         "severity": "HIGH"
       },
       "tier": 2,
@@ -92,66 +347,229 @@
         "Node.js"
       ],
       "references": [
-        "https://github.com/chimurai/http-proxy-middleware/security/advisories/GHSA-gcq2-9pq2-cxqm"
+        "https://github.com/denoland/deno/security/advisories/GHSA-chqv-56wv-7564"
       ],
-      "published": "2026-06-22T21:16:26.033"
+      "published": "2026-06-23T18:17:48.623"
     },
     {
-      "id": "CVE-2026-50146",
-      "description": "Astro is a web framework. Prior to 6.3.3, when a component uses a client:* directive, Astro inserts named slot content into a data-astro-template attribute without HTML escaping the slot name allowing an attacker to break out of the attribute context and inject arbitrary HTML, resulting in reflected XSS during SSR. This vulnerability is fixed in 6.3.3.",
+      "id": "CVE-2026-3652",
+      "description": "The ARForms plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the `value` parameter of the `arf_save_incomplete_form_data` AJAX action in all versions up to, and including, 7.1.3 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts that will execute whenever an administrator views the \"Partial Filled Form Entries\" page in the ARForms dashboard.",
+      "cvss": {
+        "score": 7.2,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N",
+        "severity": "HIGH"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://codecanyon.net/item/arforms-wordpress-form-builder-plugin/6023165",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/b6ca5856-9010-4bb3-a024-92b3b4d500b4?source=cve"
+      ],
+      "published": "2026-06-24T04:17:06.923"
+    },
+    {
+      "id": "CVE-2026-8172",
+      "description": "The Simple Basic Contact Form WordPress plugin through 20250114 does not escape user-supplied input before reflecting it into the contact form output on validation errors, leading to a Reflected Cross-Site Scripting vulnerability that unauthenticated attackers can exploit against site visitors via a crafted link or cross-site form submission.",
       "cvss": {
         "score": 7.1,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:H/A:N",
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:L",
         "severity": "HIGH"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://wpscan.com/vulnerability/535ec1a1-b822-43c9-8264-6442199493d3/"
+      ],
+      "published": "2026-06-23T07:16:21.007"
+    },
+    {
+      "id": "CVE-2026-47693",
+      "description": "Poweradmin is a web-based DNS administration tool for PowerDNS server. Versions prior to 4.2.4 and 4.3.3 are vulnerable to CSV Injection (Formula Injection) in its log export functionality. User-controlled data \u2014 specifically the username field \u2014 is written to exported CSV files without sanitizing formula trigger characters (=, +, -, @). When an administrator exports activity logs and opens the resulting CSV in a spreadsheet application (Microsoft Excel, LibreOffice Calc, Google Sheets), any for",
+      "cvss": {
+        "score": 6.9,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:R/S:C/C:H/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "LibreOffice"
+      ],
+      "references": [
+        "https://github.com/poweradmin/poweradmin/releases/tag/v4.2.4",
+        "https://github.com/poweradmin/poweradmin/releases/tag/v4.3.3",
+        "https://github.com/poweradmin/poweradmin/security/advisories/GHSA-3h6h-67x3-cv5x"
+      ],
+      "published": "2026-06-23T23:16:49.437"
+    },
+    {
+      "id": "CVE-2026-7842",
+      "description": "The Infility Global Infility Global WordPress plugin before 2.15.20 for WordPress does not sanitize or validate the orderby and order parameters in the import_list(), url_detail(), and file_detail() admin page callbacks before using them in SQL queries, allowing authenticated attackers with Editor-level access or higher to perform time-based blind SQL injection and extract sensitive data from the database. The ImportData module must be enabled via the Infility Global WordPress plugin before 2.15",
+      "cvss": {
+        "score": 6.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:N/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://wpscan.com/vulnerability/210303c4-0964-4a01-ac8e-13d7c7f424a2/"
+      ],
+      "published": "2026-06-23T07:16:20.187"
+    },
+    {
+      "id": "CVE-2026-49411",
+      "description": "Deno is a JavaScript, TypeScript, and WebAssembly runtime. Prior to 2.8.0, the Node.js compatibility TCP path checked the permission against the original hostname string before resolution and then did not re-check after resolution. A caller could therefore pass a numeric alias of an IP address (for example the decimal integer 2130706433 or the hex form 0x7f000001, both of which resolve to 127.0.0.1) and reach the denied destination through node:net.connect or node:http.request's { host, port } o",
+      "cvss": {
+        "score": 6.5,
+        "vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:N/A:N",
+        "severity": "MEDIUM"
       },
       "tier": 2,
       "matchedProducts": [
         "Node.js"
       ],
       "references": [
-        "https://github.com/withastro/astro/security/advisories/GHSA-8hv8-536x-4wqp"
+        "https://github.com/denoland/deno/security/advisories/GHSA-v8fw-85r8-5m23"
       ],
-      "published": "2026-06-22T19:17:04.610"
+      "published": "2026-06-23T18:18:03.440"
     },
     {
-      "id": "CVE-2026-54911",
-      "description": "UltraJSON is a fast JSON encoder and decoder written in pure C with bindings for Python 3.7+. Prior to 5.13.0, ujson.dumps() (or ujson.dump() or ujson.encode()) have a reject_bytes=False option. When set, they may accept malformed or truncated UTF-8 byte sequences, silently rewriting them into different Unicode characters instead of rejecting them. This leads to input validation bypass and data integrity issues. This vulnerability is fixed in 5.13.0.",
+      "id": "CVE-2026-11820",
+      "description": "Module: plugins/modules/nexmo.py\n\nCVSS 3.1: 6.5 MEDIUM \u2014 AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N \n\nIssue: api_key and api_secret are declared no_log=True at the input level, but both credentials are immediately URL-encoded into a GET request as query parameters, bypassing all no_log protection. \n\nVulnerable Code (lines 82-93):\n\nmsg = {\n\"api_key\": module.params.get(\"api_key\"),\n\"api_secret\": module.params.get(\"api_secret\"),\n\"from\": module.params.get(\"src\"),\n\"text\": module.params.get(\"msg\"),\n}\nurl = f\"",
       "cvss": {
         "score": 6.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N",
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
         "severity": "MEDIUM"
       },
       "tier": 2,
       "matchedProducts": [
-        "Python"
+        "Ansible"
       ],
       "references": [
-        "https://github.com/ultrajson/ultrajson/commit/169eaf36b1116fece5034ee79a7a0ef3f6deedcf",
-        "https://github.com/ultrajson/ultrajson/releases/tag/5.13.0",
-        "https://github.com/ultrajson/ultrajson/security/advisories/GHSA-3j69-69wj-xqx2"
+        "https://access.redhat.com/security/cve/CVE-2026-11820",
+        "https://bugzilla.redhat.com/show_bug.cgi?id=2488970"
       ],
-      "published": "2026-06-22T22:16:50.397"
+      "published": "2026-06-23T21:16:54.593"
     },
     {
-      "id": "CVE-2026-44889",
-      "description": "WebOb provides objects for HTTP requests and responses. Prior to 1.8.10, the normalization of the HTTP Location header during a redirect is vulnerable to an open redirect: WebOb joins the redirect target to the request URI using Python's urljoin, and since Python 3.10 the underlying urlsplit strips ASCII tab, carriage return, and newline characters before parsing, so a redirect target containing such characters can be reinterpreted as a protocol-relative URL whose authority is an attacker-contro",
+      "id": "CVE-2026-4610",
+      "description": "The ProfileGrid \u2013 User Profiles, Groups and Communities plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'pm_author_message' parameter in the pm_send_message_to_author function in all versions up to, and including, 5.9.9.2 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with Subscriber-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page",
       "cvss": {
-        "score": 6.1,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+        "score": 6.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
         "severity": "MEDIUM"
       },
       "tier": 2,
       "matchedProducts": [
-        "Python"
+        "WordPress"
       ],
       "references": [
-        "https://github.com/Pylons/webob/security/advisories/GHSA-fh3h-vg37-cc95"
+        "https://plugins.trac.wordpress.org/browser/profilegrid-user-profiles-groups-and-communities/trunk/includes/class-profile-magic-request.php#L6790",
+        "https://plugins.trac.wordpress.org/browser/profilegrid-user-profiles-groups-and-communities/trunk/includes/class-profile-magic-request.php#L6802",
+        "https://plugins.trac.wordpress.org/browser/profilegrid-user-profiles-groups-and-communities/trunk/public/class-profile-magic-public.php#L3211",
+        "https://plugins.trac.wordpress.org/browser/profilegrid-user-profiles-groups-and-communities/trunk/public/class-profile-magic-public.php#L3216",
+        "https://plugins.trac.wordpress.org/changeset/3538301/"
       ],
-      "published": "2026-06-22T22:16:46.350"
+      "published": "2026-06-23T13:16:41.997"
     },
     {
-      "id": "CVE-2026-53550",
-      "description": "js-yaml is a JavaScript YAML parser and dumper. Prior to 4.2.0, a crafted YAML document can trigger algorithmic CPU exhaustion in js-yaml merge-key processing (<<) by repeating the same alias many times in a merge sequence. This causes quadratic parse-time behavior relative to input size and can block a Node.js worker/event loop for seconds with a relatively small payload (tens of KB), resulting in denial of service. The issue is in merge handling inside lib/loader.js. This vulnerability is fixe",
+      "id": "CVE-2026-11614",
+      "description": "The Xpro Addons \u2014 140+ Widgets for Elementor plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'custom_attributes' parameter in all versions up to, and including, 1.7.2 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with author-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+      "cvss": {
+        "score": 6.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/xpro-elementor-addons/tags/1.7.3/inc/helper-functions.php#L1069",
+        "https://plugins.trac.wordpress.org/browser/xpro-elementor-addons/tags/1.7.3/widgets/image-scroller/layout/frontend.php#L8",
+        "https://plugins.trac.wordpress.org/browser/xpro-elementor-addons/trunk/inc/helper-functions.php#L778",
+        "https://plugins.trac.wordpress.org/browser/xpro-elementor-addons/trunk/widgets/animated-link/layout/frontend.php#L21",
+        "https://plugins.trac.wordpress.org/browser/xpro-elementor-addons/trunk/widgets/author-box/layout/frontend.php#L59"
+      ],
+      "published": "2026-06-24T04:17:05.340"
+    },
+    {
+      "id": "CVE-2026-47375",
+      "description": "NocoDB is software for building databases as spreadsheets. Prior to 2026.04.1, an authenticated user with columnAdd permission on a Postgres-backed base can inject arbitrary SQL into the formula engine via the optional direction argument of ARRAYSORT(...). The value is unrestricted by formula validation and embedded into a knex.raw ORDER BY clause, executing during column creation and on every subsequent record read of the formula column. The vulnerability is specific to the Postgres mapping for",
+      "cvss": {
+        "score": 6.0,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:L/I:L/A:H",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "PostgreSQL"
+      ],
+      "references": [
+        "https://github.com/nocodb/nocodb/security/advisories/GHSA-cxv7-gmmp-228p"
+      ],
+      "published": "2026-06-23T21:16:59.087"
+    },
+    {
+      "id": "CVE-2020-9711",
+      "description": "Acrobat Reader versions 2020.009.20074, 2020.001.30002, 2017.011.30171, 2015.006.30523 and earlier are affected by an out-of-bounds read vulnerability that could lead to disclosure of sensitive memory. An attacker could leverage this vulnerability to disclose sensitive information. Exploitation of this issue requires user interaction in that a victim must open a malicious file.",
+      "cvss": {
+        "score": 5.5,
+        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "Adobe Acrobat"
+      ],
+      "references": [
+        "https://helpx.adobe.com/security/products/acrobat/apsb20-48.html"
+      ],
+      "published": "2026-06-23T18:17:31.530"
+    },
+    {
+      "id": "CVE-2020-9713",
+      "description": "Adobe Acrobat and Reader versions 2020.009.20074 and earlier, 2020.001.30002, 2017.011.30171 and earlier, and 2015.006.30523 and earlier are affected by an out-of-bounds read vulnerability that could lead to disclosure of sensitive memory. An attacker could leverage this vulnerability to disclose sensitive information. Exploitation of this issue requires user interaction in that a victim must open a malicious file.",
+      "cvss": {
+        "score": 5.5,
+        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "Adobe Acrobat"
+      ],
+      "references": [
+        "https://helpx.adobe.com/security/products/acrobat/apsb20-48.html"
+      ],
+      "published": "2026-06-23T18:17:31.633"
+    },
+    {
+      "id": "CVE-2026-8378",
+      "description": "The Frontend File Manager Plugin WordPress plugin through 23.6 does not sanitise nor escape a filename submitted to the frontend file-rename endpoint before storing it as post meta and rendering it back on the admin File Manager listing, leading to a Stored Cross-Site Scripting vulnerability exploitable by users with Subscriber-level access and above against an administrator viewing the file management interface.",
+      "cvss": {
+        "score": 5.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://wpscan.com/vulnerability/19f5dd94-b16c-4ad2-9586-d15ddecf9805/"
+      ],
+      "published": "2026-06-23T07:16:21.107"
+    },
+    {
+      "id": "CVE-2026-56762",
+      "description": "Hono before 4.12.12 does not validate cookie names on the write path in the setCookie(), serialize(), and serializeSigned() functions, allowing invalid characters such as control characters (e.g. \\r or \\n) when an application passes a user-controlled cookie name. This can produce malformed Set-Cookie header values. In modern runtimes such as Node.js and Cloudflare Workers, such invalid header values are rejected and cause a runtime error before the response is sent, so header injection or respon",
       "cvss": {
         "score": 5.3,
         "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
@@ -162,141 +580,50 @@
         "Node.js"
       ],
       "references": [
-        "https://github.com/nodeca/js-yaml/security/advisories/GHSA-h67p-54hq-rp68"
+        "https://github.com/honojs/hono/security/advisories/GHSA-26pp-8wgv-hjvm",
+        "https://www.vulncheck.com/advisories/hono-missing-cookie-name-validation-in-setcookie"
       ],
-      "published": "2026-06-22T16:16:38.447"
+      "published": "2026-06-23T13:16:46.813"
     },
     {
-      "id": "CVE-2026-55655",
-      "description": "A flaw was found in OpenSSH. A local unprivileged attacker on a Linux client host can hijack client-side X11 forwarding connections. This is possible by pre-binding the preferred abstract X socket name when X11 forwarding is enabled and a local UNIX-domain X socket is used. A successful attack can compromise the confidentiality of forwarded X11 traffic, including sensitive window contents and input, and may allow some manipulation of the forwarded session.",
+      "id": "CVE-2026-54514",
+      "description": "jackson-databind contains the general-purpose data-binding functionality and tree-model for Jackson Data Processor. From 2.0.0 until 2.18.8, 2.21.4, and 3.1.4, JDKFromStringDeserializer constructed InetSocketAddress with new InetSocketAddress(host, port), which performs eager DNS name resolution for hostname inputs at deserialization time. An application that binds untrusted JSON into a type containing an InetSocketAddress field issues an attacker-chosen DNS query during readValue, before any ap",
       "cvss": {
-        "score": 5.0,
-        "vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:R/S:U/C:H/I:L/A:N",
+        "score": 5.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
         "severity": "MEDIUM"
       },
       "tier": 2,
       "matchedProducts": [
-        "OpenSSH"
+        "Oracle Java"
       ],
       "references": [
-        "https://access.redhat.com/security/cve/CVE-2026-55655",
-        "https://bugzilla.redhat.com/show_bug.cgi?id=2462250"
+        "https://github.com/FasterXML/jackson-databind/commit/1f5a1037b1e9e05920e755cb35f198bcd46667e4",
+        "https://github.com/FasterXML/jackson-databind/pull/5951",
+        "https://github.com/FasterXML/jackson-databind/security/advisories/GHSA-hgj6-7826-r7m5"
       ],
-      "published": "2026-06-23T04:17:40.787"
+      "published": "2026-06-23T21:17:02.467"
     },
     {
-      "id": "CVE-2026-55653",
-      "description": "A flaw was found in OpenSSH. A malicious SSH server can exploit a double free vulnerability in the Diffie-Hellman Group Exchange (DH-GEX) client path. This occurs during FIPS (Federal Information Processing Standards) mode known-group validation when the client processes attacker-controlled DH-GEX group parameters. Successful exploitation leads to client-side process termination, resulting in a Denial of Service (DoS).",
+      "id": "CVE-2026-46548",
+      "description": "NocoDB is software for building databases as spreadsheets. Prior to 2026.04.1, the request-filtering-agent SSRF protection was non-functional in the four notification webhook plugins (Slack, Discord, Mattermost, Teams) because httpAgent / httpsAgent were passed as part of the request body rather than the axios config. An authenticated user with hook-creation permission could direct outbound POST requests to arbitrary internal hosts. This vulnerability is fixed in 2026.04.1.",
       "cvss": {
         "score": 4.3,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:L",
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N",
         "severity": "MEDIUM"
       },
       "tier": 3,
       "matchedProducts": [
-        "OpenSSH"
+        "Slack"
       ],
       "references": [
-        "https://access.redhat.com/security/cve/CVE-2026-55653",
-        "https://bugzilla.redhat.com/show_bug.cgi?id=2462351"
+        "https://github.com/nocodb/nocodb/security/advisories/GHSA-2c5x-4jgf-88mj"
       ],
-      "published": "2026-06-23T04:17:36.600"
+      "published": "2026-06-23T21:16:58.077"
     },
     {
-      "id": "CVE-2026-48931",
-      "description": "A flaw in Node.js HTTP Agent can cause a client to accept as valid a response that is send before the client has sent the request.\r\n\r\nThis vulnerability affects all supported release lines: **Node.js 22**, **Node.js 24**, and **Node.js 26**.",
-      "cvss": {
-        "score": 3.7,
-        "vector": "CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:N",
-        "severity": "LOW"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "Node.js"
-      ],
-      "references": [
-        "https://nodejs.org/en/blog/vulnerability/june-2026-security-releases",
-        "https://github.com/nodejs/node/issues/63989",
-        "https://jdstaerk.substack.com/p/nodejs-security-fix-silently-broke"
-      ],
-      "published": "2026-06-22T20:16:29.957"
-    },
-    {
-      "id": "CVE-2026-55654",
-      "description": "A flaw was found in OpenSSH. This vulnerability, a heap out-of-bounds read, occurs during the cleanup of GSSAPI (Generic Security Service Application Programming Interface) indicators when a trailing NULL termination is missing in the auth-indicators array. A remote attacker, under specific configurations involving GSSAPI authentication and a Kerberos environment, could exploit this to cause the SSH authentication path to crash or abort. This leads to a denial of service (DoS), impacting the ava",
-      "cvss": {
-        "score": 3.7,
-        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:L",
-        "severity": "LOW"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "OpenSSH"
-      ],
-      "references": [
-        "https://access.redhat.com/security/cve/CVE-2026-55654",
-        "https://bugzilla.redhat.com/show_bug.cgi?id=2462493"
-      ],
-      "published": "2026-06-23T04:17:40.587"
-    },
-    {
-      "id": "CVE-2026-44913",
-      "description": "Improper escaping of database table names in the CaptureChangeMySQL Processor included with Apache NiFi 1.2.0 through 2.9.0 allows for injecting SQL commands using crafted naming. Manual quoted boundaries added in Apache NiFi 1.8.0 narrowed the scope of potential injection options, but did not cover additional strategies. Apache NiFi installations that do not use the CaptureChangeMySQL Processor are not subject to this vulnerability. Upgrading to Apache NiFi 2.10.0 is the recommended mitigation,",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "MySQL"
-      ],
-      "references": [
-        "https://lists.apache.org/thread/c8vkt5rz4dqql6sjxgrr3zdkbt1sfmsl",
-        "http://www.openwall.com/lists/oss-security/2026/06/20/5"
-      ],
-      "published": "2026-06-22T08:17:05.613"
-    },
-    {
-      "id": "CVE-2026-49241",
-      "description": "The Angular Language Service VS Code Extension provides a rich editing experience for Angular templates. Prior to 21.2.4, the client-side Angular Language Service VS Code extension reads the custom TypeScript SDK paths typescript.tsdk and js/ts.tsdk.path directly from workspace configurations (.vscode/settings.json) without verifying VS Code Workspace Trust state or asking for user consent (located in client/src/client.ts). The client-side extension then passes the parsed settings path as a comm",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "Node.js",
-        "Visual Studio Code"
-      ],
-      "references": [
-        "https://github.com/angular/angular/pull/68857",
-        "https://github.com/angular/angular/pull/68886",
-        "https://github.com/angular/angular/security/advisories/GHSA-ccq4-xmxr-8hcq"
-      ],
-      "published": "2026-06-22T16:16:36.310"
-    },
-    {
-      "id": "CVE-2026-50178",
-      "description": "The Angular Language Service VS Code Extension provides a rich editing experience for Angular templates. the client-side Angular Language Service VS Code extension configures the tooltip Markdown renderer with the isTrusted: true option (located in client/src/client.ts). This setting instructs VS Code to trust all rendered content it receives, which enables active elements such as command: URIs. However, the background Angular Language Server process fails to escape or sanitize brackets, raw lin",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "Visual Studio Code"
-      ],
-      "references": [
-        "https://github.com/angular/angular/security/advisories/GHSA-q94j-3wj3-4xcm"
-      ],
-      "published": "2026-06-22T16:16:37.797"
-    },
-    {
-      "id": "CVE-2026-53655",
-      "description": "node-tar is a full-featured Tar for Node.js. Prior to 7.5.16, tar (node-tar) applies a PAX extended header's size= record (and other PAX overrides) to the next header entry of any type, including intermediary metadata headers such as a GNU long-name (L) or long-link (K) entry. Per POSIX pax, a PAX extended header (x) describes the next file entry, not the intermediary extension headers that may sit between the x header and the file it annotates. Because node-tar lets the PAX size override the by",
+      "id": "CVE-2026-54257",
+      "description": "Electron is a framework for writing cross-platform desktop applications using JavaScript, HTML and CSS. From 42.3.1 until 42.3.3, Buffer performs incorrect byte length calculations resulting in heap buffer under/overflow. Most apps will crash and some may perform incorrect buffer allocations in the Node.js Buffer API resulting in unexpected truncation or allocation. This vulnerability is fixed in 42.3.3.",
       "cvss": {
         "score": null,
         "vector": null,
@@ -307,13 +634,13 @@
         "Node.js"
       ],
       "references": [
-        "https://github.com/isaacs/node-tar/security/advisories/GHSA-vmf3-w455-68vh"
+        "https://github.com/electron/electron/security/advisories/GHSA-q6m5-f73j-m9mc"
       ],
-      "published": "2026-06-22T16:16:38.593"
+      "published": "2026-06-23T18:18:07.803"
     },
     {
-      "id": "CVE-2026-53632",
-      "description": "launch-editor allows users to open files with line numbers in editor from Node.js. Prior to 2.14.1, the launch-editor NPM package accesses arbitrary paths including Windows UNC paths. When a UNC path is opened, Windows automatically attempts NTLM authentication to the remote host, causing the user\u2019s NTLMv2 password hash to be leaked to an attacker-controlled SMB server. This can result in credential compromise through offline hash cracking. This vulnerability is fixed in 2.14.1.",
+      "id": "CVE-2026-55736",
+      "description": "Improperly Controlled Modification of Dynamically-Determined Object Attributes vulnerability in ash-project ash allows a user to set the value of a private action argument that is intended to be controlled only by trusted server-side code.\n\nAction arguments declared with public?: false are meant to be set internally (for example via Ash.Changeset.set_private_argument/3) and must not be settable from end-user input. When a changeset is built from a parameter map, Ash filters out private arguments",
       "cvss": {
         "score": null,
         "vector": null,
@@ -321,17 +648,19 @@
       },
       "tier": 3,
       "matchedProducts": [
-        "Node.js"
+        "ESET"
       ],
       "references": [
-        "https://github.com/vitejs/launch-editor/security/advisories/GHSA-v6wh-96g9-6wx3",
-        "https://github.com/vitejs/launch-editor/security/advisories/GHSA-v6wh-96g9-6wx3"
+        "https://cna.erlef.org/cves/CVE-2026-55736.html",
+        "https://github.com/ash-project/ash/commit/d9b3100219b3ea86d73202bf7368c03a7688efea",
+        "https://github.com/ash-project/ash/security/advisories/GHSA-f4hc-ppw9-4hhw",
+        "https://osv.dev/vulnerability/EEF-CVE-2026-55736"
       ],
-      "published": "2026-06-22T18:16:44.827"
+      "published": "2026-06-23T19:17:12.287"
     },
     {
-      "id": "CVE-2026-55602",
-      "description": "http-proxy-middleware is node.js http-proxy middleware. From 0.16.0 until 2.0.10, 3.0.6, and 4.1.0, http-proxy-middleware documents router proxy-table entries as host, path, or host+path selectors, but the host+path implementation uses unanchored substring matching on attacker-controlled request metadata. As a result, a crafted Host header that is only a superstring match for a configured host+path key can still route a request to an unintended backend. This vulnerability is fixed in 2.0.10, 3.0",
+      "id": "CVE-2026-54762",
+      "description": "Traefik is an HTTP reverse proxy and load balancer. From 3.7.0-ea.1 until 3.7.5, there is a medium severity vulnerability in Traefik's Kubernetes Ingress NGINX provider that causes affected routes to fail open. When an Ingress explicitly enables BasicAuth or DigestAuth through the supported nginx.ingress.kubernetes.io/auth-type and auth-secret annotations, but the referenced auth Secret cannot be resolved or parsed, Traefik logs the resolution error, skips installing the authentication middlewar",
       "cvss": {
         "score": null,
         "vector": null,
@@ -339,16 +668,17 @@
       },
       "tier": 3,
       "matchedProducts": [
-        "Node.js"
+        "Nginx"
       ],
       "references": [
-        "https://github.com/chimurai/http-proxy-middleware/security/advisories/GHSA-64mm-vxmg-q3vj"
+        "https://github.com/traefik/traefik/releases/tag/v3.7.5",
+        "https://github.com/traefik/traefik/security/advisories/GHSA-4mr2-fg2p-w63c"
       ],
-      "published": "2026-06-22T18:16:48.073"
+      "published": "2026-06-23T20:16:49.997"
     },
     {
-      "id": "CVE-2026-48509",
-      "description": "MessagePack for C# is a MessagePack serializer for C#. Prior to 2.5.301 and 3.1.7, the parameterless MessagePackInputFormatter() constructor uses default serializer options, which resolve to MessagePackSerializerOptions.Standard with MessagePackSecurity.TrustedData. The formatter is designed for ASP.NET Core MVC request bodies, which commonly cross an HTTP trust boundary. This insecure default can expose applications to denial-of-service attacks that MessagePackSecurity.UntrustedData is intended",
+      "id": "CVE-2026-47376",
+      "description": "NocoDB is software for building databases as spreadsheets. Prior to 2026.04.1, the password-reset page rendered the URL token directly into a JavaScript string literal in a server-rendered EJS template. EJS <%= %> HTML-entity-encodes a fixed set of characters but does not escape single quotes or backslashes, so a crafted token could break out of the JS string context and execute attacker-controlled script in the NocoDB origin. Triggering required only that a victim follow a malicious password-re",
       "cvss": {
         "score": null,
         "vector": null,
@@ -356,16 +686,16 @@
       },
       "tier": 3,
       "matchedProducts": [
-        "Microsoft .NET"
+        "ESET"
       ],
       "references": [
-        "https://github.com/MessagePack-CSharp/MessagePack-CSharp/security/advisories/GHSA-2f33-pr97-265q"
+        "https://github.com/nocodb/nocodb/security/advisories/GHSA-6xcx-7qmg-vjfq"
       ],
-      "published": "2026-06-22T22:16:47.573"
+      "published": "2026-06-23T21:16:59.280"
     },
     {
-      "id": "CVE-2026-54281",
-      "description": "Nest is a framework for building scalable Node.js server-side applications. Prior to 11.1.24, an authentication bypass vulnerability exists in @nestjs/platform-fastify. When middleware is registered through NestJS's MiddlewareConsumer.forRoutes() API on the Fastify adapter, an unauthenticated client can bypass the Nest middleware registered for that route by simply appending a trailing slash (/) to the request URL. This bypass works on the default Fastify adapter configuration. This vulnerabilit",
+      "id": "CVE-2026-53926",
+      "description": "NocoDB is software for building databases as spreadsheets. Prior to 2026.05.1, revokeAllOAuthTokensByUser in the users service is an empty stub being called from passwordChange, passwordForgot, and passwordReset. OAuth access and refresh tokens were not revoked when the user changed, reset, or recovered their password, leaving an attacker-issued OAuth grant valid after the user believed they had locked the attacker out. This vulnerability is fixed in 2026.05.1.",
       "cvss": {
         "score": null,
         "vector": null,
@@ -373,12 +703,29 @@
       },
       "tier": 3,
       "matchedProducts": [
-        "Node.js"
+        "ESET"
       ],
       "references": [
-        "https://github.com/nestjs/nest/security/advisories/GHSA-6v32-fjc9-9qf6"
+        "https://github.com/nocodb/nocodb/security/advisories/GHSA-g72g-r7m4-9x4g"
       ],
-      "published": "2026-06-22T22:16:49.433"
+      "published": "2026-06-23T21:17:01.363"
+    },
+    {
+      "id": "CVE-2026-53928",
+      "description": "NocoDB is software for building databases as spreadsheets. Prior to 2026.05.1, a stolen refresh token survived a password-forgot flow and could be used to mint fresh JWTs even after the user reset their password. passwordChange and passwordReset deleted the user's refresh tokens, but passwordForgot only rotated token_version and revoked OAuth tokens \u2014 it did not call UserRefreshToken.deleteAllUserToken(user.id). An attacker holding a captured refresh cookie could still exchange it for a new acce",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "ESET"
+      ],
+      "references": [
+        "https://github.com/nocodb/nocodb/security/advisories/GHSA-r989-7g3j-wjhw"
+      ],
+      "published": "2026-06-23T21:17:01.623"
     }
   ]
 }
