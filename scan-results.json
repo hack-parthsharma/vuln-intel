@@ -1,34 +1,68 @@
 {
-  "scanTime": "2026-07-05 06:52:49 UTC",
-  "totalMatched": 1,
+  "scanTime": "2026-07-06 07:59:41 UTC",
+  "totalMatched": 3,
   "productsMonitored": 147,
   "tierCounts": {
     "0": 0,
     "1": 0,
-    "2": 1,
-    "3": 0
+    "2": 0,
+    "3": 3
   },
   "vulnerabilities": [
     {
-      "id": "CVE-2026-14622",
-      "description": "A vulnerability was found in jairiidriss restaurant-website-php-mysql up to 521428b5b612449df0cf4a5d15ee40cba67f3d35. This vulnerability affects unknown code of the file /admin/ajax_files of the component AJAX Endpoint. Performing a manipulation results in missing authentication. The attack is possible to be carried out remotely. The exploit has been made public and could be used. This product adopts a rolling release strategy to maintain continuous delivery. Therefore, version details for affec",
+      "id": "CVE-2026-10657",
+      "description": "Zephyr's DNS resolver detects mDNS (.local) queries in dns_resolve_name_internal() (subsys/net/lib/dns/resolve.c) with memcmp(strrchr(query, '.'), \".local\", 7), which always reads a fixed 7 bytes from the suffix pointer. When the resolved hostname's final label is shorter than 7 bytes (e.g. names ending in .org, .com, .net, .io, or a trailing dot), the comparison reads 1-2 bytes past the string's NUL terminator. The hostname (query) is the caller-supplied name passed through the standard getaddr",
       "cvss": {
-        "score": 7.3,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L",
-        "severity": "HIGH"
+        "score": 3.7,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:L",
+        "severity": "LOW"
       },
-      "tier": 2,
+      "tier": 3,
       "matchedProducts": [
-        "MySQL"
+        "Slack"
       ],
       "references": [
-        "https://github.com/jairiidriss/restaurant-website-php-mysql/",
-        "https://github.com/jairiidriss/restaurant-website-php-mysql/issues/6",
-        "https://vuldb.com/cve/CVE-2026-14622",
-        "https://vuldb.com/submit/845099",
-        "https://vuldb.com/vuln/376138"
+        "https://github.com/zephyrproject-rtos/zephyr/commit/448a21da12c9ea28f7fd12c6894e03a987b17a27",
+        "https://github.com/zephyrproject-rtos/zephyr/security/advisories/GHSA-76jh-3j5f-9vq4"
       ],
-      "published": "2026-07-04T09:16:27.767"
+      "published": "2026-07-05T23:16:52.863"
+    },
+    {
+      "id": "CVE-2026-59509",
+      "description": "An unauthenticated improper input validation vulnerability in the POST /fetch_cve_data endpoint in cve-search. A remote attacker can manipulate request parameters controlling the MongoDB collection, projected fields, and regular-expression filters to read arbitrary application MongoDB collections. This can expose administrative usernames and password hashes from the mgmt_users collection, enabling offline password cracking and potential administrative account compromise.",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "MongoDB"
+      ],
+      "references": [
+        "https://github.com/cve-search/cve-search/issues/1217",
+        "https://github.com/cve-search/cve-search/pull/1218"
+      ],
+      "published": "2026-07-05T13:16:56.127"
+    },
+    {
+      "id": "CVE-2026-14803",
+      "description": "Mojo::JSON versions before 9.47 for Perl allow memory exhaustion via unbounded recursion in the pure-Perl decoder.\n\nThe pure-Perl decode path (`_decode_value` dispatching to `_decode_array` and `_decode_object`) recurses with no depth limit, so a small deeply nested JSON document can consume excessive memory.\n\nThis path is the default when Cpanel::JSON::XS is not installed or `MOJO_NO_JSON_XS=1` is set; the Cpanel::JSON::XS fast path is not affected.\n\nAny caller that decodes an untrusted JSON bo",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "cPanel"
+      ],
+      "references": [
+        "https://github.com/mojolicious/mojo/commit/cc38b0554275c4d84f6b8b49bcbbc1bec2068fe1.patch",
+        "https://metacpan.org/release/SRI/Mojolicious-9.47/changes",
+        "http://www.openwall.com/lists/oss-security/2026/07/06/2"
+      ],
+      "published": "2026-07-06T02:16:21.683"
     }
   ]
 }
