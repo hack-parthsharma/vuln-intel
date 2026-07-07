@@ -1,53 +1,553 @@
 {
-  "scanTime": "2026-07-06 07:59:41 UTC",
-  "totalMatched": 3,
+  "scanTime": "2026-07-07 06:59:33 UTC",
+  "totalMatched": 32,
   "productsMonitored": 147,
   "tierCounts": {
-    "0": 0,
-    "1": 0,
-    "2": 0,
+    "0": 5,
+    "1": 20,
+    "2": 4,
     "3": 3
   },
   "vulnerabilities": [
     {
-      "id": "CVE-2026-10657",
-      "description": "Zephyr's DNS resolver detects mDNS (.local) queries in dns_resolve_name_internal() (subsys/net/lib/dns/resolve.c) with memcmp(strrchr(query, '.'), \".local\", 7), which always reads a fixed 7 bytes from the suffix pointer. When the resolved hostname's final label is shorter than 7 bytes (e.g. names ending in .org, .com, .net, .io, or a trailing dot), the comparison reads 1-2 bytes past the string's NUL terminator. The hostname (query) is the caller-supplied name passed through the standard getaddr",
+      "id": "CVE-2026-57572",
+      "description": "Crawl4AI is an open-source LLM-friendly web crawler and scraper. Prior to 0.9.0, the Docker API server accepted request-supplied browser_config.extra_args, which flowed into Chromium's launch arguments. An attacker could inject Chromium switches that replace a child-process launch command together with --no-zygote, causing Chromium to fork or exec an attacker-controlled command as the container's runtime user. The Docker API is unauthenticated by default, so a single request yields arbitrary com",
       "cvss": {
-        "score": 3.7,
-        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:L",
-        "severity": "LOW"
+        "score": 10.0,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+        "severity": "CRITICAL"
       },
-      "tier": 3,
+      "tier": 0,
       "matchedProducts": [
-        "Slack"
+        "Google Chrome"
       ],
       "references": [
-        "https://github.com/zephyrproject-rtos/zephyr/commit/448a21da12c9ea28f7fd12c6894e03a987b17a27",
-        "https://github.com/zephyrproject-rtos/zephyr/security/advisories/GHSA-76jh-3j5f-9vq4"
+        "https://github.com/unclecode/crawl4ai/commit/60886d1a0c52682e4c83a7cef9dfac417fff6bd2",
+        "https://github.com/unclecode/crawl4ai/security/advisories/GHSA-r253-r9jw-qg44"
       ],
-      "published": "2026-07-05T23:16:52.863"
+      "published": "2026-07-06T21:16:58.047"
     },
     {
-      "id": "CVE-2026-59509",
-      "description": "An unauthenticated improper input validation vulnerability in the POST /fetch_cve_data endpoint in cve-search. A remote attacker can manipulate request parameters controlling the MongoDB collection, projected fields, and regular-expression filters to read arbitrary application MongoDB collections. This can expose administrative usernames and password hashes from the mgmt_users collection, enabling offline password cracking and potential administrative account compromise.",
+      "id": "CVE-2026-48204",
+      "description": "Improper Input Validation, Improper Access Control vulnerability in Apache Camel in Camel Mongodb Gridfs component.\n\nThe camel-mongodb-gridfs producer selects the GridFS operation to perform from the gridfs.operation Exchange header when the endpoint's operation parameter is not set - which is the default. The control-header constants (GridFsConstants.GRIDFS_OPERATION, GRIDFS_OBJECT_ID, GRIDFS_METADATA, GRIDFS_CHUNKSIZE, GRIDFS_FILE_ID_PRODUCED) were the plain strings gridfs.operation, gridfs.ob",
       "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
+        "score": 9.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "CRITICAL"
       },
-      "tier": 3,
+      "tier": 0,
       "matchedProducts": [
         "MongoDB"
       ],
       "references": [
-        "https://github.com/cve-search/cve-search/issues/1217",
-        "https://github.com/cve-search/cve-search/pull/1218"
+        "https://camel.apache.org/security/CVE-2026-48204.html",
+        "http://www.openwall.com/lists/oss-security/2026/07/05/18"
       ],
-      "published": "2026-07-05T13:16:56.127"
+      "published": "2026-07-06T09:16:37.760"
     },
     {
-      "id": "CVE-2026-14803",
-      "description": "Mojo::JSON versions before 9.47 for Perl allow memory exhaustion via unbounded recursion in the pure-Perl decoder.\n\nThe pure-Perl decode path (`_decode_value` dispatching to `_decode_array` and `_decode_object`) recurses with no depth limit, so a small deeply nested JSON document can consume excessive memory.\n\nThis path is the default when Cpanel::JSON::XS is not installed or `MOJO_NO_JSON_XS=1` is set; the Cpanel::JSON::XS fast path is not affected.\n\nAny caller that decodes an untrusted JSON bo",
+      "id": "CVE-2026-14345",
+      "description": "The WPFunnels \u2013 Funnel Builder for WooCommerce with Checkout & One Click Upsell plugin for WordPress is vulnerable to Remote Code Execution in all versions up to, and including, 3.12.7 via the 'postData' parameter parameter. This is due to unsanitized write of attacker-controlled postData values into a PHP-includeable .log file combined with the use of include_once to render that file in wpfnl_show_log. This makes it possible for unauthenticated attackers to execute code on the server. Exploitat",
+      "cvss": {
+        "score": 9.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "CRITICAL"
+      },
+      "tier": 0,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/wpfunnels/tags/3.12.5/admin/modules/settings/class-wpfnl-settings.php#L709",
+        "https://plugins.trac.wordpress.org/browser/wpfunnels/tags/3.12.5/includes/core/classes/class-wpfnl-ajax-handler.php#L39",
+        "https://plugins.trac.wordpress.org/browser/wpfunnels/tags/3.12.5/includes/core/classes/class-wpfnl-ajax-handler.php#L523",
+        "https://plugins.trac.wordpress.org/browser/wpfunnels/tags/3.12.5/public/class-wpfnl-public.php#L1185",
+        "https://plugins.trac.wordpress.org/browser/wpfunnels/tags/3.12.7/admin/modules/settings/class-wpfnl-settings.php#L709"
+      ],
+      "published": "2026-07-07T06:16:22.113"
+    },
+    {
+      "id": "CVE-2026-34198",
+      "description": "Coolify is an open-source and self-hostable tool for managing servers, applications, and databases. Prior to 4.0.0-beta.471, the TrustProxies middleware trusts all proxies ($proxies = '*'), accepting X-Forwarded-Host from any source. The TrustHosts middleware, intended to prevent host header attacks, has a circular caching dependency that prevents it from ever validating hosts. When a password reset is requested, the ResetPassword notification generates the reset URL using url(route(..., false))",
+      "cvss": {
+        "score": 5.3,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:N/I:H/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 0,
+      "matchedProducts": [
+        "ESET"
+      ],
+      "references": [
+        "https://github.com/coollabsio/coolify/commit/98569e4edbfc316877c9e0d27ea89fab3c49e3bd",
+        "https://github.com/coollabsio/coolify/pull/9193",
+        "https://github.com/coollabsio/coolify/releases/tag/v4.0.0-beta.471",
+        "https://github.com/coollabsio/coolify/security/advisories/GHSA-cgj8-7m5q-x5gv"
+      ],
+      "published": "2026-07-07T04:17:50.847"
+    },
+    {
+      "id": "CVE-2026-12277",
+      "description": "The Frontend File Manager Plugin WordPress plugin through 23.6 does not validate a file path derived from user input before deleting the referenced file, allowing unauthenticated users to delete arbitrary files on the server (such as wp-config.php) when guest upload mode is enabled. Deleting wp-config.php forces the site into its setup routine, which can be leveraged toward a full site takeover.",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 0,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://wpscan.com/vulnerability/30f208f6-9d7b-4aaf-8689-496521d1a1dc/"
+      ],
+      "published": "2026-07-07T06:16:21.893"
+    },
+    {
+      "id": "CVE-2026-6382",
+      "description": "The FileOrganizer  WordPress plugin before 1.1.9, Advanced File Manager  WordPress plugin before 5.4.12, File Manager Pro  WordPress plugin before 2.1.1, File Manager WordPress plugin before 8.0.4 do not properly escape a parameter before passing it to a shell command when processing image operations, allowing authenticated users to perform OS Command Injection. This requires the server to have the ImageMagick convert CLI available without either the PHP imagick or GD extensions.",
+      "cvss": {
+        "score": 9.1,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H",
+        "severity": "CRITICAL"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://wpscan.com/vulnerability/a27f70b7-a4cc-42fa-88c1-19adfe1593a8/"
+      ],
+      "published": "2026-07-06T08:16:36.447"
+    },
+    {
+      "id": "CVE-2026-10830",
+      "description": "The AllCoach  WordPress plugin before 1.0.2 does not verify that an email address submitted to a public account-registration endpoint is not already associated with an existing user before overwriting that user's password, allowing unauthenticated attackers to reset the password of arbitrary accounts, including administrators, and take over the site.",
+      "cvss": {
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "ESET",
+        "WordPress"
+      ],
+      "references": [
+        "https://wpscan.com/vulnerability/194e35d8-08ca-402d-a9bb-52383bc3dfab/"
+      ],
+      "published": "2026-07-06T08:16:34.987"
+    },
+    {
+      "id": "CVE-2026-11855",
+      "description": "The Simple Membership WordPress plugin before 4.7.5 does not verify the authenticity of Stripe webhook requests when no signing secret is configured, nor escape a value taken from them before outputting it in an administrator notice, allowing unauthenticated attackers to inject arbitrary web scripts that execute in the context of a logged-in administrator.",
+      "cvss": {
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://wpscan.com/vulnerability/217cb606-a0f2-4427-9262-cfe1cc90474e/"
+      ],
+      "published": "2026-07-06T08:16:35.180"
+    },
+    {
+      "id": "CVE-2026-11962",
+      "description": "The FileOrganizer  WordPress plugin before 1.2.0 does not validate the file type on several of its file-management operations, allowing authenticated users who have been granted file-manager access \u2014 which its premium add-on can extend to sub-administrator roles \u2014 to upload arbitrary PHP files and achieve remote code execution. This is an incomplete fix of CVE-2024-7985, which only added file-type validation to the upload operation.",
+      "cvss": {
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://wpscan.com/vulnerability/88390679-80c5-439f-89d1-2f46aff8cfdb/"
+      ],
+      "published": "2026-07-06T08:16:35.270"
+    },
+    {
+      "id": "CVE-2026-42153",
+      "description": "Coolify is an open-source and self-hostable tool for managing servers, applications, and databases. Prior to 4.0.0-beta.474, PostgreSQL healthcheck command generation used attacker-controlled database settings (postgres_user and postgres_db) in shell-form commands, allowing an authenticated user to inject commands executed in the database container. This issue is fixed in version 4.0.0-beta.474.",
+      "cvss": {
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "PostgreSQL"
+      ],
+      "references": [
+        "https://github.com/coollabsio/coolify/commit/b74f54302b1a857c22c55fe1210d700859b0b3df",
+        "https://github.com/coollabsio/coolify/pull/9674",
+        "https://github.com/coollabsio/coolify/releases/tag/v4.0.0-beta.474",
+        "https://github.com/coollabsio/coolify/security/advisories/GHSA-gvc4-f276-r88p"
+      ],
+      "published": "2026-07-06T22:16:49.383"
+    },
+    {
+      "id": "CVE-2026-42200",
+      "description": "Coolify is an open-source and self-hostable tool for managing servers, applications, and databases. Prior to 4.0.0-beta.474, PostgreSQL initialization script (generate_init_scripts() method in app/Actions/Database/StartPostgresql.php) filename handling did not sufficiently restrict paths, allowing an authenticated user to write files outside the intended directory and achieve command execution through database initialization. This issue is fixed in version 4.0.0-beta.474.",
+      "cvss": {
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "PostgreSQL"
+      ],
+      "references": [
+        "https://github.com/coollabsio/coolify/commit/1cf6c7d0aef8e0edb800ae43f44ded102397cb13",
+        "https://github.com/coollabsio/coolify/pull/9681",
+        "https://github.com/coollabsio/coolify/releases/tag/v4.0.0-beta.474",
+        "https://github.com/coollabsio/coolify/security/advisories/GHSA-mv4c-9x67-rrmv"
+      ],
+      "published": "2026-07-07T04:17:52.923"
+    },
+    {
+      "id": "CVE-2026-12083",
+      "description": "The Admin and Site Enhancements (ASE) WordPress plugin before 8.8.4, admin-site-enhancements-pro WordPress plugin before 8.8.4 does not perform authentication, authorization, or nonce checks on a role-restoration request handler, allowing unauthenticated attackers to restore a previously demoted administrator account back to the administrator role. This is an incomplete fix of CVE-2024-43333 / CVE-2025-24648, which closed the issue for only one of the demotion paths the WordPress role API expose",
+      "cvss": {
+        "score": 8.1,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://wpscan.com/vulnerability/a0c94f7f-6314-4ff2-bb92-ec02146975ff/"
+      ],
+      "published": "2026-07-06T08:16:35.360"
+    },
+    {
+      "id": "CVE-2026-40859",
+      "description": "Deserialization of Untrusted Data vulnerability in Apache Camel.\n\nThe camel-vertx-http component deserializes HTTP response bodies carrying the Content-Type application/x-java-serialized-object using a raw java.io.ObjectInputStream, without applying any ObjectInputFilter (VertxHttpHelper.deserializeJavaObjectFromStream) This deserialization path is reached only when the producer endpoint is configured with transferException=true (or the component-level allowJavaSerializedObject=true) and throwEx",
+      "cvss": {
+        "score": 8.1,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Oracle Java"
+      ],
+      "references": [
+        "https://camel.apache.org/security/CVE-2026-40859.html",
+        "http://www.openwall.com/lists/oss-security/2026/07/05/3"
+      ],
+      "published": "2026-07-06T09:16:35.520"
+    },
+    {
+      "id": "CVE-2026-42527",
+      "description": "Deserialization of Untrusted Data vulnerability in Apache Camel.\n\nThe default ObjectInputFilter pattern shipped with several Apache Camel components for defense-in-depth deserialization filtering ('java.**;javax.**;org.apache.camel.**;!*', or the no-'javax.**' variant in the aggregation-repository components) uses a recursive 'java.**' glob that admits classes whose hashCode/equals/readObject methods perform network I/O, notably java.net.URL and java.net.InetAddress. When an attacker can deliver",
+      "cvss": {
+        "score": 8.1,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Oracle Java"
+      ],
+      "references": [
+        "https://camel.apache.org/security/CVE-2026-42527.html",
+        "http://www.openwall.com/lists/oss-security/2026/07/05/4"
+      ],
+      "published": "2026-07-06T09:16:35.657"
+    },
+    {
+      "id": "CVE-2026-43865",
+      "description": "Deserialization of Untrusted Data vulnerability in Apache Camel Hazelcast component.\n\nThe camel-hazelcast component creates and manages Hazelcast instances using a default configuration that applies no Java deserialization filter. When Camel builds the Hazelcast Config itself - that is, when no user-supplied HazelcastInstance, hazelcastConfigUri, or referenced Config bean is provided - neither Hazelcast's JavaSerializationFilterConfig nor a Camel-side ObjectInputFilter is configured, so objects ",
+      "cvss": {
+        "score": 8.1,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Oracle Java"
+      ],
+      "references": [
+        "https://camel.apache.org/security/CVE-2026-43865.html",
+        "http://www.openwall.com/lists/oss-security/2026/07/05/5"
+      ],
+      "published": "2026-07-06T09:16:35.787"
+    },
+    {
+      "id": "CVE-2026-11766",
+      "description": "The Ultimate Member  WordPress plugin before 2.12.0 does not properly sanitise and escape the value of custom textarea profile fields before outputting it on user profiles, allowing authenticated users with Subscriber-level access and above to store JavaScript that executes when any user, including an administrator, views the affected profile.",
+      "cvss": {
+        "score": 8.0,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://wpscan.com/vulnerability/96adb2d3-af34-4455-97d4-90af58049e78/"
+      ],
+      "published": "2026-07-06T08:16:35.083"
+    },
+    {
+      "id": "CVE-2026-34171",
+      "description": "Coolify is an open-source and self-hostable tool for managing servers, applications, and databases. Prior to 4.0.0-beta.471, the GET /invitations/{uuid} endpoint can perform a state-changing password reset using an attacker-known invitation UUID, allowing an attacker who can cause a victim to visit the crafted invitation URL to reset the victim account password to a predictable value. This issue is fixed in version 4.0.0-beta.471.",
+      "cvss": {
+        "score": 8.0,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:H/A:N",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "ESET"
+      ],
+      "references": [
+        "https://github.com/coollabsio/coolify/commit/25d424c743d5134d4a005a6d8f754bb3235b632c",
+        "https://github.com/coollabsio/coolify/releases/tag/v4.0.0-beta.471",
+        "https://github.com/coollabsio/coolify/security/advisories/GHSA-389w-cc6x-wr2m"
+      ],
+      "published": "2026-07-07T04:17:50.513"
+    },
+    {
+      "id": "CVE-2026-34049",
+      "description": "Coolify is an open-source and self-hostable tool for managing servers, applications, and databases. From 4.0.0-beta.451 through 4.0.0-beta.470, database backup handling for MongoDB collection names did not fully validate shell metacharacters, allowing a highly privileged attacker who can configure backup inputs to inject commands. This issue is fixed in version 4.0.0-beta.471.",
+      "cvss": {
+        "score": 3.3,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:U/C:L/I:L/A:N",
+        "severity": "LOW"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "MongoDB"
+      ],
+      "references": [
+        "https://github.com/coollabsio/coolify/commit/b1de75a7c67ce6aee977bd788b41e61837dbe0b9",
+        "https://github.com/coollabsio/coolify/pull/9168",
+        "https://github.com/coollabsio/coolify/releases/tag/v4.0.0-beta.471",
+        "https://github.com/coollabsio/coolify/security/advisories/GHSA-4mpw-wcj4-v9pp"
+      ],
+      "published": "2026-07-06T22:16:48.117"
+    },
+    {
+      "id": "CVE-2026-34149",
+      "description": "Coolify is an open-source and self-hostable tool for managing servers, applications, and databases. Prior to 4.0.0-beta.471, DatabaseBackupJob interpolates user-controlled database credentials and MongoDB collection exclusion names into backup shell commands without adequate escaping, allowing an authenticated user with database management permissions to execute commands on managed servers. This issue is fixed in version 4.0.0-beta.471.",
+      "cvss": {
+        "score": 3.3,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:U/C:L/I:L/A:N",
+        "severity": "LOW"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "MongoDB"
+      ],
+      "references": [
+        "https://github.com/coollabsio/coolify/commit/952f3247970d261ff93f85c79066192f58f9557e",
+        "https://github.com/coollabsio/coolify/commit/99043600ee881fd8581185e7590604d9882382cd",
+        "https://github.com/coollabsio/coolify/releases/tag/v4.0.0-beta.471",
+        "https://github.com/coollabsio/coolify/security/advisories/GHSA-4vff-6j8j-qhcg"
+      ],
+      "published": "2026-07-07T04:17:49.800"
+    },
+    {
+      "id": "CVE-2026-42201",
+      "description": "Coolify is an open-source and self-hostable tool for managing servers, applications, and databases. Prior to 4.0.0-beta.474, database credential fields (redis_password, keydb_password, dragonfly_password, clickhouse_admin_user, clickhouse_admin_password, postgres_user, mysql_user) are validated only as 'string' at the API layer, with zero shell-safety checks. These values are then interpolated directly into Docker Compose YAML command: strings without any escaping. This issue is fixed in version",
+      "cvss": {
+        "score": 3.3,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:U/C:L/I:L/A:N",
+        "severity": "LOW"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "PostgreSQL",
+        "MySQL",
+        "Redis"
+      ],
+      "references": [
+        "https://github.com/coollabsio/coolify/commit/bff6d853708f3d7c861279586f107739036e67da",
+        "https://github.com/coollabsio/coolify/pull/9676",
+        "https://github.com/coollabsio/coolify/releases/tag/v4.0.0-beta.474",
+        "https://github.com/coollabsio/coolify/security/advisories/GHSA-f35h-g2c2-q36v"
+      ],
+      "published": "2026-07-07T05:16:51.237"
+    },
+    {
+      "id": "CVE-2026-54291",
+      "description": "pgjdbc is an open source postgresql JDBC Driver. In releases 42.7.4 through 42.7.11, channelBinding=require connections can be silently downgraded from SCRAM-SHA-256-PLUS with channel binding to plain SCRAM-SHA-256 without it, losing the man-in-the-middle protection the setting is meant to guarantee. An attacker who can intercept the TLS connection can trigger the downgrade with a certificate whose signature algorithm has no tls-server-end-point channel-binding hash, because the bundled com.ongr",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "PostgreSQL"
+      ],
+      "references": [
+        "https://github.com/ongres/scram/releases/tag/3.3",
+        "https://github.com/pgjdbc/pgjdbc/commit/77df98e4e66c12936ded3478a0954f6f580bad99",
+        "https://github.com/pgjdbc/pgjdbc/security/advisories/GHSA-j92g-9f8w-j867"
+      ],
+      "published": "2026-07-06T19:17:08.407"
+    },
+    {
+      "id": "CVE-2026-53644",
+      "description": "FOSSBilling is a free, open-source billing and client management system. Versions 0.5.3 through 0.7.2 allow authenticated clients to both read and reset API key service secrets for orders that are no longer in an `active` state (e.g., `suspended`, `canceled`). The root cause is missing order-state validation in two client API endpoints, despite an `isActive()` helper already existing in the `Serviceapikey` module and the frontend UI correctly gating access on `order.status == 'active'`. Version ",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "ESET"
+      ],
+      "references": [
+        "https://github.com/FOSSBilling/FOSSBilling/security/advisories/GHSA-qf6j-vq68-qmfh"
+      ],
+      "published": "2026-07-06T23:16:56.360"
+    },
+    {
+      "id": "CVE-2026-53646",
+      "description": "FOSSBilling is a free, open-source billing and client management system. In versions 0.5.6 through 0.7.2, when a `ClientPasswordReset` record already exists for a client (from a previous unexpired reset request), subsequent calls to the `reset_password` guest API endpoint reuse the existing token instead of generating a new one. The 15-minute validity window is anchored to the first request's `created_at` timestamp, not the time of the most recent email. An attacker who obtained the original res",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Nginx",
+        "ESET"
+      ],
+      "references": [
+        "https://github.com/FOSSBilling/FOSSBilling/security/advisories/GHSA-vp66-w6rc-x32p"
+      ],
+      "published": "2026-07-06T23:16:56.683"
+    },
+    {
+      "id": "CVE-2026-10834",
+      "description": "The WP Travel Engine  WordPress plugin before 6.8.1 does not properly validate the source of a user-supplied profile image path before moving the file, allowing authenticated users with subscriber-level access and above to relocate arbitrary files within the WordPress uploads directory into their own profile-image path. This removes the targeted media from its original location and can break content across the site.",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://wpscan.com/vulnerability/5b939f98-0fbd-4f89-9948-77dbcc67f9d3/"
+      ],
+      "published": "2026-07-07T06:16:21.637"
+    },
+    {
+      "id": "CVE-2026-4375",
+      "description": "The DoLeads Integrator WordPress plugin through 0.65, wp2epub WordPress plugin through 0.65 have been seen to be used to achieve RCE, once they are added adding to a blog, for example using a vulnerability where unclosed extensions from wordpress.org can be installed by unauthorized users.",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://wpscan.com/vulnerability/dd043e6c-e6c6-4c8d-aab0-5265d28f5cf6/"
+      ],
+      "published": "2026-07-07T06:16:22.360"
+    },
+    {
+      "id": "CVE-2024-6228",
+      "description": "The Notifications for Forms & WordPress Actions WordPress plugin before 2.6 does not validate a user-supplied value before using it to build a server-side file inclusion path, allowing authenticated users with subscriber-level access and above to include and execute arbitrary local PHP files on the server.",
+      "cvss": {
+        "score": 7.5,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://wpscan.com/vulnerability/6382bfea-6265-4f4b-b26e-4219d9ed78aa/"
+      ],
+      "published": "2026-07-06T08:16:34.057"
+    },
+    {
+      "id": "CVE-2026-12154",
+      "description": "The Reviews Widgets for Google, Yelp & TripAdvisor plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'page_id' shortcode attribute of the [fbrev] shortcode in versions up to and including 2.7.3. This is due to insufficient input sanitization and output escaping in the Feed_Shortcode::fbrev() method, which passes the raw shortcode attribute through Feed_Old::get_feed() into the View::render() method, where it is echoed directly into the data-id HTML attribute without esc_a",
+      "cvss": {
+        "score": 6.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/fb-reviews-widget/tags/2.7.3/includes/class-feed-old.php#L55",
+        "https://plugins.trac.wordpress.org/browser/fb-reviews-widget/tags/2.7.3/includes/class-feed-shortcode.php#L57",
+        "https://plugins.trac.wordpress.org/browser/fb-reviews-widget/tags/2.7.3/includes/class-view.php#L36",
+        "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&new=3593292%40fb-reviews-widget&old=3451654%40fb-reviews-widget&sfp_email=&sfph_mail=",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/86fbc499-dca3-41da-a6ef-8e97d7e46d0e?source=cve"
+      ],
+      "published": "2026-07-06T18:16:36.670"
+    },
+    {
+      "id": "CVE-2026-11328",
+      "description": "The Exclusive Addons for Elementor plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the post title parameter in all versions up to, and including, 2.7.9.8 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with Contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+      "cvss": {
+        "score": 6.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/exclusive-addons-for-elementor/tags/2.7.9.8/extensions/post-duplicator.php#L19",
+        "https://plugins.trac.wordpress.org/browser/exclusive-addons-for-elementor/tags/2.7.9.8/extensions/post-duplicator.php#L34",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/690fd38c-0e12-45f3-9055-51252e4809b1?source=cve"
+      ],
+      "published": "2026-07-07T02:16:28.583"
+    },
+    {
+      "id": "CVE-2026-46453",
+      "description": "Improper Input Validation, Authorization Bypass Through User-Controlled Key vulnerability in Apache Camel ElasticSearch Rest Client.\n\nThe camel-elasticsearch-rest-client component reads several Exchange headers to control its behaviour - SEARCH_QUERY (an advanced query body), OPERATION (which Elasticsearch operation to run), INDEX_NAME, INDEX_SETTINGS and ID. The string values of these header constants, defined in ElasticSearchRestClientConstant, are plain unprefixed names ('SEARCH_QUERY', 'OPER",
+      "cvss": {
+        "score": 5.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "MongoDB",
+        "Elasticsearch"
+      ],
+      "references": [
+        "https://camel.apache.org/security/CVE-2026-46453.html",
+        "http://www.openwall.com/lists/oss-security/2026/07/05/6"
+      ],
+      "published": "2026-07-06T09:16:36.317"
+    },
+    {
+      "id": "CVE-2026-11405",
+      "description": "The web server binary /bin/httpd contains a hidden backdoor authentication mechanism in the login() function at 004c88b8.\r\n\r\n- The function contains a normal authentication path using MD5/hash-based password verification (prod_encode64/PasswordToMd5/check_rand_key).\r\n- After normal authentication fails, it calls GetValue(\"sys.rzadmin.password\") to read a backdoor password from the device configuration.\r\n- It performs a direct strcmp() comparison (plaintext, not hashed) between the config value a",
       "cvss": {
         "score": null,
         "vector": null,
@@ -55,14 +555,49 @@
       },
       "tier": 3,
       "matchedProducts": [
-        "cPanel"
+        "Apache HTTP Server"
       ],
       "references": [
-        "https://github.com/mojolicious/mojo/commit/cc38b0554275c4d84f6b8b49bcbbc1bec2068fe1.patch",
-        "https://metacpan.org/release/SRI/Mojolicious-9.47/changes",
-        "http://www.openwall.com/lists/oss-security/2026/07/06/2"
+        "https://cwe.mitre.org/data/definitions/912.html",
+        "https://kb.cert.org/vuls/id/213560",
+        "https://www.kb.cert.org/vuls/id/213560"
       ],
-      "published": "2026-07-06T02:16:21.683"
+      "published": "2026-07-06T20:16:29.450"
+    },
+    {
+      "id": "CVE-2026-13356",
+      "description": "A malicious webpage could interrupt a pending navigation by enqueuing a synchronous JavaScript dialog, causing the browser UI to display the destination origin in the address bar while continuing to render attacker-controlled content. This vulnerability was fixed in Firefox for iOS 152.3.",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "Mozilla Firefox"
+      ],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2047768",
+        "https://www.mozilla.org/security/advisories/mfsa2026-65/"
+      ],
+      "published": "2026-07-07T00:16:34.063"
+    },
+    {
+      "id": "CVE-2026-12375",
+      "description": "The uncanny-automator-pro WordPress plugin before 7.3.0.6 was distributed with malicious code after the vendor's uncanny-automator-pro WordPress plugin before 7.3.0.6 update/distribution infrastructure was compromised; the injected backdoor grants unauthenticated attackers an administrator session on affected sites and beacons the site's secret keys and administrator details to attacker-controlled servers.",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://wpscan.com/vulnerability/ddc83705-3df6-427c-957b-935135330f73/"
+      ],
+      "published": "2026-07-07T06:16:22.003"
     }
   ]
 }
