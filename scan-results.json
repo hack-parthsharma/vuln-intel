@@ -1,31 +1,560 @@
 {
-  "scanTime": "2026-07-19 06:11:37 UTC",
-  "totalMatched": 1,
+  "scanTime": "2026-07-20 06:31:25 UTC",
+  "totalMatched": 27,
   "productsMonitored": 147,
   "tierCounts": {
-    "0": 1,
-    "1": 0,
+    "0": 0,
+    "1": 4,
     "2": 0,
-    "3": 0
+    "3": 23
   },
   "vulnerabilities": [
     {
-      "id": "CVE-2026-57857",
-      "description": "The Flow Payment plugin for WordPress (flow.cl) version 3.0.8 is vulnerable to reflected cross-site scripting on the WooCommerce checkout page. When the plugin handles an order cancellation, the error_message GET parameter is passed directly to wc_add_notice() in flowpayment-fl.php (lines 57-58) without input sanitization (for example sanitize_text_field()) or output escaping (for example esc_html()) before being rendered in the checkout notice HTML. An unauthenticated attacker can craft a URL c",
+      "id": "CVE-2026-63876",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nserial: zs: Convert to use a platform device\n\nPrevent a crash from happening as the first serial port is initialised:\n\n  Console: switching to mono frame buffer device 160x64\n  fb0: PMAG-AA frame buffer device at tc0\n  DECstation Z85C30 serial driver version 0.10\n  CPU 0 Unable to handle kernel paging request at virtual address 0000002c, epc == 803ab00c, ra == 803aafe0\n  Oops[#1]:\n  CPU: 0 PID: 1 Comm: swapper Not tainted 6.4.0",
       "cvss": {
-        "score": 4.3,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:N",
-        "severity": "MEDIUM"
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
       },
-      "tier": 0,
+      "tier": 1,
       "matchedProducts": [
-        "WordPress"
+        "ESET"
       ],
       "references": [
-        "https://www.flow.cl/",
-        "https://www.vulncheck.com/advisories/flow-payment-plugin-for-wordpress-reflected-cross-site-scripting-via-error-message-parameter"
+        "https://git.kernel.org/stable/c/237dc8c08de3cb293b6607aaee8b13b3a671e267",
+        "https://git.kernel.org/stable/c/4dc9f1517503c883d5ce25b7ab29d177d05edc6a",
+        "https://git.kernel.org/stable/c/6a83d5e24a84e746425cd93539130e5f7381ef47",
+        "https://git.kernel.org/stable/c/7cac59d08a73cb866ec51a483a6f3fe0f531947c",
+        "https://git.kernel.org/stable/c/bb2040484f90f91b717060e1a66026cc4287bcf0"
       ],
-      "published": "2026-07-18T21:17:03.687"
+      "published": "2026-07-19T16:17:04.500"
+    },
+    {
+      "id": "CVE-2026-63877",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nserial: dz: Convert to use a platform device\n\nPrevent a crash from happening as the first serial port is initialised:\n\n  Console: switching to colour frame buffer device 160x64\n  tgafb: SFB+ detected, rev=0x02\n  fb0: Digital ZLX-E1 frame buffer device at 0x1e000000\n  DECstation DZ serial driver version 1.04\n  CPU 0 Unable to handle kernel paging request at virtual address 000000bc, epc == 8048b3a4, ra == 80470a78\n  Oops[#1]:\n  ",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "ESET"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/2ff0401ffddaccc85f758c8259912d686d052b31",
+        "https://git.kernel.org/stable/c/5c9fb95c8d6430d11dbb7b44fbe23222585cda86",
+        "https://git.kernel.org/stable/c/5d7a49d60b8fda66da60e240fd7315232fa1754f",
+        "https://git.kernel.org/stable/c/6f59646229490a93cda950017ad4bdfbfe770a1d",
+        "https://git.kernel.org/stable/c/c9e78361fe92fb64662fc3c8f34e2cdbb8c25bc6"
+      ],
+      "published": "2026-07-19T16:17:04.653"
+    },
+    {
+      "id": "CVE-2026-64093",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbatman-adv: tp_meter: directly shut down timer on cleanup\n\nbatadv_tp_sender_cleanup() was calling timer_delete_sync() followed by\ntimer_delete() to guard against the timer handler re-arming itself between\nthe two calls. This double-deletion hack relied on the sending status being\nset to 0 to suppress re-arming.\n\nReplace both calls with a single timer_shutdown_sync(). This function both\nwaits for any running timer callback to co",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "ESET"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/00bf4bb9947b1190a8be8d9b6a1bcbfa3707785c",
+        "https://git.kernel.org/stable/c/5bc2d50fb66b46f86543d5153a188eb1486d0b6e",
+        "https://git.kernel.org/stable/c/74a76634055462833446684fd526d73c290ea43a",
+        "https://git.kernel.org/stable/c/770bf0a35f0620b526fd4193889d1e77084e4c43",
+        "https://git.kernel.org/stable/c/933880a8bc9b4042223a79255c0b1021cdc36991"
+      ],
+      "published": "2026-07-19T16:17:50.230"
+    },
+    {
+      "id": "CVE-2026-64113",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nixgbevf: fix use-after-free in VEPA multicast source pruning\n\nixgbevf_clean_rx_irq() prunes frames whose source MAC matches the VF's\nown address (VEPA multicast workaround) by freeing the skb and\ncontinuing to the next descriptor:\n\n    dev_kfree_skb_irq(skb);\n    continue;\n\nThe skb pointer is declared outside the while loop and persists across\niterations.  Because the continue skips the \"skb = NULL\" reset at the\nbottom of the l",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "ESET"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/3d931ac62411a7e43b85dba5fe45e1a4a91bd5cb",
+        "https://git.kernel.org/stable/c/55b3e91d62b2f7a24109b2d7c9f4c66d2e3b1ec1",
+        "https://git.kernel.org/stable/c/5d49b568c188dc77199d8d2b959c91da8cc27cf1",
+        "https://git.kernel.org/stable/c/6ef30384a50a50e4a484cddf341bc27de31aa3de",
+        "https://git.kernel.org/stable/c/a244395d8c563ed1bb26c3ef708db6aeeaa08084"
+      ],
+      "published": "2026-07-19T16:17:52.680"
+    },
+    {
+      "id": "CVE-2026-53378",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/colorop: Fix blob property reference tracking in state lifecycle\n\nThe colorop state blob property handling had memory leaks during state\nduplication, destruction, and reset operations. The implementation\nfailed to follow the established pattern from drm_crtc's handling of\nDEGAMMA/GAMMA blob properties.\n\nIssues fixed:\n- drm_colorop_atomic_destroy_state() was freeing state memory without\n  releasing the blob reference, causin",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "ESET"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/235b333e2878d791cee09e1e72f44611a9400114",
+        "https://git.kernel.org/stable/c/271059f1d9020e9ac967524e319fbbaa22d0475b"
+      ],
+      "published": "2026-07-19T11:16:38.953"
+    },
+    {
+      "id": "CVE-2026-53393",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnfsd: reset write verifier on deferred writeback errors\n\nnfsd_vfs_write() and nfsd_commit() both call filemap_check_wb_err() to\ndetect deferred writeback errors, but neither rotates the server's write\nverifier (nn->writeverf) when this check fails. Every other\ndurable-storage-failure path in these functions calls\ncommit_reset_write_verifier() before returning an error.\n\nThe missing rotation means clients holding UNSTABLE write ",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "ESET"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/1dd664b39774a9c89b72de8e59bf9ef4b3aaff2e",
+        "https://git.kernel.org/stable/c/2090b05803faab8a9fa62fbff871007862cac1b7",
+        "https://git.kernel.org/stable/c/4367afc119c51e17a616f6908772b7e2c2c4013f",
+        "https://git.kernel.org/stable/c/b027cca33c97354149fcc0ddeede4525c41093cd"
+      ],
+      "published": "2026-07-19T12:16:50.367"
+    },
+    {
+      "id": "CVE-2026-63812",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nf2fs: fix incorrect FI_NO_EXTENT handling in __destroy_extent_node()\n\nWhen __destroy_extent_node() sets the inode flag FI_NO_EXTENT, it does\nnot reset the length of the largest extent to 0 and update the inode\nfolio. Since modifications to the extent tree are disallowed afterward,\nthe cached largest extent may become stale. This can trigger the\nfollowing error in xfstests generic/388:\n\nF2FS-fs (dm-0): sanity_check_extent_cache:",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "ESET"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/1f70ddb28a3c71df124da5fa4040c808116d6bb9",
+        "https://git.kernel.org/stable/c/20190e498057997532c7f186d081011f18e0a462",
+        "https://git.kernel.org/stable/c/58a5deb220bcac4c73bf58954c0845644c997487",
+        "https://git.kernel.org/stable/c/7e4d8f98be63f98856a5176b9188dada6e7ba9ee",
+        "https://git.kernel.org/stable/c/edf12cbeeeabe799bd2ee21fdb5c336cce6fbad7"
+      ],
+      "published": "2026-07-19T12:16:54.137"
+    },
+    {
+      "id": "CVE-2026-63827",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\napparmor: fix use-after-free in rawdata dedup loop\n\naa_replace_profiles() walks ns->rawdata_list to dedup the incoming\npolicy blob against entries already attached to existing profiles.\nPer the kernel-doc on struct aa_loaddata, list membership does not\nhold a reference: profiles hold pcount, and when the last pcount\ndrops, do_ploaddata_rmfs() is queued on a workqueue that takes\nns->lock and removes the entry. Between dropping t",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "Ubuntu"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/15fd83a1e42ede15070968806bb6c8b1a5170688",
+        "https://git.kernel.org/stable/c/5e34fa9f6f7cd688ae153fff13139a5cf2d42339",
+        "https://git.kernel.org/stable/c/6f060496d03e4dc560a40f73770bd08335cb7a27",
+        "https://git.kernel.org/stable/c/a7a2890028f16e5b0af0bb005d80fcb32559cca3",
+        "https://git.kernel.org/stable/c/c3ca2631073b2cef06824fd2bfc452ff7a1023de"
+      ],
+      "published": "2026-07-19T12:16:55.960"
+    },
+    {
+      "id": "CVE-2026-63859",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: airoha: Add missing bits in airoha_qdma_cleanup_tx_queue()\n\nSimilar to airoha_qdma_cleanup_rx_queue(), reset DMA TX descriptors in\nairoha_qdma_cleanup_tx_queue routine. Moreover, reset TX_DMA_IDX to\nTX_CPU_IDX to notify the NIC the QDMA TX ring is empty.",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "ESET"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/3309965fe44c00fd65af7cef5016e9e782c021a7",
+        "https://git.kernel.org/stable/c/9b5d56fe389d68ede080c716e6f10895facaf7db",
+        "https://git.kernel.org/stable/c/c0cfce4d76702dba9601a4020df1a0bc35806efc"
+      ],
+      "published": "2026-07-19T15:16:52.750"
+    },
+    {
+      "id": "CVE-2026-63883",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nserial: qcom_geni: fix kfifo underflow when flush precedes DMA completion IRQ\n\nWhen uart_flush_buffer() runs before the DMA completion IRQ is delivered,\nthe following race can occur (all steps serialized by uart_port_lock):\n\n  1. DMA starts: tx_remaining = N, kfifo contains N bytes\n  2. DMA completes in hardware; IRQ is pending but not yet delivered\n  3. uart_flush_buffer() acquires the port lock and calls kfifo_reset(),\n     m",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "ESET"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/0d2c41a8b00934ddf8a7c1b4cf72dffa1e629c46",
+        "https://git.kernel.org/stable/c/452d6fa37ae9b021f4f6d397dbae077f7296f6f4",
+        "https://git.kernel.org/stable/c/654f45a8569f3cd6ff20bd724a18e0cce65893ba",
+        "https://git.kernel.org/stable/c/b1159dce10b38eb795e4c96cdc4d34b83cec81c5",
+        "https://git.kernel.org/stable/c/c91ea13375f70f6271a0183445e34e83b8f4d8f7"
+      ],
+      "published": "2026-07-19T16:17:05.343"
+    },
+    {
+      "id": "CVE-2026-63911",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nxfrm: iptfs: reset runtime state when cloning SAs\n\niptfs_clone_state() clones the IPTFS mode data with kmemdup(). This\ncopies runtime objects which must not be shared with the original SA,\nincluding the embedded sk_buff_head, hrtimers, spinlock, and in-flight\nreassembly/reorder state.\n\nIf xfrm_state_migrate() fails after clone_state() but before the later\ninit_state() call has reinitialized those fields, the cloned state can be",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "ESET"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/7f83d174073234839aea176f265e517e0d50a1d2",
+        "https://git.kernel.org/stable/c/9327252e04626d4bb02ca8c0c108fbe8eabf0c5a",
+        "https://git.kernel.org/stable/c/dfb9f6cbfa9826655a49698cf90eb800fce2178e"
+      ],
+      "published": "2026-07-19T16:17:08.987"
+    },
+    {
+      "id": "CVE-2026-63932",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\niio: chemical: mhz19b: reject oversized serial replies\n\nmhz19b_receive_buf() appends each serdev chunk into the fixed\nMHZ19B_CMD_SIZE receive buffer and advances buf_idx by len without\nchecking that the chunk fits in the remaining space. A large callback\ncan therefore overflow st->buf before the command path validates the\nreply.\n\nReset the reply state before each command and reject oversized serial\nreplies before copying them i",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "ESET"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/673478bc29cf72010faaf293c1c8c667393335a0",
+        "https://git.kernel.org/stable/c/a5a05410cb34bfa486d63684cdc1f87a3b13f20a",
+        "https://git.kernel.org/stable/c/ea69e7a6efa88ef32090a91064c362738cc19ddd"
+      ],
+      "published": "2026-07-19T16:17:11.633"
+    },
+    {
+      "id": "CVE-2026-63972",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: mana: Skip redundant detach on already-detached port\n\nWhen mana_per_port_queue_reset_work_handler() runs after a previous\ndetach succeeded but attach failed, the port is left in a detached\nstate with apc->tx_qp and apc->rxqs already freed. Calling\nmana_detach() again unconditionally leads to NULL pointer dereferences\nduring queue teardown.\n\nAdd an early exit in mana_detach() when the port is already in\ndetached state (!net",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "ESET"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/5b05aa36ee24297d7296ca58dfd8c448d0e4cda3",
+        "https://git.kernel.org/stable/c/7ae590797f9b5c240aaea5773f5f00977a42a846",
+        "https://git.kernel.org/stable/c/c4152b4e28b3e550ec99351bf900e2c24c2608cc"
+      ],
+      "published": "2026-07-19T16:17:16.283"
+    },
+    {
+      "id": "CVE-2026-63974",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: hci_sync: Set HCI_CMD_DRAIN_WORKQUEUE during device close\n\nSince hci_dev_close_sync() can now be called during the reset path, we\nshould also set HCI_CMD_DRAIN_WORKQUEUE. This avoids queuing timeouts\nwhile the hdev workqueue is being drained.",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "ESET"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/47330cc875b36a1cf7b3543cb2cf90a7c603ce0e",
+        "https://git.kernel.org/stable/c/525daaea459fc215f432de1b8debbd9144bf97b0",
+        "https://git.kernel.org/stable/c/60bceb9a4c693e68cc90ba4b2dfb9e000e8638ff",
+        "https://git.kernel.org/stable/c/9cebe4680bb9a72f80c6541eb24af06db7a1fbc9"
+      ],
+      "published": "2026-07-19T16:17:16.500"
+    },
+    {
+      "id": "CVE-2026-63976",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: l2cap: clear chan->ident on ECRED reconfiguration success\n\nl2cap_ecred_reconf_rsp() returns early on success without clearing\nchan->ident. Every other L2CAP response handler (l2cap_ecred_conn_rsp,\nl2cap_le_connect_rsp, l2cap_config_rsp) clears chan->ident after a\nsuccessful transaction to prevent the channel from matching subsequent\nresponses with the recycled ident value.\n\nA remote attacker that completed a reconfig",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "ESET"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/00e1950716c6ed67d74777b2db286b0fa23b4be9",
+        "https://git.kernel.org/stable/c/3b5b5f423b4fd23404a393bda8adba3cd6f74ef1",
+        "https://git.kernel.org/stable/c/59f5ecf6ad5c4db6ae81965a96156954a3b0d89a",
+        "https://git.kernel.org/stable/c/8e7977afaef37c6bd2b2654f1bce6ab40d471147",
+        "https://git.kernel.org/stable/c/ae0152d77d101c920769934fb102b18de0c6f526"
+      ],
+      "published": "2026-07-19T16:17:16.733"
+    },
+    {
+      "id": "CVE-2026-63979",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/handshake: hand off the pinned file reference to accept_doit\n\nhandshake_req_next() removes the request from the per-net\npending list and drops hn_lock before handshake_nl_accept_doit()\nreads req->hr_sk->sk_socket and dereferences sock->file (once in\nFD_PREPARE() and again in get_file()).  In that window a\nconsumer running tls_handshake_cancel() followed by sockfd_put()\n(svc_sock_free) or __fput_sync() (xs_reset_transport) r",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "ESET"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/c06876d4fac38f35820946ee3b1be7d7da799cd4",
+        "https://git.kernel.org/stable/c/f4251190e58b209999c1ba9e6d2976136a1be055"
+      ],
+      "published": "2026-07-19T16:17:17.070"
+    },
+    {
+      "id": "CVE-2026-63994",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ntunnels: load network headers after skb_cow() in iptunnel_pmtud_build_icmp[v6]()\n\nSashiko found that iptunnel_pmtud_build_icmp() and\niptunnel_pmtud_build_icmpv6() were caching ip_hdr() and ipv6_hdr()\nbefore an skb_cow() call which can reallocate skb->head.\n\nFix this possible UAF by initializing the local variables\nafter the skb_cow() call.\n\nRemove skb_reset_network_header() calls which were not needed.",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "ESET"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/50750d86a2e5266aba0c295483b3397843198b11",
+        "https://git.kernel.org/stable/c/6dff77899b9e9fe5d854abda3a98ad04e7229ef7",
+        "https://git.kernel.org/stable/c/7254aef4d1a7e18e887af9010e2f2dc34806789b",
+        "https://git.kernel.org/stable/c/76cd9398a0470257ab765bdf5f358a2af2e17934",
+        "https://git.kernel.org/stable/c/95b6d772bfe788331d9742d73eaa12e113b2adc4"
+      ],
+      "published": "2026-07-19T16:17:38.943"
+    },
+    {
+      "id": "CVE-2026-64005",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/smc: Do not re-initialize smc hashtables\n\nINIT_HLIST_HEAD(&smc_v*_hashinfo.ht) are called after smc_nl_init(),\nproto_register() and sock_register(). This can lead to smc_v*_hashinfo.ht\nbeing reset even though hash entries already exist and are being used,\npossibly resulting in a corrupted list.\n\nRemove unnecessary and dangerous re-initialisation of smc_v*_hashinfo.ht in\nsmc_init(); it is implicitly initialised to zero anyho",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "ESET"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/0cc9d0ac22d02f1ba1884de5d6de9eaf8b45d82d",
+        "https://git.kernel.org/stable/c/2006605006e5a4a11d93e1ebdbbe95764d24276f",
+        "https://git.kernel.org/stable/c/55cba6b883b41e5922c00ba9d4e3262131f46f1b",
+        "https://git.kernel.org/stable/c/5ec939367e700722ffbb1b7cacccbb1a3cf0ebd1",
+        "https://git.kernel.org/stable/c/64c96e497d5ada0b90e99bf58f893aa2b73dcfbc"
+      ],
+      "published": "2026-07-19T16:17:40.170"
+    },
+    {
+      "id": "CVE-2026-64055",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: ethernet: cortina: Carry over frag counter\n\nThe gmac_rx() NAPI poll function assembles packets in an\nSKB from a ring buffer.\n\nIf the ring buffer gets completely emptied during a poll cycle,\nwe exit gmac_rx(), but the packet is not yet completely\nassembled in the SKB, yet the fragment counter frag_nr is\nreset to zero on the next invocation.\n\nSolve this by making the RX fragment counter a part of the\nport struct, and carry i",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "ESET"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/46806096f35b8d3dfa2f321ddd77f597edcdb85f",
+        "https://git.kernel.org/stable/c/7123cf481e21b54eb6adc4cb0d8dc2876aeaee41",
+        "https://git.kernel.org/stable/c/75105fcf73f1ce7d9f769aaefec6e6d6645d5ac0",
+        "https://git.kernel.org/stable/c/78cf08b3be47c28f07008a76c932bad7cdffa9d8",
+        "https://git.kernel.org/stable/c/7af1fabdee744b7995fe01b30b77dfc397657cb5"
+      ],
+      "published": "2026-07-19T16:17:45.930"
+    },
+    {
+      "id": "CVE-2026-64088",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbatman-adv: tt: fix negative tt_buff_len\n\nbatadv_orig_node::tt_buff_len was declared as s16, but the field is never\nintended to hold a negative value. When a value greater than 32767 is\nassigned, it wraps to a negative signed integer.\n\nIn batadv_send_other_tt_response(), tt_buff_len is temporarily widened to\ns32. The incorrectly negative s16 value propagates into the s32, causing\nbatadv_tt_prepare_tvlv_global_data() to allocate",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "ESET"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/32edd2a28e112064020a2f319a8cb8a9e5a09767",
+        "https://git.kernel.org/stable/c/33e5ede7ce6d92e531920d4bbd6d3e18ef1c6430",
+        "https://git.kernel.org/stable/c/3c96dff00998314983b68a3e7caac07a66ebe496",
+        "https://git.kernel.org/stable/c/4c4c2f340f4c27373bfcac8dc5032ce7bb474e47",
+        "https://git.kernel.org/stable/c/4dab98961426d0cf6a1599cda6950b7596ca2fcd"
+      ],
+      "published": "2026-07-19T16:17:49.557"
+    },
+    {
+      "id": "CVE-2026-64089",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbatman-adv: tt: fix negative last_changeset_len\n\nbatadv_piv_tt::last_changeset_len len was declared as s16, but the field is\nnever intended to hold a negative value. When a value greater than 32767 is\nassigned, it wraps to a negative signed integer.\n\nIn batadv_send_my_tt_response(), last_changeset_len is temporarily widened\nto s32. The incorrectly negative s16 value propagates into the s32, causing\nbatadv_tt_prepare_tvlv_local_",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "ESET"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/179eb62506a02d00370bd6478898cb632e10986c",
+        "https://git.kernel.org/stable/c/22d59c72f4a47ffec121d0610f70d0d70c3c11c8",
+        "https://git.kernel.org/stable/c/55dc41fe8821e9a849e147255ad572bc933a9d15",
+        "https://git.kernel.org/stable/c/6314089acf0ddf64376fdc0b1420695504c73f52",
+        "https://git.kernel.org/stable/c/c424e8519ac78eac5d9f4eecf06208a0d619ec14"
+      ],
+      "published": "2026-07-19T16:17:49.697"
+    },
+    {
+      "id": "CVE-2026-64105",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: arm64: vgic: Free private_irqs when init fails after allocation\n\nCompanion to commit 250f25367b58 (\"KVM: arm64: Tear down vGIC on\nfailed vCPU creation\"), which added the missing kvm_vgic_vcpu_destroy()\ncall to the kvm_share_hyp() failure path in kvm_arch_vcpu_create(). The\nkvm_vgic_vcpu_init() failure path immediately above it has the same\nshape and still needs the same cleanup.\n\nCall kvm_vgic_vcpu_destroy() when kvm_vgic_",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "Redis"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/173fb86e5519dbe7aabed1f5fa7456152a4a2e38",
+        "https://git.kernel.org/stable/c/7023900b4988fb6f4a59d304d878003ff562e98d",
+        "https://git.kernel.org/stable/c/e690caa54a6139d98495ac69626807623520babd",
+        "https://git.kernel.org/stable/c/f19c354dbd457759dfcf1195ab4bdba2bb568323"
+      ],
+      "published": "2026-07-19T16:17:51.780"
+    },
+    {
+      "id": "CVE-2026-64112",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nrbd: eliminate a race in lock_dwork draining on unmap\n\nGiven how rbd_lock_add_request() and rbd_img_exclusive_lock() are\nwritten, lock_dwork may be (re)queued more than it's actually needed:\nfor example in case a new I/O request comes in while we are in the\nmiddle of rbd_acquire_lock() on behalf of another I/O request.  This is\nexpected and with rbd_release_lock() preemptively canceling lock_dwork\nis benign under normal operati",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "ESET"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/3427d7ae38337066ce88b68302e285d344ab756b",
+        "https://git.kernel.org/stable/c/9400efc76b42c751211974a25c91d2c19c65b01b",
+        "https://git.kernel.org/stable/c/9dcd4f5c99b491c37be90b0bd9988db48225fb75",
+        "https://git.kernel.org/stable/c/9fc75b71fdd38465c76c6f6a884cdd4ae3c72d90"
+      ],
+      "published": "2026-07-19T16:17:52.567"
+    },
+    {
+      "id": "CVE-2026-64115",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nvsock/vmci: fix UAF when peer resets connection during handshake\n\nvmci_transport_recv_connecting_server() returned err = 0 for a peer\nRST in its default switch arm:\n\n\terr = pkt->type == VMCI_TRANSPORT_PACKET_TYPE_RST ? 0 : -EINVAL;\n\nThat made vmci_transport_recv_listen() skip vsock_remove_pending(),\nleaving the pending socket on the listener's pending_links with\nsk_state = TCP_CLOSE while destroy: still dropped the explicit\nref",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "ESET"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/1dd531e28f61edd286edc486ab068f135b5ae1eb",
+        "https://git.kernel.org/stable/c/1e19f08552b90070ed18bafb1763c78297823af6",
+        "https://git.kernel.org/stable/c/440447699c681e26ed58e9c309cad718270a18b4",
+        "https://git.kernel.org/stable/c/47e63077605c6c2aa45b3df9847a8cdc1f1f6ef9",
+        "https://git.kernel.org/stable/c/99e22ddf4edb63dc8382bc028af928056d3450cf"
+      ],
+      "published": "2026-07-19T16:17:52.967"
+    },
+    {
+      "id": "CVE-2026-64125",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: bcmgenet: keep RBUF EEE/PM disabled\n\nSetting RBUF_EEE_EN | RBUF_PM_EN in RBUF_ENERGY_CTRL breaks the RX\npath on GENET hardware once MAC EEE becomes active. RX traffic stops\nflowing while the link stays up and the usual descriptor/RX error\ncounters remain quiet. In that state the MAC still accepts frames\n(rbuf_ovflow_cnt keeps climbing) but RBUF no longer forwards them to\nDMA, so rx_packets is no longer incremented at the n",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "ESET"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/2040eb83f6ada148fb32dd98b943a498005d79f2",
+        "https://git.kernel.org/stable/c/289499907399c5a9f2ed82cb34df49112bb8488f",
+        "https://git.kernel.org/stable/c/3d4ef05266ab16d8ef7dd21658a557801eb78704",
+        "https://git.kernel.org/stable/c/49bdf6bbb21b9c6e3f4d0c1910bf0ef98424be95",
+        "https://git.kernel.org/stable/c/9a1730245e416d11ad5c0f2c100061d61cc43f60"
+      ],
+      "published": "2026-07-19T16:17:54.130"
+    },
+    {
+      "id": "CVE-2026-64147",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\npds_core: fix debugfs_lookup dentry leak and error handling\n\ndebugfs_lookup() returns a dentry with an elevated reference count that\nmust be released with dput(). The current code discards the returned\ndentry without calling dput(), causing a reference leak on every\nfirmware reset recovery.\n\nAdditionally, when CONFIG_DEBUG_FS is disabled, debugfs_lookup()\nreturns ERR_PTR(-ENODEV), not NULL. The current check passes for error\npo",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "ESET"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/26e19622c485e53c3fdb299e822068a0542ddf0c",
+        "https://git.kernel.org/stable/c/60ef1675b652e912f3eb064767af4432393291fd",
+        "https://git.kernel.org/stable/c/91d13e92b983e6c6d7631012c2e20ae8057de9f2",
+        "https://git.kernel.org/stable/c/d7f4dd4c8fb380898fef7a77d48fce7ccdb4fc32",
+        "https://git.kernel.org/stable/c/dc416e32baaeb620b9809e9e25fc7b30889686e9"
+      ],
+      "published": "2026-07-19T16:17:56.643"
+    },
+    {
+      "id": "CVE-2026-64162",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nidpf: fix read_dev_clk_lock spinlock init in idpf_ptp_init()\n\nIn idpf_ptp_init(), read_dev_clk_lock is initialized after\nptp_schedule_worker() had already been called (and after\nidpf_ptp_settime64() could reach the lock). The PTP aux worker\nfires immediately upon scheduling and can call into\nidpf_ptp_read_src_clk_reg_direct(), which takes\nspin_lock(&ptp->read_dev_clk_lock) on an uninitialized lock, triggering\nthe lockdep \"non-s",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "ESET"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/3122d70b7c0101d897fb795658a7b93f854935f2",
+        "https://git.kernel.org/stable/c/da4f76b6a84ede14a71282ef841768299ead0221",
+        "https://git.kernel.org/stable/c/eb5991d4c8ba2e8153dfcda3e66a9608377b7dce"
+      ],
+      "published": "2026-07-19T16:17:58.213"
     }
   ]
 }
