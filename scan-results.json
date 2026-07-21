@@ -1,17 +1,500 @@
 {
-  "scanTime": "2026-07-20 06:31:25 UTC",
-  "totalMatched": 27,
+  "scanTime": "2026-07-21 06:10:16 UTC",
+  "totalMatched": 54,
   "productsMonitored": 147,
   "tierCounts": {
-    "0": 0,
-    "1": 4,
-    "2": 0,
-    "3": 23
+    "0": 13,
+    "1": 17,
+    "2": 16,
+    "3": 8
   },
   "vulnerabilities": [
     {
-      "id": "CVE-2026-63876",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nserial: zs: Convert to use a platform device\n\nPrevent a crash from happening as the first serial port is initialised:\n\n  Console: switching to mono frame buffer device 160x64\n  fb0: PMAG-AA frame buffer device at tc0\n  DECstation Z85C30 serial driver version 0.10\n  CPU 0 Unable to handle kernel paging request at virtual address 0000002c, epc == 803ab00c, ra == 803aafe0\n  Oops[#1]:\n  CPU: 0 PID: 1 Comm: swapper Not tainted 6.4.0",
+      "id": "CVE-2026-46412",
+      "description": "@beproduct/nestjs-auth is a NestJS authentication module for BeProduct IDS (Identity Server) with OpenID Connect support. Between 2026-05-11 20:19 UTC and 22:56 UTC, an attacker used a compromised npm publish token to publish 18 malicious versions of `@beproduct/nestjs-auth` (0.1.2 through 0.1.19). The postinstall payload attempted to harvest npm tokens (from `~/.npmrc`);  GitHub personal access tokens, OAuth tokens (`gho_*`), and Actions OIDC tokens; AWS credentials (from environment variables ",
+      "cvss": {
+        "score": 10.0,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+        "severity": "CRITICAL"
+      },
+      "tier": 0,
+      "matchedProducts": [
+        "Visual Studio Code"
+      ],
+      "references": [
+        "https://github.com/BeProduct/beproduct-org-nestjs-auth/security/advisories/GHSA-6xwp-cp5h-q856",
+        "https://www.aikido.dev/blog/checklist-github-actions",
+        "https://www.aikido.dev/blog/mini-shai-hulud-is-back-tanstack-compromised"
+      ],
+      "published": "2026-07-20T16:17:01.000"
+    },
+    {
+      "id": "CVE-2026-54051",
+      "description": "Network-AI is a TypeScript/Node.js multi-agent orchestrator. Prior to version 5.9.1, the agent sandbox gates shell commands behind an allowlist (`SandboxPolicy.isCommandAllowed`), which THREAT_MODEL.md calls the main control against a compromised agent (Adversary 3.2). The allowlist glob-matches the whole command string, but `ShellExecutor` runs that string through `/bin/sh -c`. So any wildcard allow such as `git *`, `npm *` or `node *` also matches `git status; <anything>`, and a scoped command",
+      "cvss": {
+        "score": 9.9,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+        "severity": "CRITICAL"
+      },
+      "tier": 0,
+      "matchedProducts": [
+        "Node.js"
+      ],
+      "references": [
+        "https://github.com/Jovancoding/Network-AI/commit/379f77656b578144e03415c5b134d8309a4b5792",
+        "https://github.com/Jovancoding/Network-AI/security/advisories/GHSA-qw6v-5fcf-5666"
+      ],
+      "published": "2026-07-20T17:17:57.643"
+    },
+    {
+      "id": "CVE-2026-41252",
+      "description": "xrdp is an open source RDP server. Versions 0.10.6 and prior contain a missing bounds check in xrdp, which allows a heap-based buffer overflow when operating in vnc-any mode. The issue occurs during the handling of RFB protocol color map messages from a VNC server, where incoming color indices are not properly validated. A malicious VNC server can exploit this flaw by sending crafted messages with out-of-range values, leading to an out-of-bounds write on the heap. This memory corruption can resu",
+      "cvss": {
+        "score": 9.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "CRITICAL"
+      },
+      "tier": 0,
+      "matchedProducts": [
+        "XRDP"
+      ],
+      "references": [
+        "https://github.com/neutrinolabs/xrdp/releases/tag/v0.10.6.1",
+        "https://github.com/neutrinolabs/xrdp/security/advisories/GHSA-w5vg-6qmv-j63j"
+      ],
+      "published": "2026-07-20T17:17:08.310"
+    },
+    {
+      "id": "CVE-2026-41521",
+      "description": "xrdp is an open source RDP server. Versions 0.10.6 and prior contain an integer overflow vulnerability when processing screen update messages within the vnc-any connection mode. A malicious remote VNC server can send crafted image dimensions that cause an integer overflow during memory buffer size calculation, resulting in an undersized allocation. Subsequent processing of the incoming image data using the original oversized parameters leads to an out-of-bounds read. An unauthenticated remote at",
+      "cvss": {
+        "score": 8.2,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:L",
+        "severity": "HIGH"
+      },
+      "tier": 0,
+      "matchedProducts": [
+        "XRDP"
+      ],
+      "references": [
+        "https://github.com/neutrinolabs/xrdp/releases/tag/v0.10.6.1",
+        "https://github.com/neutrinolabs/xrdp/security/advisories/GHSA-v8w6-pf78-9458"
+      ],
+      "published": "2026-07-20T17:17:08.460"
+    },
+    {
+      "id": "CVE-2026-54538",
+      "description": "xrdp is an open source RDP server. In versions 0.10.6 and prior, a n issue was discovered where the software fails to properly validate the totalLength field within the RDP protocol control header during packet reception. An unauthenticated remote attacker can exploit this vulnerability by sending a specially crafted packet that forces the xrdp process or thread into an infinite, CPU-bound loop. Because the internal pointer fails to advance and the deadlock prevention mechanism is bypassed for s",
+      "cvss": {
+        "score": 7.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 0,
+      "matchedProducts": [
+        "XRDP"
+      ],
+      "references": [
+        "https://github.com/neutrinolabs/xrdp/releases/tag/v0.10.6.1",
+        "https://github.com/neutrinolabs/xrdp/security/advisories/GHSA-9j3q-9mvw-qv7j"
+      ],
+      "published": "2026-07-20T17:17:59.723"
+    },
+    {
+      "id": "CVE-2026-12973",
+      "description": "The PayPlus Payment Gateway WordPress plugin before 8.2.2 does not perform authorization or order-ownership validation in one of its AJAX actions available to unauthenticated users, allowing them to disclose the secret order key of arbitrary WooCommerce orders and, under some configurations, to modify order statuses.",
+      "cvss": {
+        "score": 6.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 0,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://wpscan.com/vulnerability/385bee73-f9e5-425e-aa4c-3ff9274f8e00/"
+      ],
+      "published": "2026-07-20T07:16:35.387"
+    },
+    {
+      "id": "CVE-2026-55645",
+      "description": "xrdp is an open source RDP server. Versions 0.10.6 and prior contain a vulnerability concerning the processing of Client Control PDUs. During the RDP connection sequence, the parser does not perform sufficient length validation before reading specific data fields from the network stream. A remote, unauthenticated attacker could potentially exploit this flaw by sending a specially crafted, truncated Client Control PDU. Due to missing bounds checks, the xrdp process may perform out-of-bounds memor",
+      "cvss": {
+        "score": 6.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:L",
+        "severity": "MEDIUM"
+      },
+      "tier": 0,
+      "matchedProducts": [
+        "XRDP"
+      ],
+      "references": [
+        "https://github.com/neutrinolabs/xrdp/releases/tag/v0.10.6.1",
+        "https://github.com/neutrinolabs/xrdp/security/advisories/GHSA-3m4m-h22g-c7xx"
+      ],
+      "published": "2026-07-20T17:18:07.430"
+    },
+    {
+      "id": "CVE-2026-12972",
+      "description": "The PayPlus Payment Gateway WordPress plugin before 8.2.2 does not perform authorization or order-ownership validation in one of its AJAX actions available to unauthenticated users, allowing them to tamper with the payment-related metadata of arbitrary WooCommerce orders.",
+      "cvss": {
+        "score": 5.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 0,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://wpscan.com/vulnerability/dcd091d3-f830-4675-a3d5-926f4aa5a7a5/"
+      ],
+      "published": "2026-07-20T07:16:35.290"
+    },
+    {
+      "id": "CVE-2026-44978",
+      "description": "xrdp is an open source RDP server. Versions 0.10.6 and prior contain a heap out-of-bounds read vulnerability within the FIPS-specific receive paths. This vulnerability does not affect the default configuration of xrdp. The vulnerability is only exploitable when the security layer is set to security_layer=negotiate or security_layer=rdp, and the crypto level is changed to crypt_level=fips in xrdp.ini. In this specific non-default mode, the server fails to validate the FIPS padding length field, l",
+      "cvss": {
+        "score": 5.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+        "severity": "MEDIUM"
+      },
+      "tier": 0,
+      "matchedProducts": [
+        "XRDP"
+      ],
+      "references": [
+        "https://github.com/neutrinolabs/xrdp/releases/tag/v0.10.6.1",
+        "https://github.com/neutrinolabs/xrdp/security/advisories/GHSA-9cg5-f7m7-ppvj"
+      ],
+      "published": "2026-07-20T17:17:09.370"
+    },
+    {
+      "id": "CVE-2026-55238",
+      "description": "xrdp is an open source RDP server. Versions 0.10.6 and prior contain a vulnerability concerning the processing of RDP Confirm Active PDU, where during the capability negotiation phase, the parser did not perform sufficient length validation for specific capability sets. A remote, unauthenticated attacker could potentially exploit this flaw by sending a specially crafted RDP packet containing malformed capability data. Due to missing bounds checks, the xrdp process may perform out-of-bounds memor",
+      "cvss": {
+        "score": 5.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+        "severity": "MEDIUM"
+      },
+      "tier": 0,
+      "matchedProducts": [
+        "XRDP"
+      ],
+      "references": [
+        "https://github.com/neutrinolabs/xrdp/releases/tag/v0.10.6.1",
+        "https://github.com/neutrinolabs/xrdp/security/advisories/GHSA-mg8j-x9rw-9xv3"
+      ],
+      "published": "2026-07-20T17:18:07.277"
+    },
+    {
+      "id": "CVE-2026-55639",
+      "description": "xrdp is an open source RDP server. Versions 0.10.6 and prior contain a vulnerability concerning the parsing of Client Security Data within the Client MCS Connect Initial PDU with GCC Conference Create Request during the connection sequence. During the initial capability and security negotiation phase, the parser fails to perform sufficient length validation for the incoming data block. A remote, unauthenticated attacker could potentially exploit this flaw by sending a specially crafted RDP packe",
+      "cvss": {
+        "score": 5.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 0,
+      "matchedProducts": [
+        "XRDP"
+      ],
+      "references": [
+        "https://github.com/neutrinolabs/xrdp/releases/tag/v0.10.6.1",
+        "https://github.com/neutrinolabs/xrdp/security/advisories/GHSA-6g36-mxcf-r3gc"
+      ],
+      "published": "2026-07-20T18:16:54.287"
+    },
+    {
+      "id": "CVE-2026-10724",
+      "description": "The Reviews Feed  WordPress plugin before 2.6.5 does not neutralize WordPress shortcodes contained in third-party review content before rendering it through its dynamic block, allowing unauthenticated attackers to execute arbitrary shortcodes on pages that display the feed by planting a shortcode in a review on the connected source.",
+      "cvss": {
+        "score": 4.8,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 0,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://wpscan.com/vulnerability/7def5cf4-655d-424b-b1fc-eb333465434e/"
+      ],
+      "published": "2026-07-20T07:16:34.340"
+    },
+    {
+      "id": "CVE-2026-13142",
+      "description": "The Social Login, Passkeys, Magic Link & Email OTP  WordPress plugin before 1.4.1 does not enforce rate limiting or a working attempt lockout on its passwordless email one-time-password verification, and stores the short numeric codes in plaintext, allowing an unauthenticated attacker who knows a registered email address to brute-force the code and log in as that user, including an administrator, leading to full site takeover.",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 0,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://wpscan.com/vulnerability/a34d9be7-c121-4c95-9ebb-a14c763e16bb/"
+      ],
+      "published": "2026-07-20T07:16:35.483"
+    },
+    {
+      "id": "CVE-2026-53595",
+      "description": "FreeScout is a free help desk and shared inbox built with PHP's Laravel framework. Prior to version 1.8.224, the public endpoint `POST /user-setup/{hash}/{invite_sent_at}` (`OpenController@userSetupSave`) selects the target account solely by its `invite_hash` column, then overwrites that account's email and password and logs in as it. No authentication, cookie, or prior session is required. After a user activates, FreeScout sets `invite_hash` to the empty string. On MySQL and MariaDB, `VARCHAR` ",
+      "cvss": {
+        "score": 9.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:L",
+        "severity": "CRITICAL"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "MySQL"
+      ],
+      "references": [
+        "https://github.com/freescout-help-desk/freescout/security/advisories/GHSA-jqj5-r72v-v29g"
+      ],
+      "published": "2026-07-20T21:16:48.417"
+    },
+    {
+      "id": "CVE-2026-13147",
+      "description": "The Kirki  WordPress plugin before 6.0.12 does not validate a user-supplied URL before requesting it server-side, allowing unauthenticated attackers to make the site issue HTTP requests to arbitrary hosts (Server-Side Request Forgery).",
+      "cvss": {
+        "score": 9.1,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
+        "severity": "CRITICAL"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://wpscan.com/vulnerability/f39c3e35-8673-4095-a829-a9ec2624f66c/"
+      ],
+      "published": "2026-07-20T07:16:35.580"
+    },
+    {
+      "id": "CVE-2026-10081",
+      "description": "The Unlimited Elements For Elementor WordPress plugin before 2.0.11 does not sanitize or escape Google review content fetched from the Serp API before rendering it in the Google Reviews widget output, allowing unauthenticated attackers who submit a malicious review on the targeted business's Google listing to deliver Stored XSS to any visitor (including administrators) of any WP page displaying that Place ID's reviews.",
+      "cvss": {
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://wpscan.com/vulnerability/e5cde405-5b34-4d3d-bfda-325402b0a5bc/"
+      ],
+      "published": "2026-07-20T07:16:33.520"
+    },
+    {
+      "id": "CVE-2026-16248",
+      "description": "A vulnerability was found in Tenda AC10 16.03.10.09_multi_TDE01. This issue affects the function fromAdvSetLanip of the file /goform/AdvSetLanip of the component httpd/netctrl. The manipulation of the argument GetValue/SetValue results in stack-based buffer overflow. The attack may be performed from remote. The exploit has been made public and could be used.",
+      "cvss": {
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Apache HTTP Server"
+      ],
+      "references": [
+        "https://github.com/teiwiet/tenda-ac10-vulnerabilities/blob/main/advisory-fromAdvSetLanip.md",
+        "https://vuldb.com/cve/CVE-2026-16248",
+        "https://vuldb.com/submit/858411",
+        "https://vuldb.com/vuln/380539",
+        "https://vuldb.com/vuln/380539/cti"
+      ],
+      "published": "2026-07-20T13:16:56.190"
+    },
+    {
+      "id": "CVE-2026-44178",
+      "description": "xrdp is an open source RDP server. Versions 0.10.6 and prior contain a heap-based buffer overflow vulnerability within the virtual channel forwarding mechanism. When forwarding data from a remote client to the internal channel server, the xrdp process utilizes a fixed-size buffer without adequate bounds checking on the incoming payload. An authenticated remote attacker can exploit this flaw by sending a specially crafted virtual channel message that exceeds the buffer capacity, leading to heap m",
+      "cvss": {
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "XRDP"
+      ],
+      "references": [
+        "https://github.com/neutrinolabs/xrdp/releases/tag/v0.10.6.1",
+        "https://github.com/neutrinolabs/xrdp/security/advisories/GHSA-hh7r-2rmq-q4g4"
+      ],
+      "published": "2026-07-20T17:17:09.060"
+    },
+    {
+      "id": "CVE-2026-53593",
+      "description": "FreeScout is a free help desk and shared inbox built with PHP's Laravel framework. Prior to version 1.8.224, the denylist that neutralizes dangerous file uploads (`Helper::$restricted_extensions`) is incomplete: it does not cover the `.pht` extension. The authenticated upload endpoint `POST /uploads/upload` (`SecureController@upload`) stores files with their original extension into the web-accessible directory `storage/app/public/uploads/` (served at `/storage/uploads/`). On the standard Apache ",
+      "cvss": {
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Apache HTTP Server"
+      ],
+      "references": [
+        "https://github.com/freescout-help-desk/freescout/security/advisories/GHSA-27vp-fpg8-j8wv"
+      ],
+      "published": "2026-07-20T20:16:44.883"
+    },
+    {
+      "id": "CVE-2026-11349",
+      "description": "The Modern Event Calendar Pro WordPress plugin before 7.34.0, Modern Events Calendar Lite WordPress plugin before 7.34.0 do not sanitise and escape a request parameter before using it in a SQL statement, through an AJAX action available to unauthenticated users, leading to an unauthenticated SQL injection vulnerability that allows attackers to extract sensitive data from the database.",
+      "cvss": {
+        "score": 8.6,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:N/A:N",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://wpscan.com/vulnerability/572229cb-8a09-406d-8623-7d6b553bfdde/"
+      ],
+      "published": "2026-07-20T07:16:34.547"
+    },
+    {
+      "id": "CVE-2026-55626",
+      "description": "xrdp is an open source RDP server. In versions 0.10.6 and prior, when an authenticated user session is initialized using the Xvnc backend over UNIX domain sockets, the Xvnc process is launched with insufficient authentication mechanisms. A local authenticated attacker could exploit this vulnerability to bypass intended session isolation, allowing them to unauthorizedly view or control the active desktop sessions of other users on the same system. Users using other backends, such as xorgxrdp or X",
+      "cvss": {
+        "score": 8.0,
+        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:L",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "XRDP"
+      ],
+      "references": [
+        "https://github.com/neutrinolabs/xrdp/releases/tag/v0.10.6.1",
+        "https://github.com/neutrinolabs/xrdp/security/advisories/GHSA-m3xx-cpc4-982r"
+      ],
+      "published": "2026-07-20T18:16:54.150"
+    },
+    {
+      "id": "CVE-2026-56624",
+      "description": "Improper certificate validation in Apache MINA SSHD (server-side).\u00a0Apache MINA SSHD is a Java library for client-side and server-side SSH.\n\n\n\n\nServer-side OpenSSH user certificate validation during user authentication in an Apache MINA SSHD server did not check for the unsupported force-command or verify-required options that could be embedded in the certificate, nor did it validate these options. As a result it was possible that a user could authenticate with such a certificate that included a ",
+      "cvss": {
+        "score": 7.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:N",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "OpenSSH"
+      ],
+      "references": [
+        "https://lists.apache.org/thread/o4c2jml522j3z80gbryqzc2f1253ltp6",
+        "http://www.openwall.com/lists/oss-security/2026/07/20/17"
+      ],
+      "published": "2026-07-20T21:16:49.070"
+    },
+    {
+      "id": "CVE-2026-58484",
+      "description": "Network-AI is a TypeScript/Node.js multi-agent orchestrator. Prior to version 5.12.2, `EnvironmentManager.listBackups()` reads each backup's `_manifest.json` and trusts the manifest's `path` field. `EnvironmentManager.pruneBackups()` later passes that trusted `entry.path` directly to `rmSync(entry.path, { recursive: true, force: true })`. An attacker who can place or modify a manifest inside `data/<env>/.backups/<name>/_manifest.json` can cause `network-ai env backup prune --env <env> --keep <n>",
+      "cvss": {
+        "score": 7.1,
+        "vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Node.js"
+      ],
+      "references": [
+        "https://github.com/Jovancoding/Network-AI/commit/a59c13a1f0ce0e8a0779a90343eef92fac5ab4c3",
+        "https://github.com/Jovancoding/Network-AI/releases/tag/v5.12.2",
+        "https://github.com/Jovancoding/Network-AI/security/advisories/GHSA-2fmp-9rvw-hc96",
+        "https://github.com/Jovancoding/Network-AI/security/advisories/GHSA-2fmp-9rvw-hc96"
+      ],
+      "published": "2026-07-20T17:18:16.160"
+    },
+    {
+      "id": "CVE-2026-58413",
+      "description": "Network-AI is a TypeScript/Node.js multi-agent orchestrator. Prior to version 5.12.2, `EnvironmentManager.restore(env, backupId)` computes the backup path with `join(envDir, '.backups', backupId)` and only checks that this path exists. It does not resolve the result or verify that it remains under `data/<env>/.backups`. A caller can pass a traversal backup ID such as `../../../outside/source-dir` to restore files from an arbitrary directory into the target environment data directory. The issue i",
+      "cvss": {
+        "score": 6.1,
+        "vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Node.js"
+      ],
+      "references": [
+        "https://github.com/Jovancoding/Network-AI/commit/a59c13a1f0ce0e8a0779a90343eef92fac5ab4c3",
+        "https://github.com/Jovancoding/Network-AI/releases/tag/v5.12.2",
+        "https://github.com/Jovancoding/Network-AI/security/advisories/GHSA-48x2-6pr9-2jjf",
+        "https://github.com/Jovancoding/Network-AI/security/advisories/GHSA-48x2-6pr9-2jjf"
+      ],
+      "published": "2026-07-20T17:18:15.570"
+    },
+    {
+      "id": "CVE-2026-42218",
+      "description": "xrdp is an open source RDP server. Versions 0.10.6 and prior contain a timing side-channel vulnerability in the login interface. Due to a discrepancy in response processing times, a remote attacker can infer the existence of a username on the system, leading to unauthorized information disclosure via username enumeration. This issue has been fixed in version 0.10.6.1.",
+      "cvss": {
+        "score": 5.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "XRDP"
+      ],
+      "references": [
+        "https://github.com/neutrinolabs/xrdp/releases/tag/v0.10.6.1",
+        "https://github.com/neutrinolabs/xrdp/security/advisories/GHSA-3wr5-fwmh-qh34"
+      ],
+      "published": "2026-07-20T17:17:08.733"
+    },
+    {
+      "id": "CVE-2026-55219",
+      "description": "Paymenter is a free and open-source webshop solution for management of hosting services. In versions prior to 1.5.5, the credit payment implementation in app/Livewire/Invoices/Show.php executes a pessimistic row lock (lockForUpdate()) outside of an active database transaction. Because MySQL/MariaDB requires an enclosing transaction to enforce row-level locks, the guard is ineffective. Concurrent payment requests can exploit this race condition to read the same credit balance simultaneously, allo",
+      "cvss": {
+        "score": 5.3,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:N/I:H/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "MySQL"
+      ],
+      "references": [
+        "https://github.com/Paymenter/Paymenter/security/advisories/GHSA-pgcq-8grm-5rx9"
+      ],
+      "published": "2026-07-20T21:16:48.687"
+    },
+    {
+      "id": "CVE-2026-44584",
+      "description": "Paymenter is a free and open-source webshop solution for management of hosting services. In versions prior to 1.5.0, the email update functionality fails to invalidate the existing verification state when a user changes their email address, allowing a verified account to retain its verified status after switching to an unverified or unowned email address. When a user updated their email address, the system did not reset or revalidate the associated email verification status. As a result, the ver",
+      "cvss": {
+        "score": 4.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "ESET"
+      ],
+      "references": [
+        "https://github.com/Paymenter/Paymenter/security/advisories/GHSA-rv89-wch8-c574"
+      ],
+      "published": "2026-07-20T21:16:47.520"
+    },
+    {
+      "id": "CVE-2026-64205",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ni2c: i801: fix hardware state machine corruption in error path\n\nA severe livelock and subsequent Hung Task panic were observed in the\ni2c-i801 driver during concurrent Fuzzing. The crash is caused by an\nunconditional hardware register cleanup in the error handling path of\ni801_access().\n\nWhen i801_check_pre() fails (e.g., returning -EBUSY because the SMBus\ncontroller is actively used by BIOS/ACPI), the kernel does not actually\n",
       "cvss": {
         "score": null,
         "vector": null,
@@ -22,17 +505,15 @@
         "ESET"
       ],
       "references": [
-        "https://git.kernel.org/stable/c/237dc8c08de3cb293b6607aaee8b13b3a671e267",
-        "https://git.kernel.org/stable/c/4dc9f1517503c883d5ce25b7ab29d177d05edc6a",
-        "https://git.kernel.org/stable/c/6a83d5e24a84e746425cd93539130e5f7381ef47",
-        "https://git.kernel.org/stable/c/7cac59d08a73cb866ec51a483a6f3fe0f531947c",
-        "https://git.kernel.org/stable/c/bb2040484f90f91b717060e1a66026cc4287bcf0"
+        "https://git.kernel.org/stable/c/00904687b9c5527d569d9a1ca72119823e735a61",
+        "https://git.kernel.org/stable/c/10dd1a736d557e310a77117832874729a0175d57",
+        "https://git.kernel.org/stable/c/bb5133a7d5f3fe5c387770e25f2e00e682ce11ed"
       ],
-      "published": "2026-07-19T16:17:04.500"
+      "published": "2026-07-20T17:18:22.487"
     },
     {
-      "id": "CVE-2026-63877",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nserial: dz: Convert to use a platform device\n\nPrevent a crash from happening as the first serial port is initialised:\n\n  Console: switching to colour frame buffer device 160x64\n  tgafb: SFB+ detected, rev=0x02\n  fb0: Digital ZLX-E1 frame buffer device at 0x1e000000\n  DECstation DZ serial driver version 1.04\n  CPU 0 Unable to handle kernel paging request at virtual address 000000bc, epc == 8048b3a4, ra == 80470a78\n  Oops[#1]:\n  ",
+      "id": "CVE-2026-15902",
+      "description": "Use after free in Cast in Google Chrome prior to 150.0.7871.128 allowed a remote attacker to execute arbitrary code inside a sandbox via a crafted HTML page. (Chromium security severity: High)",
       "cvss": {
         "score": null,
         "vector": null,
@@ -40,20 +521,17 @@
       },
       "tier": 1,
       "matchedProducts": [
-        "ESET"
+        "Google Chrome"
       ],
       "references": [
-        "https://git.kernel.org/stable/c/2ff0401ffddaccc85f758c8259912d686d052b31",
-        "https://git.kernel.org/stable/c/5c9fb95c8d6430d11dbb7b44fbe23222585cda86",
-        "https://git.kernel.org/stable/c/5d7a49d60b8fda66da60e240fd7315232fa1754f",
-        "https://git.kernel.org/stable/c/6f59646229490a93cda950017ad4bdfbfe770a1d",
-        "https://git.kernel.org/stable/c/c9e78361fe92fb64662fc3c8f34e2cdbb8c25bc6"
+        "https://chromereleases.googleblog.com/2026/07/stable-channel-update-for-desktop_049796704.html",
+        "https://issues.chromium.org/issues/522436154"
       ],
-      "published": "2026-07-19T16:17:04.653"
+      "published": "2026-07-20T23:16:55.983"
     },
     {
-      "id": "CVE-2026-64093",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbatman-adv: tp_meter: directly shut down timer on cleanup\n\nbatadv_tp_sender_cleanup() was calling timer_delete_sync() followed by\ntimer_delete() to guard against the timer handler re-arming itself between\nthe two calls. This double-deletion hack relied on the sending status being\nset to 0 to suppress re-arming.\n\nReplace both calls with a single timer_shutdown_sync(). This function both\nwaits for any running timer callback to co",
+      "id": "CVE-2026-15903",
+      "description": "Out of bounds read and write in V8 in Google Chrome prior to 150.0.7871.128 allowed a remote attacker to execute arbitrary code inside a sandbox via a crafted HTML page. (Chromium security severity: High)",
       "cvss": {
         "score": null,
         "vector": null,
@@ -61,41 +539,359 @@
       },
       "tier": 1,
       "matchedProducts": [
-        "ESET"
+        "Google Chrome"
       ],
       "references": [
-        "https://git.kernel.org/stable/c/00bf4bb9947b1190a8be8d9b6a1bcbfa3707785c",
-        "https://git.kernel.org/stable/c/5bc2d50fb66b46f86543d5153a188eb1486d0b6e",
-        "https://git.kernel.org/stable/c/74a76634055462833446684fd526d73c290ea43a",
-        "https://git.kernel.org/stable/c/770bf0a35f0620b526fd4193889d1e77084e4c43",
-        "https://git.kernel.org/stable/c/933880a8bc9b4042223a79255c0b1021cdc36991"
+        "https://chromereleases.googleblog.com/2026/07/stable-channel-update-for-desktop_049796704.html",
+        "https://issues.chromium.org/issues/531503216"
       ],
-      "published": "2026-07-19T16:17:50.230"
+      "published": "2026-07-20T23:16:56.093"
     },
     {
-      "id": "CVE-2026-64113",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nixgbevf: fix use-after-free in VEPA multicast source pruning\n\nixgbevf_clean_rx_irq() prunes frames whose source MAC matches the VF's\nown address (VEPA multicast workaround) by freeing the skb and\ncontinuing to the next descriptor:\n\n    dev_kfree_skb_irq(skb);\n    continue;\n\nThe skb pointer is declared outside the while loop and persists across\niterations.  Because the continue skips the \"skb = NULL\" reset at the\nbottom of the l",
+      "id": "CVE-2026-46701",
+      "description": "Network-AI is a TypeScript/Node.js multi-agent orchestrator. Prior to version 5.4.5, the MCP SSE server defaults to an empty secret (`process.env['NETWORK_AI_MCP_SECRET'] ?? ''` at `bin/mcp-server.ts:89`), which causes `_isAuthorized` (`lib/mcp-transport-sse.ts:254`) to return `true` unconditionally for every request \u2014 no `Authorization` header is required. Simultaneously, `_handleRequest` sets `Access-Control-Allow-Origin: *` (`lib/mcp-transport-sse.ts:272`) on every response, so a cross-origin",
       "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
+        "score": 7.6,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:H/A:L",
+        "severity": "HIGH"
       },
-      "tier": 1,
+      "tier": 2,
+      "matchedProducts": [
+        "Node.js"
+      ],
+      "references": [
+        "https://github.com/Jovancoding/Network-AI/commit/dc5048112283f3f4eb6c06dd2bf5aa93ef9339be",
+        "https://github.com/Jovancoding/Network-AI/releases/tag/v5.4.5",
+        "https://github.com/Jovancoding/Network-AI/security/advisories/GHSA-j3vx-cx2r-pvg8"
+      ],
+      "published": "2026-07-20T17:17:09.990"
+    },
+    {
+      "id": "CVE-2026-12592",
+      "description": "The SlimStat Analytics WordPress plugin before 5.5.0 does not escape a visitor-controlled geolocation value before outputting it in its admin analytics reports, allowing unauthenticated visitors to store a cross-site scripting payload that executes in the browser of an administrator who views the reports. Exploitation requires the SlimStat Analytics WordPress plugin before 5.5.0 to be configured to use the Cloudflare geolocation provider.",
+      "cvss": {
+        "score": 7.5,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://wpscan.com/vulnerability/3658cae6-f6ae-4ecc-8d74-bb402e61f5d5/"
+      ],
+      "published": "2026-07-20T07:16:34.757"
+    },
+    {
+      "id": "CVE-2026-32806",
+      "description": "dataCycle is a data management system for centrally storing, managing, searching, finding, and distributing data. In dataCycle-CORE, the module handling core processing and framework rules, before and including version 25.07.3, any authenticated user can request arbitrary partials or helper-backed render functions through /remote_render. The endpoint does not restrict which partial can be rendered and does not apply controller-specific authorization before rendering the selected view. This enabl",
+      "cvss": {
+        "score": 7.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+        "severity": "HIGH"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "PostgreSQL"
+      ],
+      "references": [
+        "https://github.com/datacycle-engine/dataCycle-CORE/security/advisories/GHSA-xc6g-2v4c-456c"
+      ],
+      "published": "2026-07-20T17:17:05.260"
+    },
+    {
+      "id": "CVE-2026-32824",
+      "description": "dataCycle is a data management system for centrally storing, managing, searching, finding, and distributing data. In dataCycle-CORE, the module handling core processing and framework rules, before and including version 25.07.3, a low-privileged authenticated API user can supply `forwardToUrl` and `redirectUrl` values when triggering password reset or confirmation flows. Those values are then embedded into the outgoing email workflow without host allowlisting. This creates two related abuse paths",
+      "cvss": {
+        "score": 7.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:N",
+        "severity": "HIGH"
+      },
+      "tier": 2,
       "matchedProducts": [
         "ESET"
       ],
       "references": [
-        "https://git.kernel.org/stable/c/3d931ac62411a7e43b85dba5fe45e1a4a91bd5cb",
-        "https://git.kernel.org/stable/c/55b3e91d62b2f7a24109b2d7c9f4c66d2e3b1ec1",
-        "https://git.kernel.org/stable/c/5d49b568c188dc77199d8d2b959c91da8cc27cf1",
-        "https://git.kernel.org/stable/c/6ef30384a50a50e4a484cddf341bc27de31aa3de",
-        "https://git.kernel.org/stable/c/a244395d8c563ed1bb26c3ef708db6aeeaa08084"
+        "https://github.com/datacycle-engine/dataCycle-CORE/security/advisories/GHSA-8jfx-wpjg-hf38"
       ],
-      "published": "2026-07-19T16:17:52.680"
+      "published": "2026-07-20T17:17:06.003"
     },
     {
-      "id": "CVE-2026-53378",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/colorop: Fix blob property reference tracking in state lifecycle\n\nThe colorop state blob property handling had memory leaks during state\nduplication, destruction, and reset operations. The implementation\nfailed to follow the established pattern from drm_crtc's handling of\nDEGAMMA/GAMMA blob properties.\n\nIssues fixed:\n- drm_colorop_atomic_destroy_state() was freeing state memory without\n  releasing the blob reference, causin",
+      "id": "CVE-2026-12970",
+      "description": "The LearnPress  WordPress plugin before 4.4.1 does not escape a search parameter before reflecting it into an HTML attribute, leading to Reflected Cross-Site Scripting that executes in the browser of a logged-in instructor or administrator who is tricked into opening a crafted link.",
+      "cvss": {
+        "score": 7.1,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:L",
+        "severity": "HIGH"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://wpscan.com/vulnerability/d0a2780f-ab13-4bb8-935d-2aeba1de12d2/"
+      ],
+      "published": "2026-07-20T07:16:35.190"
+    },
+    {
+      "id": "CVE-2026-9833",
+      "description": "The Tag Groups is the Advanced Way to Display Your Taxonomy Terms WordPress plugin before 2.2.0 does not properly escape one of its AJAX parameters before reflecting it in the response body served with an HTML content type, allowing unauthenticated attackers to execute arbitrary JavaScript in the browser of a logged-in user with `edit_pages` capability (Editor or higher) who is tricked into following a crafted link.",
+      "cvss": {
+        "score": 7.1,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:L",
+        "severity": "HIGH"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://wpscan.com/vulnerability/75792c33-2d9d-46db-a98c-00ec40951099/"
+      ],
+      "published": "2026-07-20T07:16:42.657"
+    },
+    {
+      "id": "CVE-2026-12898",
+      "description": "The All-in-One WP Migration and Backup WordPress plugin before 7.106 does not properly sanitise a user-supplied value before using it to build a file path, allowing unauthenticated attackers to create or append a log file in arbitrary locations outside its intended storage directory.",
+      "cvss": {
+        "score": 6.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:L",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://wpscan.com/vulnerability/c90553e4-8e1a-4c99-a28f-a0de8d635caa/"
+      ],
+      "published": "2026-07-20T07:16:35.087"
+    },
+    {
+      "id": "CVE-2026-58481",
+      "description": "Network-AI is a TypeScript/Node.js multi-agent orchestrator. Prior to version 5.12.2, `AgentRuntime` promises scoped file access under a configured sandbox `basePath`, but its path containment checks use raw string prefix tests. A sandbox base such as `/tmp/network-ai-sandbox` also matches a sibling path such as `/tmp/network-ai-sandbox_evil/secret.txt`. An agent/user that can call `AgentRuntime.readFile()` or `AgentRuntime.listDir()` can read or list files outside the intended sandbox when the ",
+      "cvss": {
+        "score": 6.5,
+        "vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:N/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "Node.js"
+      ],
+      "references": [
+        "https://github.com/Jovancoding/Network-AI/commit/a59c13a1f0ce0e8a0779a90343eef92fac5ab4c3",
+        "https://github.com/Jovancoding/Network-AI/releases/tag/v5.12.2",
+        "https://github.com/Jovancoding/Network-AI/security/advisories/GHSA-jvcm-f35g-w78p",
+        "https://github.com/Jovancoding/Network-AI/security/advisories/GHSA-jvcm-f35g-w78p"
+      ],
+      "published": "2026-07-20T17:18:15.857"
+    },
+    {
+      "id": "CVE-2026-12900",
+      "description": "The Spectra Gutenberg Blocks \u2013 Website Builder for the Block Editor plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the `uagb/image` block in all versions up to, and including, 2.19.28 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with Contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+      "cvss": {
+        "score": 6.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/ultimate-addons-for-gutenberg/tags/2.19.28/blocks-config/image/class-uagb-image.php#L59",
+        "https://plugins.trac.wordpress.org/browser/ultimate-addons-for-gutenberg/tags/2.19.28/includes/blocks/image/block.php#L10",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/0e9dc5e3-9d72-4c04-8ba9-56428a6fdddd?source=cve"
+      ],
+      "published": "2026-07-20T22:17:13.257"
+    },
+    {
+      "id": "CVE-2026-15156",
+      "description": "The Essential Addons for Elementor \u2013 Popular Elementor Templates & Widgets plugin for WordPress is vulnerable to Stored Cross-Site Scripting via Reading Progress Global Color Settings in all versions up to, and including, 6.6.11 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+      "cvss": {
+        "score": 6.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/essential-addons-for-elementor-lite/tags/6.6.10/includes/Classes/Bootstrap.php#L145",
+        "https://plugins.trac.wordpress.org/browser/essential-addons-for-elementor-lite/tags/6.6.10/includes/Traits/Core.php#L185",
+        "https://plugins.trac.wordpress.org/browser/essential-addons-for-elementor-lite/tags/6.6.10/includes/Traits/Elements.php#L496",
+        "https://plugins.trac.wordpress.org/changeset/3610135/essential-addons-for-elementor-lite/trunk/includes/Traits/Elements.php",
+        "https://plugins.trac.wordpress.org/changeset?old_path=%2Fessential-addons-for-elementor-lite/tags/6.6.11&new_path=%2Fessential-addons-for-elementor-lite/tags/6.7.0"
+      ],
+      "published": "2026-07-21T05:16:34.110"
+    },
+    {
+      "id": "CVE-2026-58482",
+      "description": "Network-AI, a TypeScript/Node.js multi-agent orchestrator, has a shipped, exported, documented feature called `ApprovalInbox` (`lib/approval-inbox.ts`). It is the network surface of the human-in-the-loop Approval Gate, which `ApprovalGate` uses to require explicit human approval for high-risk operations. The HTTP server it exposes has no authentication of any kind and sets `Access-Control-Allow-Origin: *` on every route, including the state-changing `POST /approvals/:id/approve` and `/deny`. As ",
+      "cvss": {
+        "score": 5.9,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:H/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "Node.js"
+      ],
+      "references": [
+        "https://github.com/Jovancoding/Network-AI/commit/a59c13a1f0ce0e8a0779a90343eef92fac5ab4c3",
+        "https://github.com/Jovancoding/Network-AI/releases/tag/v5.12.2",
+        "https://github.com/Jovancoding/Network-AI/security/advisories/GHSA-mxjx-28vx-xjjj",
+        "https://github.com/Jovancoding/Network-AI/security/advisories/GHSA-mxjx-28vx-xjjj"
+      ],
+      "published": "2026-07-20T17:18:15.997"
+    },
+    {
+      "id": "CVE-2026-58414",
+      "description": "Network-AI is a TypeScript/Node.js multi-agent orchestrator. Prior to version 5.12.2, `EnvironmentManager.backup()` recursively collects files using `_collectBackupFiles()`. `_collectBackupFiles()` uses `statSync(full)`, which follows symlinks. If `data/<env>` contains a symlink to a directory outside the environment root, backup recursion follows the symlink and copies external files into `data/<env>/.backups/<backupId>/`. An attacker who can place a symlink under the environment data directory",
+      "cvss": {
+        "score": 5.5,
+        "vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "Node.js"
+      ],
+      "references": [
+        "https://github.com/Jovancoding/Network-AI/commit/a59c13a1f0ce0e8a0779a90343eef92fac5ab4c3",
+        "https://github.com/Jovancoding/Network-AI/releases/tag/v5.12.2",
+        "https://github.com/Jovancoding/Network-AI/security/advisories/GHSA-6x2m-p4xp-wg22",
+        "https://github.com/Jovancoding/Network-AI/security/advisories/GHSA-6x2m-p4xp-wg22"
+      ],
+      "published": "2026-07-20T17:18:15.720"
+    },
+    {
+      "id": "CVE-2026-13156",
+      "description": "The MailerSend  WordPress plugin before 1.0.8 does not perform a nonce check on its configuration-delete action (it verifies the manage_options capability but ignores the nonce), so an attacker can trick a logged-in administrator into visiting a crafted page that wipes the MailerSend  WordPress plugin before 1.0.8's SMTP configuration and deactivates the MailerSend  WordPress plugin before 1.0.8, breaking the site's email delivery.",
+      "cvss": {
+        "score": 5.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:L",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://wpscan.com/vulnerability/595e653d-0904-43cf-8e61-d684599de11b/"
+      ],
+      "published": "2026-07-20T07:16:35.687"
+    },
+    {
+      "id": "CVE-2026-13432",
+      "description": "The ThumbPress  WordPress plugin before 6.2.2 does not perform a capability check on one of its AJAX actions, allowing authenticated users with subscriber-level access or higher to deactivate the ThumbPress  WordPress plugin before 6.2.2, disrupting the site's image-handling functionality.",
+      "cvss": {
+        "score": 5.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:L",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://wpscan.com/vulnerability/a408e8f9-4de7-4449-8fca-51ea46e4f433/"
+      ],
+      "published": "2026-07-20T07:16:35.783"
+    },
+    {
+      "id": "CVE-2026-11868",
+      "description": "The WP Travel  WordPress plugin before 11.7.1 does not perform capability or ownership checks on its booking cancellation action, which is also exposed to unauthenticated users, allowing them to cancel arbitrary bookings on the site.",
+      "cvss": {
+        "score": 5.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://wpscan.com/vulnerability/a82da13b-ee86-495b-a684-324c1541d7ab/"
+      ],
+      "published": "2026-07-20T07:16:34.650"
+    },
+    {
+      "id": "CVE-2026-12723",
+      "description": "The Kirki  WordPress plugin before 6.0.12 does not perform any authorisation check on one of its REST routes, allowing unauthenticated users to overwrite the content of arbitrary existing comments and to create pre-approved comments under a spoofed identity, bypassing comment moderation.",
+      "cvss": {
+        "score": 5.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://wpscan.com/vulnerability/76df2c61-4ba7-4987-9e61-5d02142b3db5/"
+      ],
+      "published": "2026-07-20T07:16:34.877"
+    },
+    {
+      "id": "CVE-2026-8825",
+      "description": "The Elementor Website Builder  WordPress plugin before 4.1.4 does not properly check user permissions before returning post data through one of its REST endpoints, allowing authenticated users with Contributor-level access and above to retrieve the title, body and metadata of private posts, private pages and drafts authored by other users (including administrators).",
+      "cvss": {
+        "score": 4.9,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:N/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://wpscan.com/vulnerability/d0d6b840-790d-45a3-9b0d-8f77a229e8a9/"
+      ],
+      "published": "2026-07-20T07:16:42.553"
+    },
+    {
+      "id": "CVE-2026-12724",
+      "description": "The Kirki  WordPress plugin before 6.0.12 does not sanitise or escape the email subject and body values supplied in a request before including them in the password-reset email it sends as HTML, allowing unauthenticated users to inject arbitrary HTML into the message delivered to a registered user, which can be used for phishing.",
+      "cvss": {
+        "score": 4.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "ESET",
+        "WordPress"
+      ],
+      "references": [
+        "https://wpscan.com/vulnerability/6c2d4489-de82-472d-a5f7-dc01b305fdd0/"
+      ],
+      "published": "2026-07-20T07:16:34.980"
+    },
+    {
+      "id": "CVE-2026-10755",
+      "description": "The All in One SEO  WordPress plugin before 4.9.9 does not correctly restrict access to some of its AI integration REST API endpoints, allowing users with low-level privileges such as Contributors to overwrite or reset the site-wide AI integration state.",
+      "cvss": {
+        "score": 2.7,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:L/A:N",
+        "severity": "LOW"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "ESET",
+        "WordPress"
+      ],
+      "references": [
+        "https://wpscan.com/vulnerability/cc4e83e3-b581-4f65-ac2c-24fbfb9da4b3/"
+      ],
+      "published": "2026-07-20T07:16:34.443"
+    },
+    {
+      "id": "CVE-2026-15899",
+      "description": "Use after free in CameraCapture in Google Chrome on Mac prior to 150.0.7871.128 allowed a remote attacker to potentially perform a sandbox escape via a crafted HTML page. (Chromium security severity: Critical)",
       "cvss": {
         "score": null,
         "vector": null,
@@ -103,17 +899,17 @@
       },
       "tier": 3,
       "matchedProducts": [
-        "ESET"
+        "Google Chrome"
       ],
       "references": [
-        "https://git.kernel.org/stable/c/235b333e2878d791cee09e1e72f44611a9400114",
-        "https://git.kernel.org/stable/c/271059f1d9020e9ac967524e319fbbaa22d0475b"
+        "https://chromereleases.googleblog.com/2026/07/stable-channel-update-for-desktop_049796704.html",
+        "https://issues.chromium.org/issues/516987782"
       ],
-      "published": "2026-07-19T11:16:38.953"
+      "published": "2026-07-20T23:16:55.637"
     },
     {
-      "id": "CVE-2026-53393",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnfsd: reset write verifier on deferred writeback errors\n\nnfsd_vfs_write() and nfsd_commit() both call filemap_check_wb_err() to\ndetect deferred writeback errors, but neither rotates the server's write\nverifier (nn->writeverf) when this check fails. Every other\ndurable-storage-failure path in these functions calls\ncommit_reset_write_verifier() before returning an error.\n\nThe missing rotation means clients holding UNSTABLE write ",
+      "id": "CVE-2026-15900",
+      "description": "Use after free in GPU in Google Chrome on Android prior to 150.0.7871.128 allowed a remote attacker to potentially perform a sandbox escape via a crafted HTML page. (Chromium security severity: Critical)",
       "cvss": {
         "score": null,
         "vector": null,
@@ -121,19 +917,17 @@
       },
       "tier": 3,
       "matchedProducts": [
-        "ESET"
+        "Google Chrome"
       ],
       "references": [
-        "https://git.kernel.org/stable/c/1dd664b39774a9c89b72de8e59bf9ef4b3aaff2e",
-        "https://git.kernel.org/stable/c/2090b05803faab8a9fa62fbff871007862cac1b7",
-        "https://git.kernel.org/stable/c/4367afc119c51e17a616f6908772b7e2c2c4013f",
-        "https://git.kernel.org/stable/c/b027cca33c97354149fcc0ddeede4525c41093cd"
+        "https://chromereleases.googleblog.com/2026/07/stable-channel-update-for-desktop_049796704.html",
+        "https://issues.chromium.org/issues/523750584"
       ],
-      "published": "2026-07-19T12:16:50.367"
+      "published": "2026-07-20T23:16:55.763"
     },
     {
-      "id": "CVE-2026-63812",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nf2fs: fix incorrect FI_NO_EXTENT handling in __destroy_extent_node()\n\nWhen __destroy_extent_node() sets the inode flag FI_NO_EXTENT, it does\nnot reset the length of the largest extent to 0 and update the inode\nfolio. Since modifications to the extent tree are disallowed afterward,\nthe cached largest extent may become stale. This can trigger the\nfollowing error in xfstests generic/388:\n\nF2FS-fs (dm-0): sanity_check_extent_cache:",
+      "id": "CVE-2026-15901",
+      "description": "Use after free in Network in Google Chrome prior to 150.0.7871.128 allowed a remote attacker to potentially exploit heap corruption via a crafted HTML page. (Chromium security severity: Critical)",
       "cvss": {
         "score": null,
         "vector": null,
@@ -141,20 +935,17 @@
       },
       "tier": 3,
       "matchedProducts": [
-        "ESET"
+        "Google Chrome"
       ],
       "references": [
-        "https://git.kernel.org/stable/c/1f70ddb28a3c71df124da5fa4040c808116d6bb9",
-        "https://git.kernel.org/stable/c/20190e498057997532c7f186d081011f18e0a462",
-        "https://git.kernel.org/stable/c/58a5deb220bcac4c73bf58954c0845644c997487",
-        "https://git.kernel.org/stable/c/7e4d8f98be63f98856a5176b9188dada6e7ba9ee",
-        "https://git.kernel.org/stable/c/edf12cbeeeabe799bd2ee21fdb5c336cce6fbad7"
+        "https://chromereleases.googleblog.com/2026/07/stable-channel-update-for-desktop_049796704.html",
+        "https://issues.chromium.org/issues/533446300"
       ],
-      "published": "2026-07-19T12:16:54.137"
+      "published": "2026-07-20T23:16:55.877"
     },
     {
-      "id": "CVE-2026-63827",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\napparmor: fix use-after-free in rawdata dedup loop\n\naa_replace_profiles() walks ns->rawdata_list to dedup the incoming\npolicy blob against entries already attached to existing profiles.\nPer the kernel-doc on struct aa_loaddata, list membership does not\nhold a reference: profiles hold pcount, and when the last pcount\ndrops, do_ploaddata_rmfs() is queued on a workqueue that takes\nns->lock and removes the entry. Between dropping t",
+      "id": "CVE-2026-15904",
+      "description": "Use after free in Ozone in Google Chrome on Linux prior to 150.0.7871.128 allowed a remote attacker who convinced a user to engage in specific UI gestures to potentially exploit heap corruption via a crafted HTML page. (Chromium security severity: High)",
       "cvss": {
         "score": null,
         "vector": null,
@@ -162,20 +953,17 @@
       },
       "tier": 3,
       "matchedProducts": [
-        "Ubuntu"
+        "Google Chrome"
       ],
       "references": [
-        "https://git.kernel.org/stable/c/15fd83a1e42ede15070968806bb6c8b1a5170688",
-        "https://git.kernel.org/stable/c/5e34fa9f6f7cd688ae153fff13139a5cf2d42339",
-        "https://git.kernel.org/stable/c/6f060496d03e4dc560a40f73770bd08335cb7a27",
-        "https://git.kernel.org/stable/c/a7a2890028f16e5b0af0bb005d80fcb32559cca3",
-        "https://git.kernel.org/stable/c/c3ca2631073b2cef06824fd2bfc452ff7a1023de"
+        "https://chromereleases.googleblog.com/2026/07/stable-channel-update-for-desktop_049796704.html",
+        "https://issues.chromium.org/issues/532925350"
       ],
-      "published": "2026-07-19T12:16:55.960"
+      "published": "2026-07-20T23:16:56.190"
     },
     {
-      "id": "CVE-2026-63859",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: airoha: Add missing bits in airoha_qdma_cleanup_tx_queue()\n\nSimilar to airoha_qdma_cleanup_rx_queue(), reset DMA TX descriptors in\nairoha_qdma_cleanup_tx_queue routine. Moreover, reset TX_DMA_IDX to\nTX_CPU_IDX to notify the NIC the QDMA TX ring is empty.",
+      "id": "CVE-2026-15905",
+      "description": "Use after free in Aura in Google Chrome prior to 150.0.7871.128 allowed a local attacker to potentially exploit heap corruption via a malicious file. (Chromium security severity: High)",
       "cvss": {
         "score": null,
         "vector": null,
@@ -183,378 +971,13 @@
       },
       "tier": 3,
       "matchedProducts": [
-        "ESET"
+        "Google Chrome"
       ],
       "references": [
-        "https://git.kernel.org/stable/c/3309965fe44c00fd65af7cef5016e9e782c021a7",
-        "https://git.kernel.org/stable/c/9b5d56fe389d68ede080c716e6f10895facaf7db",
-        "https://git.kernel.org/stable/c/c0cfce4d76702dba9601a4020df1a0bc35806efc"
+        "https://chromereleases.googleblog.com/2026/07/stable-channel-update-for-desktop_049796704.html",
+        "https://issues.chromium.org/issues/532970574"
       ],
-      "published": "2026-07-19T15:16:52.750"
-    },
-    {
-      "id": "CVE-2026-63883",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nserial: qcom_geni: fix kfifo underflow when flush precedes DMA completion IRQ\n\nWhen uart_flush_buffer() runs before the DMA completion IRQ is delivered,\nthe following race can occur (all steps serialized by uart_port_lock):\n\n  1. DMA starts: tx_remaining = N, kfifo contains N bytes\n  2. DMA completes in hardware; IRQ is pending but not yet delivered\n  3. uart_flush_buffer() acquires the port lock and calls kfifo_reset(),\n     m",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/0d2c41a8b00934ddf8a7c1b4cf72dffa1e629c46",
-        "https://git.kernel.org/stable/c/452d6fa37ae9b021f4f6d397dbae077f7296f6f4",
-        "https://git.kernel.org/stable/c/654f45a8569f3cd6ff20bd724a18e0cce65893ba",
-        "https://git.kernel.org/stable/c/b1159dce10b38eb795e4c96cdc4d34b83cec81c5",
-        "https://git.kernel.org/stable/c/c91ea13375f70f6271a0183445e34e83b8f4d8f7"
-      ],
-      "published": "2026-07-19T16:17:05.343"
-    },
-    {
-      "id": "CVE-2026-63911",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nxfrm: iptfs: reset runtime state when cloning SAs\n\niptfs_clone_state() clones the IPTFS mode data with kmemdup(). This\ncopies runtime objects which must not be shared with the original SA,\nincluding the embedded sk_buff_head, hrtimers, spinlock, and in-flight\nreassembly/reorder state.\n\nIf xfrm_state_migrate() fails after clone_state() but before the later\ninit_state() call has reinitialized those fields, the cloned state can be",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/7f83d174073234839aea176f265e517e0d50a1d2",
-        "https://git.kernel.org/stable/c/9327252e04626d4bb02ca8c0c108fbe8eabf0c5a",
-        "https://git.kernel.org/stable/c/dfb9f6cbfa9826655a49698cf90eb800fce2178e"
-      ],
-      "published": "2026-07-19T16:17:08.987"
-    },
-    {
-      "id": "CVE-2026-63932",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\niio: chemical: mhz19b: reject oversized serial replies\n\nmhz19b_receive_buf() appends each serdev chunk into the fixed\nMHZ19B_CMD_SIZE receive buffer and advances buf_idx by len without\nchecking that the chunk fits in the remaining space. A large callback\ncan therefore overflow st->buf before the command path validates the\nreply.\n\nReset the reply state before each command and reject oversized serial\nreplies before copying them i",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/673478bc29cf72010faaf293c1c8c667393335a0",
-        "https://git.kernel.org/stable/c/a5a05410cb34bfa486d63684cdc1f87a3b13f20a",
-        "https://git.kernel.org/stable/c/ea69e7a6efa88ef32090a91064c362738cc19ddd"
-      ],
-      "published": "2026-07-19T16:17:11.633"
-    },
-    {
-      "id": "CVE-2026-63972",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: mana: Skip redundant detach on already-detached port\n\nWhen mana_per_port_queue_reset_work_handler() runs after a previous\ndetach succeeded but attach failed, the port is left in a detached\nstate with apc->tx_qp and apc->rxqs already freed. Calling\nmana_detach() again unconditionally leads to NULL pointer dereferences\nduring queue teardown.\n\nAdd an early exit in mana_detach() when the port is already in\ndetached state (!net",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/5b05aa36ee24297d7296ca58dfd8c448d0e4cda3",
-        "https://git.kernel.org/stable/c/7ae590797f9b5c240aaea5773f5f00977a42a846",
-        "https://git.kernel.org/stable/c/c4152b4e28b3e550ec99351bf900e2c24c2608cc"
-      ],
-      "published": "2026-07-19T16:17:16.283"
-    },
-    {
-      "id": "CVE-2026-63974",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: hci_sync: Set HCI_CMD_DRAIN_WORKQUEUE during device close\n\nSince hci_dev_close_sync() can now be called during the reset path, we\nshould also set HCI_CMD_DRAIN_WORKQUEUE. This avoids queuing timeouts\nwhile the hdev workqueue is being drained.",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/47330cc875b36a1cf7b3543cb2cf90a7c603ce0e",
-        "https://git.kernel.org/stable/c/525daaea459fc215f432de1b8debbd9144bf97b0",
-        "https://git.kernel.org/stable/c/60bceb9a4c693e68cc90ba4b2dfb9e000e8638ff",
-        "https://git.kernel.org/stable/c/9cebe4680bb9a72f80c6541eb24af06db7a1fbc9"
-      ],
-      "published": "2026-07-19T16:17:16.500"
-    },
-    {
-      "id": "CVE-2026-63976",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: l2cap: clear chan->ident on ECRED reconfiguration success\n\nl2cap_ecred_reconf_rsp() returns early on success without clearing\nchan->ident. Every other L2CAP response handler (l2cap_ecred_conn_rsp,\nl2cap_le_connect_rsp, l2cap_config_rsp) clears chan->ident after a\nsuccessful transaction to prevent the channel from matching subsequent\nresponses with the recycled ident value.\n\nA remote attacker that completed a reconfig",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/00e1950716c6ed67d74777b2db286b0fa23b4be9",
-        "https://git.kernel.org/stable/c/3b5b5f423b4fd23404a393bda8adba3cd6f74ef1",
-        "https://git.kernel.org/stable/c/59f5ecf6ad5c4db6ae81965a96156954a3b0d89a",
-        "https://git.kernel.org/stable/c/8e7977afaef37c6bd2b2654f1bce6ab40d471147",
-        "https://git.kernel.org/stable/c/ae0152d77d101c920769934fb102b18de0c6f526"
-      ],
-      "published": "2026-07-19T16:17:16.733"
-    },
-    {
-      "id": "CVE-2026-63979",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/handshake: hand off the pinned file reference to accept_doit\n\nhandshake_req_next() removes the request from the per-net\npending list and drops hn_lock before handshake_nl_accept_doit()\nreads req->hr_sk->sk_socket and dereferences sock->file (once in\nFD_PREPARE() and again in get_file()).  In that window a\nconsumer running tls_handshake_cancel() followed by sockfd_put()\n(svc_sock_free) or __fput_sync() (xs_reset_transport) r",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/c06876d4fac38f35820946ee3b1be7d7da799cd4",
-        "https://git.kernel.org/stable/c/f4251190e58b209999c1ba9e6d2976136a1be055"
-      ],
-      "published": "2026-07-19T16:17:17.070"
-    },
-    {
-      "id": "CVE-2026-63994",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ntunnels: load network headers after skb_cow() in iptunnel_pmtud_build_icmp[v6]()\n\nSashiko found that iptunnel_pmtud_build_icmp() and\niptunnel_pmtud_build_icmpv6() were caching ip_hdr() and ipv6_hdr()\nbefore an skb_cow() call which can reallocate skb->head.\n\nFix this possible UAF by initializing the local variables\nafter the skb_cow() call.\n\nRemove skb_reset_network_header() calls which were not needed.",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/50750d86a2e5266aba0c295483b3397843198b11",
-        "https://git.kernel.org/stable/c/6dff77899b9e9fe5d854abda3a98ad04e7229ef7",
-        "https://git.kernel.org/stable/c/7254aef4d1a7e18e887af9010e2f2dc34806789b",
-        "https://git.kernel.org/stable/c/76cd9398a0470257ab765bdf5f358a2af2e17934",
-        "https://git.kernel.org/stable/c/95b6d772bfe788331d9742d73eaa12e113b2adc4"
-      ],
-      "published": "2026-07-19T16:17:38.943"
-    },
-    {
-      "id": "CVE-2026-64005",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/smc: Do not re-initialize smc hashtables\n\nINIT_HLIST_HEAD(&smc_v*_hashinfo.ht) are called after smc_nl_init(),\nproto_register() and sock_register(). This can lead to smc_v*_hashinfo.ht\nbeing reset even though hash entries already exist and are being used,\npossibly resulting in a corrupted list.\n\nRemove unnecessary and dangerous re-initialisation of smc_v*_hashinfo.ht in\nsmc_init(); it is implicitly initialised to zero anyho",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/0cc9d0ac22d02f1ba1884de5d6de9eaf8b45d82d",
-        "https://git.kernel.org/stable/c/2006605006e5a4a11d93e1ebdbbe95764d24276f",
-        "https://git.kernel.org/stable/c/55cba6b883b41e5922c00ba9d4e3262131f46f1b",
-        "https://git.kernel.org/stable/c/5ec939367e700722ffbb1b7cacccbb1a3cf0ebd1",
-        "https://git.kernel.org/stable/c/64c96e497d5ada0b90e99bf58f893aa2b73dcfbc"
-      ],
-      "published": "2026-07-19T16:17:40.170"
-    },
-    {
-      "id": "CVE-2026-64055",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: ethernet: cortina: Carry over frag counter\n\nThe gmac_rx() NAPI poll function assembles packets in an\nSKB from a ring buffer.\n\nIf the ring buffer gets completely emptied during a poll cycle,\nwe exit gmac_rx(), but the packet is not yet completely\nassembled in the SKB, yet the fragment counter frag_nr is\nreset to zero on the next invocation.\n\nSolve this by making the RX fragment counter a part of the\nport struct, and carry i",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/46806096f35b8d3dfa2f321ddd77f597edcdb85f",
-        "https://git.kernel.org/stable/c/7123cf481e21b54eb6adc4cb0d8dc2876aeaee41",
-        "https://git.kernel.org/stable/c/75105fcf73f1ce7d9f769aaefec6e6d6645d5ac0",
-        "https://git.kernel.org/stable/c/78cf08b3be47c28f07008a76c932bad7cdffa9d8",
-        "https://git.kernel.org/stable/c/7af1fabdee744b7995fe01b30b77dfc397657cb5"
-      ],
-      "published": "2026-07-19T16:17:45.930"
-    },
-    {
-      "id": "CVE-2026-64088",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbatman-adv: tt: fix negative tt_buff_len\n\nbatadv_orig_node::tt_buff_len was declared as s16, but the field is never\nintended to hold a negative value. When a value greater than 32767 is\nassigned, it wraps to a negative signed integer.\n\nIn batadv_send_other_tt_response(), tt_buff_len is temporarily widened to\ns32. The incorrectly negative s16 value propagates into the s32, causing\nbatadv_tt_prepare_tvlv_global_data() to allocate",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/32edd2a28e112064020a2f319a8cb8a9e5a09767",
-        "https://git.kernel.org/stable/c/33e5ede7ce6d92e531920d4bbd6d3e18ef1c6430",
-        "https://git.kernel.org/stable/c/3c96dff00998314983b68a3e7caac07a66ebe496",
-        "https://git.kernel.org/stable/c/4c4c2f340f4c27373bfcac8dc5032ce7bb474e47",
-        "https://git.kernel.org/stable/c/4dab98961426d0cf6a1599cda6950b7596ca2fcd"
-      ],
-      "published": "2026-07-19T16:17:49.557"
-    },
-    {
-      "id": "CVE-2026-64089",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbatman-adv: tt: fix negative last_changeset_len\n\nbatadv_piv_tt::last_changeset_len len was declared as s16, but the field is\nnever intended to hold a negative value. When a value greater than 32767 is\nassigned, it wraps to a negative signed integer.\n\nIn batadv_send_my_tt_response(), last_changeset_len is temporarily widened\nto s32. The incorrectly negative s16 value propagates into the s32, causing\nbatadv_tt_prepare_tvlv_local_",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/179eb62506a02d00370bd6478898cb632e10986c",
-        "https://git.kernel.org/stable/c/22d59c72f4a47ffec121d0610f70d0d70c3c11c8",
-        "https://git.kernel.org/stable/c/55dc41fe8821e9a849e147255ad572bc933a9d15",
-        "https://git.kernel.org/stable/c/6314089acf0ddf64376fdc0b1420695504c73f52",
-        "https://git.kernel.org/stable/c/c424e8519ac78eac5d9f4eecf06208a0d619ec14"
-      ],
-      "published": "2026-07-19T16:17:49.697"
-    },
-    {
-      "id": "CVE-2026-64105",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: arm64: vgic: Free private_irqs when init fails after allocation\n\nCompanion to commit 250f25367b58 (\"KVM: arm64: Tear down vGIC on\nfailed vCPU creation\"), which added the missing kvm_vgic_vcpu_destroy()\ncall to the kvm_share_hyp() failure path in kvm_arch_vcpu_create(). The\nkvm_vgic_vcpu_init() failure path immediately above it has the same\nshape and still needs the same cleanup.\n\nCall kvm_vgic_vcpu_destroy() when kvm_vgic_",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "Redis"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/173fb86e5519dbe7aabed1f5fa7456152a4a2e38",
-        "https://git.kernel.org/stable/c/7023900b4988fb6f4a59d304d878003ff562e98d",
-        "https://git.kernel.org/stable/c/e690caa54a6139d98495ac69626807623520babd",
-        "https://git.kernel.org/stable/c/f19c354dbd457759dfcf1195ab4bdba2bb568323"
-      ],
-      "published": "2026-07-19T16:17:51.780"
-    },
-    {
-      "id": "CVE-2026-64112",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nrbd: eliminate a race in lock_dwork draining on unmap\n\nGiven how rbd_lock_add_request() and rbd_img_exclusive_lock() are\nwritten, lock_dwork may be (re)queued more than it's actually needed:\nfor example in case a new I/O request comes in while we are in the\nmiddle of rbd_acquire_lock() on behalf of another I/O request.  This is\nexpected and with rbd_release_lock() preemptively canceling lock_dwork\nis benign under normal operati",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/3427d7ae38337066ce88b68302e285d344ab756b",
-        "https://git.kernel.org/stable/c/9400efc76b42c751211974a25c91d2c19c65b01b",
-        "https://git.kernel.org/stable/c/9dcd4f5c99b491c37be90b0bd9988db48225fb75",
-        "https://git.kernel.org/stable/c/9fc75b71fdd38465c76c6f6a884cdd4ae3c72d90"
-      ],
-      "published": "2026-07-19T16:17:52.567"
-    },
-    {
-      "id": "CVE-2026-64115",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nvsock/vmci: fix UAF when peer resets connection during handshake\n\nvmci_transport_recv_connecting_server() returned err = 0 for a peer\nRST in its default switch arm:\n\n\terr = pkt->type == VMCI_TRANSPORT_PACKET_TYPE_RST ? 0 : -EINVAL;\n\nThat made vmci_transport_recv_listen() skip vsock_remove_pending(),\nleaving the pending socket on the listener's pending_links with\nsk_state = TCP_CLOSE while destroy: still dropped the explicit\nref",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/1dd531e28f61edd286edc486ab068f135b5ae1eb",
-        "https://git.kernel.org/stable/c/1e19f08552b90070ed18bafb1763c78297823af6",
-        "https://git.kernel.org/stable/c/440447699c681e26ed58e9c309cad718270a18b4",
-        "https://git.kernel.org/stable/c/47e63077605c6c2aa45b3df9847a8cdc1f1f6ef9",
-        "https://git.kernel.org/stable/c/99e22ddf4edb63dc8382bc028af928056d3450cf"
-      ],
-      "published": "2026-07-19T16:17:52.967"
-    },
-    {
-      "id": "CVE-2026-64125",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: bcmgenet: keep RBUF EEE/PM disabled\n\nSetting RBUF_EEE_EN | RBUF_PM_EN in RBUF_ENERGY_CTRL breaks the RX\npath on GENET hardware once MAC EEE becomes active. RX traffic stops\nflowing while the link stays up and the usual descriptor/RX error\ncounters remain quiet. In that state the MAC still accepts frames\n(rbuf_ovflow_cnt keeps climbing) but RBUF no longer forwards them to\nDMA, so rx_packets is no longer incremented at the n",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/2040eb83f6ada148fb32dd98b943a498005d79f2",
-        "https://git.kernel.org/stable/c/289499907399c5a9f2ed82cb34df49112bb8488f",
-        "https://git.kernel.org/stable/c/3d4ef05266ab16d8ef7dd21658a557801eb78704",
-        "https://git.kernel.org/stable/c/49bdf6bbb21b9c6e3f4d0c1910bf0ef98424be95",
-        "https://git.kernel.org/stable/c/9a1730245e416d11ad5c0f2c100061d61cc43f60"
-      ],
-      "published": "2026-07-19T16:17:54.130"
-    },
-    {
-      "id": "CVE-2026-64147",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\npds_core: fix debugfs_lookup dentry leak and error handling\n\ndebugfs_lookup() returns a dentry with an elevated reference count that\nmust be released with dput(). The current code discards the returned\ndentry without calling dput(), causing a reference leak on every\nfirmware reset recovery.\n\nAdditionally, when CONFIG_DEBUG_FS is disabled, debugfs_lookup()\nreturns ERR_PTR(-ENODEV), not NULL. The current check passes for error\npo",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/26e19622c485e53c3fdb299e822068a0542ddf0c",
-        "https://git.kernel.org/stable/c/60ef1675b652e912f3eb064767af4432393291fd",
-        "https://git.kernel.org/stable/c/91d13e92b983e6c6d7631012c2e20ae8057de9f2",
-        "https://git.kernel.org/stable/c/d7f4dd4c8fb380898fef7a77d48fce7ccdb4fc32",
-        "https://git.kernel.org/stable/c/dc416e32baaeb620b9809e9e25fc7b30889686e9"
-      ],
-      "published": "2026-07-19T16:17:56.643"
-    },
-    {
-      "id": "CVE-2026-64162",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nidpf: fix read_dev_clk_lock spinlock init in idpf_ptp_init()\n\nIn idpf_ptp_init(), read_dev_clk_lock is initialized after\nptp_schedule_worker() had already been called (and after\nidpf_ptp_settime64() could reach the lock). The PTP aux worker\nfires immediately upon scheduling and can call into\nidpf_ptp_read_src_clk_reg_direct(), which takes\nspin_lock(&ptp->read_dev_clk_lock) on an uninitialized lock, triggering\nthe lockdep \"non-s",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/3122d70b7c0101d897fb795658a7b93f854935f2",
-        "https://git.kernel.org/stable/c/da4f76b6a84ede14a71282ef841768299ead0221",
-        "https://git.kernel.org/stable/c/eb5991d4c8ba2e8153dfcda3e66a9608377b7dce"
-      ],
-      "published": "2026-07-19T16:17:58.213"
+      "published": "2026-07-20T23:16:56.300"
     }
   ]
 }
