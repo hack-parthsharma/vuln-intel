@@ -1,34 +1,17 @@
 {
-  "scanTime": "2026-08-14 05:12:50 UTC",
-  "totalMatched": 120,
+  "scanTime": "2026-08-15 04:01:56 UTC",
+  "totalMatched": 39,
   "productsMonitored": 147,
   "tierCounts": {
-    "0": 4,
-    "1": 53,
-    "2": 46,
-    "3": 17
+    "0": 10,
+    "1": 15,
+    "2": 11,
+    "3": 3
   },
   "vulnerabilities": [
     {
-      "id": "CVE-2026-15413",
-      "description": "The Link Factory WordPress plugin is a backdoor. Distributed as a \"homepage sentence publisher\", it exposes an operator-controlled REST API under /wp-json/link-factory/v1/ - authenticated by a detached Ed25519 signature verified against a hardcoded operator public key (except for the health check).",
-      "cvss": {
-        "score": 10.0,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
-        "severity": "CRITICAL"
-      },
-      "tier": 0,
-      "matchedProducts": [
-        "WordPress"
-      ],
-      "references": [
-        "https://wpscan.com/vulnerability/4cad269d-0146-4ca9-a1ae-55f02c8e5433/"
-      ],
-      "published": "2026-08-13T09:17:12.153"
-    },
-    {
-      "id": "CVE-2026-14182",
-      "description": "The Customer Email Verification for WooCommerce WordPress plugin before 3.2.6 does not correctly validate the email-verification activation code, relying on a loose comparison that an attacker can satisfy with a crafted value type, allowing unauthenticated users to verify and take over the account of any registered user who has not yet confirmed their email address.",
+      "id": "CVE-2026-12949",
+      "description": "The Wishlist Member plugin for WordPress is vulnerable to Account Takeover via Insufficient Verification of Data Authenticity in versions up to and including 3.34.1. This is due to the wpm_register() function validating the registration cookie only against the GET reg parameter while accepting the POST mergewith and POST wpm_id parameters without verifying that the mergewith user ID references a temporary or incomplete registrant that is bound to the current registration transaction. This makes ",
       "cvss": {
         "score": 9.8,
         "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
@@ -39,16 +22,97 @@
         "WordPress"
       ],
       "references": [
-        "https://wpscan.com/vulnerability/ef4e95a3-6f90-4423-9551-9ac28f7b6291/"
+        "https://wishlistmember.com/",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/84afe5a7-1bf4-4b83-bf77-efbb003a30cd?source=cve"
       ],
-      "published": "2026-08-13T06:17:37.887"
+      "published": "2026-08-14T06:16:53.237"
     },
     {
-      "id": "CVE-2026-18945",
-      "description": "The WP Helper Premium WordPress plugin before 4.7.6 does not verify the order key when rendering its custom order confirmation page or when handling the related AJAX actions, allowing unauthenticated users to view other customers' order details, including personal information, as well as change the state of arbitrary orders.\n\nExploitation requires WooCommerce to be active and the WP Helper Premium WordPress plugin before 4.7.6's optional order confirmation page module to be enabled.",
+      "id": "CVE-2026-48528",
+      "description": "Metacat is data repository software that helps researchers preserve, share, and discover data. Metacat versions 2.0.0 through 3.4.0 contain an unauthenticated SQL injection vulnerability in the `/cn/v1/object` and `/cn/v2/object` REST API endpoints due to unsanitized user input that can be passed through to the backend SQL database. The `nodeId` parameter can be modified to inject SQL commands, and the results are returned in error messages. Metacat appends the user-supplied data into the sql qu",
       "cvss": {
-        "score": 8.2,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:H/A:N",
+        "score": 9.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "CRITICAL"
+      },
+      "tier": 0,
+      "matchedProducts": [
+        "PostgreSQL",
+        "Apache Tomcat"
+      ],
+      "references": [
+        "https://github.com/NCEAS/metacat/security/advisories/GHSA-6g6j-wh5h-77h5"
+      ],
+      "published": "2026-08-14T18:17:27.993"
+    },
+    {
+      "id": "CVE-2026-15303",
+      "description": "The 6Storage Rentals plugin for WordPress is vulnerable to authentication bypass in versions up to, and including, 2.27.0. This is due to the six_storage_create_wp_user() AJAX handler being registered on wp_ajax_nopriv_six_storage_create_wp_user without any nonce, capability, credential, or ownership verification, while calling wp_set_current_user() and wp_set_auth_cookie() for any WordPress user resolved by the attacker-supplied email address. This makes it possible for unauthenticated attacker",
+      "cvss": {
+        "score": 9.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "CRITICAL"
+      },
+      "tier": 0,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/6storage-rentals/tags/2.27.0/inc/Base/Six_Storage_DashboardController.php#L14",
+        "https://plugins.trac.wordpress.org/browser/6storage-rentals/tags/2.27.0/inc/Base/Six_Storage_DashboardController.php#L3834",
+        "https://plugins.trac.wordpress.org/browser/6storage-rentals/tags/2.27.0/inc/Base/Six_Storage_DashboardController.php#L3905",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/94e987be-bdfc-4691-b250-2b7d7249df0a?source=cve"
+      ],
+      "published": "2026-08-15T03:16:47.670"
+    },
+    {
+      "id": "CVE-2026-15341",
+      "description": "The User Session Synchronizer plugin for WordPress is vulnerable to Authentication Bypass leading to Account Takeover in all versions up to, and including, 1.4.0. The `synchronize_session()` function, hooked on `init` and therefore executed on every request, performs no nonce, capability, or shared-secret validation against the attacker-supplied `ussync-key`, `ussync-token`, and `ussync-ref` parameters; when `ussync-key` references an unregistered slot, `get_option()` returns `false` for both th",
+      "cvss": {
+        "score": 9.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "CRITICAL"
+      },
+      "tier": 0,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/user-session-synchronizer/tags/1.4.0/includes/class-user-session-synchronizer.php#L117",
+        "https://plugins.trac.wordpress.org/browser/user-session-synchronizer/tags/1.4.0/includes/class-user-session-synchronizer.php#L286",
+        "https://plugins.trac.wordpress.org/browser/user-session-synchronizer/tags/1.4.0/includes/class-user-session-synchronizer.php#L310",
+        "https://plugins.trac.wordpress.org/browser/user-session-synchronizer/tags/1.4.0/includes/class-user-session-synchronizer.php#L422",
+        "https://plugins.trac.wordpress.org/browser/user-session-synchronizer/tags/1.4.0/includes/class-user-session-synchronizer.php#L598"
+      ],
+      "published": "2026-08-15T03:16:47.943"
+    },
+    {
+      "id": "CVE-2026-14484",
+      "description": "The RapiSafe \u2013 Secure Multi File Upload for Contact Form 7 plugin for WordPress is vulnerable to arbitrary file deletion due to insufficient file path validation in the handleAjaxRemoveUpload function in all versions up to, and including, 1.0.4. This makes it possible for unauthenticated attackers to delete arbitrary files on the server, which can easily lead to remote code execution when the right file is deleted (such as wp-config.php). The nonce required to invoke the removal handler is expos",
+      "cvss": {
+        "score": 9.1,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:H",
+        "severity": "CRITICAL"
+      },
+      "tier": 0,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/rapisafe-multi-file-cf7/trunk/src/RSMFCF7_Assets.php#L201",
+        "https://plugins.trac.wordpress.org/browser/rapisafe-multi-file-cf7/trunk/src/RSMFCF7_Assets.php#L235",
+        "https://plugins.trac.wordpress.org/browser/rapisafe-multi-file-cf7/trunk/src/RSMFCF7_Assets.php#L237",
+        "https://plugins.trac.wordpress.org/browser/rapisafe-multi-file-cf7/trunk/src/RSMFCF7_Assets.php#L244",
+        "https://plugins.trac.wordpress.org/browser/rapisafe-multi-file-cf7/trunk/src/RSMFCF7_Assets.php#L264"
+      ],
+      "published": "2026-08-15T03:16:47.263"
+    },
+    {
+      "id": "CVE-2026-15965",
+      "description": "The MaxUpload \u2013 Big File Uploads \u2013 Increase Maximum File Upload Size plugin for WordPress is vulnerable to Arbitrary File Upload in all versions up to, and including, 1.4.0 via the handle_upload function. This is due to a filename-validation mismatch in the handle_upload function where extension and MIME checks are applied to the uploaded chunk's filename but not to the final assembled filename derived from the resumableFilename parameter. This makes it possible for unauthenticated attackers to ",
+      "cvss": {
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
         "severity": "HIGH"
       },
       "tier": 0,
@@ -56,13 +120,34 @@
         "WordPress"
       ],
       "references": [
-        "https://wpscan.com/vulnerability/0d43b739-90de-4bae-90c1-3acaee8888e6/"
+        "https://plugins.trac.wordpress.org/browser/maxupload-upload-larger-files-easily/tags/1.4.0/includes/uploader.php#L121",
+        "https://plugins.trac.wordpress.org/browser/maxupload-upload-larger-files-easily/tags/1.4.0/includes/uploader.php#L174",
+        "https://plugins.trac.wordpress.org/browser/maxupload-upload-larger-files-easily/tags/1.4.0/includes/uploader.php#L19",
+        "https://plugins.trac.wordpress.org/browser/maxupload-upload-larger-files-easily/tags/1.4.0/includes/uploader.php#L201",
+        "https://plugins.trac.wordpress.org/browser/maxupload-upload-larger-files-easily/tags/1.4.0/maxupload-wp.php#L88"
       ],
-      "published": "2026-08-13T06:17:38.120"
+      "published": "2026-08-15T03:16:48.077"
     },
     {
-      "id": "CVE-2024-58374",
-      "description": "Hongjing e-HR contains an unauthenticated SQL injection vulnerability in the getSdutyTree servlet endpoint that allows remote unauthenticated attackers to access protected resources by supplying a path traversal sequence in the request URI to bypass the oauthservlet authentication filter. Attackers can inject UNION-based SQL payloads through the unsanitized codeitemid parameter into the underlying Microsoft SQL Server query to retrieve sensitive database contents including user credentials. Expl",
+      "id": "CVE-2026-15205",
+      "description": "The Paymob for WooCommerce WordPress plugin before 4.1.9 does not properly sanitise a client-supplied identifier before using it in a SQL query within its public, unauthenticated payment callback, and performs this query before verifying the payment provider's HMAC signature. This allows unauthenticated attackers to perform SQL injection and read arbitrary data from the database \u2014 including user credentials and other secrets \u2014 through both in-band (reflected) and time-based blind extraction.",
+      "cvss": {
+        "score": 8.6,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:N/A:N",
+        "severity": "HIGH"
+      },
+      "tier": 0,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://wpscan.com/vulnerability/cbde48bb-5aa4-4f69-8101-095132239923/"
+      ],
+      "published": "2026-08-14T06:16:59.727"
+    },
+    {
+      "id": "CVE-2026-15162",
+      "description": "The Object Sync for Salesforce plugin is vulnerable to unauthenticated SQL Injection via the wordpress_object_type parameter of its /wp-json/object-sync-for-salesforce/push/ REST route. The route's permission callback (can_process()) checks only the HTTP method for the push class \u2014 no capability or nonce \u2014 so it is reachable by unauthenticated users. The wordpress_object_type value is concatenated directly into a SQL query (post_type = \"$object_type\", class-object-sync-sf-wordpress.php:328) and ",
       "cvss": {
         "score": 7.5,
         "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
@@ -70,18 +155,58 @@
       },
       "tier": 0,
       "matchedProducts": [
-        "MSSQL"
+        "WordPress"
       ],
       "references": [
-        "https://cn-sec.com/archives/2926383.html",
-        "https://www.ddpoc.com/DVB-2024-7391.html",
-        "https://www.vulncheck.com/advisories/hongjing-e-hr-unauthenticated-sql-injection-via-getsdutytree"
+        "https://plugins.trac.wordpress.org/browser/object-sync-for-salesforce/trunk/classes/class-object-sync-sf-rest.php#L224",
+        "https://plugins.trac.wordpress.org/browser/object-sync-for-salesforce/trunk/classes/class-object-sync-sf-salesforce-push.php#L210",
+        "https://plugins.trac.wordpress.org/browser/object-sync-for-salesforce/trunk/classes/class-object-sync-sf-wordpress.php#L328",
+        "https://plugins.trac.wordpress.org/browser/object-sync-for-salesforce/trunk/classes/class-object-sync-sf-wordpress.php#L578",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/78f964a7-bed3-435e-94c5-750883a0c836?source=cve"
       ],
-      "published": "2026-08-13T18:17:16.433"
+      "published": "2026-08-15T03:16:47.523"
     },
     {
-      "id": "CVE-2026-73567",
-      "description": "sm-crypto provides JavaScript implementations of the Chinese cryptographic algorithms SM2, SM3, and SM4. Prior to 0.5.0, the default no-argument sm2.generateKeyPairHex() path in Node.js uses the module-wide SecureRandom instance in src/sm2/utils.js, supplied by jsbn@1.1.0, which seeds an ARC4 stream from Math.random() and new Date().getTime() because window.crypto.getRandomValues is unavailable even though globalThis.crypto exists. An attacker who can observe the process's Math.random() outputs ",
+      "id": "CVE-2026-16739",
+      "description": "The Epeken All Kurir for Woocommerce WordPress plugin through 2.1.2 does not verify that a payment-confirmation request originates from the owner of the targeted order, nor that any payment actually occurred, allowing unauthenticated attackers to mark arbitrary orders as confirmed and, in a non-default configuration, paid.",
+      "cvss": {
+        "score": 5.9,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 0,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://wpscan.com/vulnerability/b66b86f9-e49e-4654-84a1-0f2e5c859289/"
+      ],
+      "published": "2026-08-14T06:17:03.153"
+    },
+    {
+      "id": "CVE-2026-12128",
+      "description": "The Pinpoint Booking System \u2013 Version 2 plugin for WordPress is vulnerable to Price Manipulation via the `cart_data` parameter in all versions up to, and including, 2.9.9.6.8. This is due to the `dopbsp_woocommerce_add_to_cart` AJAX action being registered via `wp_ajax_nopriv_*` with no authentication, no nonce verification, and no server-side recalculation of pricing \u2014 the `update` handler reads `price_total` directly from the attacker-controlled `cart_data` POST parameter and persists it to th",
+      "cvss": {
+        "score": 5.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 0,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/booking-system/tags/2.9.9.6.7/addons/woocommerce/dopbsp-woocommerce.php#L141",
+        "https://plugins.trac.wordpress.org/browser/booking-system/tags/2.9.9.6.7/addons/woocommerce/includes/class-woocommerce-cart.php#L125",
+        "https://plugins.trac.wordpress.org/browser/booking-system/tags/2.9.9.6.7/addons/woocommerce/includes/class-woocommerce-cart.php#L293",
+        "https://plugins.trac.wordpress.org/browser/booking-system/tags/2.9.9.6.7/addons/woocommerce/includes/class-woocommerce-cart.php#L90",
+        "https://plugins.trac.wordpress.org/browser/booking-system/tags/2.9.9.6.8/addons/woocommerce/dopbsp-woocommerce.php#L141"
+      ],
+      "published": "2026-08-15T03:16:46.970"
+    },
+    {
+      "id": "CVE-2026-49457",
+      "description": "erlang_quic is a pure Erlang QUIC implementation. Prior to version 1.4.4, the QUIC client did not authenticate the server during the TLS 1.3 handshake. The CertificateVerify signature was not checked, the certificate chain was not validated, and the hostname was not compared against the certificate, so `verify` was effectively a no-op on the client. A man-in-the-middle on the network path could present any certificate and impersonate any server, defeating the confidentiality and integrity of the",
       "cvss": {
         "score": 9.1,
         "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
@@ -89,323 +214,12 @@
       },
       "tier": 1,
       "matchedProducts": [
-        "Node.js"
+        "Erlang/OTP"
       ],
       "references": [
-        "https://github.com/JuneAndGreen/sm-crypto/commit/1f9bd7bd160c24efd9c26c8f7fda997c68c823d0",
-        "https://github.com/JuneAndGreen/sm-crypto/security/advisories/GHSA-vh45-f885-3848"
+        "https://github.com/benoitc/erlang_quic/security/advisories/GHSA-2r8v-p65x-3663"
       ],
-      "published": "2026-08-13T18:18:19.387"
-    },
-    {
-      "id": "CVE-2026-11840",
-      "description": "Zohocorp ManageEngine Password Manager Pro versions before 13232 and ManageEngine PAM360 versions before 8552 are vulnerable to authenticated SQL injection.",
-      "cvss": {
-        "score": 8.8,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "ManageEngine"
-      ],
-      "references": [
-        "https://www.manageengine.com/products/passwordmanagerpro/advisory/cve-2026-11840.html"
-      ],
-      "published": "2026-08-13T08:16:42.987"
-    },
-    {
-      "id": "CVE-2026-12263",
-      "description": "Zohocorp ManageEngine Password Manager Pro versions before 13232 and PAM360 versions before 8551 are vulnerable to an authentication bypass vulnerability due to improper SAML validation.",
-      "cvss": {
-        "score": 8.8,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "ManageEngine"
-      ],
-      "references": [
-        "https://www.manageengine.com/products/passwordmanagerpro/advisory/cve-2026-12263.html"
-      ],
-      "published": "2026-08-13T11:17:38.193"
-    },
-    {
-      "id": "CVE-2026-14662",
-      "description": "Integer wraparound in PostgreSQL tsvector and tsquery data type functions allows an unprivileged database user to cause the server to undersize an allocation and write out-of-bounds, via crafted large inputs.  This may execute arbitrary code as the operating system user running the database.  These types are typically sourced from application logic, not taken from the application's user.  Hence, application users attacking the database, through the application as a conduit, are unlikely.  CVE-20",
-      "cvss": {
-        "score": 8.8,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "PostgreSQL"
-      ],
-      "references": [
-        "https://www.postgresql.org/support/security/CVE-2026-14662/"
-      ],
-      "published": "2026-08-13T13:17:43.553"
-    },
-    {
-      "id": "CVE-2026-14664",
-      "description": "Heap buffer overflow in PostgreSQL regexp allows the query author to execute arbitrary code as the operating system user running the database, via text that would not pass encoding validation.  This shares heritage with CVE-2026-2006, but this case involved unanticipated data growth when round-tripped through pg_wchar.  Versions before PostgreSQL 18.5, 17.11, 16.15, 15.19, and 14.24 are affected.",
-      "cvss": {
-        "score": 8.8,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "PostgreSQL"
-      ],
-      "references": [
-        "https://www.postgresql.org/support/security/CVE-2026-14664/"
-      ],
-      "published": "2026-08-13T13:17:43.847"
-    },
-    {
-      "id": "CVE-2026-14669",
-      "description": "Heap buffer overflow in PostgreSQL to_char(timestamptz) allows the party choosing the timezone to execute arbitrary code as the operating system user running the database, via a long POSIX timezone abbreviation.  Versions before PostgreSQL 18.5, 17.11, 16.15, 15.19, and 14.24 are affected.",
-      "cvss": {
-        "score": 8.8,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "PostgreSQL"
-      ],
-      "references": [
-        "https://www.postgresql.org/support/security/CVE-2026-14669/"
-      ],
-      "published": "2026-08-13T13:17:44.280"
-    },
-    {
-      "id": "CVE-2026-14670",
-      "description": "Heap buffer overflow in PostgreSQL plperl return of a tied hash allows the function owner to execute arbitrary code as the operating system user running the database, via a crafted function body.  Versions before PostgreSQL 18.5, 17.11, 16.15, 15.19, and 14.24 are affected.",
-      "cvss": {
-        "score": 8.8,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "PostgreSQL"
-      ],
-      "references": [
-        "https://www.postgresql.org/support/security/CVE-2026-14670/"
-      ],
-      "published": "2026-08-13T13:17:44.407"
-    },
-    {
-      "id": "CVE-2026-14671",
-      "description": "Type confusion in PostgreSQL module \"refint\" allows an object creator to execute arbitrary code as the operating system user running the database.  The fix for this emerged as a non-security bug report, and the fix appear in the git repository with subject \"refint: Remove plan cache.\", without a CVE number.  Versions before PostgreSQL 18.5, 17.11, 16.15, 15.19, and 14.24 are affected.",
-      "cvss": {
-        "score": 8.8,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "PostgreSQL"
-      ],
-      "references": [
-        "https://www.postgresql.org/support/security/CVE-2026-14671/"
-      ],
-      "published": "2026-08-13T13:17:44.530"
-    },
-    {
-      "id": "CVE-2026-14676",
-      "description": "Heap buffer overflow in PostgreSQL pg_stat_statements allows the query author to execute arbitrary code as the operating system user running the database, via crafted queries containing array constants.  Within major version 18, minor versions before PostgreSQL 18.5 are affected.  Versions before PostgreSQL 18 are unaffected.",
-      "cvss": {
-        "score": 8.8,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "PostgreSQL"
-      ],
-      "references": [
-        "https://www.postgresql.org/support/security/CVE-2026-14676/"
-      ],
-      "published": "2026-08-13T13:17:44.907"
-    },
-    {
-      "id": "CVE-2026-14677",
-      "description": "Integer wraparound in PostgreSQL 32-bit builds of pltcl and plperl allows an object creator to cause the server to undersize an allocation and write out-of-bounds via crafted function bodies.  This may execute arbitrary code as the operating system user running the database.  CVE-2026-6473 had fixed similar problems.  Versions before PostgreSQL 18.5, 17.11, 16.15, 15.19, and 14.24 are affected.",
-      "cvss": {
-        "score": 8.8,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "PostgreSQL"
-      ],
-      "references": [
-        "https://www.postgresql.org/support/security/CVE-2026-14677/"
-      ],
-      "published": "2026-08-13T13:17:45.027"
-    },
-    {
-      "id": "CVE-2026-14680",
-      "description": "Type confusion with PostgreSQL \"internal\" data type arguments allows any user to execute arbitrary code as the operating system user running the database, via calls to functions with that argument type.  Type \"internal\" represents a class of mutually-incompatible data structures not intended for access from SQL.  The system intended to prevent such function calls, but this prevention had gaps.  Versions before PostgreSQL 18.5, 17.11, 16.15, 15.19, and 14.24 are affected.",
-      "cvss": {
-        "score": 8.8,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "PostgreSQL"
-      ],
-      "references": [
-        "https://www.postgresql.org/support/security/CVE-2026-14680/"
-      ],
-      "published": "2026-08-13T13:17:45.400"
-    },
-    {
-      "id": "CVE-2026-15741",
-      "description": "SQL injection in PostgreSQL EXTRACT() deparse allows an object owner to execute arbitrary SQL as a superuser via a hostile object definition.  Attacks affect expression deparse consumers broadly, including pg_dump, psql commands like \\sf, and any similar usage in non-core tools.  Versions before PostgreSQL 18.5, 17.11, 16.15, 15.19, and 14.24 are affected.",
-      "cvss": {
-        "score": 8.8,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "PostgreSQL"
-      ],
-      "references": [
-        "https://www.postgresql.org/support/security/CVE-2026-15741/"
-      ],
-      "published": "2026-08-13T13:17:45.957"
-    },
-    {
-      "id": "CVE-2026-15742",
-      "description": "Integer wraparound in PostgreSQL fuzzystrmatch allows a user to direct writes to a huge range of addresses, executing arbitrary code as the operating system user running the database, via extreme inputs to SQL function levenshtein() or levenshtein_less_equal().  Versions before PostgreSQL 18.5, 17.11, 16.15, 15.19, and 14.24 are affected.",
-      "cvss": {
-        "score": 8.8,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "PostgreSQL"
-      ],
-      "references": [
-        "https://www.postgresql.org/support/security/CVE-2026-15742/"
-      ],
-      "published": "2026-08-13T13:17:46.103"
-    },
-    {
-      "id": "CVE-2026-16238",
-      "description": "Type confusion in PostgreSQL pg_restore_attribute_stats() allows an object creator to execute arbitrary code as the operating system user running the database, via conflation of range and multirange values.  Within major version 18, minor versions before PostgreSQL 18.5 are affected.  Versions before PostgreSQL 18 are unaffected.",
-      "cvss": {
-        "score": 8.8,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "PostgreSQL"
-      ],
-      "references": [
-        "https://www.postgresql.org/support/security/CVE-2026-16238/"
-      ],
-      "published": "2026-08-13T13:17:46.383"
-    },
-    {
-      "id": "CVE-2026-16239",
-      "description": "Type confusion in PostgreSQL \"portal\"/cursor lifecycle allows a user to execute arbitrary code as the operating system user running the database, via re-creation of a cursor or other portal with different types.  Versions before PostgreSQL 18.5, 17.11, 16.15, 15.19, and 14.24 are affected.",
-      "cvss": {
-        "score": 8.8,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "PostgreSQL"
-      ],
-      "references": [
-        "https://www.postgresql.org/support/security/CVE-2026-16239/"
-      ],
-      "published": "2026-08-13T13:17:46.520"
-    },
-    {
-      "id": "CVE-2026-18408",
-      "description": "Untrusted data inclusion in pg_dump in PostgreSQL allows a malicious superuser of the origin server to inject arbitrary code for restore-time execution as the client operating system account running psql to restore the dump, via psql \\restrict meta-command input expansion.  The fix for CVE-2025-8714 introduced \\restrict and \\unrestrict to block this attack, but \\unrestrict itself was sufficient for an attack.  pg_dumpall is also affected.  pg_restore is affected when used to generate a plain-for",
-      "cvss": {
-        "score": 8.8,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "PostgreSQL"
-      ],
-      "references": [
-        "https://www.postgresql.org/support/security/CVE-2026-18408/"
-      ],
-      "published": "2026-08-13T13:17:48.127"
-    },
-    {
-      "id": "CVE-2026-19385",
-      "description": "Heap buffer overflow in PostgreSQL pg_dump of long function transform lists allows an object creator to execute arbitrary code as the operating system user running pg_dump, via a crafted transform list.  Versions before PostgreSQL 18.5, 17.11, 16.15, 15.19, and 14.24 are affected.",
-      "cvss": {
-        "score": 8.8,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "PostgreSQL"
-      ],
-      "references": [
-        "https://www.postgresql.org/support/security/CVE-2026-19385/"
-      ],
-      "published": "2026-08-13T13:17:48.740"
-    },
-    {
-      "id": "CVE-2026-18428",
-      "description": "A SQL query validation bypass in the Flint extension query handler in the OpenSearch SQL plugin allows a remote authenticated actor with async query access to execute arbitrary code on Apache Spark workers by sending a crafted SQL query to the direct query endpoint.",
-      "cvss": {
-        "score": 8.8,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "OpenSearch"
-      ],
-      "references": [
-        "https://aws.amazon.com/security/security-bulletins/2026-081-aws/",
-        "https://docs.aws.amazon.com/opensearch-service/latest/developerguide/service-software.html",
-        "https://github.com/opensearch-project/sql/security/advisories/GHSA-g4jr-343c-fvjm",
-        "https://opensearch.org/artifacts/by-version/?_gl=1*d14pqp*_up*MQ..*_ga*Nzc5NTAxNzM2LjE3ODM1NTA2NDA.*_ga_BQV14XK08F*czE3ODM1NTA2NDAkbzEkZzEkdDE3ODM1NTA3MTQkajU2JGwwJGg3NTc4ODY0OTM.#release-2-19-6",
-        "https://opensearch.org/artifacts/by-version/?_gl=1*d14pqp*_up*MQ..*_ga*Nzc5NTAxNzM2LjE3ODM1NTA2NDA.*_ga_BQV14XK08F*czE3ODM1NTA2NDAkbzEkZzEkdDE3ODM1NTA3MTQkajU2JGwwJGg3NTc4ODY0OTM.#release-3-7-0"
-      ],
-      "published": "2026-08-13T18:17:21.130"
-    },
-    {
-      "id": "CVE-2026-72642",
-      "description": "The native inference process that Elasticsearch uses to evaluate uploaded machine learning models accepts a model operation that computes a memory address from an offset supplied inside the model, without validating that the offset stays within the bounds of the underlying storage. A user with the privileges required to upload and deploy a trained model can craft a model that reads and writes memory outside the intended allocation. The result is heap corruption that crashes the inference process",
-      "cvss": {
-        "score": 8.8,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "Elasticsearch"
-      ],
-      "references": [
-        "https://discuss.elastic.co/t/elasticsearch-8-19-20-9-4-5-9-5-1-security-update-esa-2026-123/389504"
-      ],
-      "published": "2026-08-13T20:17:24.673"
+      "published": "2026-08-14T19:17:18.707"
     },
     {
       "id": "CVE-2026-19788",
@@ -471,102 +285,131 @@
       "published": "2026-08-14T04:16:40.780"
     },
     {
-      "id": "CVE-2026-73654",
-      "description": "Trigger.dev is a platform for building and deploying fully managed AI agents and workflows. From 3.3.8 until 4.5.6, the PUT /api/v1/runs/:runId/metadata endpoint passes attacker-controlled operation.key values to new JSONHeroPath(operation.key).set(newMetadata, value) in packages/core/src/v3/runMetadata/operations.ts without rejecting dangerous constructor and prototype path segments. A caller with a normal environment API key can pollute Object.prototype in the shared webapp process, corrupting",
+      "id": "CVE-2026-19791",
+      "description": "A weakness has been identified in Tenda G0 up to 20260625. The affected element is the function addStaticRoute of the file /goform/module of the component httpd web management interface. Executing a manipulation of the argument staticRouteNet can lead to stack-based buffer overflow. The attack may be performed from remote. The exploit has been made available to the public and could be used for attacks.",
       "cvss": {
-        "score": 8.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:N/I:L/A:H",
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
         "severity": "HIGH"
       },
       "tier": 1,
       "matchedProducts": [
-        "Prometheus"
+        "Apache HTTP Server"
       ],
       "references": [
-        "https://github.com/triggerdotdev/trigger.dev/commit/6997aeb05e27d2db47f9eda01fdc8a17c81a1ae0",
-        "https://github.com/triggerdotdev/trigger.dev/pull/4316",
-        "https://github.com/triggerdotdev/trigger.dev/releases/tag/v4.5.6",
-        "https://github.com/triggerdotdev/trigger.dev/security/advisories/GHSA-p28v-f755-9qrg"
+        "https://github.com/lipenghai/iot_bug/blob/main/Tenda/G0/2.md",
+        "https://vuldb.com/cve/CVE-2026-19791",
+        "https://vuldb.com/submit/868927",
+        "https://vuldb.com/vuln/389759",
+        "https://vuldb.com/vuln/389759/cti"
       ],
-      "published": "2026-08-13T20:17:30.007"
+      "published": "2026-08-14T05:16:58.857"
     },
     {
-      "id": "CVE-2026-73618",
-      "description": "Budibase Server before 3.40.0 contains a NoSQL injection vulnerability in the MongoDB query execution endpoint where user-supplied parameters are interpolated into JSON query templates without proper sanitization of JSON metacharacters. Attackers with query write permission can inject JSON structural characters to alter MongoDB queries, bypassing filters to read, modify, or delete arbitrary documents.",
+      "id": "CVE-2026-19792",
+      "description": "A security flaw has been discovered in Tenda G0 up to 20260625. Impacted is the function setPortMapping of the file /goform/module of the component httpd web management interface. Performing a manipulation of the argument portMappingServer/porMappingtInternal/portMappingExternal results in buffer overflow. The attack is possible to be carried out remotely. The exploit has been released to the public and may be used for attacks.",
+      "cvss": {
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Apache HTTP Server"
+      ],
+      "references": [
+        "https://github.com/lipenghai/iot_bug/blob/main/Tenda/G0/3.md",
+        "https://vuldb.com/cve/CVE-2026-19792",
+        "https://vuldb.com/submit/868929",
+        "https://vuldb.com/vuln/389758",
+        "https://vuldb.com/vuln/389758/cti"
+      ],
+      "published": "2026-08-14T05:16:59.030"
+    },
+    {
+      "id": "CVE-2026-19821",
+      "description": "A vulnerability was determined in Tenda AC12 15.03.06.23_multi_TD01. This vulnerability affects the function formSetRebootTimer of the file /goform/SetSysAutoRebbotCfg of the component httpd web management interface. This manipulation of the argument rebootTime causes buffer overflow. The attack may be initiated remotely. The exploit has been publicly disclosed and may be utilized.",
+      "cvss": {
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Apache HTTP Server"
+      ],
+      "references": [
+        "https://github.com/lipenghai/iot_bug/blob/main/Tenda/AC12/4.md",
+        "https://vuldb.com/cve/CVE-2026-19821",
+        "https://vuldb.com/submit/868922",
+        "https://vuldb.com/vuln/389954",
+        "https://vuldb.com/vuln/389954/cti"
+      ],
+      "published": "2026-08-14T11:16:57.573"
+    },
+    {
+      "id": "CVE-2026-15001",
+      "description": "The bLoyal: Loyalty & Promotions by bLoyal plugin for WordPress is vulnerable to Privilege Escalation in all versions up to, and including, 3.1.611.78. This is due to the AJAX actions `save_bloyal_configuration_data` and `save_bloyal_accesskeyverification_data` being registered without any capability or nonce checks, and the `bloyal_customer_auto_login` function unconditionally trusting the `Customer.ExternalId` value returned by whichever API URL is stored in the plugin's options. This makes it",
+      "cvss": {
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/bloyal/tags/3.1.611.78/app/controller/class-bloyalcontroller.php#L2429",
+        "https://plugins.trac.wordpress.org/browser/bloyal/tags/3.1.611.78/app/controller/class-bloyalcontroller.php#L2470",
+        "https://plugins.trac.wordpress.org/browser/bloyal/tags/3.1.611.78/app/controller/class-bloyalcontroller.php#L2512",
+        "https://plugins.trac.wordpress.org/browser/bloyal/tags/3.1.611.78/app/controller/class-bloyalcontroller.php#L421",
+        "https://plugins.trac.wordpress.org/browser/bloyal/tags/3.1.611.78/app/controller/class-bloyalcontroller.php#L494"
+      ],
+      "published": "2026-08-15T03:16:47.393"
+    },
+    {
+      "id": "CVE-2026-15312",
+      "description": "The Propovoice: All-in-One Client Management System plugin for WordPress is vulnerable to Privilege Escalation in all versions up to, and including, 1.7.8. This is due to the `create()` function's REST endpoint failing to validate the user-supplied `role` parameter against an allowlist of permitted WordPress roles and omitting any `promote_users` capability check before passing the sanitized value directly to `WP_User::set_role()`. This makes it possible for authenticated attackers with `ndpv_ma",
+      "cvss": {
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/propovoice/trunk/includes/Api/Type/Team.php#L169",
+        "https://plugins.trac.wordpress.org/browser/propovoice/trunk/includes/Api/Type/Team.php#L219",
+        "https://plugins.trac.wordpress.org/browser/propovoice/trunk/includes/Api/Type/Team.php#L38",
+        "https://plugins.trac.wordpress.org/browser/propovoice/trunk/includes/Api/Type/Team.php#L423",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/6a39e4d4-890d-46f9-8bb9-0fc858e6f1e2?source=cve"
+      ],
+      "published": "2026-08-15T03:16:47.817"
+    },
+    {
+      "id": "CVE-2026-72970",
+      "description": "Heap-based buffer overflow in Microsoft Edge (Chromium-based) allows an unauthorized attacker to execute code over a network.",
       "cvss": {
         "score": 8.3,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:L",
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:L",
         "severity": "HIGH"
       },
       "tier": 1,
       "matchedProducts": [
-        "MongoDB"
+        "Google Chrome",
+        "Microsoft Edge"
       ],
       "references": [
-        "https://github.com/Budibase/budibase/security/advisories/GHSA-qw6m-8fw2-2v64",
-        "https://www.vulncheck.com/advisories/budibase-server-before-nosql-injection-via-json-parameter",
-        "https://github.com/Budibase/budibase/security/advisories/GHSA-qw6m-8fw2-2v64"
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-72970"
       ],
-      "published": "2026-08-13T12:17:26.770"
+      "published": "2026-08-14T18:19:09.003"
     },
     {
-      "id": "CVE-2026-14679",
-      "description": "Stack buffer overflow in PostgreSQL argument name matching allows an object creator to achieve unknown impacts via OUT parameter count.  The attack can write only 0x0 and 0x1 bytes.  Versions before PostgreSQL 18.5, 17.11, 16.15, 15.19, and 14.24 are affected.",
-      "cvss": {
-        "score": 8.2,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "PostgreSQL"
-      ],
-      "references": [
-        "https://www.postgresql.org/support/security/CVE-2026-14679/"
-      ],
-      "published": "2026-08-13T13:17:45.277"
-    },
-    {
-      "id": "CVE-2026-73650",
-      "description": "SVGO, short for SVG Optimizer, is a Node.js library and command-line application for optimizing SVG files. From version 1.0.0 until versions 2.8.3, 3.3.4, and 4.0.2, the removeScripts plugin, named removeScriptElement in versions 1 through 3, can leave executable content in optimized SVGs because it does not remove namespaced or prefixed script elements such as <svg:script> and, in versions 3 and 4, matches JavaScript URIs case sensitively. Applications that process untrusted SVG input with this",
-      "cvss": {
-        "score": 8.2,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:L/A:N",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "Node.js"
-      ],
-      "references": [
-        "https://github.com/svg/svgo/commit/628e3bc7336625a30365d0a9b60185307d852466",
-        "https://github.com/svg/svgo/commit/72a23886b4698b27624b936f3a15a80afd36d75f",
-        "https://github.com/svg/svgo/commit/f529cfccc6c154d6f6eabe276ec637a8c5db6763",
-        "https://github.com/svg/svgo/releases/tag/v2.8.3",
-        "https://github.com/svg/svgo/releases/tag/v3.3.4"
-      ],
-      "published": "2026-08-13T19:17:38.460"
-    },
-    {
-      "id": "CVE-2026-14668",
-      "description": "Type confusion regarding input of PostgreSQL ctid data type selectivity estimator allows an object creator to view a calculation derived from the value of an arbitrary 4-byte span of memory, via a chosen non-ctid input.  While the calculation loses precision, substantial memory value recovery appears possible.  Versions before PostgreSQL 18.5, 17.11, 16.15, 15.19, and 14.24 are affected.",
-      "cvss": {
-        "score": 8.1,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "PostgreSQL"
-      ],
-      "references": [
-        "https://www.postgresql.org/support/security/CVE-2026-14668/"
-      ],
-      "published": "2026-08-13T13:17:44.137"
-    },
-    {
-      "id": "CVE-2026-6464",
-      "description": "Untrusted data inclusion in PostgreSQL psql COPY may allow a server administrator to elicit execution of data lines as psql commands, via error injection.  If the \"COPY FROM STDIN\" or \"\\copy FROM STDIN\" command fails before the server indicates that it awaits input rows, psql processes the in-line data rows as psql commands.  \"COPY FROM\" with a filename is unaffected.  The server administrator has no inherent control over the data rows, so a complete attack requires the attacker to separately ac",
+      "id": "CVE-2026-18039",
+      "description": "The Essential Addons for Elementor  WordPress plugin before 6.7.2 does not prevent user-supplied registration fields from overwriting reserved account attributes, allowing unauthenticated attackers to register an account with an arbitrary role, including administrator, on sites where a custom profile field with a particular label has been configured.",
       "cvss": {
         "score": 8.1,
         "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
@@ -574,16 +417,16 @@
       },
       "tier": 1,
       "matchedProducts": [
-        "PostgreSQL"
+        "WordPress"
       ],
       "references": [
-        "https://www.postgresql.org/support/security/CVE-2026-6464/"
+        "https://wpscan.com/vulnerability/2982ee81-3a85-435b-8347-a7848e99f373/"
       ],
-      "published": "2026-08-13T13:19:16.347"
+      "published": "2026-08-14T06:17:09.077"
     },
     {
-      "id": "CVE-2026-72665",
-      "description": "Missing Authorization (CWE-862) in Kibana can lead to unauthorized execution of Osquery and Elastic Defend response actions on managed hosts via Accessing Functionality Not Properly Constrained by ACLs (CAPEC-1). A Kibana user who is able to author and evaluate Elastic Security detection rules can cause response actions to be carried out against enrolled agents without holding the Osquery live query privileges or the Elastic Defend response action privileges that normally govern those capabiliti",
+      "id": "CVE-2026-19768",
+      "description": "Improper control of generation of code ('Code Injection') in the settings feature in Devolutions PowerShell Universal 2026.2.3 and earlier allows an authenticated user with settings management permission to execute arbitrary PowerShell code via a crafted setting value that is not properly escaped when written to the settings configuration file.",
       "cvss": {
         "score": 8.1,
         "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N",
@@ -591,388 +434,16 @@
       },
       "tier": 1,
       "matchedProducts": [
-        "Kibana"
+        "PowerShell"
       ],
       "references": [
-        "https://discuss.elastic.co/t/kibana-8-19-20-and-9-4-5-security-update-esa-2026-96/389528"
+        "https://devolutions.net/security/advisories/DEVO-2026-0028/"
       ],
-      "published": "2026-08-13T20:17:27.033"
+      "published": "2026-08-14T14:16:50.473"
     },
     {
-      "id": "CVE-2026-72856",
-      "description": "Budibase versions before 3.40.0 contain an authorization/authentication bypass in the PUT /api/global/users/tenant/owner (changeTenantOwnerEmail) endpoint. On self-hosted instances (SELF_HOSTED or DISABLE_ACCOUNT_PORTAL set), the cloudRestricted middleware is a no-op and the route is protected only by a general authentication check, so any authenticated user \u2014 including a lowest-privilege BASIC app user \u2014 can reassign the tenant account-holder (top-privilege admin) email to an attacker-controlle",
-      "cvss": {
-        "score": 8.1,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://github.com/Budibase/budibase/security/advisories/GHSA-j82g-67x3-xcwh",
-        "https://www.vulncheck.com/advisories/budibase-before-authentication-bypass-via-tenant-owner-email"
-      ],
-      "published": "2026-08-13T22:17:24.893"
-    },
-    {
-      "id": "CVE-2026-70454",
-      "description": "rsync 3.2.0 through 3.2.3 (openssl mode) and rsync-ssl through 3.4.4 (stunnel mode) contain a TLS certificate validation vulnerability that allows on-path attackers to intercept encrypted sessions by presenting self-signed or otherwise invalid certificates. Attackers can exploit the failure to validate server TLS certificates against a trusted CA or verify certificate hostname matching to decrypt or tamper with rsync session content without detection by the client.",
-      "cvss": {
-        "score": 8.0,
-        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:H/A:N",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "OpenSSL"
-      ],
-      "references": [
-        "https://github.com/RsyncProject/rsync/releases/tag/v3.5.0",
-        "https://github.com/RsyncProject/rsync/security/advisories/GHSA-3c3x-ww2w-5r5p",
-        "https://www.vulncheck.com/advisories/rsync-tls-certificate-validation-bypass-via-ssl-openssl-mode"
-      ],
-      "published": "2026-08-13T15:19:59.047"
-    },
-    {
-      "id": "CVE-2026-72857",
-      "description": "Budibase before 3.40.0 fails to redact datasource credentials stored in STRING typed fields, allowing authenticated users to read MongoDB connection strings and Firebase private keys in plaintext. Attackers with table read permissions can retrieve datasource configurations through the read API to obtain live backend database credentials and service account keys.",
-      "cvss": {
-        "score": 7.7,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:N/A:N",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "MongoDB"
-      ],
-      "references": [
-        "https://github.com/Budibase/budibase/security/advisories/GHSA-6mpp-gfg5-x2vv",
-        "https://www.vulncheck.com/advisories/budibase-before-credential-exposure-via-string-fields"
-      ],
-      "published": "2026-08-13T22:17:25.040"
-    },
-    {
-      "id": "CVE-2026-73408",
-      "description": "Budibase is an open-source low-code platform. Prior to 3.39.18, packages/server/src/integrations/mysql.ts enabled multipleStatements and inserted an unescaped tableName into a DESCRIBE statement. An attacker able to create a MySQL table with a backtick and stacked statement in its name could wait for a Budibase administrator to run schema discovery, causing the second statement to execute. The fix applies quoteMySqlIdentifier before constructing the query. This issue is fixed in version 3.39.18.",
-      "cvss": {
-        "score": 7.6,
-        "vector": "CVSS:3.1/AV:N/AC:H/PR:H/UI:R/S:C/C:H/I:H/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "MySQL"
-      ],
-      "references": [
-        "https://github.com/Budibase/budibase/commit/d232bd92144c768884ff8c48cb2e28673d9ffde0",
-        "https://github.com/Budibase/budibase/pull/18989",
-        "https://github.com/Budibase/budibase/releases/tag/3.39.18",
-        "https://github.com/Budibase/budibase/security/advisories/GHSA-2xgg-r2wc-c5r2"
-      ],
-      "published": "2026-08-13T22:17:25.810"
-    },
-    {
-      "id": "CVE-2026-14456",
-      "description": "Issue summary: When an OpenSSL QUIC server (Listener SSL object) processes\nvalid QUIC Initial packets for unknown destination connection IDs, it\ncan allocate and queue new incoming channels without enforcing any limit.\n\nImpact summary: A remote peer that can make many Initial packets reach the\nserver listener faster than the application accepts connections, can cause the\nmemory allocated to store the per-channel state to grow without any limits,\npotentially making the QUIC listener unavailable a",
-      "cvss": {
-        "score": 7.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "OpenSSL"
-      ],
-      "references": [
-        "https://github.com/openssl/openssl/commit/08e7756c3900bcfd77a720e7b74e27d6e4ed01a9",
-        "https://github.com/openssl/openssl/commit/4084152e040329ca0194c4c1750b9b46d00a5b6b",
-        "https://github.com/openssl/openssl/commit/f2f1465f2d2e5c61dfeac4d20fd093797d821139",
-        "https://openssl-library.org/news/secadv/20260813.txt",
-        "http://www.openwall.com/lists/oss-security/2026/08/13/4"
-      ],
-      "published": "2026-08-13T15:19:31.820"
-    },
-    {
-      "id": "CVE-2026-72677",
-      "description": "Relative Path Traversal (CWE-23) in Kibana can lead to the unauthorized deletion of Kibana resources via Relative Path Traversal (CAPEC-139). Kibana Fleet accepted a user-supplied identifier for a Fleet Server host configuration without rejecting relative traversal sequences. The identifier is stored as provided and is later incorporated into the request that Kibana issues when that configuration is removed.",
-      "cvss": {
-        "score": 7.3,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:N/I:H/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "Kibana"
-      ],
-      "references": [
-        "https://discuss.elastic.co/t/kibana-8-19-17-9-3-6-9-4-3-security-update-esa-2026-94/389512"
-      ],
-      "published": "2026-08-13T20:17:28.373"
-    },
-    {
-      "id": "CVE-2026-6471",
-      "description": "Missing authorization in PostgreSQL logical decoding allows a non-superuser holding REPLICATION privilege to dlopen any file visible to the operating system account running the server, via the choice of logical decoding plugin.  This in turn runs arbitrary code as that account.  Versions before PostgreSQL 18.5, 17.11, 16.15, 15.19, and 14.24 are affected.",
-      "cvss": {
-        "score": 7.2,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "PostgreSQL"
-      ],
-      "references": [
-        "https://www.postgresql.org/support/security/CVE-2026-6471/"
-      ],
-      "published": "2026-08-13T13:19:16.747"
-    },
-    {
-      "id": "CVE-2026-73617",
-      "description": "Budibase before 3.40.0 contains a NoSQL injection vulnerability in the MongoDB datasource integration where user-supplied parameters are enriched with handlebars using noEscaping: true and parsed without operator filtering. Attackers can inject MongoDB operators through query parameters to bypass per-user access controls, read arbitrary documents, execute JavaScript via $where operators, or modify collections through update and delete operations.",
-      "cvss": {
-        "score": 7.1,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:N",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "MongoDB"
-      ],
-      "references": [
-        "https://github.com/Budibase/budibase/security/advisories/GHSA-pmpg-2mxq-6xwr",
-        "https://www.vulncheck.com/advisories/budibase-before-nosql-injection-via-mongodb-datasource"
-      ],
-      "published": "2026-08-13T12:17:26.627"
-    },
-    {
-      "id": "CVE-2026-28154",
-      "description": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in snstheme Samex - Clean, Minimal Shop WooCommerce WordPress Theme and snstheme M.Anh - Fashion WooCoommerce WordPress Theme allows Reflected XSS.\n\nThis issue affects Samex - Clean, Minimal Shop WooCommerce WordPress Theme: from n/a through 2.5; M.Anh - Fashion WooCoommerce WordPress Theme: from n/a through 1.7.",
-      "cvss": {
-        "score": 7.1,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:L",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "WordPress"
-      ],
-      "references": [
-        "https://patchstack.com/database/wordpress/theme/manh/vulnerability/wordpress-m-anh-theme-1-7-reflected-cross-site-scripting-xss-vulnerability?_s_id=cve",
-        "https://patchstack.com/database/wordpress/theme/samex/vulnerability/wordpress-samex-clean-minimal-shop-woocommerce-wordpress-theme-theme-2-5-cross-site-scripting-xss-vulnerability?_s_id=cve"
-      ],
-      "published": "2026-08-13T15:19:39.213"
-    },
-    {
-      "id": "CVE-2026-72629",
-      "description": "Authorization Bypass Through User-Controlled Key (CWE-639) in Kibana can lead to unauthorized cross-space access via Accessing Functionality Not Properly Constrained by ACLs (CAPEC-1). The result is disclosure of inference output from a trained model in a different space that the user is not authorized to list, read, or use, which exposes the behavior of a model. The same pattern also reached the deployment stop and deployment update operations, allowing an active trained model deployment in ano",
-      "cvss": {
-        "score": 7.1,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:L",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "Kibana"
-      ],
-      "references": [
-        "https://discuss.elastic.co/t/kibana-8-19-20-9-4-5-9-5-1-security-update-esa-2026-126/389530"
-      ],
-      "published": "2026-08-13T20:17:23.690"
-    },
-    {
-      "id": "CVE-2026-49089",
-      "description": "Allocation of Resources Without Limits or Throttling (CWE-770) in Kibana can lead to denial of service via Excessive Allocation (CAPEC-130). A query expression accepted by a connector reporting operation was processed without any limit on its size, and an oversized expression caused the Kibana process to spend an unbounded amount of time evaluating it. An authenticated user with read-only privileges was able to send a single request that left Kibana unable to serve any user until the process was",
-      "cvss": {
-        "score": 6.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
-        "severity": "MEDIUM"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "Kibana"
-      ],
-      "references": [
-        "https://discuss.elastic.co/t/kibana-8-19-20-9-4-5-security-update-esa-2026-137/389511"
-      ],
-      "published": "2026-08-13T20:17:22.467"
-    },
-    {
-      "id": "CVE-2026-72639",
-      "description": "Elasticsearch does not enforce an upper bound on a user-supplied count accepted by a search highlighting option, and the allocation derived from that count is not accounted against any circuit breaker. An authenticated user holding only read privileges on a single searchable index can submit one small search request that causes the node to reserve an excessively large internal data structure. The allocation occurs before the existing highlighting safety limits are evaluated, so memory exhaustion",
-      "cvss": {
-        "score": 6.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
-        "severity": "MEDIUM"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "Elasticsearch"
-      ],
-      "references": [
-        "https://discuss.elastic.co/t/elasticsearch-8-19-20-9-4-5-9-5-1-security-update-esa-2026-120/389503"
-      ],
-      "published": "2026-08-13T20:17:24.427"
-    },
-    {
-      "id": "CVE-2026-72648",
-      "description": "Cleartext Storage of Sensitive Information in an Environment Variable (CWE-526) in Elastic Cloud on Kubernetes (ECK) can lead to information disclosure via Retrieve Embedded Sensitive Data (CAPEC-37). When ECK reconciles a Fleet Server resource that authenticates to Elasticsearch with a service account token, the token is written into the generated workload specification in cleartext rather than being referenced from the Kubernetes Secret that ECK maintains for the other credentials on the same ",
-      "cvss": {
-        "score": 6.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "Elasticsearch"
-      ],
-      "references": [
-        "https://discuss.elastic.co/t/elastic-cloud-on-kubernetes-3-5-0-security-update-esa-2026-113/389493"
-      ],
-      "published": "2026-08-13T20:17:25.160"
-    },
-    {
-      "id": "CVE-2026-72651",
-      "description": "Allocation of Resources Without Limits or Throttling (CWE-770) in Kibana can lead to denial of service via Excessive Allocation (CAPEC-130). An authenticated user with read-only privileges to the alerting feature could submit a specially crafted, malformed payload that causes the Kibana process to consume excessive resources. A single request is sufficient to leave Kibana unable to serve requests for all users until the process is restarted.",
-      "cvss": {
-        "score": 6.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
-        "severity": "MEDIUM"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "Kibana"
-      ],
-      "references": [
-        "https://discuss.elastic.co/t/kibana-8-19-20-9-4-5-security-update-esa-2026-106/389522"
-      ],
-      "published": "2026-08-13T20:17:25.393"
-    },
-    {
-      "id": "CVE-2026-72653",
-      "description": "Allocation of Resources Without Limits or Throttling (CWE-770) in Kibana can lead to denial of service via Excessive Allocation (CAPEC-130). An authenticated user who is authorized to manage maintenance windows could submit a specially crafted, malformed payload that causes the Kibana process to consume excessive resources. Kibana becomes unresponsive for all users and does not recover without manual intervention.",
-      "cvss": {
-        "score": 6.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
-        "severity": "MEDIUM"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "Kibana"
-      ],
-      "references": [
-        "https://discuss.elastic.co/t/kibana-8-19-19-9-3-8-9-4-4-security-update-esa-2026-108/389514"
-      ],
-      "published": "2026-08-13T20:17:25.513"
-    },
-    {
-      "id": "CVE-2026-72659",
-      "description": "Allocation of Resources Without Limits or Throttling (CWE-770) in Kibana can lead to denial of service via Excessive Allocation (CAPEC-130). A specially crafted, malformed payload submitted to a Kibana visualization feature by an authenticated user holding only low-privileged access is not correctly validated before use. Processing the request causes unbounded memory growth in the Kibana process, which is terminated by the host once available memory is exhausted. Kibana then becomes unavailable ",
-      "cvss": {
-        "score": 6.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
-        "severity": "MEDIUM"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "Kibana"
-      ],
-      "references": [
-        "https://discuss.elastic.co/t/kibana-8-19-20-9-4-5-security-update-esa-2026-100/389519"
-      ],
-      "published": "2026-08-13T20:17:26.180"
-    },
-    {
-      "id": "CVE-2026-72661",
-      "description": "Missing Authorization (CWE-862) in Kibana can lead to information disclosure via Accessing Functionality Not Properly Constrained by ACLs (CAPEC-1). An internal Kibana data retrieval capability used by Elastic Defend endpoint response actions did not enforce the Security Solution and endpoint privileges that its user-facing equivalents require, and it retrieved data with elevated internal permissions rather than the permissions of the requesting user. As a result, an authenticated low-privileged",
-      "cvss": {
-        "score": 6.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "Elasticsearch",
-        "Kibana"
-      ],
-      "references": [
-        "https://discuss.elastic.co/t/kibana-8-19-19-9-3-8-9-4-4-security-update-esa-2026-102/389513"
-      ],
-      "published": "2026-08-13T20:17:26.453"
-    },
-    {
-      "id": "CVE-2026-72667",
-      "description": "Allocation of Resources Without Limits or Throttling (CWE-770) in Kibana can lead to a denial of service via Excessive Allocation (CAPEC-130). A specially crafted request submitted by an authenticated user with minimal privileges to a validation capability of the Observability log analysis feature causes Kibana to perform an unbounded amount of concurrent work. This can exhaust the memory available to the Kibana process and make Kibana unavailable to all users until it is restarted. The severity",
-      "cvss": {
-        "score": 6.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
-        "severity": "MEDIUM"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "Kibana"
-      ],
-      "references": [
-        "https://discuss.elastic.co/t/kibana-8-19-20-and-9-4-5-security-update-esa-2026-98/389516"
-      ],
-      "published": "2026-08-13T20:17:27.283"
-    },
-    {
-      "id": "CVE-2026-72674",
-      "description": "Allocation of Resources Without Limits or Throttling (CWE-770) in Kibana can lead to a denial of service via Excessive Allocation (CAPEC-130). A user-supplied list of document fields accepted by the Kibana Playground for RAG feature was neither bounded in length nor de-duplicated before it was used to assemble the response for each matching document. A single crafted request could therefore make Kibana build a response far larger than the data it was derived from, and the resulting processing an",
-      "cvss": {
-        "score": 6.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
-        "severity": "MEDIUM"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "Kibana"
-      ],
-      "references": [
-        "https://discuss.elastic.co/t/kibana-9-3-8-9-4-4-security-update-esa-2026-91/389533"
-      ],
-      "published": "2026-08-13T20:17:28.013"
-    },
-    {
-      "id": "CVE-2026-73576",
-      "description": "In Zimbra Collaboration (ZCS) before 10.1.17,\u00a0weak cryptographic key generation vulnerability exists in the OnlyOffice integration. The zimbraDocumentEditingJwtSecret is generated using an insecure random number generator, resulting in insufficient entropy. An attacker who obtains a JWT signed with the generated secret may be able to recover the JWT signing secret through offline brute-force, potentially enabling JWT forgery.",
-      "cvss": {
-        "score": 6.3,
-        "vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:C/C:N/I:H/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "ONLYOFFICE"
-      ],
-      "references": [
-        "https://wiki.zimbra.com/wiki/Zimbra_Responsible_Disclosure_Policy",
-        "https://wiki.zimbra.com/wiki/Zimbra_Security_Advisories"
-      ],
-      "published": "2026-08-13T16:19:06.923"
-    },
-    {
-      "id": "CVE-2026-19088",
-      "description": "The ShopEngine Elementor WooCommerce Builder Addon  WordPress plugin before 4.9.3 does not protect one of its authentication endpoints against CSRF, allowing an attacker to log a victim into an attacker-controlled account, so that the billing and shipping details the victim then enters at checkout are stored under and readable by the attacker.",
-      "cvss": {
-        "score": 5.4,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "WordPress"
-      ],
-      "references": [
-        "https://wpscan.com/vulnerability/f58066e9-8066-43bc-8778-7ded279e8ee2/"
-      ],
-      "published": "2026-08-13T06:17:38.230"
-    },
-    {
-      "id": "CVE-2026-14332",
-      "description": "The Ecwid by Lightspeed Ecommerce Shopping Cart WordPress plugin before 7.0.9 does not perform a capability check or nonce verification on one of its store-management actions, allowing any authenticated user, such as a subscriber, to disconnect the store and take the storefront offline until an administrator reconnects it.",
+      "id": "CVE-2026-72823",
+      "description": "The Grav API plugin (getgrav/grav-plugin-api) before 1.0.13 contains an API-key scope cap bypass in DemoController. Its private requireSuper() method checks isSuperAdmin() and returns early before invoking requirePermission(), so the api_key_scopes cap (enforced only in requirePermission()) is skipped. As a result, any scoped API key minted on a super account can bypass its scope restrictions when calling the baseline() and reset() operations (e.g. POST /api/v1/demo/reset), allowing it to captur",
       "cvss": {
         "score": 5.4,
         "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:L",
@@ -980,589 +451,130 @@
       },
       "tier": 1,
       "matchedProducts": [
-        "WordPress"
-      ],
-      "references": [
-        "https://wpscan.com/vulnerability/75182c5d-c7f5-4da9-bffd-1f7bf54cfd04/"
-      ],
-      "published": "2026-08-13T09:17:12.017"
-    },
-    {
-      "id": "CVE-2026-72655",
-      "description": "Improperly Controlled Modification of Dynamically-Determined Object Attributes (CWE-915) in the case management functionality of Elastic Security in Kibana can lead to unauthorized modification of case data by an authenticated user who has not been granted case editing privileges, via Manipulating User-Controlled Variables (CAPEC-77). Object attributes accepted by the case management API were not subject to the same authorization enforcement applied in the user interface, so a low-privileged use",
-      "cvss": {
-        "score": 4.3,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "Kibana"
-      ],
-      "references": [
-        "https://discuss.elastic.co/t/kibana-8-19-20-9-4-5-security-update-esa-2026-110/389523"
-      ],
-      "published": "2026-08-13T20:17:25.633"
-    },
-    {
-      "id": "CVE-2026-14681",
-      "description": "Improper enforcement of message integrity in PostgreSQL GSSAPI support allows a user to negotiate GSSAPI contrary to pg_hba.conf rules, via initial direct TLS connection.  Despite a pg_hba.conf that appears to require GSSAPI, the connection may exchange data over TLS encryption alone.  If the TLS settings are more permissive than the GSS settings, the connection may continue with lesser protection.  Within major versions 17-18, minor versions before PostgreSQL 18.5 and 17.11 are affected.  Versi",
-      "cvss": {
-        "score": 4.2,
-        "vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:L/I:L/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "PostgreSQL"
-      ],
-      "references": [
-        "https://www.postgresql.org/support/security/CVE-2026-14681/"
-      ],
-      "published": "2026-08-13T13:17:45.523"
-    },
-    {
-      "id": "CVE-2026-72672",
-      "description": "The Elastic Security capability that suggests existing field values while a user authors endpoint policy artifacts queries Elastic Defend event data with Kibana's internal Elasticsearch account instead of the account of the requesting user. Only Kibana feature privileges are verified, and the caller's Elasticsearch index privileges are not. An authenticated user who holds Elastic Security feature privileges but no read access to the Elastic Defend event indices can therefore retrieve field value",
-      "cvss": {
-        "score": 7.7,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:N/A:N",
-        "severity": "HIGH"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Elasticsearch",
-        "Kibana"
-      ],
-      "references": [
-        "https://discuss.elastic.co/t/kibana-9-4-5-security-update-esa-2026-89/389536"
-      ],
-      "published": "2026-08-13T20:17:27.777"
-    },
-    {
-      "id": "CVE-2026-72669",
-      "description": "The state that Kibana stores for an Observability Onboarding flow is not bound to the user who created the flow, and the routes that read and update that state do not verify ownership. An authenticated user who holds only generic read access to the space can therefore discover the onboarding flows of other users, read their onboarding state, and write arbitrary progress data into them. A tampered flow can also cause the owner's onboarding view to fail with a server error.",
-      "cvss": {
-        "score": 7.6,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:H/A:L",
-        "severity": "HIGH"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Kibana"
-      ],
-      "references": [
-        "https://discuss.elastic.co/t/kibana-8-19-19-and-9-4-5-security-update-esa-2026-86/389515"
-      ],
-      "published": "2026-08-13T20:17:27.403"
-    },
-    {
-      "id": "CVE-2026-19481",
-      "description": "@fastify/busboy is a multipart form-data parser. In versions 1.0.0 through 3.2.0, an attacker who can submit multipart form-data can crash the parser by sending a part header whose name is a prototype-inherited property such as __proto__ or constructor. The internal header parser stores headers in a plain JavaScript object and assumes each value is an array, so an inherited property name resolves to a truthy non-array value and triggers a TypeError. In the common pipe integration the failure sur",
-      "cvss": {
-        "score": 7.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Node.js"
-      ],
-      "references": [
-        "https://cna.openjsf.org/security-advisories.html",
-        "https://github.com/fastify/busboy/security/advisories/GHSA-x8mw-p69m-v3mx"
-      ],
-      "published": "2026-08-13T09:17:12.573"
-    },
-    {
-      "id": "CVE-2026-19484",
-      "description": "@fastify/busboy is a multipart form-data parser. In versions 3.1.0 through 3.2.0, a remote unauthenticated attacker can stall the Node.js event loop by sending a multipart request whose boundary is crafted to a specific length. The vendored streaming search stores its skip table in a fixed 256 entry byte array, and a boundary of exactly 252 bytes makes the search needle 256 bytes, which truncates the default skip distance to zero and turns the search into a CPU bound loop on a small body. A sing",
-      "cvss": {
-        "score": 7.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Node.js"
-      ],
-      "references": [
-        "https://cna.openjsf.org/security-advisories.html",
-        "https://github.com/fastify/busboy/security/advisories/GHSA-xjh9-v7x6-24jw"
-      ],
-      "published": "2026-08-13T10:17:11.640"
-    },
-    {
-      "id": "CVE-2026-73561",
-      "description": "Hub is a Node.js WebSocket server and client with added features. Prior to 0.2.16, every incoming unauthenticated WebSocket connection triggers loadDefaultConnectionEventListeners to call requestClientId, which calls rpc.send for the get-client-id action and pushes a request into RPC.requests. The RPC.waitForReply function starts a setInterval polling loop every 10 milliseconds that is cleared only after a matching reply; if the client remains silent and closes, the timer and pending request sta",
-      "cvss": {
-        "score": 7.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Node.js"
-      ],
-      "references": [
-        "https://github.com/anephenix/hub/commit/931576db3cdbf4f1583bd2c3c8759c4f4e032ab3",
-        "https://github.com/anephenix/hub/security/advisories/GHSA-g5vv-q72c-7j78",
-        "https://github.com/anephenix/hub/tree/v0.2.16"
-      ],
-      "published": "2026-08-13T18:18:18.490"
-    },
-    {
-      "id": "CVE-2026-73566",
-      "description": "node-tar is a tar archive manipulation library for Node.js. Prior to 7.5.21, node-tar's filesFilter in src/list.ts uses the recursive mapHas helper to walk an archive entry path upward with path.dirname() and no segment cap when tar.t(...) or tar.x(...) receives a non-empty member-selection list. A crafted GNU L or PAX x long-path header with thousands of slash-separated segments reaches this.filter(entry.path, entry) in Parser[CONSUMEHEADER] in src/parse.ts before Unpack[CHECKPATH] applies maxD",
-      "cvss": {
-        "score": 7.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Node.js"
-      ],
-      "references": [
-        "https://github.com/isaacs/node-tar/commit/631ae59121bf8fc8a22bbae35f074cb9b789cd4a",
-        "https://github.com/isaacs/node-tar/security/advisories/GHSA-r292-9mhp-454m"
-      ],
-      "published": "2026-08-13T18:18:19.250"
-    },
-    {
-      "id": "CVE-2026-73643",
-      "description": "js-yaml is a JavaScript YAML parser and dumper. From 5.0.0 until 5.2.2, parsing a small YAML document can take exponential time when an application calls load() or loadAll() on untrusted input. In src/parser/parser.ts, readFlowCollection uses restoreState and calls parseNode a second time when a flow-sequence entry is recognized as a key: value pair. If the key is a nested flow sequence of the same shape, every level is parsed twice, causing O(2^n) work and allowing an input under 200 bytes to k",
-      "cvss": {
-        "score": 7.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Node.js"
-      ],
-      "references": [
-        "https://github.com/nodeca/js-yaml/commit/3e5240f9cbe645ce5afb58524954a13c8539c853",
-        "https://github.com/nodeca/js-yaml/security/advisories/GHSA-pm4m-ph32-ghv5"
-      ],
-      "published": "2026-08-13T18:18:19.947"
-    },
-    {
-      "id": "CVE-2026-49857",
-      "description": "auth-fetch-mcp is an MCP server that lets AI assistants fetch content from authenticated web pages. Version 3.0.1 implements SSRF protection in `assertSafeUrl()` (`src/security.ts`) to block requests to private and loopback addresses. However, the `isPrivateV6()` function fails to detect IPv4-mapped IPv6 loopback addresses in their hex-normalized form. When an attacker supplies a URL such as `http://[::ffff:127.0.0.1]:PORT/`, the Node.js WHATWG URL parser silently normalizes the host to `[::ffff",
-      "cvss": {
-        "score": 7.4,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:N/A:N",
-        "severity": "HIGH"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Node.js"
-      ],
-      "references": [
-        "https://github.com/ymw0407/auth-fetch-mcp/commit/c5c523cd55b24ae1680c5bacef95d59a81ae3450",
-        "https://github.com/ymw0407/auth-fetch-mcp/releases/tag/v3.0.1",
-        "https://github.com/ymw0407/auth-fetch-mcp/security/advisories/GHSA-pvrj-8cg3-j5f8"
-      ],
-      "published": "2026-08-13T15:19:41.743"
-    },
-    {
-      "id": "CVE-2026-72658",
-      "description": "Cross-Site Request Forgery (CWE-352) in Kibana can lead to privilege escalation via Cross Site Request Forgery (CAPEC-62). A user who is permitted to create visualizations can save a specially crafted Vega visualization that, when it is opened by another user, causes authenticated requests to be issued to Kibana in the context of the viewing user's session.",
-      "cvss": {
-        "score": 7.3,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:N",
-        "severity": "HIGH"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Kibana"
-      ],
-      "references": [
-        "https://discuss.elastic.co/t/kibana-8-19-20-and-9-4-5-security-update-esa-2026-99/389529"
-      ],
-      "published": "2026-08-13T20:17:26.017"
-    },
-    {
-      "id": "CVE-2026-18146",
-      "description": "The Fluent Forms \u2013 Customizable Contact Forms, Survey, Quiz, & Conversational Form Builder plugin for WordPress is vulnerable to Stored Cross-Site Scripting via Notification Smartcode Values in all versions up to, and including, 6.2.11 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts that execute in the browser of an administrator (or any user with the Fluent Forms entry-viewing capability) when they ",
-      "cvss": {
-        "score": 7.2,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N",
-        "severity": "HIGH"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "WordPress"
-      ],
-      "references": [
-        "https://plugins.trac.wordpress.org/browser/fluentform/tags/6.2.8/app/Services/FormBuilder/Notifications/EmailNotification.php#L196",
-        "https://plugins.trac.wordpress.org/browser/fluentform/tags/6.2.8/app/Services/FormBuilder/ShortCodeParser.php#L142",
-        "https://plugins.trac.wordpress.org/browser/fluentform/tags/6.2.8/app/Services/FormBuilder/ShortCodeParser.php#L145",
-        "https://plugins.trac.wordpress.org/browser/fluentform/tags/6.2.8/assets/js/form_entries.js#L2",
-        "https://plugins.trac.wordpress.org/browser/fluentform/tags/6.2.8/boot/globals.php#L98"
-      ],
-      "published": "2026-08-13T07:17:06.523"
-    },
-    {
-      "id": "CVE-2026-18109",
-      "description": "The W3 Total Cache plugin for WordPress is vulnerable to Stored Cross-Site Scripting via Comment Author Name in all versions up to, and including, 2.10.3 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. This vulnerability is only exploitable when the Lazy Load Images feature of W3 Total Cache is enabled, as the unsafe re-emission oc",
-      "cvss": {
-        "score": 7.2,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N",
-        "severity": "HIGH"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "WordPress"
-      ],
-      "references": [
-        "https://plugins.trac.wordpress.org/browser/w3-total-cache/tags/2.10.2/UserExperience_LazyLoad_Mutator.php#L162",
-        "https://plugins.trac.wordpress.org/browser/w3-total-cache/tags/2.10.2/UserExperience_LazyLoad_Mutator.php#L403",
-        "https://plugins.trac.wordpress.org/browser/w3-total-cache/tags/2.10.2/UserExperience_LazyLoad_Mutator.php#L85",
-        "https://plugins.trac.wordpress.org/browser/w3-total-cache/tags/2.10.2/UserExperience_LazyLoad_Plugin.php#L116",
-        "https://plugins.trac.wordpress.org/changeset/3635675/w3-total-cache/trunk/UserExperience_LazyLoad_Mutator.php"
-      ],
-      "published": "2026-08-14T03:16:19.363"
-    },
-    {
-      "id": "CVE-2026-66426",
-      "description": "Unauthenticated Cross Site Scripting (XSS) in WP-Stats <= 2.56 versions.",
-      "cvss": {
-        "score": 7.1,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:L",
-        "severity": "HIGH"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "WordPress"
-      ],
-      "references": [
-        "https://patchstack.com/database/wordpress/plugin/wp-stats/vulnerability/wordpress-wp-stats-plugin-2-56-cross-site-scripting-xss-vulnerability?_s_id=cve"
-      ],
-      "published": "2026-08-13T14:17:04.730"
-    },
-    {
-      "id": "CVE-2026-72630",
-      "description": "Incorrect Authorization (CWE-863) in Kibana Fleet can lead to privilege escalation via Privilege Abuse (CAPEC-122). Fleet restricts some callers to managing integration policies for one specific integration. When an existing integration policy was updated, that restriction was evaluated against the integration recorded on the stored policy rather than against the replacement integration supplied with the update. An authenticated user holding only the Elastic Defend endpoint policy management pri",
-      "cvss": {
-        "score": 7.1,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:N",
-        "severity": "HIGH"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Kibana"
-      ],
-      "references": [
-        "https://discuss.elastic.co/t/kibana-8-19-20-9-4-5-9-5-1-security-update-esa-2026-127/389531"
-      ],
-      "published": "2026-08-13T20:17:23.813"
-    },
-    {
-      "id": "CVE-2026-72632",
-      "description": "Observable Discrepancy (CWE-203) in Kibana Fleet can lead to information disclosure via Excavation (CAPEC-116). Fleet removes the Elasticsearch API key value of an enrolled Elastic Agent from the responses of its agent listing capability, but that capability accepted caller-supplied filter expressions over the stored field that holds the value, and evaluated them with Kibana's own internal Elasticsearch privileges rather than the caller's. Because the number of matching agents is reported back t",
-      "cvss": {
-        "score": 7.1,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:N",
-        "severity": "HIGH"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Elasticsearch",
-        "Kibana"
-      ],
-      "references": [
-        "https://discuss.elastic.co/t/kibana-8-19-20-9-4-5-9-5-1-security-update-esa-2026-129/389532"
-      ],
-      "published": "2026-08-13T20:17:24.060"
-    },
-    {
-      "id": "CVE-2026-72643",
-      "description": "Kibana Agent Builder determines whether a caller owns a private agent by comparing a stable user identifier when one is recorded, and falling back to a comparison of the username when it is not. A username is not unique across Elasticsearch authentication realms, so two distinct principals that share a username in different realms are treated as the same owner. This discloses the configuration and instructions of an agent the caller does not own, and allows that agent to be altered or removed.",
-      "cvss": {
-        "score": 7.1,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:N",
-        "severity": "HIGH"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Elasticsearch",
-        "Kibana"
-      ],
-      "references": [
-        "https://discuss.elastic.co/t/kibana-9-4-5-9-5-1-security-update-esa-2026-124/389538"
-      ],
-      "published": "2026-08-13T20:17:24.807"
-    },
-    {
-      "id": "CVE-2026-72675",
-      "description": "Missing Authorization (CWE-862) in Kibana can lead to cross-space information disclosure and unauthorized data modification via Privilege Abuse (CAPEC-122). Kibana Machine Learning carries out its Elasticsearch operations with elevated internal permissions and relies on a per-request space filter to keep the machine learning data of one space separated from another. Part of the Machine Learning functionality did not apply that filter, so operations issued from one space were carried out against ",
-      "cvss": {
-        "score": 7.1,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:N",
-        "severity": "HIGH"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Elasticsearch",
-        "Kibana"
-      ],
-      "references": [
-        "https://discuss.elastic.co/t/kibana-8-19-20-and-9-4-5-security-update-esa-2026-92/389526"
-      ],
-      "published": "2026-08-13T20:17:28.137"
-    },
-    {
-      "id": "CVE-2026-72666",
-      "description": "Authorization Bypass Through User-Controlled Key (CWE-639) in Kibana can lead to unauthorized query execution against Elastic Agents that are assigned to a Kibana space the requesting user has no access to, via Accessing Functionality Not Properly Constrained by ACLs (CAPEC-1). A user who is authorized to run Osquery live queries in one space can have a query carried out on hosts belonging to another space, resulting in disclosure of information from those hosts to the Osquery results data strea",
-      "cvss": {
-        "score": 6.8,
-        "vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Kibana"
-      ],
-      "references": [
-        "https://discuss.elastic.co/t/kibana-9-4-5-security-update-esa-2026-97/389537"
-      ],
-      "published": "2026-08-13T20:17:27.157"
-    },
-    {
-      "id": "CVE-2026-19696",
-      "description": "Ixia IxVeriWave and Vector Informatik BLF file parser crashes in 4.6.0 to 4.6.7 allows denial of service on Windows",
-      "cvss": {
-        "score": 6.6,
-        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:H",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Informatik PDF"
-      ],
-      "references": [
-        "https://gitlab.com/wireshark/wireshark/-/work_items/21455",
-        "https://www.wireshark.org/security/wnpa-sec-2026-82.html",
-        "https://gitlab.com/wireshark/wireshark/-/work_items/21455"
-      ],
-      "published": "2026-08-13T09:17:12.983"
-    },
-    {
-      "id": "CVE-2026-14663",
-      "description": "Cleartext storage in PostgreSQL pgcrypto disabled ciphers allows a user to recover cleartext, via direct observation of the faulty ciphertext.  The OpenSSL version and OpenSSL configuration determine the disabled ciphers.  If the application accepts encrypted data as input, decryption will succeed even with the wrong key.  This in turn loses the modest protection from the Modification Detection Code (MDC).  Affected functions are pgp_sym_encrypt, pgp_sym_decrypt, pgp_pub_encrypt, pgp_pub_decrypt",
-      "cvss": {
-        "score": 6.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "PostgreSQL",
-        "OpenSSL"
-      ],
-      "references": [
-        "https://www.postgresql.org/support/security/CVE-2026-14663/"
-      ],
-      "published": "2026-08-13T13:17:43.700"
-    },
-    {
-      "id": "CVE-2026-12236",
-      "description": "The Bluetooth host GATT client function parse_read_std_char_desc() in subsys/bluetooth/host/gatt.c parses an ATT Read By Type Response received from a remote GATT server during BT_GATT_DISCOVER_STD_CHAR_DESC discovery. The per-entry stride rsp->len is taken directly from the peer's PDU, and the parse loop both tests its exit condition (length >= rsp->len) and advances (length -= rsp->len, pdu += rsp->len) using that value. The minimum value of rsp->len was never validated before the loop.\n\nA mal",
-      "cvss": {
-        "score": 6.5,
-        "vector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
         "ESET"
       ],
       "references": [
-        "https://github.com/zephyrproject-rtos/zephyr/commit/494283d469a95b294badaf45c639de433bf5e35a",
-        "https://github.com/zephyrproject-rtos/zephyr/security/advisories/GHSA-483r-jq2x-5cp9"
+        "https://github.com/getgrav/grav/security/advisories/GHSA-vq9w-jwj5-wfjg",
+        "https://www.vulncheck.com/advisories/grav-before-api-key-scope-cap-bypass-via-democontroller"
       ],
-      "published": "2026-08-13T18:17:17.017"
+      "published": "2026-08-14T12:16:45.397"
     },
     {
-      "id": "CVE-2026-73562",
-      "description": "Mongoose is a MongoDB object modeling tool designed to work in an asynchronous environment. Prior to 6.13.10, 7.8.10, 8.24.1, and 9.7.2, passing a user-controlled update such as MyModel.updateOne(filter, req.body) can exploit Mongoose update casting with a __proto__.x dotted path under $set. Schema.prototype.path and Schema.prototype._getPathType can treat inherited properties of schema.paths and schema.nested as schema types, allowing the casting process to set $fullPath and $parentSchemaDocArr",
+      "id": "CVE-2026-19884",
+      "description": "In Eclipse Theia versions up to and including 1.69.0, opening a folder starts source control integration without requiring the user to trust the folder first. This affects applications built on Theia that include the git integration, such as the Theia IDE. Both Theia's own `@theia/git` extension and the builtin VS Code `git` extension run git commands such as `git status` as soon as a repository is detected. Since git honors repository-local configuration, a folder containing an attacker-control",
       "cvss": {
-        "score": 6.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:L",
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Visual Studio Code"
+      ],
+      "references": [
+        "https://github.com/eclipse-theia/theia/pull/16809",
+        "https://github.com/eclipse-theia/theia/pull/17098",
+        "https://github.com/eclipse-theia/theia/pull/17148",
+        "https://gitlab.eclipse.org/security/cve-assignment/-/work_items/231",
+        "https://gitlab.eclipse.org/security/vulnerability-reports/-/work_items/175"
+      ],
+      "published": "2026-08-14T16:16:55.073"
+    },
+    {
+      "id": "CVE-2026-49986",
+      "description": "The Cortex MCP server (`neuro-cortex-memory`), a cross-platform persistent memory MCP, prior to version 3.17.1 treats the `CLAUDE_PROJECT_DIR` environment variable \u2014 automatically set by Claude Code to the currently open project directory \u2014 as a trusted Cortex developer checkout. When the `open_visualization` tool is invoked, `_find_dev_source()` resolves the user's active project directory as a candidate Cortex source root. The only validation performed by `_is_cortex_root()` is a check for the",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Ubiquiti/UniFi"
+      ],
+      "references": [
+        "https://github.com/cdeust/Cortex/releases/tag/v3.17.1",
+        "https://github.com/cdeust/Cortex/security/advisories/GHSA-gvpp-v77h-5w8g",
+        "https://github.com/pypa/advisory-database/tree/main/vulns/neuro-cortex-memory/PYSEC-2026-2676.yaml"
+      ],
+      "published": "2026-08-14T17:18:27.147"
+    },
+    {
+      "id": "CVE-2026-50523",
+      "description": "Improper neutralization of special elements used in a command ('command injection') in Microsoft PowerShell allows an authorized attacker to execute code locally.",
+      "cvss": {
+        "score": 7.8,
+        "vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "PowerShell"
+      ],
+      "references": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-50523"
+      ],
+      "published": "2026-08-14T21:17:18.920"
+    },
+    {
+      "id": "CVE-2026-19794",
+      "description": "The WP-Stats plugin for WordPress is vulnerable to Stored Cross-Site Scripting in all versions up to, and including, 2.56 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+      "cvss": {
+        "score": 7.2,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N",
+        "severity": "HIGH"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://patchstack.com/database/wordpress/plugin/wp-stats/vulnerability/wordpress-wp-stats-plugin-2-56-cross-site-scripting-xss-vulnerability",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/37471ecc-ee8f-4246-a126-b7b7013b5ceb?source=cve"
+      ],
+      "published": "2026-08-14T08:17:38.130"
+    },
+    {
+      "id": "CVE-2026-14433",
+      "description": "The Online Booking & Scheduling Calendar for WordPress by vcita plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'business_id' parameter in all versions up to, and including, 4.6.0 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+      "cvss": {
+        "score": 7.2,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N",
+        "severity": "HIGH"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/meeting-scheduler-by-vcita/tags/4.6.0/vcita-api-functions.php#L17",
+        "https://plugins.trac.wordpress.org/browser/meeting-scheduler-by-vcita/tags/4.6.0/vcita-api-functions.php#L83",
+        "https://plugins.trac.wordpress.org/browser/meeting-scheduler-by-vcita/tags/4.6.0/vcita-scheduler.php#L379",
+        "https://plugins.trac.wordpress.org/browser/meeting-scheduler-by-vcita/tags/4.6.0/vcita-widgets-functions.php#L22",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/3fbfb185-d901-4789-9a13-137f72234ed4?source=cve"
+      ],
+      "published": "2026-08-15T03:16:47.130"
+    },
+    {
+      "id": "CVE-2026-14290",
+      "description": "The Embed Google Photos album WordPress plugin through 2.2.1 does not escape a shortcode attribute value before outputting it inside an HTML attribute, allowing users with the Contributor role or above to inject arbitrary JavaScript that executes in the browser of any user, including administrators, who views the affected post.",
+      "cvss": {
+        "score": 6.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:R/S:U/C:H/I:H/A:H",
         "severity": "MEDIUM"
       },
       "tier": 2,
       "matchedProducts": [
-        "MongoDB"
+        "WordPress"
       ],
       "references": [
-        "https://github.com/Automattic/mongoose/commit/35a3f33bc9a0a28671f99e3c5010000425650d0f",
-        "https://github.com/Automattic/mongoose/commit/7285466b860d3b511f8d07b2ab72656703ee707a",
-        "https://github.com/Automattic/mongoose/commit/953d085bee5a16b5d6c5af33a156e6314d6d9a45",
-        "https://github.com/Automattic/mongoose/commit/fab793b747131c68927888cba41cf3e6d6593740",
-        "https://github.com/Automattic/mongoose/security/advisories/GHSA-664h-wqgq-64gw"
+        "https://wpscan.com/vulnerability/e8fae1ed-59a0-4e64-b82d-26328f460cad/"
       ],
-      "published": "2026-08-13T18:18:18.643"
+      "published": "2026-08-14T06:16:59.627"
     },
     {
-      "id": "CVE-2026-72631",
-      "description": "Improper Privilege Management (CWE-269) in Kibana Fleet can lead to privilege escalation via Privilege Escalation (CAPEC-233). An integration policy may optionally declare extra data streams that the integration writes to, which Fleet adds to the Elasticsearch API key issued to Elastic Agents enrolled in the corresponding agent policy. The resulting key allows new documents to be inserted and index mappings to be extended for specific indices. The key does not allow reading, updating, or deletin",
-      "cvss": {
-        "score": 6.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Elasticsearch",
-        "Kibana"
-      ],
-      "references": [
-        "https://discuss.elastic.co/t/kibana-9-4-5-9-5-1-security-update-esa-2026-128/389539"
-      ],
-      "published": "2026-08-13T20:17:23.937"
-    },
-    {
-      "id": "CVE-2026-72636",
-      "description": "Uncontrolled Recursion (CWE-674) in the Elasticsearch wildcard matching helper can lead to a denial of service via Excessive Allocation (CAPEC-130). The matcher used to resolve wildcard patterns against names is implemented recursively and had no bound on recursion depth or on the total number of match operations performed. A search request containing a wildcard pattern with a large number of wildcard groups, evaluated against a sufficiently long name, exhausts the thread stack. Elasticsearch tr",
-      "cvss": {
-        "score": 6.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Elasticsearch"
-      ],
-      "references": [
-        "https://discuss.elastic.co/t/elasticsearch-8-19-20-9-4-5-security-update-esa-2026-133/389499"
-      ],
-      "published": "2026-08-13T20:17:24.187"
-    },
-    {
-      "id": "CVE-2026-72638",
-      "description": "Uncontrolled Recursion (CWE-674) in Elasticsearch can lead to denial of service via Input Data Manipulation (CAPEC-153). An authenticated user holding only low-privileged index creation permissions can submit a single request containing a specially crafted, malformed custom analysis definition that is resolved recursively without a cycle or depth check, exhausting the thread stack and terminating the affected node.",
-      "cvss": {
-        "score": 6.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Elasticsearch"
-      ],
-      "references": [
-        "https://discuss.elastic.co/t/elasticsearch-8-19-20-9-4-5-security-update-esa-2026-119/389498"
-      ],
-      "published": "2026-08-13T20:17:24.310"
-    },
-    {
-      "id": "CVE-2026-72645",
-      "description": "Memory Allocation with Excessive Size Value (CWE-789) in Elasticsearch can lead to denial of service via Excessive Allocation (CAPEC-130). An authenticated user holding only read privileges on a single index can submit one small, specially crafted search request that causes an excessively large memory allocation, exhausting the JVM heap and terminating the affected node.",
-      "cvss": {
-        "score": 6.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Elasticsearch"
-      ],
-      "references": [
-        "https://discuss.elastic.co/t/elasticsearch-8-19-20-9-4-5-9-5-1-security-update-esa-2026-116/389502"
-      ],
-      "published": "2026-08-13T20:17:24.927"
-    },
-    {
-      "id": "CVE-2026-72647",
-      "description": "Uncontrolled Recursion (CWE-674) in Elasticsearch can lead to denial of service via Serialized Data with Nested Payloads (CAPEC-230). An authenticated user holding only read privileges on a single index can submit one specially crafted search request whose deeply nested structure is processed without a depth limit, exhausting the thread stack and terminating the affected node.",
-      "cvss": {
-        "score": 6.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Elasticsearch"
-      ],
-      "references": [
-        "https://discuss.elastic.co/t/elasticsearch-8-19-20-9-4-5-9-5-1-security-update-esa-2026-118/389497"
-      ],
-      "published": "2026-08-13T20:17:25.043"
-    },
-    {
-      "id": "CVE-2026-72656",
-      "description": "Memory Allocation with Excessive Size Value (CWE-789) in the ES|QL query processing of Elasticsearch can lead to denial of service via Excessive Allocation (CAPEC-130). An authenticated user able to submit ES|QL queries could send a specially crafted query whose evaluation allocates an unbounded amount of heap memory, exhausting the available heap on the receiving node and causing the node to become unavailable.",
-      "cvss": {
-        "score": 6.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Elasticsearch"
-      ],
-      "references": [
-        "https://discuss.elastic.co/t/elasticsearch-8-18-0-9-0-0-security-update-esa-2026-111/389495"
-      ],
-      "published": "2026-08-13T20:17:25.747"
-    },
-    {
-      "id": "CVE-2026-72660",
-      "description": "Uncaught Exception (CWE-248), resulting from Improper Input Validation (CWE-20), in Kibana can lead to denial of service via Input Data Manipulation (CAPEC-153). An authenticated user holding only low-privileged access can cause an internal error condition in Kibana by supplying specially crafted data. The resulting error is raised on an execution path so it propagates as an uncaught exception and terminates the Kibana process. Kibana is unavailable to all users until the service is restarted, a",
-      "cvss": {
-        "score": 6.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Kibana"
-      ],
-      "references": [
-        "https://discuss.elastic.co/t/kibana-8-19-20-9-3-8-and-9-4-5-security-update-esa-2026-101/389517"
-      ],
-      "published": "2026-08-13T20:17:26.317"
-    },
-    {
-      "id": "CVE-2026-72663",
-      "description": "Inefficient Algorithmic Complexity (CWE-407) in Kibana can lead to denial of service via Input Data Manipulation (CAPEC-153). A specially crafted, deeply nested expression submitted to a Kibana TSVB visualization is evaluated with a worst-case cost that grows disproportionately with the size of the input. Because the evaluation runs synchronously, a single request consumes the Kibana request-processing thread indefinitely, and Kibana stops responding to all further requests until the service is ",
-      "cvss": {
-        "score": 6.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Kibana"
-      ],
-      "references": [
-        "https://discuss.elastic.co/t/kibana-8-19-20-and-9-4-5-security-update-esa-2026-104/389520"
-      ],
-      "published": "2026-08-13T20:17:26.787"
-    },
-    {
-      "id": "CVE-2026-72664",
-      "description": "Missing Authorization (CWE-862) in Kibana can lead to unauthorized execution of Elastic Defend response actions on managed hosts via Accessing Functionality Not Properly Constrained by ACLs (CAPEC-1). A Kibana user who holds only detection rule authoring privileges for the Elastic Security solution can associate automated endpoint response actions with a detection rule, even though the dedicated Endpoint response action privileges that govern those capabilities (host isolation, process operation",
-      "cvss": {
-        "score": 6.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Kibana"
-      ],
-      "references": [
-        "https://discuss.elastic.co/t/kibana-8-19-20-and-9-4-5-security-update-esa-2026-95/389527"
-      ],
-      "published": "2026-08-13T20:17:26.910"
-    },
-    {
-      "id": "CVE-2026-72676",
-      "description": "Improper Control of Generation of Code ('Code Injection') (CWE-94) in Fleet Server can lead to the execution of attacker-supplied script content via Code Injection (CAPEC-242). Kibana accepted an identifier for an output configuration without restricting it to safe characters. That identifier is later placed into a server-side script that Fleet Server builds as part of routine agent policy processing, so script syntax embedded in the identifier became part of the script that was executed rather ",
+      "id": "CVE-2026-16810",
+      "description": "The Bit Form \u2013 Contact Form, Payment Forms, Multi Step Forms, Calculator & Custom Form Builder plugin for WordPress is vulnerable to generic SQL Injection via the 'data[queryCondition]' parameter in all versions up to, and including, 3.2.0 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for authenticated attackers, with administrator-level access and above, to append additional SQL queries into alrea",
       "cvss": {
         "score": 6.5,
         "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:N",
@@ -1570,67 +582,40 @@
       },
       "tier": 2,
       "matchedProducts": [
-        "Kibana"
+        "WordPress"
       ],
       "references": [
-        "https://discuss.elastic.co/t/fleet-server-8-19-20-9-4-5-9-5-1-security-update-esa-2026-93/389510"
+        "https://plugins.trac.wordpress.org/browser/bit-form/tags/3.2.0/includes/Admin/AdminAjax.php#L754",
+        "https://plugins.trac.wordpress.org/browser/bit-form/tags/3.2.0/includes/Admin/Form/AdminFormHandler.php#L2042",
+        "https://plugins.trac.wordpress.org/browser/bit-form/tags/3.2.0/includes/Core/Database/Model.php#L424",
+        "https://plugins.trac.wordpress.org/browser/bit-form/tags/3.2.0/includes/GlobalHelper.php#L53",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/402f32fa-466b-4d9e-948f-3b7dc4507105?source=cve"
       ],
-      "published": "2026-08-13T20:17:28.257"
+      "published": "2026-08-14T06:17:03.253"
     },
     {
-      "id": "CVE-2026-72678",
-      "description": "Elasticsearch does not validate a size value taken from a user-supplied input before that value is used to reserve memory for an internal data structure. An authenticated user holding only read privileges can submit a single small crafted request to a product API endpoint that causes the node to attempt an excessively large allocation. The resulting memory exhaustion raises a fatal error that terminates the Elasticsearch node process, causing a denial of service for the affected node and degradi",
+      "id": "CVE-2026-58224",
+      "description": "A flaw was found in Samba's CTDB, the clustered database service used by Samba. Insufficient integrity validation of received CTDB protocol packets allows malformed packets containing invalid field lengths, improperly terminated strings, or inconsistent packet sizes to be processed without adequate bounds checking. A remote attacker with access to the CTDB private network may trigger a denial of service through process crashes or excessive memory consumption and, in limited cases, disclose adjac",
       "cvss": {
         "score": 6.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+        "vector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
         "severity": "MEDIUM"
       },
       "tier": 2,
       "matchedProducts": [
-        "Elasticsearch"
+        "Samba"
       ],
       "references": [
-        "https://discuss.elastic.co/t/elasticsearch-8-19-20-9-4-5-9-5-1-security-update-esa-2026-80/389507"
+        "https://access.redhat.com/security/cve/CVE-2026-58224",
+        "https://bugzilla.redhat.com/show_bug.cgi?id=2502720",
+        "https://bugzilla.samba.org/show_bug.cgi?id=16085",
+        "https://www.samba.org/samba/security/CVE-2026-58224-advisory.html"
       ],
-      "published": "2026-08-13T20:17:28.497"
+      "published": "2026-08-14T15:17:09.870"
     },
     {
-      "id": "CVE-2026-72679",
-      "description": "Elasticsearch does not apply its configurable input length restriction to a user-supplied pattern accepted by an intervals query. Compiling a deeply nested pattern drives unbounded recursion that exhausts the thread stack and raises a fatal error, terminating the Elasticsearch node process and causing a denial of service for that node. An authenticated user holding only read-only privileges on a single searchable index can trigger the condition with one small search request.",
-      "cvss": {
-        "score": 6.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Elasticsearch"
-      ],
-      "references": [
-        "https://discuss.elastic.co/t/elasticsearch-8-19-20-9-4-5-security-update-esa-2026-81/389501"
-      ],
-      "published": "2026-08-13T20:17:28.617"
-    },
-    {
-      "id": "CVE-2026-72680",
-      "description": "Kibana Agent Builder A2A JSON-RPC API endpoint derives the identifier of a stored conversation from a user-supplied input, and the ownership check on that identifier does not distinguish between a conversation that does not exist and one that exists but belongs to another user. As a result, an authenticated user holding only the Agent Builder read privilege can supply an identifier already in use by another user in the same space and cause that user's conversation to be replaced and reassigned t",
-      "cvss": {
-        "score": 6.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Kibana"
-      ],
-      "references": [
-        "https://discuss.elastic.co/t/kibana-9-4-5-security-update-esa-2026-82/389535"
-      ],
-      "published": "2026-08-13T20:17:28.733"
-    },
-    {
-      "id": "CVE-2026-72681",
-      "description": "Kibana Agent Builder does not correctly verify that the requesting user holds the privileges required by a separate Kibana feature before it creates and runs a tool that invokes that feature's functionality. This allows privilege escalation and could lead to disclosure of sensitive information that the user is not authorized to read.",
+      "id": "CVE-2026-16080",
+      "description": "The Image Uploader for Welcart plugin for WordPress is vulnerable to generic SQL Injection via the 'post_title' parameter in all versions up to, and including, 1.4.6 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for authenticated attackers, with author-level access and above, to append additional SQL queries into already existing queries that can be used to extract sensitive information from the da",
       "cvss": {
         "score": 6.5,
         "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
@@ -1638,87 +623,40 @@
       },
       "tier": 2,
       "matchedProducts": [
-        "Kibana"
+        "WordPress"
       ],
       "references": [
-        "https://discuss.elastic.co/t/kibana-9-4-4-security-update-esa-2026-83/389534"
+        "https://plugins.trac.wordpress.org/browser/image-uploader-for-welcart/tags/1.4.6/image-uploader-for-welcart.php#L26",
+        "https://plugins.trac.wordpress.org/browser/image-uploader-for-welcart/tags/1.4.6/image-uploader-for-welcart.php#L291",
+        "https://plugins.trac.wordpress.org/browser/image-uploader-for-welcart/tags/1.4.6/image-uploader-for-welcart.php#L299",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/462da6ba-c558-4ce8-b26c-df69d086d592?source=cve"
       ],
-      "published": "2026-08-13T20:17:28.853"
+      "published": "2026-08-15T03:16:48.207"
     },
     {
-      "id": "CVE-2026-72683",
-      "description": "A flaw in Elasticsearch allows an authenticated user with the privileges required to invoke the simulate pipeline API endpoint (https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-simulate) to submit a request that causes a self-referential data structure to be created. When a specific internal component later processes that structure, the operation recurses without bound and raises a fatal error that is not handled by the surrounding execution path, terminating the affe",
+      "id": "CVE-2026-74244",
+      "description": "A flaw was found in Red Hat Quay's Stripe billing webhook handler. This vulnerability allows an unauthenticated attacker to forge billing events by sending crafted JSON requests to the `/webhooks/stripe` endpoint without validating the Stripe-Signature header. Successful exploitation can lead to the unauthorized resetting of a namespace's build quota to its maximum and trigger unsolicited billing emails to namespace administrators.",
       "cvss": {
-        "score": 6.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+        "score": 5.9,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:N",
         "severity": "MEDIUM"
       },
       "tier": 2,
       "matchedProducts": [
-        "Elasticsearch"
+        "ESET"
       ],
       "references": [
-        "https://discuss.elastic.co/t/elasticsearch-8-19-19-9-3-8-9-4-4-security-update-esa-2026-75/389496"
+        "https://access.redhat.com/security/cve/CVE-2026-74244",
+        "https://bugzilla.redhat.com/show_bug.cgi?id=2516143"
       ],
-      "published": "2026-08-13T20:17:28.973"
+      "published": "2026-08-14T23:16:34.490"
     },
     {
-      "id": "CVE-2026-72684",
-      "description": "A flaw in Elasticsearch allows an authenticated user holding only read privileges to submit a small search request containing a crafted user-supplied input. Processing that input causes a specific internal component to allocate memory without any upper bound, and the allocation occurs outside the scope of the existing memory accounting controls that were intended to constrain it. The resulting out-of-memory condition is fatal and terminates the affected node process, causing a denial of service.",
+      "id": "CVE-2026-12365",
+      "description": "A use-after-free exists in the Zephyr second-generation work queue (kernel/work.c) in the handling of delayable work timeouts. When a delayable work item's timeout has been dequeued and its handler work_timeout() is in flight (blocked acquiring the work-queue spinlock), a concurrent cancellation does not wait for that handler to finish. In unschedule_locked() the pre-fix code called z_abort_timeout(), which for an already-announcing record returns -EINVAL without removing it; cancel_async_locked",
       "cvss": {
-        "score": 6.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Elasticsearch"
-      ],
-      "references": [
-        "https://discuss.elastic.co/t/elasticsearch-8-19-20-9-4-5-security-update-esa-2026-76/389508"
-      ],
-      "published": "2026-08-13T20:17:29.100"
-    },
-    {
-      "id": "CVE-2026-72686",
-      "description": "A flaw in Elasticsearch allows a low-privileged authenticated user to submit a single request containing a crafted user-supplied input. A specific internal component validates the input using a recursive routine and applies no bound to the length of the value being validated, so the validation causes the thread to exhaust its stack. The resulting fatal error is not handled by the surrounding execution paths and terminates the affected node process, producing a denial of service.",
-      "cvss": {
-        "score": 6.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Elasticsearch"
-      ],
-      "references": [
-        "https://discuss.elastic.co/t/elasticsearch-8-19-20-9-4-5-9-5-1-security-update-esa-2026-78/389505"
-      ],
-      "published": "2026-08-13T20:17:29.343"
-    },
-    {
-      "id": "CVE-2026-72687",
-      "description": "A flaw in Elasticsearch allows a low-privileged authenticated user to submit a single small request containing a forged opaque identifier. Elasticsearch decodes and deserializes the identifier before confirming that it was legitimately issued by the cluster, and a size value carried inside the identifier drives an allocation that is neither capped nor accounted for by the available memory-usage controls. The resulting out-of-memory condition is fatal and terminates the affected node process, res",
-      "cvss": {
-        "score": 6.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Elasticsearch"
-      ],
-      "references": [
-        "https://discuss.elastic.co/t/elasticsearch-8-19-20-9-4-5-9-5-1-security-update-esa-2026-79/389506"
-      ],
-      "published": "2026-08-13T20:17:29.460"
-    },
-    {
-      "id": "CVE-2026-3639",
-      "description": "The PPWP \u2013 Password Protect Pages plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the plugin's `ppwp` shortcode attributes in all versions up to, and including, 1.9.21 due to insufficient input sanitization and output escaping on user supplied attributes. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
-      "cvss": {
-        "score": 6.4,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
+        "score": 5.8,
+        "vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:L/I:L/A:H",
         "severity": "MEDIUM"
       },
       "tier": 2,
@@ -1726,391 +664,92 @@
         "WordPress"
       ],
       "references": [
-        "https://plugins.trac.wordpress.org/browser/password-protect-page/tags/1.9.15/includes/services/class-ppw-shortcode.php#L582",
-        "https://plugins.trac.wordpress.org/browser/password-protect-page/tags/1.9.15/includes/views/shortcode/view-ppw-restriced-content-form.php#L18",
-        "https://plugins.trac.wordpress.org/browser/password-protect-page/trunk/includes/services/class-ppw-shortcode.php#L582",
-        "https://plugins.trac.wordpress.org/browser/password-protect-page/trunk/includes/views/shortcode/view-ppw-restriced-content-form.php#L18",
-        "https://plugins.trac.wordpress.org/changeset?old_path=%2Fpassword-protect-page/tags/1.9.19&new_path=%2Fpassword-protect-page/tags/1.9.20"
+        "https://github.com/zephyrproject-rtos/zephyr/commit/59cf34bf212eeb5c7ea88b97e15842b1e7c1a6b7",
+        "https://github.com/zephyrproject-rtos/zephyr/security/advisories/GHSA-rhmh-r93p-6g99"
       ],
-      "published": "2026-08-13T08:16:46.093"
+      "published": "2026-08-14T18:17:21.933"
     },
     {
-      "id": "CVE-2026-73651",
-      "description": "TypeORM is a TypeScript and JavaScript ORM for Node.js that supports PostgreSQL, MySQL, MariaDB, SQLite, SQL Server, Oracle, and other databases. Prior to versions 0.3.31 and 1.1.0, typeorm migration:generate embeds database schema metadata into JavaScript or TypeScript template literals in src/commands/MigrationGenerateCommand.ts, escaping backticks but not ${...} interpolation. An attacker with database schema write access can place a payload in column COMMENT or DEFAULT metadata, or another i",
-      "cvss": {
-        "score": 5.7,
-        "vector": "CVSS:3.1/AV:N/AC:H/PR:H/UI:R/S:U/C:H/I:H/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "PostgreSQL",
-        "MySQL",
-        "MSSQL",
-        "Node.js"
-      ],
-      "references": [
-        "https://github.com/typeorm/typeorm/commit/41d1c62fe49f99c3ca916d4d986f61ee9f45d519",
-        "https://github.com/typeorm/typeorm/commit/b175f9b8be422edd2a2ac035ba90c3f2ce782dfe",
-        "https://github.com/typeorm/typeorm/releases/tag/0.3.31",
-        "https://github.com/typeorm/typeorm/releases/tag/1.1.0",
-        "https://github.com/typeorm/typeorm/security/advisories/GHSA-2rp8-mm9q-fp49"
-      ],
-      "published": "2026-08-13T19:17:38.617"
-    },
-    {
-      "id": "CVE-2026-67990",
-      "description": "basecamp/upright at commit efe4f2e5254ac6e57e45d2261804cca74dbbca3f disables Rails CSRF protection for its Alertmanager and Prometheus proxy controllers. An unauthenticated attacker can induce a logged-in user's browser to submit requests that are forwarded to enabled upstream write or management endpoints, such as creating an Alertmanager silence or requesting a Prometheus reload. The final impact depends on the APIs enabled by the upstream services.",
-      "cvss": {
-        "score": 5.4,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Prometheus"
-      ],
-      "references": [
-        "https://gist.github.com/Zykis1024/cec690012eecac53f408e78d2b569f06",
-        "https://github.com/basecamp/upright",
-        "https://github.com/basecamp/upright/blob/efe4f2e5254ac6e57e45d2261804cca74dbbca3f/app/controllers/upright/alertmanager_proxy_controller.rb#L2",
-        "https://github.com/basecamp/upright/blob/efe4f2e5254ac6e57e45d2261804cca74dbbca3f/app/controllers/upright/prometheus_proxy_controller.rb#L2"
-      ],
-      "published": "2026-08-13T14:17:11.580"
-    },
-    {
-      "id": "CVE-2026-72673",
-      "description": "Incorrect Authorization (CWE-863) in Kibana can lead to unauthorized deletion of Synthetics private locations via Accessing Functionality Not Properly Constrained by ACLs (CAPEC-1). Synthetics private locations can be shared with more than one space, and deleting one removes it from every space it is shared with. The safeguard that prevented the deletion of a private location still in use evaluated only the monitors visible in the requesting user's own space, so monitors that depend on the priva",
-      "cvss": {
-        "score": 5.4,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:L",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Kibana"
-      ],
-      "references": [
-        "https://discuss.elastic.co/t/kibana-8-19-20-and-9-4-4-security-update-esa-2026-90/389518"
-      ],
-      "published": "2026-08-13T20:17:27.893"
-    },
-    {
-      "id": "CVE-2026-3835",
-      "description": "The Prevent Direct Access \u2013 Protect WordPress Files plugin for WordPress is vulnerable to unauthorized access of protected files due to insufficient token validation in the `get_advance_file_by_url()` method in all versions up to, and including, 2.8.8.8 The method uses a SQL `LIKE` operator for token lookup without escaping wildcard characters via `$wpdb->esc_like()`. This makes it possible for unauthenticated attackers to bypass the private token requirement by supplying SQL wildcard characters",
+      "id": "CVE-2026-74242",
+      "description": "A flaw was found in Red Hat Quay. An administrator of any repository, by knowing or guessing a target notification's Universally Unique Identifier (UUID), can read the notification configuration, including sensitive details like webhook URLs, Slack tokens, and email addresses. This vulnerability also allows them to trigger test notifications for another repository. This could lead to unauthorized information disclosure and potential misuse of notification services.",
       "cvss": {
         "score": 5.3,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:N/A:N",
         "severity": "MEDIUM"
       },
       "tier": 2,
       "matchedProducts": [
-        "WordPress"
+        "Slack"
       ],
       "references": [
-        "https://plugins.trac.wordpress.org/browser/prevent-direct-access/tags/2.8.8.4/includes/repository.php#L221",
-        "https://plugins.trac.wordpress.org/browser/prevent-direct-access/trunk/download.php#L377",
-        "https://plugins.trac.wordpress.org/browser/prevent-direct-access/trunk/includes/repository.php#L221",
-        "https://plugins.trac.wordpress.org/changeset/3637499/prevent-direct-access/trunk/includes/repository.php",
-        "https://plugins.trac.wordpress.org/changeset?old_path=%2Fprevent-direct-access/tags/2.8.8.8&new_path=%2Fprevent-direct-access/tags/2.8.8.9"
+        "https://access.redhat.com/security/cve/CVE-2026-74242",
+        "https://bugzilla.redhat.com/show_bug.cgi?id=2516140"
       ],
-      "published": "2026-08-13T06:17:38.353"
+      "published": "2026-08-14T23:16:34.227"
     },
     {
-      "id": "CVE-2026-14672",
-      "description": "Observable response discrepancy in PostgreSQL SCRAM authentication allows an unauthenticated user to test the existence of a user via observing the SCRAM iteration count.  This requires the probed user to have a non-default scram_iterations count, because the authentication challenge for a nonexistent user reports the default scram_iterations.  Within major versions 16-18, minor versions before PostgreSQL 18.5, 17.11, and 16.15 are affected.  Versions before PostgreSQL 16 are unaffected.",
+      "id": "CVE-2026-8840",
+      "description": "The Booking calendar, Appointment Booking System plugin for WordPress is vulnerable to authorization bypass in all versions up to, and including, 3.2.36. This is due to the plugin not properly verifying that a user is authorized to perform an action. This makes it possible for unauthenticated attackers to mark arbitrary reservations as paid or completed, cancel legitimate payments, auto-approve reservations, and trigger transactional booking emails by writing attacker-supplied payment status and",
       "cvss": {
         "score": 5.3,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N",
         "severity": "MEDIUM"
       },
       "tier": 2,
       "matchedProducts": [
-        "PostgreSQL"
+        "WordPress"
       ],
       "references": [
-        "https://www.postgresql.org/support/security/CVE-2026-14672/"
+        "https://plugins.trac.wordpress.org/browser/booking-calendar/tags/3.2.35/admin/controllers/Payment.php#L16",
+        "https://plugins.trac.wordpress.org/browser/booking-calendar/tags/3.2.35/admin/controllers/Payment.php#L26",
+        "https://plugins.trac.wordpress.org/browser/booking-calendar/tags/3.2.35/booking_calendar.php#L131",
+        "https://plugins.trac.wordpress.org/browser/booking-calendar/tags/3.2.35/booking_calendar.php#L578",
+        "https://plugins.trac.wordpress.org/browser/booking-calendar/tags/3.2.36/admin/controllers/Payment.php#L16"
       ],
-      "published": "2026-08-13T13:17:44.653"
+      "published": "2026-08-15T03:16:48.357"
     },
     {
-      "id": "CVE-2026-73565",
-      "description": "@hono/node-server allows running the Hono application on Node.js. From 2.0.0 until 2.0.10, a WebSocket upgrade request to an upgradeWebSocket route with a missing or malformed Sec-WebSocket-Key header causes src/websocket.ts to retain the request's IncomingMessage in waiterMap and leave waitForWebSocket pending because ws.handleUpgrade emits no connection event. The aborted handshake therefore has no cleanup path, allowing an unauthenticated attacker to flood a public route, cause unbounded memo",
+      "id": "CVE-2026-12743",
+      "description": "The affiliate-toolkit \u2013 Multi-Network Affiliate & Amazon Product Display plugin for WordPress is vulnerable to time-based SQL Injection via the 'orderby' parameter in all versions up to, and including, 3.8.8 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for authenticated attackers, with administrator-level access and above, to append additional SQL queries into already existing queries that can be ",
       "cvss": {
-        "score": 5.3,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+        "score": 4.9,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:N/A:N",
         "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Node.js"
-      ],
-      "references": [
-        "https://github.com/honojs/node-server/commit/3a21938c418340e980cb7ffa88e78369f78392d1",
-        "https://github.com/honojs/node-server/releases/tag/v2.0.10",
-        "https://github.com/honojs/node-server/security/advisories/GHSA-9mqv-5hh9-4cgg"
-      ],
-      "published": "2026-08-13T18:18:19.103"
-    },
-    {
-      "id": "CVE-2026-14678",
-      "description": "Buffer over-read in PostgreSQL pg_trgm index picksplit function reads past end of a heap buffer.  This might allow a table maintainer to infer limited memory values, via the lossy signal of index split choices.  Versions before PostgreSQL 18.5, 17.11, 16.15, 15.19, and 14.24 are affected.",
-      "cvss": {
-        "score": 4.3,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "PostgreSQL"
-      ],
-      "references": [
-        "https://www.postgresql.org/support/security/CVE-2026-14678/"
-      ],
-      "published": "2026-08-13T13:17:45.150"
-    },
-    {
-      "id": "CVE-2026-18024",
-      "description": "Buffer over-read in PostgreSQL ascii() SQL function allows a user to disclose up to 3 bytes after the end of a specific allocation, via a crafted text value.  This is the same class of defect that CVE-2026-2006 fixed, though this instance has less impact.  Versions before PostgreSQL 18.5, 17.11, 16.15, 15.19, and 14.24 are affected.",
-      "cvss": {
-        "score": 4.3,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "PostgreSQL"
-      ],
-      "references": [
-        "https://www.postgresql.org/support/security/CVE-2026-18024/"
-      ],
-      "published": "2026-08-13T13:17:47.880"
-    },
-    {
-      "id": "CVE-2026-6470",
-      "description": "Missing authorization in PostgreSQL DDL commands allows an object creator to achieve denial of service against ALTER and DROP of the type, via creating a dependency on the type.  Many DDL operations did check the privilege, but assigning a range subtype and referencing the type from an SQL expression did not.  Versions before PostgreSQL 18.5, 17.11, 16.15, 15.19, and 14.24 are affected.",
-      "cvss": {
-        "score": 4.3,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:L",
-        "severity": "MEDIUM"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "PostgreSQL"
-      ],
-      "references": [
-        "https://www.postgresql.org/support/security/CVE-2026-6470/"
-      ],
-      "published": "2026-08-13T13:19:16.600"
-    },
-    {
-      "id": "CVE-2026-49096",
-      "description": "Uncaught Exception (CWE-248) in Kibana Cases can lead to denial of service via Input Data Manipulation (CAPEC-153). Malformed link syntax stored in a case comment was not rejected or sanitized when the comment was later formatted for display, and the resulting unhandled error prevented the affected case from being displayed. An authenticated user holding privileges to comment on a case could store such a comment, after which that case became inaccessible to every user who opened it until the sto",
-      "cvss": {
-        "score": 4.3,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:L",
-        "severity": "MEDIUM"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "Kibana"
-      ],
-      "references": [
-        "https://discuss.elastic.co/t/kibana-8-19-20-9-3-5-9-4-2-security-update-esa-2026-136/389492"
-      ],
-      "published": "2026-08-13T20:17:22.600"
-    },
-    {
-      "id": "CVE-2026-72650",
-      "description": "Authorization Bypass Through User-Controlled Key (CWE-639) in Kibana can lead to information disclosure via Accessing Functionality Not Properly Constrained by ACLs (CAPEC-1). An authenticated user who is authorized to read alerting rules in a single Kibana space could retrieve alerting rule execution telemetry that belongs to spaces the user is not authorized to access. The disclosed telemetry includes rule identifiers, rule names, space identifiers, execution outcomes, timestamps, and executio",
-      "cvss": {
-        "score": 4.3,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "Kibana"
-      ],
-      "references": [
-        "https://discuss.elastic.co/t/kibana-8-19-20-and-9-4-5-security-update-esa-2026-105/389521"
-      ],
-      "published": "2026-08-13T20:17:25.280"
-    },
-    {
-      "id": "CVE-2026-72671",
-      "description": "A Kibana Machine Learning capability that removes a saved object from the current space accepts machine learning trained models as a target, but it verifies only the privileges that apply to anomaly detection jobs and data frame analytics jobs. A user whose role grants create anomaly detection jobs and data frame analytics jobs without the trained model privilege can therefore remove a trained model from a space. The model itself is not deleted and remains available in its other spaces, and the ",
-      "cvss": {
-        "score": 4.3,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "Kibana"
-      ],
-      "references": [
-        "https://discuss.elastic.co/t/kibana-8-19-20-and-9-4-5-security-update-esa-2026-88/389525"
-      ],
-      "published": "2026-08-13T20:17:27.653"
-    },
-    {
-      "id": "CVE-2026-72685",
-      "description": "A flaw in Elasticsearch allows a low-privileged authenticated user who can index documents to submit a single small document containing a crafted user-supplied input. Processing one such document occupies a worker thread from a bounded pool for a disproportionate amount of time, degrading the availability of indexing operations on the affected node.",
-      "cvss": {
-        "score": 4.3,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:L",
-        "severity": "MEDIUM"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "Elasticsearch"
-      ],
-      "references": [
-        "https://discuss.elastic.co/t/elasticsearch-8-19-20-9-4-5-security-update-esa-2026-77/389500"
-      ],
-      "published": "2026-08-13T20:17:29.217"
-    },
-    {
-      "id": "CVE-2026-14666",
-      "description": "Incomplete tracking in PostgreSQL of changes to role membership, role attributes, and database ownership allows a query to continue using cached row-level security policies after those changes require a different policy, via plan reuse.  Stale policies continue until some other event invalidates the cache or connection termination ends the session.  This permits a user to complete reads and modifications that were recently permitted but now forbidden.  An attacker must tailor an attack to a part",
-      "cvss": {
-        "score": 4.2,
-        "vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:L/I:L/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "PostgreSQL"
-      ],
-      "references": [
-        "https://www.postgresql.org/support/security/CVE-2026-14666/"
-      ],
-      "published": "2026-08-13T13:17:43.993"
-    },
-    {
-      "id": "CVE-2026-14673",
-      "description": "Untrusted search path in PostgreSQL amcheck allows a grantee of amcheck function EXECUTE privilege to execute arbitrary functions as the owners of expression indexes that depend on the search path, via setting a hostile search path before calling the amcheck function.  Within major versions 18, 16, 15, and 14, minor versions before PostgreSQL 18.5, 16.15, 15.19, and 14.24 are affected.  PostgreSQL 17 is unaffected.",
-      "cvss": {
-        "score": 3.8,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:L/I:L/A:N",
-        "severity": "LOW"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "PostgreSQL"
-      ],
-      "references": [
-        "https://www.postgresql.org/support/security/CVE-2026-14673/"
-      ],
-      "published": "2026-08-13T13:17:44.783"
-    },
-    {
-      "id": "CVE-2026-16241",
-      "description": "Integer underflow in PostgreSQL ECPG allows a database server administrator to achieve temporary denial of service against the ECPG client via sending a bytea value lacking the mandatory prefix.  The client overwrites a huge memory region with bytes outside attacker knowledge or control.  This typically yields a simple SIGSEGV, but rare cases might achieve client-specific integrity impact via the write.  Versions before PostgreSQL 18.5, 17.11, 16.15, 15.19, and 14.24 are affected.",
-      "cvss": {
-        "score": 3.8,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:L/A:L",
-        "severity": "LOW"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "PostgreSQL"
-      ],
-      "references": [
-        "https://www.postgresql.org/support/security/CVE-2026-16241/"
-      ],
-      "published": "2026-08-13T13:17:46.670"
-    },
-    {
-      "id": "CVE-2026-6469",
-      "description": "Incorrect ownership assignment in PostgreSQL ALTER TABLE ALTER TYPE command reassigns ownership of dependent statistics objects to the current user.  This wrongly allows the table owner to run DROP STATISTICS and ALTER STATISTICS via this improper ownership.  It wrongly denies those commands to the prior statistics object owner.  DROP TABLE remains able to remove statistics objects, so this exploit achieves nothing in many ownership arrangements.  Versions before PostgreSQL 18.5, 17.11, 16.15, 1",
-      "cvss": {
-        "score": 3.8,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:L/A:L",
-        "severity": "LOW"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "PostgreSQL"
-      ],
-      "references": [
-        "https://www.postgresql.org/support/security/CVE-2026-6469/"
-      ],
-      "published": "2026-08-13T13:19:16.470"
-    },
-    {
-      "id": "CVE-2026-14213",
-      "description": "The Booking for Appointments and Events Calendar  WordPress plugin before 2.4.6 does not verify that an authenticated employee (provider) is assigned to the appointment being accessed, allowing any employee to read any appointment by its identifier and disclose the booked customer's personal data.",
-      "cvss": {
-        "score": 3.7,
-        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:N",
-        "severity": "LOW"
       },
       "tier": 3,
       "matchedProducts": [
         "WordPress"
       ],
       "references": [
-        "https://wpscan.com/vulnerability/30015f96-2771-493e-96d7-9067996e1531/"
+        "https://plugins.trac.wordpress.org/browser/affiliate-toolkit-starter/tags/3.8.8/includes/models/atkp_template.php#L147",
+        "https://plugins.trac.wordpress.org/browser/affiliate-toolkit-starter/tags/3.8.8/includes/pages/atkp_template_table.php#L279",
+        "https://plugins.trac.wordpress.org/changeset?reponame=&old=3634918%40affiliate-toolkit-starter&new=3634918%40affiliate-toolkit-starter",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/dfd969b8-b88e-4d75-9d69-5f290b111fc7?source=cve"
       ],
-      "published": "2026-08-13T06:17:38.010"
+      "published": "2026-08-14T06:16:40.573"
     },
     {
-      "id": "CVE-2026-13328",
-      "description": "The Food Menu  WordPress plugin before 6.0.2 does not perform any capability or ownership check on its reservation-status update action, which is also exposed to unauthenticated users and gated only by a nonce that is publicly available to visitors, allowing unauthenticated attackers to change the status of arbitrary reservations.",
+      "id": "CVE-2025-10308",
+      "description": "The Astro Booking Engine plugin for WordPress is vulnerable to Cross-Site Request Forgery in all versions up to, and including, 1.4.0. This is due to missing nonce validation on the options deletion functionality. This makes it possible for unauthenticated attackers to delete all plugin settings via a forged request granted they can trick a site administrator into performing an action such as clicking on a link.",
       "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
+        "score": 4.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N",
+        "severity": "MEDIUM"
       },
       "tier": 3,
       "matchedProducts": [
         "WordPress"
       ],
       "references": [
-        "https://wpscan.com/vulnerability/af15ecd8-a656-45ab-a1d4-85704d6d8051/"
+        "https://plugins.trac.wordpress.org/browser/astro-booking-engine/tags/1.3.0/includes/tabs/tab-support.php#L6",
+        "https://plugins.trac.wordpress.org/changeset/3638105/astro-booking-engine",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/4b0b13b4-b604-4514-845e-05a3b8858c66?source=cve"
       ],
-      "published": "2026-08-13T06:17:37.663"
+      "published": "2026-08-14T05:16:56.113"
     },
     {
-      "id": "CVE-2026-13610",
-      "description": "The KiviCare  WordPress plugin before 4.5.2 does not restrict the roles assignable through its unauthenticated registration endpoint, allowing unauthenticated attackers to create an active, privileged clinic-staff (doctor) account with full access to patient records, billing and clinic data.",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "WordPress"
-      ],
-      "references": [
-        "https://wpscan.com/vulnerability/24951a75-46e7-44f9-947b-070ca2f2b244/"
-      ],
-      "published": "2026-08-13T06:17:37.780"
-    },
-    {
-      "id": "CVE-2026-73483",
-      "description": "Flowise (packages flowise and flowise-components) in versions <= 3.1.2 contain a sandbox escape in the vm2/@flowiseai/nodevm JavaScript sandbox. An authenticated user with access to the /api/v1/node-custom-function endpoint can escape the sandbox by supplying attacker-controlled executablePath and args parameters to puppeteer.launch(), which internally invokes child_process.spawn() outside the sandbox boundary. This allows execution of arbitrary OS commands as the Flowise process user (root in t",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "Google Chrome"
-      ],
-      "references": [
-        "https://github.com/FlowiseAI/Flowise/security/advisories/GHSA-9gvv-qjj3-2p6g",
-        "https://www.vulncheck.com/advisories/flowise-before-sandbox-escape-via-puppeteer"
-      ],
-      "published": "2026-08-13T12:17:23.540"
-    },
-    {
-      "id": "CVE-2026-73569",
-      "description": "fast-xml-parser allows users to process XML from JS object without C/C++ based libraries or callbacks. From 5.9.3 until 5.10.1, src/xmlparser/OrderedObjParser.js processes multiple DOCTYPE declarations within a single XML document and passes each declaration's entities through addInputEntities(). addInputEntities() resets maxTotalExpansions and maxExpandedLength every time it is called, allowing additional DOCTYPE declarations to repeatedly reset the configured entity-expansion limits during one",
+      "id": "CVE-2026-57469",
+      "description": "Nozomi Networks Labs identified a CWE-352: Cross-Site Request Forgery (CSRF) vulnerability in the web-based configuration backend of KUNBUS PiCtory in version 2.16.0 that allows a remote unauthenticated attacker to perform state-changing operations in the context of an authenticated operator, including deletion of project and configuration files and reset of the control runtime, by inducing the victim's browser to submit crafted requests.",
       "cvss": {
         "score": null,
         "vector": null,
@@ -2121,31 +760,9 @@
         "ESET"
       ],
       "references": [
-        "https://github.com/NaturalIntelligence/fast-xml-parser/commit/4e546e03987662de5495d050b5fba26bea65383f",
-        "https://github.com/NaturalIntelligence/fast-xml-parser/releases/tag/v5.10.1",
-        "https://github.com/NaturalIntelligence/fast-xml-parser/security/advisories/GHSA-8r6m-32jq-jx6q"
+        "https://www.nozominetworks.com/labs/vulnerability-advisories-cve-2026-57469"
       ],
-      "published": "2026-08-13T18:18:19.803"
-    },
-    {
-      "id": "CVE-2026-56859",
-      "description": "Previously, DecodeElement would reset the depth counter causing it to never fire; this could lead to stack exhaustion.",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://go.dev/cl/803320",
-        "https://go.dev/issue/80481",
-        "https://groups.google.com/g/golang-announce/c/94pEornpRlI",
-        "https://pkg.go.dev/vuln/GO-2026-6088"
-      ],
-      "published": "2026-08-13T22:17:22.320"
+      "published": "2026-08-14T16:16:58.043"
     }
   ]
 }
