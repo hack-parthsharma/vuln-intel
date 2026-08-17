@@ -1,17 +1,17 @@
 {
-  "scanTime": "2026-08-16 04:06:25 UTC",
-  "totalMatched": 78,
+  "scanTime": "2026-08-17 04:09:36 UTC",
+  "totalMatched": 62,
   "productsMonitored": 147,
   "tierCounts": {
     "0": 6,
-    "1": 15,
-    "2": 9,
-    "3": 48
+    "1": 13,
+    "2": 22,
+    "3": 21
   },
   "vulnerabilities": [
     {
-      "id": "CVE-2026-15826",
-      "description": "The User Profile Builder plugin for WordPress is vulnerable to Authentication Bypass via Type Confusion in versions up to, and including, 3.16.4. This is due to the wppb_log_in_user() function calling absint() on the return value of wp_insert_user() before performing an is_wp_error() check \u2014 when a registration is submitted with a 61\u201370 character username, WordPress core rejects it with a WP_Error object, but absint() coerces that object to the integer 1 before the error check can short-circuit ",
+      "id": "CVE-2026-16098",
+      "description": "The ProSolution WP Client plugin for WordPress is vulnerable to Arbitrary File Upload in all versions up to, and including, 2.0.10 via the proSol_handleFileUpload function. This is due to missing validation of the attacker-controlled Content-Disposition header filename, which overrides the allow-listed multipart filename before the file is saved, and a post-save extension check that fails to delete the already-written file. This makes it possible for unauthenticated attackers to upload files tha",
       "cvss": {
         "score": 9.8,
         "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
@@ -22,36 +22,17 @@
         "WordPress"
       ],
       "references": [
-        "https://plugins.trac.wordpress.org/browser/profile-builder/tags/3.16.4/features/functions.php#L1481",
-        "https://plugins.trac.wordpress.org/browser/profile-builder/tags/3.16.4/front-end/class-formbuilder.php#L262",
-        "https://plugins.trac.wordpress.org/browser/profile-builder/tags/3.16.4/front-end/class-formbuilder.php#L364",
-        "https://plugins.trac.wordpress.org/browser/profile-builder/tags/3.16.4/front-end/class-formbuilder.php#L742",
-        "https://plugins.trac.wordpress.org/browser/profile-builder/tags/3.16.4/front-end/class-formbuilder.php#L945"
+        "https://plugins.trac.wordpress.org/browser/prosolution-wp-client/tags/2.0.6/includes/UploadHandler.php#L1090",
+        "https://plugins.trac.wordpress.org/browser/prosolution-wp-client/tags/2.0.6/includes/UploadHandler.php#L1327",
+        "https://plugins.trac.wordpress.org/browser/prosolution-wp-client/tags/2.0.6/includes/class-prosolwpclient.php#L254",
+        "https://plugins.trac.wordpress.org/browser/prosolution-wp-client/tags/2.0.6/public/class-prosolwpclient-public.php#L1033",
+        "https://plugins.trac.wordpress.org/changeset?reponame=&old=3644463%40prosolution-wp-client&new=3644463%40prosolution-wp-client"
       ],
-      "published": "2026-08-15T07:16:19.280"
+      "published": "2026-08-16T05:16:47.667"
     },
     {
-      "id": "CVE-2026-16142",
-      "description": "The TrueBooker plugin for WordPress is vulnerable to Account Takeover in all versions up to, and including, 1.2.6. This is due to the add_front_user_update() AJAX handler being registered for unauthenticated users and accepting an arbitrary truebooker_wp_user_id value, which is passed directly to wp_update_user() without verifying authentication or ownership. This makes it possible for unauthenticated attackers to change any WordPress user account email address, including an administrator, by su",
-      "cvss": {
-        "score": 9.8,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-        "severity": "CRITICAL"
-      },
-      "tier": 0,
-      "matchedProducts": [
-        "ESET",
-        "WordPress"
-      ],
-      "references": [
-        "https://plugins.trac.wordpress.org/changeset/3640018/truebooker-appointment-booking",
-        "https://www.wordfence.com/threat-intel/vulnerabilities/id/f0d3f7cb-4974-4b0f-9658-1895e5966276?source=cve"
-      ],
-      "published": "2026-08-15T09:16:29.560"
-    },
-    {
-      "id": "CVE-2026-19598",
-      "description": "The Pods \u2013 Custom Content Types and Fields plugin for WordPress is vulnerable to Privilege Escalation via Authorization Bypass in all versions up to, and including, 3.3.9. The vulnerability exists because the pods_admin AJAX router funnels every access check \u2014 including the method allowlist, nonce verification, login enforcement, and capability gate \u2014 through pods_error(), which under the JSON meta-box-loader compatibility path only writes failures to the PHP error log and returns false instead ",
+      "id": "CVE-2026-18432",
+      "description": "The Frontend Admin by DynamiApps plugin for WordPress is vulnerable to Privilege Escalation in all versions up to, and including, 3.29.9. The vulnerability exists because `ActionUser::conditions_logic()` gates the `current_user_can('edit_user', $user_id)` authorization check behind an `is_numeric()` test, causing the check to be skipped entirely when `$user_id` is a non-numeric string \u2014 a condition that can be induced by passing a crafted value such as `1one` through the unvalidated `item_id` pa",
       "cvss": {
         "score": 9.8,
         "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
@@ -62,14 +43,17 @@
         "WordPress"
       ],
       "references": [
-        "https://plugins.trac.wordpress.org/browser/pods/tags/3.3.9/includes/general.php#L400",
-        "https://www.wordfence.com/threat-intel/vulnerabilities/id/3628032a-3121-45a7-8a78-cfcd8ba6af2f?source=cve"
+        "https://plugins.trac.wordpress.org/browser/acf-frontend-form-element/tags/3.29.3/main/frontend/forms/actions/user.php#L565",
+        "https://plugins.trac.wordpress.org/browser/acf-frontend-form-element/tags/3.29.3/main/frontend/forms/actions/user.php#L680",
+        "https://plugins.trac.wordpress.org/browser/acf-frontend-form-element/tags/3.29.3/main/frontend/forms/classes/display.php#L1654",
+        "https://plugins.trac.wordpress.org/browser/acf-frontend-form-element/tags/3.29.3/main/frontend/forms/classes/display.php#L1953",
+        "https://plugins.trac.wordpress.org/browser/acf-frontend-form-element/tags/3.29.3/main/frontend/forms/classes/display.php#L37"
       ],
-      "published": "2026-08-15T18:16:23.860"
+      "published": "2026-08-16T05:16:48.307"
     },
     {
-      "id": "CVE-2026-19924",
-      "description": "A security vulnerability has been detected in Tenda AC10 16.03.10.09_multi_TDE01. This vulnerability affects the function R7WebsSecurityHandler of the component httpd. The manipulation leads to improper authentication. The attack may be initiated remotely. The exploit has been disclosed publicly and may be used.",
+      "id": "CVE-2024-13784",
+      "description": "The Contact Form, Survey, Quiz & Popup Form Builder \u2013 ARForms plugin for WordPress is vulnerable to PHP Object Injection in all versions up to, and including, 1.8.5 via deserialization of untrusted input from form submissions. This makes it possible for unauthenticated attackers to inject a PHP Object. No known POP chain is present in the vulnerable software, which means this vulnerability has no impact unless another plugin or theme containing a POP chain is installed on the site. If a POP chai",
       "cvss": {
         "score": 9.8,
         "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
@@ -77,20 +61,17 @@
       },
       "tier": 0,
       "matchedProducts": [
-        "Apache HTTP Server"
+        "WordPress"
       ],
       "references": [
-        "https://github.com/teiwiet/tenda-ac10-vulnerabilities/blob/main/authen-bypass-tenda-ac10.md",
-        "https://vuldb.com/cve/CVE-2026-19924",
-        "https://vuldb.com/submit/871957",
-        "https://vuldb.com/vuln/390174",
-        "https://vuldb.com/vuln/390174/cti"
+        "https://wordpress.org/plugins/arforms-form-builder/",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/5e0116d6-91c3-4212-9c68-6b706ab09768?source=cve"
       ],
-      "published": "2026-08-16T02:16:47.247"
+      "published": "2026-08-16T09:16:19.900"
     },
     {
-      "id": "CVE-2026-18855",
-      "description": "The Link Library plugin for WordPress is vulnerable to arbitrary file deletion due to insufficient file path validation in the ll_delete_link_fields function in all versions up to, and including, 7.9.4 This makes it possible for unauthenticated attackers to delete arbitrary files on the server, which can easily lead to remote code execution when the right file is deleted (such as wp-config.php). Exploitation requires the administrator to have enabled the 'Delete local file on link deletion' plug",
+      "id": "CVE-2026-14524",
+      "description": "The ProSolution WP Client plugin for WordPress is vulnerable to arbitrary file deletion due to insufficient file path validation in the proSol_fileDeleteProcess function in all versions up to, and including, 2.0.8. This makes it possible for unauthenticated attackers to delete arbitrary files on the server, which can easily lead to remote code execution when the right file is deleted (such as wp-config.php). An attacker must first call the proSol_fileUploadModalProcess handler to poison their ow",
       "cvss": {
         "score": 9.1,
         "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:H",
@@ -101,17 +82,38 @@
         "WordPress"
       ],
       "references": [
-        "https://plugins.trac.wordpress.org/browser/link-library/tags/7.9.4/link-library-admin.php#L7865",
-        "https://plugins.trac.wordpress.org/browser/link-library/tags/7.9.4/link-library-admin.php#L7874",
-        "https://plugins.trac.wordpress.org/browser/link-library/tags/7.9.4/link-library.php#L2288",
-        "https://plugins.trac.wordpress.org/browser/link-library/tags/7.9.4/usersubmission.php#L476",
-        "https://plugins.trac.wordpress.org/browser/link-library/tags/7.9.4/usersubmission.php#L52"
+        "https://plugins.trac.wordpress.org/browser/prosolution-wp-client/tags/2.0.3/includes/class-prosolwpclient.php#L260",
+        "https://plugins.trac.wordpress.org/browser/prosolution-wp-client/tags/2.0.3/public/class-prosolwpclient-public.php#L1135",
+        "https://plugins.trac.wordpress.org/browser/prosolution-wp-client/tags/2.0.3/public/class-prosolwpclient-public.php#L1256",
+        "https://plugins.trac.wordpress.org/changeset?reponame=&old=3634993%40prosolution-wp-client&new=3634993%40prosolution-wp-client",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/4e9698f0-b228-4f4e-838b-c0c0a193d675?source=cve"
       ],
-      "published": "2026-08-15T19:16:32.160"
+      "published": "2026-08-16T05:16:46.493"
     },
     {
-      "id": "CVE-2026-16611",
-      "description": "The Product Feed PRO for WooCommerce by AdTribes  WordPress plugin before 13.5.7 does not perform an authorization check on one of its REST read routes, allowing unauthenticated users to disclose a store's feed configuration (rules, filters and field mapping) and to enumerate the full product category taxonomy.",
+      "id": "CVE-2026-15002",
+      "description": "The Platnosci Online Blue Media (Autopay) plugin for WordPress is vulnerable to Stored Cross-Site Scripting in versions up to, and including, 5.0.0 via the 'bm_woocommerce_css_editor_content' POST parameter. This is due to the Css_Editor::handle_save() method being wired to the WordPress 'init' hook by Settings_Manager::init_once() with no capability check, no nonce verification, and no sanitization on the input \u2014 the raw $_POST value is written to the 'woocommerce_bluemedia_settings' option via",
+      "cvss": {
+        "score": 7.2,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N",
+        "severity": "HIGH"
+      },
+      "tier": 0,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/platnosci-online-blue-media/tags/5.0.0/src/Domain/Service/Custom_Styles/Css_Editor.php#L96",
+        "https://plugins.trac.wordpress.org/browser/platnosci-online-blue-media/tags/5.0.0/src/Domain/Service/Custom_Styles/Css_Editor.php#L98",
+        "https://plugins.trac.wordpress.org/browser/platnosci-online-blue-media/tags/5.0.0/src/Domain/Service/Custom_Styles/Css_Frontend.php#L17",
+        "https://plugins.trac.wordpress.org/browser/platnosci-online-blue-media/tags/5.0.0/src/Domain/Service/Settings/Settings_Manager.php#L94",
+        "https://plugins.trac.wordpress.org/changeset?reponame=&old=3636306%40platnosci-online-blue-media&new=3636306%40platnosci-online-blue-media"
+      ],
+      "published": "2026-08-16T05:16:46.620"
+    },
+    {
+      "id": "CVE-2026-19728",
+      "description": "The Extra Product Options Builder for WooCommerce WordPress plugin before 1.2.176 does not verify that the requester is entitled to a customer-uploaded file before serving it, allowing unauthenticated users who obtain a file's stored name to retrieve it.\n\nThe Extra Product Options Builder for WooCommerce WordPress plugin before 1.2.176 writes a deny-all rule into its upload directories, so the disclosure only crosses a boundary on web servers that honour it, such as Apache. Where it is ignored, ",
       "cvss": {
         "score": null,
         "vector": null,
@@ -119,34 +121,38 @@
       },
       "tier": 0,
       "matchedProducts": [
+        "Nginx",
         "WordPress"
       ],
       "references": [
-        "https://wpscan.com/vulnerability/87fe63af-5a43-4812-88ce-568b1cc1598f/"
+        "https://wpscan.com/vulnerability/fd10aaab-d358-4d2f-aafa-dbfba09b7fff/"
       ],
-      "published": "2026-08-15T06:17:08.380"
+      "published": "2026-08-16T06:16:52.673"
     },
     {
-      "id": "CVE-2026-73041",
-      "description": "SiYuan versions before v3.7.4 fail to validate or escape annotation fields written to disk by the setFileAnnotation endpoint. Attackers can inject malicious markup into annotation fields that execute as script in the PDF renderer with full Node.js access when a user opens an annotated PDF.",
+      "id": "CVE-2026-18316",
+      "description": "The Solace Extra plugin for WordPress is vulnerable to unauthorized modification and loss of data due to a missing capability check on the import_zip() function in versions up to, and including, 1.6.0. The handler is registered on both wp_ajax_action-import-zip and wp_ajax_nopriv_action-import-zip and only verifies the 'ajax-nonce' nonce, which is emitted on every admin page via wp_localize_script (unrestricted admin_enqueue_scripts hook) and is therefore accessible to any authenticated user inc",
       "cvss": {
-        "score": 9.0,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:H/I:H/A:H",
+        "score": 9.1,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:H",
         "severity": "CRITICAL"
       },
       "tier": 1,
       "matchedProducts": [
-        "Node.js"
+        "WordPress"
       ],
       "references": [
-        "https://github.com/siyuan-note/siyuan/security/advisories/GHSA-fqpw-c3pj-w8g9",
-        "https://www.vulncheck.com/advisories/siyuan-before-remote-code-execution-via-pdf-annotations"
+        "https://plugins.trac.wordpress.org/browser/solace-extra/tags/1.6.0/admin/class-solace-extra-admin.php#L289",
+        "https://plugins.trac.wordpress.org/browser/solace-extra/tags/1.6.0/admin/import.php#L2382",
+        "https://plugins.trac.wordpress.org/browser/solace-extra/tags/1.6.0/includes/class-solace-extra.php#L336",
+        "https://plugins.trac.wordpress.org/changeset?reponame=&old=3627961%40solace-extra&new=3627961%40solace-extra",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/4e427c4e-3e27-49e3-ba64-6241b430d5d8?source=cve"
       ],
-      "published": "2026-08-15T22:16:53.883"
+      "published": "2026-08-16T06:16:51.683"
     },
     {
-      "id": "CVE-2026-14279",
-      "description": "The Wholesale Market plugin for WordPress is vulnerable to privilege escalation in versions up to, and including, 2.2.2 via the ced_wholesale_request_send AJAX action. The ced_wholesale_request_send_callback() handler only verifies a nonce (which is exposed to any authenticated user through wp_localize_script on the frontend) and that the caller has a positive user ID, then calls WP_User::add_role() with the client-supplied role_required POST parameter without restricting the value to an allowli",
+      "id": "CVE-2026-14498",
+      "description": "The Query Wrangler plugin for WordPress is vulnerable to Remote Code Execution in all versions up to, and including, 1.5.57 via the 'options' parameter parameter. This is due to missing capability check and nonce verification on the wp_ajax_qw_form_ajax handler, combined with unsanitized attacker-controlled options fully replacing saved query options and being passed directly to call_user_func_array() guarded only by function_exists(). This makes it possible for authenticated attackers, with sub",
       "cvss": {
         "score": 8.8,
         "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
@@ -157,17 +163,17 @@
         "WordPress"
       ],
       "references": [
-        "https://plugins.trac.wordpress.org/browser/wholesale-market/tags/2.2.2/addons/wholesale-request/include/class-wholesale-user-register-addon.php#L141",
-        "https://plugins.trac.wordpress.org/browser/wholesale-market/tags/2.2.2/addons/wholesale-request/include/class-wholesale-user-register-addon.php#L153",
-        "https://plugins.trac.wordpress.org/browser/wholesale-market/tags/2.2.2/addons/wholesale-request/include/class-wholesale-user-register-addon.php#L276",
-        "https://plugins.trac.wordpress.org/browser/wholesale-market/tags/2.2.2/addons/wholesale-request/include/class-wholesale-user-register-addon.php#L30",
-        "https://www.wordfence.com/threat-intel/vulnerabilities/id/abd59d7a-e7f6-440d-9c2a-00266c0dcbff?source=cve"
+        "https://plugins.trac.wordpress.org/browser/query-wrangler/trunk/admin/ajax.php#L11",
+        "https://plugins.trac.wordpress.org/browser/query-wrangler/trunk/admin/templates/preview-json.php#L8",
+        "https://plugins.trac.wordpress.org/browser/query-wrangler/trunk/includes/fields/callback_field.php#L47",
+        "https://plugins.trac.wordpress.org/browser/query-wrangler/trunk/query-wrangler.php#L147",
+        "https://plugins.trac.wordpress.org/changeset?reponame=&old=3640744%40query-wrangler&new=3640744%40query-wrangler"
       ],
-      "published": "2026-08-15T07:16:19.120"
+      "published": "2026-08-16T05:16:46.360"
     },
     {
-      "id": "CVE-2026-18438",
-      "description": "The Templately \u2013 Elementor & Gutenberg Template Library: 6500+ Free & Pro Ready Templates And Cloud! plugin for WordPress is vulnerable to Remote Code Execution in all versions up to, and including, 3.7.1 via the fetch_remote_file function. This is due to a filename validation/destination mismatch in fetch_remote_file, where file type validation is performed against the attacker-controlled Content-Disposition filename rather than the URL-path-derived destination filename. This makes it possible ",
+      "id": "CVE-2026-16099",
+      "description": "The Podlove Podcast Publisher plugin for WordPress is vulnerable to arbitrary file deletion due to insufficient file path validation in the create_link_item function in all versions up to, and including, 4.5.3. This makes it possible for authenticated attackers, with contributor-level access and above, to delete arbitrary files on the server, which can easily lead to remote code execution when the right file is deleted (such as wp-config.php). A viable POP chain exists within the plugin itself v",
       "cvss": {
         "score": 8.8,
         "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
@@ -178,17 +184,77 @@
         "WordPress"
       ],
       "references": [
-        "https://plugins.trac.wordpress.org/browser/templately/tags/3.6.5/includes/API/API.php#L128",
-        "https://plugins.trac.wordpress.org/browser/templately/tags/3.6.5/includes/API/Import.php#L78",
-        "https://plugins.trac.wordpress.org/browser/templately/tags/3.6.5/includes/API/MyClouds.php#L103",
-        "https://plugins.trac.wordpress.org/browser/templately/tags/3.6.5/includes/Core/Importer/WPImport.php#L1200",
-        "https://plugins.trac.wordpress.org/browser/templately/tags/3.6.5/includes/Core/Importer/WPImport.php#L1391"
+        "https://plugins.trac.wordpress.org/browser/podlove-podcasting-plugin-for-wordpress/tags/4.5.3/lib/image_cache/generation_guard.php#L19",
+        "https://plugins.trac.wordpress.org/browser/podlove-podcasting-plugin-for-wordpress/tags/4.5.3/lib/image_cache/generation_guard.php#L57",
+        "https://plugins.trac.wordpress.org/browser/podlove-podcasting-plugin-for-wordpress/tags/4.5.3/lib/model/base.php#L552",
+        "https://plugins.trac.wordpress.org/browser/podlove-podcasting-plugin-for-wordpress/tags/4.5.3/lib/modules/shownotes/rest_api.php#L538",
+        "https://plugins.trac.wordpress.org/browser/podlove-podcasting-plugin-for-wordpress/tags/4.5.3/lib/modules/shownotes/rest_api.php#L585"
       ],
-      "published": "2026-08-15T10:16:29.413"
+      "published": "2026-08-16T05:16:47.780"
     },
     {
-      "id": "CVE-2026-18387",
-      "description": "The Groundhogg \u2014 CRM, Newsletters, and Marketing Automation plugin for WordPress is vulnerable to generic SQL Injection via the 'tag_query' parameter in all versions up to, and including, 4.5.14 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for authenticated attackers, with vendor-level access and above, to append additional SQL queries into already existing queries that can be used to extract sens",
+      "id": "CVE-2026-17123",
+      "description": "The Royal Elementor Addons plugin for WordPress is vulnerable to Server-Side Request Forgery in versions up to, and including, 1.7.1064 via the Form Builder widget's 'webhook_url' setting. The widget's render() method persists the attacker-controlled URL into the wpr_webhook_url_{widget_id} option on every render (including a Contributor previewing their own draft), and the wpr_form_builder_webhook AJAX handler \u2014 registered for both authenticated and unauthenticated callers \u2014 reads that option a",
+      "cvss": {
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/royal-elementor-addons/tags/1.7.1061/classes/modules/forms/wpr-send-webhook.php#L20",
+        "https://plugins.trac.wordpress.org/browser/royal-elementor-addons/tags/1.7.1061/classes/modules/forms/wpr-send-webhook.php#L56",
+        "https://plugins.trac.wordpress.org/browser/royal-elementor-addons/tags/1.7.1061/modules/form-builder/widgets/wpr-form-builder.php#L3788",
+        "https://plugins.trac.wordpress.org/browser/royal-elementor-addons/tags/1.7.1064/classes/modules/forms/wpr-send-webhook.php#L20",
+        "https://plugins.trac.wordpress.org/browser/royal-elementor-addons/tags/1.7.1064/classes/modules/forms/wpr-send-webhook.php#L56"
+      ],
+      "published": "2026-08-16T05:16:48.033"
+    },
+    {
+      "id": "CVE-2026-74791",
+      "description": "Scriban before 7.0.0 fails to clear the CachedTemplates dictionary when TemplateContext.Reset() is called, allowing cached templates to persist across reused contexts. Attackers can exploit request-dependent ITemplateLoader implementations to access previously authorized template content from earlier renders without triggering TemplateLoader.Load() again.",
+      "cvss": {
+        "score": 8.6,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:N/A:N",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "ESET"
+      ],
+      "references": [
+        "https://github.com/scriban/scriban/security/advisories/GHSA-x6m9-38vm-2xhf",
+        "https://www.vulncheck.com/advisories/scriban-before-authorization-bypass-via-stale-include-cache"
+      ],
+      "published": "2026-08-16T14:16:57.183"
+    },
+    {
+      "id": "CVE-2026-17581",
+      "description": "The WCPOS \u2013 Point of Sale (POS) plugin for WooCommerce plugin for WordPress is vulnerable to Code Injection via the 'thermal' Template Engine in all versions up to, and including, 1.9.14 due to the Receipt_Renderer_Factory dispatching templates with the 'thermal' engine to the Legacy_Php_Renderer instead of a safe thermal-specific renderer. This makes it possible for authenticated attackers, with Shop Manager-level access and above, to inject arbitrary PHP code into a template post that is subse",
+      "cvss": {
+        "score": 7.2,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/woocommerce-pos/tags/1.9.10/includes/Admin/Templates/Single_Template.php#L456",
+        "https://plugins.trac.wordpress.org/browser/woocommerce-pos/tags/1.9.10/includes/Services/Receipt_Renderer_Factory.php#L25",
+        "https://plugins.trac.wordpress.org/browser/woocommerce-pos/tags/1.9.10/includes/Templates.php#L238",
+        "https://plugins.trac.wordpress.org/browser/woocommerce-pos/tags/1.9.10/includes/Templates/Receipt.php#L251",
+        "https://plugins.trac.wordpress.org/browser/woocommerce-pos/tags/1.9.10/includes/Templates/Renderers/Legacy_Php_Renderer.php#L42"
+      ],
+      "published": "2026-08-16T06:16:51.440"
+    },
+    {
+      "id": "CVE-2026-15056",
+      "description": "The StoreEngine \u2014 Complete eCommerce Solution with Memberships, Licensing, Affiliates & More plugin for WordPress is vulnerable to Directory Traversal in all versions up to, and including, 2.1.1 via the parse_file_path function. This makes it possible for authenticated attackers, with vendor-level access and above, to read the contents of arbitrary files on the server, which can contain sensitive information.",
       "cvss": {
         "score": 6.5,
         "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
@@ -199,17 +265,98 @@
         "WordPress"
       ],
       "references": [
-        "https://plugins.trac.wordpress.org/browser/groundhogg/tags/4.5.14/api/v4/contacts-api.php#L230",
-        "https://plugins.trac.wordpress.org/browser/groundhogg/tags/4.5.14/includes/contact-query.php#L2599",
-        "https://plugins.trac.wordpress.org/browser/groundhogg/tags/4.5.14/includes/legacy-contact-query.php#L548",
-        "https://plugins.trac.wordpress.org/browser/groundhogg/tags/4.5.14/includes/tag-query.php#L393",
-        "https://plugins.trac.wordpress.org/browser/groundhogg/tags/4.5.14/includes/tag-query.php#L415"
+        "https://plugins.trac.wordpress.org/browser/storeengine/tags/1.10.0/addons/multi-vendor/api/vendors.php#L281",
+        "https://plugins.trac.wordpress.org/browser/storeengine/tags/1.10.0/addons/multi-vendor/api/vendors.php#L37",
+        "https://plugins.trac.wordpress.org/browser/storeengine/tags/1.10.0/addons/multi-vendor/role.php#L37",
+        "https://plugins.trac.wordpress.org/browser/storeengine/tags/1.10.0/addons/multi-vendor/shortcode.php#L112",
+        "https://plugins.trac.wordpress.org/browser/storeengine/tags/1.10.0/includes/classes/download-handler.php#L192"
       ],
-      "published": "2026-08-15T04:18:17.773"
+      "published": "2026-08-16T06:16:50.340"
     },
     {
-      "id": "CVE-2026-14230",
-      "description": "The ECS  WordPress plugin before 4.3.8 does not perform capability or object-ownership checks on its Dynamic Repeater AJAX handlers (gated only by a capability-agnostic nonce that any edit_posts user obtains from the Elementor editor), so a Contributor can write a data-source binding into any post \u2014 including admin-authored pages \u2014 whose attacker-controlled values are rendered into a widget's repeater output without sanitization, executing JavaScript in the session of any visitor or administrato",
+      "id": "CVE-2026-74786",
+      "description": "Scriban before 7.0.0 (affected versions <= 6.6.0) contains a denial-of-service vulnerability in which the LimitToString safety limit (default 1MB) can be bypassed because ObjectToString resets the per-call length counter (_currentToStringLength) on every top-level call and StringBuilderOutput enforces no cumulative output-size limit. An attacker who can supply a template can render a near-limit string repeatedly in a loop, allocating approximately 1GB of memory and causing an out-of-memory condi",
+      "cvss": {
+        "score": 6.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+        "severity": "MEDIUM"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "ESET"
+      ],
+      "references": [
+        "https://github.com/scriban/scriban/security/advisories/GHSA-m2p3-hwv5-xpqw",
+        "https://www.vulncheck.com/advisories/scriban-before-denial-of-service-via-unbounded-template-output"
+      ],
+      "published": "2026-08-16T14:16:56.523"
+    },
+    {
+      "id": "CVE-2026-18385",
+      "description": "The The Paid Membership Plugin, Ecommerce, User Registration Form, Login Form, User Profile & Restrict Content \u2013 ProfilePress plugin for WordPress is vulnerable to arbitrary shortcode execution in all versions up to, and including, 4.16.19. This is due to the software allowing users to execute an action that does not properly validate a value before running do_shortcode. This makes it possible for authenticated attackers, with subscriber-level access and above, to execute arbitrary shortcodes. T",
+      "cvss": {
+        "score": 5.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/wp-user-avatar/tags/4.16.15/src/Classes/RegistrationAuth.php#L170",
+        "https://plugins.trac.wordpress.org/browser/wp-user-avatar/tags/4.16.15/src/ShortcodeParser/Builder/FrontendProfileBuilder.php#L286",
+        "https://plugins.trac.wordpress.org/browser/wp-user-avatar/tags/4.16.15/src/ShortcodeParser/MemberDirectoryTag.php#L98",
+        "https://plugins.trac.wordpress.org/browser/wp-user-avatar/tags/4.16.15/src/Themes/DragDrop/MemberDirectoryListing.php#L90",
+        "https://plugins.trac.wordpress.org/browser/wp-user-avatar/tags/4.16.19/src/Classes/RegistrationAuth.php#L170"
+      ],
+      "published": "2026-08-16T05:16:48.170"
+    },
+    {
+      "id": "CVE-2026-15351",
+      "description": "The WC Vendors \u2013 WooCommerce Multivendor, WooCommerce Marketplace, Product Vendors plugin for WordPress is vulnerable to generic SQL Injection via the 'status' parameter in all versions up to, and including, 2.7.0 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for authenticated attackers, with shop manager-level access and above, to append additional SQL queries into already existing queries that ca",
+      "cvss": {
+        "score": 4.9,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:N/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/wc-vendors/tags/2.7.0/classes/includes/api/admin/class-wcv-admin-api.php#L247",
+        "https://plugins.trac.wordpress.org/browser/wc-vendors/tags/2.7.0/classes/includes/api/admin/class-wcv-admin-api.php#L329",
+        "https://plugins.trac.wordpress.org/browser/wc-vendors/tags/2.7.0/classes/includes/api/admin/class-wcv-admin-api.php#L367",
+        "https://plugins.trac.wordpress.org/browser/wc-vendors/tags/2.7.0/classes/includes/api/admin/class-wcv-admin-api.php#L56",
+        "https://plugins.trac.wordpress.org/changeset?reponame=&old=3633716%40wc-vendors&new=3633716%40wc-vendors"
+      ],
+      "published": "2026-08-16T06:16:50.620"
+    },
+    {
+      "id": "CVE-2026-12905",
+      "description": "The Bookly plugin for WordPress is vulnerable to Insecure Direct Object Reference in versions up to, and including, 27.7 via the appointment() method of the Mobile Staff Cabinet API (resource=appointment, action=bookly_mobile_staff_cabinet) in frontend/modules/mobile_staff_cabinet/api/handlers/Handler1_0.php. This is due to the handler loading an Appointment by the attacker-supplied params[id] without verifying that the appointment's staff_id matches the authenticated staff member, whereas sibli",
+      "cvss": {
+        "score": 4.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/bookly-responsive-appointment-booking-tool/tags/24.9/frontend/modules/mobile_staff_cabinet/Ajax.php#L17",
+        "https://plugins.trac.wordpress.org/browser/bookly-responsive-appointment-booking-tool/tags/24.9/frontend/modules/mobile_staff_cabinet/api/handlers/Handler.php#L82",
+        "https://plugins.trac.wordpress.org/browser/bookly-responsive-appointment-booking-tool/tags/24.9/frontend/modules/mobile_staff_cabinet/api/handlers/Handler1_0.php#L70",
+        "https://plugins.trac.wordpress.org/browser/bookly-responsive-appointment-booking-tool/tags/27.7/frontend/modules/mobile_staff_cabinet/Ajax.php#L17",
+        "https://plugins.trac.wordpress.org/browser/bookly-responsive-appointment-booking-tool/tags/27.7/frontend/modules/mobile_staff_cabinet/api/handlers/Handler.php#L82"
+      ],
+      "published": "2026-08-16T05:16:45.947"
+    },
+    {
+      "id": "CVE-2026-19613",
+      "description": "The ECS  WordPress plugin before 4.3.10 does not perform ownership or post-status checks when one of its dynamic repeater data sources reads custom field values from a user-supplied post identifier, allowing users with a contributor-level account or above to read custom field values and post metadata from posts they do not own, including private and draft ones.",
       "cvss": {
         "score": null,
         "vector": null,
@@ -220,13 +367,13 @@
         "WordPress"
       ],
       "references": [
-        "https://wpscan.com/vulnerability/fded2f21-d104-4dcb-8fd1-29db9866cabc/"
+        "https://wpscan.com/vulnerability/0d4ccc34-632a-4058-9220-b3cce7a942dd/"
       ],
-      "published": "2026-08-15T06:16:55.960"
+      "published": "2026-08-16T06:16:52.023"
     },
     {
-      "id": "CVE-2026-68475",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nreset: sunxi: fix memory region leak on ioremap failure\n\nIn sunxi_reset_init(), when ioremap() fails, the memory region obtained\nvia request_mem_region() is not released, leading to a resource leak.\n\nAdd an err_mem_region label to properly release the memory region before\nfreeing the data structure.",
+      "id": "CVE-2026-19726",
+      "description": "The Visualizer  WordPress plugin before 4.0.7 does not properly authorise access to the configuration of its charts, allowing users with the Contributor role and above to read the full configuration of any chart on the site, including charts the Visualizer  WordPress plugin before 4.0.7's own interface denies them, and to retrieve every chart's configuration in a single request. The disclosed configuration can include the credentials of a remote data source a chart reads from.",
       "cvss": {
         "score": null,
         "vector": null,
@@ -234,204 +381,19 @@
       },
       "tier": 1,
       "matchedProducts": [
-        "ESET"
+        "WordPress"
       ],
       "references": [
-        "https://git.kernel.org/stable/c/01e43f4e7d12dae6fa82ae1b2e91c9ce07e06cd8",
-        "https://git.kernel.org/stable/c/1a8c89f8c112c75e84ff9a140f969e372aed0c9a",
-        "https://git.kernel.org/stable/c/23af4ea217800a20c405d72e82b11e24e27721f3",
-        "https://git.kernel.org/stable/c/6dc0c8cd9c8a84808c6df760024d2604bc6d31fe",
-        "https://git.kernel.org/stable/c/82753ac86cb3d641b8634a61335fd0f04a61cc1a"
+        "https://wpscan.com/vulnerability/61a1577e-077f-4a00-96b4-860eda48e03b/"
       ],
-      "published": "2026-08-15T06:20:35.067"
+      "published": "2026-08-16T06:16:52.580"
     },
     {
-      "id": "CVE-2026-72009",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\npmdomain: imx93-blk-ctrl: Extract PHY as shared domain for DSI/CSI\n\nThe MIPI DSI and CSI domains share control bits for clock and reset, which\ncan lead to incorrect behavior if one domain disables the shared resource\nwhile the other is still active.\n\nTo fix the issue, introduce a shared MIPI PHY power domain to own the\ncommon resources and make DSI and CSI its subdomains. This ensures the\nshared bits are properly managed and no",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/4ba6d7166750d0b810c6cfc0b1df7585f513b48c",
-        "https://git.kernel.org/stable/c/4fd5b33faf092ef2d09f730a7d9e49f9e976ac67",
-        "https://git.kernel.org/stable/c/99611233f8cda833169fa6487d5dacdf189e5cb0"
-      ],
-      "published": "2026-08-15T06:20:59.570"
-    },
-    {
-      "id": "CVE-2026-72088",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nscsi: hpsa: Fix DMA mapping leak on IOACCEL2 reset path\n\nIf phys_disk->in_reset is set, the function returns directly without\nundoing the resources acquired for the command. Add the missing error\ncleanup by unmapping the IOACCEL2 SG chain block when needed, unmapping\nthe SCSI command, and dropping the outstanding IOACCEL command count\nbefore returning.",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/018cbce6ee158244bb76cf638e8e3054e240aea9",
-        "https://git.kernel.org/stable/c/782e1bf48672be44265c48e14602696c3c8ed904",
-        "https://git.kernel.org/stable/c/a61de4d7e22a9ab9a90094d0e180b378e09a1d2c",
-        "https://git.kernel.org/stable/c/d495b403d5b357dfe506b963bd7a78ecd5c7b667",
-        "https://git.kernel.org/stable/c/e166bafc483e927150cb9b5f286c9191ea0df84e"
-      ],
-      "published": "2026-08-15T06:21:22.843"
-    },
-    {
-      "id": "CVE-2026-72118",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ncan: bcm: fix CAN frame rx/tx statistics\n\nKCSAN detected a data race within the bcm_rx_handler() when two CAN frames\nhave been simultaneously received and processed in a single rx op by two\ndifferent CPUs.\n\nUse atomic operations with (signed) long data types to access the\nstatistics in the hot path to fix the KCSAN complaint.\n\nAdditionally simplify the update and check of statistics overflow by\nusing the atomic operations in se",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/8104bcdb2612fdda95169ddc3b49747b2ff98d24",
-        "https://git.kernel.org/stable/c/8b2783172d92edd650de6006ebd1c800937021ab",
-        "https://git.kernel.org/stable/c/970caff5c1a63702c80e08d920256bcb5f88ecc5",
-        "https://git.kernel.org/stable/c/df47f07cdc801a6afe05a486b5a343c3e532a93c",
-        "https://git.kernel.org/stable/c/e6c24ba95fc3f1b5e1dcd28b1c6e59ef61a9daa5"
-      ],
-      "published": "2026-08-15T06:21:26.240"
-    },
-    {
-      "id": "CVE-2026-72153",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nirqchip/crossbar: Use correct index in crossbar_domain_free()\n\ncrossbar_domain_free() resets the domain data and then uses the nulled\nout irq_data->hwirq member as index to reset the irq_map[] entry and to\nwrite the relevant crossbar register with a safe entry. That means it\nnever frees the correct index and keeps the crossbar register connection\nto the source interrupt active.\n\nIf it would not reset the domain data, then this ",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/043db005a8d6932dc7d217c86307e9af0bc10ddc",
-        "https://git.kernel.org/stable/c/13bdb5140405ff283f9052e65ee1d5c2303765c7",
-        "https://git.kernel.org/stable/c/1c48dc6a0c1ef47a9fa24611e60bc2f4ee4dd0df",
-        "https://git.kernel.org/stable/c/36ca587f55a2c04468a89fd16174bb2f78dc04ec",
-        "https://git.kernel.org/stable/c/424130169dc03b84ea604685409726d61bcec859"
-      ],
-      "published": "2026-08-15T06:21:33.030"
-    },
-    {
-      "id": "CVE-2026-72287",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: nVMX: Move vTPR vs. TPR Threshold consistency check into \"normal\" checks\n\nMove the off-by-default consistency check for vmcs12.tpr_threshold vs.\nthe virtual APIC vTPR into the \"normal\" controls checks, as waiting until\nKVM has loaded some amount of state is unnecessary and actively dangerous.\nSpecifically, failure to unwind vmcs01.GUEST_CR3 to KVM's value when EPT\nis disabled results in KVM running L1 with an L1-controlled",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/7d066368f72e6192af7e21c5817626f6da666991",
-        "https://git.kernel.org/stable/c/ebdac7554abb347ca4197be241116842161acd9b"
-      ],
-      "published": "2026-08-15T06:22:00.180"
-    },
-    {
-      "id": "CVE-2026-72425",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nice: fix FDIR CTRL VSI resource leak in ice_reset_all_vfs()\n\nResetting all VFs causes resource leak on VFs with FDIR filters\nenabled as CTRL VSIs are only invalidated and not freed. Fix by using\nice_vf_ctrl_vsi_release() instead of ice_vf_ctrl_invalidate_vsi() which\naligns behavior with the ice_reset_vf() function.\n\nReproduction:\n  echo 1 > /sys/class/net/$pf/device/sriov_numvfs\n  ethtool -N $vf flow-type ether proto 0x9000 act",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/335c2dd21ad9d520102906f96edb99fd5e89ac32",
-        "https://git.kernel.org/stable/c/87a042e45bf4870dc75ea05b4fc0286abecb2a4d",
-        "https://git.kernel.org/stable/c/b1fc5bafbc5f84df457b6f987ac993e0802f8d93",
-        "https://git.kernel.org/stable/c/b409a9dc37db8bd798122fc5bcdcfaccaf80db1e",
-        "https://git.kernel.org/stable/c/dd6d8e4412f805937f61f00bbfdfe831978be235"
-      ],
-      "published": "2026-08-15T06:22:16.317"
-    },
-    {
-      "id": "CVE-2026-74312",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nvhost/vdpa: validate virtqueue index in mmap and fault paths\n\nvhost_vdpa_mmap() and vhost_vdpa_fault() use vma->vm_pgoff as a\nvirtqueue index for get_vq_notification(), but they do not validate\nthat the index is smaller than v->nvqs.\n\nThe ioctl path already performs both a bounds check and\narray_index_nospec(), but the mmap/fault path only checks that the\nindex fits in u16. This allows an out-of-range queue index to reach\ndrive",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "Ubiquiti/UniFi"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/0f310bac6db9bd3bb1655707d692d9d2a86eeb17",
-        "https://git.kernel.org/stable/c/1f5f94c6c6b2e4eaa5b45815509e21d0c6cfa81e",
-        "https://git.kernel.org/stable/c/2b3f79b90b231a682315fe2191bb71925650e183",
-        "https://git.kernel.org/stable/c/32ac9097aa2463fcfc12f61cc4a9ebc3579cba7d",
-        "https://git.kernel.org/stable/c/4bf5a51963ff816f7443702dc536b9327cf5e550"
-      ],
-      "published": "2026-08-15T06:22:31.310"
-    },
-    {
-      "id": "CVE-2026-74407",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: ath11k: cancel SSR work items during PCI shutdown\n\nA reboot can crash the kernel if it overlaps with WLAN firmware crash\nrecovery (SSR). The crash is a NULL pointer dereference in the MHI teardown\npath while freeing DMA-backed MHI contexts.\n\nSimplified trace:\n  dma_free_attrs\n  mhi_deinit_dev_ctxt [mhi]\n  ath11k_pci_power_down [ath11k_pci]\n  ath11k_pci_shutdown [ath11k_pci]\n  device_shutdown\n  kernel_restart\n\nOn the host ",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/53dd29e8aeb2a1b5f079178551836b85fc6b53df",
-        "https://git.kernel.org/stable/c/8c79aac429b583301f387374ff37c59be671df87"
-      ],
-      "published": "2026-08-15T06:22:42.737"
-    },
-    {
-      "id": "CVE-2026-74472",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nublk: reset kernel-owned dev_info fields in ublk_ctrl_add_dev()\n\nublk_ctrl_add_dev() memcpy()s the userspace ublksrv_ctrl_dev_info into\nub->dev_info and then fixes up the fields the driver owns, but misses\n->state and ->ublksrv_pid.\n\nA device added with ->state = UBLK_S_DEV_LIVE passes the\n\"->state != UBLK_S_DEV_DEAD\" test that ublk_stop_dev_unlocked() uses as its\nproxy for \"a disk is attached\", while ->ub_disk is still NULL, s",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/127033b79383a3e78361d7e971588aa8849f5124",
-        "https://git.kernel.org/stable/c/205feb72e5beb3140e4e1403b6cff30cf739bab9",
-        "https://git.kernel.org/stable/c/b67ce16b26ad0f14cfd6071013840aa95f823bea",
-        "https://git.kernel.org/stable/c/e65848e4ce352bac9e3465099354c8b8f845391f",
-        "https://git.kernel.org/stable/c/ee41b00858ca65b4428e99efe39a4277c1f043d2"
-      ],
-      "published": "2026-08-15T13:17:51.953"
-    },
-    {
-      "id": "CVE-2026-15142",
-      "description": "The Real Estate Manager Pro plugin for WordPress is vulnerable to Privilege Escalation in all versions up to, and including, 12.8.6. This is due to improper capability handling in the allow_attachment_actions() function, which can treat a target user ID as a media attachment ID during user capability checks. This makes it possible for authenticated attackers, with Subscriber-level access and above, to edit an administrator account and escalate their privileges to Administrator when the targeted ",
+      "id": "CVE-2026-17087",
+      "description": "The WP Travel Engine \u2013 Tour Booking Plugin \u2013 Tour Operator Software plugin for WordPress is vulnerable to authorization bypass in all versions up to, and including, 6.8.4. This is due to the plugin not properly verifying that a user is authorized to perform an action. This makes it possible for unauthenticated attackers to view private booking billing details \u2014 including the victim customer's first name, last name, email address, street address, city, and phone number \u2014 rendered as default value",
       "cvss": {
         "score": 7.5,
-        "vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
         "severity": "HIGH"
       },
       "tier": 2,
@@ -439,14 +401,17 @@
         "WordPress"
       ],
       "references": [
-        "https://wp-rem.com/changelog/",
-        "https://www.wordfence.com/threat-intel/vulnerabilities/id/71e9ff91-4137-4c66-959b-f4ffb8d3ba32?source=cve"
+        "https://plugins.trac.wordpress.org/browser/wp-travel-engine/tags/6.7.12/includes/classes/Abstracts/AjaxController.php#L52",
+        "https://plugins.trac.wordpress.org/browser/wp-travel-engine/tags/6.7.12/includes/classes/Builders/FormFields/BillingFormFields.php#L87",
+        "https://plugins.trac.wordpress.org/browser/wp-travel-engine/tags/6.7.12/includes/classes/Core/Controllers/Ajax/AddToCart.php#L232",
+        "https://plugins.trac.wordpress.org/browser/wp-travel-engine/tags/6.7.12/includes/classes/Core/Controllers/Ajax/AddToCart.php#L31",
+        "https://plugins.trac.wordpress.org/browser/wp-travel-engine/tags/6.7.12/includes/classes/Legacy/Cart.php#L373"
       ],
-      "published": "2026-08-15T09:16:28.557"
+      "published": "2026-08-16T07:16:30.423"
     },
     {
-      "id": "CVE-2026-13360",
-      "description": "The Cookie Banner for GDPR / CCPA \u2013 WPLP Cookie Consent plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'regionArray' parameter in all versions up to, and including, 4.3.5 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. Successful exploitation requires that the site administrator has enabled the 'Support G",
+      "id": "CVE-2026-10734",
+      "description": "The Infility Global plugin for WordPress is vulnerable to Stored Cross-Site Scripting via /cf7_record Log Endpoint in all versions up to, and including, 2.15.21 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. The /cf7_records viewer is accessible to any authenticated user including those with Subscriber-level access, meaning the in",
       "cvss": {
         "score": 7.2,
         "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N",
@@ -457,17 +422,17 @@
         "WordPress"
       ],
       "references": [
-        "https://plugins.trac.wordpress.org/browser/gdpr-cookie-consent/tags/4.2.7/admin/class-gdpr-cookie-consent-admin.php#L4961",
-        "https://plugins.trac.wordpress.org/browser/gdpr-cookie-consent/tags/4.2.7/includes/class-gdpr-cookie-consent.php#L245",
-        "https://plugins.trac.wordpress.org/browser/gdpr-cookie-consent/tags/4.2.7/public/class-gdpr-cookie-consent-public.php#L209",
-        "https://plugins.trac.wordpress.org/browser/gdpr-cookie-consent/tags/4.3.5/admin/class-gdpr-cookie-consent-admin.php#L4961",
-        "https://plugins.trac.wordpress.org/browser/gdpr-cookie-consent/tags/4.3.5/includes/class-gdpr-cookie-consent.php#L245"
+        "https://plugins.trac.wordpress.org/browser/infility-global/trunk/include/InfilityGlobalErrorRecord.php#L25",
+        "https://plugins.trac.wordpress.org/browser/infility-global/trunk/include/InfilityGlobalErrorRecord.php#L320",
+        "https://plugins.trac.wordpress.org/browser/infility-global/trunk/include/InfilityGlobalErrorRecord.php#L410",
+        "https://plugins.trac.wordpress.org/browser/infility-global/trunk/include/InfilityGlobalErrorRecord.php#L414",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/0de639a9-37a6-4a72-8afb-ff43de81a83c?source=cve"
       ],
-      "published": "2026-08-15T04:18:01.957"
+      "published": "2026-08-16T07:16:30.043"
     },
     {
-      "id": "CVE-2026-16145",
-      "description": "The Invisible Anti-Spam & CAPTCHA \u2014 reCAPTCHA Alternative for All Forms plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'action' parameter in all versions up to, and including, 5.1 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. The stored payload is written by any unauthenticated admin-ajax.php request wh",
+      "id": "CVE-2026-13424",
+      "description": "The Online Scheduling and Appointment Booking System \u2013 Bookly plugin for WordPress is vulnerable to Stored Cross-Site Scripting via bookly_speed_up_update_addons AJAX action in all versions up to, and including, 27.7 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. The injection point is the bookly_speed_up_update_addons AJAX action",
       "cvss": {
         "score": 7.2,
         "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N",
@@ -478,17 +443,59 @@
         "WordPress"
       ],
       "references": [
-        "https://plugins.trac.wordpress.org/browser/gdpr-compliant-recaptcha-for-all-forms/tags/5.0/includes/class-message-page.php#L621",
-        "https://plugins.trac.wordpress.org/browser/gdpr-compliant-recaptcha-for-all-forms/tags/5.0/includes/class-stamp.php#L136",
-        "https://plugins.trac.wordpress.org/browser/gdpr-compliant-recaptcha-for-all-forms/tags/5.0/includes/class-stamp.php#L771",
-        "https://plugins.trac.wordpress.org/changeset/3633500/gdpr-compliant-recaptcha-for-all-forms",
-        "https://www.wordfence.com/threat-intel/vulnerabilities/id/ff1d2bd8-cc46-4763-8ba7-832b982ff56a?source=cve"
+        "https://plugins.trac.wordpress.org/browser/bookly-responsive-appointment-booking-tool/tags/27.5/backend/modules/diagnostics/Ajax.php#L344",
+        "https://plugins.trac.wordpress.org/browser/bookly-responsive-appointment-booking-tool/tags/27.5/backend/modules/diagnostics/resources/js/diagnostics.js#L542",
+        "https://plugins.trac.wordpress.org/browser/bookly-responsive-appointment-booking-tool/tags/27.5/lib/PluginsUpdater.php#L13",
+        "https://plugins.trac.wordpress.org/browser/bookly-responsive-appointment-booking-tool/tags/27.5/lib/PluginsUpdater.php#L97",
+        "https://plugins.trac.wordpress.org/browser/bookly-responsive-appointment-booking-tool/tags/27.7/backend/modules/diagnostics/Ajax.php#L344"
       ],
-      "published": "2026-08-15T04:18:10.233"
+      "published": "2026-08-16T07:16:30.300"
     },
     {
-      "id": "CVE-2026-15453",
-      "description": "The KiviCare \u2013 Clinic & Patient Management System (EHR) plugin for WordPress is vulnerable to generic SQL Injection via the 'searchTerm' parameter in all versions up to, and including, 4.5.1 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for authenticated attackers, with custom-level access and above, to append additional SQL queries into already existing queries that can be used to extract sensitiv",
+      "id": "CVE-2026-2497",
+      "description": "The Gallery by BestWebSoft plugin for WordPress is vulnerable to SQL Injection via the '_gallery_order_{post_id}' parameter array keys in all versions up to, and including, 4.7.9. This is due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. The `gllr_save_postdata()` function stores unsanitized array keys from `$_POST` directly into post meta, which are later used in SQL queries without prepared statements. This makes it possib",
+      "cvss": {
+        "score": 7.2,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/gallery-plugin/tags/4.7.6/gallery-plugin.php#L1052",
+        "https://plugins.trac.wordpress.org/browser/gallery-plugin/tags/4.7.6/includes/class-gllr-media-table.php#L58",
+        "https://plugins.trac.wordpress.org/browser/gallery-plugin/trunk/gallery-plugin.php#L1052",
+        "https://plugins.trac.wordpress.org/browser/gallery-plugin/trunk/includes/class-gllr-media-table.php#L58",
+        "https://plugins.trac.wordpress.org/changeset?reponame=&old=3609291%40gallery-plugin&new=3609291%40gallery-plugin"
+      ],
+      "published": "2026-08-16T07:16:31.030"
+    },
+    {
+      "id": "CVE-2026-10035",
+      "description": "The Turnkey bbPress by WeaverTheme plugin for WordPress is vulnerable to PHP Object Injection in all versions up to, and including, 1.7.1 via deserialization of untrusted input in the wvrbbp_set_to_serialized_values() function (reached through the wvrbbp_save_restore() settings-restore handler). The function reads the raw contents of an administrator-uploaded file and passes them directly to unserialize() without any validation. This makes it possible for authenticated attackers, with administra",
+      "cvss": {
+        "score": 6.6,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/weaver-for-bbpress/tags/1.7.1/includes/wvrbbp-admin-lib.php#L112",
+        "https://plugins.trac.wordpress.org/browser/weaver-for-bbpress/tags/1.7.1/includes/wvrbbp-admin-lib.php#L132",
+        "https://plugins.trac.wordpress.org/browser/weaver-for-bbpress/tags/1.7.1/includes/wvrbbp-admin-top.php#L142",
+        "https://plugins.trac.wordpress.org/changeset?reponame=&old=3633471%40weaver-for-bbpress&new=3633471%40weaver-for-bbpress",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/7e7411ab-174e-4bc2-9f96-dbce925a21eb?source=cve"
+      ],
+      "published": "2026-08-16T06:16:49.210"
+    },
+    {
+      "id": "CVE-2026-13358",
+      "description": "The Appointment Booking Calendar \u2014 Simply Schedule Appointments Booking Plugin plugin for WordPress is vulnerable to Insecure Direct Object Reference in all versions up to, and including, 1.6.12.10 via the ssa_past_appointments due to missing validation on a user controlled key. This makes it possible for authenticated attackers, with contributor-level access and above, to access appointment records belonging to arbitrary users and harvest the per-appointment ownership tokens (32-character hashe",
       "cvss": {
         "score": 6.5,
         "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
@@ -499,17 +506,17 @@
         "WordPress"
       ],
       "references": [
-        "https://plugins.trac.wordpress.org/browser/kivicare-clinic-management-system/tags/4.5.0/app/controllers/api/SettingsController/ListingData.php#L442",
-        "https://plugins.trac.wordpress.org/browser/kivicare-clinic-management-system/tags/4.5.0/app/controllers/api/SettingsController/ListingData.php#L456",
-        "https://plugins.trac.wordpress.org/browser/kivicare-clinic-management-system/tags/4.5.0/app/controllers/api/SettingsController/ListingData.php#L69",
-        "https://plugins.trac.wordpress.org/changeset?reponame=&old=3637394%40kivicare-clinic-management-system&new=3637394%40kivicare-clinic-management-system",
-        "https://www.wordfence.com/threat-intel/vulnerabilities/id/4495e352-758b-4331-a617-033ff348c07d?source=cve"
+        "https://plugins.trac.wordpress.org/browser/simply-schedule-appointments/tags/1.6.11.0/includes/class-appointment-model.php#L1936",
+        "https://plugins.trac.wordpress.org/browser/simply-schedule-appointments/tags/1.6.11.0/includes/class-db-model.php#L325",
+        "https://plugins.trac.wordpress.org/browser/simply-schedule-appointments/tags/1.6.11.0/includes/class-divi.php#L237",
+        "https://plugins.trac.wordpress.org/browser/simply-schedule-appointments/tags/1.6.11.0/includes/class-divi.php#L254",
+        "https://plugins.trac.wordpress.org/browser/simply-schedule-appointments/tags/1.6.11.0/includes/class-shortcodes.php#L781"
       ],
-      "published": "2026-08-15T04:18:07.300"
+      "published": "2026-08-16T05:16:46.213"
     },
     {
-      "id": "CVE-2026-16586",
-      "description": "The Contest Gallery \u2013 Upload & Vote Photos, Media, Sell with PayPal & Stripe plugin for WordPress is vulnerable to Second-Order SQL Injection via MultipleFiles Second-Order Payload via 'cg_multiple_files_for_post' -> 'cgRealId' in all versions up to, and including, 30.0.7 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for authenticated attackers, with author-level access and above, to append additio",
+      "id": "CVE-2026-15963",
+      "description": "The Quiz and Survey Master (QSM) \u2013 Easy Quiz and Survey Maker plugin for WordPress is vulnerable to generic SQL Injection via 'randon_category' Quiz Option in all versions up to, and including, 11.2.1 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for authenticated attackers, with custom-level access and above, to append additional SQL queries into already existing queries that can be used to extrac",
       "cvss": {
         "score": 6.5,
         "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
@@ -520,17 +527,17 @@
         "WordPress"
       ],
       "references": [
-        "https://plugins.trac.wordpress.org/browser/contest-gallery/tags/30.0.6/ajax/ajax-functions-backend.php#L135",
-        "https://plugins.trac.wordpress.org/browser/contest-gallery/tags/30.0.6/ajax/ajax-functions-backend.php#L286",
-        "https://plugins.trac.wordpress.org/browser/contest-gallery/tags/30.0.6/ajax/ajax-functions-backend.php#L310",
-        "https://plugins.trac.wordpress.org/browser/contest-gallery/tags/30.0.6/v10/v10-admin/gallery/change-gallery/0_change-gallery.php#L475",
-        "https://plugins.trac.wordpress.org/browser/contest-gallery/tags/30.0.6/v10/v10-admin/gallery/change-gallery/0_change-gallery.php#L683"
+        "https://plugins.trac.wordpress.org/browser/quiz-master-next/tags/11.2.1/php/classes/class-qsm-fields.php#L77",
+        "https://plugins.trac.wordpress.org/browser/quiz-master-next/tags/11.2.1/php/classes/class-qsm-install.php#L271",
+        "https://plugins.trac.wordpress.org/browser/quiz-master-next/tags/11.2.1/renderer/frontend/class-qsm-render-pagination.php#L390",
+        "https://plugins.trac.wordpress.org/browser/quiz-master-next/tags/11.2.1/renderer/frontend/class-qsm-render-pagination.php#L392",
+        "https://plugins.trac.wordpress.org/changeset?reponame=&old=3612474%40quiz-master-next&new=3612474%40quiz-master-next"
       ],
-      "published": "2026-08-15T04:18:10.607"
+      "published": "2026-08-16T05:16:47.407"
     },
     {
-      "id": "CVE-2026-12248",
-      "description": "The WPML Multilingual CMS plugin for WordPress is vulnerable to SQL Injection via the 'sorting' parameter in all versions up to, and including, 4.9.5 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for authenticated attackers, with translator-level access and above, to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database.",
+      "id": "CVE-2026-16079",
+      "description": "The Fullscreen Galleria plugin for WordPress is vulnerable to generic SQL Injection via 'href' Attribute in Post Content in all versions up to, and including, 1.6.12 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for authenticated attackers, with contributor-level access and above, to append additional SQL queries into already existing queries that can be used to extract sensitive information from t",
       "cvss": {
         "score": 6.5,
         "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
@@ -541,20 +548,20 @@
         "WordPress"
       ],
       "references": [
-        "https://plugins.trac.wordpress.org/browser/sitepress-multilingual-cms/tags/4.9.2/classes/API/REST/class-wpml-tm-rest-jobs.php#L144",
-        "https://plugins.trac.wordpress.org/browser/sitepress-multilingual-cms/tags/4.9.2/classes/jobs/query/OrderQueryHelper.php#L34",
-        "https://plugins.trac.wordpress.org/browser/sitepress-multilingual-cms/trunk/classes/API/REST/class-wpml-tm-rest-jobs.php#L144",
-        "https://plugins.trac.wordpress.org/browser/sitepress-multilingual-cms/trunk/classes/jobs/query/OrderQueryHelper.php#L34",
-        "https://wpml.org/category/changelog/"
+        "https://plugins.trac.wordpress.org/browser/fullscreen-galleria/tags/1.6.12/galleria-fs.php#L1074",
+        "https://plugins.trac.wordpress.org/browser/fullscreen-galleria/tags/1.6.12/galleria-fs.php#L1078",
+        "https://plugins.trac.wordpress.org/browser/fullscreen-galleria/tags/1.6.12/galleria-fs.php#L146",
+        "https://plugins.trac.wordpress.org/browser/fullscreen-galleria/tags/1.6.12/galleria-fs.php#L68",
+        "https://plugins.trac.wordpress.org/browser/fullscreen-galleria/tags/1.6.12/galleria-fs.php#L74"
       ],
-      "published": "2026-08-15T12:16:31.713"
+      "published": "2026-08-16T05:16:47.537"
     },
     {
-      "id": "CVE-2026-15948",
-      "description": "The Hydra Booking \u2014 Appointment Scheduling & Booking Calendar plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'first_name' parameter in all versions up to, and including, 1.2.2 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with host-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. The tfhb_host role required to exploit this vulne",
+      "id": "CVE-2026-9767",
+      "description": "The The School Management \u2013 Education & Learning ERP plugin for WordPress is vulnerable to generic SQL Injection via 'order[0][dir]' Parameter in all versions up to, and including, 5.4 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for authenticated attackers, with custom-level access and above, to append additional SQL queries into already existing queries that can be used to extract sensitive info",
       "cvss": {
-        "score": 6.4,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
+        "score": 6.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
         "severity": "MEDIUM"
       },
       "tier": 2,
@@ -562,400 +569,537 @@
         "WordPress"
       ],
       "references": [
-        "https://plugins.trac.wordpress.org/browser/hydra-booking/trunk/admin/Controller/HostsController.php#L495",
-        "https://plugins.trac.wordpress.org/browser/hydra-booking/trunk/admin/Controller/HostsController.php#L77",
-        "https://plugins.trac.wordpress.org/browser/hydra-booking/trunk/app/Content/Archive/archive-page-tfhb-host.php#L30",
-        "https://plugins.trac.wordpress.org/changeset?reponame=&old=3632543%40hydra-booking&new=3632543%40hydra-booking",
-        "https://www.wordfence.com/threat-intel/vulnerabilities/id/8331fe3f-e943-4f4c-887f-761f3e18eb79?source=cve"
+        "https://plugins.trac.wordpress.org/browser/school-management-system/tags/5.3/admin/inc/school/staff/class/WLSM_Staff_Class.php#L160",
+        "https://plugins.trac.wordpress.org/browser/school-management-system/tags/5.3/admin/inc/school/staff/class/WLSM_Staff_Class.php#L49",
+        "https://plugins.trac.wordpress.org/browser/school-management-system/tags/5.3/admin/inc/school/staff/class/WLSM_Staff_Class.php#L51",
+        "https://plugins.trac.wordpress.org/browser/school-management-system/tags/5.3/admin/inc/school/staff/class/WLSM_Staff_Class.php#L558",
+        "https://plugins.trac.wordpress.org/browser/school-management-system/tags/5.3/admin/inc/school/staff/class/WLSM_Staff_Class.php#L82"
       ],
-      "published": "2026-08-15T04:18:08.773"
+      "published": "2026-08-16T06:16:55.133"
     },
     {
-      "id": "CVE-2026-17090",
-      "description": "The Beaver Builder Page Builder \u2013 Drag and Drop Website Builder plugin for WordPress is vulnerable to Stored Cross-Site Scripting via Button Module 'button' (Button Code) Setting in all versions up to, and including, 2.10.2.2 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with author-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. Beaver Builder grants ed",
+      "id": "CVE-2026-17608",
+      "description": "The WP Compress \u2013 Instant Performance & Speed Optimization plugin for WordPress is vulnerable to Cross-Site Request Forgery in all versions up to, and including, 7.10.09. This is due to missing or incorrect nonce validation on the (top-level template code) function. This makes it possible for unauthenticated attackers to delete arbitrary WordPress options, including critical ones such as siteurl, home, active_plugins, template, and stylesheet, causing site outage or a full plugin and theme reset",
       "cvss": {
-        "score": 6.4,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
+        "score": 6.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:H/A:N",
         "severity": "MEDIUM"
       },
       "tier": 2,
-      "matchedProducts": [
-        "WordPress"
-      ],
-      "references": [
-        "https://plugins.trac.wordpress.org/browser/beaver-builder-lite-version/tags/2.10.1.5/classes/class-fl-builder-model.php#L4659",
-        "https://plugins.trac.wordpress.org/browser/beaver-builder-lite-version/tags/2.10.1.5/modules/button/button.php#L341",
-        "https://plugins.trac.wordpress.org/browser/beaver-builder-lite-version/tags/2.10.1.5/modules/button/includes/frontend.js.php#L8",
-        "https://plugins.trac.wordpress.org/browser/beaver-builder-lite-version/tags/2.10.2.2/classes/class-fl-builder-model.php#L4659",
-        "https://plugins.trac.wordpress.org/browser/beaver-builder-lite-version/tags/2.10.2.2/modules/button/button.php#L341"
-      ],
-      "published": "2026-08-15T04:18:15.940"
-    },
-    {
-      "id": "CVE-2026-15993",
-      "description": "The Form Maker by 10Web \u2013 Mobile-Friendly Drag & Drop Contact Form Builder plugin for WordPress is vulnerable to blind SQL Injection via '{username}' Placeholder in Dynamic-Choice Field WHERE Clause in all versions up to, and including, 1.15.44 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for authenticated attackers, with subscriber-level access and above, to append additional SQL queries into alr",
-      "cvss": {
-        "score": 5.3,
-        "vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:N/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "WordPress"
-      ],
-      "references": [
-        "https://plugins.trac.wordpress.org/browser/form-maker/tags/1.15.43/framework/WDW_FM_Library.php#L6147",
-        "https://plugins.trac.wordpress.org/browser/form-maker/tags/1.15.43/framework/WDW_FM_Library.php#L6657",
-        "https://plugins.trac.wordpress.org/browser/form-maker/tags/1.15.43/frontend/controllers/form_maker.php#L252",
-        "https://plugins.trac.wordpress.org/browser/form-maker/tags/1.15.43/frontend/views/form_maker.php#L2849",
-        "https://plugins.trac.wordpress.org/browser/form-maker/tags/1.15.44/framework/WDW_FM_Library.php#L6147"
-      ],
-      "published": "2026-08-15T04:18:09.727"
-    },
-    {
-      "id": "CVE-2026-16094",
-      "description": "The Invisible Anti-Spam & CAPTCHA \u2014 reCAPTCHA Alternative for All Forms plugin for WordPress is vulnerable to generic SQL Injection via the 'key' parameter in all versions up to, and including, 5.1 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for authenticated attackers, with editor-level access and above, to append additional SQL queries into already existing queries that can be used to extract s",
-      "cvss": {
-        "score": 4.9,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:N/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "WordPress"
-      ],
-      "references": [
-        "https://plugins.trac.wordpress.org/browser/gdpr-compliant-recaptcha-for-all-forms/tags/5.0/includes/class-message-page.php#L428",
-        "https://plugins.trac.wordpress.org/browser/gdpr-compliant-recaptcha-for-all-forms/tags/5.0/includes/class-message-page.php#L451",
-        "https://plugins.trac.wordpress.org/browser/gdpr-compliant-recaptcha-for-all-forms/tags/5.0/includes/class-message-page.php#L503",
-        "https://plugins.trac.wordpress.org/browser/gdpr-compliant-recaptcha-for-all-forms/tags/5.0/includes/class-message-page.php#L767",
-        "https://plugins.trac.wordpress.org/browser/gdpr-compliant-recaptcha-for-all-forms/tags/5.0/includes/class-message-page.php#L769"
-      ],
-      "published": "2026-08-15T04:18:09.987"
-    },
-    {
-      "id": "CVE-2026-16146",
-      "description": "The Invisible Anti-Spam & CAPTCHA \u2014 reCAPTCHA Alternative for All Forms plugin for WordPress is vulnerable to generic SQL Injection via Pattern JSON Keys/Values in all versions up to, and including, 5.1 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for authenticated attackers, with editor-level access and above, to append additional SQL queries into already existing queries that can be used to extr",
-      "cvss": {
-        "score": 4.9,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:N/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "WordPress"
-      ],
-      "references": [
-        "https://plugins.trac.wordpress.org/browser/gdpr-compliant-recaptcha-for-all-forms/tags/5.0/includes/class-message-page.php#L428",
-        "https://plugins.trac.wordpress.org/browser/gdpr-compliant-recaptcha-for-all-forms/tags/5.0/includes/class-message-page.php#L451",
-        "https://plugins.trac.wordpress.org/browser/gdpr-compliant-recaptcha-for-all-forms/tags/5.0/includes/class-message-page.php#L519",
-        "https://plugins.trac.wordpress.org/browser/gdpr-compliant-recaptcha-for-all-forms/tags/5.0/includes/class-option.php#L290",
-        "https://plugins.trac.wordpress.org/browser/gdpr-compliant-recaptcha-for-all-forms/tags/5.0/includes/class-option.php#L292"
-      ],
-      "published": "2026-08-15T04:18:10.440"
-    },
-    {
-      "id": "CVE-2026-14229",
-      "description": "The ECS  WordPress plugin before 4.3.8 does not check the post status or any capability when rendering an Elementor document requested through one of its AJAX actions, allowing unauthenticated users to retrieve the rendered content of unpublished (private, draft, pending) documents by supplying their identifier.",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "WordPress"
-      ],
-      "references": [
-        "https://wpscan.com/vulnerability/52b44fc8-90af-45e4-a745-37e6369d8b6b/"
-      ],
-      "published": "2026-08-15T06:16:49.917"
-    },
-    {
-      "id": "CVE-2026-16541",
-      "description": "The Simply Schedule Appointments WordPress plugin before 1.6.12.17 does not restrict the user records returned by some of its REST endpoints to those the requester is entitled to see, allowing users with a low-privileged staff role to disclose the names and email addresses of arbitrary registered users.",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "WordPress"
-      ],
-      "references": [
-        "https://wpscan.com/vulnerability/8172f778-5dc5-49e8-9967-81215ac187d7/"
-      ],
-      "published": "2026-08-15T06:17:08.280"
-    },
-    {
-      "id": "CVE-2026-18216",
-      "description": "The Backup Migration WordPress plugin before 2.1.7 does not properly restrict a post-restore automatic login mechanism, allowing a user who administers one site of a multisite network to obtain a long-lived authenticated session as an administrator of another site in the same network, without credentials and bypassing two-factor authentication.",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "WordPress"
-      ],
-      "references": [
-        "https://wpscan.com/vulnerability/f12530c5-4069-42c2-9f1c-b00fc62aa387/"
-      ],
-      "published": "2026-08-15T06:17:08.487"
-    },
-    {
-      "id": "CVE-2026-18807",
-      "description": "The ECS  WordPress plugin before 4.3.8 does not have capability or ownership checks on its dynamic repeater actions, relying only on a nonce available to any user who can open the page builder, allowing users with a contributor-level account or above to read, alter and delete the binding configuration of posts they do not own and to change the ECS  WordPress plugin before 4.3.8's site-wide presets.",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
       "matchedProducts": [
         "ESET",
         "WordPress"
       ],
       "references": [
-        "https://wpscan.com/vulnerability/bf500bf2-1684-4ca1-a8ad-bcff9cbc127c/"
+        "https://plugins.trac.wordpress.org/browser/wp-compress-image-optimizer/tags/7.10.03/classes/menu.class.php#L239",
+        "https://plugins.trac.wordpress.org/browser/wp-compress-image-optimizer/tags/7.10.03/classes/menu.class.php#L335",
+        "https://plugins.trac.wordpress.org/browser/wp-compress-image-optimizer/tags/7.10.03/templates/admin/advanced_settings_v4.php#L2378",
+        "https://plugins.trac.wordpress.org/browser/wp-compress-image-optimizer/tags/7.10.03/templates/admin/debug_tool.php#L550",
+        "https://plugins.trac.wordpress.org/browser/wp-compress-image-optimizer/tags/7.10.03/templates/admin/debug_tool.php#L551"
       ],
-      "published": "2026-08-15T06:17:17.050"
+      "published": "2026-08-16T07:16:30.663"
     },
     {
-      "id": "CVE-2026-72007",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\npmdomain: imx: Fix i.MX8MP VC8000E power up sequence\n\nPer errata[1]:\nERR050531: VPU_NOC power down handshake may hang during VC8000E/VPUMIX\npower up/down cycling.\nDescription: VC8000E reset de-assertion edge and AXI clock may have a\ntiming issue.\nWorkaround: Set bit2 (vc8000e_clk_en) of BLK_CLK_EN_CSR to 0 to gate off\nboth AXI clock and VC8000E clock sent to VC8000E and AXI clock sent to\nVPU_NOC m_v_2 interface during VC8000E p",
+      "id": "CVE-2026-11780",
+      "description": "The Quiz and Survey Master (QSM) \u2013 Easy Quiz and Survey Maker plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'question_title' parameter in all versions up to, and including, 11.2.1 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
       "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
+        "score": 6.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/quiz-master-next/tags/11.0.0/php/admin/options-page-questions-tab.php#L1557",
+        "https://plugins.trac.wordpress.org/browser/quiz-master-next/tags/11.0.0/php/admin/options-page-questions-tab.php#L1580",
+        "https://plugins.trac.wordpress.org/browser/quiz-master-next/tags/11.0.0/php/rest-api.php#L301",
+        "https://plugins.trac.wordpress.org/browser/quiz-master-next/tags/11.0.0/php/rest-api.php#L741",
+        "https://plugins.trac.wordpress.org/browser/quiz-master-next/tags/11.1.4/php/admin/options-page-questions-tab.php#L1557"
+      ],
+      "published": "2026-08-16T05:16:45.643"
+    },
+    {
+      "id": "CVE-2026-15066",
+      "description": "The Loco Translate plugin for WordPress is vulnerable to Stored Cross-Site Scripting via PO File Extracted Comments in all versions up to, and including, 2.8.7 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with translator-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+      "cvss": {
+        "score": 6.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/loco-translate/tags/2.8.4/pub/js/min/admin.js#L1404",
+        "https://plugins.trac.wordpress.org/browser/loco-translate/tags/2.8.4/pub/js/min/admin.js#L3533",
+        "https://plugins.trac.wordpress.org/browser/loco-translate/tags/2.8.4/src/ajax/SaveController.php#L52",
+        "https://plugins.trac.wordpress.org/browser/loco-translate/tags/2.8.5/pub/js/min/admin.js#L1404",
+        "https://plugins.trac.wordpress.org/browser/loco-translate/tags/2.8.5/pub/js/min/admin.js#L3533"
+      ],
+      "published": "2026-08-16T05:16:46.880"
+    },
+    {
+      "id": "CVE-2026-15726",
+      "description": "The Serious Slider plugin for WordPress is vulnerable to Stored Cross-Site Scripting via 'theme' Shortcode Attribute in all versions up to, and including, 1.4.0 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+      "cvss": {
+        "score": 6.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/cryout-serious-slider/tags/1.4.0/inc/shortcodes.php#L102",
+        "https://plugins.trac.wordpress.org/browser/cryout-serious-slider/tags/1.4.0/inc/shortcodes.php#L111",
+        "https://plugins.trac.wordpress.org/browser/cryout-serious-slider/tags/1.4.0/inc/shortcodes.php#L244",
+        "https://plugins.trac.wordpress.org/browser/cryout-serious-slider/tags/1.4.0/inc/shortcodes.php#L55",
+        "https://plugins.trac.wordpress.org/changeset?reponame=&old=3640247%40cryout-serious-slider&new=3640247%40cryout-serious-slider"
+      ],
+      "published": "2026-08-16T05:16:47.270"
+    },
+    {
+      "id": "CVE-2026-15604",
+      "description": "The Toocheke Companion plugin for WordPress is vulnerable to Stored Cross-Site Scripting in versions up to, and including, 2.10 via the 'series_bg_color' post meta field. This is due to insufficient input sanitization in the toocheke_series_bg_color_save() function (which stores the raw $_POST value in post meta) and insufficient output escaping in the series admin column rendering (where the stored value is concatenated into a style attribute without esc_attr()). This makes it possible for auth",
+      "cvss": {
+        "score": 6.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/toocheke-companion/tags/2.11/inc/class-toocheke-companion-admin-columns.php#L296",
+        "https://plugins.trac.wordpress.org/browser/toocheke-companion/tags/2.3/inc/class-toocheke-companion-admin-columns.php#L296",
+        "https://plugins.trac.wordpress.org/browser/toocheke-companion/tags/2.3/inc/class-toocheke-companion-metaboxes.php#L959",
+        "https://plugins.trac.wordpress.org/browser/toocheke-companion/tags/2.3/inc/class-toocheke-companion-metaboxes.php#L960",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/1bf78bc1-55d7-4230-913f-d7c521225367?source=cve"
+      ],
+      "published": "2026-08-16T06:16:50.840"
+    },
+    {
+      "id": "CVE-2026-15790",
+      "description": "The Youtube Showcase plugin for WordPress is vulnerable to Stored Cross-Site Scripting in versions up to, and including, 4.0.4 via the 'emd_mb_meta' shortcode. This is due to insufficient input sanitization and output escaping on attachment titles referenced by the shortcode's image field: EMD_MB_Helper::image_info() returns the attachment's raw post_title, and EMD_MB_Helper::shortcode() interpolates it into title=\"%s\" HTML attributes via sprintf() without esc_attr(). This makes it possible for ",
+      "cvss": {
+        "score": 6.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/youtube-showcase/tags/4.0.4/assets/ext/emd-meta-box/inc/helpers.php#L274",
+        "https://plugins.trac.wordpress.org/browser/youtube-showcase/tags/4.0.4/assets/ext/emd-meta-box/inc/helpers.php#L72",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/3be5e544-1ea5-46f6-a15b-99b0e3718c91?source=cve"
+      ],
+      "published": "2026-08-16T06:16:50.967"
+    },
+    {
+      "id": "CVE-2026-16758",
+      "description": "The Snippet Shortcodes plugin for WordPress is vulnerable to Stored Cross-Site Scripting via Shortcode Attributes in all versions up to, and including, 5.2.0 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+      "cvss": {
+        "score": 6.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/shortcode-variables/tags/5.1.7/includes/functions.php#L81",
+        "https://plugins.trac.wordpress.org/browser/shortcode-variables/tags/5.1.7/includes/shortcode.user.php#L14",
+        "https://plugins.trac.wordpress.org/browser/shortcode-variables/tags/5.1.7/includes/shortcode.user.php#L74",
+        "https://plugins.trac.wordpress.org/changeset?reponame=&old=3647346%40shortcode-variables&new=3647346%40shortcode-variables",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/6dd14860-2cf5-45ec-a1d6-69e43ecdb3be?source=cve"
+      ],
+      "published": "2026-08-16T06:16:51.090"
+    },
+    {
+      "id": "CVE-2026-16775",
+      "description": "The Smash Balloon Social Post Feed \u2013 Simple Social Feeds for WordPress plugin for WordPress is vulnerable to Stored Cross-Site Scripting via 'id' Shortcode Attribute in all versions up to, and including, 4.9.0 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+      "cvss": {
+        "score": 6.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/custom-facebook-feed/tags/4.9.0/inc/CFF_FB_Settings.php#L59",
+        "https://plugins.trac.wordpress.org/browser/custom-facebook-feed/tags/4.9.0/inc/CFF_Shortcode.php#L1149",
+        "https://plugins.trac.wordpress.org/browser/custom-facebook-feed/tags/4.9.0/inc/CFF_Shortcode.php#L312",
+        "https://plugins.trac.wordpress.org/changeset/3640517/custom-facebook-feed/trunk/inc/CFF_Shortcode.php?old=3465306&old_path=custom-facebook-feed%2Ftrunk%2Finc%2FCFF_Shortcode.php",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/ae039144-2c02-4a00-9fff-f4e90a6a8236?source=cve"
+      ],
+      "published": "2026-08-16T06:16:51.217"
+    },
+    {
+      "id": "CVE-2026-18402",
+      "description": "The SureDash \u2013 Community, Courses & Member Dashboard plugin for WordPress is vulnerable to Stored Cross-Site Scripting via 'draweropenverposition' Block/Shortcode Attribute in all versions up to, and including, 1.10.3 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. The injected payload is sto",
+      "cvss": {
+        "score": 6.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/suredash/tags/1.10.3/core/blocks/interactivity/build/Notification/view.php#L26",
+        "https://plugins.trac.wordpress.org/browser/suredash/tags/1.10.3/core/shortcodes/notification.php#L182",
+        "https://plugins.trac.wordpress.org/browser/suredash/tags/1.10.3/core/shortcodes/notification.php#L189",
+        "https://plugins.trac.wordpress.org/changeset?reponame=&old=3632516%40suredash&new=3632516%40suredash",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/3d99bc37-4697-400a-bbd4-858543f17d1f?source=cve"
+      ],
+      "published": "2026-08-16T06:16:51.807"
+    },
+    {
+      "id": "CVE-2026-2357",
+      "description": "The Bold Page Builder plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the plugin's 'bt_bb_shortcode' shortcode in all versions up to, and including, 5.6.8 due to insufficient input sanitization and output escaping on user supplied attributes. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+      "cvss": {
+        "score": 6.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/changeset?reponame=&old=3479329%40bold-page-builder&new=3479329%40bold-page-builder",
+        "https://wordpress.org/plugins/bold-page-builder/",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/63cab921-60fa-42c5-ad0d-69de8cc91332?source=cve"
+      ],
+      "published": "2026-08-16T07:16:30.910"
+    },
+    {
+      "id": "CVE-2026-15009",
+      "description": "The Advanced File Manager \u2013 Ultimate File Manager for WordPress And Document Library Solution plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'soundFile' parameter in all versions up to, and including, 5.4.12 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. Exploitation requires the attacker to control a do",
+      "cvss": {
+        "score": 6.1,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/file-manager-advanced/tags/5.4.11/application/library/js/elFinder.js#L4596",
+        "https://plugins.trac.wordpress.org/browser/file-manager-advanced/tags/5.4.11/application/library/js/elFinder.js#L4839",
+        "https://plugins.trac.wordpress.org/browser/file-manager-advanced/tags/5.4.11/application/library/js/elFinder.js#L4856",
+        "https://plugins.trac.wordpress.org/browser/file-manager-advanced/tags/5.4.12/application/library/js/elFinder.js#L4596",
+        "https://plugins.trac.wordpress.org/browser/file-manager-advanced/tags/5.4.12/application/library/js/elFinder.js#L4839"
+      ],
+      "published": "2026-08-16T05:16:46.753"
+    },
+    {
+      "id": "CVE-2026-15441",
+      "description": "The WC Product Table Lite plugin for WordPress is vulnerable to CSS Injection in versions up to, and including, 5.6.0 via the 'laptop_scroll_offset' shortcode attribute exposed through the unauthenticated wcpt_ajax() AJAX handler. The handler is registered for wp_ajax_nopriv_wcpt_ajax, JSON-decodes attacker-supplied attributes, only allowlists key names (not values), applies a preg_replace that strips only [ ] < >, and passes the value through do_shortcode into wcpt_style__sticky_sidebar(), wher",
+      "cvss": {
+        "score": 5.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/wc-product-table-lite/tags/5.1.0/main.php#L2677",
+        "https://plugins.trac.wordpress.org/browser/wc-product-table-lite/tags/5.1.0/main.php#L2686",
+        "https://plugins.trac.wordpress.org/browser/wc-product-table-lite/tags/5.1.0/style-functions.php#L995",
+        "https://plugins.trac.wordpress.org/browser/wc-product-table-lite/tags/5.4.0/main.php#L2677",
+        "https://plugins.trac.wordpress.org/browser/wc-product-table-lite/tags/5.4.0/main.php#L2686"
+      ],
+      "published": "2026-08-16T05:16:47.010"
+    },
+    {
+      "id": "CVE-2026-12998",
+      "description": "The Forminator Forms \u2013 Contact Form, Payment Form & Custom Form Builder plugin for WordPress is vulnerable to Insecure Direct Object Reference in all versions up to, and including, 1.55.0.2 via the 'draft' parameter due to missing validation on a user controlled key. This makes it possible for unauthenticated attackers to enumerate sequential integer entry IDs via the 'draft' parameter and read other users' saved draft form data, including names, email addresses, phone numbers, addresses, and fr",
+      "cvss": {
+        "score": 5.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/forminator/tags/1.52.2/library/model/class-form-entry-model.php#L160",
+        "https://plugins.trac.wordpress.org/browser/forminator/tags/1.52.2/library/model/class-form-entry-model.php#L212",
+        "https://plugins.trac.wordpress.org/browser/forminator/tags/1.52.2/library/render/class-render-form.php#L2000",
+        "https://plugins.trac.wordpress.org/browser/forminator/tags/1.52.2/library/render/class-render-form.php#L2011",
+        "https://plugins.trac.wordpress.org/browser/forminator/tags/1.55.0/library/model/class-form-entry-model.php#L160"
+      ],
+      "published": "2026-08-16T07:16:30.173"
+    },
+    {
+      "id": "CVE-2026-15602",
+      "description": "The NEX-Forms \u2013 Ultimate Forms Plugin for WordPress plugin for WordPress is vulnerable to generic SQL Injection via the 'additional_params' parameter in all versions up to, and including, 9.2.4 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for authenticated attackers, with admin-level access and above, to append additional SQL queries into already existing queries that can be used to extract sensit",
+      "cvss": {
+        "score": 4.9,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:N/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/nex-forms-express-wp-form-builder/tags/9.2.3/includes/classes/class.dashboard.php#L5481",
+        "https://plugins.trac.wordpress.org/browser/nex-forms-express-wp-form-builder/tags/9.2.3/main.php#L3756",
+        "https://plugins.trac.wordpress.org/browser/nex-forms-express-wp-form-builder/tags/9.2.3/main.php#L3764",
+        "https://plugins.trac.wordpress.org/changeset?reponame=&old=3644732%40nex-forms-express-wp-form-builder&new=3644732%40nex-forms-express-wp-form-builder",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/1dd094b8-440a-47ae-8edc-c23f1909d607?source=cve"
+      ],
+      "published": "2026-08-16T05:16:47.140"
+    },
+    {
+      "id": "CVE-2026-17582",
+      "description": "The Slider Hero plugin for WordPress is vulnerable to second-order SQL Injection in versions up to, and including, 9.1.7 via the qcld_sliderhero_duplicate() function. Slide data (description, title, btn, btn2, image_link, custom, etc.) is stored safely via $wpdb->update() with %s placeholders in the qchero_save_image AJAX handler, but when an administrator triggers the 'heroduplicateslider' task, qcld_sliderhero_duplicate() re-reads every slide column and concatenates the raw values directly int",
+      "cvss": {
+        "score": 4.9,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:N/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/slider-hero/tags/9.1.6/qcld-slider-main.php#L1206",
+        "https://plugins.trac.wordpress.org/browser/slider-hero/tags/9.1.6/qcld-slider-main.php#L392",
+        "https://plugins.trac.wordpress.org/browser/slider-hero/tags/9.1.7/qcld-slider-main.php#L1206",
+        "https://plugins.trac.wordpress.org/browser/slider-hero/tags/9.1.7/qcld-slider-main.php#L392",
+        "https://plugins.trac.wordpress.org/changeset?reponame=&old=3635315%40slider-hero&new=3635315%40slider-hero"
+      ],
+      "published": "2026-08-16T06:16:51.563"
+    },
+    {
+      "id": "CVE-2026-2283",
+      "description": "The User Login History plugin for WordPress is vulnerable to SQL Injection via the 'blog_id' parameter in all versions up to, and including, 2.1.7. This is due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for authenticated attackers, with Administrator-level access and above, to append additional SQL queries into already existing queries that can be used to extract sensitive information from the datab",
+      "cvss": {
+        "score": 4.9,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:N/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/user-login-history/tags/2.1.7/inc/admin/class-network-admin-login-list-table.php#L116",
+        "https://plugins.trac.wordpress.org/browser/user-login-history/tags/2.1.7/inc/admin/class-network-admin-login-list-table.php#L70",
+        "https://plugins.trac.wordpress.org/browser/user-login-history/trunk/inc/admin/class-network-admin-login-list-table.php#L116",
+        "https://plugins.trac.wordpress.org/browser/user-login-history/trunk/inc/admin/class-network-admin-login-list-table.php#L70",
+        "https://plugins.trac.wordpress.org/changeset?reponame=&old=3484407%40user-login-history&new=3484407%40user-login-history"
+      ],
+      "published": "2026-08-16T06:16:53.003"
+    },
+    {
+      "id": "CVE-2026-17604",
+      "description": "The Kirki \u2013 Freeform Page Builder, Website Builder & Customizer plugin for WordPress is vulnerable to Directory Traversal in all versions up to, and including, 6.1.1 via the 'data' parameter parameter. This makes it possible for authenticated attackers, with editor-level access and above, to read the contents of arbitrary files on the server, which can contain sensitive information. The intended strpos()-based guard against leaving the uploads directory is bypassed by crafting a URL that include",
+      "cvss": {
+        "score": 4.9,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:N/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/kirki/tags/6.0.12/includes/Ajax.php#L349",
+        "https://plugins.trac.wordpress.org/browser/kirki/tags/6.0.12/includes/Ajax/ExportImport.php#L182",
+        "https://plugins.trac.wordpress.org/browser/kirki/tags/6.0.12/includes/Ajax/ExportImport.php#L186",
+        "https://plugins.trac.wordpress.org/browser/kirki/tags/6.0.12/includes/Ajax/ExportImport.php#L26",
+        "https://plugins.trac.wordpress.org/browser/kirki/tags/6.0.12/includes/Ajax/ExportImport.php#L52"
+      ],
+      "published": "2026-08-16T07:16:30.547"
+    },
+    {
+      "id": "CVE-2026-2487",
+      "description": "The Admin Custom Login plugin for WordPress is vulnerable to Stored Cross-Site Scripting via admin settings in all versions up to, and including, 3.6.4 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with administrator-level permissions and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. This only affects multi-site installations and installations where unfiltered_html has",
+      "cvss": {
+        "score": 4.4,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:C/C:L/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/admin-custom-login/tags/3.6.3/includes/login-form-setting/login-form-background.php#L759",
+        "https://plugins.trac.wordpress.org/browser/admin-custom-login/tags/3.6.3/login-form-screen.php#L162",
+        "https://plugins.trac.wordpress.org/browser/admin-custom-login/trunk/includes/login-form-setting/login-form-background.php#L759",
+        "https://plugins.trac.wordpress.org/browser/admin-custom-login/trunk/login-form-screen.php#L162",
+        "https://plugins.trac.wordpress.org/changeset?reponame=&old=3510948%40admin-custom-login&new=3510948%40admin-custom-login"
+      ],
+      "published": "2026-08-16T04:16:27.943"
+    },
+    {
+      "id": "CVE-2026-12477",
+      "description": "The Gravity Booster \u2013 Styles & Layouts for Gravity Forms plugin for WordPress is vulnerable to Stored Cross-Site Scripting via admin settings in all versions up to, and including, 5.26 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with editor-level permissions and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. This only affects multi-site installations and installations",
+      "cvss": {
+        "score": 4.4,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:C/C:L/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/styles-and-layouts-for-gravity-forms/tags/5.26/display/class-styles.php#L147",
+        "https://plugins.trac.wordpress.org/browser/styles-and-layouts-for-gravity-forms/tags/5.26/display/class-styles.php#L148",
+        "https://plugins.trac.wordpress.org/browser/styles-and-layouts-for-gravity-forms/tags/5.26/display/class-styles.php#L76",
+        "https://plugins.trac.wordpress.org/browser/styles-and-layouts-for-gravity-forms/tags/5.26/includes/admin/fetch/stla-admin-fetch-content-area.php#L290",
+        "https://plugins.trac.wordpress.org/changeset?reponame=&old=3637650%40styles-and-layouts-for-gravity-forms&new=3637650%40styles-and-layouts-for-gravity-forms"
+      ],
+      "published": "2026-08-16T05:16:45.810"
+    },
+    {
+      "id": "CVE-2025-10005",
+      "description": "The PPWP \u2013 Password Protect WordPress | #1 Most-Reviewed Password Plugin plugin for WordPress is vulnerable to Insecure Direct Object Reference in all versions up to, and including, 1.9.20 via the ppw_free_set_password AJAX action due to missing validation on a user controlled key. This makes it possible for authenticated attackers, with Contributor-level access and above, to update the password on any password protected post and subsequently access the content.",
+      "cvss": {
+        "score": 4.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/changeset?reponame=&old=3637624%40password-protect-page&new=3637624%40password-protect-page",
+        "https://research.cleantalk.org/CVE-2025-10005",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/b1850e16-6fac-4d72-9346-ea6280fe84d0?source=cve"
+      ],
+      "published": "2026-08-16T05:16:44.747"
+    },
+    {
+      "id": "CVE-2026-13167",
+      "description": "The Everest Forms \u2013 Contact Form, Payment Form, Quiz, Survey & Custom Form Builder with AI plugin for WordPress is vulnerable to authorization bypass in all versions up to, and including, 3.5.2. This is due to the plugin not properly verifying that a user is authorized to perform an action. This makes it possible for authenticated attackers, with delegated form management access and above, to activate arbitrary already-installed WordPress plugins \u2014 including previously deactivated or vulnerable ",
+      "cvss": {
+        "score": 4.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/everest-forms/tags/3.4.5/includes/RestApi/controllers/version1/class-evf-modules.php#L315",
+        "https://plugins.trac.wordpress.org/browser/everest-forms/tags/3.4.5/includes/RestApi/controllers/version1/class-evf-modules.php#L730",
+        "https://plugins.trac.wordpress.org/browser/everest-forms/tags/3.4.5/includes/class-evf-ajax.php#L121",
+        "https://plugins.trac.wordpress.org/browser/everest-forms/tags/3.4.5/includes/class-evf-ajax.php#L1408",
+        "https://plugins.trac.wordpress.org/browser/everest-forms/tags/3.4.5/includes/class-evf-ajax.php#L709"
+      ],
+      "published": "2026-08-16T05:16:46.077"
+    },
+    {
+      "id": "CVE-2026-16779",
+      "description": "The Kubio AI Page Builder plugin for WordPress is vulnerable to authorization bypass in all versions up to, and including, 2.8.5. This is due to the plugin not properly verifying that a user is authorized to perform an action. This makes it possible for authenticated attackers, with contributor-level access and above, to overwrite front-page configuration options (show_on_front, page_on_front, and page_for_posts), rewrite primary navigation menu items, replace template parts, and overwrite the K",
+      "cvss": {
+        "score": 4.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/kubio/tags/2.8.5/lib/editor-assets.php#L411",
+        "https://plugins.trac.wordpress.org/browser/kubio/tags/2.8.5/lib/kubio-block-library.php#L197",
+        "https://plugins.trac.wordpress.org/browser/kubio/tags/2.8.5/lib/src/Core/KubioFrontPageRevertNotice.php#L151",
+        "https://plugins.trac.wordpress.org/browser/kubio/tags/2.8.5/lib/src/Core/KubioFrontPageRevertNotice.php#L25",
+        "https://plugins.trac.wordpress.org/changeset?reponame=&old=3633801%40kubio&new=3633801%40kubio"
+      ],
+      "published": "2026-08-16T05:16:47.910"
+    },
+    {
+      "id": "CVE-2026-15345",
+      "description": "The ShortPixel Adaptive Images \u2013 WebP, AVIF, CDN, Image Optimization plugin for WordPress is vulnerable to authorization bypass in all versions up to, and including, 3.11.5. This is due to the plugin not properly verifying that a user is authorized to perform an action. This makes it possible for authenticated attackers, with subscriber-level access and above, to modify configuration options of third-party plugins including ShortPixel Image Optimizer, Autoptimize, WP Rocket, Imagify, and LiteSpe",
+      "cvss": {
+        "score": 4.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/shortpixel-adaptive-images/tags/3.11.5/includes/actions/notice.actions.class.php#L16",
+        "https://plugins.trac.wordpress.org/browser/shortpixel-adaptive-images/tags/3.11.5/includes/actions/notice.actions.class.php#L566",
+        "https://plugins.trac.wordpress.org/browser/shortpixel-adaptive-images/tags/3.11.5/includes/actions/notice.actions.class.php#L614",
+        "https://plugins.trac.wordpress.org/browser/shortpixel-adaptive-images/tags/3.11.5/includes/actions/notice.actions.class.php#L87",
+        "https://plugins.trac.wordpress.org/browser/shortpixel-adaptive-images/tags/3.11.5/includes/controllers/notice.class.php#L747"
+      ],
+      "published": "2026-08-16T06:16:50.493"
+    },
+    {
+      "id": "CVE-2026-18347",
+      "description": "The Kirki \u2013 Freeform Page Builder, Website Builder & Customizer plugin for WordPress is vulnerable to authorization bypass in all versions up to, and including, 6.1.1. This is due to the plugin not properly verifying that a user is authorized to perform an action. This makes it possible for authenticated attackers, with custom-level access and above, to read arbitrary user metadata and sensitive user record fields \u2014 including email address, assigned roles, registration date, and any user_meta va",
+      "cvss": {
+        "score": 4.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/kirki/tags/6.0.9/includes/API/Frontend/Controllers/CollectionController.php#L97",
+        "https://plugins.trac.wordpress.org/browser/kirki/tags/6.0.9/includes/API/Frontend/Controllers/FrontendRESTController.php#L42",
+        "https://plugins.trac.wordpress.org/browser/kirki/tags/6.0.9/includes/API/Frontend/Controllers/FrontendRESTController.php#L82",
+        "https://plugins.trac.wordpress.org/browser/kirki/tags/6.0.9/includes/Ajax/Users.php#L227",
+        "https://plugins.trac.wordpress.org/browser/kirki/tags/6.0.9/includes/HelperFunctions.php#L1098"
+      ],
+      "published": "2026-08-16T07:16:30.787"
+    },
+    {
+      "id": "CVE-2026-19965",
+      "description": "A vulnerability was determined in automad up to 2.0.0-beta.32. This vulnerability affects the function requestPasswordResetToken of the file automad/src/server/Controllers/API/UserController.php of the component Password Reset Endpoint. This manipulation of the argument name-or-email causes observable response discrepancy. The attack can be initiated remotely. The attack's complexity is rated as high. It is stated that the exploitability is difficult. The exploit has been publicly disclosed and ",
+      "cvss": {
+        "score": 3.7,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:N",
+        "severity": "LOW"
       },
       "tier": 3,
       "matchedProducts": [
         "ESET"
       ],
       "references": [
-        "https://git.kernel.org/stable/c/25e252bcf1593b420b12a7231d9dd64b885a2ae2",
-        "https://git.kernel.org/stable/c/4907f4c2d98b97e640191af5bcf2814ee1034b76",
-        "https://git.kernel.org/stable/c/4ff3960f3527189bc115a927ed3561c758f562f1",
-        "https://git.kernel.org/stable/c/87af3ebc112fb3f06753794390daf0f665f151b4",
-        "https://git.kernel.org/stable/c/c498928f85651b56a4041ea165a22037eae69580"
+        "https://github.com/marcantondahmen/automad/commit/eac0b05dafdb0ddf8b9139dad8929aaba86568ca",
+        "https://github.com/marcantondahmen/automad/issues/191",
+        "https://github.com/marcantondahmen/automad/releases/tag/2.0.0-beta.33",
+        "https://vuldb.com/cve/CVE-2026-19965",
+        "https://vuldb.com/submit/873022"
       ],
-      "published": "2026-08-15T06:20:59.350"
+      "published": "2026-08-17T00:16:27.450"
     },
     {
-      "id": "CVE-2026-72020",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nipvs: reset full ip_vs_seq structs in ip_vs_conn_new\n\nCommit 9a05475cebdd (\"ipvs: avoid kmem_cache_zalloc in\nip_vs_conn_new\") changed ip_vs_conn_new() to allocate an ip_vs_conn\nobject with kmem_cache_alloc().  The function then initializes many\nfields explicitly, but only resets in_seq.delta and out_seq.delta in the\ntwo struct ip_vs_seq members.\n\nThat leaves init_seq and previous_delta uninitialized.  This is normally\nharmless ",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/2975324d164c552b028632f107b567302863b7f6",
-        "https://git.kernel.org/stable/c/32c299e28b8eea6cbbd23b97dc61401e9ef9c445",
-        "https://git.kernel.org/stable/c/3bf9a260188b2a5449cbddc032a749ab433fe328",
-        "https://git.kernel.org/stable/c/6335ab62d5fc9ed875279238233fba3462c168f5",
-        "https://git.kernel.org/stable/c/6378c5cb360eb1750f88839d7c3613ea92ac1816"
-      ],
-      "published": "2026-08-15T06:21:00.920"
-    },
-    {
-      "id": "CVE-2026-72021",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nipvs: use parsed transport offset in SCTP state lookup\n\nset_sctp_state() reads the SCTP chunk header again in order to drive the\nIPVS SCTP state table. For IPv6 it computes the offset with\nsizeof(struct ipv6hdr), while the surrounding IPVS code uses iph.len from\nip_vs_fill_iph_skb(), where ipv6_find_hdr() has already skipped\nextension headers and found the real transport header.\n\nThis makes the state machine read from the wrong",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "Visual Studio Code"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/247d055504dcc852e539b9f7f30d19f9741474bf",
-        "https://git.kernel.org/stable/c/290e9e8389b556efc603522e28bd1543846aa336",
-        "https://git.kernel.org/stable/c/2f75c0faa3361b28e36cc0512b3299e163e25789",
-        "https://git.kernel.org/stable/c/9cb5ac594ca76d3a71803b23b74c835b0721e628",
-        "https://git.kernel.org/stable/c/9f94573ab962a9e81954b755da016fa3cd2f5039"
-      ],
-      "published": "2026-08-15T06:21:01.053"
-    },
-    {
-      "id": "CVE-2026-72075",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nInput: ims-pcu - fix race condition in reset_device sysfs callback\n\nThe ims_pcu_reset_device() sysfs callback calls ims_pcu_execute_command()\nwithout acquiring pcu->cmd_mutex. This can lead to data races and\ncorruption of the shared command buffer if triggered concurrently with\nother commands.\n\nAcquire pcu->cmd_mutex before calling ims_pcu_execute_command().",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/025955847e1500ced4719ac178beff6a3b2f0e3c",
-        "https://git.kernel.org/stable/c/0fb84b1a3cdc74c453abc5f961c7d318c267ea4c",
-        "https://git.kernel.org/stable/c/129187ec3f868829f61f6f07381ca72fe642d0b7",
-        "https://git.kernel.org/stable/c/411b8c4b274737c3bf08e1e025801161603cfffc",
-        "https://git.kernel.org/stable/c/54c2237fc69541c75fe4cd321622ebb8ecc3587f"
-      ],
-      "published": "2026-08-15T06:21:17.410"
-    },
-    {
-      "id": "CVE-2026-72082",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nscsi: elx: efct: Fix refcount leak in efct_hw_io_abort()\n\nWhen efct_hw_reqtag_alloc() fails in efct_hw_io_abort(), the error path\nreturns -ENOSPC without releasing the reference obtained via\nkref_get_unless_zero() earlier in the function. All other error paths\ncorrectly drop the reference. This causes a permanent reference leak on the\nio_to_abort object.\n\nAdditionally, the abort_in_progress flag is left set to true on this path",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/1c6e186c722cfa9a58ebe841f91ab2ddf8570cc7",
-        "https://git.kernel.org/stable/c/2c007acf7b31c39c08ce4959451ad00b19be4c1f",
-        "https://git.kernel.org/stable/c/62cf39a9770a6f29df59fd0edb0a05234a8b07f2",
-        "https://git.kernel.org/stable/c/747eaead2db298abfda2aa505f6d03775b40fe5f",
-        "https://git.kernel.org/stable/c/9b871369cbb4532f6715e044d6b9c4ceb036e5b6"
-      ],
-      "published": "2026-08-15T06:21:18.250"
-    },
-    {
-      "id": "CVE-2026-72086",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nscsi: xen: scsiback: Free the command tag on the TMR submit-failure path\n\nscsiback_device_action() obtains a command tag in\nscsiback_get_pend_req() and submits a task-management request with\ntarget_submit_tmr(). When target_submit_tmr() fails it returns < 0 and\nscsiback jumps to the err: label, which sends a response but frees\nnothing, leaking the tag.\n\nImpact: a pvSCSI guest can leak the command tags of a LUN's session,\nstoppi",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/1357fb32d42ad8da193e6da285f09e6452feabda",
-        "https://git.kernel.org/stable/c/18d4f86816592586b38513543b5e1f9553bc271f",
-        "https://git.kernel.org/stable/c/255fb7b0cdc947b1c01929c7f133281342a3a6b5",
-        "https://git.kernel.org/stable/c/4567ce79fe2f84c3dcc3a91b22a377cf482d33ad",
-        "https://git.kernel.org/stable/c/66aefc277ebb796ec285d550305535dc3fc0179f"
-      ],
-      "published": "2026-08-15T06:21:22.593"
-    },
-    {
-      "id": "CVE-2026-72107",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndm era: fix out-of-bounds memory access for non-zero start sector\n\ndm-era tracks writes in target-relative blocks, but era_map() calculates\nthe writeset block before applying the target offset.  Tables with a\nnon-zero start sector can therefore pass an absolute mapped-device block\nto metadata_current_marked().\n\nIf the absolute block is beyond the current writeset size,\nwriteset_marked() tests past the end of the in-core bitset.",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/1fcb5e29dd7a5b85adb9d8b539911741d878e829",
-        "https://git.kernel.org/stable/c/7e1822f83c5a1ee7b4a19e98edde8770a10b4c71",
-        "https://git.kernel.org/stable/c/9946a7176bd8c25ddd6e5f1799c54e572ee6bf0f",
-        "https://git.kernel.org/stable/c/a868196f03c2b19418ae3d2b69e195d668a271e5",
-        "https://git.kernel.org/stable/c/bafe3e720cdac38cd7ea4eb7852a8f2dbe1bbfe6"
-      ],
-      "published": "2026-08-15T06:21:24.920"
-    },
-    {
-      "id": "CVE-2026-72111",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: Reset register bounds before narrowing retval range in check_mem_access()\n\nWhen the BPF verifier processes a context load of an LSM hook return\nvalue, it calls __mark_reg_s32_range() to narrow the register to the\nhook's valid range. However, __mark_reg_s32_range() intersects the new\nrange with the register's existing bounds using max_t()/min_t() rather\nthan replacing them.\n\nIf the destination register carries stale bounds ",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/0993dc5fc619c0b25ab1310cb11d65e78351c0fe",
-        "https://git.kernel.org/stable/c/5a55f9aecc08990940e70f0c7048a80850c5a16a",
-        "https://git.kernel.org/stable/c/5e0b273e0a62cc04ec338c7b502797c66c2ed42a",
-        "https://git.kernel.org/stable/c/bde92f65042ec14389782dd223f706bf6b59ce5d"
-      ],
-      "published": "2026-08-15T06:21:25.447"
-    },
-    {
-      "id": "CVE-2026-72121",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ncan: bcm: add locking when updating filter and timer values\n\nKCSAN detected a simultaneous access to timer values that can be\noverwritten in bcm_rx_setup() when updating timer and filter content\nwhile bcm_rx_handler(), bcm_rx_timeout_handler() or bcm_rx_thr_handler()\nrun concurrently on incoming CAN traffic.\n\nProtect the timer (ival1/ival2/kt_ival1/kt_ival2/kt_lastmsg) and filter\n(nframes/flags/frames/last_frames) updates in bc",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/19b1994069dd29478ba767de1f98f14a088198dc",
-        "https://git.kernel.org/stable/c/749179c2e25b95d22499ed29096b3e02d6dfd2b4",
-        "https://git.kernel.org/stable/c/834cbca3b12e46887f7a9b35f1981a888360ea4c",
-        "https://git.kernel.org/stable/c/a7eb6db1cd3f7b556a301dc1265945ad112089f7",
-        "https://git.kernel.org/stable/c/fc9f5ee1b073bd233d9c604e338af4ebb42cbc33"
-      ],
-      "published": "2026-08-15T06:21:26.650"
-    },
-    {
-      "id": "CVE-2026-72124",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ncan: isotp: serialize TX state transitions under so->rx_lock\n\nThe TX state machine (so->tx.state) is driven from three contexts:\nsendmsg() claiming and progressing a transfer, the RX path consuming\nFlow Control/echo frames, and two hrtimers timing out a stalled\ntransfer. Mixing a lock-free cmpxchg() claim in sendmsg() with\nhrtimer_cancel() calls made under so->rx_lock elsewhere left windows\nwhere a frame or timer callback could",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/0b05eca9589f609e2491b528dccf683168a4cda8",
-        "https://git.kernel.org/stable/c/37beb16e08cae94cc05840c7274225e3b0b38ae7",
-        "https://git.kernel.org/stable/c/4f1fdf1a1c317bcac0c6b6c8e12642c9983de1ca",
-        "https://git.kernel.org/stable/c/a7d90e7b5e75d7406c889fe36e9a61ee364a00cb",
-        "https://git.kernel.org/stable/c/cf070fe33bfbd1a4c21236078fadb35dd223a157"
-      ],
-      "published": "2026-08-15T06:21:29.720"
-    },
-    {
-      "id": "CVE-2026-72132",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nNFS: Charge unstable writes by request size, not folio size\n\nnfs_folio_mark_unstable() and nfs_folio_clear_commit() charge and\nuncharge NR_WRITEBACK/WB_WRITEBACK by folio_nr_pages(folio) once per\n*request* added to or removed from a commit list. This is correct only\nwhen a folio has a single associated request. When pg_test splits a\nfolio into N sub-folio requests (e.g. pNFS flexfiles striping with a\nstripe unit smaller than th",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "NFS"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/0ffc032294a29601b1019dba91aa1a930d90df17",
-        "https://git.kernel.org/stable/c/1f646e23372f3444dc5f0bcb5404a49d26756add",
-        "https://git.kernel.org/stable/c/27934d02cbeb8a957dd11c985a579e58d30c5270",
-        "https://git.kernel.org/stable/c/a192b6c149c6ea10cc88869accb78165eb454456",
-        "https://git.kernel.org/stable/c/a442c258320b689f13d2205eaeeddf8b0e630288"
-      ],
-      "published": "2026-08-15T06:21:30.657"
-    },
-    {
-      "id": "CVE-2026-72180",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmm/huge_memory: preserve pmd_swp_uffd_wp on device-private PMD downgrade\n\nchange_non_present_huge_pmd() rewrites a writable device-private PMD swap\nentry into a readable one without carrying pmd_swp_uffd_wp() across.  The\nPTE-level change_softleaf_pte() does this correctly; mirror that here,\nmatching what copy_huge_pmd() does for the fork path.  Without the carry,\na plain mprotect() over a UFFD_WP-marked device-private THP stri",
+      "id": "CVE-2026-13712",
+      "description": "The Divi WordPress theme before 5.9.0 does not properly escape some of its Social Media Follow module settings before outputting them in link attributes, allowing users with a role as low as contributor to store JavaScript which will run when a higher privileged user, such as an administrator, views the post.",
       "cvss": {
         "score": null,
         "vector": null,
@@ -966,14 +1110,13 @@
         "WordPress"
       ],
       "references": [
-        "https://git.kernel.org/stable/c/2611f7521c6c124b1bef1be4fc319e0ca144502f",
-        "https://git.kernel.org/stable/c/f7e2c21bd1f57cd5350eecdfdb5d6025ca6afbab"
+        "https://wpscan.com/vulnerability/d3a37071-5fb1-4aa2-8f89-eb13c46f6126/"
       ],
-      "published": "2026-08-15T06:21:36.293"
+      "published": "2026-08-16T06:16:50.227"
     },
     {
-      "id": "CVE-2026-72185",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nntfs: fix WARN_ON for resident attribute in ntfs_map_runlist_nolock()\n\nWhen ntfs_map_runlist_nolock() needs to look up the attribute extent\ncontaining a target VCN (ctx_needs_reset == true), it calls\nntfs_attr_lookup() and then expects the result to be a non-resident\nattribute, since only non-resident attributes have a mapping pairs\narray to decompress.\n\nA crafted NTFS image can place a resident attribute where a non-resident\no",
+      "id": "CVE-2026-15384",
+      "description": "The Manual Image Crop WordPress plugin before 1.15 does not perform any capability check or nonce verification on the authenticated AJAX action that crops attachment images; its only guard passes for any logged-in user. A subscriber-level user can therefore supply an arbitrary attachment ID and overwrite that attachment's generated intermediate-size image (for example its thumbnail) and mutate its stored metadata, regardless of who owns the media. This is a cross-user integrity/defacement issue ",
       "cvss": {
         "score": null,
         "vector": null,
@@ -981,17 +1124,16 @@
       },
       "tier": 3,
       "matchedProducts": [
-        "ESET"
+        "WordPress"
       ],
       "references": [
-        "https://git.kernel.org/stable/c/b397b1238a217264bb02f963a1a1eadf71906375",
-        "https://git.kernel.org/stable/c/b8d6c528e9d57d263fee1a648409f84a68b2561d"
+        "https://wpscan.com/vulnerability/706d0b6a-d136-4317-a767-33bcab3b041c/"
       ],
-      "published": "2026-08-15T06:21:36.870"
+      "published": "2026-08-16T06:16:50.740"
     },
     {
-      "id": "CVE-2026-72217",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nSUNRPC: Bound-check xdr_buf_to_bvec() stores before writing\n\nxdr_buf_to_bvec() writes a bio_vec into the caller's array before\ntesting whether that slot is in range, and the head branch performs\nthe store with no check at all. When the caller's budget is exactly\nused up, the next store lands one element past the end of the array.\nThe overflow label returns count - 1, which masks the surplus store\nbut cannot undo it.\n\nrq_bvec, t",
+      "id": "CVE-2026-17533",
+      "description": "The All-in-One WP Migration and Backup WordPress plugin before 7.108 does not restrict its migration import functionality to network administrators on multisite installations, allowing an administrator of a single subsite to execute arbitrary PHP code across the entire network.",
       "cvss": {
         "score": null,
         "vector": null,
@@ -999,20 +1141,16 @@
       },
       "tier": 3,
       "matchedProducts": [
-        "Slack"
+        "WordPress"
       ],
       "references": [
-        "https://git.kernel.org/stable/c/42f5b80dda6b86e424054baf1475df686c403d5c",
-        "https://git.kernel.org/stable/c/4a1148f2739d5089c3ca8ae2e9d1053e219ab5df",
-        "https://git.kernel.org/stable/c/6029e711a818bf34d6c4b90cafee24f3afffa110",
-        "https://git.kernel.org/stable/c/69e18135e2a004a79505451dbef07314ea16e1eb",
-        "https://git.kernel.org/stable/c/98414b42530af65cb984ffc12685096a3b5e179a"
+        "https://wpscan.com/vulnerability/13b57cdc-d954-4db6-94c2-53ad04ab0d34/"
       ],
-      "published": "2026-08-15T06:21:40.493"
+      "published": "2026-08-16T06:16:51.340"
     },
     {
-      "id": "CVE-2026-72222",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsunrpc: pin svc_xprt across the asynchronous TLS handshake callback\n\nsvc_tcp_handshake() stores the raw svc_xprt pointer in\ntls_handshake_args.ta_data and submits the request through\ntls_server_hello_x509(). The handshake core takes only\nsock_hold(req->hr_sk); nothing references the embedding struct\nsvc_sock that svc_tcp_handshake_done() reaches via container_of().\n\nTwo close races leave the in-flight callback writing through a",
+      "id": "CVE-2026-18653",
+      "description": "The WP Directory Kit WordPress plugin before 1.5.7 does not sanitise and escape a parameter before using it in a SQL statement, allowing administrators to perform SQL injection attacks. On a multisite installation this lets an administrator of a single site read data belonging to the entire network, which they are not otherwise able to reach.",
       "cvss": {
         "score": null,
         "vector": null,
@@ -1020,20 +1158,16 @@
       },
       "tier": 3,
       "matchedProducts": [
-        "NFS"
+        "WordPress"
       ],
       "references": [
-        "https://git.kernel.org/stable/c/083e9c2ec7e8bb13b79c9fd7b337abdd758ecc5f",
-        "https://git.kernel.org/stable/c/2d4f97d13fff91e0bc539216be88b884b544d49f",
-        "https://git.kernel.org/stable/c/3f9ee75a97a769be258784c22b89657acb5ed9bd",
-        "https://git.kernel.org/stable/c/4f988f3a2808fb659f3880c282041ff067acad78",
-        "https://git.kernel.org/stable/c/f3b55945dd99f29d83e1965d0141040a35262346"
+        "https://wpscan.com/vulnerability/e064c261-bc7b-4605-8da7-c7036fc396fc/"
       ],
-      "published": "2026-08-15T06:21:41.120"
+      "published": "2026-08-16T06:16:51.927"
     },
     {
-      "id": "CVE-2026-72313",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/fb-helper: Only consider active CRTCs for vblank sync\n\nOnly synchronize fbdev output to the vblank of an active CRTC. Go over\nthe list of CRTCs and pick the first that matches. Fixes warnings as\nthe one shown below\n\n[   77.201354] WARNING: drivers/gpu/drm/drm_vblank.c:1320 at drm_crtc_wait_one_vblank+0x194/0x1cc [drm], CPU#1: kworker/1:7/1867\n[   77.201354] omapdrm omapdrm.0: [drm] vblank wait timed out on crtc 0\n\nThis curr",
+      "id": "CVE-2026-19711",
+      "description": "The Premium Packages  WordPress plugin before 7.0.7 does not validate a withdrawal request against the requesting user's actual earned balance, allowing any authenticated user, including a subscriber with no sales at all, to submit a payout request for an arbitrary amount, which an administrator may then approve and pay out.",
       "cvss": {
         "score": null,
         "vector": null,
@@ -1041,17 +1175,16 @@
       },
       "tier": 3,
       "matchedProducts": [
-        "ESET"
+        "WordPress"
       ],
       "references": [
-        "https://git.kernel.org/stable/c/06c2b8d7ea2bcb014dd974fc3bc6d128d65d7477",
-        "https://git.kernel.org/stable/c/7d84acf641afb68aa8efe40815ef43779ddb12fd"
+        "https://wpscan.com/vulnerability/ba209669-49bb-40f0-976d-7b77fa0a3c85/"
       ],
-      "published": "2026-08-15T06:22:04.123"
+      "published": "2026-08-16T06:16:52.120"
     },
     {
-      "id": "CVE-2026-72343",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/mlx5e: Fix HV VHCA stats zero-sized buffer allocation\n\nmlx5e_hv_vhca_stats_create() is called from mlx5e_nic_enable(),\nbefore mlx5e_open(). At that point priv->stats_nch is still zero,\nbecause it is only ever incremented in mlx5e_channel_stats_alloc(),\nwhich is reached only from mlx5e_open_channel().\n\nmlx5e_hv_vhca_stats_buf_size() therefore returns 0, and\nkvzalloc(0, GFP_KERNEL) returns ZERO_SIZE_PTR ((void *)16) rather\nth",
+      "id": "CVE-2026-19712",
+      "description": "The Masteriyo LMS  WordPress plugin before 2.3.3 does not sanitise and escape a quiz field before outputting it back in a page, and grants its instructor role the ability to store unfiltered HTML, allowing such users to perform Stored Cross-Site Scripting attacks against any visitor of the affected page, including administrators.\nThis affects default single-site installations. Sites running multisite, or defining DISALLOW_UNFILTERED_HTML, are not affected as the capability is not granted there.",
       "cvss": {
         "score": null,
         "vector": null,
@@ -1059,20 +1192,16 @@
       },
       "tier": 3,
       "matchedProducts": [
-        "ESET"
+        "WordPress"
       ],
       "references": [
-        "https://git.kernel.org/stable/c/22c1d5ecccf92c849bdca1556179aafc95794baf",
-        "https://git.kernel.org/stable/c/25f6b929c7e379cbea7cb8caa67b49b2d1efae17",
-        "https://git.kernel.org/stable/c/3b3a552cf88e10bb7bda88b29cf1fd8267043d50",
-        "https://git.kernel.org/stable/c/420aabb32da4381d8d7cdcaa6a77fad9eaceb0a4",
-        "https://git.kernel.org/stable/c/5b927dcec5f1087942bf123a82e64a3f66475f01"
+        "https://wpscan.com/vulnerability/08c31101-ee38-46e9-b451-abb1ed70079c/"
       ],
-      "published": "2026-08-15T06:22:07.650"
+      "published": "2026-08-16T06:16:52.207"
     },
     {
-      "id": "CVE-2026-72419",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: nf_nat: avoid invalid nat_net pointer use on failed nf_nat_init()\n\nWe ran into below KASAN splat, which is mostly uninteresting, beside\nfor having nf_nat_register_fn() in the call chain as a cause for the\noffending access:\n\n==================================================================\nBUG: KASAN: slab-out-of-bounds in nf_nat_register_fn+0x5f9/0x640\nRead of size 8 at addr ffff890031e54c20 by task iptables/9510\n\nC",
+      "id": "CVE-2026-19714",
+      "description": "The Simple JWT Login  WordPress plugin before 3.6.8 does not validate the audience of the Google identity tokens it accepts, allowing unauthenticated users to authenticate as any user whose email address such a token carries, up to and including an administrator. Every site with the Simple JWT Login  WordPress plugin before 3.6.8's Google sign-in enabled is affected.",
       "cvss": {
         "score": null,
         "vector": null,
@@ -1080,20 +1209,16 @@
       },
       "tier": 3,
       "matchedProducts": [
-        "ESET"
+        "WordPress"
       ],
       "references": [
-        "https://git.kernel.org/stable/c/069cfe3de2a5e16069485893cd04665ab769c1d8",
-        "https://git.kernel.org/stable/c/359d8ff97362a4662356104540e4814bff9dad7c",
-        "https://git.kernel.org/stable/c/87f7a720de2545fdac29c85acb7163676feacdaf",
-        "https://git.kernel.org/stable/c/a73e7ac3f3b69e9581ec7bfd889ff3e9b8c773f7",
-        "https://git.kernel.org/stable/c/e794f633021defcfa98e17d73b955cd07590831f"
+        "https://wpscan.com/vulnerability/dc6e54eb-d856-484b-88c1-b3e04a37669d/"
       ],
-      "published": "2026-08-15T06:22:15.573"
+      "published": "2026-08-16T06:16:52.300"
     },
     {
-      "id": "CVE-2026-72429",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nipv6: ioam: fix type confusion of dst_entry\n\nIOAM uses a dummy dst_entry(null_dst) to mark that the destination should\nnot be changed after the transformation. This dst is stored in the IOAM lwt\nstate and may be passed to dst_cache_set_ip6().\n\nHowever, the IPv6 dst cache path eventually calls rt6_get_cookie(), which\ntreats the dst_entry as part of a struct rt6_info. Since the null_dst was\nembedded directly as a struct dst_entry",
+      "id": "CVE-2026-19717",
+      "description": "The CatFolders Document Gallery & PDF Library WordPress plugin before 2.0.7 does not have authorisation checks in some of its REST API endpoints, allowing unauthenticated users to retrieve the title, type, size and URL of the media attachments assigned to any of its folders, including folders which are not published in any gallery on the site.",
       "cvss": {
         "score": null,
         "vector": null,
@@ -1101,18 +1226,16 @@
       },
       "tier": 3,
       "matchedProducts": [
-        "ESET"
+        "WordPress"
       ],
       "references": [
-        "https://git.kernel.org/stable/c/5a3b2ee1e96d0580a8ed8deda6dfa430604f9ab0",
-        "https://git.kernel.org/stable/c/9ed19e11d2146076d117d51a940643990118449b",
-        "https://git.kernel.org/stable/c/ea24f911ead85ba3d570a31e37c52b6c949f6928"
+        "https://wpscan.com/vulnerability/79a4bae6-96e2-44b4-a56b-42198f8b3d32/"
       ],
-      "published": "2026-08-15T06:22:16.770"
+      "published": "2026-08-16T06:16:52.390"
     },
     {
-      "id": "CVE-2026-72473",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nxprtrdma: Decouple req recycling from RPC completion\n\nrl_kref formerly served two distinct lifetimes through a single\nrefcount: it gated when a Reply could wake its RPC task, and it\ngated when an rpcrdma_req could return to its free pool. The\nmarshal path took the Send-side reference only when SGEs needed\nDMA-unmap (sc_unmap_count > 0), which made a Send carrying only\npre-registered buffers an exception: the Reply handler dropp",
+      "id": "CVE-2026-19725",
+      "description": "The WPvivid \u2014 Backup, Migration & Staging WordPress plugin before 0.9.131 does not sanitise a value taken from an unauthenticated request before using it to build a log file path, allowing an attacker holding a site to site transfer key to create a log file in any existing writable directory of the site, including the web root.\n\nThe file name always carries a fixed suffix and the contents are always the WPvivid \u2014 Backup, Migration & Staging WordPress plugin before 0.9.131's own log header, so on",
       "cvss": {
         "score": null,
         "vector": null,
@@ -1120,443 +1243,12 @@
       },
       "tier": 3,
       "matchedProducts": [
-        "ESET"
+        "WordPress"
       ],
       "references": [
-        "https://git.kernel.org/stable/c/53442c7d0c888e51b8bc3da196970a669cc6b294",
-        "https://git.kernel.org/stable/c/740975054a1970c0cf15f70ac39724a064f45847",
-        "https://git.kernel.org/stable/c/8203f760a72bd39a3b66bc4eff0aa272a99fe22b",
-        "https://git.kernel.org/stable/c/9f3d9b68c1c6c51746e5ecdb52b2e6a2901de37e",
-        "https://git.kernel.org/stable/c/e7632089523acddcdd8f090ad19e96fb3107b04d"
+        "https://wpscan.com/vulnerability/999889f4-f8be-4b44-b665-1a94df8d050d/"
       ],
-      "published": "2026-08-15T06:22:21.423"
-    },
-    {
-      "id": "CVE-2026-74267",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/sched: sch_codel: Do not call qdisc_tree_reduce_backlog during peek before restoring qlen\n\nWhenever codel drops packets during peek, it calls\nqdisc_tree_reduce_backlog. An issue arises because it calls\nqdisc_tree_reduce_backlog before it reincrements the qlen. If qlen drops\nto zero, but peek returns an skb, the parent's qlen_notify callback will\nbe executed even though codel still has 1 packet on the queue and, thus,\nwill m",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/52f1da34c9f4d5bdc1e8b44242da5c7ba8db85f3",
-        "https://git.kernel.org/stable/c/755108bb7a5083e911294c416cfea605dc75632f",
-        "https://git.kernel.org/stable/c/7a05af7f58566682b73578b72ca8e53a268c43bd",
-        "https://git.kernel.org/stable/c/91e0a793a72374c20ab31a40ccec21373e82e973",
-        "https://git.kernel.org/stable/c/bb9cfd874ee884117b33e92a002b9a45b48202f4"
-      ],
-      "published": "2026-08-15T06:22:26.030"
-    },
-    {
-      "id": "CVE-2026-74273",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ncxl/region: Block region delete during region creation\n\nExpand the range lock, rename it \"regions_lock\", to disable region deletion\nin the critical period between construct_region() and attach_target(), as\nwell as the period between device_add() and registering the remove actions.\n\nOtherwise, userspace can confuse the kernel. It can violate the assumption\nthe region stays registered through the completion of cxl_add_to_region()",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/b0b6a9c65cb72c901fdcc6ae83d7afd70cdca1b8",
-        "https://git.kernel.org/stable/c/d91feb88692e81b00cd22f0125cfcd04970b4a0b"
-      ],
-      "published": "2026-08-15T06:22:26.697"
-    },
-    {
-      "id": "CVE-2026-74274",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ncxl/region: Fill first free targets[] slot during auto-discovery\n\nAny invalid endpoint decoder pointer in the target array of an active\nregion is not allowed by cxl driver. This means cxl driver always\nassumes the first p->nr_targets entries of the target array in an\nauto-assembly region are valid. However, there are scenarios that could\nleave NULL endpoint decoder pointer holes in the target array.\n\n1. When cxl_cancel_auto_att",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/6fde3fcdfec438ba0df26e25a8ac7c3707211799",
-        "https://git.kernel.org/stable/c/aa8a76711c15041ec1e42c3a74c15c2df0bd31f6"
-      ],
-      "published": "2026-08-15T06:22:26.793"
-    },
-    {
-      "id": "CVE-2026-74302",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: hci_core: Fix UAF in hci_unregister_dev()\n\nhci_unregister_dev() does not disable cmd_timer and ncmd_timer\nbefore the hci_dev structure is freed. If a timeout fires\nduring device teardown, the callback dereferences freed memory\n(including the hdev->reset function pointer), leading to a\nuse-after-free.\n\nAdd disable_delayed_work_sync() calls alongside the existing\ndisable_work_sync() calls to ensure both timers are full",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/48c7ad6afcc58c2cda11fed39791708103b6a644",
-        "https://git.kernel.org/stable/c/5edcc018fa6e80b2c478454a4a8229c23d67c181",
-        "https://git.kernel.org/stable/c/672d52d9412252e61b8de8d773ccdf5a277cf540",
-        "https://git.kernel.org/stable/c/a0fd1086a57b982f8c24ae4ab165c2af39fe1735"
-      ],
-      "published": "2026-08-15T06:22:29.813"
-    },
-    {
-      "id": "CVE-2026-74310",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nvhost/net: complete zerocopy ubufs only once\n\nvhost-net initializes one ubuf_info per outstanding zerocopy TX\ndescriptor and hands it to the backend socket.  The networking stack may\nthen clone a zerocopy skb before all skb references are released.  For\nexample, batman-adv fragmentation reaches skb_split(), which calls\nskb_zerocopy_clone() and increments the same ubuf_info refcount.\n\nvhost_zerocopy_complete() currently treats e",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/321c73baf54d971ce3771fea275c98a247f7ee35",
-        "https://git.kernel.org/stable/c/6445b945024f4c7675ae5352b2d5885cb1deea71",
-        "https://git.kernel.org/stable/c/8f6898fe80794f2d7c3d38c1158c806e4074a1c4",
-        "https://git.kernel.org/stable/c/a9f8a1d2e3ff511eafd4c5462481950c2f4d2b5d",
-        "https://git.kernel.org/stable/c/c069437924663539a93a1e5afe90838d9ccee284"
-      ],
-      "published": "2026-08-15T06:22:30.987"
-    },
-    {
-      "id": "CVE-2026-74311",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nvirtio: rtc: tear down old virtqueues before restore\n\nvirtio_device_restore() resets the device and restores the negotiated\nfeatures before calling ->restore(). viortc_freeze() intentionally\nleaves the existing virtqueues in place so the alarm queue can still\nwake the system, but viortc_restore() immediately calls\nviortc_init_vqs() without first deleting those old queues.\n\nIf virtqueue reinitialization fails on virtio-pci, the ",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/548d2208455f14e6121404c6e30e997bfe0cd264",
-        "https://git.kernel.org/stable/c/79366023aa891ca31376021a7bccff6384ca1ff1",
-        "https://git.kernel.org/stable/c/aebebd1e9d70b650fc9e877082e0134edcf511da"
-      ],
-      "published": "2026-08-15T06:22:31.173"
-    },
-    {
-      "id": "CVE-2026-74347",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: cttimeout: detach dataplane timeout policy and repurpose refcount\n\nAdd a refcount for struct nf_ct_timeout which is used by ct extension to\nset the custom ct timeout policy, this tells us that the ct timeout is\nbeing used by a conntrack entry. When the last conntrack entry drops the\nrefcount on the ct timeout, the ct timeout is released.\n\nRemove the refcount for control plane which controls if the ruleset\nrefers to t",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/7d6a9cdb8d3a51d9cfe546a09a518ab3d2671549",
-        "https://git.kernel.org/stable/c/9aeb0dcfeb460d33d61d434148b51103ab1d2013"
-      ],
-      "published": "2026-08-15T06:22:35.860"
-    },
-    {
-      "id": "CVE-2026-74352",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nof: reserved_mem: avoid post-init UAF when alloc_reserved_mem_array() fails\n\nThe global pointer 'reserved_mem' continues to reference the\nreserved_mem_array which lives in __initdata if\nalloc_reserved_mem_array() fails. of_reserved_mem_lookup() is\nexported for post-init use, that would dereference freed memory\nand trigger a use-after-free.\n\nSo reset reserved_mem_count to 0 when alloc_reserved_mem_array()\nfails.",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/6d28e6ad3c5c9248577f21057baa9bf16fa9ef3b",
-        "https://git.kernel.org/stable/c/9af58d10d0d8c08b822de5fc99e61f31a87ede8d",
-        "https://git.kernel.org/stable/c/cbd3102fe27bc87da244bf4c3ba670ea4698b0a8",
-        "https://git.kernel.org/stable/c/e1686ca81dbf3edbde589b7daf312b45cbf76e03"
-      ],
-      "published": "2026-08-15T06:22:36.543"
-    },
-    {
-      "id": "CVE-2026-74353",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdkfd: always resume_all after suspend_all\n\nNeed to restore any good queues even if the suspend_all\nfailed for some.  Always run remove_queue as that will\nschedule a GPU reset is removing the queue fails.\n\nv2: move resume_all after remove",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/56ae73c92e200e630c2bdf1e98c88b86c8483b37",
-        "https://git.kernel.org/stable/c/9a030fcb4b192a508113787ef28fb97e27dcf6f6",
-        "https://git.kernel.org/stable/c/b5fc19c898e08deb40b671329d99d85d2d575f0b",
-        "https://git.kernel.org/stable/c/e29da2a4d9a3b1837dec3ce0892835d506c2a85e"
-      ],
-      "published": "2026-08-15T06:22:36.657"
-    },
-    {
-      "id": "CVE-2026-74356",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nvhost: fix vhost_get_avail_idx for a non empty ring\n\nvhost_get_avail_idx is supposed to report whether it has updated\nvq->avail_idx. Instead, it returns whether all entries have been\nconsumed, which is usually the same. But not always - in\ndrivers/vhost/net.c and when mergeable buffers have been enabled, the\ndriver checks whether the combined entries are big enough to store an\nincoming packet. If not, the driver re-enables noti",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "Ubiquiti/UniFi"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/09861858a68342f851f71c669ac0f69865c32151",
-        "https://git.kernel.org/stable/c/7f229d27bf27c7e589eca690d8612763a7a4801f",
-        "https://git.kernel.org/stable/c/a9326b652bc7acd748d7a1143573845c7924d847",
-        "https://git.kernel.org/stable/c/e115471008111f894c6528d9ab2ce7d0ce306f35"
-      ],
-      "published": "2026-08-15T06:22:37.007"
-    },
-    {
-      "id": "CVE-2026-74357",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu: fix KASAN slab-out-of-bounds in amdgpu_coredump ring dump\n\nThe ring content dump in amdgpu_coredump() uses two separate loops over\nadev->rings[]: the first counts rings with unsignalled fences to size\nthe allocation, and the second copies ring data into the allocated\nbuffers.\n\nBoth loops use the same condition to skip rings:\n\n    atomic_read(&ring->fence_drv.last_seq) == ring->fence_drv.sync_seq\n\nBecause last_seq is",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/08ac3a7879d300302a1927ce2038629539a37f8b",
-        "https://git.kernel.org/stable/c/efb1dadaeb897b22b9e118d398d0f41e70e9ccca"
-      ],
-      "published": "2026-08-15T06:22:37.170"
-    },
-    {
-      "id": "CVE-2026-74376",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmd/raid10: reset read_slot when reusing r10bio for discard\n\nput_all_bios() always drops devs[i].bio, but it only drops\ndevs[i].repl_bio when r10_bio->read_slot < 0. If discard reuses an\nr10bio that was previously used for a read, read_slot can still be\nnon-negative, and discard cleanup can skip bio_put() on repl_bio.\n\nReset read_slot to -1 when preparing an r10bio for discard so the\nreplacement bio is always released correctly.",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/3cb2a606ce4902eceabe68338df0653312f861f8",
-        "https://git.kernel.org/stable/c/561c9711e4f545d6464a023168bdee03b00fa945",
-        "https://git.kernel.org/stable/c/6b8a26af065ddc93de2aa5c9f0df98dce9723442",
-        "https://git.kernel.org/stable/c/742e4afd247d9c972695227716b03d432a7e1d26",
-        "https://git.kernel.org/stable/c/b7313f23ea5a79b199a007bfad64a866cc2c22e7"
-      ],
-      "published": "2026-08-15T06:22:39.373"
-    },
-    {
-      "id": "CVE-2026-74413",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: rtw89: fix wrong pci_get_drvdata type in AER handlers\n\nrtw89 stores an ieee80211_hw pointer via pci_set_drvdata() at probe\ntime, but io_error_detected() and io_resume() retrieve it as a\nnet_device pointer.  This causes netif_device_detach/attach to\noperate on an ieee80211_hw struct, reading and writing at wrong\noffsets.  The adjacent io_slot_reset() already does it correctly.\n\nUse ieee80211_stop_queues/wake_queues instead",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/7068c379cf9aa8afe4dce4d9d82390187aa9c4d0",
-        "https://git.kernel.org/stable/c/aefc30e4a829c1683f6ae999df7f9310c27eae6c",
-        "https://git.kernel.org/stable/c/c1907b9a4fa9cb33d11a9af138374dd2e93f7a93"
-      ],
-      "published": "2026-08-15T06:22:43.410"
-    },
-    {
-      "id": "CVE-2026-74416",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/radeon: fix memory leak in radeon_ring_restore() on lock failure\n\nradeon_ring_restore() takes ownership of the data buffer allocated by\nradeon_ring_backup(). The caller (radeon_gpu_reset()) only frees it in\nthe non-restore branch; in the restore branch it relies on\nradeon_ring_restore() to free it.\n\nIf radeon_ring_lock() fails, the function returned early without calling\nkvfree(data), leaking the ring backup buffer on every",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/06dc892561f5a08b2493c34c8ec2cb94dea33159",
-        "https://git.kernel.org/stable/c/07c213f3499dd72e2922c1c73fe9ffea24874bef",
-        "https://git.kernel.org/stable/c/1c9ba32308c02c198c378fcdf06be9ffc3111147",
-        "https://git.kernel.org/stable/c/63912418f1fbb6456ea04bbcdf8f4d5090d23350",
-        "https://git.kernel.org/stable/c/82f1d6042611d45b8b9de423bbcb4e0ced9ec62b"
-      ],
-      "published": "2026-08-15T06:22:43.690"
-    },
-    {
-      "id": "CVE-2026-74418",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndma-fence: Fix potential tracepoint null pointer dereferences\n\nTrace_dma_fence_signaled, trace_dma_fence_wait_end and\ntrace_dma_fence_destroy can all currently dereference a null fence->ops\npointer after it has been reset on fence signalling.\n\nLets use the safe string getters for most tracepoints to avoid this class\nof a problem, while for the signal tracepoint we move it to before ops are\ncleared to avoid losing the driver and",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/4e01fc9a5bc49b04fad403ffa71299b35e132ca8",
-        "https://git.kernel.org/stable/c/e94b9f01543cc6a83538c2c2cc645a424d3015ca"
-      ],
-      "published": "2026-08-15T06:22:43.907"
-    },
-    {
-      "id": "CVE-2026-74481",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmm/page_reporting: use system_freezable_wq to fix UAF during suspend\n\nDuring PM freeze (e.g.  S3 suspend or S4 hibernation), device drivers like\nvirtio_balloon reset their underlying virtio devices and delete their\nvirtqueues via vdev->config->del_vqs().\n\nHowever, page reporting work (page_reporting_process) was scheduled on the\nglobal system_wq.  Because system_wq lacks the WQ_FREEZABLE flag, the PM\nfreezer skips it, leaving p",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/0b45f6927a14914ff685fe0e6f9d11232a1e03df",
-        "https://git.kernel.org/stable/c/450f35f4d5a682a0796757e52295df58ddb63bc9",
-        "https://git.kernel.org/stable/c/b11907c905fa08eda925395f0724b7a409870f65",
-        "https://git.kernel.org/stable/c/f978048326570047e8216e81a67f9c71ef2bb1b1",
-        "https://git.kernel.org/stable/c/faf439b5fa7b231120eac4f7a617e0bfd4f6f5c7"
-      ],
-      "published": "2026-08-15T13:17:52.930"
-    },
-    {
-      "id": "CVE-2026-74517",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: x86: Cancel delayed I/O APIC EOI handling before destroying vCPUs\n\nCancel (and flush) the I/O APIC's delayed EOI handling work during the\n\"pre VM destroy\" phase, before vCPUs are destroyed, as processing the EOI\nbroadcast will inject another IRQ if the line is asserted, i.e. will try\nto deliver an IRQ to the target vCPU(s).  Canceling the work after vCPUs\nare destroyed leads to UAF if the delayed work is processed after vC",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "Ubuntu"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/9910e835580fef3bef53b70241dd00c4bffad693",
-        "https://git.kernel.org/stable/c/ed56a6b58222f9c1f4115a0bd2788dd6ed6022e2"
-      ],
-      "published": "2026-08-15T13:17:56.850"
-    },
-    {
-      "id": "CVE-2026-74523",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nqede: sync udp_tunnel ports outside qede_lock in the recovery path\n\nA TX timeout on a qede NIC that has VXLAN/GENEVE tunnel ports\nconfigured wedges the rtnetlink control plane of the whole machine:\n\n  NETDEV WATCHDOG: ens6f1 (qede): transmit queue 2 timed out 10226 ms\n  [qede_tx_timeout:586(ens6f1)]TX timeout on queue 2!\n  [qede_recovery_handler:2665(ens6f0)]Starting a recovery process\n\nThe recovery path deadlocks on the driver",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/451c9075d6c53f2438d110addbeeeea6fac18567",
-        "https://git.kernel.org/stable/c/4626df3f63c9185efba5750fe76ac01ab3351bae",
-        "https://git.kernel.org/stable/c/6f1ef8170d3d8ad9319aa01347945dcdf5cc4f27",
-        "https://git.kernel.org/stable/c/e382a4efeeae6555b95d9ff336cf3094ee7d336b",
-        "https://git.kernel.org/stable/c/e51becb8f3377a377171ed5bf0082b96e22e6292"
-      ],
-      "published": "2026-08-15T13:17:57.543"
-    },
-    {
-      "id": "CVE-2026-74526",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nscsi: mpi3mr: Fix potential deadlock in mpi3mr_fault_uevent_emit\n\nmpi3mr_fault_uevent_emit() runs from the fault watchdog and reset paths\nwhere host I/O may already be blocked. GFP_KERNEL allocations here, both\nthe local kzalloc_obj() and the ones inside kobject_uevent_env() itself,\ncan trigger reclaim that waits on that blocked I/O and deadlock.\n\nUse memalloc_noio_save()/restore() to cover the whole call instead of\njust the lo",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/ccff8c92571500fcfed21281e33daaf645bf692f",
-        "https://git.kernel.org/stable/c/df817b19dac7034416d18f14347010b3e9f5cf3d"
-      ],
-      "published": "2026-08-15T13:17:57.883"
-    },
-    {
-      "id": "CVE-2026-74527",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nocteontx2-af: Block VFs from clobbering special CGX PKIND state\n\nPF and VF NIX LFs that share a CGX LMAC reuse the same hardware PKIND\nprogramming. When HiGig2 or EDSA parsing is enabled, a VF NIX LF alloc must\nnot reset the LMAC RX PKIND or default TX parse config over the PF setup.\n\nAdd cgx_get_pkind() and rvu_cgx_is_pkind_config_permitted() so VFs skip\ncgx_set_pkind(), rvu_npc_set_pkind(), and NIX_AF_LFX_TX_PARSE_CFG updates",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/3bd438a58e910db5dc369aa25dfed1fc95f1b596",
-        "https://git.kernel.org/stable/c/d3c6b0f48f126a36955b3fb4154a59d0b3621d97"
-      ],
-      "published": "2026-08-15T13:17:57.983"
-    },
-    {
-      "id": "CVE-2026-74554",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: ath12k: fix out-of-bounds clear_bit in ath12k_mac_dp_peer_cleanup()\n\nath12k_mac_dp_peer_cleanup() clears the ML peer ID slot on the\nfree_ml_peer_id_map bitmap by indexing it with dp_peer->peer_id. That is\nwrong: dp_peer->peer_id for an MLO peer always carries the\nATH12K_PEER_ML_ID_VALID bit (BIT(13)), so clear_bit() is invoked with\nindex >= 0x2000, which is far outside the bitmap of ATH12K_MAX_MLO_PEERS\n(256) bits and cor",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/234b5cb81e6fcc1e3b31b13deff66130be55f36e",
-        "https://git.kernel.org/stable/c/47abd2ca281531deee38a3b3770d885e270e9fc9"
-      ],
-      "published": "2026-08-15T13:18:00.830"
-    },
-    {
-      "id": "CVE-2026-15689",
-      "description": "Dancer2::Plugin::Auth::Extensible versions through 0.713 for Perl allow password reset link poisoning via the request Host header in _default_email_password_reset and _default_welcome_send.\n\nBoth default emails emit a link of the form `$base/login/$code`, whose authority comes from the request Host header, or from X-Forwarded-Host under behind_proxy (obtained from Dancer2's request->base function). A POST to /login carrying submit_reset and a username needs no authentication: it stores a fresh r",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://metacpan.org/release/ABEVERLEY/Dancer2-Plugin-Auth-Extensible-0.711/source/lib/Dancer2/Plugin/Auth/Extensible.pm#L1031-1053",
-        "https://metacpan.org/release/ABEVERLEY/Dancer2-Plugin-Auth-Extensible-0.711/source/lib/Dancer2/Plugin/Auth/Extensible.pm#L1097-1121",
-        "https://metacpan.org/release/ABEVERLEY/Dancer2-Plugin-Auth-Extensible-0.712/source/lib/Dancer2/Plugin/Auth/Extensible.pm#L178-194",
-        "https://metacpan.org/release/ABEVERLEY/Dancer2-Plugin-Auth-Extensible-0.713/changes",
-        "https://metacpan.org/release/ABEVERLEY/Dancer2-Plugin-Auth-Extensible-0.713/source/lib/Dancer2/Plugin/Auth/Extensible.pm#L178-196"
-      ],
-      "published": "2026-08-15T14:17:06.480"
+      "published": "2026-08-16T06:16:52.487"
     }
   ]
 }
