@@ -1,17 +1,17 @@
 {
-  "scanTime": "2026-08-18 04:05:54 UTC",
-  "totalMatched": 61,
+  "scanTime": "2026-08-19 04:06:09 UTC",
+  "totalMatched": 129,
   "productsMonitored": 147,
   "tierCounts": {
-    "0": 19,
-    "1": 22,
-    "2": 14,
-    "3": 6
+    "0": 8,
+    "1": 44,
+    "2": 33,
+    "3": 44
   },
   "vulnerabilities": [
     {
-      "id": "CVE-2026-74843",
-      "description": "A vulnerability was determined in Wavlink WN531P3 and WN535M1 V250922. Affected by this vulnerability is the function strcpy of the file /etc/lighttpd/www/cgi-bin/export_pingortrace.cgi of the component Export Pingortrace CGI. Executing a manipulation of the argument HTTP_COOKIE can lead to stack-based buffer overflow. The attack may be launched remotely. The exploit has been publicly disclosed and may be utilized. The vendor was contacted early about this disclosure.",
+      "id": "CVE-2026-75874",
+      "description": "Sandbox escape in the Remote Settings Client component. This vulnerability was fixed in Firefox 154 and Thunderbird 154.",
       "cvss": {
         "score": 10.0,
         "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
@@ -19,384 +19,222 @@
       },
       "tier": 0,
       "matchedProducts": [
-        "Apache HTTP Server"
+        "Mozilla Firefox"
       ],
       "references": [
-        "https://github.com/wcndsb-sketch/WAVLINK_WN535M1-M35M1_V250922-Buffer-Overflow/blob/main/CVE-Report-WAVLINK-WN535M1-RCE.pdf",
-        "https://vuldb.com/cve/CVE-2026-74843",
-        "https://vuldb.com/submit/875331",
-        "https://vuldb.com/vuln/391205",
-        "https://vuldb.com/vuln/391205/cti"
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2039972",
+        "https://www.mozilla.org/security/advisories/mfsa2026-74/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-78/"
       ],
-      "published": "2026-08-17T12:18:58.180"
+      "published": "2026-08-18T13:17:43.500"
     },
     {
-      "id": "CVE-2026-47686",
-      "description": "vm2 is an open source vm/sandbox for Node.js. Prior to 3.11.6, handleException() in lib/setup-sandbox.js sanitizes SuppressedError.error, SuppressedError.suppressed, and AggregateError.errors but does not sanitize Error.cause, allowing sandbox code to obtain a powerful host object such as process from an embedder-exposed host function that throws an error with that object as its cause and then execute arbitrary host commands. This issue is fixed in version 3.11.6.",
+      "id": "CVE-2026-75784",
+      "description": "A vulnerability was detected in TRENDnet TEW-WLC100 1v2.07b01. Affected by this issue is the function FUN_0040da4c of the file /usr/nginx/sbin/nginx of the component HTTP Header Handler. The manipulation of the argument Server results in stack-based buffer overflow. The attack may be launched remotely. The exploit is now public and may be used.",
       "cvss": {
-        "score": 9.9,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+        "score": 10.0,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
         "severity": "CRITICAL"
       },
       "tier": 0,
       "matchedProducts": [
-        "Node.js"
+        "Nginx"
       ],
       "references": [
-        "https://github.com/patriksimek/vm2/commit/7e3faaf550f4ab975bf4cdde183fcec49b056d8e",
-        "https://github.com/patriksimek/vm2/releases/tag/3.11.6",
-        "https://github.com/patriksimek/vm2/security/advisories/GHSA-m283-3h24-438v"
+        "https://github.com/meishigana/CVE/blob/main/team15_20260702/02_wlc100-nginx/poc/poc-nginx-overflow.py",
+        "https://github.com/meishigana/CVE/tree/main/team15_20260702/02_wlc100-nginx",
+        "https://vuldb.com/cve/CVE-2026-75784",
+        "https://vuldb.com/submit/877773",
+        "https://vuldb.com/vuln/391525"
       ],
-      "published": "2026-08-17T21:16:45.507"
+      "published": "2026-08-18T15:17:13.857"
     },
     {
-      "id": "CVE-2026-74872",
-      "description": "openssl_encrypt versions before 1.4.0 contain an arbitrary code execution vulnerability in the Whirlpool hash implementation that uses broad glob patterns to load .so modules without integrity verification. Attackers can place malicious .so files matching the whirlpool*py313*.so pattern in site-packages directories to achieve native code execution when the module is loaded.",
+      "id": "CVE-2026-15748",
+      "description": "The Forminator Forms plugin for WordPress is vulnerable to Arbitrary File Upload in all versions up to, and including, 1.56.1 via the handle_file_upload function. This is due to insufficient file type validation in handle_file_upload, where the dangerous-extension blocklist performs exact-key matching that is bypassed by pipe-alternative MIME type keys, combined with a public submission handler that trusts attacker-controlled upload field configuration injected via a forged Select field value. T",
       "cvss": {
         "score": 9.8,
         "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
         "severity": "CRITICAL"
-      },
-      "tier": 0,
-      "matchedProducts": [
-        "OpenSSL"
-      ],
-      "references": [
-        "https://github.com/jahlives/openssl_encrypt/security/advisories/GHSA-j48q-4c78-rhf9",
-        "https://www.vulncheck.com/advisories/openssl-encrypt-before-arbitrary-code-execution-via-whirlpool"
-      ],
-      "published": "2026-08-17T11:16:41.560"
-    },
-    {
-      "id": "CVE-2026-74875",
-      "description": "openssl_encrypt versions before 1.4.0 silently skip JSON schema validation when the jsonschema library is not installed, allowing malformed metadata to be accepted. Attackers can remove the jsonschema package or supply unknown metadata format versions to bypass all schema checks and process malicious data.",
-      "cvss": {
-        "score": 9.8,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-        "severity": "CRITICAL"
-      },
-      "tier": 0,
-      "matchedProducts": [
-        "OpenSSL"
-      ],
-      "references": [
-        "https://github.com/jahlives/openssl_encrypt/security/advisories/GHSA-425g-fjhq-5h92",
-        "https://www.vulncheck.com/advisories/openssl-encrypt-before-schema-validation-bypass"
-      ],
-      "published": "2026-08-17T11:16:41.943"
-    },
-    {
-      "id": "CVE-2026-74876",
-      "description": "openssl_encrypt versions before 1.4.0 contain a vulnerability in PublicKeyBundle.from_dict() that creates key bundles from untrusted data without verifying signatures. Attackers can call from_dict() followed by to_identity() without signature verification to encrypt data using attacker-controlled public keys, leaking secrets.",
-      "cvss": {
-        "score": 9.8,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-        "severity": "CRITICAL"
-      },
-      "tier": 0,
-      "matchedProducts": [
-        "OpenSSL"
-      ],
-      "references": [
-        "https://github.com/jahlives/openssl_encrypt/security/advisories/GHSA-8h88-gxp3-j7pg",
-        "https://www.vulncheck.com/advisories/openssl-encrypt-before-unverified-key-bundle-encryption"
-      ],
-      "published": "2026-08-17T11:16:42.073"
-    },
-    {
-      "id": "CVE-2026-74878",
-      "description": "openssl_encrypt versions before 1.4.0 use an in-memory rate limiter for TOTP brute-force protection that is not shared across workers and is lost on server restart. Attackers can distribute authentication attempts across multiple server instances or retry immediately after a restart to bypass rate limiting protections.",
-      "cvss": {
-        "score": 9.8,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-        "severity": "CRITICAL"
-      },
-      "tier": 0,
-      "matchedProducts": [
-        "OpenSSL"
-      ],
-      "references": [
-        "https://github.com/jahlives/openssl_encrypt/security/advisories/GHSA-h45m-mgcp-q388",
-        "https://www.vulncheck.com/advisories/openssl-encrypt-before-totp-rate-limiter-bypass"
-      ],
-      "published": "2026-08-17T11:16:42.330"
-    },
-    {
-      "id": "CVE-2026-74880",
-      "description": "openssl_encrypt versions before 1.4.0 accept refresh tokens as URL query parameters in keyserver and telemetry server routes. Attackers can extract tokens from server logs, proxy logs, browser history, and HTTP Referer headers to gain unauthorized access.",
-      "cvss": {
-        "score": 9.8,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-        "severity": "CRITICAL"
-      },
-      "tier": 0,
-      "matchedProducts": [
-        "OpenSSL"
-      ],
-      "references": [
-        "https://github.com/jahlives/openssl_encrypt/security/advisories/GHSA-4rh7-jwg9-m28m",
-        "https://www.vulncheck.com/advisories/openssl-encrypt-before-token-leakage-via-query-parameters"
-      ],
-      "published": "2026-08-17T11:16:42.593"
-    },
-    {
-      "id": "CVE-2026-74886",
-      "description": "openssl_encrypt versions before 1.4.0 contain a plugin sandbox bypass vulnerability where the PluginImportGuard blocks a different set of modules than the AST analyzer's DANGEROUS_MODULES set. Attackers can bypass AST analysis through string obfuscation or encoding to import unblocked dangerous modules like sys, shutil, multiprocessing, importlib, and pickle for arbitrary code execution.",
-      "cvss": {
-        "score": 9.8,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-        "severity": "CRITICAL"
-      },
-      "tier": 0,
-      "matchedProducts": [
-        "OpenSSL"
-      ],
-      "references": [
-        "https://github.com/jahlives/openssl_encrypt/security/advisories/GHSA-9pgj-v69p-q586",
-        "https://www.vulncheck.com/advisories/openssl-encrypt-before-plugin-import-guard-bypass"
-      ],
-      "published": "2026-08-17T11:16:43.390"
-    },
-    {
-      "id": "CVE-2026-74889",
-      "description": "openssl_encrypt versions before 1.4.0 use HKDF with no salt and static info parameter in key normalization functions, reducing entropy extraction and determinism. Attackers can exploit predictable key derivation with identical inputs to weaken cryptographic security against multi-target attacks.",
-      "cvss": {
-        "score": 9.8,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-        "severity": "CRITICAL"
-      },
-      "tier": 0,
-      "matchedProducts": [
-        "OpenSSL"
-      ],
-      "references": [
-        "https://github.com/jahlives/openssl_encrypt/security/advisories/GHSA-j9mh-57cc-665x",
-        "https://www.vulncheck.com/advisories/openssl-encrypt-before-weak-key-derivation-via-hkdf"
-      ],
-      "published": "2026-08-17T11:16:43.803"
-    },
-    {
-      "id": "CVE-2026-74891",
-      "description": "openssl_encrypt versions before 1.4.0 contain hardcoded database credentials in standalone server configuration files. Attackers on the same network can access PostgreSQL databases using well-known default credentials to retrieve sensitive data.",
-      "cvss": {
-        "score": 9.8,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-        "severity": "CRITICAL"
-      },
-      "tier": 0,
-      "matchedProducts": [
-        "PostgreSQL",
-        "OpenSSL"
-      ],
-      "references": [
-        "https://github.com/jahlives/openssl_encrypt/security/advisories/GHSA-v4vm-4xf2-fhqj",
-        "https://www.vulncheck.com/advisories/openssl-encrypt-before-hardcoded-database-credentials"
-      ],
-      "published": "2026-08-17T11:16:44.120"
-    },
-    {
-      "id": "CVE-2026-74894",
-      "description": "openssl_encrypt before 1.4.0 contains an authentication bypass vulnerability in the verify_api_token function that accepts any non-empty Bearer token string without validation. Attackers can upload arbitrary public keys, enumerate all keys, and revoke keys belonging to any user by providing any Bearer token in the Authorization header.",
-      "cvss": {
-        "score": 9.8,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-        "severity": "CRITICAL"
-      },
-      "tier": 0,
-      "matchedProducts": [
-        "OpenSSL"
-      ],
-      "references": [
-        "https://github.com/jahlives/openssl_encrypt/security/advisories/GHSA-4g2c-wpgj-49w8",
-        "https://www.vulncheck.com/advisories/openssl-encrypt-before-authentication-bypass-via-bearer-token"
-      ],
-      "published": "2026-08-17T11:16:44.523"
-    },
-    {
-      "id": "CVE-2026-74895",
-      "description": "openssl_encrypt versions before 1.4.0 fail to apply sandbox restrictions in the default process isolation mode for plugin execution. Attackers can execute malicious plugins with unrestricted access to the filesystem, network, subprocess execution, and all Python modules.",
-      "cvss": {
-        "score": 9.8,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-        "severity": "CRITICAL"
-      },
-      "tier": 0,
-      "matchedProducts": [
-        "OpenSSL"
-      ],
-      "references": [
-        "https://github.com/jahlives/openssl_encrypt/security/advisories/GHSA-623h-chj7-hfx8",
-        "https://www.vulncheck.com/advisories/openssl-encrypt-before-plugin-sandbox-bypass-via-process-isolation"
-      ],
-      "published": "2026-08-17T11:16:44.653"
-    },
-    {
-      "id": "CVE-2026-74896",
-      "description": "openssl_encrypt versions before 1.4.0 contain a sandbox escape vulnerability in the DangerousPatternVisitor AST analyzer that fails to detect dunder attribute traversal techniques. Attackers can use __class__, __bases__, __subclasses__(), and __globals__ chains to access restricted functions and execute arbitrary system commands from plugin code.",
-      "cvss": {
-        "score": 9.8,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-        "severity": "CRITICAL"
-      },
-      "tier": 0,
-      "matchedProducts": [
-        "OpenSSL"
-      ],
-      "references": [
-        "https://github.com/jahlives/openssl_encrypt/security/advisories/GHSA-w7gr-9g4g-33mx",
-        "https://www.vulncheck.com/advisories/openssl-encrypt-before-sandbox-escape-via-dunder-attribute-traversal",
-        "https://github.com/jahlives/openssl_encrypt/security/advisories/GHSA-w7gr-9g4g-33mx"
-      ],
-      "published": "2026-08-17T11:16:44.787"
-    },
-    {
-      "id": "CVE-2026-74899",
-      "description": "openssl_encrypt versions before 1.4.0 contain a sandbox escape vulnerability in IsolatedPluginExecutor that exposes Python type objects in restricted exec() builtins. Attackers can traverse the Python class hierarchy via __class__.__mro__.__subclasses__() to access system functions and execute arbitrary OS commands.",
-      "cvss": {
-        "score": 9.8,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-        "severity": "CRITICAL"
-      },
-      "tier": 0,
-      "matchedProducts": [
-        "OpenSSL"
-      ],
-      "references": [
-        "https://github.com/jahlives/openssl_encrypt/security/advisories/GHSA-m25m-ggxg-239c",
-        "https://www.vulncheck.com/advisories/openssl-encrypt-before-sandbox-escape-via-type-hierarchy"
-      ],
-      "published": "2026-08-17T11:16:44.917"
-    },
-    {
-      "id": "CVE-2026-74900",
-      "description": "openssl_encrypt versions before 1.4.0 contain a critical vulnerability in pqc.py where KEM decapsulation failures silently fall back to simulation mode, generating a deterministic shared secret from only 16 bytes of the private key and publicly available encapsulated key data. Attackers who obtain 16 bytes of the private key can compute the shared secret and decrypt all ciphertext, as the fallback triggers on any KEM failure without raising an error.",
-      "cvss": {
-        "score": 9.8,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-        "severity": "CRITICAL"
-      },
-      "tier": 0,
-      "matchedProducts": [
-        "OpenSSL"
-      ],
-      "references": [
-        "https://github.com/jahlives/openssl_encrypt/security/advisories/GHSA-p3gq-pcg9-qvfv",
-        "https://www.vulncheck.com/advisories/openssl-encrypt-before-weak-shared-secret-via-pqc-simulation-mode"
-      ],
-      "published": "2026-08-17T11:16:45.050"
-    },
-    {
-      "id": "CVE-2026-74901",
-      "description": "openssl_encrypt versions before 1.4.0 contain an authentication bypass vulnerability in pqc.py where AES-GCM decryption failures trigger fallback to unauthenticated AES-CTR mode. Attackers can modify ciphertext in transit to bypass integrity verification and perform bit-flipping attacks without detection.",
-      "cvss": {
-        "score": 9.8,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-        "severity": "CRITICAL"
-      },
-      "tier": 0,
-      "matchedProducts": [
-        "OpenSSL"
-      ],
-      "references": [
-        "https://github.com/jahlives/openssl_encrypt/security/advisories/GHSA-w4j7-wfgw-r52w",
-        "https://www.vulncheck.com/advisories/openssl-encrypt-before-authentication-bypass-via-aes-ctr-fallback"
-      ],
-      "published": "2026-08-17T11:16:45.183"
-    },
-    {
-      "id": "CVE-2026-47698",
-      "description": "vm2 is an open source vm/sandbox for Node.js. Prior to 3.11.6, lib/bridge.js and lib/setup-sandbox.js fail to block stacked indirection through Function.prototype.call around dangerous host prototype getter and setter mutators, allowing sandbox code to sever a host intrinsic's prototype chain and reach e.constructor.constructor for arbitrary host command execution. This issue is fixed in version 3.11.6.",
-      "cvss": {
-        "score": 9.8,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-        "severity": "CRITICAL"
-      },
-      "tier": 0,
-      "matchedProducts": [
-        "Node.js"
-      ],
-      "references": [
-        "https://github.com/patriksimek/vm2/commit/a85acb61f81402c6eabf32760aa11272af6d0f9e",
-        "https://github.com/patriksimek/vm2/releases/tag/3.11.6",
-        "https://github.com/patriksimek/vm2/security/advisories/GHSA-cfcw-xp6x-25gj"
-      ],
-      "published": "2026-08-17T21:16:45.640"
-    },
-    {
-      "id": "CVE-2026-63667",
-      "description": "ApostropheCMS is an open-source Node.js content management system. Prior to 3.6.2, the import-export module in packages/import-export/lib/formats/gzip.js constructs an attachment source path from the attacker-controlled _id, name, and extension fields in aposAttachments.json without ensuring that the resolved path remains under the extracted attachments directory, allowing an authenticated contributor to import a crafted archive, read a host file with an allowed extension, and publish the copied",
-      "cvss": {
-        "score": 6.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 0,
-      "matchedProducts": [
-        "Node.js"
-      ],
-      "references": [
-        "https://github.com/apostrophecms/apostrophe/commit/87cccf44a23d09420875ca8a3765eb3db843836a",
-        "https://github.com/apostrophecms/apostrophe/security/advisories/GHSA-79qf-vqgc-7xx3",
-        "https://github.com/apostrophecms/apostrophe/security/advisories/GHSA-79qf-vqgc-7xx3"
-      ],
-      "published": "2026-08-17T20:16:44.720"
-    },
-    {
-      "id": "CVE-2026-14832",
-      "description": "The ShopSmart Loyalty for WooCommerce WordPress plugin through 1.0.0 does not perform any authorization or ownership check on a phone-number lookup exposed to unauthenticated users, allowing anyone who knows a customer's phone number to retrieve that customer's loyalty profile, including name, email, and account balance.",
-      "cvss": {
-        "score": 5.3,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
-        "severity": "MEDIUM"
       },
       "tier": 0,
       "matchedProducts": [
         "WordPress"
       ],
       "references": [
-        "https://wpscan.com/vulnerability/3b651e19-37f5-468e-8d0b-a82bbe04eaf2/"
+        "https://plugins.trac.wordpress.org/browser/forminator/tags/1.55.1/admin/classes/class-admin-ajax.php#L1196",
+        "https://plugins.trac.wordpress.org/browser/forminator/tags/1.55.1/library/abstracts/abstract-class-field.php#L2308",
+        "https://plugins.trac.wordpress.org/browser/forminator/tags/1.55.1/library/fields/upload.php#L552",
+        "https://plugins.trac.wordpress.org/browser/forminator/tags/1.55.1/library/helpers/helper-fields.php#L3425",
+        "https://plugins.trac.wordpress.org/browser/forminator/tags/1.55.1/library/modules/custom-forms/front/front-action.php#L2767"
       ],
-      "published": "2026-08-17T06:17:31.657"
+      "published": "2026-08-18T06:16:40.670"
     },
     {
-      "id": "CVE-2026-71472",
-      "description": "A flaw was found in acm-search-v2-rhel9. This vulnerability allows an authenticated attacker, such as a hub administrator or a Search Custom Resource (CR) editor, to inject malicious shell commands or SQL statements. This occurs because the WORK_MEM string provided in the Search CR is not properly validated before being used in a bash script and an SQL query. Successful exploitation could lead to arbitrary code execution within the privileged postgres pod, potentially compromising the system.",
+      "id": "CVE-2026-75852",
+      "description": "ArcadeDB versions before 26.8.1 fail to enforce SASL authentication on data commands in the MongoDB wire-protocol plugin. Unauthenticated attackers can issue insert, find, update, delete, and create commands against any database by connecting to port 27017 without credentials.",
+      "cvss": {
+        "score": 9.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "CRITICAL"
+      },
+      "tier": 0,
+      "matchedProducts": [
+        "MongoDB"
+      ],
+      "references": [
+        "https://github.com/ArcadeData/arcadedb/security/advisories/GHSA-fq9c-x968-g278",
+        "https://www.vulncheck.com/advisories/arcadedb-mongodb-wire-protocol-authentication-bypass-cross-database"
+      ],
+      "published": "2026-08-18T12:19:35.593"
+    },
+    {
+      "id": "CVE-2026-75854",
+      "description": "ArcadeDB versions before 26.8.1 contain a missing authentication vulnerability in the Redis wire-protocol plugin that allows unauthenticated attackers to read, write, and delete data. Attackers can connect to the Redis port and execute arbitrary commands against any database on the server without providing credentials, bypassing all security gates.",
+      "cvss": {
+        "score": 9.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "CRITICAL"
+      },
+      "tier": 0,
+      "matchedProducts": [
+        "Redis"
+      ],
+      "references": [
+        "https://github.com/ArcadeData/arcadedb/security/advisories/GHSA-m46c-jh3x-xwrp",
+        "https://www.vulncheck.com/advisories/arcadedb-redis-wire-protocol-plugin-missing-authentication",
+        "https://github.com/ArcadeData/arcadedb/security/advisories/GHSA-m46c-jh3x-xwrp"
+      ],
+      "published": "2026-08-18T12:19:35.860"
+    },
+    {
+      "id": "CVE-2026-74979",
+      "description": "Mitigation bypass in the Add-ons Manager component. This vulnerability was fixed in Firefox 154, Firefox ESR 153.1, Thunderbird 154, and Thunderbird 153.1.",
+      "cvss": {
+        "score": 9.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "CRITICAL"
+      },
+      "tier": 0,
+      "matchedProducts": [
+        "Mozilla Firefox"
+      ],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2045676",
+        "https://www.mozilla.org/security/advisories/mfsa2026-74/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-77/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-78/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-80/"
+      ],
+      "published": "2026-08-18T13:17:36.683"
+    },
+    {
+      "id": "CVE-2026-74990",
+      "description": "Internally found bugs present in Thunderbird ESR 140.13, Thunderbird ESR 153.0 and Thunderbird 153. Some of these bugs showed evidence of memory corruption or another security-relevant defect and we presume that with enough effort some of these could have been exploited. This vulnerability was fixed in Firefox 154, Firefox ESR 115.39, Firefox ESR 140.14, Firefox ESR 153.1, Thunderbird 154, Thunderbird 140.14, and Thunderbird 153.1.",
+      "cvss": {
+        "score": 9.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "CRITICAL"
+      },
+      "tier": 0,
+      "matchedProducts": [
+        "Mozilla Firefox"
+      ],
+      "references": [
+        "https://bugzilla.mozilla.org/buglist.cgi?bug_id=2045762%2C2052401%2C2058208",
+        "https://bugzilla.mozilla.org/buglist.cgi?bug_id=2045774%2C2048490%2C2050864%2C2053159%2C2053260%2C2053261%2C2053582%2C2053599%2C2053607%2C2053608%2C2053853%2C2054626%2C2054627%2C2054635%2C2054677%2C2054740%2C2054832%2C2056792%2C2057098%2C2057100%2C2057101%2C2057103%2C2057117%2C2057118%2C2058048%2C2058049%2C2058622%2C2058623%2C2058665%2C2058666%2C2059121%2C2059164%2C2059188",
+        "https://www.mozilla.org/security/advisories/mfsa2026-74/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-75/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-76/"
+      ],
+      "published": "2026-08-18T13:17:40.930"
+    },
+    {
+      "id": "CVE-2026-18963",
+      "description": "A flaw was found in the reset-credentials flow of the keycloak-services component, which is the core engine for identity and access management in Red Hat Build of Keycloak. The issue allows an unauthenticated attacker to force the password reset process for any user without needing to click the required email verification link. This can result in the attacker gaining full control over target user accounts by directly setting new credentials.",
       "cvss": {
         "score": 9.1,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H",
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
+        "severity": "CRITICAL"
+      },
+      "tier": 0,
+      "matchedProducts": [
+        "ESET"
+      ],
+      "references": [
+        "https://access.redhat.com/errata/RHSA-2026:56519",
+        "https://access.redhat.com/errata/RHSA-2026:56520",
+        "https://access.redhat.com/errata/RHSA-2026:56523",
+        "https://access.redhat.com/errata/RHSA-2026:56524",
+        "https://access.redhat.com/security/cve/CVE-2026-18963"
+      ],
+      "published": "2026-08-18T17:16:57.083"
+    },
+    {
+      "id": "CVE-2026-74938",
+      "description": "Mitigation bypass in the JavaScript: GC component. This vulnerability was fixed in Firefox 154, Firefox ESR 153.1, Thunderbird 154, and Thunderbird 153.1.",
+      "cvss": {
+        "score": 9.1,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
         "severity": "CRITICAL"
       },
       "tier": 1,
       "matchedProducts": [
-        "PostgreSQL"
+        "Mozilla Firefox"
       ],
       "references": [
-        "https://access.redhat.com/security/cve/CVE-2026-71472",
-        "https://bugzilla.redhat.com/show_bug.cgi?id=2512151"
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2053688",
+        "https://www.mozilla.org/security/advisories/mfsa2026-74/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-77/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-78/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-80/"
       ],
-      "published": "2026-08-17T20:16:45.777"
+      "published": "2026-08-18T13:17:30.103"
     },
     {
-      "id": "CVE-2026-74877",
-      "description": "openssl_encrypt versions before 1.4.0 contain a missing ownership verification vulnerability in the revoke_key method that allows authenticated clients to revoke any other client's key. Attackers can revoke arbitrary keys by providing a valid ML-DSA signature, bypassing the intended ownership restriction.",
+      "id": "CVE-2026-74956",
+      "description": "Same-origin policy bypass in the DOM: Service Workers component. This vulnerability was fixed in Firefox 154, Firefox ESR 153.1, Thunderbird 154, and Thunderbird 153.1.",
       "cvss": {
-        "score": 8.8,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
-        "severity": "HIGH"
+        "score": 9.1,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
+        "severity": "CRITICAL"
       },
       "tier": 1,
       "matchedProducts": [
-        "OpenSSL"
+        "Mozilla Firefox"
       ],
       "references": [
-        "https://github.com/jahlives/openssl_encrypt/security/advisories/GHSA-hvc7-763r-4f3h",
-        "https://www.vulncheck.com/advisories/openssl-encrypt-before-missing-ownership-verification-via-revoke-key"
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2032406",
+        "https://www.mozilla.org/security/advisories/mfsa2026-74/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-77/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-78/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-80/"
       ],
-      "published": "2026-08-17T11:16:42.203"
+      "published": "2026-08-18T13:17:32.623"
     },
     {
-      "id": "CVE-2026-74883",
-      "description": "openssl_encrypt versions before 1.4.0 contain a sandbox bypass vulnerability where the plugin sandbox fails to restrict alternative file access methods like pathlib.Path and io.open. Attackers can import pathlib or io modules to read and write arbitrary files, completely bypassing the restricted_open file access controls.",
+      "id": "CVE-2026-62988",
+      "description": "Froxlor is open source server administration software. From 2.3.7 until 2.3.8, the Customers.get, Customers.listing, Admins.get, Admins.listing, Ftps.get, and Ftps.listing API commands in lib/Froxlor/Api/Commands/Customers.php, lib/Froxlor/Api/Commands/Admins.php, and lib/Froxlor/Api/Commands/Ftps.php retrieve full database rows and return them without removing password and data_2fa fields. An authenticated API caller with permission to use these endpoints can obtain customer, administrator, and",
+      "cvss": {
+        "score": 9.0,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:L",
+        "severity": "CRITICAL"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "ESET"
+      ],
+      "references": [
+        "https://github.com/froxlor/froxlor/commit/52a43fb826bb9a058faf9c39feeef7ac4444ceba",
+        "https://github.com/froxlor/froxlor/commit/8667fa3a4d77d6e322b7b8f7b9edbc1613ab5797",
+        "https://github.com/froxlor/froxlor/releases/tag/2.3.8",
+        "https://github.com/froxlor/froxlor/security/advisories/GHSA-7788-ghfq-c6mh"
+      ],
+      "published": "2026-08-18T21:17:18.077"
+    },
+    {
+      "id": "CVE-2026-74935",
+      "description": "Privilege escalation in the DOM: Networking component. This vulnerability was fixed in Firefox 154, Firefox ESR 115.39, Firefox ESR 140.14, Firefox ESR 153.1, Thunderbird 154, Thunderbird 140.14, and Thunderbird 153.1.",
       "cvss": {
         "score": 8.8,
         "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
@@ -404,39 +242,273 @@
       },
       "tier": 1,
       "matchedProducts": [
-        "OpenSSL"
+        "Mozilla Firefox"
       ],
       "references": [
-        "https://github.com/jahlives/openssl_encrypt/security/advisories/GHSA-mcjj-qw7m-j3cp",
-        "https://www.vulncheck.com/advisories/openssl-encrypt-before-sandbox-bypass-via-pathlib-and-io",
-        "https://github.com/jahlives/openssl_encrypt/security/advisories/GHSA-mcjj-qw7m-j3cp"
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2051013",
+        "https://www.mozilla.org/security/advisories/mfsa2026-74/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-75/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-76/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-77/"
       ],
-      "published": "2026-08-17T11:16:42.993"
+      "published": "2026-08-18T13:17:29.737"
     },
     {
-      "id": "CVE-2026-74893",
-      "description": "openssl_encrypt versions before 1.4.0 contain hardcoded default JWT signing secrets in config.py that pass validation checks. Attackers with access to source code can forge valid JWT tokens for any client_id to gain authenticated access to keyserver and telemetry APIs.",
+      "id": "CVE-2026-74937",
+      "description": "Use-after-free in the JavaScript: GC component. This vulnerability was fixed in Firefox 154, Firefox ESR 153.1, Thunderbird 154, and Thunderbird 153.1.",
       "cvss": {
         "score": 8.8,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
         "severity": "HIGH"
       },
       "tier": 1,
       "matchedProducts": [
-        "OpenSSL"
+        "Mozilla Firefox"
       ],
       "references": [
-        "https://github.com/jahlives/openssl_encrypt/security/advisories/GHSA-qc6h-gfjh-7qqg",
-        "https://www.vulncheck.com/advisories/openssl-encrypt-before-jwt-token-forgery-via-hardcoded-secrets"
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2053337",
+        "https://www.mozilla.org/security/advisories/mfsa2026-74/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-77/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-78/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-80/"
       ],
-      "published": "2026-08-17T11:16:44.397"
+      "published": "2026-08-18T13:17:29.950"
     },
     {
-      "id": "CVE-2026-65640",
-      "description": "WordPress is vulnerable to a remote code execution vulnerability via malicious Postscript file upload by an Author level user or higher.\n\nPrerequisites:\n* Imagick and Ghostscript in use on the server\n* A malicious user with the `upload_files` capability\n\nThis issue affects all versions of WordPress. Version 7.0.4 has been released, containing a fix for the vulnerability, and as a courtesy to users on older branches the fix has been backported to all branches back to 4.7.",
+      "id": "CVE-2026-74939",
+      "description": "Privilege escalation in the DOM: Navigation component. This vulnerability was fixed in Firefox 154, Firefox ESR 115.39, Firefox ESR 140.14, Firefox ESR 153.1, Thunderbird 154, Thunderbird 140.14, and Thunderbird 153.1.",
       "cvss": {
         "score": 8.8,
-        "vector": "CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Mozilla Firefox"
+      ],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2054416",
+        "https://www.mozilla.org/security/advisories/mfsa2026-74/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-75/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-76/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-77/"
+      ],
+      "published": "2026-08-18T13:17:30.233"
+    },
+    {
+      "id": "CVE-2026-74941",
+      "description": "Privilege escalation in the Graphics: CanvasWebGL component. This vulnerability was fixed in Firefox 154, Firefox ESR 140.14, Firefox ESR 153.1, Thunderbird 154, Thunderbird 140.14, and Thunderbird 153.1.",
+      "cvss": {
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Mozilla Firefox"
+      ],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2055056",
+        "https://www.mozilla.org/security/advisories/mfsa2026-74/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-76/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-77/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-78/"
+      ],
+      "published": "2026-08-18T13:17:30.513"
+    },
+    {
+      "id": "CVE-2026-74942",
+      "description": "Privilege escalation in the Remote Settings Client component. This vulnerability was fixed in Firefox 154, Firefox ESR 115.39, Firefox ESR 140.14, Firefox ESR 153.1, Thunderbird 154, Thunderbird 140.14, and Thunderbird 153.1.",
+      "cvss": {
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Mozilla Firefox"
+      ],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2056571",
+        "https://www.mozilla.org/security/advisories/mfsa2026-74/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-75/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-76/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-77/"
+      ],
+      "published": "2026-08-18T13:17:30.673"
+    },
+    {
+      "id": "CVE-2026-74946",
+      "description": "Privilege escalation due to incorrect boundary conditions in the Graphics: CanvasWebGL component. This vulnerability was fixed in Firefox 154, Firefox ESR 115.39, Firefox ESR 140.14, Firefox ESR 153.1, Thunderbird 154, Thunderbird 140.14, and Thunderbird 153.1.",
+      "cvss": {
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Mozilla Firefox"
+      ],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2059997",
+        "https://www.mozilla.org/security/advisories/mfsa2026-74/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-75/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-76/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-77/"
+      ],
+      "published": "2026-08-18T13:17:31.277"
+    },
+    {
+      "id": "CVE-2026-74947",
+      "description": "Privilege escalation due to invalid pointer in the Graphics component. This vulnerability was fixed in Firefox 154, Firefox ESR 153.1, Thunderbird 154, and Thunderbird 153.1.",
+      "cvss": {
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Mozilla Firefox"
+      ],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2060010",
+        "https://www.mozilla.org/security/advisories/mfsa2026-74/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-77/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-78/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-80/"
+      ],
+      "published": "2026-08-18T13:17:31.410"
+    },
+    {
+      "id": "CVE-2026-74949",
+      "description": "Privilege escalation due to use-after-free in the Graphics: Canvas2D component. This vulnerability was fixed in Firefox 154, Firefox ESR 140.14, Firefox ESR 153.1, Thunderbird 154, Thunderbird 140.14, and Thunderbird 153.1.",
+      "cvss": {
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Mozilla Firefox"
+      ],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2060245",
+        "https://www.mozilla.org/security/advisories/mfsa2026-74/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-76/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-77/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-78/"
+      ],
+      "published": "2026-08-18T13:17:31.683"
+    },
+    {
+      "id": "CVE-2026-74950",
+      "description": "Privilege escalation in the Downloads API component. This vulnerability was fixed in Firefox 154, Firefox ESR 153.1, Thunderbird 154, and Thunderbird 153.1.",
+      "cvss": {
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Mozilla Firefox"
+      ],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=1880253",
+        "https://www.mozilla.org/security/advisories/mfsa2026-74/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-77/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-78/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-80/"
+      ],
+      "published": "2026-08-18T13:17:31.817"
+    },
+    {
+      "id": "CVE-2026-74952",
+      "description": "Privilege escalation in the Application Update component. This vulnerability was fixed in Firefox 154 and Thunderbird 154.",
+      "cvss": {
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Mozilla Firefox"
+      ],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2021757",
+        "https://www.mozilla.org/security/advisories/mfsa2026-74/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-78/"
+      ],
+      "published": "2026-08-18T13:17:32.100"
+    },
+    {
+      "id": "CVE-2026-74953",
+      "description": "Privilege escalation in the Networking: Cookies component. This vulnerability was fixed in Firefox 154, Firefox ESR 140.14, Firefox ESR 153.1, Thunderbird 154, Thunderbird 140.14, and Thunderbird 153.1.",
+      "cvss": {
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Mozilla Firefox"
+      ],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2022382",
+        "https://www.mozilla.org/security/advisories/mfsa2026-74/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-76/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-77/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-78/"
+      ],
+      "published": "2026-08-18T13:17:32.230"
+    },
+    {
+      "id": "CVE-2026-74955",
+      "description": "Privilege escalation in the Request Handling component. This vulnerability was fixed in Firefox 154, Firefox ESR 153.1, Thunderbird 154, and Thunderbird 153.1.",
+      "cvss": {
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Mozilla Firefox"
+      ],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2029265",
+        "https://www.mozilla.org/security/advisories/mfsa2026-74/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-77/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-78/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-80/"
+      ],
+      "published": "2026-08-18T13:17:32.493"
+    },
+    {
+      "id": "CVE-2026-74965",
+      "description": "Privilege escalation in the Shell Integration component. This vulnerability was fixed in Firefox 154, Firefox ESR 140.14, Firefox ESR 153.1, Thunderbird 154, Thunderbird 140.14, and Thunderbird 153.1.",
+      "cvss": {
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Mozilla Firefox"
+      ],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2053455",
+        "https://www.mozilla.org/security/advisories/mfsa2026-74/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-76/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-77/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-78/"
+      ],
+      "published": "2026-08-18T13:17:33.813"
+    },
+    {
+      "id": "CVE-2026-66602",
+      "description": "Cross-Site Request Forgery (CSRF) vulnerability in DevItems HashBar \u2013 WordPress Notification Bar allows Cross Site Request Forgery.\n\nThis issue affects HashBar \u2013 WordPress Notification Bar: from n/a through 2.0.0.",
+      "cvss": {
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
         "severity": "HIGH"
       },
       "tier": 1,
@@ -444,335 +516,556 @@
         "WordPress"
       ],
       "references": [
-        "https://wordpress.org/news/2026/08/wordpress-7-0-4-release/"
+        "https://patchstack.com/database/wordpress/plugin/hashbar-wp-notification-bar/vulnerability/wordpress-hashbar-wordpress-notification-bar-plugin-2-0-0-cross-site-request-forgery-csrf-vulnerability?_s_id=cve"
       ],
-      "published": "2026-08-17T21:16:46.470"
+      "published": "2026-08-18T22:17:25.173"
     },
     {
-      "id": "CVE-2026-75103",
-      "description": "Crawlab fails to verify user ownership or administrative role on the password-change endpoint, allowing any authenticated user to reset any account's password. Attackers can enumerate user accounts through the user listing endpoint and change administrator credentials to achieve full account takeover and arbitrary code execution.",
+      "id": "CVE-2026-75926",
+      "description": "Hugo 0.161.0 placed the Node asset pipelines behind the Node.js permission model so that code running through PostCSS, Babel, or TailwindCSS could not reach the file system outside the project directory. Hugo 0.162.0 added tailwindcss to the AllowChildProcess default in config/security/securityConfig.go, which makes nodePermissionArgs in common/hexec/exec.go append --allow-child-process whenever the tool being launched is named tailwindcss. TailwindCSS loads the site's tailwind.config.js through",
       "cvss": {
-        "score": 8.8,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "score": 8.6,
+        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H",
         "severity": "HIGH"
       },
       "tier": 1,
       "matchedProducts": [
-        "ESET"
+        "Node.js"
       ],
       "references": [
-        "https://github.com/crawlab-team/crawlab",
-        "https://github.com/crawlab-team/crawlab/blob/main/core/controllers/user_v2.go",
-        "https://github.com/crawlab-team/crawlab/issues/1623",
-        "https://www.vulncheck.com/advisories/crawlab-missing-authorization-on-password-change-endpoint-allows-account-takeover"
+        "https://github.com/gohugoio/hugo",
+        "https://github.com/gohugoio/hugo/blob/v0.164.0/common/hexec/exec.go#L292-L295",
+        "https://github.com/gohugoio/hugo/blob/v0.164.0/config/security/securityConfig.go#L72-L79",
+        "https://github.com/gohugoio/hugo/commit/8a55df7af2e6da31297245cc54fa2e3b521d93e8",
+        "https://github.com/gohugoio/hugo/issues/15178"
       ],
-      "published": "2026-08-17T21:16:49.200"
+      "published": "2026-08-18T16:18:24.443"
     },
     {
-      "id": "CVE-2026-75060",
-      "description": "In JetBrains PyCharm before 2026.2.1 code execution was possible via unauthenticated Jupyter MCP tools",
+      "id": "CVE-2026-60841",
+      "description": "Vulnerability in the Oracle Unified Directory product of Oracle Fusion Middleware (component: OUD Core).  Supported versions that are affected are 12.2.1.4.0 and  14.1.2.1.0. Difficult to exploit vulnerability allows low privileged attacker with network access via LDAP to compromise Oracle Unified Directory.  While the vulnerability is in Oracle Unified Directory, attacks may significantly impact additional products (scope change).  Successful attacks of this vulnerability can result in takeover",
       "cvss": {
-        "score": 8.4,
-        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "score": 8.5,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:C/C:H/I:H/A:H",
         "severity": "HIGH"
       },
       "tier": 1,
       "matchedProducts": [
-        "PyCharm"
+        "Ubiquiti/UniFi"
       ],
       "references": [
-        "https://www.jetbrains.com/privacy-security/issues-fixed/"
+        "https://www.oracle.com/security-alerts/cspuaug2026.html"
       ],
-      "published": "2026-08-17T16:17:53.227"
+      "published": "2026-08-18T21:16:44.750"
     },
     {
-      "id": "CVE-2026-64657",
-      "description": "Budibase is an open-source low-code platform. Prior to 3.39.19, the PostgreSQL datasource connector in packages/server/src/integrations/postgres.ts interpolates the user-controlled schema configuration field into a SET search_path statement without escaping embedded double quotes, allowing an authenticated administrator who saves or tests the datasource to execute arbitrary SQL through the simple query protocol. This issue is fixed in version 3.39.19.",
+      "id": "CVE-2026-60849",
+      "description": "Vulnerability in the Oracle Unified Directory product of Oracle Fusion Middleware (component: OUD Core).  Supported versions that are affected are 12.2.1.4.0 and  14.1.2.1.0. Difficult to exploit vulnerability allows low privileged attacker with network access via LDAP to compromise Oracle Unified Directory.  While the vulnerability is in Oracle Unified Directory, attacks may significantly impact additional products (scope change).  Successful attacks of this vulnerability can result in takeover",
       "cvss": {
-        "score": 8.4,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:R/S:C/C:H/I:H/A:H",
+        "score": 8.5,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:C/C:H/I:H/A:H",
         "severity": "HIGH"
       },
       "tier": 1,
       "matchedProducts": [
-        "PostgreSQL"
+        "Ubiquiti/UniFi"
       ],
       "references": [
-        "https://github.com/Budibase/budibase/commit/67572a82c3850964f388bfd969779dc025a80224",
-        "https://github.com/Budibase/budibase/security/advisories/GHSA-qqf5-x7mj-v43p"
+        "https://www.oracle.com/security-alerts/cspuaug2026.html"
       ],
-      "published": "2026-08-17T21:16:46.340"
+      "published": "2026-08-18T21:16:44.877"
     },
     {
-      "id": "CVE-2026-57233",
-      "description": "Notepad++ is a free and open-source source code editor. Prior to 8.9.7, the WinGup decompress function joins untrusted ZIP entry names to unzipDestTo without canonical containment validation, allowing an entry such as ../mimeTools/mimeTools.dll to overwrite a DLL in a sibling plugin directory and execute attacker-controlled code when Notepad++ next loads that plugin. This issue is fixed in version 8.9.7.",
+      "id": "CVE-2026-60592",
+      "description": "Vulnerability in the MySQL Cluster product of Oracle MySQL (component: Cluster: NDB Operator).  Supported versions that are affected are 8.0.0-8.0.47, 8.4.0-8.4.10 and  9.7.0-9.7.1. Easily exploitable vulnerability allows unauthenticated attacker with network access via multiple protocols to compromise MySQL Cluster.  Successful attacks of this vulnerability can result in unauthorized ability to cause a hang or frequently repeatable crash (complete DOS) of MySQL Cluster as well as  unauthorized ",
+      "cvss": {
+        "score": 8.2,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "MySQL"
+      ],
+      "references": [
+        "https://www.oracle.com/security-alerts/cspuaug2026.html"
+      ],
+      "published": "2026-08-18T21:16:38.603"
+    },
+    {
+      "id": "CVE-2026-74978",
+      "description": "Clickjacking issue in the Widget component. This vulnerability was fixed in Firefox 154, Firefox ESR 153.1, Thunderbird 154, and Thunderbird 153.1.",
       "cvss": {
         "score": 8.1,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:H/A:H",
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:N",
         "severity": "HIGH"
       },
       "tier": 1,
       "matchedProducts": [
-        "Notepad++"
+        "Mozilla Firefox"
       ],
       "references": [
-        "https://github.com/notepad-plus-plus/notepad-plus-plus/releases/tag/v8.9.7",
-        "https://github.com/notepad-plus-plus/notepad-plus-plus/security/advisories/GHSA-hjxw-84rf-wg5r",
-        "https://github.com/notepad-plus-plus/wingup/commit/7670296a5c7fdec624e0a45dbde51059a7d735a8",
-        "https://github.com/notepad-plus-plus/wingup/pull/106"
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2036097",
+        "https://www.mozilla.org/security/advisories/mfsa2026-74/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-77/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-78/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-80/"
       ],
-      "published": "2026-08-17T20:16:44.453"
+      "published": "2026-08-18T13:17:36.390"
     },
     {
-      "id": "CVE-2026-54758",
-      "description": "Notepad++ is a free and open-source source code editor. Prior to 8.9.7, the expandNppEnvironmentStrs function in PowerEditor/src/WinControls/StaticDialog/RunDlg/RunDlg.cpp copies a Notepad++ variable name between $( and ) into the fixed-size wchar_t str[MAX_PATH] stack buffer without bounding the m loop index, allowing a name of 260 or more characters to corrupt adjacent stack data, terminate the process through __report_gsfailure, and potentially execute code. This issue is fixed in version 8.9",
+      "id": "CVE-2026-59825",
+      "description": "Mastodon is a free, open-source social network server based on ActivityPub. Prior to 4.4.19 and from 4.5.0 until 4.5.12, Mastodon's app/models/concerns/user/ldap_authenticable.rb mutates OpenSSL::SSL::SSLContext::DEFAULT_PARAMS when LDAP authentication uses LDAP_TLS_NO_VERIFY=true, disabling SSL and TLS certificate verification globally for requests made by puma web processes while sidekiq background jobs remain unaffected. This issue is fixed in versions 4.4.19 and 4.5.12.",
+      "cvss": {
+        "score": 7.4,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "OpenSSL"
+      ],
+      "references": [
+        "https://github.com/mastodon/mastodon/commit/2ccb6ef277e725d1932295690cf8ab9d3dc03149",
+        "https://github.com/mastodon/mastodon/commit/5748d0b16ea09001e0933f76c7afe814e09652ef",
+        "https://github.com/mastodon/mastodon/commit/761c61b42590a2fd91442fc15a0a7583e48bbea4",
+        "https://github.com/mastodon/mastodon/pull/39571",
+        "https://github.com/mastodon/mastodon/releases/tag/v4.4.19"
+      ],
+      "published": "2026-08-18T15:16:55.623"
+    },
+    {
+      "id": "CVE-2026-19671",
+      "description": "Malcolm's upload-processing pipeline (scripts/safe-extract.py) enforces entry-count, nesting-depth, and total-uncompressed-byte limits when extracting container archives (zip/tar/rar/7z via libarchive), but those limits are not applied when the uploaded file is a single-stream compressed format (.gz, .bz2, .xz, .lzma, .lz) that isn't a .tar.*-style archive. Any authenticated user permitted to upload PCAP/log files can upload a small, highly compressible file (e.g. a gzip bomb) that decompresses ",
+      "cvss": {
+        "score": 6.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+        "severity": "MEDIUM"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "OpenSearch",
+        "Logstash"
+      ],
+      "references": [
+        "https://github.com/cisagov/Malcolm/security/advisories/GHSA-f2v6-8cj4-mhr6",
+        "https://www.cisa.gov/news-events/ics-advisories/icsa-26-230-01",
+        "https://github.com/cisagov/Malcolm/security/advisories/GHSA-f2v6-8cj4-mhr6"
+      ],
+      "published": "2026-08-18T20:17:13.660"
+    },
+    {
+      "id": "CVE-2026-16732",
+      "description": "fastify is a fast and low overhead web framework for Node.js. Impact: the fix for CVE-2026-3635 added a guard on the forwarded-header reads used to derive the request host, protocol, hostname, ip, and ips values, checking the connecting address. That guard closes the IP, CIDR, and custom-function forms of trustProxy correctly, because those forms compile to predicates that inspect the connecting address. The hop-count form, where trustProxy is set to a number, compiles to a predicate that struct",
+      "cvss": {
+        "score": 6.1,
+        "vector": "CVSS:3.1/AV:A/AC:H/PR:N/UI:N/S:C/C:H/I:N/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Node.js"
+      ],
+      "references": [
+        "https://cna.openjsf.org/security-advisories.html",
+        "https://github.com/fastify/fastify/security/advisories/GHSA-3m5p-2c4r-xxw2"
+      ],
+      "published": "2026-08-18T21:16:34.063"
+    },
+    {
+      "id": "CVE-2026-19670",
+      "description": "Malcolm's nginx Lua role-based access control (RBAC) layer decides whether an authenticated user may reach a role-restricted path (e.g. /htadmin, /auth, /admin_login, /arkime/api/esadmin, NetBox, upload endpoints) by pattern-matching the raw, percent-encoded request URI. Nginx itself, however, selects which location block actually serves the request using the percent-decoded, normalized URI. Because the RBAC check never percent-decodes its input, an authenticated low-privilege user can request a",
+      "cvss": {
+        "score": 5.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Nginx"
+      ],
+      "references": [
+        "https://github.com/cisagov/Malcolm/security/advisories/GHSA-f2v6-8cj4-mhr6",
+        "https://www.cisa.gov/news-events/ics-advisories/icsa-26-230-01",
+        "https://github.com/cisagov/Malcolm/security/advisories/GHSA-f2v6-8cj4-mhr6"
+      ],
+      "published": "2026-08-18T20:17:13.473"
+    },
+    {
+      "id": "CVE-2026-18504",
+      "description": "fastify is a fast and low overhead web framework for Node.js. Versions of fastify before 5.12.1 are affected by a schema validation bypass when a request body schema targets a root primitive value. When the schema validates a top-level primitive such as an integer, Ajv can coerce a JSON string into the expected type during validation, but Fastify does not replace the root request body with the coerced value, so the route handler receives the original unvalidated string. As a result, a request th",
+      "cvss": {
+        "score": 5.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Node.js"
+      ],
+      "references": [
+        "https://cna.openjsf.org/security-advisories.html",
+        "https://github.com/fastify/fastify/security/advisories/GHSA-w2qp-rph6-63g4"
+      ],
+      "published": "2026-08-18T21:16:34.220"
+    },
+    {
+      "id": "CVE-2026-48796",
+      "description": "CefSharp provides .NET bindings for the Chromium Embedded Framework for Windows Forms and Windows Presentation Foundation applications. Prior to version 148.0.90, CefSharp/SchemeHandler/FolderSchemeHandlerFactory.cs used filePath.StartsWith(rootFolder, StringComparison.OrdinalIgnoreCase) to decide whether a decoded and canonicalized request path remained inside rootFolder. That raw prefix test did not enforce a directory boundary, so a request such as ..%2fwww2/secret.txt could escape a configur",
+      "cvss": {
+        "score": 5.3,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:N/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://github.com/cefsharp/CefSharp/commit/3475c7ef14119f67ec3720866bb3e4b1c6c68632",
+        "https://github.com/cefsharp/CefSharp/releases/tag/v148.0.90",
+        "https://github.com/cefsharp/CefSharp/security/advisories/GHSA-85jm-cwp2-mvpv"
+      ],
+      "published": "2026-08-18T22:16:52.280"
+    },
+    {
+      "id": "CVE-2026-76034",
+      "description": "Buffer overflow in WebGL in Google Chrome prior to 151.0.7922.169 allowed a remote attacker to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Critical)",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/08/stable-channel-update-for-desktop_0826575033.html",
+        "https://issues.chromium.org/issues/534923522"
+      ],
+      "published": "2026-08-18T21:18:27.390"
+    },
+    {
+      "id": "CVE-2026-76035",
+      "description": "Inappropriate implementation in Media in Google Chrome on on Mac prior to 151.0.7922.169 allowed a remote attacker to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/08/stable-channel-update-for-desktop_0826575033.html",
+        "https://issues.chromium.org/issues/536439844"
+      ],
+      "published": "2026-08-18T21:18:27.500"
+    },
+    {
+      "id": "CVE-2026-76036",
+      "description": "Buffer overflow in Dawn in Google Chrome on on Android prior to 151.0.7922.169 allowed a remote attacker to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Critical)",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/08/stable-channel-update-for-desktop_0826575033.html",
+        "https://issues.chromium.org/issues/540087398"
+      ],
+      "published": "2026-08-18T21:18:27.617"
+    },
+    {
+      "id": "CVE-2026-76037",
+      "description": "Link following in CredentialProvider in Google Chrome on on Windows prior to 151.0.7922.169 allowed a local attacker to potentially execute arbitrary code outside the sandbox via a local program. (Chromium security severity: High)",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/08/stable-channel-update-for-desktop_0826575033.html",
+        "https://issues.chromium.org/issues/517612295"
+      ],
+      "published": "2026-08-18T21:18:27.727"
+    },
+    {
+      "id": "CVE-2026-76038",
+      "description": "Type confusion in V8 in Google Chrome prior to 151.0.7922.169 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/08/stable-channel-update-for-desktop_0826575033.html",
+        "https://issues.chromium.org/issues/541926503"
+      ],
+      "published": "2026-08-18T21:18:27.833"
+    },
+    {
+      "id": "CVE-2026-76040",
+      "description": "Use after free in Browser in Google Chrome on on Mac prior to 151.0.7922.169 allowed a remote attacker leveraging social engineering to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/08/stable-channel-update-for-desktop_0826575033.html",
+        "https://issues.chromium.org/issues/534862220"
+      ],
+      "published": "2026-08-18T21:18:28.060"
+    },
+    {
+      "id": "CVE-2026-76042",
+      "description": "Use of uninitialized resource in GPU in Google Chrome prior to 151.0.7922.169 allowed a remote attacker who had compromised the renderer process to read memory outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/08/stable-channel-update-for-desktop_0826575033.html",
+        "https://issues.chromium.org/issues/536460270"
+      ],
+      "published": "2026-08-18T21:18:28.283"
+    },
+    {
+      "id": "CVE-2026-76043",
+      "description": "Incorrect calculation in V8 in Google Chrome prior to 151.0.7922.169 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/08/stable-channel-update-for-desktop_0826575033.html",
+        "https://issues.chromium.org/issues/539350801"
+      ],
+      "published": "2026-08-18T21:18:28.407"
+    },
+    {
+      "id": "CVE-2026-76044",
+      "description": "Race condition in USB in Google Chrome prior to 151.0.7922.169 allowed a remote attacker who had compromised the renderer process to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/08/stable-channel-update-for-desktop_0826575033.html",
+        "https://issues.chromium.org/issues/522732244"
+      ],
+      "published": "2026-08-18T21:18:28.530"
+    },
+    {
+      "id": "CVE-2026-76045",
+      "description": "Use after free in WebGL in Google Chrome prior to 151.0.7922.169 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/08/stable-channel-update-for-desktop_0826575033.html",
+        "https://issues.chromium.org/issues/543082390"
+      ],
+      "published": "2026-08-18T21:18:28.643"
+    },
+    {
+      "id": "CVE-2026-76046",
+      "description": "Buffer overflow in ANGLE in Google Chrome on on Android prior to 151.0.7922.169 allowed a remote attacker who had compromised the renderer process to execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/08/stable-channel-update-for-desktop_0826575033.html",
+        "https://issues.chromium.org/issues/536581050"
+      ],
+      "published": "2026-08-18T21:18:28.750"
+    },
+    {
+      "id": "CVE-2026-76047",
+      "description": "Type confusion in V8 in Google Chrome prior to 151.0.7922.169 allowed a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. (Chromium security severity: High)",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/08/stable-channel-update-for-desktop_0826575033.html",
+        "https://issues.chromium.org/issues/541251902"
+      ],
+      "published": "2026-08-18T21:18:28.863"
+    },
+    {
+      "id": "CVE-2026-54730",
+      "description": "authentik is an open-source identity provider. Prior to 2026.2.6 and 2026.5.5, the enterprise Google Chrome device-trust stages advance the flow without confirming that the out-of-band device attestation actually ran. Affected enterprise deployments place either a Google Chrome Endpoint stage with mode set to REQUIRED or the deprecated Google Chrome Device Trust Connector stage in an authentication flow. The device attestation occurs in a verification iframe that calls the Google Verified Access",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://github.com/goauthentik/authentik/commit/27866a94f29d0d7f784b3c462a697a968d3f6b9c",
+        "https://github.com/goauthentik/authentik/commit/85adb0bbbd7ad4f2807ec21cf25bb42aee81afbc",
+        "https://github.com/goauthentik/authentik/pull/24053",
+        "https://github.com/goauthentik/authentik/pull/24058",
+        "https://github.com/goauthentik/authentik/releases/tag/version/2026.2.6"
+      ],
+      "published": "2026-08-18T17:16:59.350"
+    },
+    {
+      "id": "CVE-2026-63336",
+      "description": "The RabbitMQ Java client library allows Java and JVM-based applications to connect to and interact with RabbitMQ nodes. Prior to 5.33.0, com.rabbitmq.client.ConnectionFactory.useSslProtocol() and ConnectionFactory.useSslProtocol(String) configure com.rabbitmq.client.TrustEverythingTrustManager and leave hostname verification disabled, causing arbitrary server certificates, including self-signed certificates, to be accepted. A network attacker able to intercept a TLS connection can impersonate th",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "RabbitMQ"
+      ],
+      "references": [
+        "https://github.com/rabbitmq/rabbitmq-java-client/commit/1e7deb2e6020c9793a81385a53ea378ec63b9339",
+        "https://github.com/rabbitmq/rabbitmq-java-client/commit/a4bf571dd368765baaa9cecfae68ce09f1bdcc01",
+        "https://github.com/rabbitmq/rabbitmq-java-client/pull/1999",
+        "https://github.com/rabbitmq/rabbitmq-java-client/pull/2001",
+        "https://github.com/rabbitmq/rabbitmq-java-client/releases/tag/v5.33.0"
+      ],
+      "published": "2026-08-18T17:17:00.280"
+    },
+    {
+      "id": "CVE-2026-63337",
+      "description": "The RabbitMQ Java client library allows Java and JVM-based applications to connect to and interact with RabbitMQ nodes. Prior to 5.33.0, com.rabbitmq.tools.jsonrpc.ProcedureDescription receives a javaReturnType value in an untrusted system.describe response and passes it through JSONUtil.tryFill, setJavaReturnType, and computeReturnTypeAsJavaClass to Class.forName(javaReturnType) with initialization enabled. An attacker able to answer the JsonRpcClient request through a shared broker or network ",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "RabbitMQ"
+      ],
+      "references": [
+        "https://github.com/rabbitmq/rabbitmq-java-client/commit/0032f75f9dc3df847f94b2b85a16119250bf63cb",
+        "https://github.com/rabbitmq/rabbitmq-java-client/commit/9f8e7efd0c648f235dc0e96232ae7efa75ea4fa8",
+        "https://github.com/rabbitmq/rabbitmq-java-client/pull/2000",
+        "https://github.com/rabbitmq/rabbitmq-java-client/pull/2002",
+        "https://github.com/rabbitmq/rabbitmq-java-client/releases/tag/v5.33.0"
+      ],
+      "published": "2026-08-18T17:17:00.423"
+    },
+    {
+      "id": "CVE-2026-53453",
+      "description": "Blueprint Studio is a VS Code-like file editor for Home Assistant configuration files. Prior to 2.5.2, Blueprint Studio exposed administrator-intended backend API actions to any authenticated Home Assistant user because the backend did not consistently enforce the panel's admin-only authorization boundary. Affected surfaces included the backend API, upload API, stream routes, terminal WebSocket, Blueprint Studio WebSocket subscriptions, call_service, render_template, global_replace, file and str",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Visual Studio Code"
+      ],
+      "references": [
+        "https://github.com/ha-china/blueprint-studio/commit/943aed0be67f3a910b0f70a3864288d5e17e55ce",
+        "https://github.com/ha-china/blueprint-studio/releases/tag/v2.5.2",
+        "https://github.com/ha-china/blueprint-studio/security/advisories/GHSA-ppwq-ch6x-936g"
+      ],
+      "published": "2026-08-18T21:16:34.973"
+    },
+    {
+      "id": "CVE-2026-71551",
+      "description": "Super Productivity is an advanced todo list app with integrated timeboxing and time tracking capabilities. Prior to 18.13.0, the EXEC IPC handler in electron/ipc-handlers/exec.ts accepts a command string from the renderer through the IPC.EXEC channel and executes it with child_process.exec(). The electron/preload.ts bridge exposes window.ea.exec() to renderer code, including community plugins executed with new Function(), without requiring nodeExecution permission. A confirmation dialog protects",
       "cvss": {
         "score": 7.8,
         "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
         "severity": "HIGH"
       },
-      "tier": 1,
-      "matchedProducts": [
-        "Notepad++"
-      ],
-      "references": [
-        "https://github.com/notepad-plus-plus/notepad-plus-plus/commit/0a9527e9f7140a2323e25d14e362b46ee0efc3db",
-        "https://github.com/notepad-plus-plus/notepad-plus-plus/releases/tag/v8.9.7",
-        "https://github.com/notepad-plus-plus/notepad-plus-plus/security/advisories/GHSA-gv94-327x-2gc5"
-      ],
-      "published": "2026-08-17T20:16:44.323"
-    },
-    {
-      "id": "CVE-2026-44845",
-      "description": "JumpServer is an open source bastion host and an operation and maintenance security audit system. Prior to 4.10.17, an authenticated administrator with Applet Host management and deployment permissions can inject Jinja2 expressions into the IP/Host field or Core Service Address field, causing Ansible to evaluate ansible_host inventory data or playbook variables during Applet Host deployment and execute arbitrary commands on the JumpServer control node. This issue is fixed in version 4.10.17.",
-      "cvss": {
-        "score": 6.7,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:L/A:H",
-        "severity": "MEDIUM"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "Ansible"
-      ],
-      "references": [
-        "https://github.com/jumpserver/jumpserver/commit/cc57ba0de5f6015746fae11cfc62402b11618e59",
-        "https://github.com/jumpserver/jumpserver/pull/16749",
-        "https://github.com/jumpserver/jumpserver/pull/16886",
-        "https://github.com/jumpserver/jumpserver/releases/tag/v4.10.17",
-        "https://github.com/jumpserver/jumpserver/security/advisories/GHSA-22h6-pcgh-9v7q"
-      ],
-      "published": "2026-08-17T21:16:45.083"
-    },
-    {
-      "id": "CVE-2026-63669",
-      "description": "ApostropheCMS is an open-source Node.js content management system. Prior to 4.32.0, the page module's move() operation fails to enforce the destination parent's _create permission because its oldParent archive condition disables the check for ordinary moves, allowing an authenticated editor or contributor to use _targetId and _position through the page REST update endpoint to move a controlled page into a restricted subtree and make nudgeNewPeers() updateMany re-rank protected sibling pages. Thi",
-      "cvss": {
-        "score": 6.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "Node.js"
-      ],
-      "references": [
-        "https://github.com/apostrophecms/apostrophe/commit/d50c6ad61b9c1788958752358f1fca714cc8368c",
-        "https://github.com/apostrophecms/apostrophe/security/advisories/GHSA-wr5r-wqp2-x4fh"
-      ],
-      "published": "2026-08-17T20:16:44.870"
-    },
-    {
-      "id": "CVE-2026-63178",
-      "description": "Onyx is an open-source AI platform. Prior to 4.3.0, Onyx Enterprise Edition's PATCH /manage/admin/user-group/{user_group_id} and POST /manage/admin/user-group/{user_group_id}/add-users endpoints in ee/onyx/server/user_group/api.py call update_user_group and add_users_to_user_group in ee/onyx/db/user_group.py without enforcing _validate_curator_can_modify_group, allowing a curator to add accounts to arbitrary groups and obtain document access through get_acl_for_user and the OpenSearch access_con",
-      "cvss": {
-        "score": 6.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "OpenSearch"
-      ],
-      "references": [
-        "https://github.com/onyx-dot-app/onyx/commit/46e19cc2750fed659488cb12a1f171016ba5a099",
-        "https://github.com/onyx-dot-app/onyx/commit/b9e1c6894be3c237283f4b5fd4eb0af935b40664",
-        "https://github.com/onyx-dot-app/onyx/pull/12525",
-        "https://github.com/onyx-dot-app/onyx/pull/12549",
-        "https://github.com/onyx-dot-app/onyx/releases/tag/v4.3.0"
-      ],
-      "published": "2026-08-17T22:17:16.130"
-    },
-    {
-      "id": "CVE-2026-63670",
-      "description": "ApostropheCMS is an open-source Node.js content management system. Prior to 2.17.6, sanitizeHtml() can pass disallowed executable markup through packages/sanitize-html/index.js when textarea or xmp is included in allowedTags because a literal solidus after the raw-text end-tag name is treated as text by htmlparser2 and the ontext handler emits that content without escaping, while a browser parses the following img onerror markup as active HTML. This issue is fixed in version 2.17.6.",
-      "cvss": {
-        "score": 6.1,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "Node.js"
-      ],
-      "references": [
-        "https://github.com/apostrophecms/apostrophe/commit/eae1fb2b72ec5d1c27d0977509c6482a0408f725",
-        "https://github.com/apostrophecms/apostrophe/pull/5501",
-        "https://github.com/apostrophecms/apostrophe/security/advisories/GHSA-jxwj-j7wr-gfrw"
-      ],
-      "published": "2026-08-17T20:16:45.000"
-    },
-    {
-      "id": "CVE-2026-50769",
-      "description": "The CRM+ application before and including version 2025.6 from Brainformatik is vulnerable to SQL Injection (time-based) vulnerability. The check conflict endpoint index.php?module=Appointments&action=CheckConflictOfDates&ajaxSkipHeader=true which is used to check any conflicts for user calendar is vulnerable to SQL injection allowing an attacker to execute arbitrary code.",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "Informatik PDF"
-      ],
-      "references": [
-        "https://github.com/Henkel-CyberVM/CVEs/tree/main/CVE-2026-50769",
-        "https://www.brainformatik.com/"
-      ],
-      "published": "2026-08-17T18:17:08.880"
-    },
-    {
-      "id": "CVE-2026-50772",
-      "description": "An issue in Squirro Cognitive Search < 3.14.2 allows a remote attacker to execute arbitrary code via a crafted payload to the password reset function.",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 1,
+      "tier": 2,
       "matchedProducts": [
         "ESET"
       ],
       "references": [
-        "https://docs.squirro.com/en/latest/products/cognitive-search.html",
-        "https://github.com/Henkel-CyberVM/CVEs/tree/main/CVE-2026-50772"
+        "https://github.com/super-productivity/super-productivity/commit/97e97042cde2e33524c9ad50dd46312c56be0072",
+        "https://github.com/super-productivity/super-productivity/pull/8669",
+        "https://github.com/super-productivity/super-productivity/security/advisories/GHSA-256q-p9ff-jv8q",
+        "https://github.com/super-productivity/super-productivity/security/advisories/GHSA-256q-p9ff-jv8q"
       ],
-      "published": "2026-08-17T18:17:09.207"
+      "published": "2026-08-18T18:19:32.483"
     },
     {
-      "id": "CVE-2026-52886",
-      "description": "Notepad++ is a free and open-source source code editor. Prior to 8.9.7, Notepad++ validates the backupFilePath attribute from session.xml with std::wstring::starts_with against the expected backup directory without path normalization, allowing parent-directory sequences during snapshot-mode restoration to read an arbitrary user-readable file outside the backup directory into an editor tab. This issue is fixed in version 8.9.7.",
+      "id": "CVE-2026-60969",
+      "description": "Vulnerability in the Oracle Unified Directory product of Oracle Fusion Middleware (component: OUD Core).  Supported versions that are affected are 12.2.1.4.0 and  14.1.2.1.0. Easily exploitable vulnerability allows low privileged attacker with network access via LDAP to compromise Oracle Unified Directory.  While the vulnerability is in Oracle Unified Directory, attacks may significantly impact additional products (scope change).  Successful attacks of this vulnerability can result in  unauthori",
       "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
+        "score": 7.7,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:N/A:N",
+        "severity": "HIGH"
       },
-      "tier": 1,
+      "tier": 2,
       "matchedProducts": [
-        "Notepad++"
+        "Ubiquiti/UniFi"
       ],
       "references": [
-        "https://github.com/notepad-plus-plus/notepad-plus-plus/commit/7e66f36db666a13b09fb5c31232ab2ca1c2ebccc",
-        "https://github.com/notepad-plus-plus/notepad-plus-plus/releases/tag/v8.9.7",
-        "https://github.com/notepad-plus-plus/notepad-plus-plus/security/advisories/GHSA-rqfm-pw34-r7j6"
+        "https://www.oracle.com/security-alerts/cspuaug2026.html"
       ],
-      "published": "2026-08-17T20:16:44.077"
+      "published": "2026-08-18T21:16:49.503"
     },
     {
-      "id": "CVE-2026-71553",
-      "description": "ApostropheCMS is an open-source Node.js content management system. In 4.32.0 and earlier, PATCH /api/v1/article/:id accepts the inherited path toString.call and passes it through the utility module to apos.util.set() and apos.util.get(), allowing an authenticated editor to overwrite the shared Object.prototype.toString function's call property and cause a persistent process-wide denial of service until restart.",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "Node.js"
-      ],
-      "references": [
-        "https://github.com/apostrophecms/apostrophe/commit/5a3746aaed49761e171c2cbfe793267c959829fd",
-        "https://github.com/apostrophecms/apostrophe/security/advisories/GHSA-vmg4-6gfg-83qx"
-      ],
-      "published": "2026-08-17T20:16:46.073"
-    },
-    {
-      "id": "CVE-2026-71858",
-      "description": "Notepad++ is a free and open-source source code editor. Prior to 8.9.7, macros loaded from an attacker-controlled shortcuts.xml bypass the HMAC validation applied to UserDefinedCommands and can invoke Scintilla actions and the internal Open in Default Viewer command in an elevated Notepad++ process, allowing protected file modification and conditional elevated command execution when a local attacker influences settingsDir and a user triggers the macro. This issue is fixed in version 8.9.7.",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "Notepad++"
-      ],
-      "references": [
-        "https://github.com/notepad-plus-plus/notepad-plus-plus/commit/7686e5a3025eaf1fb8e024c2ceb54670ea05f5fb",
-        "https://github.com/notepad-plus-plus/notepad-plus-plus/releases/tag/v8.9.7",
-        "https://github.com/notepad-plus-plus/notepad-plus-plus/security/advisories/GHSA-f4rj-vqq4-wvg4",
-        "https://github.com/notepad-plus-plus/notepad-plus-plus/security/advisories/GHSA-f4rj-vqq4-wvg4"
-      ],
-      "published": "2026-08-17T20:16:46.207"
-    },
-    {
-      "id": "CVE-2026-35219",
-      "description": "Budibase is an open-source low-code platform. Prior to 3.41.3, automation steps in packages/server/src/automations/steps/outgoingWebhook.ts, packages/server/src/automations/steps/zapier.ts, packages/server/src/automations/steps/n8n.ts, packages/server/src/automations/steps/slack.ts, and packages/server/src/automations/steps/discord.ts use node-fetch on user-provided URLs without the BLACKLIST_IPS enforcement used by the REST integration, allowing an authenticated user to make server-side request",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "Slack"
-      ],
-      "references": [
-        "https://github.com/Budibase/budibase/commit/cc07563a6b0fc0f91c51aae295952b1295546a90",
-        "https://github.com/Budibase/budibase/pull/19328",
-        "https://github.com/Budibase/budibase/releases/tag/3.41.3",
-        "https://github.com/Budibase/budibase/security/advisories/GHSA-5fpj-28rv-84r7"
-      ],
-      "published": "2026-08-17T21:16:44.550"
-    },
-    {
-      "id": "CVE-2026-47683",
-      "description": "vm2 is an open source vm/sandbox for Node.js. Prior to 3.11.6, the bufferAllocLimit enforcement in lib/setup-sandbox.js does not cover Buffer.concat(list, totalLength) or Buffer.from(arrayLike) with an attacker-controlled length, allowing sandbox code to perform large synchronous host external-memory allocations that bypass the configured cap and can exhaust the host process. This issue is fixed in version 3.11.6.",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "Node.js"
-      ],
-      "references": [
-        "https://github.com/patriksimek/vm2/commit/3ffb315512e634cf85c447375e85d6c83d00a4bd",
-        "https://github.com/patriksimek/vm2/releases/tag/3.11.6",
-        "https://github.com/patriksimek/vm2/security/advisories/GHSA-gmc2-2x9w-cgh9"
-      ],
-      "published": "2026-08-17T21:16:45.363"
-    },
-    {
-      "id": "CVE-2026-11817",
-      "description": "This vulnerability only affects Grafana stacks configured with multiple organizations; single-organization deployments are not impacted. In a multi-organization stack, a user who is an Org Admin of a single organization can call GET /api/access-control/users/permissions/search?actionPrefix=dashboards: and receive permission data belonging to other organizations. The disclosed data is limited to dashboard and folder identifiers (UIDs) and per-user permission/scope mappings (which user holds which",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "Grafana"
-      ],
-      "references": [
-        "https://grafana.com/security/security-advisories/cve-2026-11817"
-      ],
-      "published": "2026-08-17T22:16:58.870"
-    },
-    {
-      "id": "CVE-2026-74874",
-      "description": "openssl_encrypt versions before 1.4.0 use Python's non-cryptographic random module for steganographic pixel selection in the generate_pseudorandom_sequence function. Attackers who know the password can recover the Mersenne Twister state from approximately 624 outputs and predict pixel locations containing hidden data for extraction.",
+      "id": "CVE-2026-74954",
+      "description": "Information disclosure due to side-channel in the Storage: Cache API component. This vulnerability was fixed in Firefox 154, Firefox ESR 153.1, Thunderbird 154, and Thunderbird 153.1.",
       "cvss": {
         "score": 7.5,
         "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
@@ -780,17 +1073,20 @@
       },
       "tier": 2,
       "matchedProducts": [
-        "OpenSSL"
+        "Mozilla Firefox"
       ],
       "references": [
-        "https://github.com/jahlives/openssl_encrypt/security/advisories/GHSA-vfgx-5q85-58q3",
-        "https://www.vulncheck.com/advisories/openssl-encrypt-before-weak-prng-steganography-pixel-selection"
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2025732",
+        "https://www.mozilla.org/security/advisories/mfsa2026-74/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-77/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-78/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-80/"
       ],
-      "published": "2026-08-17T11:16:41.813"
+      "published": "2026-08-18T13:17:32.360"
     },
     {
-      "id": "CVE-2026-74879",
-      "description": "openssl_encrypt versions before 1.4.0 contain an information disclosure vulnerability in the /ready endpoint that returns full database exception strings to unauthenticated callers. Attackers can trigger database errors to extract sensitive information including hostnames, IP addresses, connection parameters, and potentially credentials from exception messages.",
+      "id": "CVE-2026-74958",
+      "description": "Information disclosure in the WebRTC component. This vulnerability was fixed in Firefox 154, Firefox ESR 153.1, Thunderbird 154, and Thunderbird 153.1.",
       "cvss": {
         "score": 7.5,
         "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
@@ -798,89 +1094,20 @@
       },
       "tier": 2,
       "matchedProducts": [
-        "OpenSSL"
+        "Mozilla Firefox"
       ],
       "references": [
-        "https://github.com/jahlives/openssl_encrypt/security/advisories/GHSA-2vhw-q7vh-7xv2",
-        "https://www.vulncheck.com/advisories/openssl-encrypt-before-information-disclosure-via-ready-endpoint"
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2045368",
+        "https://www.mozilla.org/security/advisories/mfsa2026-74/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-77/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-78/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-80/"
       ],
-      "published": "2026-08-17T11:16:42.460"
+      "published": "2026-08-18T13:17:32.910"
     },
     {
-      "id": "CVE-2026-74882",
-      "description": "openssl_encrypt versions before 1.4.0 contain an insecure default configuration that trusts the entire RFC 1918 private address space in IntegrityProxyConfig trusted_proxies. Attackers on private networks can forge client certificate headers to bypass mTLS authentication when ProxyAuth validation is relaxed or modified.",
-      "cvss": {
-        "score": 7.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
-        "severity": "HIGH"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "OpenSSL"
-      ],
-      "references": [
-        "https://github.com/jahlives/openssl_encrypt/security/advisories/GHSA-2592-7m3g-7fq6",
-        "https://www.vulncheck.com/advisories/openssl-encrypt-before-insecure-default-configuration"
-      ],
-      "published": "2026-08-17T11:16:42.863"
-    },
-    {
-      "id": "CVE-2026-74884",
-      "description": "openssl_encrypt versions before 1.4.0 contain a path traversal vulnerability in the _is_safe_path method where the plugin_id parameter is not sanitized before constructing the plugin config directory path. Attackers can declare a malicious plugin_id containing path traversal sequences like '../' to access arbitrary directories outside the intended plugin directory.",
-      "cvss": {
-        "score": 7.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
-        "severity": "HIGH"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "OpenSSL"
-      ],
-      "references": [
-        "https://github.com/jahlives/openssl_encrypt/security/advisories/GHSA-8jpj-w975-rwv5",
-        "https://www.vulncheck.com/advisories/openssl-encrypt-before-path-traversal-via-plugin-id"
-      ],
-      "published": "2026-08-17T11:16:43.130"
-    },
-    {
-      "id": "CVE-2026-74888",
-      "description": "openssl_encrypt versions before 1.4.0 use a non-standard PBKDF2 key derivation construction with iterations=1 per call in an outer loop, creating a KDF whose security properties have not been formally analyzed. Attackers can exploit this weakened key derivation to more efficiently crack passwords protecting legacy encrypted files compared to standard PBKDF2 implementations.",
-      "cvss": {
-        "score": 7.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
-        "severity": "HIGH"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "OpenSSL"
-      ],
-      "references": [
-        "https://github.com/jahlives/openssl_encrypt/security/advisories/GHSA-743f-89fg-x288",
-        "https://www.vulncheck.com/advisories/openssl-encrypt-before-non-standard-pbkdf2-key-derivation"
-      ],
-      "published": "2026-08-17T11:16:43.653"
-    },
-    {
-      "id": "CVE-2026-74892",
-      "description": "openssl_encrypt versions before 1.4.0 contain a hardcoded default secret key in the standalone telemetry server configuration that is used for API key hashing. Attackers who know this default value can predict or forge API key hashes to compromise telemetry API authentication.",
-      "cvss": {
-        "score": 7.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
-        "severity": "HIGH"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "OpenSSL"
-      ],
-      "references": [
-        "https://github.com/jahlives/openssl_encrypt/security/advisories/GHSA-p926-6hjp-w9jw",
-        "https://www.vulncheck.com/advisories/openssl-encrypt-before-hardcoded-secret-key"
-      ],
-      "published": "2026-08-17T11:16:44.263"
-    },
-    {
-      "id": "CVE-2026-68005",
-      "description": "An issue in ACME mini_httpd 1.30 and prior allows a remote attacker to cause a denial of service via the HTTP request header parser in the handle_request() function",
+      "id": "CVE-2026-74977",
+      "description": "Integer overflow in the Graphics component. This vulnerability was fixed in Firefox 154, Firefox ESR 153.1, Thunderbird 154, and Thunderbird 153.1.",
       "cvss": {
         "score": 7.5,
         "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
@@ -888,17 +1115,37 @@
       },
       "tier": 2,
       "matchedProducts": [
-        "Apache HTTP Server"
+        "Mozilla Firefox"
       ],
       "references": [
-        "https://acme.com/software/mini_httpd/",
-        "https://github.com/qop-qop-qop/qop-s-blog.github.io/blob/main/CVE-2026-68005/CVE-2026-68005.md"
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2028440",
+        "https://www.mozilla.org/security/advisories/mfsa2026-74/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-77/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-78/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-80/"
       ],
-      "published": "2026-08-17T20:16:45.347"
+      "published": "2026-08-18T13:17:36.023"
     },
     {
-      "id": "CVE-2026-11801",
-      "description": "The WPAdverts \u2013 Classifieds Plugin plugin for WordPress is vulnerable to authorization bypass in all versions up to, and including, 2.3.2. This is due to the plugin not properly verifying that a user is authorized to perform an action. This makes it possible for unauthenticated attackers to retrieve internal site configuration data exposed by the classifieds-types REST endpoint, including registered post types, labels, associated taxonomies, form scheme metadata, contact options, and custom fiel",
+      "id": "CVE-2026-70906",
+      "description": "Vulnerability in Oracle Java SE (component: 2D).  Supported versions that are affected are Oracle Java SE: 25.0.4 and  26.0.2. Easily exploitable vulnerability allows unauthenticated attacker with network access via multiple protocols to compromise Oracle Java SE.  Successful attacks of this vulnerability can result in unauthorized ability to cause a hang or frequently repeatable crash (complete DOS) of Oracle Java SE. Note: This vulnerability can be exploited by using APIs in the specified Comp",
+      "cvss": {
+        "score": 7.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "Oracle Java"
+      ],
+      "references": [
+        "https://www.oracle.com/security-alerts/cspuaug2026.html"
+      ],
+      "published": "2026-08-18T21:17:48.393"
+    },
+    {
+      "id": "CVE-2026-71142",
+      "description": "Vulnerability in the Oracle Communications Unified Inventory Management product of Oracle Communications (component: Security Component).  Supported versions that are affected are 7.5.0-7.5.1, 7.6.0-7.8.0 and  8.0.1. Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle Communications Unified Inventory Management.  Successful attacks of this vulnerability can result in  unauthorized access to critical data or complete access to all Ora",
       "cvss": {
         "score": 7.5,
         "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
@@ -906,79 +1153,282 @@
       },
       "tier": 2,
       "matchedProducts": [
+        "Ubiquiti/UniFi"
+      ],
+      "references": [
+        "https://www.oracle.com/security-alerts/cspuaug2026.html"
+      ],
+      "published": "2026-08-18T21:18:15.140"
+    },
+    {
+      "id": "CVE-2026-75915",
+      "description": "CodeWhale versions before 0.8.64 contain an environment variable exposure vulnerability in the js_execution tool that fails to scrub parent process environment variables before spawning Node.js. Attackers can craft malicious JavaScript code executed by the tool to read process.env and leak API keys, cloud credentials, and authentication tokens back to the model context.",
+      "cvss": {
+        "score": 7.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+        "severity": "HIGH"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "Node.js"
+      ],
+      "references": [
+        "https://github.com/Hmbown/CodeWhale/commit/26de44a8bd5051f8f944ea60b2c37ae1d2b7d25e",
+        "https://github.com/Hmbown/CodeWhale/security/advisories/GHSA-h539-c7r8-3xq4",
+        "https://www.vulncheck.com/advisories/codewhale-before-environment-variable-leak-via-js-execution",
+        "https://github.com/Hmbown/CodeWhale/security/advisories/GHSA-h539-c7r8-3xq4"
+      ],
+      "published": "2026-08-18T16:18:23.970"
+    },
+    {
+      "id": "CVE-2026-75897",
+      "description": "Improper input validation in the capabilities route handler in OpenSearch Dashboards - the size of the request payload is not bounded - might allow remote attackers to cause a denial of service via a crafted HTTP request.",
+      "cvss": {
+        "score": 7.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "OpenSearch"
+      ],
+      "references": [
+        "https://aws.amazon.com/security/security-bulletins/2026-082-aws/",
+        "https://opensearch.org/downloads/"
+      ],
+      "published": "2026-08-18T17:17:03.310"
+    },
+    {
+      "id": "CVE-2026-60850",
+      "description": "Vulnerability in the Oracle Unified Directory product of Oracle Fusion Middleware (component: OUD Core).  Supported versions that are affected are 12.2.1.4.0 and  14.1.2.1.0. Easily exploitable vulnerability allows unauthenticated attacker with network access via LDAP to compromise Oracle Unified Directory.  Successful attacks of this vulnerability can result in  unauthorized access to critical data or complete access to all Oracle Unified Directory accessible data. CVSS 3.1 Base Score 7.5 (Conf",
+      "cvss": {
+        "score": 7.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+        "severity": "HIGH"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "Ubiquiti/UniFi"
+      ],
+      "references": [
+        "https://www.oracle.com/security-alerts/cspuaug2026.html"
+      ],
+      "published": "2026-08-18T21:16:45.010"
+    },
+    {
+      "id": "CVE-2026-60889",
+      "description": "Vulnerability in the Oracle Unified Directory product of Oracle Fusion Middleware (component: OUD Core).  Supported versions that are affected are 12.2.1.4.0 and  14.1.2.1.0. Easily exploitable vulnerability allows unauthenticated attacker with network access via LDAP to compromise Oracle Unified Directory.  Successful attacks of this vulnerability can result in  unauthorized access to critical data or complete access to all Oracle Unified Directory accessible data. CVSS 3.1 Base Score 7.5 (Conf",
+      "cvss": {
+        "score": 7.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+        "severity": "HIGH"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "Ubiquiti/UniFi"
+      ],
+      "references": [
+        "https://www.oracle.com/security-alerts/cspuaug2026.html"
+      ],
+      "published": "2026-08-18T21:16:46.527"
+    },
+    {
+      "id": "CVE-2026-60914",
+      "description": "Vulnerability in the Oracle Unified Directory product of Oracle Fusion Middleware (component: OUD Core).  Supported versions that are affected are 12.2.1.4.0 and  14.1.2.1.0. Easily exploitable vulnerability allows unauthenticated attacker with network access via LDAP to compromise Oracle Unified Directory.  Successful attacks of this vulnerability can result in  unauthorized access to critical data or complete access to all Oracle Unified Directory accessible data. CVSS 3.1 Base Score 7.5 (Conf",
+      "cvss": {
+        "score": 7.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+        "severity": "HIGH"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "Ubiquiti/UniFi"
+      ],
+      "references": [
+        "https://www.oracle.com/security-alerts/cspuaug2026.html"
+      ],
+      "published": "2026-08-18T21:16:47.347"
+    },
+    {
+      "id": "CVE-2026-70724",
+      "description": "Vulnerability in the MySQL Cluster product of Oracle MySQL (component: Cluster: General).  Supported versions that are affected are 8.0.0-8.0.48, 8.4.0-8.4.11 and  9.7.0-9.7.2. Difficult to exploit vulnerability allows unauthenticated attacker with network access via HTTP to compromise MySQL Cluster.  Successful attacks require human interaction from a person other than the attacker. Successful attacks of this vulnerability can result in takeover of MySQL Cluster. CVSS 3.1 Base Score 7.5 (Confid",
+      "cvss": {
+        "score": 7.5,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "MySQL"
+      ],
+      "references": [
+        "https://www.oracle.com/security-alerts/cspuaug2026.html"
+      ],
+      "published": "2026-08-18T21:17:24.900"
+    },
+    {
+      "id": "CVE-2026-71143",
+      "description": "Vulnerability in the Oracle Communications Unified Inventory Management product of Oracle Communications (component: Third Party).  Supported versions that are affected are 7.5.0, 7.5.1, 7.6.0-7.8.0 and  8.0.1. Difficult to exploit vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle Communications Unified Inventory Management.  Successful attacks of this vulnerability can result in  unauthorized creation, deletion or modification access to critical dat",
+      "cvss": {
+        "score": 7.4,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N",
+        "severity": "HIGH"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "Ubiquiti/UniFi"
+      ],
+      "references": [
+        "https://www.oracle.com/security-alerts/cspuaug2026.html"
+      ],
+      "published": "2026-08-18T21:18:15.253"
+    },
+    {
+      "id": "CVE-2026-75091",
+      "description": "The Quill Forms | Conversational Multi Step Forms, Surveys & quizzes plugin for WordPress is vulnerable to Stored Cross-Site Scripting in all versions up to, and including, 5.7.1 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+      "cvss": {
+        "score": 7.2,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N",
+        "severity": "HIGH"
+      },
+      "tier": 2,
+      "matchedProducts": [
         "WordPress"
       ],
       "references": [
-        "https://plugins.trac.wordpress.org/browser/wpadverts/tags/2.3.2/includes/class-rest-blocks.php#L13",
-        "https://plugins.trac.wordpress.org/browser/wpadverts/tags/2.3.2/includes/class-rest-blocks.php#L50",
-        "https://plugins.trac.wordpress.org/browser/wpadverts/tags/2.3.3/includes/class-rest-blocks.php#L49",
-        "https://plugins.trac.wordpress.org/changeset?reponame=&new=3635095%40wpadverts%2Ftrunk&old=3557928%40wpadverts%2Ftrunk",
-        "https://www.wordfence.com/threat-intel/vulnerabilities/id/37bb8d68-dd87-437a-80e5-e99e93dc55b6?source=cve"
+        "https://patchstack.com/database/wordpress/plugin/quillforms/vulnerability/wordpress-quill-forms-plugin-5-7-1-cross-site-scripting-xss-vulnerability",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/7ae927b1-401f-4227-9d50-4adde8e95f24?source=cve"
       ],
-      "published": "2026-08-18T03:16:38.650"
+      "published": "2026-08-18T06:16:44.227"
     },
     {
-      "id": "CVE-2026-74881",
-      "description": "openssl_encrypt versions before 1.4.0 configure CORS with allow_origins set to wildcard and allow_credentials enabled to true. Attackers can create malicious websites that make authenticated cross-origin requests to the API on behalf of any user who visits them.",
+      "id": "CVE-2026-73351",
+      "description": "Unauthenticated Cross Site Scripting (XSS) in WordPress Social Login and Register <= 7.8.1 versions.",
+      "cvss": {
+        "score": 7.1,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:L",
+        "severity": "HIGH"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://patchstack.com/database/wordpress/plugin/miniorange-login-openid/vulnerability/wordpress-wordpress-social-login-and-register-plugin-7-8-1-cross-site-scripting-xss-vulnerability?_s_id=cve"
+      ],
+      "published": "2026-08-18T15:17:03.503"
+    },
+    {
+      "id": "CVE-2026-75857",
+      "description": "CodeWhale versions >= 0.8.41 and < 0.8.64 contain a vulnerability in the exec_shell_interact (alias exec_interact) tool, whose approval_requirement returns ApprovalRequirement::Auto. This overrides the default Required approval for code-executing tools, so LLM-controlled stdin is written into an already-approved long-running interactive shell (e.g., a python3 -i REPL, mysql, ssh, or sudo -i session) without any approval prompt. An attacker who can inject instructions via untrusted content the ag",
+      "cvss": {
+        "score": 7.0,
+        "vector": "CVSS:3.1/AV:L/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "MySQL"
+      ],
+      "references": [
+        "https://github.com/Hmbown/CodeWhale/commit/57f3c89471e27ac4032d9791f6885e5d4408c381",
+        "https://github.com/Hmbown/CodeWhale/security/advisories/GHSA-g29h-pfmp-qp9r",
+        "https://www.vulncheck.com/advisories/codewhale-before-privilege-escalation-via-exec-shell-interact"
+      ],
+      "published": "2026-08-18T16:18:21.520"
+    },
+    {
+      "id": "CVE-2026-71084",
+      "description": "Vulnerability in the MySQL Connectors product of Oracle MySQL (component: Connector/ODBC).   The supported version that is affected is 26.7.0. Easily exploitable vulnerability allows unauthenticated attacker with logon to the infrastructure where MySQL Connectors executes to compromise MySQL Connectors.  Successful attacks of this vulnerability can result in unauthorized ability to cause a hang or frequently repeatable crash (complete DOS) of MySQL Connectors and  unauthorized read access to a s",
+      "cvss": {
+        "score": 6.8,
+        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:H",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "MySQL"
+      ],
+      "references": [
+        "https://www.oracle.com/security-alerts/cspuaug2026.html"
+      ],
+      "published": "2026-08-18T21:18:08.637"
+    },
+    {
+      "id": "CVE-2026-60895",
+      "description": "Vulnerability in the Oracle Unified Directory product of Oracle Fusion Middleware (component: OUD Core).  Supported versions that are affected are 12.2.1.4.0 and  14.1.2.1.0. Difficult to exploit vulnerability allows low privileged attacker with network access via LDAP to compromise Oracle Unified Directory.  Successful attacks of this vulnerability can result in  unauthorized creation, deletion or modification access to critical data or all Oracle Unified Directory accessible data as well as  u",
+      "cvss": {
+        "score": 6.8,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "Ubiquiti/UniFi"
+      ],
+      "references": [
+        "https://www.oracle.com/security-alerts/cspuaug2026.html"
+      ],
+      "published": "2026-08-18T21:16:46.647"
+    },
+    {
+      "id": "CVE-2026-61308",
+      "description": "Vulnerability in the Oracle Java SE, Oracle GraalVM for JDK, Oracle GraalVM Enterprise Edition product of Oracle Java SE (component: Networking).  Supported versions that are affected are Oracle Java SE: 8u501, 11.0.32, 17.0.20, 21.0.12, 25.0.4, 26.0.2; Oracle GraalVM for JDK: 17.0.20 and  21.0.12; Oracle GraalVM Enterprise Edition: 21.3.19. Difficult to exploit vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle Java SE, Oracle GraalVM for JDK, Oracle",
+      "cvss": {
+        "score": 6.8,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:N/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "Oracle Java"
+      ],
+      "references": [
+        "https://www.oracle.com/security-alerts/cspuaug2026.html"
+      ],
+      "published": "2026-08-18T21:16:59.490"
+    },
+    {
+      "id": "CVE-2026-74951",
+      "description": "Clickjacking issue in Firefox for Android. This vulnerability was fixed in Firefox 154.",
       "cvss": {
         "score": 6.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:H/A:N",
         "severity": "MEDIUM"
       },
       "tier": 2,
       "matchedProducts": [
-        "OpenSSL"
+        "Mozilla Firefox"
       ],
       "references": [
-        "https://github.com/jahlives/openssl_encrypt/security/advisories/GHSA-c65f-x25w-62jv",
-        "https://www.vulncheck.com/advisories/openssl-encrypt-before-cors-misconfiguration-via-wildcard-origins"
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=1978587",
+        "https://www.mozilla.org/security/advisories/mfsa2026-74/"
       ],
-      "published": "2026-08-17T11:16:42.723"
+      "published": "2026-08-18T13:17:31.963"
     },
     {
-      "id": "CVE-2026-74871",
-      "description": "openssl_encrypt versions before 1.4.6 contain a key derivation flaw in sequential XOR composition mode where the last stage cancels out during key generation. When configured with a single KDF and no prior hashing stage, attackers can bypass memory-hard key derivation and perform offline password cracking at SHA-256 speed instead of the configured KDF cost.",
+      "id": "CVE-2026-71079",
+      "description": "Vulnerability in the MySQL Connectors product of Oracle MySQL (component: Connector/ODBC).   The supported version that is affected is 26.7.0. Easily exploitable vulnerability allows low privileged attacker with network access via multiple protocols to compromise MySQL Connectors.  Successful attacks of this vulnerability can result in unauthorized ability to cause a hang or frequently repeatable crash (complete DOS) of MySQL Connectors. CVSS 3.1 Base Score 6.5 (Availability impacts).  CVSS Vect",
       "cvss": {
-        "score": 6.2,
-        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+        "score": 6.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
         "severity": "MEDIUM"
       },
       "tier": 2,
       "matchedProducts": [
-        "OpenSSL"
+        "MySQL"
       ],
       "references": [
-        "https://github.com/jahlives/openssl_encrypt/security/advisories/GHSA-vxf9-vwp6-2w43",
-        "https://www.vulncheck.com/advisories/openssl-encrypt-before-kdf-bypass-via-sequential-xor"
+        "https://www.oracle.com/security-alerts/cspuaug2026.html"
       ],
-      "published": "2026-08-17T11:16:41.427"
+      "published": "2026-08-18T21:18:08.063"
     },
     {
-      "id": "CVE-2026-68765",
-      "description": "hashcat master branch builds after v7.1.2 contain a heap buffer overflow vulnerability in the KeePass AESKDF/KDBX v4 module (module 34301) that allows attackers to corrupt adjacent heap memory by supplying an oversized ninth hash field token. The module accepts up to 600 hex characters for the ninth token field but decodes it into a fixed 256-byte buffer with no length check, allowing a maximal input to write up to 44 bytes past the buffer boundary into adjacent esalt fields and heap chunk metad",
+      "id": "CVE-2026-15421",
+      "description": "The Speed Optimizer \u2013 The All-In-One Performance-Boosting Plugin plugin for WordPress is vulnerable to Stored Cross-Site Scripting via Image Tag Attributes in all versions up to, and including, 7.8.0 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. This is only exploitable when the site admini",
       "cvss": {
-        "score": 6.1,
-        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:H",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "KeePass/KeeWeb"
-      ],
-      "references": [
-        "https://github.com/hashcat/hashcat",
-        "https://github.com/hashcat/hashcat/commit/6f374c4ff7d5dc951530fbbbcf6b45e3c169b100",
-        "https://github.com/hashcat/hashcat/pull/4755",
-        "https://www.vulncheck.com/advisories/hashcat-keepass-kdbx-v4-module-heap-buffer-overflow-via-token-field"
-      ],
-      "published": "2026-08-17T21:16:48.113"
-    },
-    {
-      "id": "CVE-2026-13700",
-      "description": "The WooMS WordPress plugin through 9.14 does not validate a user-supplied URL before using it in a server-side request and attaches stored third-party integration credentials to every such request, allowing unauthenticated attackers to perform Server-Side Request Forgery and to disclose the configured integration credentials when the relevant data-sync feature is enabled.",
-      "cvss": {
-        "score": 5.9,
-        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N",
+        "score": 6.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
         "severity": "MEDIUM"
       },
       "tier": 2,
@@ -986,13 +1436,34 @@
         "WordPress"
       ],
       "references": [
-        "https://wpscan.com/vulnerability/dd9e51a2-43fb-46de-8e59-2d9611fcc4ff/"
+        "https://plugins.trac.wordpress.org/browser/sg-cachepress/tags/7.7.11/core/Lazy_Load/Abstract_Lazy_Load.php#L109",
+        "https://plugins.trac.wordpress.org/browser/sg-cachepress/tags/7.7.11/core/Lazy_Load/Lazy_Load.php#L39",
+        "https://plugins.trac.wordpress.org/browser/sg-cachepress/tags/7.7.11/core/Lazy_Load/Lazy_Load_Images.php#L31",
+        "https://plugins.trac.wordpress.org/browser/sg-cachepress/tags/7.8.0/core/Lazy_Load/Abstract_Lazy_Load.php#L109",
+        "https://plugins.trac.wordpress.org/browser/sg-cachepress/tags/7.8.0/core/Lazy_Load/Lazy_Load.php#L39"
       ],
-      "published": "2026-08-17T06:17:31.120"
+      "published": "2026-08-19T02:16:12.677"
     },
     {
-      "id": "CVE-2026-74873",
-      "description": "openssl_encrypt versions before 1.4.0 expose passwords passed via the --password CLI argument in process listings accessible to all system users. Attackers can read process arguments through ps aux or /proc/[pid]/cmdline to retrieve plaintext passwords and keystore passwords.",
+      "id": "CVE-2026-71073",
+      "description": "Vulnerability in the MySQL Connectors product of Oracle MySQL (component: Connector/ODBC).   The supported version that is affected is 26.7.0. Easily exploitable vulnerability allows unauthenticated attacker with logon to the infrastructure where MySQL Connectors executes to compromise MySQL Connectors.  Successful attacks require human interaction from a person other than the attacker. Successful attacks of this vulnerability can result in unauthorized ability to cause a hang or frequently repe",
+      "cvss": {
+        "score": 5.5,
+        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "MySQL"
+      ],
+      "references": [
+        "https://www.oracle.com/security-alerts/cspuaug2026.html"
+      ],
+      "published": "2026-08-18T21:18:07.387"
+    },
+    {
+      "id": "CVE-2026-73973",
+      "description": "Linuxfabrik Monitoring Plugins provides monitoring plugins for Icinga, Nagios, and related systems. Prior to version 7.0.0, check-plugins/logfile/logfile accepted a free-form --filename path and opened it as root when invoked through the shipped nagios or icinga sudoers allowlist, without confining the resolved path to /var/log. An attacker who controls the monitoring account can select a root-readable file such as /etc/shadow and use --warning-regex . while leaving SUPPRESS_OUTPUT false, causin",
       "cvss": {
         "score": 5.5,
         "vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
@@ -1000,125 +1471,278 @@
       },
       "tier": 2,
       "matchedProducts": [
-        "OpenSSL"
+        "MySQL"
       ],
       "references": [
-        "https://github.com/jahlives/openssl_encrypt/security/advisories/GHSA-h3m5-p59h-x88p",
-        "https://www.vulncheck.com/advisories/openssl-encrypt-before-password-exposure-via-cli-argument"
+        "https://github.com/Linuxfabrik/monitoring-plugins/blob/ae486fc629e1ca9373e1b6dd5e395603ee453bbc/CHANGELOG.md#v700---2026-08-14",
+        "https://github.com/Linuxfabrik/monitoring-plugins/commit/a0ca1268d84e0caf10442b9c7477d699b52d1c92",
+        "https://github.com/Linuxfabrik/monitoring-plugins/releases/tag/v7.0.0",
+        "https://github.com/Linuxfabrik/monitoring-plugins/security/advisories/GHSA-f54c-p5vg-mr5c"
       ],
-      "published": "2026-08-17T11:16:41.690"
+      "published": "2026-08-18T22:17:33.667"
     },
     {
-      "id": "CVE-2026-74890",
-      "description": "openssl_encrypt versions before 1.4.0 contain an authentication bypass vulnerability in CamelliaCipher that disables HMAC tag generation and verification when the PYTEST_CURRENT_TEST environment variable is set. Attackers with code execution can set this environment variable to produce unauthenticated ciphertext and bypass integrity protection on encrypted data.",
+      "id": "CVE-2026-74963",
+      "description": "Same-origin policy bypass in the Networking: Cookies component. This vulnerability was fixed in Firefox 154, Firefox ESR 140.14, Firefox ESR 153.1, Thunderbird 154, Thunderbird 140.14, and Thunderbird 153.1.",
       "cvss": {
-        "score": 5.5,
-        "vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N",
+        "score": 5.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:N",
         "severity": "MEDIUM"
       },
       "tier": 2,
       "matchedProducts": [
-        "OpenSSL"
+        "Mozilla Firefox"
       ],
       "references": [
-        "https://github.com/jahlives/openssl_encrypt/security/advisories/GHSA-rvc2-5jxq-gpcj",
-        "https://www.vulncheck.com/advisories/openssl-encrypt-before-hmac-authentication-bypass-via-environment-variable"
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2050482",
+        "https://www.mozilla.org/security/advisories/mfsa2026-74/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-76/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-77/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-78/"
       ],
-      "published": "2026-08-17T11:16:43.960"
+      "published": "2026-08-18T13:17:33.560"
     },
     {
-      "id": "CVE-2026-75059",
-      "description": "In JetBrains PyCharm before 2026.2.1 code execution via Quick Documentation was possible",
+      "id": "CVE-2026-74967",
+      "description": "Same-origin policy bypass in the Audio/Video: Playback component. This vulnerability was fixed in Firefox 154, Firefox ESR 140.14, Firefox ESR 153.1, Thunderbird 154, Thunderbird 140.14, and Thunderbird 153.1.",
       "cvss": {
-        "score": 4.4,
-        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:N",
+        "score": 5.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "Mozilla Firefox"
+      ],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2055697",
+        "https://www.mozilla.org/security/advisories/mfsa2026-74/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-76/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-77/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-78/"
+      ],
+      "published": "2026-08-18T13:17:34.070"
+    },
+    {
+      "id": "CVE-2026-74968",
+      "description": "Site isolation issue in the Graphics: WebRender component. This vulnerability was fixed in Firefox 154, Firefox ESR 153.1, Thunderbird 154, and Thunderbird 153.1.",
+      "cvss": {
+        "score": 5.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "Mozilla Firefox"
+      ],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2055738",
+        "https://www.mozilla.org/security/advisories/mfsa2026-74/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-77/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-78/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-80/"
+      ],
+      "published": "2026-08-18T13:17:34.190"
+    },
+    {
+      "id": "CVE-2026-74970",
+      "description": "Site isolation issue in the Graphics component. This vulnerability was fixed in Firefox 154, Firefox ESR 153.1, Thunderbird 154, and Thunderbird 153.1.",
+      "cvss": {
+        "score": 5.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "Mozilla Firefox"
+      ],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2056558",
+        "https://www.mozilla.org/security/advisories/mfsa2026-74/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-77/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-78/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-80/"
+      ],
+      "published": "2026-08-18T13:17:34.440"
+    },
+    {
+      "id": "CVE-2026-74974",
+      "description": "Same-origin policy bypass in the Graphics: ImageLib component. This vulnerability was fixed in Firefox 154, Firefox ESR 115.39, Firefox ESR 140.14, Firefox ESR 153.1, Thunderbird 154, Thunderbird 140.14, and Thunderbird 153.1.",
+      "cvss": {
+        "score": 5.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "Mozilla Firefox"
+      ],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2061794",
+        "https://www.mozilla.org/security/advisories/mfsa2026-74/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-75/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-76/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-77/"
+      ],
+      "published": "2026-08-18T13:17:35.160"
+    },
+    {
+      "id": "CVE-2026-74975",
+      "description": "Spoofing issue in the Downloads component in Firefox for Android. This vulnerability was fixed in Firefox 154.",
+      "cvss": {
+        "score": 5.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:L",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "Mozilla Firefox"
+      ],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=1842361",
+        "https://www.mozilla.org/security/advisories/mfsa2026-74/"
+      ],
+      "published": "2026-08-18T13:17:35.353"
+    },
+    {
+      "id": "CVE-2026-70907",
+      "description": "Vulnerability in the Oracle Java SE, Oracle GraalVM for JDK, Oracle GraalVM Enterprise Edition product of Oracle Java SE (component: JSSE).  Supported versions that are affected are Oracle Java SE: 8u501, 11.0.32, 17.0.20, 21.0.12, 25.0.4, 26.0.2; Oracle GraalVM for JDK: 17.0.20 and  21.0.12; Oracle GraalVM Enterprise Edition: 21.3.19. Easily exploitable vulnerability allows unauthenticated attacker with network access via TLS to compromise Oracle Java SE, Oracle GraalVM for JDK, Oracle GraalVM ",
+      "cvss": {
+        "score": 5.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "Oracle Java"
+      ],
+      "references": [
+        "https://www.oracle.com/security-alerts/cspuaug2026.html"
+      ],
+      "published": "2026-08-18T21:17:48.513"
+    },
+    {
+      "id": "CVE-2026-65959",
+      "description": "Vitess is a database clustering system for horizontal scaling of MySQL. In 24.0.2 and earlier, the /debug/vrlog endpoint registered by addHttpEndpoint() in go/vt/vttablet/tabletmanager/vreplication/vrlog.go invokes vrlogStatsHandler() without acl.CheckAccessHTTP(r, acl.DEBUGGING), unlike comparable debug endpoints. A remote caller who can reach the vttablet debug HTTP port can bypass the configured security policy and stream VrLogStats data produced from NewVrLogStats().Send(), including literal",
+      "cvss": {
+        "score": 5.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "MySQL"
+      ],
+      "references": [
+        "https://github.com/vitessio/vitess/commit/4c58cd70edc6b03d61cb65842c342ac08341e64f",
+        "https://github.com/vitessio/vitess/commit/657662e78bde1c82df680e9cc43a686d619f8094",
+        "https://github.com/vitessio/vitess/commit/d929225a450027406687d27af8dca45620945ceb",
+        "https://github.com/vitessio/vitess/security/advisories/GHSA-mhc4-g3wh-cw7m",
+        "https://github.com/vitessio/vitess/security/advisories/GHSA-mhc4-g3wh-cw7m"
+      ],
+      "published": "2026-08-18T19:17:00.223"
+    },
+    {
+      "id": "CVE-2026-74971",
+      "description": "Information disclosure in the DOM: UI Events & Focus Handling component. This vulnerability was fixed in Firefox 154, Firefox ESR 140.14, Firefox ESR 153.1, Thunderbird 154, Thunderbird 140.14, and Thunderbird 153.1.",
+      "cvss": {
+        "score": 4.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:N",
         "severity": "MEDIUM"
       },
       "tier": 3,
       "matchedProducts": [
-        "PyCharm"
+        "Mozilla Firefox"
       ],
       "references": [
-        "https://www.jetbrains.com/privacy-security/issues-fixed/"
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2057204",
+        "https://www.mozilla.org/security/advisories/mfsa2026-74/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-76/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-77/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-78/"
       ],
-      "published": "2026-08-17T16:17:53.110"
+      "published": "2026-08-18T13:17:34.563"
     },
     {
-      "id": "CVE-2026-74885",
-      "description": "openssl_encrypt versions before 1.4.0 contain a logging bug in restore_hidden_modules() that logs module counts after clearing, always showing zero restored modules and corrupting audit trails. Additionally, a race condition exists between module hiding and import hook installation where another thread could re-import blocked modules in multi-threaded environments.",
+      "id": "CVE-2026-74972",
+      "description": "Information disclosure in the DOM: Push Subscriptions component. This vulnerability was fixed in Firefox 154, Firefox ESR 140.14, Firefox ESR 153.1, Thunderbird 154, Thunderbird 140.14, and Thunderbird 153.1.",
       "cvss": {
-        "score": 3.6,
-        "vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:L/I:L/A:N",
+        "score": 4.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "Mozilla Firefox"
+      ],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2059053",
+        "https://www.mozilla.org/security/advisories/mfsa2026-74/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-76/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-77/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-78/"
+      ],
+      "published": "2026-08-18T13:17:34.727"
+    },
+    {
+      "id": "CVE-2025-11729",
+      "description": "The PPWP: Password Protect Pages, Posts & Full or Partial Content plugin for WordPress is vulnerable to unauthorized access of data due to a improper capability check on the can_access function in all versions up to, and including, 1.9.15. This makes it possible for authenticated attackers, with Contributor-level access and above, to retrieve a master-password and access any password-protected content.",
+      "cvss": {
+        "score": 4.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/changeset/3486400/",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/d1e041f0-3019-4d1f-b1a3-b40275c0966a?source=cve"
+      ],
+      "published": "2026-08-19T00:16:24.943"
+    },
+    {
+      "id": "CVE-2026-74973",
+      "description": "Race condition, use-after-free in the Graphics component. This vulnerability was fixed in Firefox 154, Firefox ESR 115.39, Firefox ESR 140.14, Firefox ESR 153.1, Thunderbird 154, Thunderbird 140.14, and Thunderbird 153.1.",
+      "cvss": {
+        "score": 4.2,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "Mozilla Firefox"
+      ],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2060357",
+        "https://www.mozilla.org/security/advisories/mfsa2026-74/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-75/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-76/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-77/"
+      ],
+      "published": "2026-08-18T13:17:34.927"
+    },
+    {
+      "id": "CVE-2026-60589",
+      "description": "Vulnerability in the Oracle Java SE, Oracle GraalVM for JDK, Oracle GraalVM Enterprise Edition product of Oracle Java SE (component: Security).  Supported versions that are affected are Oracle Java SE: 8u501, 11.0.32, 17.0.20, 21.0.12, 25.0.4, 26.0.2; Oracle GraalVM for JDK: 17.0.20 and  21.0.12; Oracle GraalVM Enterprise Edition: 21.3.19. Difficult to exploit vulnerability allows unauthenticated attacker with network access via multiple protocols to compromise Oracle Java SE, Oracle GraalVM for",
+      "cvss": {
+        "score": 3.7,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:N",
         "severity": "LOW"
       },
       "tier": 3,
       "matchedProducts": [
-        "OpenSSL"
+        "Oracle Java"
       ],
       "references": [
-        "https://github.com/jahlives/openssl_encrypt/security/advisories/GHSA-43r4-3hf9-m84q",
-        "https://www.vulncheck.com/advisories/openssl-encrypt-before-logging-bug-and-race-condition"
+        "https://www.oracle.com/security-alerts/cspuaug2026.html"
       ],
-      "published": "2026-08-17T11:16:43.260"
+      "published": "2026-08-18T21:16:38.247"
     },
     {
-      "id": "CVE-2026-74870",
-      "description": "openssl_encrypt (pip) versions <= 1.4.7 contain an information exposure vulnerability where the 'hsm fido2-test' and 'hsm onlykey-test' diagnostic commands unconditionally print the full derived hardware pepper as hex to stdout/stderr (crypt_cli.py, handle_hsm_command). The printed value can persist in terminal scrollback, session recordings, or CI logs. Impact is limited because the pepper is derived from a random per-invocation test salt and is salt-bound, so the leaked value cannot be used to",
-      "cvss": {
-        "score": 3.3,
-        "vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N",
-        "severity": "LOW"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "OpenSSL"
-      ],
-      "references": [
-        "https://github.com/jahlives/openssl_encrypt/security/advisories/GHSA-p9g8-wvh4-2jmx",
-        "https://www.vulncheck.com/advisories/openssl-encrypt-before-hardware-pepper-information-disclosure"
-      ],
-      "published": "2026-08-17T11:16:41.293"
-    },
-    {
-      "id": "CVE-2026-74887",
-      "description": "openssl_encrypt before 1.4.0 imports Python's non-cryptographic 'random' module (Mersenne Twister PRNG) at line 15 of openssl_encrypt/modules/pqc.py. No direct calls to random.* were present in the code, so no cryptographic operation is currently affected; however, the import creates a hazard that future code could inadvertently use random.randint() instead of a cryptographically secure alternative (secrets/os.urandom), producing predictable values since the Mersenne Twister state can be recover",
-      "cvss": {
-        "score": 0.0,
-        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:N",
-        "severity": "NONE"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "OpenSSL"
-      ],
-      "references": [
-        "https://github.com/jahlives/openssl_encrypt/security/advisories/GHSA-cx72-m6xj-3vf6",
-        "https://www.vulncheck.com/advisories/openssl-encrypt-before-insecure-random-import-in-pqc-module"
-      ],
-      "published": "2026-08-17T11:16:43.523"
-    },
-    {
-      "id": "CVE-2026-64865",
-      "description": "New API is a large language mode (LLM) gateway and artificial intelligence (AI) asset management system. Prior to 1.0.0-rc.16, repeated PUT /api/user/self requests that update language or sidebar_modules can race relay billing because controller/user.go calls User.Update and updateUserCache performs a full RedisHSetObj write to user:.Quota, overwriting concurrent HINCRBY deductions and allowing an authenticated user to keep cached quota artificially high. This issue is fixed in version 1.0.0-rc.",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "Redis"
-      ],
-      "references": [
-        "https://github.com/QuantumNous/new-api/commit/dfc0d6324b40c1d6c2972e524409f933541bfb0f",
-        "https://github.com/QuantumNous/new-api/releases/tag/v1.0.0-rc.16",
-        "https://github.com/QuantumNous/new-api/security/advisories/GHSA-j6gc-4893-qwmp"
-      ],
-      "published": "2026-08-17T16:17:22.427"
-    },
-    {
-      "id": "CVE-2026-64866",
-      "description": "New API is a large language mode (LLM) gateway and artificial intelligence (AI) asset management system. From 0.9.1.3 until 1.0.0-rc.7, AdminResetPasskey in controller/passkey.go lacks the canManageTargetRole authorization check for DELETE /api/user/:id/reset_passkey, allowing a lower-privileged administrator to remove a passkey from a same-level or higher-privileged account, including a root account. This issue is fixed in version 1.0.0-rc.7.",
+      "id": "CVE-2026-23922",
+      "description": "The email media OAuth field 'Client secret' cannot be read after saving, but a Super Admin can leak it by setting a malicious 'Token endpoint'. Changes were made to reset the client secret upon changing the token endpoint.",
       "cvss": {
         "score": null,
         "vector": null,
@@ -1129,12 +1753,784 @@
         "ESET"
       ],
       "references": [
-        "https://github.com/QuantumNous/new-api/commit/0936e2504655a5cbf7bc3c388f6d3e2bb24916d3",
-        "https://github.com/QuantumNous/new-api/pull/4929",
-        "https://github.com/QuantumNous/new-api/releases/tag/v1.0.0-rc.7",
-        "https://github.com/QuantumNous/new-api/security/advisories/GHSA-p845-629j-rcj6"
+        "https://support.zabbix.com/browse/ZBX-28067"
       ],
-      "published": "2026-08-17T16:17:22.570"
+      "published": "2026-08-18T13:17:21.040"
+    },
+    {
+      "id": "CVE-2026-74934",
+      "description": "Site isolation issue in the Graphics: CanvasWebGL component. This vulnerability was fixed in Firefox 154, Firefox ESR 115.39, Firefox ESR 140.14, Firefox ESR 153.1, Thunderbird 154, Thunderbird 140.14, and Thunderbird 153.1.",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "Mozilla Firefox"
+      ],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2050584",
+        "https://www.mozilla.org/security/advisories/mfsa2026-74/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-75/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-76/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-77/"
+      ],
+      "published": "2026-08-18T13:17:29.620"
+    },
+    {
+      "id": "CVE-2026-74936",
+      "description": "Use-after-free in the JavaScript: WebAssembly component. This vulnerability was fixed in Firefox 154, Firefox ESR 140.14, Firefox ESR 153.1, Thunderbird 154, Thunderbird 140.14, and Thunderbird 153.1.",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "Mozilla Firefox"
+      ],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2052688",
+        "https://www.mozilla.org/security/advisories/mfsa2026-74/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-76/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-77/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-78/"
+      ],
+      "published": "2026-08-18T13:17:29.850"
+    },
+    {
+      "id": "CVE-2026-74940",
+      "description": "Use-after-free in the Graphics: Text component. This vulnerability was fixed in Firefox 154, Firefox ESR 115.39, Firefox ESR 140.14, Firefox ESR 153.1, Thunderbird 154, Thunderbird 140.14, and Thunderbird 153.1.",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "Mozilla Firefox"
+      ],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2054842",
+        "https://www.mozilla.org/security/advisories/mfsa2026-74/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-75/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-76/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-77/"
+      ],
+      "published": "2026-08-18T13:17:30.370"
+    },
+    {
+      "id": "CVE-2026-74943",
+      "description": "Use-after-free in the Graphics: ImageLib component. This vulnerability was fixed in Firefox 154, Firefox ESR 115.39, Firefox ESR 140.14, Firefox ESR 153.1, Thunderbird 154, Thunderbird 140.14, and Thunderbird 153.1.",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "Mozilla Firefox"
+      ],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2057308",
+        "https://www.mozilla.org/security/advisories/mfsa2026-74/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-75/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-76/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-77/"
+      ],
+      "published": "2026-08-18T13:17:30.817"
+    },
+    {
+      "id": "CVE-2026-74944",
+      "description": "Use-after-free in the DOM: Core & HTML component. This vulnerability was fixed in Firefox 154, Firefox ESR 140.14, Firefox ESR 153.1, Thunderbird 154, Thunderbird 140.14, and Thunderbird 153.1.",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "Mozilla Firefox"
+      ],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2057778",
+        "https://www.mozilla.org/security/advisories/mfsa2026-74/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-76/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-77/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-78/"
+      ],
+      "published": "2026-08-18T13:17:30.983"
+    },
+    {
+      "id": "CVE-2026-74945",
+      "description": "Information disclosure in the Graphics: Text component. This vulnerability was fixed in Firefox 154, Firefox ESR 115.39, Firefox ESR 140.14, Firefox ESR 153.1, Thunderbird 154, Thunderbird 140.14, and Thunderbird 153.1.",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "Mozilla Firefox"
+      ],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2057808",
+        "https://www.mozilla.org/security/advisories/mfsa2026-74/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-75/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-76/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-77/"
+      ],
+      "published": "2026-08-18T13:17:31.133"
+    },
+    {
+      "id": "CVE-2026-74948",
+      "description": "Information disclosure in the Graphics component. This vulnerability was fixed in Firefox 154, Firefox ESR 115.39, Firefox ESR 140.14, Firefox ESR 153.1, Thunderbird 154, Thunderbird 140.14, and Thunderbird 153.1.",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "Mozilla Firefox"
+      ],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2060106",
+        "https://www.mozilla.org/security/advisories/mfsa2026-74/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-75/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-76/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-77/"
+      ],
+      "published": "2026-08-18T13:17:31.547"
+    },
+    {
+      "id": "CVE-2026-74957",
+      "description": "Mitigation bypass in the Safe Browsing component. This vulnerability was fixed in Firefox 154, Firefox ESR 140.14, Firefox ESR 153.1, Thunderbird 154, Thunderbird 140.14, and Thunderbird 153.1.",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "Mozilla Firefox"
+      ],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2041906",
+        "https://www.mozilla.org/security/advisories/mfsa2026-74/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-76/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-77/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-78/"
+      ],
+      "published": "2026-08-18T13:17:32.760"
+    },
+    {
+      "id": "CVE-2026-74959",
+      "description": "Mitigation bypass in the Storage: Cache API component. This vulnerability was fixed in Firefox 154, Firefox ESR 140.14, Firefox ESR 153.1, Thunderbird 154, Thunderbird 140.14, and Thunderbird 153.1.",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "Mozilla Firefox"
+      ],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2047853",
+        "https://www.mozilla.org/security/advisories/mfsa2026-74/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-76/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-77/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-78/"
+      ],
+      "published": "2026-08-18T13:17:33.037"
+    },
+    {
+      "id": "CVE-2026-74960",
+      "description": "Site isolation issue in the WebExtensions component. This vulnerability was fixed in Firefox 154, Firefox ESR 140.14, Firefox ESR 153.1, Thunderbird 154, Thunderbird 140.14, and Thunderbird 153.1.",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "Mozilla Firefox"
+      ],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2049148",
+        "https://www.mozilla.org/security/advisories/mfsa2026-74/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-76/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-77/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-78/"
+      ],
+      "published": "2026-08-18T13:17:33.170"
+    },
+    {
+      "id": "CVE-2026-74961",
+      "description": "Side-channel in the Web Audio component. This vulnerability was fixed in Firefox 154, Firefox ESR 153.1, Thunderbird 154, and Thunderbird 153.1.",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "Mozilla Firefox"
+      ],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2050380",
+        "https://www.mozilla.org/security/advisories/mfsa2026-74/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-77/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-78/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-80/"
+      ],
+      "published": "2026-08-18T13:17:33.300"
+    },
+    {
+      "id": "CVE-2026-74962",
+      "description": "Site isolation issue in the Networking: Cookies component. This vulnerability was fixed in Firefox 154, Firefox ESR 140.14, Firefox ESR 153.1, Thunderbird 154, Thunderbird 140.14, and Thunderbird 153.1.",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "Mozilla Firefox"
+      ],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2050425",
+        "https://www.mozilla.org/security/advisories/mfsa2026-74/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-76/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-77/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-78/"
+      ],
+      "published": "2026-08-18T13:17:33.430"
+    },
+    {
+      "id": "CVE-2026-74964",
+      "description": "Integer overflow in the Graphics component. This vulnerability was fixed in Firefox 154, Firefox ESR 140.14, Firefox ESR 153.1, Thunderbird 154, Thunderbird 140.14, and Thunderbird 153.1.",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "Mozilla Firefox"
+      ],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2053327",
+        "https://www.mozilla.org/security/advisories/mfsa2026-74/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-76/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-77/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-78/"
+      ],
+      "published": "2026-08-18T13:17:33.683"
+    },
+    {
+      "id": "CVE-2026-74966",
+      "description": "Information disclosure in the Form Autofill component. This vulnerability was fixed in Firefox 154, Firefox ESR 153.1, Thunderbird 154, and Thunderbird 153.1.",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "Mozilla Firefox"
+      ],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2054776",
+        "https://www.mozilla.org/security/advisories/mfsa2026-74/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-77/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-78/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-80/"
+      ],
+      "published": "2026-08-18T13:17:33.943"
+    },
+    {
+      "id": "CVE-2026-74969",
+      "description": "Use-after-free in the Layout: Text and Fonts component. This vulnerability was fixed in Firefox 154, Firefox ESR 115.39, Firefox ESR 140.14, Firefox ESR 153.1, Thunderbird 154, Thunderbird 140.14, and Thunderbird 153.1.",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "Mozilla Firefox"
+      ],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2056065",
+        "https://www.mozilla.org/security/advisories/mfsa2026-74/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-75/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-76/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-77/"
+      ],
+      "published": "2026-08-18T13:17:34.317"
+    },
+    {
+      "id": "CVE-2026-74976",
+      "description": "JIT miscompilation in the JavaScript Engine: JIT component. This vulnerability was fixed in Firefox 154, Firefox ESR 140.14, Firefox ESR 153.1, Thunderbird 154, Thunderbird 140.14, and Thunderbird 153.1.",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "Mozilla Firefox"
+      ],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=1952164",
+        "https://www.mozilla.org/security/advisories/mfsa2026-74/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-76/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-77/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-78/"
+      ],
+      "published": "2026-08-18T13:17:35.580"
+    },
+    {
+      "id": "CVE-2026-74980",
+      "description": "Clickjacking issue in the Downloads component in Firefox for Android. This vulnerability was fixed in Firefox 154.",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "Mozilla Firefox"
+      ],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2049034",
+        "https://www.mozilla.org/security/advisories/mfsa2026-74/"
+      ],
+      "published": "2026-08-18T13:17:36.873"
+    },
+    {
+      "id": "CVE-2026-74981",
+      "description": "Site isolation issue in the Audio/Video: Web Codecs component. This vulnerability was fixed in Firefox 154, Firefox ESR 153.1, Thunderbird 154, and Thunderbird 153.1.",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "Mozilla Firefox"
+      ],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2050480",
+        "https://www.mozilla.org/security/advisories/mfsa2026-74/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-77/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-78/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-80/"
+      ],
+      "published": "2026-08-18T13:17:37.040"
+    },
+    {
+      "id": "CVE-2026-74982",
+      "description": "Denial-of-service in the Widget component. This vulnerability was fixed in Firefox 154, Firefox ESR 153.1, Thunderbird 154, and Thunderbird 153.1.",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "Mozilla Firefox"
+      ],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2051788",
+        "https://www.mozilla.org/security/advisories/mfsa2026-74/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-77/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-78/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-80/"
+      ],
+      "published": "2026-08-18T13:17:37.253"
+    },
+    {
+      "id": "CVE-2026-74983",
+      "description": "Mitigation bypass in the Data Loss Prevention component. This vulnerability was fixed in Firefox 154, Firefox ESR 140.14, Firefox ESR 153.1, Thunderbird 154, Thunderbird 140.14, and Thunderbird 153.1.",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "Mozilla Firefox"
+      ],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2051897",
+        "https://www.mozilla.org/security/advisories/mfsa2026-74/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-76/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-77/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-78/"
+      ],
+      "published": "2026-08-18T13:17:39.077"
+    },
+    {
+      "id": "CVE-2026-74984",
+      "description": "Race condition in the JavaScript Engine component. This vulnerability was fixed in Firefox 154, Firefox ESR 153.1, Thunderbird 154, and Thunderbird 153.1.",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "Mozilla Firefox"
+      ],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2053670",
+        "https://www.mozilla.org/security/advisories/mfsa2026-74/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-77/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-78/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-80/"
+      ],
+      "published": "2026-08-18T13:17:39.263"
+    },
+    {
+      "id": "CVE-2026-74985",
+      "description": "Privilege escalation in the Enterprise Policies component. This vulnerability was fixed in Firefox 154, Firefox ESR 153.1, Thunderbird 154, and Thunderbird 153.1.",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "Mozilla Firefox"
+      ],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2059825",
+        "https://www.mozilla.org/security/advisories/mfsa2026-74/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-77/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-78/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-80/"
+      ],
+      "published": "2026-08-18T13:17:40.317"
+    },
+    {
+      "id": "CVE-2026-74986",
+      "description": "Site isolation issue in the CSS Parsing and Computation component. This vulnerability was fixed in Firefox 154, Firefox ESR 153.1, Thunderbird 154, and Thunderbird 153.1.",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "Mozilla Firefox"
+      ],
+      "references": [
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2060048",
+        "https://www.mozilla.org/security/advisories/mfsa2026-74/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-77/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-78/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-80/"
+      ],
+      "published": "2026-08-18T13:17:40.433"
+    },
+    {
+      "id": "CVE-2026-74987",
+      "description": "Internally found bugs present in Thunderbird ESR 140.13, Thunderbird ESR 153.0 and Thunderbird 153. Some of these bugs showed evidence of memory corruption or another security-relevant defect and we presume that with enough effort some of these could have been exploited. This vulnerability was fixed in Firefox 154, Firefox ESR 140.14, Firefox ESR 153.1, Thunderbird 154, Thunderbird 140.14, and Thunderbird 153.1.",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "Mozilla Firefox"
+      ],
+      "references": [
+        "https://bugzilla.mozilla.org/buglist.cgi?bug_id=1500946%2C1788109%2C2045379%2C2045380%2C2049339%2C2049393%2C2053580%2C2054662%2C2054665%2C2054673%2C2054785%2C2058645",
+        "https://bugzilla.mozilla.org/buglist.cgi?bug_id=2048797%2C2050536%2C2053272%2C2053579%2C2057115%2C2057116%2C2057130%2C2057991%2C2057995%2C2058002%2C2058008%2C2058032%2C2058102%2C2058667",
+        "https://bugzilla.mozilla.org/show_bug.cgi?id=2059424",
+        "https://www.mozilla.org/security/advisories/mfsa2026-74/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-76/"
+      ],
+      "published": "2026-08-18T13:17:40.560"
+    },
+    {
+      "id": "CVE-2026-74988",
+      "description": "Internally found bugs present in Thunderbird ESR 153.0 and Thunderbird 153. Some of these bugs showed evidence of memory corruption or another security-relevant defect and we presume that with enough effort some of these could have been exploited. This vulnerability was fixed in Firefox 154, Firefox ESR 153.1, Thunderbird 154, and Thunderbird 153.1.",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "Mozilla Firefox"
+      ],
+      "references": [
+        "https://bugzilla.mozilla.org/buglist.cgi?bug_id=2018164%2C2045404%2C2045507%2C2045711%2C2052403%2C2053174%2C2054643%2C2054667%2C2054671%2C2054674%2C2054687%2C2054717%2C2054761%2C2054787%2C2055676%2C2056779%2C2056781%2C2058629%2C2059019%2C2059138",
+        "https://bugzilla.mozilla.org/buglist.cgi?bug_id=2045796%2C2046734%2C2051424%2C2054721%2C2057994%2C2058094%2C2058611%2C2058615%2C2058616%2C2061315",
+        "https://bugzilla.mozilla.org/buglist.cgi?bug_id=2053153%2C2053262%2C2054763%2C2059198%2C2059224",
+        "https://www.mozilla.org/security/advisories/mfsa2026-74/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-77/"
+      ],
+      "published": "2026-08-18T13:17:40.687"
+    },
+    {
+      "id": "CVE-2026-74989",
+      "description": "Internally found bugs present in Thunderbird 153. Some of these bugs showed evidence of memory corruption or another security-relevant defect and we presume that with enough effort some of these could have been exploited. This vulnerability was fixed in Firefox 154 and Thunderbird 154.",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "Mozilla Firefox"
+      ],
+      "references": [
+        "https://bugzilla.mozilla.org/buglist.cgi?bug_id=2022257%2C2027351%2C2027380%2C2029289",
+        "https://bugzilla.mozilla.org/buglist.cgi?bug_id=2027388%2C2029750%2C2029794%2C2043298%2C2045126%2C2049810%2C2051741",
+        "https://www.mozilla.org/security/advisories/mfsa2026-74/",
+        "https://www.mozilla.org/security/advisories/mfsa2026-78/"
+      ],
+      "published": "2026-08-18T13:17:40.810"
+    },
+    {
+      "id": "CVE-2026-76033",
+      "description": "Inappropriate implementation in CORS in Google Chrome prior to 151.0.7922.169 allowed a remote attacker who had compromised the renderer process to bypass site isolation via a crafted HTML page. (Chromium security severity: High)",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/08/stable-channel-update-for-desktop_0826575033.html",
+        "https://issues.chromium.org/issues/516715010"
+      ],
+      "published": "2026-08-18T21:18:27.263"
+    },
+    {
+      "id": "CVE-2026-76039",
+      "description": "Incorrect reference resolution in Core in Google Chrome on on Android prior to 151.0.7922.169 allowed a remote attacker leveraging social engineering to obtain sensitive information via a crafted HTML page. (Chromium security severity: High)",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/08/stable-channel-update-for-desktop_0826575033.html",
+        "https://issues.chromium.org/issues/525167753"
+      ],
+      "published": "2026-08-18T21:18:27.947"
+    },
+    {
+      "id": "CVE-2026-76041",
+      "description": "Information leak in Skia in Google Chrome prior to 151.0.7922.169 allowed a remote attacker to potentially bypass web origin policy via a crafted HTML page. (Chromium security severity: High)",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "Google Chrome"
+      ],
+      "references": [
+        "https://chromereleases.googleblog.com/2026/08/stable-channel-update-for-desktop_0826575033.html",
+        "https://issues.chromium.org/issues/540027341"
+      ],
+      "published": "2026-08-18T21:18:28.173"
+    },
+    {
+      "id": "CVE-2026-61634",
+      "description": "The RabbitMQ Java client library allows Java and JVM-based applications to connect to and interact with RabbitMQ nodes. Prior to 5.33.0, the AMQP connection tuning path records the negotiated AMQP frame_max value, but src/main/java/com/rabbitmq/client/impl/SocketFrameHandler.java and NettyFrameHandlerFactory continue to validate broker-controlled frame payload lengths against maxInboundMessageBodySize because the negotiated limit is not applied consistently through setMaxInboundFramePayloadSize.",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "RabbitMQ"
+      ],
+      "references": [
+        "https://github.com/rabbitmq/rabbitmq-java-client/commit/08790f09686173eb17b48d08a25edcb32e71a591",
+        "https://github.com/rabbitmq/rabbitmq-java-client/commit/b491075f42e89967610c40beded68d3680cfd472",
+        "https://github.com/rabbitmq/rabbitmq-java-client/pull/1994",
+        "https://github.com/rabbitmq/rabbitmq-java-client/pull/1995",
+        "https://github.com/rabbitmq/rabbitmq-java-client/releases/tag/v5.33.0"
+      ],
+      "published": "2026-08-18T17:16:59.960"
+    },
+    {
+      "id": "CVE-2026-63335",
+      "description": "The RabbitMQ Java client library allows Java and JVM-based applications to connect to and interact with RabbitMQ nodes. Prior to 5.31.0, inbound AMQP command assembly in src/main/java/com/rabbitmq/client/impl/CommandAssembler.java processes a content-bearing method and header whose remainingBodyBytes value is smaller than a following AMQP.FRAME_BODY payload. CommandAssembler.consumeBodyFrame subtracts the peer-controlled payload length before validating that it fits, drives remainingBodyBytes ne",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "RabbitMQ"
+      ],
+      "references": [
+        "https://github.com/rabbitmq/rabbitmq-java-client/commit/31735344d9f9dfc53740b67f06e560e8846b9322",
+        "https://github.com/rabbitmq/rabbitmq-java-client/commit/abd6d60d4e2bfc1a327dc90ab246b2e8aca1f33b",
+        "https://github.com/rabbitmq/rabbitmq-java-client/pull/1959",
+        "https://github.com/rabbitmq/rabbitmq-java-client/pull/1960",
+        "https://github.com/rabbitmq/rabbitmq-java-client/releases/tag/v5.31.0"
+      ],
+      "published": "2026-08-18T17:17:00.130"
+    },
+    {
+      "id": "CVE-2026-69219",
+      "description": "The RabbitMQ Java client library allows Java and JVM-based applications to connect to and interact with RabbitMQ nodes. Prior to 5.33.1, src/main/java/com/rabbitmq/client/impl/ValueReader.java uses ValueReader.readBytes to accept a wire-declared contentLength below Integer.MAX_VALUE and allocate a byte array before checking the bytes available in the frame. A malicious AMQP peer can send a LongString or byte-array field with type tag S and a declared length such as 0x7FFFFFFE during the pre-auth",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "RabbitMQ"
+      ],
+      "references": [
+        "https://github.com/rabbitmq/rabbitmq-java-client/commit/388209356c6478088efce4d8a07b68e73837a7a0",
+        "https://github.com/rabbitmq/rabbitmq-java-client/commit/6a87a8dcdc8b4cc4b961a7cdd388276446e5dfb2",
+        "https://github.com/rabbitmq/rabbitmq-java-client/pull/2007",
+        "https://github.com/rabbitmq/rabbitmq-java-client/pull/2008",
+        "https://github.com/rabbitmq/rabbitmq-java-client/releases/tag/v5.33.1"
+      ],
+      "published": "2026-08-18T17:17:01.353"
+    },
+    {
+      "id": "CVE-2026-69220",
+      "description": "The RabbitMQ Java client library allows Java and JVM-based applications to connect to and interact with RabbitMQ nodes. Prior to 5.33.1, src/main/java/com/rabbitmq/client/impl/ValueReader.java permits ValueReader.readTable and ValueReader.readArray to call ValueReader.readFieldValue recursively for AMQP table type F and AMQP array type A values without a nesting-depth limit. A malicious AMQP server or network intermediary can send approximately 580 nested table levels in the pre-authentication c",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "RabbitMQ"
+      ],
+      "references": [
+        "https://github.com/rabbitmq/rabbitmq-java-client/commit/09af76fce136f3136931654a0a1d43095c80e2f0",
+        "https://github.com/rabbitmq/rabbitmq-java-client/commit/db89e34809fbc6ba4e946615f297f3684ccd0acc",
+        "https://github.com/rabbitmq/rabbitmq-java-client/pull/2007",
+        "https://github.com/rabbitmq/rabbitmq-java-client/pull/2008",
+        "https://github.com/rabbitmq/rabbitmq-java-client/releases/tag/v5.33.1"
+      ],
+      "published": "2026-08-18T17:17:01.497"
+    },
+    {
+      "id": "CVE-2026-53454",
+      "description": "Blueprint Studio is a VS Code-like file editor for Home Assistant configuration files. Prior to 2.5.2, Blueprint Studio configured Git's credential.helper store when saving Git credentials, causing Git credential-store to persist usernames and access tokens in plaintext in the .git-credentials file for the user running Home Assistant. Tokens could remain outside Blueprint Studio's intended Home Assistant storage and be read by other users or processes with access to the same filesystem context. ",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "Visual Studio Code"
+      ],
+      "references": [
+        "https://github.com/ha-china/blueprint-studio/commit/943aed0be67f3a910b0f70a3864288d5e17e55ce",
+        "https://github.com/ha-china/blueprint-studio/releases/tag/v2.5.2",
+        "https://github.com/ha-china/blueprint-studio/security/advisories/GHSA-pgxq-h2pc-gqq8"
+      ],
+      "published": "2026-08-18T21:16:35.133"
+    },
+    {
+      "id": "CVE-2026-53455",
+      "description": "Blueprint Studio is a VS Code-like file editor for Home Assistant configuration files. Prior to 2.5.2, Blueprint Studio generated a shell-based Git credential helper in custom_components/blueprint_studio/backend/git_manager.py by interpolating the configured Git username and token directly into executable helper script content without validating credential values. An attacker able to set Git credentials could include newline characters or shell syntax in a username or token. When Git executed th",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "Visual Studio Code"
+      ],
+      "references": [
+        "https://github.com/ha-china/blueprint-studio/commit/943aed0be67f3a910b0f70a3864288d5e17e55ce",
+        "https://github.com/ha-china/blueprint-studio/releases/tag/v2.5.2",
+        "https://github.com/ha-china/blueprint-studio/security/advisories/GHSA-wjpc-mc3f-w5rg"
+      ],
+      "published": "2026-08-18T21:16:35.280"
+    },
+    {
+      "id": "CVE-2026-53456",
+      "description": "Blueprint Studio is a VS Code-like file editor for Home Assistant configuration files. Prior to 2.5.2, Blueprint Studio terminal SSH key authentication in custom_components/blueprint_studio/backend/terminal_manager.py wrote SSH private-key material to a file under the Home Assistant configuration directory before applying restrictive permissions and relied on best-effort cleanup. The key could temporarily remain on disk and could persist if cleanup failed or Home Assistant crashed. A user or pro",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "Visual Studio Code"
+      ],
+      "references": [
+        "https://github.com/ha-china/blueprint-studio/commit/943aed0be67f3a910b0f70a3864288d5e17e55ce",
+        "https://github.com/ha-china/blueprint-studio/releases/tag/v2.5.2",
+        "https://github.com/ha-china/blueprint-studio/security/advisories/GHSA-3vg8-xf27-7q45"
+      ],
+      "published": "2026-08-18T21:16:35.423"
+    },
+    {
+      "id": "CVE-2026-53457",
+      "description": "Blueprint Studio is a VS Code-like file editor for Home Assistant configuration files. Prior to 2.5.2, the legacy stateless terminal command execution path in custom_components/blueprint_studio/backend/terminal_manager.py accepted a cwd working-directory parameter and checked only whether the directory existed, without requiring it to remain inside the Home Assistant configuration directory. An administrator using the restricted terminal helper could select an existing directory outside the inte",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "Visual Studio Code"
+      ],
+      "references": [
+        "https://github.com/ha-china/blueprint-studio/commit/943aed0be67f3a910b0f70a3864288d5e17e55ce",
+        "https://github.com/ha-china/blueprint-studio/releases/tag/v2.5.2",
+        "https://github.com/ha-china/blueprint-studio/security/advisories/GHSA-5cc6-r4rr-fpfh"
+      ],
+      "published": "2026-08-18T21:16:35.570"
+    },
+    {
+      "id": "CVE-2026-53458",
+      "description": "Blueprint Studio is a VS Code-like file editor for Home Assistant configuration files. Prior to 2.5.2, Blueprint Studio backend API handlers in custom_components/blueprint_studio/backend/api.py returned raw exception strings to authenticated Home Assistant users. Some exception messages could contain internal filesystem paths or implementation details. The disclosed information could help an authenticated user fingerprint a Home Assistant installation and refine follow-up attacks. This issue is ",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "Visual Studio Code"
+      ],
+      "references": [
+        "https://github.com/ha-china/blueprint-studio/commit/943aed0be67f3a910b0f70a3864288d5e17e55ce",
+        "https://github.com/ha-china/blueprint-studio/releases/tag/v2.5.2",
+        "https://github.com/ha-china/blueprint-studio/security/advisories/GHSA-6vc4-5wqj-fm6p"
+      ],
+      "published": "2026-08-18T21:16:35.713"
     }
   ]
 }
