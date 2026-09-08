@@ -1,233 +1,112 @@
 {
-  "scanTime": "2026-09-07 08:31:33 UTC",
-  "totalMatched": 17,
+  "scanTime": "2026-09-08 08:14:14 UTC",
+  "totalMatched": 14,
   "productsMonitored": 147,
   "tierCounts": {
     "0": 2,
-    "1": 8,
-    "2": 4,
-    "3": 3
+    "1": 1,
+    "2": 11,
+    "3": 0
   },
   "vulnerabilities": [
     {
-      "id": "CVE-2026-86253",
-      "description": "h3 (npm package) versions <= 2.0.1-rc.14 contain a path traversal vulnerability in serveStatic(). On Node.js deployments, event.url.pathname is not normalized, so percent-encoded dot segments (%2e%2e) are passed to decodeURI() and decoded to ../ sequences without sanitization. An unauthenticated remote attacker can send crafted requests to endpoints served by serveStatic() to read arbitrary files outside the intended static directory. Fixed in 1.15.6 and 2.0.1-rc.15.",
+      "id": "CVE-2026-86426",
+      "description": "LibreNMS before 26.8.0 contains an authentication bypass vulnerability in the REST API that allows unauthenticated attackers to access protected endpoints by sending numeric values instead of string tokens. Attackers can exploit MySQL type coercion by sending small integers like 0 through 9 to match token hashes, gaining access to API functionality including device credentials and administrative features that enable remote code execution through alert templates.",
       "cvss": {
-        "score": 5.9,
-        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N",
-        "severity": "MEDIUM"
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
       },
       "tier": 0,
       "matchedProducts": [
-        "Node.js"
+        "MySQL"
       ],
       "references": [
-        "https://github.com/h3js/h3/security/advisories/GHSA-wr4h-v87w-p3r7",
-        "https://www.vulncheck.com/advisories/h3-before-1.15.6-path-traversal-via-percent-encoded-dot-segments"
+        "https://github.com/librenms/librenms/security/advisories/GHSA-cvq8-gqfq-3mvg",
+        "https://www.vulncheck.com/advisories/librenms-before-26.8.0-authentication-bypass-via-api-token-type-confusion"
       ],
-      "published": "2026-09-06T12:17:16.163"
+      "published": "2026-09-07T13:20:41.690"
     },
     {
-      "id": "CVE-2026-19862",
-      "description": "The JetFormBuilder WordPress plugin before 3.6.5.2 does not validate or strip line breaks from address values it sources from submitted form fields before adding them to the headers of the e-mails it sends, allowing unauthenticated users to inject arbitrary e-mail headers, add hidden recipients and spoof the sender. Exploitation requires the site to be configured to take one of the message's addresses from a form field.",
+      "id": "CVE-2026-86452",
+      "description": "Affected versions of MISP permit unauthenticated or weakly constrained request paths to perform persistent work without adequate input bounds or rate limiting.\n\n\nThe users/forgot password-reset endpoint accepted an attacker-controlled email value without first imposing a reasonable length bound or validating its format. That value was then used to create an audit log entry and queue a password-reset job, causing the supplied value to be persisted more than once per request. The commit explicitly",
       "cvss": {
-        "score": 4.8,
-        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:N",
-        "severity": "MEDIUM"
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
       },
       "tier": 0,
       "matchedProducts": [
-        "WordPress"
+        "ESET"
       ],
       "references": [
-        "https://wpscan.com/vulnerability/b3fe5552-6736-4479-9c61-c05bc3328b8e/"
+        "https://github.com/MISP/MISP/commit/d75d899be"
       ],
-      "published": "2026-09-06T10:17:14.563"
+      "published": "2026-09-07T14:16:56.833"
     },
     {
-      "id": "CVE-2026-19633",
-      "description": "PostgreSQL Anonymizer contains a vulnerability that allows unprivileged masked users to execute arbitrary code by abusing operators, domain casts, or view subqueries that carry untrusted expressions. When these objects are evaluated in the context of the extension\u2019s masking mechanisms, the malicious code can run with elevated privileges. The issue is fixed in PostgreSQL Anonymizer 3.1.4 and later versions",
+      "id": "CVE-2026-86517",
+      "description": "A flaw has been found in itsourcecode Sales and Inventory System 1.0. The impacted element is the function mysqli_query of the file /pages/us_searchfrm.php. Executing a manipulation of the argument ID can lead to sql injection. It is possible to launch the attack remotely. The exploit has been published and may be used.",
       "cvss": {
-        "score": 8.8,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "PostgreSQL"
-      ],
-      "references": [
-        "https://gitlab.com/dalibo/postgresql_anonymizer/-/issues/665"
-      ],
-      "published": "2026-09-06T16:16:49.583"
-    },
-    {
-      "id": "CVE-2026-86220",
-      "description": "A vulnerability was detected in SourceCodester Class and Exam Timetabling System 1.0. The affected element is the function mysqli_query of the file /admin/modal_add_course.php. The manipulation of the argument course results in sql injection. The attack can be launched remotely. The exploit is now public and may be used.",
-      "cvss": {
-        "score": 7.3,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "MySQL"
-      ],
-      "references": [
-        "https://github.com/justconter/_CVE/issues/1",
-        "https://vuldb.com/cve/CVE-2026-86220",
-        "https://vuldb.com/submit/897734",
-        "https://vuldb.com/vuln/399373",
-        "https://vuldb.com/vuln/399373/cti"
-      ],
-      "published": "2026-09-06T18:17:23.150"
-    },
-    {
-      "id": "CVE-2026-86221",
-      "description": "A flaw has been found in SourceCodester Class and Exam Timetabling System 1.0. The impacted element is the function mysqli_query of the file /admin/modal_add_course1.php. This manipulation of the argument course causes sql injection. The attack may be initiated remotely. The exploit has been published and may be used.",
-      "cvss": {
-        "score": 7.3,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "MySQL"
-      ],
-      "references": [
-        "https://github.com/justconter/_CVE/issues/2",
-        "https://vuldb.com/cve/CVE-2026-86221",
-        "https://vuldb.com/submit/897747",
-        "https://vuldb.com/vuln/399374",
-        "https://vuldb.com/vuln/399374/cti"
-      ],
-      "published": "2026-09-06T19:17:27.943"
-    },
-    {
-      "id": "CVE-2026-86222",
-      "description": "A vulnerability has been found in SourceCodester Class and Exam Timetabling System 1.0. This affects the function mysqli_query of the file /admin/modal_add_course2.php. Such manipulation of the argument course leads to sql injection. The attack may be launched remotely. The exploit has been disclosed to the public and may be used.",
-      "cvss": {
-        "score": 7.3,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "MySQL"
-      ],
-      "references": [
-        "https://github.com/justconter/_CVE/issues/3",
-        "https://vuldb.com/cve/CVE-2026-86222",
-        "https://vuldb.com/submit/897748",
-        "https://vuldb.com/vuln/399375",
-        "https://vuldb.com/vuln/399375/cti"
-      ],
-      "published": "2026-09-06T20:17:28.117"
-    },
-    {
-      "id": "CVE-2026-86223",
-      "description": "A vulnerability was found in SourceCodester Class and Exam Timetabling System 1.0. This impacts the function mysqli_query of the file /admin/modal_add_coursea.php. Performing a manipulation of the argument course results in sql injection. Remote exploitation of the attack is possible. The exploit has been made public and could be used.",
-      "cvss": {
-        "score": 7.3,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "MySQL"
-      ],
-      "references": [
-        "https://github.com/justconter/_CVE/issues/4",
-        "https://vuldb.com/cve/CVE-2026-86223",
-        "https://vuldb.com/submit/897749",
-        "https://vuldb.com/vuln/399376",
-        "https://vuldb.com/vuln/399376/cti"
-      ],
-      "published": "2026-09-06T20:17:28.280"
-    },
-    {
-      "id": "CVE-2026-86224",
-      "description": "A vulnerability was determined in SourceCodester Class and Exam Timetabling System 1.0. Affected is the function mysqli_query of the file /admin/modal_add_product.php. Executing a manipulation of the argument fname can lead to sql injection. The attack can be executed remotely. The exploit has been publicly disclosed and may be utilized.",
-      "cvss": {
-        "score": 7.3,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "MySQL"
-      ],
-      "references": [
-        "https://github.com/justconter/_CVE/issues/5",
-        "https://vuldb.com/cve/CVE-2026-86224",
-        "https://vuldb.com/submit/897750",
-        "https://vuldb.com/vuln/399377",
-        "https://vuldb.com/vuln/399377/cti"
-      ],
-      "published": "2026-09-06T21:17:22.567"
-    },
-    {
-      "id": "CVE-2026-86225",
-      "description": "A vulnerability was identified in SourceCodester Class and Exam Timetabling System 1.0. Affected by this vulnerability is the function mysqli_query of the file /admin/modal_add_room.php. The manipulation of the argument room_name leads to sql injection. The attack is possible to be carried out remotely. The exploit is publicly available and might be used.",
-      "cvss": {
-        "score": 7.3,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "MySQL"
-      ],
-      "references": [
-        "https://github.com/justconter/_CVE/issues/6",
-        "https://vuldb.com/cve/CVE-2026-86225",
-        "https://vuldb.com/submit/897751",
-        "https://vuldb.com/vuln/399378",
-        "https://vuldb.com/vuln/399378/cti"
-      ],
-      "published": "2026-09-06T22:17:20.507"
-    },
-    {
-      "id": "CVE-2026-83534",
-      "description": "PostgreSQL Anonymizer contains a vulnerability in the anon.anonymize_database_parallel() function that allows the owner of a table to run arbitrary code with superuser privilege. The issue is fixed in PostgreSQL Anonymizer 3.2.0 and later versions",
-      "cvss": {
-        "score": 6.4,
-        "vector": "CVSS:3.1/AV:N/AC:H/PR:H/UI:R/S:U/C:H/I:H/A:H",
+        "score": 6.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L",
         "severity": "MEDIUM"
       },
       "tier": 1,
       "matchedProducts": [
-        "PostgreSQL"
+        "MySQL"
       ],
       "references": [
-        "https://gitlab.com/dalibo/postgresql_anonymizer/-/issues/666"
+        "https://github.com/wakakakaaaaha/vuln/issues/1",
+        "https://itsourcecode.com/",
+        "https://vuldb.com/cve/CVE-2026-86517",
+        "https://vuldb.com/submit/908810",
+        "https://vuldb.com/vuln/399671"
       ],
-      "published": "2026-09-06T16:16:50.753"
+      "published": "2026-09-08T04:17:42.307"
     },
     {
-      "id": "CVE-2026-86213",
-      "description": "A vulnerability was found in Mstfakts College-Management-System. This issue affects the function mysqli_query of the file Front-end/university.php of the component Search Handler. The manipulation of the argument book_name/book_author results in sql injection. The attack may be performed from remote. The exploit has been made public and could be used. This product utilizes a rolling release system for continuous delivery, and as such, version information for affected or updated releases is not d",
+      "id": "CVE-2026-14444",
+      "description": "The WP Fusion (Pro) plugin for WordPress is vulnerable to Privilege Escalation in all versions up to, and including, 3.47.13. This is due to insufficient authorization checks on the role parameter in the ThriveCart Auto Login handler's thrivecart() function. This makes it possible for authenticated attackers, with Subscriber-level access and above, and who possess the access_key, to create a new user account with administrator privileges and gain full control over the WordPress site. The require",
       "cvss": {
-        "score": 7.3,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L",
+        "score": 7.5,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
         "severity": "HIGH"
       },
       "tier": 2,
       "matchedProducts": [
-        "MySQL"
+        "WordPress"
       ],
       "references": [
-        "https://github.com/Mstfakts/College-Management-System/",
-        "https://github.com/Mstfakts/College-Management-System/issues/5",
-        "https://vuldb.com/cve/CVE-2026-86213",
-        "https://vuldb.com/submit/897249",
-        "https://vuldb.com/vuln/399349"
+        "https://wpfusion.com/documentation/faq/changelog/",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/b352994f-13f9-4139-94a9-0abdb52125a9?source=cve"
       ],
-      "published": "2026-09-06T13:17:10.487"
+      "published": "2026-09-07T14:16:51.947"
     },
     {
-      "id": "CVE-2026-19859",
-      "description": "The JetFormBuilder WordPress plugin before 3.6.5.2 does not sanitize a request parameter before rendering it as message content, allowing unauthenticated users to execute arbitrary shortcodes registered on the site on any page displaying a form. Escaping is applied to that content before a later shortcode-expansion pass rather than after it, so the escaping can be bypassed.",
+      "id": "CVE-2026-6431",
+      "description": "The User Profile Builder \u2013 Beautiful User Registration Forms, User Profiles & User Role Editor plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'Biographical Info' meta field parameter in all versions up to, and including, 3.15.7 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+      "cvss": {
+        "score": 7.2,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N",
+        "severity": "HIGH"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/browser/profile-builder/tags/3.15.6/features/email-confirmation/class-email-confirmation.php#L95",
+        "https://plugins.trac.wordpress.org/browser/profile-builder/tags/3.15.6/front-end/class-formbuilder.php#L743",
+        "https://plugins.trac.wordpress.org/browser/profile-builder/trunk/features/email-confirmation/class-email-confirmation.php#L95",
+        "https://plugins.trac.wordpress.org/browser/profile-builder/trunk/front-end/class-formbuilder.php#L743",
+        "https://plugins.trac.wordpress.org/changeset/3511465"
+      ],
+      "published": "2026-09-07T13:20:36.653"
+    },
+    {
+      "id": "CVE-2026-12757",
+      "description": "The The Email Subscribers & Newsletters \u2013 Email Marketing, Post Notifications & Newsletter Plugin for WordPress plugin for WordPress is vulnerable to arbitrary shortcode execution in all versions up to, and including, 5.9.27. This is due to the software allowing users to execute an action that does not properly validate a value before running do_shortcode. This makes it possible for unauthenticated attackers to execute arbitrary shortcodes.",
       "cvss": {
         "score": 6.5,
         "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N",
@@ -238,97 +117,164 @@
         "WordPress"
       ],
       "references": [
-        "https://wpscan.com/vulnerability/19c115a5-4280-4b78-a460-140ecfc78d4f/"
+        "https://plugins.trac.wordpress.org/browser/email-subscribers/tags/5.9.22/lite/includes/classes/class-es-handle-subscription.php#L165",
+        "https://plugins.trac.wordpress.org/browser/email-subscribers/tags/5.9.22/lite/includes/classes/class-es-handle-subscription.php#L260",
+        "https://plugins.trac.wordpress.org/browser/email-subscribers/tags/5.9.22/lite/includes/classes/class-es-mailer.php#L1133",
+        "https://plugins.trac.wordpress.org/browser/email-subscribers/tags/5.9.22/lite/includes/workflows/actions/class-es-action-send-email.php#L188",
+        "https://plugins.trac.wordpress.org/browser/email-subscribers/tags/5.9.26/lite/includes/classes/class-es-handle-subscription.php#L165"
       ],
-      "published": "2026-09-06T10:17:13.577"
+      "published": "2026-09-07T14:16:51.053"
     },
     {
-      "id": "CVE-2026-19634",
-      "description": "PostgreSQL Anonymizer contains a SQL injection vulnerability in two import functions. A user can create a malicious JSON document containing specially crafted object names. If a superuser subsequently calls anon.import_database_rules() or anon.import_roles_rules(), the malicious code is executed with superuser privileges. The issue is fixed in PostgreSQL Anonymizer 3.1.4 and later",
+      "id": "CVE-2026-2390",
+      "description": "The Powerkit plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the Lazy Load module's image processing in all versions up to, and including, 3.0.4. This is due to the 'content_process_images' function using a flawed regex-based HTML attribute parser. This makes it possible for authenticated attackers, with Contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
       "cvss": {
         "score": 6.4,
-        "vector": "CVSS:3.1/AV:N/AC:H/PR:H/UI:R/S:U/C:H/I:H/A:H",
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
         "severity": "MEDIUM"
       },
       "tier": 2,
       "matchedProducts": [
-        "PostgreSQL"
+        "WordPress"
       ],
       "references": [
-        "https://gitlab.com/dalibo/postgresql_anonymizer/-/issues/665"
+        "https://plugins.trac.wordpress.org/browser/powerkit/trunk/modules/lazyload/public/class-powerkit-lazyload-public.php#L199",
+        "https://plugins.trac.wordpress.org/browser/powerkit/trunk/modules/lazyload/public/class-powerkit-lazyload-public.php#L227",
+        "https://plugins.trac.wordpress.org/browser/powerkit/trunk/modules/lazyload/public/class-powerkit-lazyload-public.php#L49",
+        "https://plugins.trac.wordpress.org/changeset/3604146",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/222241ce-f534-435a-8667-8cc1d527ef95?source=cve"
       ],
-      "published": "2026-09-06T16:16:50.603"
+      "published": "2026-09-07T12:17:18.097"
     },
     {
-      "id": "CVE-2026-86257",
-      "description": "wger before 2.6 fails to sanitize first_name and last_name fields in the gym member TSV export endpoint, allowing any gym member to inject spreadsheet formulas. Attackers can inject formulas like =HYPERLINK to exfiltrate admin data or execute code when admins open the exported file in Excel or LibreOffice Calc.",
+      "id": "CVE-2026-77697",
+      "description": "Zohocorp ManageEngine Endpoint Central versions below 11.4.2540.23 are vulnerable to\u00a0Privilege Escalation During JAR Extraction",
+      "cvss": {
+        "score": 6.3,
+        "vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:L",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "ManageEngine"
+      ],
+      "references": [
+        "https://www.manageengine.com/products/desktop-central/kb/vulnerability-management/privilege-escalation-vulnerability-during-jar-extraction.html"
+      ],
+      "published": "2026-09-07T11:17:35.687"
+    },
+    {
+      "id": "CVE-2026-85640",
+      "description": "Zohocorp ManageEngine Endpoint Central versions below 11.5.2600.15 are vulnerable to\u00a0Privilege Escalation Due to Outdated Component",
+      "cvss": {
+        "score": 6.3,
+        "vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:L",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "ManageEngine"
+      ],
+      "references": [
+        "https://www.manageengine.com/products/desktop-central/help/patch_management/kb/privilege-escalation-outdated.html"
+      ],
+      "published": "2026-09-07T11:17:37.613"
+    },
+    {
+      "id": "CVE-2026-77698",
+      "description": "Zohocorp ManageEngine Endpoint Central versions before 11.5.2605.01 are vulnerable to local privilege escalation due to Agent upgrade.",
+      "cvss": {
+        "score": 5.7,
+        "vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:L",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "ManageEngine"
+      ],
+      "references": [
+        "https://www.manageengine.com/products/desktop-central/help/cve/agent-upgrade-privilege-escalation.html"
+      ],
+      "published": "2026-09-07T10:16:53.673"
+    },
+    {
+      "id": "CVE-2026-12853",
+      "description": "The Flamingo plugin for WordPress is vulnerable to authorization bypass in all versions up to, and including, 2.6.2. This is due to the plugin not properly verifying that a user is authorized to perform an action. This makes it possible for authenticated attackers, with contributor-level access and above, to enumerate taxonomy terms including channel names derived from Contact Form 7 form titles that may reveal internal form purposes, department names, or workflow identifiers, as well as submiss",
       "cvss": {
         "score": 5.4,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N",
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N",
         "severity": "MEDIUM"
       },
       "tier": 2,
       "matchedProducts": [
-        "LibreOffice"
+        "WordPress"
       ],
       "references": [
-        "https://github.com/wger-project/wger/security/advisories/GHSA-xq9m-hmp9-fw87",
-        "https://www.vulncheck.com/advisories/wger-before-2.6-csv-formula-injection-via-member-export"
+        "https://plugins.trac.wordpress.org/browser/flamingo/tags/2.6.1/includes/capabilities.php#L5",
+        "https://plugins.trac.wordpress.org/browser/flamingo/tags/2.6.1/includes/class-contact.php#L18",
+        "https://plugins.trac.wordpress.org/browser/flamingo/tags/2.6.1/includes/class-contact.php#L27",
+        "https://plugins.trac.wordpress.org/browser/flamingo/tags/2.6.1/includes/class-inbound-message.php#L29",
+        "https://plugins.trac.wordpress.org/browser/flamingo/tags/2.6.1/includes/class-inbound-message.php#L46"
       ],
-      "published": "2026-09-06T12:17:16.700"
+      "published": "2026-09-07T13:18:04.133"
     },
     {
-      "id": "CVE-2026-80437",
-      "description": "The Ninja Forms WordPress plugin from 3.14.10 before 3.15.2 does not prevent shortcodes in request-derived values from being executed when it substitutes them into content it later processes for shortcodes, allowing unauthenticated users to run any shortcode registered on the site.",
+      "id": "CVE-2026-4945",
+      "description": "The Otter Blocks \u2013 Gutenberg Blocks, Page Builder for Gutenberg Editor & FSE plugin for WordPress is vulnerable to Insecure Direct Object Reference in all versions up to, and including, 3.1.7 via the 'watch_checkout' function due to missing validation on a user controlled key. This makes it possible for unauthenticated attackers to pay for a lower-cost product while obtaining entitlement for a premium product by manipulating the product_id parameter independently of the price_id parameter in the",
       "cvss": {
-        "score": 4.8,
-        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:N",
+        "score": 5.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N",
         "severity": "MEDIUM"
       },
-      "tier": 3,
+      "tier": 2,
       "matchedProducts": [
         "WordPress"
       ],
       "references": [
-        "https://wpscan.com/vulnerability/473a3321-7dc6-454a-82f4-89b6a393d09a/"
+        "https://plugins.trac.wordpress.org/browser/otter-blocks/trunk/inc/plugins/class-stripe-api.php#L234",
+        "https://plugins.trac.wordpress.org/browser/otter-blocks/trunk/inc/plugins/class-stripe-api.php#L304",
+        "https://plugins.trac.wordpress.org/browser/otter-blocks/trunk/inc/render/class-stripe-checkout-block.php#L69",
+        "https://plugins.trac.wordpress.org/changeset/3496611/",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/7ecb9f61-68d5-4c70-8d7d-e4fb067fcff9?source=cve"
       ],
-      "published": "2026-09-06T10:17:14.693"
+      "published": "2026-09-07T13:20:22.070"
     },
     {
-      "id": "CVE-2026-80439",
-      "description": "The Redirection for Contact Form 7 WordPress plugin from 2.2.7 before 3.2.11 does not prevent shortcodes in submitted form values from being executed when it substitutes those values into an action's settings and then processes those settings for shortcodes, allowing unauthenticated users to run any shortcode registered on the site and read its output.",
+      "id": "CVE-2026-8279",
+      "description": "The Masteriyo LMS plugin for WordPress is vulnerable to unauthorized data deletion due to a missing capability check on the 'delete_item_permissions_check' function in the CourseProgressItemsController in all versions up to, and including, 2.2.0. This makes it possible for unauthenticated attackers to delete arbitrary course progress records belonging to any student.",
       "cvss": {
-        "score": 4.8,
-        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:N",
+        "score": 5.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N",
         "severity": "MEDIUM"
       },
-      "tier": 3,
+      "tier": 2,
       "matchedProducts": [
         "WordPress"
       ],
       "references": [
-        "https://wpscan.com/vulnerability/96562897-f18c-45d3-9f31-0e40e8df1383/"
+        "https://plugins.trac.wordpress.org/browser/learning-management-system/tags/2.1.9/includes/Repository/CourseProgressItemRepository.php#L269",
+        "https://plugins.trac.wordpress.org/browser/learning-management-system/tags/2.1.9/includes/RestApi/Controllers/Version1/CourseProgressItemsController.php#L124",
+        "https://plugins.trac.wordpress.org/browser/learning-management-system/tags/2.1.9/includes/RestApi/Controllers/Version1/CourseProgressItemsController.php#L805",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/d317d40b-2b99-408b-b445-1a789df3c958?source=cve"
       ],
-      "published": "2026-09-06T10:17:14.810"
+      "published": "2026-09-07T13:20:43.560"
     },
     {
-      "id": "CVE-2026-80229",
-      "description": "When performing transfers via libcurl\u2019s multi interface, pooled TLS\nconnections can outlive their originating easy handles. In OpenSSL 3 provider\nconfigurations, libcurl attaches an allocated library context to the easy\nhandle's state and passes it to OpenSSL without acquiring an ownership\nreference; destroying the easy handle prematurely frees this context while the\nactive connection retains a dangling pointer, leading to a heap-use-after-free\nupon subsequent I/O or post-handshake operations.",
+      "id": "CVE-2026-77699",
+      "description": "Zohocorp\u00a0ManageEngine Endpoint Central versions below 11.5.2605.01 are vulnerable to Local privilege escalation due to loading a dll from an untrusted path.",
       "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
+        "score": 5.0,
+        "vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:R/S:C/C:L/I:L/A:L",
+        "severity": "MEDIUM"
       },
-      "tier": 3,
+      "tier": 2,
       "matchedProducts": [
-        "OpenSSL"
+        "ManageEngine"
       ],
       "references": [
-        "https://curl.se/docs/CVE-2026-80229.html",
-        "https://curl.se/docs/CVE-2026-80229.json",
-        "https://hackerone.com/reports/3969255"
+        "https://www.manageengine.com/products/desktop-central/help/cve/privilege-escalation-dll-loading-vulnerability.html"
       ],
-      "published": "2026-09-06T18:17:22.217"
+      "published": "2026-09-07T11:17:36.560"
     }
   ]
 }
