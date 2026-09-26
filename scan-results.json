@@ -1,17 +1,55 @@
 {
-  "scanTime": "2026-09-25 08:59:10 UTC",
-  "totalMatched": 69,
+  "scanTime": "2026-09-26 08:44:57 UTC",
+  "totalMatched": 96,
   "productsMonitored": 147,
   "tierCounts": {
-    "0": 6,
-    "1": 11,
-    "2": 39,
-    "3": 13
+    "0": 5,
+    "1": 20,
+    "2": 12,
+    "3": 59
   },
   "vulnerabilities": [
     {
-      "id": "CVE-2026-14281",
-      "description": "The Automation Web Platform \u2013 Notifications and OTP for WooCommerce, Advanced Country Code plugin for WordPress is vulnerable to Privilege Escalation in all versions up to, and including, 4.8.6. This is due to missing permission enforcement on the publicly accessible REST route `POST /wp-json/wawp/v1/signup/<op>` and the absence of a key allowlist in the `finish_registration_logic` function, which copies the attacker-controlled `wawp_custom_fields` parameter directly into `update_user_meta()` \u2014 ",
+      "id": "CVE-2026-100075",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nRDMA/srpt: Fix srpt_alloc_rw_ctxs() unwind counters\n\nWhen srpt_alloc_rw_ctxs() fails partway through a multi-buffer indirect\ndescriptor, the unwind path destroys RDMA contexts but leaves stale\nn_rw_ctx and n_rdma values (and a dangling rw_ctxs pointer). Later\nsq_wr_avail accounting in srpt_queue_response() or srpt_write_pending()\ncan then subtract the wrong number of send queue credits.\n\nReset the counters and clear rw_ctxs aft",
+      "cvss": {
+        "score": 9.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "CRITICAL"
+      },
+      "tier": 0,
+      "matchedProducts": [
+        "ESET"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/717ab4d0614e9446bf8e2de6229464499e4008d6",
+        "https://git.kernel.org/stable/c/af00051dbc9f467d4840ec709680660a3f8990fa",
+        "https://git.kernel.org/stable/c/af073bd245180393bcb15d33d3990a6bdc32593a",
+        "https://git.kernel.org/stable/c/b38f98e176050850f41bb6415f3a71400056623e",
+        "https://git.kernel.org/stable/c/bd02d644bd19a2795c018635d273d91e45d2bb95"
+      ],
+      "published": "2026-09-25T14:17:14.163"
+    },
+    {
+      "id": "CVE-2026-93643",
+      "description": "When OnlyOffice/Document Editing is available, an unauthenticated remote attacker with access to an existing supported public Briefcase document can abuse unsigned\u00a0save\u00a0fields to perform path-traversal writes and execute commands as\u00a0zimbra.",
+      "cvss": {
+        "score": 9.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "CRITICAL"
+      },
+      "tier": 0,
+      "matchedProducts": [
+        "ONLYOFFICE"
+      ],
+      "references": [
+        "https://wiki.zimbra.com/wiki/Zimbra_Security_Advisories"
+      ],
+      "published": "2026-09-25T14:17:23.550"
+    },
+    {
+      "id": "CVE-2026-18143",
+      "description": "The Request a Quote for WooCommerce plugin for WordPress is vulnerable to Arbitrary File Upload in all versions up to, and including, 2.9.2 via the `afrfq_submit_quote_via_popup()` function. This is due to missing file extension and MIME type validation in the popup upload handler, which uses the raw attacker-supplied filename directly as the destination for `move_uploaded_file()`. This makes it possible for unauthenticated attackers to upload executable files, such as PHP files, to a web-access",
       "cvss": {
         "score": 9.8,
         "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
@@ -22,98 +60,31 @@
         "WordPress"
       ],
       "references": [
-        "https://plugins.trac.wordpress.org/browser/automation-web-platform/tags/4.8.6/includes/api/class-wawp-rest-settings-api.php#L342",
-        "https://plugins.trac.wordpress.org/browser/automation-web-platform/tags/4.8.6/includes/api/class-wawp-rest-settings-api.php#L574",
-        "https://plugins.trac.wordpress.org/browser/automation-web-platform/tags/4.8.6/includes/auth-services/class-wawp-otp-service.php#L477",
-        "https://plugins.trac.wordpress.org/browser/automation-web-platform/tags/4.8.6/includes/auth-services/class-wawp-otp-service.php#L787",
-        "https://plugins.trac.wordpress.org/browser/automation-web-platform/tags/4.8.6/includes/auth-services/class-wawp-signup.php#L1002"
+        "https://woocommerce.com/products/request-a-quote-plugin-for-woocommerce/",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/3417ec27-6abf-45c7-945f-6ef456ba1187?source=cve"
       ],
-      "published": "2026-09-25T07:16:53.540"
+      "published": "2026-09-26T07:17:02.017"
     },
     {
-      "id": "CVE-2026-89055",
-      "description": "The Customer Reviews for WooCommerce plugin for WordPress is vulnerable to authorization bypass in all versions up to, and including, 5.120.0. This is due to the plugin not properly verifying that a user is authorized to perform an action. This makes it possible for unauthenticated attackers to permanently delete arbitrary attachments from the Media Library \u2014 including administrator-owned product images, logos, and documents \u2014 by injecting their IDs into a review that is later trashed and purged",
+      "id": "CVE-2026-80514",
+      "description": "The wpForo Forum WordPress plugin from 3.0.0 before 3.1.6 does not verify the source of client-supplied IP address headers before using them to key its per-visitor rate limit on paid AI requests, allowing unauthenticated attackers to bypass the limit by spoofing the header and exhaust the site owner's metered AI credits.",
       "cvss": {
-        "score": 9.1,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:H",
-        "severity": "CRITICAL"
+        "score": 5.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+        "severity": "MEDIUM"
       },
       "tier": 0,
       "matchedProducts": [
         "WordPress"
       ],
       "references": [
-        "https://plugins.trac.wordpress.org/browser/customer-reviews-woocommerce/tags/5.120.0/includes/reminders/class-cr-local-forms-ajax.php#L57",
-        "https://plugins.trac.wordpress.org/browser/customer-reviews-woocommerce/tags/5.120.0/includes/reviews/class-cr-endpoint.php#L318",
-        "https://plugins.trac.wordpress.org/browser/customer-reviews-woocommerce/tags/5.120.0/includes/reviews/class-cr-endpoint.php#L467",
-        "https://plugins.trac.wordpress.org/browser/customer-reviews-woocommerce/tags/5.120.0/includes/reviews/class-cr-reviews.php#L129",
-        "https://plugins.trac.wordpress.org/browser/customer-reviews-woocommerce/tags/5.120.0/includes/reviews/class-cr-reviews.php#L1871"
+        "https://wpscan.com/vulnerability/1c08e9ba-b68a-4e77-970f-3dc7c7cd74f9/"
       ],
-      "published": "2026-09-25T07:16:55.140"
+      "published": "2026-09-25T09:17:06.093"
     },
     {
-      "id": "CVE-2026-19804",
-      "description": "The s2Member \u2013 Excellent for All Kinds of Memberships, Content Restriction Paywalls & Member Access Subscriptions plugin for WordPress is vulnerable to Remote Code Execution in all versions up to, and including, 260814 via the 'first_name' parameter parameter. This is due to insufficient sanitization of the first_name parameter via esc_refs(), which strips only regex backreferences and not PHP tags, before substitution into the eval'd Signup Tracking Codes template, combined with disclosure of t",
-      "cvss": {
-        "score": 8.8,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 0,
-      "matchedProducts": [
-        "WordPress"
-      ],
-      "references": [
-        "https://plugins.trac.wordpress.org/browser/s2member/trunk/src/includes/classes/paypal-checkout-in.inc.php#L736",
-        "https://plugins.trac.wordpress.org/browser/s2member/trunk/src/includes/classes/paypal-return-in-subscr-or-wa-w-level.inc.php#L311",
-        "https://plugins.trac.wordpress.org/browser/s2member/trunk/src/includes/classes/paypal-return-in-subscr-or-wa-w-level.inc.php#L319",
-        "https://plugins.trac.wordpress.org/browser/s2member/trunk/src/includes/classes/paypal-return-in.inc.php#L47",
-        "https://plugins.trac.wordpress.org/browser/s2member/trunk/src/includes/classes/paypal-utilities.inc.php#L185"
-      ],
-      "published": "2026-09-25T08:16:40.383"
-    },
-    {
-      "id": "CVE-2026-71540",
-      "description": "Wazuh is an open-source security platform providing unified XDR and SIEM protection for endpoints and cloud workloads. From 3.9.0 until 4.14.7, wazuh-clusterd in framework/wazuh/core/cluster/common.py allocates a payload buffer using the size declared in a 20-byte cluster protocol header before Fernet decryption validates the peer. An unauthenticated network peer can declare a payload of up to 256 MiB, stop sending after the header, and retain that allocation until the TCP connection closes. The",
-      "cvss": {
-        "score": 7.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 0,
-      "matchedProducts": [
-        "Ubiquiti/UniFi"
-      ],
-      "references": [
-        "https://github.com/wazuh/wazuh/commit/9a996bc23d28725f6c1f8f7808355d90e20d3382",
-        "https://github.com/wazuh/wazuh/pull/37280",
-        "https://github.com/wazuh/wazuh/releases/tag/v4.14.7",
-        "https://github.com/wazuh/wazuh/security/advisories/GHSA-78wx-4r6w-w73f"
-      ],
-      "published": "2026-09-24T18:18:31.340"
-    },
-    {
-      "id": "CVE-2026-61788",
-      "description": "DBHub is a database MCP server for Postgres, MySQL, SQL Server, Oracle, MariaDB, SQLite. Prior to version 0.22.6, setting `readonly = true` on the `execute_sql` tool does not make the connection read-only. The connectors are written to set PostgreSQL `default_transaction_read_only=on` (and open SQLite in `readOnly` mode), but that code is gated on a config value that is never populated, so it never runs. The only thing left enforcing read-only is a classifier that inspects the first keyword of e",
-      "cvss": {
-        "score": 7.4,
-        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N",
-        "severity": "HIGH"
-      },
-      "tier": 0,
-      "matchedProducts": [
-        "PostgreSQL",
-        "MySQL",
-        "MSSQL"
-      ],
-      "references": [
-        "https://github.com/bytebase/dbhub/security/advisories/GHSA-mwwr-p57h-56pf"
-      ],
-      "published": "2026-09-24T18:17:16.837"
-    },
-    {
-      "id": "CVE-2026-87721",
-      "description": "Uncontrolled Resource Consumption (CWE-400 / CWE-407) in the ANTLR 3 search query parser (QueryParser / Query.g) in Gerrit Code Review versions 2.0.19 through 3.12.9, 3.13.0 through 3.13.8, and 3.14.0 through 3.14.2 allows an unauthenticated remote attacker (or an authenticated user if anonymous read access is disabled) to cause a persistent denial of service (CPU exhaustion and HTTP worker thread pool starvation requiring a server restart) via crafted search queries containing deeply nested par",
+      "id": "CVE-2026-67230",
+      "description": "RabbitMQ is a messaging and streaming broker. From 3.13.0 until 3.13.15, 4.0.20, 4.1.11, and 4.2.6, the Web STOMP WebSocket handler enforced neither max_frame_size nor login_timeout before authentication, allowing an unauthenticated client to keep a connection alive with a slow stream of small frames and accumulate unbounded pre-authentication state. The rabbitmq_web_stomp plugin must be enabled, and no authentication is required to reach the vulnerable path. This issue is fixed in versions 3.13",
       "cvss": {
         "score": null,
         "vector": null,
@@ -121,94 +92,20 @@
       },
       "tier": 0,
       "matchedProducts": [
-        "Apache HTTP Server"
+        "RabbitMQ"
       ],
       "references": [
-        "https://issues.gerritcodereview.com/issues/541287630"
+        "https://github.com/rabbitmq/rabbitmq-server/commit/0b4080fa5d6f797b6331d0ce1db2b4bacd34560e",
+        "https://github.com/rabbitmq/rabbitmq-server/commit/8138edae6d2beaafe699a41a754d17420bdc2068",
+        "https://github.com/rabbitmq/rabbitmq-server/commit/c1000ba89052608c01c052d98016403ba6e92222",
+        "https://github.com/rabbitmq/rabbitmq-server/releases/tag/v4.2.6",
+        "https://github.com/rabbitmq/rabbitmq-server/security/advisories/GHSA-7v63-j4gm-p4rh"
       ],
-      "published": "2026-09-24T22:17:02.327"
+      "published": "2026-09-25T17:17:11.600"
     },
     {
-      "id": "CVE-2026-61741",
-      "description": "http4s-scala-xml provides `EntityDecoder[F, scala.xml.Elem]` instances that parse XML message bodies. Prior to versions 0.24.1 and 1.0.0-M39, these decoders used a `javax.xml.parsers.SAXParserFactory` obtained from `SAXParserFactory.newInstance` without any security configuration.  With the JDK's default settings, the parser resolves DOCTYPE declarations, external general and parameter entities, and external DTDs.An application that uses these decoders to parse untrusted XML is vulnerable to XML",
-      "cvss": {
-        "score": 9.3,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:N/A:L",
-        "severity": "CRITICAL"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "Oracle Java"
-      ],
-      "references": [
-        "https://github.com/http4s/http4s-scala-xml/security/advisories/GHSA-cjx3-73hr-rpw7"
-      ],
-      "published": "2026-09-24T18:17:16.013"
-    },
-    {
-      "id": "CVE-2026-79766",
-      "description": "Termix is a web-based server management platform with SSH terminal, tunneling, and file editing capabilities. From 2.4.1 until 2.5.1, an authenticated Termix administrator can store attacker-controlled domain and email values through PATCH /users/acme-ssl-settings and trigger their interpolation into a certbot shell command through POST /users/acme-ssl-request. In src/backend/database/routes/acme-ssl-routes.ts, child_process.execSync invokes /bin/sh -c with those values only wrapped in double qu",
-      "cvss": {
-        "score": 9.1,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H",
-        "severity": "CRITICAL"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "Certbot"
-      ],
-      "references": [
-        "https://github.com/Termix-SSH/Termix/commit/c7a9063a72071153723e668787548766c971f029",
-        "https://github.com/Termix-SSH/Termix/commit/ddbdd5c437c2296607dfaa4265d6f63fbc1ca92e",
-        "https://github.com/Termix-SSH/Termix/pull/1067",
-        "https://github.com/Termix-SSH/Termix/releases/tag/release-2.5.1-tag",
-        "https://github.com/Termix-SSH/Termix/security/advisories/GHSA-pr55-25gf-5f9v"
-      ],
-      "published": "2026-09-24T17:17:06.650"
-    },
-    {
-      "id": "CVE-2026-93399",
-      "description": "The Bookly plugin for WordPress is vulnerable to Insecure Direct Object Reference in versions up to, and including, 28.2 via the 'bookly_get_form_id', 'bookly_render_complete', 'bookly_add_to_calendar' and 'bookly_rollback_order' AJAX actions. This is due to the 'bookly_get_form_id' handler blindly storing the attacker-controlled 'order_id' from the submitted form_data into a new booking session, which the 'bookly_render_complete' handler then trusts to look up and return the corresponding Order",
-      "cvss": {
-        "score": 9.1,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:H",
-        "severity": "CRITICAL"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "WordPress"
-      ],
-      "references": [
-        "https://plugins.trac.wordpress.org/browser/bookly-responsive-appointment-booking-tool/tags/28.2/frontend/modules/booking/Ajax.php#L1111",
-        "https://plugins.trac.wordpress.org/browser/bookly-responsive-appointment-booking-tool/tags/28.2/frontend/modules/booking/Ajax.php#L46",
-        "https://plugins.trac.wordpress.org/browser/bookly-responsive-appointment-booking-tool/tags/28.2/frontend/modules/booking/Ajax.php#L733",
-        "https://plugins.trac.wordpress.org/browser/bookly-responsive-appointment-booking-tool/tags/28.2/frontend/modules/payment/Ajax.php#L74",
-        "https://plugins.trac.wordpress.org/browser/bookly-responsive-appointment-booking-tool/tags/28.2/lib/UserBookingData.php#L360"
-      ],
-      "published": "2026-09-25T07:16:56.027"
-    },
-    {
-      "id": "CVE-2026-97409",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnvme-fc: Do not cancel requests in io target before it is initialized\n\nA new nvme-fc controller in CONNECTING state sees admin request timeout\nschedules ctrl->ioerr_work to abort inflight requests. This ends up\ncalling __nvme_fc_abort_outstanding_ios() which aborts requests in both\nadmin and io tagsets. In case fc_ctrl->tag_set was not initialized we\nsee the warning below. This is because ctrl.queue_count is initialized\nearly i",
-      "cvss": {
-        "score": 8.8,
-        "vector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/da930308b4bc24c335574e85ca84ff70a988cf05",
-        "https://git.kernel.org/stable/c/dd39064d2948b14dbe4f364fe4b3c9cfc632cc21",
-        "https://git.kernel.org/stable/c/ee38469f88492df99e1d97f03aa40ecfd218934f"
-      ],
-      "published": "2026-09-24T17:17:18.463"
-    },
-    {
-      "id": "CVE-2026-96883",
-      "description": "pgcollection is an open source extension to PostgreSQL. A type confusion issue in AWS pgcollection 2.0.0 through 2.1.1 might allow an authenticated remote user to execute arbitrary code as the postgres operating system user via crafted SQL statements that rely on mismatched type metadata in collection value retrieval and array conversion functions.\n\n\n\nTo remediate this issue, users should upgrade to version 2.1.2 or later.",
+      "id": "CVE-2026-100575",
+      "description": "OpenClaw Slack versions before 2026.8.1 fail to properly enforce sender allowlists in multi-person direct messages. Disallowed participants can trigger Slack agents and access tools and data granted to those agents by bypassing configured sender policies.",
       "cvss": {
         "score": 8.8,
         "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
@@ -216,39 +113,17 @@
       },
       "tier": 1,
       "matchedProducts": [
-        "PostgreSQL"
+        "Slack"
       ],
       "references": [
-        "https://aws.amazon.com/security/security-bulletins/2026-118-aws/",
-        "https://github.com/aws/pgcollection/releases/tag/v2.1.2",
-        "https://github.com/aws/pgcollection/security/advisories/GHSA-g539-cj32-hv6r"
+        "https://github.com/openclaw/openclaw/security/advisories/GHSA-58qx-6m8p-wh2j",
+        "https://www.vulncheck.com/advisories/openclaw-slack-before-2026.8.1-authentication-bypass-via-group-dm"
       ],
-      "published": "2026-09-24T20:17:35.240"
+      "published": "2026-09-26T03:17:05.030"
     },
     {
-      "id": "CVE-2026-89426",
-      "description": "The Knit Pay \u2013 Cashfree, Instamojo, Razorpay, PayPal and more plugin for WordPress is vulnerable to Privilege Escalation in all versions up to, and including, 9.6.1.0. This is due to the `maybe_update_user_role()` function reading the target role directly from an attacker-controlled Gravity Forms entry field \u2014 configured via the feed's `user_role_field_id` \u2014 and passing it to `WP_User::set_role()` without validating the supplied value against an allowlist of permitted roles. This makes it possib",
-      "cvss": {
-        "score": 8.8,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "WordPress"
-      ],
-      "references": [
-        "https://plugins.trac.wordpress.org/browser/knit-pay/tags/9.4.0.1/packages/wp-pay-extensions/gravityforms/src/Extension.php#L381",
-        "https://plugins.trac.wordpress.org/browser/knit-pay/tags/9.4.0.1/packages/wp-pay-extensions/gravityforms/src/Extension.php#L384",
-        "https://plugins.trac.wordpress.org/browser/knit-pay/tags/9.4.0.1/packages/wp-pay-extensions/gravityforms/src/Extension.php#L989",
-        "https://plugins.trac.wordpress.org/browser/knit-pay/tags/9.4.0.1/packages/wp-pay-extensions/gravityforms/src/Processor.php#L493",
-        "https://plugins.trac.wordpress.org/browser/knit-pay/tags/9.6.1.0/packages/wp-pay-extensions/gravityforms/src/Extension.php#L381"
-      ],
-      "published": "2026-09-25T08:16:40.940"
-    },
-    {
-      "id": "CVE-2026-96749",
-      "description": "An integer overflow in the BSON document encoding component of the MongoDB Python Driver's bundled native extension may occur when a single document is built from an unusually large amount of caller-supplied data. Size arithmetic is performed in a signed 32-bit type, and the guard meant to catch the overflow is written in a form whose behavior is not defined by the C language standard. A party with no privileges who can place a very large value into data that an application encodes may, dependin",
+      "id": "CVE-2026-100368",
+      "description": "CliInvoke is a .NET library for invoking command-line programs, and its `CliInvoke.Specializations` packages provide specialized wrappers for shells such as PowerShell and Windows Command Prompt. `CliInvoke.Specializations` versions 2.2.0 through 2.8.4, 2.9.0 through 2.9.3, 2.10.0 through 2.10.4, 3.0.0-alpha.1 through 3.0.0-alpha.4, and 3.0.0-alpha.8 through 3.0.0-alpha.10, as well as `AlastairLundy.CliInvoke.Specializations` versions 1.0.0-rc.1 through 1.6.1.1, contain an OS command injection v",
       "cvss": {
         "score": 8.4,
         "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
@@ -256,78 +131,150 @@
       },
       "tier": 1,
       "matchedProducts": [
-        "MongoDB"
+        "PowerShell"
       ],
       "references": [
-        "https://github.com/mongodb/mongo-python-driver/blob/4.18.2/doc/changelog.rst",
-        "https://github.com/mongodb/mongo-python-driver/releases/tag/4.18.2",
-        "https://github.com/mongodb/mongo-python-driver/security/advisories/GHSA-v4x9-3549-crwv"
+        "https://github.com/alastairlundy/CliInvoke/security/advisories/GHSA-wrvw-254r-wpmv"
       ],
-      "published": "2026-09-24T19:17:20.963"
+      "published": "2026-09-25T20:17:05.990"
     },
     {
-      "id": "CVE-2026-92713",
-      "description": "The Modula Image Gallery \u2013 Photo Grid & Video Gallery plugin for WordPress is vulnerable to arbitrary file deletion due to insufficient file path validation in the upload_image function in all versions up to, and including, 3.0.2. This makes it possible for authenticated attackers, with author-level access and above, to delete arbitrary files on the server. The path restriction to wp-content/uploads is not an effective ownership boundary, as all user attachment files reside within that tree, and",
+      "id": "CVE-2026-97573",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbnxt_en: Handle buffer allocation failure in bnxt_rx_ring_reset()\n\nbnxt_rx_ring_reset() frees the ring buffers and then reallocates them,\nignoring the result.\n\nbnxt_alloc_one_rx_ring() can fail in bnxt_alloc_one_tpa_info_data(), which\nreturns -ENOMEM on the first failed allocation and leaves the remaining\nrxr->rx_tpa[] entries zeroed.\n\nThe error isn't propagated up, so the loop in bnxt_rx_ring_reset\ncontinues and at the end the",
       "cvss": {
         "score": 8.1,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:H",
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
         "severity": "HIGH"
       },
       "tier": 1,
       "matchedProducts": [
-        "WordPress"
+        "ESET"
       ],
       "references": [
-        "https://plugins.trac.wordpress.org/browser/modula-best-grid-gallery/tags/3.0.2/includes/admin/helpers/class-modula-gallery-upload.php#L1310",
-        "https://plugins.trac.wordpress.org/browser/modula-best-grid-gallery/tags/3.0.2/includes/admin/helpers/class-modula-gallery-upload.php#L260",
-        "https://plugins.trac.wordpress.org/browser/modula-best-grid-gallery/tags/3.0.2/includes/v2/rest/class-gallery-upload-controller.php#L337",
-        "https://plugins.trac.wordpress.org/changeset?reponame=&old=3701804%40modula-best-grid-gallery&new=3701804%40modula-best-grid-gallery",
-        "https://www.wordfence.com/threat-intel/vulnerabilities/id/1686f4ad-b114-4e4f-b8f7-8ea7c31b2672?source=cve"
+        "https://git.kernel.org/stable/c/1a3670b6a6b5679fe56c5890157b344f091e64f8",
+        "https://git.kernel.org/stable/c/4a17c73c83798c2fa9c7920ad5a98803adce3e01",
+        "https://git.kernel.org/stable/c/8b2fd5c0aeda935294159206af9d6179282d425a",
+        "https://git.kernel.org/stable/c/961e2a17c5e3559b3f8654d2daabdd25a42e770a"
       ],
-      "published": "2026-09-25T08:16:41.310"
+      "published": "2026-09-25T11:17:08.017"
     },
     {
-      "id": "CVE-2026-89325",
-      "description": "An uncontrolled search path element in InsightVM assessment content in Rapid7 Insight Agent on Windows allows a local, low-privileged user to execute arbitrary code as SYSTEM via a planted executable resolved from the machine PATH.\n\nAssessment content at or below version 0.0.261.0 included a check that invoked the `code` command without a fully qualified path from a process running as SYSTEM. The command was resolved against the machine PATH environment variable at execution time. Where the mach",
+      "id": "CVE-2026-98069",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/rds: acquire the fastpath locks in rds_conn_shutdown()\n\nrds_conn_shutdown() quiesces the transmit and receive-refill paths by\nwaiting for RDS_IN_XMIT and RDS_RECV_REFILL to be sampled clear, and\nthen runs the transport shutdown and rds_conn_path_reset().  Sampling\nthe bits clear is not the same as owning them: the moment after the\nwait_event() returns, rds_send_xmit() can re-acquire RDS_IN_XMIT (or\nrds_ib_recv_refill() can ",
       "cvss": {
-        "score": 7.8,
-        "vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "score": 8.1,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
         "severity": "HIGH"
       },
       "tier": 1,
       "matchedProducts": [
-        "Visual Studio",
-        "Visual Studio Code"
+        "ESET"
       ],
       "references": [
-        "https://docs.rapid7.com/insight/release-notes-2026-september/#resolved-cve-2026-89325"
+        "https://git.kernel.org/stable/c/1fe627e5db5c3f53a9f9f9c8a66671755d306955",
+        "https://git.kernel.org/stable/c/7febb113795d5de5b690b208f4b0e64a5fad1201",
+        "https://git.kernel.org/stable/c/813f3582ac7ae9f60f917937d54660e0952d5f2d",
+        "https://git.kernel.org/stable/c/900e96c9749a06833801f60c393aa1d405ea226c"
       ],
-      "published": "2026-09-24T19:17:19.580"
+      "published": "2026-09-25T11:17:36.043"
     },
     {
-      "id": "CVE-2026-61811",
-      "description": "Wazuh is an open-source security platform providing unified XDR and SIEM protection for endpoints and cloud workloads. From 3.8.0 until 4.14.7, the _getattributes() function in src/os_xml/os_xml.c recursively processes every XML attribute without a depth limit while allocating two large local buffers in each stack frame. An enrolled agent can submit a Windows EventChannel event containing an element with enough attributes to exhaust the analysisd worker-thread stack, trigger a segmentation fault",
+      "id": "CVE-2026-98070",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/rds: acquire RDS_IN_XMIT in rds_tcp_reset_callbacks()\n\nrds_tcp_reset_callbacks() quiesces the transmit path by setting the\npath state to RDS_CONN_RESETTING and then waiting for RDS_IN_XMIT to\nbe sampled clear before swapping the underlying socket and calling\nrds_send_path_reset().\n\nSampling the bit clear is not the same as owning it: rds_send_xmit()\ncan re-acquire RDS_IN_XMIT right after the wait_event() returns.  Its\nstate",
       "cvss": {
-        "score": 6.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+        "score": 8.1,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "ESET"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/02c5f9dc2efd823e061954d564ce00bacd1bebeb",
+        "https://git.kernel.org/stable/c/062d9e008c67289e8e1b221ecdd8f9d60566d012",
+        "https://git.kernel.org/stable/c/8e4c3b7844c906c7097b4cfedd9dd1f48c9a6a92",
+        "https://git.kernel.org/stable/c/d625112564c3e980e02504270222b49b82690cee"
+      ],
+      "published": "2026-09-25T11:17:36.193"
+    },
+    {
+      "id": "CVE-2026-100387",
+      "description": "pgPointcloud through 1.2.5 contains a heap out-of-bounds read vulnerability in dimensional patch WKB deserialization that allows authenticated database users to read adjacent heap memory. Attackers can supply crafted pcpatch values with attacker-controlled size fields to copy heap memory into stored patches for exfiltration or crash the PostgreSQL backend.",
+      "cvss": {
+        "score": 8.1,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "PostgreSQL"
+      ],
+      "references": [
+        "https://github.com/pgpointcloud/pointcloud",
+        "https://github.com/pgpointcloud/pointcloud/blob/v1.2.5/lib/pc_bytes.c#L1347-L1373",
+        "https://github.com/pgpointcloud/pointcloud/issues/387",
+        "https://github.com/pgpointcloud/pointcloud/pull/388",
+        "https://www.vulncheck.com/advisories/pgpointcloud-through-1.2.5-heap-out-of-bounds-read-via-wkb-deserialization"
+      ],
+      "published": "2026-09-25T21:17:22.163"
+    },
+    {
+      "id": "CVE-2026-100584",
+      "description": "OpenClaw is an npm-distributed agent runtime. In versions >= 2026.2.26 and < 2026.7.1, PowerShell command analysis on Windows hosts running in exec allowlist mode could approve an exact executable resolved from PATH but subsequently execute a same-named executable located in the workspace directory. If lower-trust content can place an executable with an approved basename into an agent-writable workspace and steer an approved PowerShell command that uses a bare executable name, OpenClaw may run t",
+      "cvss": {
+        "score": 6.7,
+        "vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:R/S:U/C:H/I:H/A:H",
         "severity": "MEDIUM"
       },
       "tier": 1,
       "matchedProducts": [
-        "Ubiquiti/UniFi"
+        "PowerShell"
       ],
       "references": [
-        "https://github.com/wazuh/wazuh/commit/2ac70941c5980a5dd24ad8a0f2be559f840e6a67",
-        "https://github.com/wazuh/wazuh/pull/37147",
-        "https://github.com/wazuh/wazuh/releases/tag/v4.14.7",
-        "https://github.com/wazuh/wazuh/security/advisories/GHSA-9wv5-7qwx-m9w5",
-        "https://github.com/wazuh/wazuh/security/advisories/GHSA-9wv5-7qwx-m9w5"
+        "https://github.com/openclaw/openclaw/security/advisories/GHSA-rgjw-6v73-php6",
+        "https://www.vulncheck.com/advisories/openclaw-before-2026.7.1-allowlist-bypass-via-workspace-shadows"
       ],
-      "published": "2026-09-24T18:17:16.990"
+      "published": "2026-09-26T03:17:06.373"
     },
     {
-      "id": "CVE-2026-63493",
-      "description": "Snipe-IT is an IT asset/license management system. Prior to 8.7.0, a password-authenticated session for an account with self.api permission can reach the personal-access-token API flow before completing the account's second-factor challenge because CheckForTwoFactor is enforced in the web middleware group but not the API middleware group. The advisory states that the resulting persistent API token can read and modify resources with the victim's permissions and, for an administrator, can reach th",
+      "id": "CVE-2026-97469",
+      "description": "PostgreSQL Anonymizer contains a vulnerability that allows unprivileged masked users to repeatedly call the anon.hash() function and collects (seed, hash_output) pairs to perform an offline brute-force attack and deduce the salt. A masked role can run a RESTRICTED function when the call is placed inside the sub-select. The problem is resolved in PostgreSQL Anonymizer 3.2.3 and later versions",
+      "cvss": {
+        "score": 4.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "PostgreSQL"
+      ],
+      "references": [
+        "https://gitlab.com/dalibo/postgresql_anonymizer/-/issues/685"
+      ],
+      "published": "2026-09-25T16:17:30.713"
+    },
+    {
+      "id": "CVE-2026-100525",
+      "description": "The OpenClaw Prometheus diagnostics plugin (@openclaw/diagnostics-prometheus) before version 2026.9.3 does not enforce the operator.read scope on its authenticated metrics endpoint. In deployments using an identity-bearing Gateway authentication mode such as trusted-proxy, a caller whose effective role has no read scope can retrieve the diagnostics document even though ordinary read methods reject the same identity, disclosing operational metrics to an authenticated profile intentionally limited",
+      "cvss": {
+        "score": 4.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Prometheus"
+      ],
+      "references": [
+        "https://github.com/openclaw/openclaw/security/advisories/GHSA-rx8p-qcpv-c7vr",
+        "https://www.vulncheck.com/advisories/openclaw-diagnostics-prometheus-before-2026.9.3-authentication-bypass"
+      ],
+      "published": "2026-09-26T03:16:57.563"
+    },
+    {
+      "id": "CVE-2026-61837",
+      "description": "RabbitMQ is a messaging and streaming broker. From 4.0.0 until 4.3.3, 4.2.9, 4.1.14, and 4.0.23, AMQP 1.0 management GET /bindings exposes full binding topology to any authenticated AMQP user without resource/management permission checks. the AMQP 1.0 HTTP-over-AMQP management endpoint GET /bindings (the rabbitamqpmanagement handler) enumerates bindings between an arbitrary source exchange and destination queue/exchange in the caller's virtual host without performing any resource-level permissio",
       "cvss": {
         "score": null,
         "vector": null,
@@ -335,20 +282,221 @@
       },
       "tier": 1,
       "matchedProducts": [
-        "ESET"
+        "RabbitMQ"
       ],
       "references": [
-        "https://github.com/grokability/snipe-it/commit/87c362962a670f427be071850b218e43eff5d08e",
-        "https://github.com/grokability/snipe-it/commit/c4ea7db51ca80bf11b1d04fbe46e4a64f54dc780",
-        "https://github.com/grokability/snipe-it/pull/19294",
-        "https://github.com/grokability/snipe-it/releases/tag/v8.7.0",
-        "https://github.com/grokability/snipe-it/security/advisories/GHSA-hxcx-9h4f-42xx"
+        "https://github.com/rabbitmq/rabbitmq-server/commit/341e3f2795ebd1f816e712530f651a3221d23ad9",
+        "https://github.com/rabbitmq/rabbitmq-server/commit/b94004dea530f961b3dc649d94969b89f1a3183f",
+        "https://github.com/rabbitmq/rabbitmq-server/releases/tag/v4.2.9",
+        "https://github.com/rabbitmq/rabbitmq-server/releases/tag/v4.3.3",
+        "https://github.com/rabbitmq/rabbitmq-server/security/advisories/GHSA-w9hf-476r-443x"
       ],
-      "published": "2026-09-24T17:17:05.367"
+      "published": "2026-09-25T17:17:09.810"
     },
     {
-      "id": "CVE-2026-93798",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbtrfs: fix reloc root cleanup in merge_reloc_roots()\n\nIf the root we got has zero root refs in its root item, we are resetting\nthe root's ->reloc_root without using barriers like we do everywhere else.\nSashiko complained about this while reviewing another patch, and it's\ncorrect (see the Link tag below).\n\nAlso, we should not clear BTRFS_ROOT_DEAD_RELOC_TREE from the root unless\nthe root points to the reloc root we have.\n\nFix th",
+      "id": "CVE-2026-66078",
+      "description": "RabbitMQ is a messaging and streaming broker. From 3.13.0 until 3.13.15 and 4.0.20 and 4.1.11 and 4.2.6, protected tag bypass via bulk-delete. dELETE /api/users/:name refuses to delete users tagged protected (rabbitmgmtwmuser:deleteresource/2 checks isprotecteduser). POST /api/users/bulk-delete iterates the supplied username list and calls rabbitauthbackendinternal:deleteuser/2 directly , that function has no protected-tag check , so the guard is silently An administrator can delete protected-ta",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "RabbitMQ"
+      ],
+      "references": [
+        "https://github.com/rabbitmq/rabbitmq-server/commit/e5b890a64b42ec1f79a8e9d735512150cf77479c",
+        "https://github.com/rabbitmq/rabbitmq-server/releases/tag/v4.2.6",
+        "https://github.com/rabbitmq/rabbitmq-server/security/advisories/GHSA-j9m2-hw6x-rqr9"
+      ],
+      "published": "2026-09-25T17:17:10.333"
+    },
+    {
+      "id": "CVE-2026-67227",
+      "description": "RabbitMQ is a messaging and streaming broker. From 4.0.0 until 4.0.22 and 4.1.14 and 4.2.7 and 4.3.1, Atom exhaustion: toatom on global-parameter :name. resourceexists/2 (and the PUT/DELETE handlers) call rabbitdatacoercion:toatom/1 on the :name URL path segment. toatom/1 uses binarytoatom/2 (unsafe). The endpoint requires policymaker (not management, but below A user with the policymaker tag can crash the node by exhausting the atom table via repeated requests to /api/global-parameters/:name wi",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "RabbitMQ"
+      ],
+      "references": [
+        "https://github.com/rabbitmq/rabbitmq-server/commit/8fbe6d8112427e85fb9a9206b3eb6e9a3ddd3e39",
+        "https://github.com/rabbitmq/rabbitmq-server/commit/fc591e7ee27a29657ca960930acefd3e4217e007",
+        "https://github.com/rabbitmq/rabbitmq-server/releases/tag/v4.2.7",
+        "https://github.com/rabbitmq/rabbitmq-server/releases/tag/v4.3.1",
+        "https://github.com/rabbitmq/rabbitmq-server/security/advisories/GHSA-q7x8-97rh-cr24"
+      ],
+      "published": "2026-09-25T17:17:11.417"
+    },
+    {
+      "id": "CVE-2026-67239",
+      "description": "RabbitMQ is a messaging and streaming broker. From 3.13.0 until 3.13.18 and 4.0.23 and 4.1.14 and 4.2.9 and 4.3.3, Stored XSS via TLS peer-certificate DN in stream-management UI (sibling of V-11). lines 102/106/110 render peercertsubject / peercertissuer with raw <%= %> and no fmtstring(). RFC4514 backslash-escaping of </> is HTML-inert and bypassable (<img ... //>). Requires non-default config: a stream TLS listener with verifypeer and an attacker-obtainable trusted cert with a malicious Same a",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "RabbitMQ"
+      ],
+      "references": [
+        "https://github.com/rabbitmq/rabbitmq-server/releases/tag/v4.2.9",
+        "https://github.com/rabbitmq/rabbitmq-server/releases/tag/v4.3.3",
+        "https://github.com/rabbitmq/rabbitmq-server/security/advisories/GHSA-xm9p-57xv-vxwc"
+      ],
+      "published": "2026-09-25T17:17:12.030"
+    },
+    {
+      "id": "CVE-2026-67241",
+      "description": "RabbitMQ is a messaging and streaming broker. From 4.2.0 until 4.2.9 and 4.3.3, AMQP 1.0 management exchange.declare skips alternate-exchange permission check. pUT /exchanges/:name (lines 192-240) checks only configure on the declared exchange and passes XArgs straight to rabbitexchange:declare/7. It omits the checkreadpermitted(X) + checkwritepermitted(AE) that rabbitchannel.erl:2540-2548 enforces for the alternate-exchange argument on the AMQP 0-9-1 path. The same file already implements the a",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "RabbitMQ"
+      ],
+      "references": [
+        "https://github.com/rabbitmq/rabbitmq-server/commit/18eac8d547b4382bf830c621b20a35932dd1cfa5",
+        "https://github.com/rabbitmq/rabbitmq-server/commit/56005e7cebffc478ef397573de24aff1167e7cda",
+        "https://github.com/rabbitmq/rabbitmq-server/releases/tag/v4.2.9",
+        "https://github.com/rabbitmq/rabbitmq-server/releases/tag/v4.3.3",
+        "https://github.com/rabbitmq/rabbitmq-server/security/advisories/GHSA-rg2g-289m-xhhw"
+      ],
+      "published": "2026-09-25T17:17:12.180"
+    },
+    {
+      "id": "CVE-2026-67408",
+      "description": "RabbitMQ is a messaging and streaming broker. From 4.1.0 until 4.3.3, 4.2.9, and 4.1.11, Stream Management Super-Stream Binding Keys Allocation Allows Low-Privilege Node Denial of Service. rabbitMQ 4.3.1 with rabbitmqstreammanagement enabled accepts PUT /api/stream/super-streams/{vhost}/{name} requests from an authenticated management user that can access the target vhost. When the request body contains the binding-keys field, the handler parses the attacker-controlled comma-separated string and",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "RabbitMQ"
+      ],
+      "references": [
+        "https://github.com/rabbitmq/rabbitmq-server/commit/0f3defd176e027f54f447beee168d906d4f109b6",
+        "https://github.com/rabbitmq/rabbitmq-server/commit/eb11bc44005fd6d327a78bf171bc598207778c9b",
+        "https://github.com/rabbitmq/rabbitmq-server/releases/tag/v4.2.9",
+        "https://github.com/rabbitmq/rabbitmq-server/releases/tag/v4.3.3",
+        "https://github.com/rabbitmq/rabbitmq-server/security/advisories/GHSA-2hm4-4438-49q8"
+      ],
+      "published": "2026-09-25T17:17:12.767"
+    },
+    {
+      "id": "CVE-2026-67411",
+      "description": "RabbitMQ is a messaging and streaming broker. From 3.13.0 until 3.13.18, 4.0.23, 4.1.14, 4.2.9, and 4.3.3, native MQTT and MQTT over WebSocket behind a trusted PROXY Protocol frontend could lose the proxy-derived client address before the MQTT authentication path checked loopback_users, causing the frontend-to-broker address to be treated as loopback. An attacker who can reach the trusted frontend and has valid credentials for a loopback-restricted account can therefore bypass the source-address",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "RabbitMQ"
+      ],
+      "references": [
+        "https://github.com/rabbitmq/rabbitmq-server/commit/a7528314840c4f8dc9904684f9f97ffa7aac6349",
+        "https://github.com/rabbitmq/rabbitmq-server/commit/edbead0eabbd65925d0dc914a22d6a29e155e646",
+        "https://github.com/rabbitmq/rabbitmq-server/releases/tag/v4.2.9",
+        "https://github.com/rabbitmq/rabbitmq-server/releases/tag/v4.3.3",
+        "https://github.com/rabbitmq/rabbitmq-server/security/advisories/GHSA-4r6f-9cpw-f6g6"
+      ],
+      "published": "2026-09-25T17:17:13.237"
+    },
+    {
+      "id": "CVE-2026-67412",
+      "description": "RabbitMQ is a messaging and streaming broker. From 3.13.0 until 4.3.3, 4.2.9 , 4.1.14, 4.0.24, and 3.13.18, Federation upstream in RabbitMQ skips vhost authorization allowing cross-vhost message access. what the bug lets you do. A policymaker on one vhost reads and drains messages out of another vhost it has no permission on. With the default ack-mode the source messages are consumed (deleted), not copied. Why that should not 1. Federation validates the upstream URI without any vhost-access Cros",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "RabbitMQ"
+      ],
+      "references": [
+        "https://github.com/rabbitmq/rabbitmq-server/releases/tag/v4.2.9",
+        "https://github.com/rabbitmq/rabbitmq-server/releases/tag/v4.3.3",
+        "https://github.com/rabbitmq/rabbitmq-server/security/advisories/GHSA-42pc-678q-v8qj",
+        "https://github.com/rabbitmq/rabbitmq-server/security/advisories/GHSA-42pc-678q-v8qj"
+      ],
+      "published": "2026-09-25T17:17:13.393"
+    },
+    {
+      "id": "CVE-2026-67413",
+      "description": "RabbitMQ is a messaging and streaming broker. From 4.0.0 until 4.0.23, 4.1.14, 4.2.9, and 4.3.3, the optional rabbitmq_jms_topic_exchange plugin's x-jms-topic exchange accepted a client-controlled rjms_erlang_selector binding expression whose LIKE evaluator expanded percent and underscore wildcards into overlapping PCRE fragments. It executed those fragments with raw re:run/3 without match or recursion limits, allowing an authenticated tenant that can bind and publish to consume broker scheduler",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "RabbitMQ",
+        "Erlang/OTP"
+      ],
+      "references": [
+        "https://github.com/rabbitmq/rabbitmq-server/commit/20203c50ea6ff459d462b2d4355326d3a870682c",
+        "https://github.com/rabbitmq/rabbitmq-server/commit/60de2fbbcd812ab294985cef260cc2f1b1a02a5b",
+        "https://github.com/rabbitmq/rabbitmq-server/commit/9e36b7f4c1e2eed77300288dca3e01bd9b23c432",
+        "https://github.com/rabbitmq/rabbitmq-server/commit/f4d9da668b7304dfb9aeb2b4e9ff766a1275d021",
+        "https://github.com/rabbitmq/rabbitmq-server/releases/tag/v4.2.9"
+      ],
+      "published": "2026-09-25T17:17:13.547"
+    },
+    {
+      "id": "CVE-2026-61525",
+      "description": "Zammad is a web based open source helpdesk/customer support system. In 7.0.2 and 7.1.0, zammad's session management for websocket and long-polling connections is susceptible to a path traversal attack. Session identifiers supplied by the client are insufficiently validated before being used to construct internal file paths. When the file-based session store is active (the default configuration), an authenticated attacker can manipulate the session identifier to reference locations outside the in",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Redis"
+      ],
+      "references": [
+        "https://github.com/zammad/zammad/commit/cf3425712e8fae1bd40fa5814a49dc318dc84006",
+        "https://github.com/zammad/zammad/commit/f78ef2434fd8aad6c2fb8a702788f6e3f33565f6",
+        "https://github.com/zammad/zammad/security/advisories/GHSA-xp9w-hhf3-vfxx"
+      ],
+      "published": "2026-09-25T18:17:29.030"
+    },
+    {
+      "id": "CVE-2026-84458",
+      "description": "Zammad is a web based open source helpdesk/customer support system. Prior to 7.1.2, when the \"Automatic account link on initial logon\" setting is enabled, Zammad binds an incoming third-party (SSO) identity to an existing local account by matching the email address the identity provider reports, without verifying that the provider actually confirmed ownership of that email. An attacker who controls any identity at a configured provider, including, by default, any Azure AD tenant via Zammad's mul",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Microsoft Office"
+      ],
+      "references": [
+        "https://github.com/zammad/zammad/commit/0dba387df8e2b46956907975034cd44e4d021b1c",
+        "https://github.com/zammad/zammad/security/advisories/GHSA-86cc-3ggh-mf2m"
+      ],
+      "published": "2026-09-25T19:17:57.130"
+    },
+    {
+      "id": "CVE-2026-97612",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: mpls: clear inner_protocol when the last label is popped\n\nskb_mpls_push() records the pre-encapsulation network header once, gated\non !skb->inner_protocol. skb_mpls_pop() never clears that record, so it\noutlives the encapsulation it describes.\n\nOpen vSwitch can then re-push MPLS onto a packet whose\ninner_network_header still points at the older, deeper offset: push a\nlabel, pop every label, recirculate (ovs_flow_key_update",
       "cvss": {
         "score": 7.8,
         "vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
@@ -359,15 +507,34 @@
         "ESET"
       ],
       "references": [
-        "https://git.kernel.org/stable/c/63d6b1f04cd91c825329712aa526215ffa5d11ca",
-        "https://git.kernel.org/stable/c/ab48583aa9948205ff9a6470e23dbff74c565e24",
-        "https://git.kernel.org/stable/c/b78fe9563e2d5ae47805f1e5dc722c91fd30e1f8"
+        "https://git.kernel.org/stable/c/011e17b5cae19b9f6a150923275e41c278de64f0",
+        "https://git.kernel.org/stable/c/78a86d75a70e1e227711c72865c59b1422d0a5ae",
+        "https://git.kernel.org/stable/c/b39120523475d6b436be7f6cb27d48064148a327",
+        "https://git.kernel.org/stable/c/da8c3a7f5d3137fec4ff60a6248f5f6d66b6a63e"
       ],
-      "published": "2026-09-24T17:17:12.607"
+      "published": "2026-09-25T11:17:15.330"
     },
     {
-      "id": "CVE-2026-88382",
-      "description": "hiredis commit 29ea279 (post-v1.5.0) contains an uncontrolled memory allocation vulnerability in its RESP aggregate parser.",
+      "id": "CVE-2026-97971",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnstree: check listing permission before taking a namespace reference\n\nlegitimize_ns() takes a reference on the candidate namespace before\nmay_list_ns() has decided whether the caller may see it. The\n__free(ns_put) cleanup on the denied path can drop the last reference to a\nmount namespace while we still hold the rcu read lock, and put_mnt_ns()\nmay sleep there. This is the same problem commit 2ec2aff3c8e2 (\"ns: make\nsure referen",
+      "cvss": {
+        "score": 7.8,
+        "vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "Ubuntu"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/56ea4e86832d8abe8930394473566c194d189f85",
+        "https://git.kernel.org/stable/c/9e673bf5d88aa898e52cef5c87058c3fa845bc71"
+      ],
+      "published": "2026-09-25T11:17:24.980"
+    },
+    {
+      "id": "CVE-2026-97523",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmptcp: close race between scheduler and state change\n\nThe mptcp scheduler may race with subflow sockets state change: data\ntransmission on the selected socket may fail and a later release could\ntry to use mss_now reset to 0 for a divide operation.\n\nAddress the issue by explicitly checking for the critical scenario.",
       "cvss": {
         "score": 7.5,
         "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
@@ -375,17 +542,39 @@
       },
       "tier": 2,
       "matchedProducts": [
-        "Redis"
+        "ESET"
       ],
       "references": [
-        "https://github.com/redis/hiredis/issues/1357",
-        "https://github.com/redis/hiredis/issues/1357"
+        "https://git.kernel.org/stable/c/42064de57fb83231fcc89663a94885f228a1ee53",
+        "https://git.kernel.org/stable/c/4c856f3c151a2f3fa237caa651c44015916ca584",
+        "https://git.kernel.org/stable/c/8f11430d51ff8365bc51b670bc3002b65ae4c6b7",
+        "https://git.kernel.org/stable/c/a09c87abf10a0a7e203137c75b5381aa63d9b31d"
       ],
-      "published": "2026-09-24T17:17:07.670"
+      "published": "2026-09-25T11:17:02.407"
     },
     {
-      "id": "CVE-2026-93826",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nHID: hidpp: fix potential UAF in hidpp_connect_event()\n\nIf input_register_device() fails, we call input_free_device(), but keep\nstale pointer to the old device in hidpp->input, which could potentially\nlead to UAF. Fix that by resetting it to NULL before returning from\nhidpp_connect_event().",
+      "id": "CVE-2026-97524",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmptcp: avoid unneeded actions on subflow reset\n\nOnce in a blue moon, the mptcp receive path can recursively call\nmptcp_data_ready() via state change under unlucky error conditions, and\nthen try to hold the data lock again.\n\nBreak the recursion loop explicitly checking for the exceptional\ncondition.\n\nAdd a new flag instead of using an existing one like 'closing', to exit\nearly in subflow_state_change(), and explicitly flush the ",
+      "cvss": {
+        "score": 7.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "ESET"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/2b0f561f21b27c40c91ea4975268a06092bd7e9c",
+        "https://git.kernel.org/stable/c/4b7abdcb5ba832fafab679f0d998af39cbc99307",
+        "https://git.kernel.org/stable/c/b2dbcc1ed48b5ac070a41db4a52aade6823c4df0",
+        "https://git.kernel.org/stable/c/ce7e4ede01ed3e47a48c0f1ce1d87bf4864bee9f"
+      ],
+      "published": "2026-09-25T11:17:02.520"
+    },
+    {
+      "id": "CVE-2026-97531",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nscsi: qla2xxx: Skip vport under deletion in report ID acquisition\n\nqla24xx_report_id_acquisition() format-1 handling walks ha->vp_list under\nvport_slock, takes a vref_count on the matching vport and calls\nqla_update_host_map() to register its port id.\n\nA vport teardown via qla24xx_vport_delete() sets VPORT_DELETE, then\nqla24xx_disable_vp() removes the vport from the host_map btree and zeroes\nvha->d_id (RESET_AL_PA). The vport i",
       "cvss": {
         "score": 7.5,
         "vector": "CVSS:3.1/AV:A/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
@@ -396,80 +585,35 @@
         "ESET"
       ],
       "references": [
-        "https://git.kernel.org/stable/c/3303398cc2aa255ba251650a30024e11d48ea6c3",
-        "https://git.kernel.org/stable/c/3b8b2e58b078cd30e121401535541bb8a6d57133",
-        "https://git.kernel.org/stable/c/6df6b1f2c49678211f65647c300bc51dda02893b"
+        "https://git.kernel.org/stable/c/23582731afa35031c94fadb71a4f3b4afd094649",
+        "https://git.kernel.org/stable/c/7a83979d92782f83c90888ebe19bdc9420521940",
+        "https://git.kernel.org/stable/c/d61e8de98c5a52978fb1edd95fe4dde3131b280e"
       ],
-      "published": "2026-09-24T17:17:16.297"
+      "published": "2026-09-25T11:17:03.307"
     },
     {
-      "id": "CVE-2026-63645",
-      "description": "OpenObserve is a cloud-native observability platform. Prior to 0.90.3, OpenObserve registers the /config/runtime endpoint without authentication and serializes the complete server configuration after applying the hide_sensitive_fields keyword filter. The filter does not recognize dsn or creds field names, so meta_postgres_dsn, meta_postgres_ro_dsn, meta_ddl_dsn, and usage_reporting_creds can be returned in plaintext to an unauthenticated network client. PostgreSQL deployments can expose database",
+      "id": "CVE-2026-100208",
+      "description": "Integer overflow or wraparound in Microsoft Office Outlook allows an unauthorized attacker to execute code over a network.",
       "cvss": {
         "score": 7.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H",
         "severity": "HIGH"
       },
       "tier": 2,
       "matchedProducts": [
-        "PostgreSQL"
+        "Microsoft Office"
       ],
       "references": [
-        "https://github.com/openobserve/openobserve/commit/4f3db1cf790ffe8ea065d98f87344e839ec6e477",
-        "https://github.com/openobserve/openobserve/pull/12220",
-        "https://github.com/openobserve/openobserve/releases/tag/v0.90.3",
-        "https://github.com/openobserve/openobserve/security/advisories/GHSA-v496-g5c9-vqxw"
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-100208"
       ],
-      "published": "2026-09-24T18:17:19.053"
+      "published": "2026-09-25T20:17:04.760"
     },
     {
-      "id": "CVE-2026-13456",
-      "description": "The WP Maps \u2013 Google Maps,OpenStreetMap,Mapbox,Store Locator,Listing,Directory & Filters plugin for WordPress is vulnerable to Local File Inclusion in all versions up to, and including, 4.9.8 via the 'page' parameter parameter. This makes it possible for authenticated attackers, with subscriber-level access and above, to include and execute arbitrary .php files on the server, allowing the execution of any PHP code in those files. This can be used to bypass access controls, obtain sensitive data,",
+      "id": "CVE-2026-97060",
+      "description": "X-SpringBoot through 6.0 lacks object-level authorization in user management endpoints, allowing sub-administrators to modify or delete users without ownership verification. Attackers with user-management permissions can reset passwords for any account including the super administrator, rebind roles, or delete users via POST /sys/user/update and POST /sys/user/delete endpoints.",
       "cvss": {
-        "score": 7.5,
-        "vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "WordPress"
-      ],
-      "references": [
-        "https://plugins.trac.wordpress.org/browser/wp-google-map-plugin/tags/4.9.3/core/class.controller.php#L115",
-        "https://plugins.trac.wordpress.org/browser/wp-google-map-plugin/tags/4.9.3/wp-google-map-plugin.php#L605",
-        "https://plugins.trac.wordpress.org/browser/wp-google-map-plugin/tags/4.9.3/wp-google-map-plugin.php#L622",
-        "https://plugins.trac.wordpress.org/browser/wp-google-map-plugin/tags/4.9.5/core/class.controller.php#L115",
-        "https://plugins.trac.wordpress.org/browser/wp-google-map-plugin/tags/4.9.5/wp-google-map-plugin.php#L605"
-      ],
-      "published": "2026-09-25T08:16:39.970"
-    },
-    {
-      "id": "CVE-2026-89406",
-      "description": "The Modula Image Gallery \u2013 Photo Grid & Video Gallery plugin for WordPress is vulnerable to unauthorized disclosure of private gallery contents in versions up to, and including, 3.0.1. This is due to the Modula_Meta::add_metas() function being hooked to wp_head on every frontend request and looking up any post via get_post( $_GET['modula_gallery_id'] ) without verifying the gallery's post_status or the requester's capability to read it \u2014 the gallery-side input guard is bugged (empty('modula_gall",
-      "cvss": {
-        "score": 7.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
-        "severity": "HIGH"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "WordPress"
-      ],
-      "references": [
-        "https://plugins.trac.wordpress.org/browser/modula-best-grid-gallery/tags/3.0.1/includes/public/meta/class-modula-meta.php#L142",
-        "https://plugins.trac.wordpress.org/browser/modula-best-grid-gallery/tags/3.0.1/includes/public/meta/class-modula-meta.php#L26",
-        "https://plugins.trac.wordpress.org/browser/modula-best-grid-gallery/tags/3.0.1/includes/public/meta/class-modula-meta.php#L50",
-        "https://plugins.trac.wordpress.org/browser/modula-best-grid-gallery/tags/3.0.1/includes/public/meta/social_meta.php#L8",
-        "https://plugins.trac.wordpress.org/changeset?reponame=&old=3697043%40modula-best-grid-gallery&new=3697043%40modula-best-grid-gallery"
-      ],
-      "published": "2026-09-25T08:16:40.803"
-    },
-    {
-      "id": "CVE-2026-93225",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nphy: fsl-imx8mq-usb: fix typec switch leak on probe error path\n\nIf probe fails after imx95_usb_phy_get_tca() succeeds, the typec\nswitch leaks because the only cleanup path was in .remove(), which\nnever runs on probe failure.\n\nUse devm_add_action_or_reset() so the switch is cleaned up on both\nprobe failure and driver removal. The imx95_usb_phy_put_tca() is no\nlonger needed, it will be removed in .remove() too.",
-      "cvss": {
-        "score": 7.4,
-        "vector": "CVSS:3.1/AV:L/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "score": 7.2,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
         "severity": "HIGH"
       },
       "tier": 2,
@@ -477,315 +621,33 @@
         "ESET"
       ],
       "references": [
-        "https://git.kernel.org/stable/c/84646f5b945a370f6999eed59a334387b0abc282",
-        "https://git.kernel.org/stable/c/87a1805b1c346b092c34f96f3806f207792910e1",
-        "https://git.kernel.org/stable/c/f1b7b2c7ffa9711d1298f52790b377fe02efc1db"
+        "https://github.com/LinYuanyi1/cve-request-poc/blob/master/x-springboot/03_user-admin-cross-object-bola.py",
+        "https://github.com/yzcheng90/X-SpringBoot",
+        "https://github.com/yzcheng90/X-SpringBoot/blob/d74ddba989c0449948ff1ddb0d211b6a7ce81bfa/src/main/java/com/suke/czx/modules/sys/controller/SysUserController.java#L190-L216",
+        "https://www.vulncheck.com/advisories/x-springboot-through-6.0-authorization-bypass-via-user-management"
       ],
-      "published": "2026-09-24T16:17:17.857"
+      "published": "2026-09-25T19:17:59.110"
     },
     {
-      "id": "CVE-2026-93901",
-      "description": "The Optima Express IDX plugin for WordPress is vulnerable to Privilege Escalation in all versions up to, and including, 8.7.5. This is due to the `provisionBlogCredentials()` function in `iHomefinderAdmin.php` being reachable via the `wp_ajax_nopriv_ihf_clear_cache` AJAX action \u2014 through the call chain `iHomefinderAjaxHandler::clearCache()` \u2192 `activateAuthenticationToken()` \u2192 `getAuthenticationInfo()` \u2192 `provisionBlogCredentials()` \u2014 with no capability check, nonce verification, or ownership val",
-      "cvss": {
-        "score": 7.3,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L",
-        "severity": "HIGH"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "WordPress"
-      ],
-      "references": [
-        "https://plugins.trac.wordpress.org/browser/optima-express/tags/8.7.5/iHomefinder.php#L176",
-        "https://plugins.trac.wordpress.org/browser/optima-express/tags/8.7.5/iHomefinder.php#L291",
-        "https://plugins.trac.wordpress.org/browser/optima-express/tags/8.7.5/iHomefinderAdmin.php#L369",
-        "https://plugins.trac.wordpress.org/browser/optima-express/tags/8.7.5/iHomefinderAdmin.php#L498",
-        "https://plugins.trac.wordpress.org/browser/optima-express/tags/8.7.5/iHomefinderAdmin.php#L752"
-      ],
-      "published": "2026-09-25T08:16:41.837"
-    },
-    {
-      "id": "CVE-2026-83591",
-      "description": "The AMP for WP \u2013 Accelerated Mobile Pages plugin for WordPress is vulnerable to Stored Cross-Site Scripting via Comment Content via Regex Transformation in all versions up to, and including, 1.1.16 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. The crafted payload uses only WordPress-permitted comment tags and attributes (an ancho",
-      "cvss": {
-        "score": 7.2,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N",
-        "severity": "HIGH"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "WordPress"
-      ],
-      "references": [
-        "https://plugins.trac.wordpress.org/browser/accelerated-mobile-pages/tags/1.1.14/components/comments/comments.php#L89",
-        "https://plugins.trac.wordpress.org/browser/accelerated-mobile-pages/tags/1.1.14/includes/features/functions.php#L314",
-        "https://plugins.trac.wordpress.org/browser/accelerated-mobile-pages/tags/1.1.14/templates/features.php#L8823",
-        "https://plugins.trac.wordpress.org/browser/accelerated-mobile-pages/tags/1.1.15/components/comments/comments.php#L89",
-        "https://plugins.trac.wordpress.org/browser/accelerated-mobile-pages/tags/1.1.15/includes/features/functions.php#L314"
-      ],
-      "published": "2026-09-25T07:16:54.747"
-    },
-    {
-      "id": "CVE-2026-84279",
-      "description": "The Fancy Product Designer plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'output_format' parameter in all versions up to, and including, 6.5.2 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. This requires the Pro Export/Genius feature to be enabled on the site, as the vulnerable fpd_pr_export AJAX action",
-      "cvss": {
-        "score": 7.2,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N",
-        "severity": "HIGH"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "WordPress"
-      ],
-      "references": [
-        "https://fancyproductdesigner.com/",
-        "https://www.wordfence.com/threat-intel/vulnerabilities/id/aa9e0489-effd-4235-a6a9-2bece0fe2abf?source=cve"
-      ],
-      "published": "2026-09-25T07:16:54.890"
-    },
-    {
-      "id": "CVE-2026-84281",
-      "description": "The Fancy Product Designer plugin for WordPress is vulnerable to Stored Cross-Site Scripting via 'productTitle' in '_fpd_data' Order Item Meta in all versions up to, and including, 6.5.2 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. The fpd_save_order AJAX action is registered for unauthenticated users via wp_ajax_nopriv_fpd_save",
-      "cvss": {
-        "score": 7.2,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N",
-        "severity": "HIGH"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "WordPress"
-      ],
-      "references": [
-        "https://fancyproductdesigner.com/",
-        "https://www.wordfence.com/threat-intel/vulnerabilities/id/53a70698-f2ee-4694-b21c-8b8ccb0b2a5c?source=cve"
-      ],
-      "published": "2026-09-25T07:16:55.013"
-    },
-    {
-      "id": "CVE-2026-93303",
-      "description": "The HT Contact Form \u2013 Drag & Drop Form Builder for WordPress plugin for WordPress is vulnerable to Stored DOM-Based Cross-Site Scripting via 'form_data' Rich Text Field via Draft Save/Resume in all versions up to, and including, 2.10.1 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. Exploitation requires tricking a user into clicki",
-      "cvss": {
-        "score": 7.2,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N",
-        "severity": "HIGH"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "WordPress"
-      ],
-      "references": [
-        "https://plugins.trac.wordpress.org/browser/ht-contactform/tags/2.10.1/admin/Includes/Api/Endpoints/Draft.php#L199",
-        "https://plugins.trac.wordpress.org/browser/ht-contactform/tags/2.10.1/admin/Includes/Api/Endpoints/Draft.php#L336",
-        "https://plugins.trac.wordpress.org/browser/ht-contactform/tags/2.10.1/admin/Includes/Api/Endpoints/Draft.php#L74",
-        "https://plugins.trac.wordpress.org/browser/ht-contactform/tags/2.10.1/admin/Includes/Models/Drafts.php#L239",
-        "https://plugins.trac.wordpress.org/browser/ht-contactform/tags/2.10.1/assets/js/form.js#L2053"
-      ],
-      "published": "2026-09-25T07:16:55.890"
-    },
-    {
-      "id": "CVE-2026-96039",
-      "description": "The BA Book Everything plugin for WordPress is vulnerable to Stored Cross-Site Scripting via first_name Parameter in all versions up to, and including, 1.8.27 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. An unauthenticated attacker can obtain the valid order_id, order_num, and order_hash credentials required to reach the vulnera",
-      "cvss": {
-        "score": 7.2,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N",
-        "severity": "HIGH"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "WordPress"
-      ],
-      "references": [
-        "https://plugins.trac.wordpress.org/browser/ba-book-everything/tags/1.8.27/includes/class-babe-html.php#L4300",
-        "https://plugins.trac.wordpress.org/browser/ba-book-everything/tags/1.8.27/includes/class-babe-order.php#L2405",
-        "https://plugins.trac.wordpress.org/browser/ba-book-everything/tags/1.8.27/includes/class-babe-order.php#L2522",
-        "https://plugins.trac.wordpress.org/browser/ba-book-everything/tags/1.8.27/includes/class-babe-order.php#L2599",
-        "https://plugins.trac.wordpress.org/browser/ba-book-everything/tags/1.8.27/includes/class-babe-order.php#L2653"
-      ],
-      "published": "2026-09-25T07:16:56.880"
-    },
-    {
-      "id": "CVE-2026-84280",
-      "description": "The Fancy Product Designer plugin for WordPress is vulnerable to Stored Cross-Site Scripting via Shortcode Order 'elements[].title' Parameter in all versions up to, and including, 6.5.2 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. The injected payload is written to the DOM via innerHTML within the beforeElementAdd JavaScript eve",
-      "cvss": {
-        "score": 7.2,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N",
-        "severity": "HIGH"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "WordPress"
-      ],
-      "references": [
-        "https://fancyproductdesigner.com/",
-        "https://www.wordfence.com/threat-intel/vulnerabilities/id/e4c1e5eb-324e-4841-afd0-c59b319ddd0e?source=cve"
-      ],
-      "published": "2026-09-25T08:16:40.550"
-    },
-    {
-      "id": "CVE-2026-93654",
-      "description": "The Premium Packages \u2013 Sell Digital Products Securely plugin for WordPress is vulnerable to Stored Cross-Site Scripting via 'cart_items[][product_name]' Parameter in all versions up to, and including, 7.2.1 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. The checkout REST route uses permission_callback set to __return_true and the ",
-      "cvss": {
-        "score": 7.2,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N",
-        "severity": "HIGH"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "WordPress"
-      ],
-      "references": [
-        "https://plugins.trac.wordpress.org/browser/wpdm-premium-packages/tags/7.2.1/includes/libs/cart-functions.php#L483",
-        "https://plugins.trac.wordpress.org/browser/wpdm-premium-packages/tags/7.2.1/src/Cart/CartItem.php#L96",
-        "https://plugins.trac.wordpress.org/browser/wpdm-premium-packages/tags/7.2.1/src/Cart/CartService.php#L328",
-        "https://plugins.trac.wordpress.org/browser/wpdm-premium-packages/tags/7.2.1/src/Order/OrderService.php#L1255",
-        "https://plugins.trac.wordpress.org/browser/wpdm-premium-packages/tags/7.2.1/templates/invoices/default/invoice.php#L167"
-      ],
-      "published": "2026-09-25T08:16:41.437"
-    },
-    {
-      "id": "CVE-2026-94573",
-      "description": "The Repeater Fields for Elementor Forms plugin for WordPress is vulnerable to Stored Cross-Site Scripting via Repeater Field Value in all versions up to, and including, 2.2.7 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
-      "cvss": {
-        "score": 7.2,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N",
-        "severity": "HIGH"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "WordPress"
-      ],
-      "references": [
-        "https://plugins.trac.wordpress.org/browser/repeater-for-elementor/tags/2.2.7/fields/repeater_end.php#L237",
-        "https://plugins.trac.wordpress.org/browser/repeater-for-elementor/tags/2.2.7/fields/repeater_end.php#L309",
-        "https://plugins.trac.wordpress.org/browser/repeater-for-elementor/tags/2.2.7/fields/repeater_end.php#L317",
-        "https://plugins.trac.wordpress.org/browser/repeater-for-elementor/tags/2.2.7/libs/admin.js#L15",
-        "https://plugins.trac.wordpress.org/changeset?reponame=&old=3710785%40repeater-for-elementor&new=3710785%40repeater-for-elementor"
-      ],
-      "published": "2026-09-25T08:16:42.047"
-    },
-    {
-      "id": "CVE-2026-95864",
-      "description": "The Themify Builder plugin for WordPress is vulnerable to Stored Cross-Site Scripting via 'css[fonts]' Parameter in all versions up to, and including, 7.8.1 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. The nonce required to reach the vulnerable endpoint is embedded in plain sight within the front-end page markup for all visitors",
-      "cvss": {
-        "score": 7.2,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N",
-        "severity": "HIGH"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "WordPress"
-      ],
-      "references": [
-        "https://plugins.trac.wordpress.org/browser/themify-builder/tags/7.8.1/classes/class-themify-builder-stylesheet.php#L160",
-        "https://plugins.trac.wordpress.org/browser/themify-builder/tags/7.8.1/classes/class-themify-builder-stylesheet.php#L317",
-        "https://plugins.trac.wordpress.org/browser/themify-builder/tags/7.8.1/classes/class-themify-builder-stylesheet.php#L514",
-        "https://plugins.trac.wordpress.org/browser/themify-builder/tags/7.8.1/themify/class-themify-enqueue.php#L1757",
-        "https://plugins.trac.wordpress.org/changeset?reponame=&old=3710320%40themify-builder&new=3710320%40themify-builder"
-      ],
-      "published": "2026-09-25T08:16:42.177"
-    },
-    {
-      "id": "CVE-2026-95866",
-      "description": "The User Profile Builder \u2013 Beautiful User Registration Forms, User Profiles & User Role Editor plugin for WordPress is vulnerable to Stored Cross-Site Scripting via Avatar Field in all versions up to, and including, 4.0.2 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. The zero-length multipart file branch in wppb_save_avatar_value",
-      "cvss": {
-        "score": 7.2,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N",
-        "severity": "HIGH"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "WordPress"
-      ],
-      "references": [
-        "https://plugins.trac.wordpress.org/browser/profile-builder/tags/4.0.2/front-end/default-fields/avatar/avatar.php#L127",
-        "https://plugins.trac.wordpress.org/browser/profile-builder/tags/4.0.2/front-end/default-fields/avatar/avatar.php#L67",
-        "https://plugins.trac.wordpress.org/browser/profile-builder/tags/4.0.2/front-end/default-fields/upload/upload_helper_functions.php#L286",
-        "https://plugins.trac.wordpress.org/changeset?reponame=&old=3708665%40profile-builder&new=3708665%40profile-builder",
-        "https://www.wordfence.com/threat-intel/vulnerabilities/id/68cef86f-3a6a-47c4-a092-de3bb40ac157?source=cve"
-      ],
-      "published": "2026-09-25T08:16:42.307"
-    },
-    {
-      "id": "CVE-2026-96568",
-      "description": "The Restaurant Menu and Food Ordering plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'phone_number' parameter in all versions up to, and including, 2.4.14 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
-      "cvss": {
-        "score": 7.2,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N",
-        "severity": "HIGH"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "WordPress"
-      ],
-      "references": [
-        "https://plugins.trac.wordpress.org/browser/mp-restaurant-menu/tags/2.4.14/classes/models/shop/class-order.php#L1497",
-        "https://plugins.trac.wordpress.org/browser/mp-restaurant-menu/tags/2.4.14/classes/models/shop/class-order.php#L465",
-        "https://plugins.trac.wordpress.org/browser/mp-restaurant-menu/tags/2.4.14/classes/models/shop/class-order.php#L725",
-        "https://plugins.trac.wordpress.org/browser/mp-restaurant-menu/tags/2.4.14/classes/models/shop/class-order.php#L727",
-        "https://plugins.trac.wordpress.org/browser/mp-restaurant-menu/tags/2.4.14/classes/models/shop/class-purchase.php#L494"
-      ],
-      "published": "2026-09-25T08:16:42.567"
-    },
-    {
-      "id": "CVE-2026-96752",
-      "description": "The Zero Spam for WordPress plugin for WordPress is vulnerable to Stored Cross-Site Scripting via Nested POST Array Keys via Contact Form 7 Integration in all versions up to, and including, 5.7.10 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. The payload is delivered by submitting a Contact Form 7 request with a nested POST array",
-      "cvss": {
-        "score": 7.2,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N",
-        "severity": "HIGH"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "WordPress"
-      ],
-      "references": [
-        "https://plugins.trac.wordpress.org/browser/zero-spam/tags/5.7.10/core/class-utilities.php#L65",
-        "https://plugins.trac.wordpress.org/browser/zero-spam/tags/5.7.10/includes/class-db.php#L442",
-        "https://plugins.trac.wordpress.org/browser/zero-spam/tags/5.7.10/includes/templates/admin-modal-details.php#L200",
-        "https://plugins.trac.wordpress.org/browser/zero-spam/tags/5.7.10/modules/contactform7/class-contactform7.php#L85",
-        "https://plugins.trac.wordpress.org/changeset?reponame=&old=3709762%40zero-spam&new=3709762%40zero-spam"
-      ],
-      "published": "2026-09-25T08:16:42.700"
-    },
-    {
-      "id": "CVE-2026-96750",
-      "description": "MongoDB Compass can interpolate a database name without escaping into the initial input of its embedded MongoDB shell when a user opens the shell from that database's view. A user with privileges to create databases on a server that a Compass user connects to may, under specific conditions, have content evaluated as shell input within the Compass process, with that process's privileges. This requires the Compass user to open the shell for the affected database.",
-      "cvss": {
-        "score": 7.1,
-        "vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:R/S:U/C:H/I:H/A:H",
-        "severity": "HIGH"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "MongoDB"
-      ],
-      "references": [
-        "https://github.com/mongodb-js/compass/releases/tag/v1.49.12"
-      ],
-      "published": "2026-09-24T16:17:27.610"
-    },
-    {
-      "id": "CVE-2026-54461",
-      "description": "Habitica is a habit tracker application that treats goals like a role-playing game. From 4.172.1 until 5.48.2, a query parameter on Habitica's /api/v3/groups/:groupId/members route is not sanitized before being interpreted as a regular expression. An authenticated caller can supply a computationally expensive regular expression that degrades application performance or halts Node.js processes. This issue is fixed in version 5.48.2.",
+      "id": "CVE-2026-91767",
+      "description": "php_openssl_matches_wildcard_name() in ext/openssl/xp_ssl.c underflows the length argument passed to memchr() when a TLS server certificate presents a wildcard name whose literal characters are together longer than the hostname being verified. A malicious server presenting such a certificate makes the PHP client read up to SIZE_MAX bytes past the end of a heap allocation. The path is reachable from any default client stream, because verify_peer_name is enabled by default.",
       "cvss": {
         "score": 6.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+        "vector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
         "severity": "MEDIUM"
       },
       "tier": 2,
       "matchedProducts": [
-        "Node.js"
+        "OpenSSL"
       ],
       "references": [
-        "https://github.com/HabitRPG/habitica/commit/7b7dc255dff1564935675399ff168e8a91b8afca",
-        "https://github.com/HabitRPG/habitica/releases/tag/v5.48.2",
-        "https://github.com/HabitRPG/habitica/security/advisories/GHSA-x772-22c9-gq58"
+        "https://github.com/php/php-src/security/advisories/GHSA-xr7j-rvgx-xq5p"
       ],
-      "published": "2026-09-24T18:17:13.820"
+      "published": "2026-09-25T21:17:24.793"
     },
     {
-      "id": "CVE-2026-93899",
-      "description": "The Better Messages \u2013 Chat Rooms, Group Chat, Private Messages & AI Chat Bots plugin for WordPress is vulnerable to generic SQL Injection via 'group_id' Message Meta Parameter in all versions up to, and including, 3.0.4 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for authenticated attackers, with subscriber-level access and above, to append additional SQL queries into already existing queries tha",
+      "id": "CVE-2026-100531",
+      "description": "The @openclaw/slack npm package before 2026.8.1 contains an authorization flaw in its Slack download-file handler: when a file lacks the share metadata used to prove it belongs to the requested conversation, the conversation-authorization check fails open. An authenticated caller restricted to a single conversation who knows or obtains a file identifier can therefore download file contents from outside that conversation's scope, disclosing data across configured conversation boundaries. The issu",
       "cvss": {
         "score": 6.5,
         "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
@@ -793,20 +655,17 @@
       },
       "tier": 2,
       "matchedProducts": [
-        "WordPress"
+        "Slack"
       ],
       "references": [
-        "https://plugins.trac.wordpress.org/browser/bp-better-messages/tags/3.0.3/addons/buddyboss.php#L626",
-        "https://plugins.trac.wordpress.org/browser/bp-better-messages/tags/3.0.3/addons/buddyboss.php#L635",
-        "https://plugins.trac.wordpress.org/browser/bp-better-messages/tags/3.0.3/inc/functions.php#L3323",
-        "https://plugins.trac.wordpress.org/browser/bp-better-messages/tags/3.0.3/inc/rest-api.php#L1073",
-        "https://plugins.trac.wordpress.org/changeset?old_path=bp-better-messages%2Ftags%2F3.0.3%2Faddons%2Fbuddyboss.php&new_path=bp-better-messages%2Ftags%2F3.0.5%2Faddons%2Fbuddyboss.php"
+        "https://github.com/openclaw/openclaw/security/advisories/GHSA-v7hh-7676-rg67",
+        "https://www.vulncheck.com/advisories/openclaw-slack-before-2026.8.1-authorization-bypass"
       ],
-      "published": "2026-09-25T07:16:56.500"
+      "published": "2026-09-26T03:16:58.513"
     },
     {
-      "id": "CVE-2025-14814",
-      "description": "The CSS & JavaScript Toolbox plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the plugin's cjtoolbox shortcode in all versions up to, and including, 12.0.6 due to insufficient input sanitization and output escaping on user supplied attributes. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+      "id": "CVE-2026-15273",
+      "description": "The Automatic.css plugin for WordPress is vulnerable to Stored Cross-Site Scripting via REQUEST_URI in all version 4.0.0 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts that will execute whenever an administrator accesses the Activity Log settings page.",
       "cvss": {
         "score": 6.4,
         "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
@@ -817,262 +676,35 @@
         "WordPress"
       ],
       "references": [
-        "https://plugins.trac.wordpress.org/changeset/3667323/css-javascript-toolbox",
-        "https://www.wordfence.com/threat-intel/vulnerabilities/id/b20e71d3-627e-49e0-a2f7-20cdbb8622e7?source=cve"
+        "https://automaticcss.com/changelogs/",
+        "https://plugins.trac.wordpress.org/browser/automaticcss-plugin/trunk/classes/Helpers/Logger.php#L187",
+        "https://plugins.trac.wordpress.org/browser/automaticcss-plugin/trunk/classes/Lib/WideEvents/Formatter/JsonFormatter.php#L25",
+        "https://plugins.trac.wordpress.org/browser/automaticcss-plugin/trunk/classes/Plugin.php#L175",
+        "https://plugins.trac.wordpress.org/browser/automaticcss-plugin/trunk/classes/UI/Settings_Page/Activity_Log.php#L90"
       ],
-      "published": "2026-09-25T04:17:31.093"
+      "published": "2026-09-26T03:17:08.900"
     },
     {
-      "id": "CVE-2026-92746",
-      "description": "The Gutenverse \u2013 WordPress Blocks, Page Builder & Site Editor plugin for WordPress is vulnerable to Stored Cross-Site Scripting via Post Comment Block 'suffixMain' Attribute in all versions up to, and including, 4.0.8 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. WordPress core wp_kses_post",
+      "id": "CVE-2026-100556",
+      "description": "OpenClaw (npm package openclaw) versions >= 2026.5.2 and < 2026.8.1 contain an incorrect authorization vulnerability in WhatsApp group handling. A group sender who is admitted for ordinary messages but denied by commands.allowFrom or owner command authorization can issue the /new <model> command to reset the shared group session and persist a provider and model override. This allows a command-denied group member to select a provider and model already permitted by the operator for subsequent turn",
       "cvss": {
-        "score": 6.4,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
+        "score": 6.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L",
         "severity": "MEDIUM"
       },
       "tier": 2,
       "matchedProducts": [
-        "WordPress"
+        "ESET"
       ],
       "references": [
-        "https://plugins.trac.wordpress.org/browser/gutenverse/tags/4.0.8/includes/block/class-post-comment.php#L51",
-        "https://plugins.trac.wordpress.org/browser/gutenverse/tags/4.0.8/includes/block/class-post-comment.php#L80",
-        "https://plugins.trac.wordpress.org/changeset/3710420/gutenverse/trunk/includes/block/class-post-comment.php",
-        "https://www.wordfence.com/threat-intel/vulnerabilities/id/e35f9e09-c386-4e37-9d81-8dd2863457ac?source=cve"
+        "https://github.com/openclaw/openclaw/security/advisories/GHSA-mm7m-wcgh-8mfq",
+        "https://www.vulncheck.com/advisories/openclaw-before-2026.8.1-authentication-bypass-via-session-reset"
       ],
-      "published": "2026-09-25T07:16:55.473"
+      "published": "2026-09-26T03:17:02.237"
     },
     {
-      "id": "CVE-2026-93897",
-      "description": "The GeoDirectory \u2013 WP Business Directory Plugin and Classified Listings Directory plugin for WordPress is vulnerable to Stored Cross-Site Scripting via Text-type Custom Field (e.g., 'phone') in all versions up to, and including, 2.8.181 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with subscriber-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. The paylo",
-      "cvss": {
-        "score": 6.4,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "WordPress"
-      ],
-      "references": [
-        "https://plugins.trac.wordpress.org/browser/geodirectory/tags/2.8.181/includes/class-geodir-ajax.php#L821",
-        "https://plugins.trac.wordpress.org/browser/geodirectory/tags/2.8.181/includes/formatting-functions.php#L56",
-        "https://plugins.trac.wordpress.org/browser/geodirectory/tags/2.8.181/includes/post-functions.php#L1347",
-        "https://plugins.trac.wordpress.org/browser/geodirectory/tags/2.8.181/includes/post-functions.php#L1803",
-        "https://plugins.trac.wordpress.org/changeset?reponame=&old=3705730%40geodirectory&new=3705730%40geodirectory"
-      ],
-      "published": "2026-09-25T07:16:56.370"
-    },
-    {
-      "id": "CVE-2026-94376",
-      "description": "The Better Messages \u2013 Chat Rooms, Group Chat, Private Messages & AI Chat Bots plugin for WordPress is vulnerable to Stored DOM-Based Cross-Site Scripting via User Display Name in all versions up to, and including, 3.0.4 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with subscriber-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. This is exploitable by Sub",
-      "cvss": {
-        "score": 6.4,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "WordPress"
-      ],
-      "references": [
-        "https://plugins.trac.wordpress.org/browser/bp-better-messages/tags/3.0.3/inc/functions.php#L1117",
-        "https://plugins.trac.wordpress.org/browser/bp-better-messages/tags/3.0.3/inc/functions.php#L2276",
-        "https://plugins.trac.wordpress.org/changeset?old_path=bp-better-messages%2Ftags%2F3.0.3%2Faddons%2Fbuddyboss.php&new_path=bp-better-messages%2Ftags%2F3.0.5%2Faddons%2Fbuddyboss.php",
-        "https://www.wordfence.com/threat-intel/vulnerabilities/id/f4f5a268-7e7f-4dbe-823a-a17ac0f52928?source=cve"
-      ],
-      "published": "2026-09-25T07:16:56.753"
-    },
-    {
-      "id": "CVE-2026-96766",
-      "description": "The GeoDirectory \u2013 WP Business Directory Plugin and Classified Listings Directory plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'business_hours' parameter in all versions up to, and including, 2.8.183 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with subscriber-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. This is possible ",
-      "cvss": {
-        "score": 6.4,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "WordPress"
-      ],
-      "references": [
-        "https://plugins.trac.wordpress.org/browser/geodirectory/tags/2.8.182/includes/business-hours-functions.php#L965",
-        "https://plugins.trac.wordpress.org/browser/geodirectory/tags/2.8.182/includes/class-geodir-ajax.php#L821",
-        "https://plugins.trac.wordpress.org/browser/geodirectory/tags/2.8.182/includes/class-geodir-post-data.php#L1661",
-        "https://plugins.trac.wordpress.org/browser/geodirectory/tags/2.8.182/includes/custom-fields/input-functions-aui.php#L2278",
-        "https://plugins.trac.wordpress.org/changeset?reponame=&old=3710682%40geodirectory&new=3710682%40geodirectory"
-      ],
-      "published": "2026-09-25T07:16:57.017"
-    },
-    {
-      "id": "CVE-2026-13179",
-      "description": "The WP Maps \u2013 Google Maps,OpenStreetMap,Mapbox,Store Locator,Listing,Directory & Filters plugin for WordPress is vulnerable to Stored Cross-Site Scripting via shapes_values Parameter in all versions up to, and including, 4.9.8 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with subscriber-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. The fc-call-nonce n",
-      "cvss": {
-        "score": 6.4,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "WordPress"
-      ],
-      "references": [
-        "https://plugins.trac.wordpress.org/browser/wp-google-map-plugin/tags/4.9.3/assets/js/maps.js#L8477",
-        "https://plugins.trac.wordpress.org/browser/wp-google-map-plugin/tags/4.9.3/modules/drawing/views/manage.php#L32",
-        "https://plugins.trac.wordpress.org/browser/wp-google-map-plugin/tags/4.9.3/modules/shortcode/views/put-wpgmp.php#L1263",
-        "https://plugins.trac.wordpress.org/browser/wp-google-map-plugin/tags/4.9.3/wp-google-map-plugin.php#L605",
-        "https://plugins.trac.wordpress.org/browser/wp-google-map-plugin/tags/4.9.3/wp-google-map-plugin.php#L619"
-      ],
-      "published": "2026-09-25T08:16:39.820"
-    },
-    {
-      "id": "CVE-2026-93656",
-      "description": "The User Profile Builder \u2013 Beautiful User Registration Forms, User Profiles & User Role Editor plugin for WordPress is vulnerable to Stored Cross-Site Scripting via Avatar Field in all versions up to, and including, 4.0.2 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with subscriber-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. This is exploitable via ",
-      "cvss": {
-        "score": 6.4,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "WordPress"
-      ],
-      "references": [
-        "https://plugins.trac.wordpress.org/browser/profile-builder/tags/4.0.2/front-end/default-fields/avatar/avatar.php#L43",
-        "https://plugins.trac.wordpress.org/browser/profile-builder/tags/4.0.2/front-end/default-fields/avatar/avatar.php#L67",
-        "https://plugins.trac.wordpress.org/browser/profile-builder/tags/4.0.2/front-end/default-fields/avatar/avatar.php#L75",
-        "https://plugins.trac.wordpress.org/browser/profile-builder/tags/4.0.2/front-end/default-fields/fields-functions.php#L30",
-        "https://plugins.trac.wordpress.org/browser/profile-builder/tags/4.0.2/front-end/default-fields/upload/upload_helper_functions.php#L286"
-      ],
-      "published": "2026-09-25T08:16:41.570"
-    },
-    {
-      "id": "CVE-2026-93747",
-      "description": "The wpForo Forum plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'telegram' profile field in versions up to, and including, 3.1.6. This is due to insufficient input sanitization and output escaping in the profile_update action \u2014 the raw $_POST['data'] array is copied into a $custom_fields variable before validate() and sanitize() run, both of which operate only on a parallel $user reference, leaving $custom_fields unsanitized when it is persisted via update_custom_field",
-      "cvss": {
-        "score": 6.4,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "WordPress"
-      ],
-      "references": [
-        "https://plugins.trac.wordpress.org/browser/wpforo/tags/3.1.5/classes/Actions.php#L711",
-        "https://plugins.trac.wordpress.org/browser/wpforo/tags/3.1.5/classes/Forms.php#L1074",
-        "https://plugins.trac.wordpress.org/browser/wpforo/tags/3.1.5/classes/Forms.php#L324",
-        "https://plugins.trac.wordpress.org/browser/wpforo/tags/3.1.5/classes/Members.php#L1157",
-        "https://plugins.trac.wordpress.org/browser/wpforo/tags/3.1.5/classes/Members.php#L906"
-      ],
-      "published": "2026-09-25T08:16:41.707"
-    },
-    {
-      "id": "CVE-2026-61784",
-      "description": "xhtml-purifier is a Node.js library to take in raw/unknown/untrusted HTML and output cleaned, purified, trusted HTML. Versions prior to 0.4.3 do not HTML-entity-encode attribute values when serializing its sanitized output. In attributeString() (XHTMLPurifier.js, around line 148) the attribute value is concatenated directly into a double-quoted attribute without encoding. As a result, an attacker-controlled value in any allowed attribute (class, style, title, alt, src, href) can include a double",
-      "cvss": {
-        "score": 6.1,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "Node.js"
-      ],
-      "references": [
-        "https://github.com/cstigler/node-xhtml-purifier/commit/21d461ad23e7bc9b3073693d5b51b9b8662044d3",
-        "https://github.com/cstigler/node-xhtml-purifier/security/advisories/GHSA-j8r4-32c5-33rc"
-      ],
-      "published": "2026-09-24T18:17:16.640"
-    },
-    {
-      "id": "CVE-2026-92212",
-      "description": "The JetFormBuilder \u2014 Dynamic Blocks Form Builder plugin for WordPress is vulnerable to Reflected Cross-Site Scripting via 'jfb_xss' (URL Query Variable) Parameter via Calculated Field in all versions up to, and including, 3.6.5.3 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that execute if they can successfully trick a user into performing an action such as clicking on a link. Exploitatio",
-      "cvss": {
-        "score": 6.1,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "ESET",
-        "WordPress"
-      ],
-      "references": [
-        "https://plugins.trac.wordpress.org/browser/jetformbuilder/tags/3.6.5.3/assets/build/frontend/main.js",
-        "https://plugins.trac.wordpress.org/browser/jetformbuilder/tags/3.6.5.3/includes/blocks/render/calculated-field-render.php#L42",
-        "https://plugins.trac.wordpress.org/browser/jetformbuilder/tags/3.6.5.3/includes/presets/sources/preset-source-query-var.php#L21",
-        "https://plugins.trac.wordpress.org/browser/jetformbuilder/tags/3.6.5.3/templates/fields/calculated-field.php#L31",
-        "https://plugins.trac.wordpress.org/changeset?reponame=&old=3707612%40jetformbuilder&new=3707612%40jetformbuilder"
-      ],
-      "published": "2026-09-25T07:16:55.337"
-    },
-    {
-      "id": "CVE-2026-17577",
-      "description": "The SSL Zen plugin for WordPress is vulnerable to Reflected Cross-Site Scripting via the 'uri' (and 'host') parameters in versions up to, and including, 4.7.42. The ssl_zen_messages::getMessages() function builds the 'token_missmatch' message using base64_decode(sanitize_text_field($_REQUEST['uri'])) and (optionally) base64_decode(sanitize_text_field($_REQUEST['host'])). sanitize_text_field() cannot strip HTML/JavaScript that is hidden inside a base64-encoded blob, and the resulting decoded raw ",
-      "cvss": {
-        "score": 6.1,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "WordPress"
-      ],
-      "references": [
-        "https://plugins.trac.wordpress.org/browser/ssl-zen/tags/4.7.14/ssl_zen/classes/class.ssl_zen_admin.php#L863",
-        "https://plugins.trac.wordpress.org/browser/ssl-zen/tags/4.7.14/ssl_zen/classes/class.ssl_zen_messages.php#L44",
-        "https://plugins.trac.wordpress.org/browser/ssl-zen/tags/4.7.42/ssl_zen/classes/class.ssl_zen_admin.php#L863",
-        "https://plugins.trac.wordpress.org/browser/ssl-zen/tags/4.7.42/ssl_zen/classes/class.ssl_zen_messages.php#L44",
-        "https://plugins.trac.wordpress.org/changeset?reponame=&old=3701590%40ssl-zen&new=3701590%40ssl-zen"
-      ],
-      "published": "2026-09-25T08:16:40.103"
-    },
-    {
-      "id": "CVE-2026-88996",
-      "description": "The WPForms \u2013 AI Form Builder for WordPress \u2013 Contact Forms, Payment Forms, Survey Form, Quiz & More plugin for WordPress is vulnerable to Reflected Cross-Site Scripting via 'page_title' POST Parameter via {page_title} Smart Tag in all versions up to, and including, 2.0.2 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that execute if they can successfully trick a user into performing an act",
-      "cvss": {
-        "score": 6.1,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "WordPress"
-      ],
-      "references": [
-        "https://plugins.trac.wordpress.org/browser/wpforms-lite/tags/2.0.1.1/includes/class-process.php#L1718",
-        "https://plugins.trac.wordpress.org/browser/wpforms-lite/tags/2.0.1.1/src/Frontend/Classic.php#L297",
-        "https://plugins.trac.wordpress.org/browser/wpforms-lite/tags/2.0.1.1/src/SmartTags/SmartTag/PageTitle.php#L33",
-        "https://plugins.trac.wordpress.org/browser/wpforms-lite/tags/2.0.1.1/src/SmartTags/SmartTags.php#L482",
-        "https://plugins.trac.wordpress.org/changeset?reponame=&old=3709178%40wpforms-lite&new=3709178%40wpforms-lite"
-      ],
-      "published": "2026-09-25T08:16:40.670"
-    },
-    {
-      "id": "CVE-2026-12037",
-      "description": "The Asset CleanUp: Page Speed Booster plugin for WordPress is vulnerable to Server-Side Request Forgery in all versions up to, and including, 1.4.0.5 via the 'page_url' parameter. This makes it possible for authenticated attackers, with administrator-level access and above, to make web requests to arbitrary locations originating from the web application and can be used to query and modify information from internal services. This vulnerability is only reachable when the plugin's dom_get_type sett",
-      "cvss": {
-        "score": 5.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:L/I:L/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "WordPress"
-      ],
-      "references": [
-        "https://plugins.trac.wordpress.org/browser/wp-asset-clean-up/tags/1.4.0.3/classes/Admin/MainAdmin.php#L1067",
-        "https://plugins.trac.wordpress.org/browser/wp-asset-clean-up/tags/1.4.0.3/classes/Admin/MainAdmin.php#L1095",
-        "https://plugins.trac.wordpress.org/browser/wp-asset-clean-up/tags/1.4.0.3/classes/Admin/MainAdmin.php#L315",
-        "https://plugins.trac.wordpress.org/browser/wp-asset-clean-up/tags/1.4.0.4/classes/Admin/MainAdmin.php#L1067",
-        "https://plugins.trac.wordpress.org/browser/wp-asset-clean-up/tags/1.4.0.4/classes/Admin/MainAdmin.php#L1095"
-      ],
-      "published": "2026-09-25T08:16:38.490"
-    },
-    {
-      "id": "CVE-2026-92799",
-      "description": "The Online Scheduling and Appointment Booking System \u2013 Bookly plugin for WordPress is vulnerable to Authorization Bypass via PHP Type Juggling in all versions up to, and including, 28.2. This is due to the `postValidateCustomer()` function using a loose PHP inequality operator (`!=`) to compare the session-stored one-time verification code against the attacker-supplied `verification_code` parameter \u2014 a flaw that is further exposed by the booking AJAX controller registering all its methods as `wp",
+      "id": "CVE-2026-86837",
+      "description": "The Bookly WordPress plugin before 28.3 does not properly verify a customer's identity before updating their stored details, allowing unauthenticated attackers who know a customer's primary identifier to overwrite that customer's stored personal information such as name, email and address.",
       "cvss": {
         "score": 5.3,
         "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N",
@@ -1083,78 +715,33 @@
         "WordPress"
       ],
       "references": [
-        "https://plugins.trac.wordpress.org/browser/bookly-responsive-appointment-booking-tool/tags/28.2/frontend/modules/booking/Ajax.php#L1447",
-        "https://plugins.trac.wordpress.org/browser/bookly-responsive-appointment-booking-tool/tags/28.2/frontend/modules/booking/Ajax.php#L15",
-        "https://plugins.trac.wordpress.org/browser/bookly-responsive-appointment-booking-tool/tags/28.2/frontend/modules/booking/Ajax.php#L785",
-        "https://plugins.trac.wordpress.org/browser/bookly-responsive-appointment-booking-tool/tags/28.2/frontend/modules/booking/Ajax.php#L903",
-        "https://plugins.trac.wordpress.org/browser/bookly-responsive-appointment-booking-tool/tags/28.2/lib/UserBookingData.php#L638"
+        "https://wpscan.com/vulnerability/5bfed7cf-5bf3-4a3b-a2b6-9f9d48f52fd5/"
       ],
-      "published": "2026-09-25T07:16:55.607"
+      "published": "2026-09-25T09:17:06.210"
     },
     {
-      "id": "CVE-2026-97732",
-      "description": "IRONMACE Ironshield 1.0.0.167 has a tvk.sys kernel-mode driver that authenticates client executables by checking for expected publisher and root-certificate strings in WIN_CERTIFICATE data (\"IRONMACE Co., Ltd.\" and \"DigiCert Trusted Root G4\") instead of parsing and validating the PKCS signature data. As a result, a local unprivileged attacker may bypass this via crafted certificate data and obtain access to privileged IOCTL functionality.",
-      "cvss": {
-        "score": 5.1,
-        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "DigiCert"
-      ],
-      "references": [
-        "https://github.com/hseoa/ironshield-analysis",
-        "https://store.steampowered.com/eula/2016590_eula_0"
-      ],
-      "published": "2026-09-25T04:17:50.537"
-    },
-    {
-      "id": "CVE-2026-96747",
-      "description": "The client-side field level encryption support in the MongoDB Python Driver can treat a key management endpoint value ending in \".sock\" as a local Unix domain socket path rather than a remote host. A user with write access to the encryption key metadata stored in the database can cause an application using the driver to open connections to local sockets on the application host. Data sent over these connections is limited to the start of a TLS handshake, so no chosen content is transmitted.",
-      "cvss": {
-        "score": 5.0,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:N/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "MongoDB"
-      ],
-      "references": [
-        "https://github.com/mongodb/mongo-python-driver/blob/4.18.2/doc/changelog.rst",
-        "https://github.com/mongodb/mongo-python-driver/releases/tag/4.18.2",
-        "https://github.com/mongodb/mongo-python-driver/security/advisories/GHSA-qx36-8mw2-4r3x"
-      ],
-      "published": "2026-09-24T19:17:20.650"
-    },
-    {
-      "id": "CVE-2026-17602",
-      "description": "The SSL Zen \u2014 SSL Certificate Installer & HTTPS Redirects plugin for WordPress is vulnerable to Directory Traversal in all versions up to, and including, 4.7.42 via the 'file_name' parameter parameter. This makes it possible for authenticated attackers, with administrator-level access and above, to read the contents of arbitrary files on the server, which can contain sensitive information.",
-      "cvss": {
-        "score": 4.9,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:N/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "WordPress"
-      ],
-      "references": [
-        "https://plugins.trac.wordpress.org/browser/ssl-zen/tags/4.7.12/ssl_zen/classes/class.ssl_zen_admin.php#L492",
-        "https://plugins.trac.wordpress.org/browser/ssl-zen/tags/4.7.12/ssl_zen/classes/class.ssl_zen_admin.php#L496",
-        "https://plugins.trac.wordpress.org/browser/ssl-zen/tags/4.7.12/ssl_zen/classes/class.ssl_zen_admin.php#L54",
-        "https://plugins.trac.wordpress.org/browser/ssl-zen/tags/4.7.42/ssl_zen/classes/class.ssl_zen_admin.php#L492",
-        "https://plugins.trac.wordpress.org/browser/ssl-zen/tags/4.7.42/ssl_zen/classes/class.ssl_zen_admin.php#L496"
-      ],
-      "published": "2026-09-25T08:16:40.247"
-    },
-    {
-      "id": "CVE-2026-19775",
-      "description": "The OpenStation \u2014 Desktop Windows, Dock & Virtual Desktops for WP Admin plugin for WordPress is vulnerable to authorization bypass in all versions up to, and including, 1.1.7. This is due to the plugin not properly verifying that a user is authorized to perform an action. This makes it possible for authenticated attackers, with custom-level access and above, to read the title, status, date, permalink, and a 300-character content excerpt of any private, draft, pending, or future post, as well as ",
+      "id": "CVE-2026-91769",
+      "description": "PHP's OpenSSL stream peer verification checks the certificate's subjectAltName entries first and, whenever no entry matches, falls back to the Common Name. RFC 6125 requires the CN to be ignored once the certificate presents any service identity, so a certificate carrying a non-matching DNS SAN was still accepted when its CN matched the requested peer_name. A certificate trusted by the client for one name can therefore be used to impersonate another.",
       "cvss": {
         "score": 4.3,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N",
+        "vector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "OpenSSL"
+      ],
+      "references": [
+        "https://github.com/php/php-src/security/advisories/GHSA-vvx9-73fr-5jjx"
+      ],
+      "published": "2026-09-25T21:17:24.913"
+    },
+    {
+      "id": "CVE-2026-88848",
+      "description": "The MasterStudy LMS WordPress plugin from 1.9 before 3.7.50 does not verify that a course a member asks to enrol in is covered by their membership plan, nor that the plan identifier submitted with the request is one they actually hold, allowing any member to enrol themselves into restricted paid courses outside their plan and beyond the number of courses it entitles them to.",
+      "cvss": {
+        "score": 4.2,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:L/I:L/A:N",
         "severity": "MEDIUM"
       },
       "tier": 3,
@@ -1162,204 +749,31 @@
         "WordPress"
       ],
       "references": [
-        "https://plugins.trac.wordpress.org/browser/desktop-mode/tags/1.0.1/includes/ai-copilot/search.php#L1244",
-        "https://plugins.trac.wordpress.org/browser/desktop-mode/tags/1.0.1/includes/ai-copilot/search.php#L1851",
-        "https://plugins.trac.wordpress.org/browser/desktop-mode/tags/1.0.1/includes/ai-copilot/search.php#L1945",
-        "https://plugins.trac.wordpress.org/browser/desktop-mode/tags/1.0.1/includes/ai-copilot/search.php#L628",
-        "https://plugins.trac.wordpress.org/changeset?reponame=&old=3692599%40desktop-mode&new=3692599%40desktop-mode"
+        "https://wpscan.com/vulnerability/13258868-aeed-4664-8b38-ffb1f802895a/"
       ],
-      "published": "2026-09-25T07:16:53.857"
+      "published": "2026-09-25T09:17:06.323"
     },
     {
-      "id": "CVE-2026-92829",
-      "description": "The Blog2Social: Social Media Auto Post & Scheduler plugin for WordPress is vulnerable to authorization bypass in all versions up to, and including, 9.1.0. This is due to the plugin not properly verifying that a user is authorized to perform an action. This makes it possible for authenticated attackers, with contributor-level access and above, to view, modify, or delete other users' Blog2Social records, including disclosing another user's network authentication IDs and scheduled post content, ov",
+      "id": "CVE-2025-1218",
+      "description": "The mysqlnd wire protocol parser reads fields out of server packets before checking that the packet still holds enough bytes for them. A malicious or compromised MySQL server can send a truncated packet and make the client read past the end of the packet buffer, which is undefined behaviour and can crash the process.",
       "cvss": {
-        "score": 4.3,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N",
-        "severity": "MEDIUM"
+        "score": 3.4,
+        "vector": "CVSS:3.1/AV:A/AC:H/PR:N/UI:N/S:C/C:L/I:N/A:N",
+        "severity": "LOW"
       },
       "tier": 3,
       "matchedProducts": [
-        "WordPress"
-      ],
-      "references": [
-        "https://plugins.trac.wordpress.org/browser/blog2social/tags/9.1.0/includes/Ajax/Get.php#L695",
-        "https://plugins.trac.wordpress.org/browser/blog2social/tags/9.1.0/includes/Ajax/Post.php#L1859",
-        "https://plugins.trac.wordpress.org/browser/blog2social/tags/9.1.0/includes/Ajax/Post.php#L2302",
-        "https://plugins.trac.wordpress.org/browser/blog2social/tags/9.1.0/includes/Ajax/Post.php#L2572",
-        "https://plugins.trac.wordpress.org/browser/blog2social/tags/9.1.0/includes/Ajax/Post.php#L4475"
-      ],
-      "published": "2026-09-25T07:16:55.750"
-    },
-    {
-      "id": "CVE-2026-93794",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb/client: flush dirty data before punching a hole\n\nPunching a hole after a large buffered write may leave the range\nreported as data. Reproduce it with:\n\n  xfs_io -f \\\n    -c \"pwrite -b 3m -S 0x61 0 3m\" \\\n    -c \"fpunch 1m 1m\" \\\n    -c \"seek -h 0\" \\\n    -c \"seek -d 1m\" \\\n    /mnt/test/repro\n\nPunching 1 MiB at offset 1 MiB should produce:\n\n  0          1 MiB       2 MiB       3 MiB\n  |  DATA    |   HOLE    |   DATA    | EOF\n\nI",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "Samba"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/39562a56cdb515f6635c3e7bfe6629439b18a169",
-        "https://git.kernel.org/stable/c/6c265aca08155e519a8f6f6071c59dff4f535f70",
-        "https://git.kernel.org/stable/c/d7d2adcd022baade5cab65ca492ce63421ce3a6e"
-      ],
-      "published": "2026-09-24T17:17:12.160"
-    },
-    {
-      "id": "CVE-2026-93815",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: au1000: move free_irq out of the close-time spinlocked section\n\nau1000_close() calls free_irq() while aup->lock is still held with\nspin_lock_irqsave(). free_irq() can sleep because it takes the IRQ\ndescriptor request mutex, so it does not belong inside the close-time\nspinlocked section.\n\nThis was found by our static analysis tool and then confirmed by manual\nreview of the in-tree au1000_close() .ndo_stop path. The reviewed",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/4536667fba8ddbaff2f2a135080ae6aabf737b5e",
-        "https://git.kernel.org/stable/c/f48763beab4eea41fc480c9702ec6eebe8d75e4f",
-        "https://git.kernel.org/stable/c/fc2233f1ab2a1ca562869bca6987d7477671388c"
-      ],
-      "published": "2026-09-24T17:17:15.010"
-    },
-    {
-      "id": "CVE-2026-97472",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nipv6: addrconf: fix temp address generation after prefix deprecation\n\nWhen a router temporarily deprecates an IPv6 prefix (either by sending a\nRouter Advertisement with Preferred Lifetime = 0 or by letting the\nlifetime expire) and later restores it, the kernel permanently loses its\nability to generate temporary privacy addresses (RFC 8981) for that\nprefix.\n\nThis happens because the address worker attempts to generate a\nreplacem",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/4df5597c65446135362f72880995e8920f058fa0",
-        "https://git.kernel.org/stable/c/bff7b87dfa28a1502c18d0c6f1fadda5162fa854",
-        "https://git.kernel.org/stable/c/e20d8922aa8fe441d291364c96c2179a005b79ea"
-      ],
-      "published": "2026-09-24T17:17:24.273"
-    },
-    {
-      "id": "CVE-2026-97482",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: gadget: goku_udc: avoid NULL deref of dev->driver in INT_USBRESET log\n\ngoku_irq() handles a number of bus events under a single ep0 path.\nIt already guards the gadget driver suspend/resume callbacks against a\nNULL ->driver:\n\n\tif (dev->gadget.speed != USB_SPEED_UNKNOWN\n\t\t\t&& dev->driver\n\t\t\t&& dev->driver->resume) {\n\t\tspin_unlock(&dev->lock);\n\t\tdev->driver->resume(&dev->gadget);\n\t\t...\n\t}\n\nbut the very next branch uncondition",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/10d7fc3008d5b7ec03af8e08927f1d090014c2af",
-        "https://git.kernel.org/stable/c/28d78783a871cdb7a637dcb72452ff7d303430ae",
-        "https://git.kernel.org/stable/c/5bf5e3fba9bc7dfd69701521dbe9809f8ccbdb02"
-      ],
-      "published": "2026-09-24T17:17:25.707"
-    },
-    {
-      "id": "CVE-2026-97483",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: core: hcd: fix possible deadlock in rh control transfers\n\n>From within the SCSI error handler memory allocations must not\ntrigger IO. Handling errors in UAS and the storage driver may\ninvolve resetting a device. The thread doing the reset itself\nrelies on VM magic. However, that is insufficient, as resetting\na device involves resuming it. Resumption as well as resetting\ninvolves conrol transfers to the parent of the device",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/549672a3fb6b36ea408238f89ecf9f41d2da6225",
-        "https://git.kernel.org/stable/c/d5559f43d76b398392b26a15cbc16d731969cd1c",
-        "https://git.kernel.org/stable/c/fff917c85d37a294397c5440a795591ca9d6b602"
-      ],
-      "published": "2026-09-24T17:17:25.820"
-    },
-    {
-      "id": "CVE-2026-61742",
-      "description": "DBHub is a database MCP server for Postgres, MySQL, SQL Server, Oracle, MariaDB, SQLite. Versions prior to 0.22.5 expose an unauthenticated HTTP MCP endpoint when started with the documented HTTP transport mode, for example `--transport http --port 8080`. The HTTP server attempts to protect browser-origin access by checking whether the `Origin` hostname equals the `Host` hostname, then reflecting the validated `Origin` into `Access-Control-Allow-Origin`. This does not stop DNS rebinding. After a",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "PostgreSQL",
         "MySQL",
         "MSSQL"
       ],
       "references": [
-        "https://github.com/bytebase/dbhub/security/advisories/GHSA-fm8p-53ww-hf6w",
-        "https://github.com/bytebase/dbhub/security/advisories/GHSA-fm8p-53ww-hf6w"
+        "https://github.com/php/php-src/security/advisories/GHSA-r6x9-5r99-36j7"
       ],
-      "published": "2026-09-24T18:17:16.173"
+      "published": "2026-09-25T21:17:20.993"
     },
     {
-      "id": "CVE-2026-78393",
-      "description": "The Link Library WordPress plugin before 7.9.6 does not properly escape some parameters before outputting them in the addresses of links it generates on its front-end directory pages, leading to Reflected Cross-Site Scripting which could be used against any visitor, including logged-in administrators.",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "WordPress"
-      ],
-      "references": [
-        "https://wpscan.com/vulnerability/2605888a-195d-4bce-8aac-347710ad1de8/"
-      ],
-      "published": "2026-09-25T07:16:54.327"
-    },
-    {
-      "id": "CVE-2026-78394",
-      "description": "The Link Library WordPress plugin before 7.9.6 does not sanitize a user-supplied destination folder before writing a generated image to disk, allowing users with the Contributor role and above to create directories and write or overwrite image files anywhere the web server can write, including outside the site's document root.\n\nThe written file name is always numeric with a fixed image extension, so executable code cannot be planted this way.",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "WordPress"
-      ],
-      "references": [
-        "https://wpscan.com/vulnerability/9da07b4f-5332-4ba5-8a34-6f2ed303b62c/"
-      ],
-      "published": "2026-09-25T07:16:54.437"
-    },
-    {
-      "id": "CVE-2026-78397",
-      "description": "The Link Library WordPress plugin before 7.9.6 does not validate the destination of a user-supplied URL before falling back to an unprotected fetch when its safe request is rejected, allowing unauthenticated visitors to make the site issue requests to hosts on its internal network and to learn from the response whether an internal service answered.\n\nVersions below 7.8.8 are covered by CVE-2025-68600; this entry covers 7.8.8 through 7.9.5, where that fix was incomplete. Exploitation requires the ",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "WordPress"
-      ],
-      "references": [
-        "https://wpscan.com/vulnerability/7842ef44-582c-40a8-8f3c-cf8abebaf7fb/"
-      ],
-      "published": "2026-09-25T07:16:54.530"
-    },
-    {
-      "id": "CVE-2026-93477",
-      "description": "Improperly Controlled Modification of Dynamically-Determined Object Attributes vulnerability in ash-project ash allows a user to set the value of a private action argument on the bulk destroy and bulk update paths.\n\nAction arguments declared with public?: false are meant to be set only by trusted server-side code (for example via Ash.Changeset.set_private_argument/3) and must not be settable from end-user input. CVE-2026-55736 fixed the non-bulk changeset path to strip private arguments from use",
+      "id": "CVE-2026-97529",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nscsi: qla2xxx: Validate BSG request_len before reading vendor_cmd[]\n\nThe FC BSG transport allocates job->request via memdup_user() using the\nexact user-supplied request_len. For FC_BSG_HST_VENDOR,\nfc_bsg_host_dispatch() only guarantees request_len covers msgcode and\nvendor_id; it does not account for the vendor_cmd[] flexible array.\n\nqla2xxx then reads the command selector vendor_cmd[0] and, in several\nsub-handlers, vendor_cmd[",
       "cvss": {
         "score": null,
         "vector": null,
@@ -1370,13 +784,1061 @@
         "ESET"
       ],
       "references": [
-        "https://cna.erlef.org/cves/CVE-2026-93477.html",
-        "https://github.com/ash-project/ash/commit/6b7ac53a0a2532291eb940d7beaf0fbb2da6fc4f",
-        "https://github.com/ash-project/ash/commit/8c17434803b2e91de522bdfbd0ca918e5d5898df",
-        "https://github.com/ash-project/ash/security/advisories/GHSA-c2p4-p7q6-hr2j",
-        "https://osv.dev/vulnerability/EEF-CVE-2026-93477"
+        "https://git.kernel.org/stable/c/4cf38dd9465736141263ebb63375868311a0ec81",
+        "https://git.kernel.org/stable/c/740f3458a4798af54aaf8cf63e797d407e8b6d3b",
+        "https://git.kernel.org/stable/c/f75bff451a2fac5aed82f9641df1e9a42c5a899d"
       ],
-      "published": "2026-09-25T07:16:56.163"
+      "published": "2026-09-25T11:17:03.087"
+    },
+    {
+      "id": "CVE-2026-97560",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb: client: fix one-byte OOB read in smb2_parse_native_symlink()\n\nWhen parsing a share-root relative native symlink, memcpy copies\nsmb_target+1 (skipping the leading separator) but uses\nstrlen(smb_target)+1 as the length, reading one byte past the\nallocated buffer.\n\nThis fixes the following KASAN splat when accessing an SMB symlink\nwith a target of '\\a\\b':\n\n  BUG: KASAN: slab-out-of-bounds in smb2_parse_native_symlink+0x4f5/0x",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "Ubuntu"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/22a9d0a9ba0c89be57558c1aa80dc60a571dd89c",
+        "https://git.kernel.org/stable/c/2a302fdbaf7dd00d285303c94af8f48321c22993",
+        "https://git.kernel.org/stable/c/cb26524ef4ac28fcfa554c0656e8dc412c38a8ff",
+        "https://git.kernel.org/stable/c/d1f173d28e964ba2c3c4ebe7491d594dc8c77a40"
+      ],
+      "published": "2026-09-25T11:17:06.537"
+    },
+    {
+      "id": "CVE-2026-97605",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nerofs: preserve LZMA decoders on resize failure\n\nThe pool-resize path frees each stream's old decoder before allocating\nits replacement. If an allocation fails after some streams have already\nbeen replaced, the failed stream is put back on the list with state ==\nNULL. z_erofs_lzma_max_dictsize is still advanced as if the whole\npool had been resized.\n\nAn existing LZMA mount can select the broken stream and pass\nNULL to xz_dec_mi",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "ESET"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/0b3c8c39e50249470f00a5f73c288b95a55ab576",
+        "https://git.kernel.org/stable/c/38e9e07ac02a9453a117410776f1502a9980997e",
+        "https://git.kernel.org/stable/c/604ce546e1b9f35b1f45588004f53fac6b2869c1",
+        "https://git.kernel.org/stable/c/617d0d8d199ba1790c94310fd75a22d01c97a8d6"
+      ],
+      "published": "2026-09-25T11:17:14.543"
+    },
+    {
+      "id": "CVE-2026-97948",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\npowerpc/eeh: Fix recursive locking on devices without EEH sensitive driver\n\nThe commit 1010b4c012b0 (\"powerpc/eeh: Make EEH driver device hotplug\nsafe\") refactored the EEH code such that the pci_rescan_remove_lock is\nheld at the beginning of eeh_handle_normal_event() and the\neeh_reset_device() is called with that lock being held. Looks like the\ncommit missed to remove the existing lock/unlock inside eeh_rmv_device()\nwhich is no",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "ESET"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/102e3dc5ab5ba052e294819e83384166b242c1ec",
+        "https://git.kernel.org/stable/c/2920af33d097ca335e492b346af70b72986ad6dc",
+        "https://git.kernel.org/stable/c/85d8eaefc052cf3e5ae2c7bafeda2db68b8898b4",
+        "https://git.kernel.org/stable/c/c5e68706527968282e49de205cc2b935823cb88a"
+      ],
+      "published": "2026-09-25T11:17:22.317"
+    },
+    {
+      "id": "CVE-2026-97951",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nscsi: target: iscsi: Fix hang for aborted WRITE_PENDING commands\n\nWhen a LUN_RESET aborts a WRITE command that is in the\nTRANSPORT_WRITE_PENDING state, the target core sets CMD_T_ABORTED and\nwaits for the frontend to finish processing.\n\nIf the initiator subsequently sends the remaining dataout PDUs,\n__iscsit_check_dataout_hdr() catches the payload, stops the dataout\ntimer if the sequence is final and finally dumps the data.  Ho",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "ESET"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/37f7f54d06c6100511979d6e9c1222b404e3f006",
+        "https://git.kernel.org/stable/c/638cf7c0cf64d5bb5704c3a78b54ae6602f69a32",
+        "https://git.kernel.org/stable/c/d5869dae5080e976d4b03cc33eb7ceb527f242bf",
+        "https://git.kernel.org/stable/c/f6f6351e98c77c27b51763ef52deb2efe4b46ac7"
+      ],
+      "published": "2026-09-25T11:17:22.673"
+    },
+    {
+      "id": "CVE-2026-97952",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsunvdc: unmap LDC cookies when the descriptor send fails\n\n__send_request() maps the request's pages into the LDC channel's map\ntable (ldc_map_sg()), fills in the descriptor and marks it\nVIO_DESC_READY before ringing the doorbell via __vdc_tx_trigger().\nWhen the trigger fails, the error path only prints a message: the\ndescriptor stays READY and the cookies are never unmapped. The\nmapping is normally released in vdc_end_one() whe",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "ESET"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/0c6da21fa35e03fc74f09895433ccd6d4a9c3530",
+        "https://git.kernel.org/stable/c/57835952566f0be9b365a6eb3a70b397a9d5ef47",
+        "https://git.kernel.org/stable/c/ab81a5c1014a38dab0fb402609fd866b0bcb4726",
+        "https://git.kernel.org/stable/c/f3322baa3a8ac87730feae952c1146269d78e098"
+      ],
+      "published": "2026-09-25T11:17:22.790"
+    },
+    {
+      "id": "CVE-2026-97955",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: mana: restore the XDP program pointer when pre-allocation fails\n\nmana_xdp_set() publishes the new program into apc->bpf_prog before it\nallocates anything, because mana_pre_alloc_rxbufs() sizes the buffers\nfrom it via mana_get_rxbuf_cfg(). When that allocation fails the\nfunction returns the error directly, skipping the err_dealloc_rxbuffs\nlabel which is the only place that restores the previous pointer.\n\nThe attach is repor",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "ESET"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/4c46beb807efcc93f5899ebe1f5958248eb296c6",
+        "https://git.kernel.org/stable/c/5b3cdc9abd82b7e49e0f1a21d6eb75466c5ecef8",
+        "https://git.kernel.org/stable/c/9801edfba8dfcdb1da3b0afccdf143e13d646b56"
+      ],
+      "published": "2026-09-25T11:17:23.147"
+    },
+    {
+      "id": "CVE-2026-97966",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nocteontx2-pf: reset HTB scheduler topology before freeing queues\n\nHTB offload programs NIX_AF_TLxX_TOPOLOGY on QoS-allocated scheduler\nqueues via otx2_qos_txschq_set_parent_topology(), but teardown freed\nthose queues without clearing TOPOLOGY.  The AF only restores PARENT and\nSCHEDULE on free, so PRIO_ANCHOR/RR_PRIO settings can survive in the\nshared scheduler pool and affect later allocations.\n\nAdd otx2_qos_reset_schq_topology",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "ESET"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/0aa2dd6eaa347c7aab448df0eec0afcfe7489885",
+        "https://git.kernel.org/stable/c/2df186418e17b30b319cf9ff81aad137692ab107",
+        "https://git.kernel.org/stable/c/621c99be42e3f5cb68a6af9480a255218a761c4e",
+        "https://git.kernel.org/stable/c/ef39fca8508597fa565cf2be72a884a712fb98af"
+      ],
+      "published": "2026-09-25T11:17:24.413"
+    },
+    {
+      "id": "CVE-2026-97986",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nvirtio_input: stop callbacks before unregistering input device\n\nvirtinput_remove() unregisters the input device before resetting the\nvirtio device. virtinput_recv_events() drops vi->lock around input_event(),\nso clearing vi->ready does not stop a callback that passed the entry check.\nIt can still use vi->idev, requeue buffers and kick the queue.\n\nReset first, as virtinput_freeze() already does. With the preceding core\nchange, r",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "ESET"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/5378f7945856a5ed88e6f9850bc7a68f54090135",
+        "https://git.kernel.org/stable/c/8226aeee9b9a94cd699fbb51cb230feff46cfaf2",
+        "https://git.kernel.org/stable/c/a3ba86a270dd87460759214046dc7cbd409ac711",
+        "https://git.kernel.org/stable/c/d7808b37da0a619cf1fa541c2384e783fecc2480"
+      ],
+      "published": "2026-09-25T11:17:26.683"
+    },
+    {
+      "id": "CVE-2026-97987",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nvirtio_input: reset device if input_register_device() fails\n\nProbe marks the device DRIVER_OK with virtio_device_ready() before\ncalling input_register_device(). If registration fails, the error path\ncleared vi->ready and called del_vqs() while the device was still live,\nso the device could keep DMA to queues that were already torn down.\n\nMatch remove/freeze: call virtio_reset_device() on that path before\ntearing down the virtqu",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "ESET"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/668ebfea7ba623450b12fdeaa0d080464d0c0a14",
+        "https://git.kernel.org/stable/c/81489b32a21c9360f8750d1fb600155d27452e19",
+        "https://git.kernel.org/stable/c/8407da8974326c1ffdfe6a5a9bfc8fed3212bbdf",
+        "https://git.kernel.org/stable/c/9a7e107734137f098f9b81e5615aa5a02c5395c7"
+      ],
+      "published": "2026-09-25T11:17:26.797"
+    },
+    {
+      "id": "CVE-2026-97988",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nvhost: invalidate vring access on IOTLB transitions\n\nWhen VIRTIO_F_ACCESS_PLATFORM changes, cached vring pointers and IOTLB\nmetadata are interpreted in a different address space. Keeping them\nacross the transition can leave stale ring mappings in use.\n\nClearing d->iotlb before taking the VQ locks also lets a worker observe\na transient NULL d->iotlb and fall back to d->umem while translating a\ndescriptor.\n\nAdd a common vhost_cle",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "ESET"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/4a454af8e56c1596ada1421ae5eba90c8896c7c7",
+        "https://git.kernel.org/stable/c/e4f4761879a230aa59e569102a6ab9851847d833"
+      ],
+      "published": "2026-09-25T11:17:26.903"
+    },
+    {
+      "id": "CVE-2026-97992",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nvhost-vdpa: protect config_ctx from being freed under the config callback\n\nvhost_vdpa_config_cb() loads v->config_ctx and signals it without taking\na reference and without holding any lock:\n\n\tstruct eventfd_ctx *config_ctx = v->config_ctx;\n\n\tif (config_ctx)\n\t\teventfd_signal(config_ctx);\n\nVHOST_VDPA_SET_CONFIG_CALL replaces that field and drops what is normally\nthe last reference to the old context:\n\n\tswap(ctx, v->config_ctx);\n\n",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "ESET"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/5a075ee2398929d5cc1393666f219c35332becb1",
+        "https://git.kernel.org/stable/c/62be4e3e5f5f947fbf765b914cebdc478f715d12",
+        "https://git.kernel.org/stable/c/bf35c8948ab7a3eaf1f724fa1e870e3f73a1749b",
+        "https://git.kernel.org/stable/c/f4a93f15ed1c8406ba5c8e5b28cafacb2b3bcd11"
+      ],
+      "published": "2026-09-25T11:17:27.343"
+    },
+    {
+      "id": "CVE-2026-97994",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nvhost/vdpa: reject VRING_NUM larger than device max\n\nvhost_vring_set_num() accepts any non-zero power-of-two queue size that\nfits in 16 bits. vhost-vdpa then passes that value to set_vq_num()\nwithout comparing it with get_vq_num_max().\n\nA process with access to /dev/vhost-vdpa-* can therefore configure a\nqueue larger than the device advertises. With vdpa_sim, the worker can\nwalk descriptors beyond the mapped descriptor ring. KA",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "ESET"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/1d09201d81b7d3e276860cc7b7dbf6c6cbe8e9b4",
+        "https://git.kernel.org/stable/c/59522639a7d71cff4e20d594d0b9ea30dd0c77e0",
+        "https://git.kernel.org/stable/c/68232102f20fc961327fb9e0f605a7eaadf030a9",
+        "https://git.kernel.org/stable/c/ccb1dc7c527f8c925925cf92afc76ae590dac311"
+      ],
+      "published": "2026-09-25T11:17:27.637"
+    },
+    {
+      "id": "CVE-2026-98014",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/mlx5: E-Switch, prevent mc_list repopulation during vport disable\n\nIn mlx5_esw_vport_disable(), move esw_apply_vport_rx_mode() ahead\nof esw_vport_change_handle_locked() so vport->allmulti_rule is\nNULL before the change handler observes it.\n\nDuring FW-fatal recovery the disable runs while dev->state ==\nINTERNAL_ERROR. The promisc query inside esw_update_vport_rx_mode()\nfails and returns early, leaving vport->allmulti_rule in",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "ESET"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/668e050429c7ca688cf4e7112f97f0cd269d446b",
+        "https://git.kernel.org/stable/c/69904608e25e8ba58111aadd9210892cf3876201",
+        "https://git.kernel.org/stable/c/72cfcb79026cffb6490f5044153a841d360b0cfc",
+        "https://git.kernel.org/stable/c/c0c6f4ba8a37688f7b4d4044898d88f0450d44c2"
+      ],
+      "published": "2026-09-25T11:17:29.767"
+    },
+    {
+      "id": "CVE-2026-98020",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\npds_core: fix cmd_regs access racing BAR unmap on reset\n\npdsc_reset_prepare() and pdsc_reset_done()'s pdsc_map_bars() error path\nclear/iounmap cmd_regs without devcmd_lock, and\npdsc_legacy_firmware_update()'s download loop derefs cmd_regs after\ndropping and retaking the lock without re-checking. An FLR concurrent\nwith a devlink flash can unmap cmd_regs under an in-flight devcmd,\ncausing a NULL deref or a write to unmapped MMIO.",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "ESET"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/09f831bfe39de5b8026fefb3d106b5cc93272170",
+        "https://git.kernel.org/stable/c/2cc697565fd19b5ba2d100cdd4a20dd6d263abc2",
+        "https://git.kernel.org/stable/c/7980325b2f71e3f65c1323c39792e2455da6fab6",
+        "https://git.kernel.org/stable/c/fa31bd14c5042c6315bb2182c963f03ca6e79ca4"
+      ],
+      "published": "2026-09-25T11:17:30.480"
+    },
+    {
+      "id": "CVE-2026-98024",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ns390/ism: folio_put() after error\n\ndmb->cpu_addr was allocated via folio_alloc(). Use folio_put() instead of\nkfree() in the error exit of ism_alloc_dmb() to avoid slab allocator\ncorruption.\n\nWhile at it, reset dmb->cpu_addr after folio_put to avoid unintentional UAF\nby future callers.",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "ESET"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/60983356fab0c1171c5cb1b56a36349ebadc608e",
+        "https://git.kernel.org/stable/c/890e2ef726904d1d8328e4b9f5090eeb8761b9d1",
+        "https://git.kernel.org/stable/c/907a56ab3eb8a58500a58daa76087f17bb2b6826",
+        "https://git.kernel.org/stable/c/eebb6a9017b55ac05be770cf7b89f9da49505ae7"
+      ],
+      "published": "2026-09-25T11:17:30.997"
+    },
+    {
+      "id": "CVE-2026-98068",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/rds: don't let rds_conn_shutdown() consume a concurrent drop\n\nrds_conn_shutdown() finishes by moving the path from\nRDS_CONN_DISCONNECTING to RDS_CONN_DOWN, and also accepts\nRDS_CONN_ERROR as the starting state of that final transition, so that\na FIN processed in softirq context during the teardown does not derail\nthe shutdown into a noisy error path.\n\nBut consuming that RDS_CONN_ERROR also consumes the shutdown pass that\nca",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "ESET"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/260c6308fe2e19ad519389d44d582e292aecc3af",
+        "https://git.kernel.org/stable/c/2941561395066be856a53626d4ca973dd9c982b2",
+        "https://git.kernel.org/stable/c/4cb9b6d3d31a2dbaa5469981c2c4c03e9acc7aca",
+        "https://git.kernel.org/stable/c/bd1cb197a07111ca8d4f4c21411c56a3c85a9797"
+      ],
+      "published": "2026-09-25T11:17:35.903"
+    },
+    {
+      "id": "CVE-2026-98071",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/rds: clear cp_flags bits individually in rds_conn_path_reset()\n\nrds_conn_path_reset() wipes the whole flag word with a plain\ncp->cp_flags = 0 store.  Every other accessor of that word uses\natomic bitops, and some of them can run concurrently with the reset:\nRDS_LL_SEND_FULL is set from rds_send_xmit() and cleared from the\ntransport completion paths, neither of which holds anything that\nexcludes the shutdown worker.  A plain",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "ESET"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/103c4b13c4f50322910078d1c02f29334a574122",
+        "https://git.kernel.org/stable/c/6b8d7563c28b8112e6e54abe413b028ef3f8c549",
+        "https://git.kernel.org/stable/c/cb62aa8f04655a4df487913949719c0a1266ed73",
+        "https://git.kernel.org/stable/c/ed3ee0ac4aafda50c2f4381eb973beefeb7879ac"
+      ],
+      "published": "2026-09-25T11:17:36.327"
+    },
+    {
+      "id": "CVE-2026-98072",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/rds: use wq_has_sleeper() in release_in_xmit()\n\nrelease_in_xmit() clears RDS_IN_XMIT with clear_bit_unlock() and then\nchecks waitqueue_active() to decide whether anyone needs waking.\nclear_bit_unlock() is only a release operation: it orders the\ncritical section before the bit clear, but does not order the\nsubsequent plain load of the wait queue head after it.  The waiter\nside does the mirror image - it adds itself to the wa",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "ESET"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/3764627b30a283e611e652c4a2bb8cdc74a75a99",
+        "https://git.kernel.org/stable/c/6d0c8b7073913011459cf968cbbadd341e166bc3",
+        "https://git.kernel.org/stable/c/a269795107f45adc95975a83324f8fef40bec4ce",
+        "https://git.kernel.org/stable/c/ed7ee0cd0e136d02f87f13181b1a89880463c7e9"
+      ],
+      "published": "2026-09-25T11:17:36.450"
+    },
+    {
+      "id": "CVE-2026-98084",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: backtracking shouldn't clear outer frame R1-R5 for callbacks\n\nWhen processing calls to bpf_loop() verifier marks R1 (and R4) as\nprecise. R1 tracks loop iterations number and because of the\n'callback_depth < R1' mechanics in check_helper_call() must be marked\nprecise. However, precision propagation for R1 was broken,\nwhen bpf_loop() call was verified on a second iteration.\n\nConsider the following verification trace:\n- main:",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "ESET"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/e3e4f66cc4b72333d0886ae2673c360248987889",
+        "https://git.kernel.org/stable/c/f83890dfed9efc5e19df1dbc1ad707a142936923"
+      ],
+      "published": "2026-09-25T11:17:37.980"
+    },
+    {
+      "id": "CVE-2026-98097",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ntipc: Dont send random pad bytes in RESET/ACTIVATE messages\n\nThe interface name is passed in a fixed length (TIPC_MAX_IF_NAME) buffer.\nReplace the strcpy(data, l->if_name) with memcpy() so that the\npad bytes are actually written (l->if_name[] is zero padded)\nrather than sending random bytes from the skb to the remote system.\n\nReplace two other strcpy() with strscpy().",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "ESET"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/48033a89356b8ae21a94db70c79bb6fcc91a23c2",
+        "https://git.kernel.org/stable/c/4ab2977323d5f068a872126f7818d1aeb9e9ca0d",
+        "https://git.kernel.org/stable/c/81c600c26302a27852ed8b19c5f2f647ea3555c9",
+        "https://git.kernel.org/stable/c/bee1459e57f2e0bd240c62f35c0a284291e27971"
+      ],
+      "published": "2026-09-25T11:17:39.490"
+    },
+    {
+      "id": "CVE-2026-98138",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nntfs: do not mark the volume clean in sync_fs when errors were recorded\n\nntfs_put_super() and the remount-read-only path both clear the dirty bit\nonly when NVolErrors(vol) is false. ntfs_sync_fs() clears it\nunconditionally, so any sync() on a volume that recorded an error marks\nthat volume clean. A volume without this set is then seen as not needing\nrecovery and it does not run one, so whatever went wrong is never repaired.\n\nTh",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "ESET"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/0e4c839905418d55bafe571a92533a1d1ac7b0a8",
+        "https://git.kernel.org/stable/c/ca1f9933eff777a604eb664d0f9ae433b8664cbf"
+      ],
+      "published": "2026-09-25T11:17:45.273"
+    },
+    {
+      "id": "CVE-2026-98158",
+      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nppp_async: drop the errored frame instead of resetting its headroom\n\nppp_receive_nonmp_frame() prepends a two-byte direction tag before running\nthe pass/active BPF filters:\n\n\t*(__be16 *)skb_push(skb, 2) = htons(PPP_FILTER_INBOUND_TAG);\n\nNothing on the receive path guarantees those two bytes of headroom. The\nframe-error path in ppp_async's process_input_packet() resets a reused skb's\nheadroom to zero while claiming to restore it",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "ESET"
+      ],
+      "references": [
+        "https://git.kernel.org/stable/c/0c53eb14975f029abd6b26896a460f0d2aaefe6b",
+        "https://git.kernel.org/stable/c/717137221c7d90e7c98bda9a370c9da6cbf015e5",
+        "https://git.kernel.org/stable/c/8dc5d98a16fa23c00999aecf10018c9f69fa5bf4",
+        "https://git.kernel.org/stable/c/d0fc3dabfe67caf084e7119ceb2ee23f5ad2f2da"
+      ],
+      "published": "2026-09-25T11:17:47.510"
+    },
+    {
+      "id": "CVE-2026-67236",
+      "description": "RabbitMQ is a messaging and streaming broker. From 4.2.0 until 4.2.8 and 4.3.2, a successful POST /login caused is_authorized/2 to set an auth cookie containing base64-encoded username:password credentials without HttpOnly, Secure, SameSite, or expiration protections. Because base64 is encoding rather than encryption, an attacker with same-origin cross-site scripting, an HTTP-readable network position, or local access to the browser cookie store could recover the actual login credentials; older ",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "RabbitMQ"
+      ],
+      "references": [
+        "https://github.com/rabbitmq/rabbitmq-server/commit/df9e7f4c0afd311a672705f020d301efad355745",
+        "https://github.com/rabbitmq/rabbitmq-server/commit/edf1fbc7217aaf736955d2e13c9534901a2e0778",
+        "https://github.com/rabbitmq/rabbitmq-server/releases/tag/v4.2.8",
+        "https://github.com/rabbitmq/rabbitmq-server/releases/tag/v4.3.2",
+        "https://github.com/rabbitmq/rabbitmq-server/security/advisories/GHSA-88vh-gx85-p36m"
+      ],
+      "published": "2026-09-25T16:17:27.053"
+    },
+    {
+      "id": "CVE-2026-66071",
+      "description": "RabbitMQ is a messaging and streaming broker. From 3.13.0 until 3.13.15 and 4.0.22 and 4.1.11 and 4.2.6 and 4.3.1, Atom exhaustion: OAuth2 JWT tag: scope values. extractscopes/1 parses scopes of the form .tag: and calls rabbitdatacoercion:toatom() to convert to a tag atom. The token signature is verified first, so the attacker cannot forge scopes , but in IdP configurations where scope content is user-influenced, each login with a novel tag value leaks one In deployments where users can influenc",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "RabbitMQ"
+      ],
+      "references": [
+        "https://github.com/rabbitmq/rabbitmq-server/commit/9a44124d9c932d6fc7d2a3b945e5a143e547bcb6",
+        "https://github.com/rabbitmq/rabbitmq-server/commit/c5690583a53789a3bf00cca508b43e8246db0d11",
+        "https://github.com/rabbitmq/rabbitmq-server/releases/tag/v4.2.6",
+        "https://github.com/rabbitmq/rabbitmq-server/releases/tag/v4.3.1",
+        "https://github.com/rabbitmq/rabbitmq-server/security/advisories/GHSA-89p2-f5cv-x5cg"
+      ],
+      "published": "2026-09-25T17:17:09.987"
+    },
+    {
+      "id": "CVE-2026-66073",
+      "description": "RabbitMQ is a messaging and streaming broker. From 3.13.0 until 3.13.15 and 4.0.20 and 4.1.11 and 4.2.6, Atom table exhaustion via management API node field. pUT /api/queues/:vhost/:name (and the exchanges and bindings endpoints) accepts a node JSON field. The value goes through rabbitnodes:make \u2192 listtoatom with no cluster membership check first. Each unique value permanently leaks one atom. A March 2026 refactoring (ea61ce2563) introduced safe helpers in rabbitmgmtnodes.erl (parsenodename, saf",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "RabbitMQ"
+      ],
+      "references": [
+        "https://github.com/rabbitmq/rabbitmq-server/commit/7f64311471840e68f8cae09e4d4fdc4c8aca9229",
+        "https://github.com/rabbitmq/rabbitmq-server/releases/tag/v4.2.6",
+        "https://github.com/rabbitmq/rabbitmq-server/security/advisories/GHSA-6v53-r759-jrvx"
+      ],
+      "published": "2026-09-25T17:17:10.157"
+    },
+    {
+      "id": "CVE-2026-67222",
+      "description": "RabbitMQ is a messaging and streaming broker. From 3.13.0 until 3.13.15, 4.0.20, 4.1.11, and 4.2.6, mechanisms/1 applied list_to_atom/1 to every colon-delimited token in an attacker-controlled auth_mechanism value, permanently consuming Erlang VM atoms and allowing the node to be crashed with a large request. Exploitation requires the Shovel or Federation plugin to be in use, and setting auth_mechanism requires the policymaker tag. This issue is fixed in versions 3.13.15, 4.0.20, 4.1.11, and 4.2",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "RabbitMQ",
+        "Erlang/OTP"
+      ],
+      "references": [
+        "https://github.com/rabbitmq/rabbitmq-server/releases/tag/v4.2.6",
+        "https://github.com/rabbitmq/rabbitmq-server/security/advisories/GHSA-85jr-6rr2-j73r"
+      ],
+      "published": "2026-09-25T17:17:10.517"
+    },
+    {
+      "id": "CVE-2026-67223",
+      "description": "RabbitMQ is a messaging and streaming broker. The advisory establishes affected 3.13, 4.0, 4.1, 4.2, and 4.3 maintenance lines but contains conflicting first-fixed versions for the 3.13, 4.0, and 4.1 lines. fill/2 substitutes ${username} into user_dn_pattern without RFC 4514 DN escaping, allowing a crafted username to alter the LDAP bind DN and potentially select a different directory entry. Exploitation requires rabbitmq_auth_backend_ldap with a user_dn_pattern containing ${username}, a directo",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "RabbitMQ"
+      ],
+      "references": [
+        "https://github.com/rabbitmq/rabbitmq-server/commit/ad3ca47accd313a4a0dbcbbe17bf60fc8f4b2614",
+        "https://github.com/rabbitmq/rabbitmq-server/commit/b54056e59b7fd3a2d7f07dfaba95f026e138eee8",
+        "https://github.com/rabbitmq/rabbitmq-server/releases/tag/v4.2.9",
+        "https://github.com/rabbitmq/rabbitmq-server/releases/tag/v4.3.3",
+        "https://github.com/rabbitmq/rabbitmq-server/security/advisories/GHSA-9x7r-g78c-5835"
+      ],
+      "published": "2026-09-25T17:17:10.670"
+    },
+    {
+      "id": "CVE-2026-67225",
+      "description": "RabbitMQ is a messaging and streaming broker. From 3.13.0 until 3.13.15, 4.0.20, 4.1.11, and 4.2.6, the stream protocol stored the FrameMax value negotiated during the Tune handshake but did not compare it with an inbound frame's declared length before buffering the frame. With the stream plugin enabled, a remote client could therefore cause excessive memory pressure and denial of service by declaring an oversized frame. This issue is fixed in versions 3.13.15, 4.0.20, 4.1.11, and 4.2.6.",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "RabbitMQ"
+      ],
+      "references": [
+        "https://github.com/rabbitmq/rabbitmq-server/releases/tag/v4.2.6",
+        "https://github.com/rabbitmq/rabbitmq-server/security/advisories/GHSA-c8c4-gvv4-8j3q"
+      ],
+      "published": "2026-09-25T17:17:10.827"
+    },
+    {
+      "id": "CVE-2026-67226",
+      "description": "RabbitMQ is a messaging and streaming broker. From 4.0.0 until 4.0.22 and 4.1.14 and 4.2.7, Admin-only atom exhaustion: PUT /api/users tags list. settags/2 maps rabbitdatacoercion:toatom/1 over the user's tags list. The 20 MB management body limit fits ~3-4M short tag strings. An administrator can crash the node in a single request by creating a user (or importing definitions) with ~1M unique tag administrator. This issue is fixed in versions 4.0.22 and 4.1.14 and 4.2.7.",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "RabbitMQ"
+      ],
+      "references": [
+        "https://github.com/rabbitmq/rabbitmq-server/commit/86601c5a6d1c7e41060e3dbd165c88bdc91266ee",
+        "https://github.com/rabbitmq/rabbitmq-server/releases/tag/v4.2.7",
+        "https://github.com/rabbitmq/rabbitmq-server/security/advisories/GHSA-34c7-r8w9-5wv8",
+        "https://github.com/rabbitmq/rabbitmq-server/security/advisories/GHSA-34c7-r8w9-5wv8"
+      ],
+      "published": "2026-09-25T17:17:11.000"
+    },
+    {
+      "id": "CVE-2026-67234",
+      "description": "RabbitMQ is a messaging and streaming broker. From 4.2.0 until 4.2.8 and 4.3.2, get_auth_mechanism/1 used term_to_binary/1 on the strict_auth_mechanism or preferred_auth_mechanism atom when clearing the corresponding cookie, producing a non-ASCII cookie name that violates RFC 6265 and can prevent the browser from deleting the preference. The issue is not directly exploitable for code execution or data exfiltration; its security relevance is limited to stale authentication-mechanism preferences p",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "RabbitMQ"
+      ],
+      "references": [
+        "https://github.com/rabbitmq/rabbitmq-server/commit/149cb59d618cefa83c6deb02dbbb1e8a7a2bc968",
+        "https://github.com/rabbitmq/rabbitmq-server/commit/baac0aaf170efeb4f124ee36b8417274fa8dcc1a",
+        "https://github.com/rabbitmq/rabbitmq-server/releases/tag/v4.2.8",
+        "https://github.com/rabbitmq/rabbitmq-server/releases/tag/v4.3.2",
+        "https://github.com/rabbitmq/rabbitmq-server/security/advisories/GHSA-q286-p3m9-j69f"
+      ],
+      "published": "2026-09-25T17:17:11.743"
+    },
+    {
+      "id": "CVE-2026-67237",
+      "description": "RabbitMQ is a messaging and streaming broker. From 4.2.0 until 4.2.8 and 4.3.2, set_token_auth/2 inserted a bearer token from the Authorization header or access_token cookie into OAuth bootstrap JavaScript without escaping, allowing attacker-controlled token content to execute JavaScript in the management UI origin. The endpoint is exposed before authentication only when management.oauth_enabled is true, and exploitation through the cookie path additionally requires the attacker to plant an acce",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "RabbitMQ"
+      ],
+      "references": [
+        "https://github.com/rabbitmq/rabbitmq-server/commit/5cd6d841d84450324a4613501ed917d98828af23",
+        "https://github.com/rabbitmq/rabbitmq-server/commit/a8041d528c1a71af4cb75ade247ed082fe6b83fb",
+        "https://github.com/rabbitmq/rabbitmq-server/releases/tag/v4.2.8",
+        "https://github.com/rabbitmq/rabbitmq-server/releases/tag/v4.3.2",
+        "https://github.com/rabbitmq/rabbitmq-server/security/advisories/GHSA-2rf7-f6r6-8rwh"
+      ],
+      "published": "2026-09-25T17:17:11.883"
+    },
+    {
+      "id": "CVE-2026-67242",
+      "description": "RabbitMQ is a messaging and streaming broker. From 4.2.0 until 4.2.9 and 4.3.3, OAuth2 isinteger(Exp) guard skips token-expiry checks for float exp. validatetokenexpiry/1 (lines 208-214) and expirytimestamp/1 (138-144) both guard with 'when isinteger(Exp)' and fall through to ok/never for float values. josejwt:verify validates only the signature, not exp. With float exp, no expiry validation occurs anywhere in the If the IdP emits exp as a JSON float (RFC 7519 permits fractional NumericDate), bo",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "RabbitMQ"
+      ],
+      "references": [
+        "https://github.com/rabbitmq/rabbitmq-server/commit/d10a369a96658d0fba1050bd43c732e58fcf28fd",
+        "https://github.com/rabbitmq/rabbitmq-server/commit/f189a8824c9efbce46bd9438fcdbda4521cfc923",
+        "https://github.com/rabbitmq/rabbitmq-server/releases/tag/v4.2.9",
+        "https://github.com/rabbitmq/rabbitmq-server/releases/tag/v4.3.3",
+        "https://github.com/rabbitmq/rabbitmq-server/security/advisories/GHSA-rrj4-g94f-rqj9"
+      ],
+      "published": "2026-09-25T17:17:12.337"
+    },
+    {
+      "id": "CVE-2026-67406",
+      "description": "RabbitMQ is a messaging and streaming broker. From 4.0.0 until 4.3.3, 4.2.9, 4.1.14, and 4.0.23, Shovel does not format state logged by the crash reporter and can leave unencrypted credentials in a crash dump file. the shovel worker genserver processes does not implement the formatstatus/2 callback. When these processes crash (e.g., due to network partitions, connection failures), the OTP SASL error handler writes the full process state , including plaintext AMQP passwords and URIs , to the erro",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "RabbitMQ"
+      ],
+      "references": [
+        "https://github.com/rabbitmq/rabbitmq-server/releases/tag/v4.2.9",
+        "https://github.com/rabbitmq/rabbitmq-server/releases/tag/v4.3.3",
+        "https://github.com/rabbitmq/rabbitmq-server/security/advisories/GHSA-q44f-9vc5-grh7"
+      ],
+      "published": "2026-09-25T17:17:12.477"
+    },
+    {
+      "id": "CVE-2026-67407",
+      "description": "RabbitMQ is a messaging and streaming broker. From 4.0.0 until 4.3.3 and 4.2.9 and 4.1.14 and 4.0.23, Incomplete fix for CVE-2026-44838: escaperegexchar/1 does not escape -, leaving room for an MQTT topic permission bypass. the CVE-2026-44838 fix made expandtopicpermission/2 escape regex metacharacters in expanded topic-permission variables (escaperegex(V)), but escaperegexchar/1 escapes \\ ^ $ . | ? + ( ) [ ] { } and omits -. When a topic permission template places {clientid} inside a [...] char",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "RabbitMQ"
+      ],
+      "references": [
+        "https://github.com/rabbitmq/rabbitmq-server/releases/tag/v4.2.9",
+        "https://github.com/rabbitmq/rabbitmq-server/releases/tag/v4.3.3",
+        "https://github.com/rabbitmq/rabbitmq-server/security/advisories/GHSA-q46v-hrvq-hp24"
+      ],
+      "published": "2026-09-25T17:17:12.620"
+    },
+    {
+      "id": "CVE-2026-67409",
+      "description": "RabbitMQ is a messaging and streaming broker. From 3.13.0 until 4.3.3, 4.2.9, 4.1.14, 4.0.23, and 3.13.18, JWKS Fetch Ignores HTTP Response Status Code - Signing Key Destruction Causes Authentication DoS (CWE-252). the JWKS key fetching mechanism in uaajwt.erl does not validate the HTTP response status code when downloading signing keys from the OAuth2 provider's JWKS endpoint. Non-200 responses (including 4xx and 5xx errors) are processed identically to successful responses. When the JWKS endpo",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "RabbitMQ",
+        "Erlang/OTP"
+      ],
+      "references": [
+        "https://github.com/rabbitmq/rabbitmq-server/releases/tag/v4.2.9",
+        "https://github.com/rabbitmq/rabbitmq-server/releases/tag/v4.3.3",
+        "https://github.com/rabbitmq/rabbitmq-server/security/advisories/GHSA-qw3h-qqm9-jrw8",
+        "https://github.com/rabbitmq/rabbitmq-server/security/advisories/GHSA-qw3h-qqm9-jrw8"
+      ],
+      "published": "2026-09-25T17:17:12.943"
+    },
+    {
+      "id": "CVE-2026-67410",
+      "description": "RabbitMQ is a messaging and streaming broker. From 4.2.0 until 4.3.3 and 4.2.9, OAuth2 Client Secret Exposed via Unauthenticated JavaScript Endpoint (CWE-200). when OAuth2 authentication is enabled for the RabbitMQ Management UI and the configured flow, IDP use a client secret, the oauthclientsecret configuration value is included in the JavaScript served by the unauthenticated endpoint /js/oidc-oauth/bootstrap.js. Any user who can reach the management UI port can retrieve the OAuth2 client secr",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "RabbitMQ"
+      ],
+      "references": [
+        "https://github.com/rabbitmq/rabbitmq-server/commit/60a85d3605ebf94fd234497242812547d441d457",
+        "https://github.com/rabbitmq/rabbitmq-server/commit/869f800998334bb363f2ad046f58de9caedc409e",
+        "https://github.com/rabbitmq/rabbitmq-server/releases/tag/v4.2.9",
+        "https://github.com/rabbitmq/rabbitmq-server/releases/tag/v4.3.3",
+        "https://github.com/rabbitmq/rabbitmq-server/security/advisories/GHSA-f9f2-q3jf-wfj3"
+      ],
+      "published": "2026-09-25T17:17:13.093"
+    },
+    {
+      "id": "CVE-2026-67415",
+      "description": "RabbitMQ is a messaging and streaming broker. From 4.2.0 until 4.2.9 and 4.3.3, the Shovel parameter parser converted attacker-controlled runtime parameter values into non-garbage-collected Erlang atoms before bounding them or checking a fixed allowlist. Exploitation requires network access to the Management HTTP API, valid credentials with both the management and policymaker tags, permission to set Shovel runtime parameters on a vhost, and the rabbitmq_shovel and rabbitmq_shovel_management plug",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "RabbitMQ",
+        "Erlang/OTP"
+      ],
+      "references": [
+        "https://github.com/rabbitmq/rabbitmq-server/releases/tag/v4.2.9",
+        "https://github.com/rabbitmq/rabbitmq-server/releases/tag/v4.3.3",
+        "https://github.com/rabbitmq/rabbitmq-server/security/advisories/GHSA-8mpg-qw9r-m5cr",
+        "https://github.com/rabbitmq/rabbitmq-server/security/advisories/GHSA-8mpg-qw9r-m5cr"
+      ],
+      "published": "2026-09-25T17:17:13.690"
+    },
+    {
+      "id": "CVE-2026-67419",
+      "description": "RabbitMQ is a messaging and streaming broker. Prior to 4.3.5, an authenticated user who can bind a queue to a topic exchange and publish to it can use consecutive # segments in a binding key to make both topic matchers revisit the same trie-node and routing-key-suffix states without memoization. The matcher materializes duplicate destinations before deduplication, causing combinatorial CPU work and memory pressure that can disrupt routing for all tenants. This vulnerability is fixed in 4.3.5.",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "RabbitMQ"
+      ],
+      "references": [
+        "https://github.com/rabbitmq/rabbitmq-server/commit/c5ed7c4e97e02be688730803604cc7a88dbe4864",
+        "https://github.com/rabbitmq/rabbitmq-server/releases/tag/v4.3.5",
+        "https://github.com/rabbitmq/rabbitmq-server/security/advisories/GHSA-h964-v5mf-22cq",
+        "https://github.com/rabbitmq/rabbitmq-server/security/advisories/GHSA-h964-v5mf-22cq"
+      ],
+      "published": "2026-09-25T17:17:13.830"
+    },
+    {
+      "id": "CVE-2026-67420",
+      "description": "RabbitMQ is a messaging and streaming broker. From 3.13.0 until 3.13.19, 4.0.24, 4.1.15, 4.2.10, and 4.3.5, RabbitMQ OAuth credential refresh retains revoked runtime tags. when an existing AMQP connection refreshes from an OAuth token that grants the impersonator tag to a valid same-username token that no longer grants that tag, RabbitMQ updates the OAuth backend implementation (token/scopes/expiry) but leaves the connection's runtime #user.tags unchanged. rabbitaccesscontrol:checkuserid/2 then ",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "RabbitMQ"
+      ],
+      "references": [
+        "https://github.com/rabbitmq/rabbitmq-server/commit/5de287d213765ca592ff5848ad2f6b9b98ee6772",
+        "https://github.com/rabbitmq/rabbitmq-server/releases/tag/v4.3.5",
+        "https://github.com/rabbitmq/rabbitmq-server/security/advisories/GHSA-86fm-44m9-rqjx"
+      ],
+      "published": "2026-09-25T17:17:13.973"
+    },
+    {
+      "id": "CVE-2026-67421",
+      "description": "RabbitMQ is a messaging and streaming broker. From 3.13.0 until 3.13.19, 4.0.24, 4.1.15, 4.2.10, and 4.3.5, RabbitMQ Management rendered an AMQP authorization-error reason containing an attacker-controlled queue name as HTML when the OAuth management UI was enabled. Exploitation requires an attacker with queue configure permission, a management administrator who can see but cannot read that queue, and the administrator clicking Get Message(s). A queue name containing a base element can then reta",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "RabbitMQ"
+      ],
+      "references": [
+        "https://github.com/rabbitmq/rabbitmq-server/commit/ff595eaaa6d4f580f72fa04801ffd35f48c46027",
+        "https://github.com/rabbitmq/rabbitmq-server/releases/tag/v4.3.5",
+        "https://github.com/rabbitmq/rabbitmq-server/security/advisories/GHSA-6256-27fm-4rgr",
+        "https://github.com/rabbitmq/rabbitmq-server/security/advisories/GHSA-6256-27fm-4rgr"
+      ],
+      "published": "2026-09-25T17:17:14.120"
+    },
+    {
+      "id": "CVE-2026-11871",
+      "description": "The Team Members  WordPress plugin through 9.2 does not perform any authorization or visibility check in an unauthenticated AJAX action that returns full team member records by ID, allowing unauthenticated attackers to enumerate and disclose details, including email addresses and phone numbers, of team members the administrator has not published publicly.",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://wpscan.com/vulnerability/9ca61aee-c36a-41c5-b4e7-1626c5720362/"
+      ],
+      "published": "2026-09-26T07:17:00.570"
+    },
+    {
+      "id": "CVE-2026-16591",
+      "description": "The WP Directory Kit WordPress plugin before 1.5.8 does not sanitize and escape some of its category and location fields before outputting them in page attributes, allowing users with a WP Directory Kit WordPress plugin before 1.5.8-specific listing-management role (and without the unfiltered_html capability) to perform Stored Cross-Site Scripting attacks that execute for any visitor of the affected page.",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://wpscan.com/vulnerability/7b5600f1-1024-4329-97de-6347420e46c1/"
+      ],
+      "published": "2026-09-26T07:17:01.847"
+    },
+    {
+      "id": "CVE-2026-19708",
+      "description": "The File Manager WordPress plugin before 8.0.5 does not prevent unauthenticated users from downloading its database backup archives, and in some cases writes them under a fixed filename, allowing unauthenticated attackers to retrieve a full database dump including every user's email address and password hash on servers that do not apply the directory's .htaccess file.",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://wpscan.com/vulnerability/a0cbfd20-7741-44d0-96c4-054a7952f81b/"
+      ],
+      "published": "2026-09-26T07:17:02.397"
+    },
+    {
+      "id": "CVE-2026-84095",
+      "description": "The wp-review-slider-pro WordPress plugin before 12.7.12 does not perform a capability check on one of its AJAX handlers, and the nonce protecting it is generated for every visitor, allowing any authenticated user, such as a subscriber, to store arbitrary review content which is later output without escaping on public pages, leading to Stored Cross-Site Scripting.",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://wpscan.com/vulnerability/f788d50b-f507-4821-968e-9ea4f5ab71bd/"
+      ],
+      "published": "2026-09-26T07:17:02.520"
+    },
+    {
+      "id": "CVE-2026-84096",
+      "description": "The wp-review-slider-pro WordPress plugin before 12.7.12 does not perform a capability check on the AJAX handler that saves its review submission forms, and the nonce protecting it is generated for every visitor, allowing any authenticated user, such as a subscriber, to overwrite a live form with field values that are output without escaping on public pages, leading to Stored Cross-Site Scripting.",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://wpscan.com/vulnerability/b30dd50c-6600-4ad6-8195-7b0606b29c9d/"
+      ],
+      "published": "2026-09-26T07:17:02.623"
+    },
+    {
+      "id": "CVE-2026-84097",
+      "description": "The wp-review-slider-pro WordPress plugin before 12.7.12 does not sanitize a value stored through one of its AJAX handlers, which lacks a capability check, before using it in a SQL statement, allowing any authenticated user, such as a subscriber, to perform SQL injection attacks whose results are then returned to unauthenticated visitors.",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://wpscan.com/vulnerability/6d51f9c7-3140-4261-954b-8fc497587359/"
+      ],
+      "published": "2026-09-26T07:17:02.723"
+    },
+    {
+      "id": "CVE-2026-85081",
+      "description": "The File Manager WordPress plugin before 8.0.5, FileOrganizer  WordPress plugin before 1.2.1, File Manager Pro  WordPress plugin before 2.1.3 do not correctly validate the origin of window messages received by the file browser they load on their admin screens, accepting any origin that is a leading string prefix of the site's own address, which allows an unauthenticated attacker to run arbitrary JavaScript in the session of a logged-in administrator who visits a page under their control.\n\nThe de",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://wpscan.com/vulnerability/3c5f9c52-e609-45aa-b441-491e15b3f4b8/"
+      ],
+      "published": "2026-09-26T07:17:02.823"
+    },
+    {
+      "id": "CVE-2026-89237",
+      "description": "The Bluff Post WordPress plugin through 1.1.1 does not sanitise and escape parameters before using them as identifiers in a SQL query, allowing unauthenticated attackers to append additional SQL and extract sensitive information from the database.",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://wpscan.com/vulnerability/92355b31-995b-4151-a414-51d3430d0fd6/"
+      ],
+      "published": "2026-09-26T07:17:02.923"
+    },
+    {
+      "id": "CVE-2026-92411",
+      "description": "The WP Delicious  WordPress plugin before 1.10.8 does not validate or escape the HTML tag name taken from user-supplied recipe block data before rendering it on the front end, allowing users with the Contributor role and above to inject arbitrary HTML tags, including script tags, which execute when the recipe page is viewed.",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://wpscan.com/vulnerability/f76a4694-8073-41fe-bb49-4073e6e95ac3/"
+      ],
+      "published": "2026-09-26T07:17:03.023"
+    },
+    {
+      "id": "CVE-2026-96524",
+      "description": "The MCP Server for WordPress  WordPress plugin before 1.8.2 does not correctly verify the WordPress REST API nonce for cookie-authenticated requests when a condition an attacker can influence is present, allowing unauthenticated attackers to perform administrator-only actions, including creating a new administrator account, by tricking a logged-in administrator into visiting a crafted page.",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://wpscan.com/vulnerability/d8e97a77-b70f-41f0-8d1e-0d50b6d878c6/"
+      ],
+      "published": "2026-09-26T07:17:03.130"
+    },
+    {
+      "id": "CVE-2026-96525",
+      "description": "The MCP Server for WordPress  WordPress plugin before 1.8.2 does not perform an ownership or sufficient capability check on its workflow create, update and delete REST routes, allowing users with the Contributor role to modify, delete and create site-wide workflow configuration, including workflows created by administrators.",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://wpscan.com/vulnerability/f814fb88-4198-4ba0-972c-658a1d672289/"
+      ],
+      "published": "2026-09-26T07:17:03.233"
+    },
+    {
+      "id": "CVE-2026-96526",
+      "description": "The MCP Server for WordPress  WordPress plugin before 1.8.2 does not perform an object-level authorization check on one of its workflow REST routes, allowing users with the Contributor role to disclose the title and publication status of any post, page or custom post type, including other users' private, draft, pending and scheduled content.",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://wpscan.com/vulnerability/79c3ae87-fc63-42b1-bb68-c7420060f9d4/"
+      ],
+      "published": "2026-09-26T07:17:03.333"
+    },
+    {
+      "id": "CVE-2026-96531",
+      "description": "The Optimole  WordPress plugin before 4.2.13 does not escape unrecognized attributes of its video-player block before rendering them onto the block's wrapper element, allowing users with the Author role and above to store an event-handler attribute that executes scripts in the browser of any user, such as an administrator, who views the post.",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://wpscan.com/vulnerability/15ad5748-8c2b-4c60-9818-57790f7033c7/"
+      ],
+      "published": "2026-09-26T07:17:03.430"
+    },
+    {
+      "id": "CVE-2026-96532",
+      "description": "The Testimonials Widget WordPress plugin through 4.0.4 does not perform a capability or ownership check when handling its front-end testimonial submission form, allowing unauthenticated users to modify or create arbitrary posts, including overwriting the title, content and author of any existing post.",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://wpscan.com/vulnerability/d1372d8a-6654-4da7-a07e-87b18a0b0db9/"
+      ],
+      "published": "2026-09-26T07:17:03.527"
+    },
+    {
+      "id": "CVE-2026-96533",
+      "description": "The Testimonials Widget WordPress plugin through 4.0.4 does not validate a user-supplied URL before fetching it server-side and storing the response as a public file, allowing unauthenticated users to make the server issue requests to internal services and read the responses.",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://wpscan.com/vulnerability/062284b2-b55d-42e2-8dda-ced7845d7df0/"
+      ],
+      "published": "2026-09-26T07:17:03.630"
     }
   ]
 }
