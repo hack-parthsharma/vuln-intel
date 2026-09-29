@@ -1,55 +1,377 @@
 {
-  "scanTime": "2026-09-28 10:02:06 UTC",
-  "totalMatched": 16,
+  "scanTime": "2026-09-29 10:01:05 UTC",
+  "totalMatched": 42,
   "productsMonitored": 147,
   "tierCounts": {
-    "0": 1,
-    "1": 3,
-    "2": 6,
-    "3": 6
+    "0": 2,
+    "1": 19,
+    "2": 9,
+    "3": 12
   },
   "vulnerabilities": [
     {
-      "id": "CVE-2026-100870",
-      "description": "Sylius versions before 1.12.25, 1.13.17, 1.14.20, 2.1.16, and 2.2.9 build administrator password-reset links using the request Host header without validation, allowing unauthenticated attackers to redirect reset tokens to attacker-controlled domains. Attackers can request password resets for known administrator email addresses with forged Host headers to intercept valid reset tokens and take over administrator accounts.",
+      "id": "CVE-2026-102334",
+      "description": "Nginx Proxy Manager through 2.16.0 lacks rate-limiting on authentication endpoints, allowing unauthenticated attackers to make unlimited password guesses against any account. Attackers can brute-force login credentials via POST /api/tokens and subsequently guess TOTP codes via POST /api/tokens/2fa to gain full session access and administrative control.",
       "cvss": {
-        "score": 8.8,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+        "score": 7.4,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N",
         "severity": "HIGH"
       },
       "tier": 0,
       "matchedProducts": [
+        "Nginx"
+      ],
+      "references": [
+        "https://github.com/NginxProxyManager/nginx-proxy-manager",
+        "https://github.com/NginxProxyManager/nginx-proxy-manager/blob/v2.16.0/backend/app.js#L15-L58",
+        "https://github.com/NginxProxyManager/nginx-proxy-manager/blob/v2.16.0/backend/internal/2fa.js#L196-L240",
+        "https://github.com/NginxProxyManager/nginx-proxy-manager/blob/v2.16.0/backend/internal/token.js#L154-L182",
+        "https://github.com/NginxProxyManager/nginx-proxy-manager/pull/5908"
+      ],
+      "published": "2026-09-28T23:17:01.837"
+    },
+    {
+      "id": "CVE-2026-91154",
+      "description": "Missing Authentication for Critical Function (CWE-306) in the product cache revalidation Server Action (src/app/actions.ts, revalidateProducts) in MarcosCamara01 Ecommerce Template before commit ec97209 allows a remote, unauthenticated attacker to force expiration of the entire storefront product cache at will. The file declares \"use server\" at file scope, so every exported function compiles into a POST-invokable Server Action; revalidateProducts calls updateTag(\"products\") with no session or ro",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 0,
+      "matchedProducts": [
+        "PostgreSQL"
+      ],
+      "references": [
+        "https://github.com/MarcosCamara01/ecommerce-template/commit/ec97209e6c7663cba7b5164468d6946cbfe2f19a",
+        "https://secur0.com/en/cna/cve-list/cve-2026-91154-missing-authentication-ecommerce-template-cache-revalidation-dos"
+      ],
+      "published": "2026-09-28T16:17:17.110"
+    },
+    {
+      "id": "CVE-2026-101894",
+      "description": "The decompress package for Node.js extracts archives. Prior to 10.2.2 and 11.1.4, the default decompress(input, output) API relies on lexical containment checks that do not account for the kernel following a planted symlink chain. An attacker can supply a crafted archive containing chained symlink entries so that a later entry resolves outside the output directory. This allows files outside output to be read or written, and overwriting startup scripts or configuration can lead to remote code exe",
+      "cvss": {
+        "score": 9.1,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
+        "severity": "CRITICAL"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Node.js"
+      ],
+      "references": [
+        "https://github.com/XhmikosR/decompress/commit/5f4b2f64abb31bbaf1fef8975b595fd7df2558d8",
+        "https://github.com/XhmikosR/decompress/commit/f6c88c668216d6a12c6cecf4fe0b6c70bf77050a",
+        "https://github.com/XhmikosR/decompress/releases/tag/v10.2.2",
+        "https://github.com/XhmikosR/decompress/releases/tag/v11.1.4",
+        "https://github.com/XhmikosR/decompress/security/advisories/GHSA-hrh2-vp3x-79xf"
+      ],
+      "published": "2026-09-28T17:17:48.830"
+    },
+    {
+      "id": "CVE-2026-102361",
+      "description": "mall4j through 4.0 contains a missing authentication vulnerability in the PUT /user/updatePwd endpoint that allows unauthenticated attackers to reset any storefront account password. Attackers can supply a target username in the request body to overwrite passwords without verification, enabling account takeover and access to orders and personal data.",
+      "cvss": {
+        "score": 9.1,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
+        "severity": "CRITICAL"
+      },
+      "tier": 1,
+      "matchedProducts": [
         "ESET"
       ],
       "references": [
-        "https://github.com/Sylius/Sylius",
-        "https://github.com/Sylius/Sylius/commit/1255d75b20d3d88a5e5c8d46791504134c838480",
-        "https://github.com/Sylius/Sylius/pull/19215",
-        "https://github.com/Sylius/Sylius/releases/tag/v2.2.9",
-        "https://github.com/Sylius/Sylius/security/advisories/GHSA-77w3-2367-7xvq"
+        "https://github.com/LinYuanyi1/cve-request-poc/blob/114b3f0d149e50a7678f591bf8043399fc9ac96c/mall4j/A01_updatepwd_account_takeover.py",
+        "https://github.com/gz-yami/mall4j",
+        "https://github.com/gz-yami/mall4j/blob/ffc672fc1aa4320ce02d0b93853bb456ae0a4dae/yami-shop-api/src/main/java/com/yami/shop/api/controller/UserRegisterController.java#L78-L100",
+        "https://www.vulncheck.com/advisories/mall4j-through-4.0-missing-authentication-in-password-update-endpoint"
       ],
-      "published": "2026-09-27T13:16:38.240"
+      "published": "2026-09-29T00:17:03.183"
     },
     {
-      "id": "CVE-2026-88828",
-      "description": "The Blacklist Manager for WooCommerce WordPress plugin from 1.3.0 to 2.3.1 does not enforce its user blocking on every authentication path, allowing the holder of an account the site owner has blocked to keep authenticating with that account's privileges, without the block being enforced or recorded.",
+      "id": "CVE-2026-12268",
+      "description": "ManageEngine DDI Central versions below 6201 are vulnerable to\u00a0PowerShell command injection in Windows DNS SPF/TXT record push leading to remote code execution.",
       "cvss": {
-        "score": 5.4,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N",
-        "severity": "MEDIUM"
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "PowerShell",
+        "ManageEngine"
+      ],
+      "references": [
+        "https://www.manageengine.com/dns-dhcp-ipam/security-updates/security-updates.html"
+      ],
+      "published": "2026-09-28T11:16:44.063"
+    },
+    {
+      "id": "CVE-2026-12269",
+      "description": "Zohocorp ManageEngine DDI Central 6.2.0 build below 6201 had a Keepalived configuration injection vulnerability in the HA configuration workflow. This issue could allow an authenticated operator-level user to modify the Keepalived configuration and potentially execute commands as root on the DDI Central host.",
+      "cvss": {
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "ManageEngine"
+      ],
+      "references": [
+        "https://www.manageengine.com/dns-dhcp-ipam/security-updates/cve-2026-12269.html"
+      ],
+      "published": "2026-09-28T11:16:44.177"
+    },
+    {
+      "id": "CVE-2026-12264",
+      "description": "Zohocorp ManageEngine DDI Central versions before 6201 are vulnerable to Arbitrary file write via HA Failover Config sync upload leading to remote code execution.",
+      "cvss": {
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "ManageEngine"
+      ],
+      "references": [
+        "https://www.manageengine.com/dns-dhcp-ipam/security-updates/security-updates.html"
+      ],
+      "published": "2026-09-28T12:17:36.597"
+    },
+    {
+      "id": "CVE-2026-12265",
+      "description": "Zohocorp ManageEngine DDI Central versions before 6201 are vulnerable to\u00a0Insufficient access control in HA failover endpoint leading to destructive PostgreSQL database operations.",
+      "cvss": {
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "PostgreSQL",
+        "ManageEngine"
+      ],
+      "references": [
+        "https://www.manageengine.com/dns-dhcp-ipam/security-updates/security-updates.html"
+      ],
+      "published": "2026-09-28T13:17:21.550"
+    },
+    {
+      "id": "CVE-2026-87741",
+      "description": "The ConvertPlus plugin for WordPress is vulnerable to Deserialization of Untrusted Data in all versions up to, and including, 3.6.3 via the style parameter of the cp_display_preview_modal AJAX action. The vulnerability exists because the action's nonce guard is gated behind an isset() check and fails open when the cp_admin_page_nonce parameter is omitted entirely, no capability check is performed on the callback, and sanitize_text_field() \u2014 applied to the $style value before it is concatenated d",
+      "cvss": {
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
       },
       "tier": 1,
       "matchedProducts": [
         "WordPress"
       ],
       "references": [
-        "https://wpscan.com/vulnerability/52804421-8988-4d8a-9143-04683d05873d/"
+        "https://convertpro.net",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/286b4dde-974d-4bb5-8a7e-57c849beaab1?source=cve"
       ],
-      "published": "2026-09-28T07:17:21.063"
+      "published": "2026-09-28T20:17:11.377"
     },
     {
-      "id": "CVE-2026-89133",
-      "description": "wolfSSL versions 5.9.2 and earlier contain a flaw in the X.509 certificate validation logic where it fails to properly enforce NameConstraints extensions when there is an unconstrained CA tier between a name-constrained intermediate CA and the leaf certificate. wolfSSL incorrectly accepted certificates for hostnames they shouldn't be allowed to cover, due to a chain-walking state-machine bug that resets the validation state when encountering an intermediate without NameConstraints, thereby bypas",
+      "id": "CVE-2026-12267",
+      "description": "ManageEngine DDI Central versions below 6201 are vulnerable to\u00a0Command injection in Windows DNS Query Resolution Policy name field leading to remote code execution.",
+      "cvss": {
+        "score": 7.2,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "ManageEngine"
+      ],
+      "references": [
+        "https://www.manageengine.com/dns-dhcp-ipam/security-updates/security-updates.html"
+      ],
+      "published": "2026-09-28T11:16:43.943"
+    },
+    {
+      "id": "CVE-2026-18417",
+      "description": "The native BSD-socket layer recorded a pending asynchronous socket error by type-punning it into struct net_context's void user_data field (ctx->user_data = INT_TO_POINTER(-status) in zsock_accepted_cb(), zsock_received_cb(), zsock_connected_cb() and zsock_close_ctx() in subsys/net/lib/sockets/sockets_inet.c), reading it back with POINTER_TO_INT(). That same field is owned by the network stack for listening TCP contexts: net_tcp_accept() stores the parent context pointer there and the TCP core p",
+      "cvss": {
+        "score": 6.5,
+        "vector": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+        "severity": "MEDIUM"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "ESET"
+      ],
+      "references": [
+        "https://github.com/zephyrproject-rtos/zephyr/commit/ef370a57d07637aaee8cec7b0bcebf4002ac8f54",
+        "https://github.com/zephyrproject-rtos/zephyr/security/advisories/GHSA-p8r8-8mw8-3wf9"
+      ],
+      "published": "2026-09-29T00:17:04.207"
+    },
+    {
+      "id": "CVE-2026-18746",
+      "description": "parse_write_op() in subsys/net/lib/lwm2m/lwm2m_message_handling.c handles inbound CoAP WRITE/CREATE requests that carry a Block1 option. For the first block of a transfer it called init_block_ctx() and then immediately stored the peer-selected block size with block_ctx->ctx.block_size = block_size before inspecting the return code. init_block_ctx() sets the caller's pointer to NULL and returns -ENOMEM when no entry of the static block1_contexts[] pool is free or timed out, so that store derefere",
+      "cvss": {
+        "score": 5.9,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H",
+        "severity": "MEDIUM"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "ESET"
+      ],
+      "references": [
+        "https://github.com/zephyrproject-rtos/zephyr/commit/e61790f776863032925e96819f84cafc9a958b8a",
+        "https://github.com/zephyrproject-rtos/zephyr/security/advisories/GHSA-4q9g-2mhh-m7w7"
+      ],
+      "published": "2026-09-29T00:17:04.347"
+    },
+    {
+      "id": "CVE-2026-101098",
+      "description": "A security vulnerability has been detected in ag-ui-protocol ag-ui up to 2026-09-23. Affected by this issue is the function readAllBytes of the file JdkAgentHttpHandler.java of the component HTTP Handler. Such manipulation leads to resource consumption. The attack can be launched remotely. The pull request to fix this issue awaits acceptance.",
+      "cvss": {
+        "score": 4.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:L",
+        "severity": "MEDIUM"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Oracle Java"
+      ],
+      "references": [
+        "https://github.com/ag-ui-protocol/ag-ui/",
+        "https://github.com/ag-ui-protocol/ag-ui/issues/2441",
+        "https://github.com/ag-ui-protocol/ag-ui/pull/2671",
+        "https://vuldb.com/cve/CVE-2026-101098",
+        "https://vuldb.com/submit/934960"
+      ],
+      "published": "2026-09-28T17:17:48.480"
+    },
+    {
+      "id": "CVE-2026-102414",
+      "description": "pbkdf2 through 3.1.6 re-hashes passwords longer than the digest's block size on every iteration in its JavaScript fallback (lib/sync.js). A password longer than the block size (64 bytes, or 128 bytes for sha384 and sha512) is passed to HMAC as the key on every iteration, and HMAC hashes such keys in full each time. Cost is therefore O(iterations \u00d7 password length), and a long password can block the event loop. The fallback is used by pbkdf2Sync and pbkdf2 on Node.js before 0.12, on Bun (1.0.0 th",
+      "cvss": {
+        "score": 3.7,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:L",
+        "severity": "LOW"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Node.js"
+      ],
+      "references": [
+        "https://github.com/browserify/pbkdf2/commit/493d8d8",
+        "https://github.com/browserify/pbkdf2/issues/82",
+        "https://github.com/browserify/pbkdf2/security/advisories/GHSA-477h-4r7f-fvrx"
+      ],
+      "published": "2026-09-29T04:17:55.180"
+    },
+    {
+      "id": "CVE-2026-82935",
+      "description": "mH-DEVELOPER smart home module ships with an end-of-life, unsupported Debian 8 and Node.js runtime v17.0.1 in its production firmware. This exposes the device to publicly known vulnerabilities that will not receive security patches. An attacker could exploit these known flaws to execute arbitrary code, access sensitive data, or cause a denial of service on the device.\nVulnerable components were updated or hardened, if update was not possible in version\u00a03.0.30",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Node.js"
+      ],
+      "references": [
+        "https://cert.pl/posts/2026/09/CVE-2026-82928/",
+        "https://www.fif.com.pl/pl/strona-glowna/1367-mh-developer.html"
+      ],
+      "published": "2026-09-28T13:17:23.993"
+    },
+    {
+      "id": "CVE-2026-96538",
+      "description": "WarehousePG (WHPG) 7.x before 7.6.0-WHPG is affected by a missing authorization vulnerability (CWE-862) in the built-in server-side file functions pg_file_write(text,text,bool), pg_file_rename(text,text,text), pg_file_unlink(text), and pg_logdir_ls(). These functions are executable by any authenticated database role with no GRANT required, because the REVOKE that contrib/adminpack applies to the equivalent functions was never carried over to WHPG core when their catalog entries were repointed to",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "PostgreSQL"
+      ],
+      "references": [
+        "https://github.com/warehouse-pg/warehouse-pg/pull/305",
+        "https://www.enterprisedb.com/docs/security/advisories/cve202696538"
+      ],
+      "published": "2026-09-28T15:17:25.357"
+    },
+    {
+      "id": "CVE-2026-101902",
+      "description": "Axios is a promise-based HTTP client for the browser and Node.js. From 0.27.2 until 0.34.0 and 1.20.0, Axios default-instance requests that omit an explicit method can read an inherited method value from Object.prototype. If another vulnerability in the same process pollutes Object.prototype.method, calls such as axios.request({ url }) and axios({ url }) can send a state-changing HTTP method instead of the expected default GET. Axios does not create the prototype pollution source. This is a read",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Node.js"
+      ],
+      "references": [
+        "https://github.com/axios/axios/commit/d19040bda7a8be2f82c3c6e1a5bc03917daee39a",
+        "https://github.com/axios/axios/pull/11141",
+        "https://github.com/axios/axios/releases/tag/v0.34.0",
+        "https://github.com/axios/axios/releases/tag/v1.20.0",
+        "https://github.com/axios/axios/security/advisories/GHSA-9fr6-4gfg-395g"
+      ],
+      "published": "2026-09-28T18:17:18.397"
+    },
+    {
+      "id": "CVE-2026-101904",
+      "description": "Axios is a promise-based HTTP client for the browser and Node.js. From 1.0.0 until 1.20.0, the dispatchRequest function normalizes inherited Object.prototype.headers from a replacement request configuration. A separate same-process prototype-pollution flaw sets Object.prototype.headers, and trusted request interceptors return a new ordinary configuration without an own headers property. After the interceptor chain, dispatchRequest resolves the inherited headers during normalization. Downstream r",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Node.js"
+      ],
+      "references": [
+        "https://github.com/axios/axios/commit/d19040bda7a8be2f82c3c6e1a5bc03917daee39a",
+        "https://github.com/axios/axios/pull/11141",
+        "https://github.com/axios/axios/releases/tag/v1.20.0",
+        "https://github.com/axios/axios/security/advisories/GHSA-j8rh-479h-cp32",
+        "https://github.com/axios/axios/security/advisories/GHSA-j8rh-479h-cp32"
+      ],
+      "published": "2026-09-28T18:17:18.740"
+    },
+    {
+      "id": "CVE-2026-101909",
+      "description": "Axios is a promise-based HTTP client for the browser and Node.js. From 0.28.0 until 0.34.0 and 1.15.1 until 1.20.0, ToFormData processes inherited serialization options and visitor properties supplied through prototype pollution. A separate same-process prototype-pollution flaw supplies inherited dots, indexes, metaTokens, maxDepth, visitor, or Blob values before object serialization. The inherited options alter toFormData field naming and data interpretation, maxDepth can force request failure,",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Node.js"
+      ],
+      "references": [
+        "https://github.com/axios/axios/commit/d19040bda7a8be2f82c3c6e1a5bc03917daee39a",
+        "https://github.com/axios/axios/commit/d29be181f85f6fe93397a07b1f69606d9622637b",
+        "https://github.com/axios/axios/pull/11141",
+        "https://github.com/axios/axios/releases/tag/v0.34.0",
+        "https://github.com/axios/axios/releases/tag/v1.20.0"
+      ],
+      "published": "2026-09-28T18:17:19.680"
+    },
+    {
+      "id": "CVE-2026-100371",
+      "description": "InvoicePlane is a self-hosted open source application for managing invoices, clients, and payments. In version 1.7.2, an authorization guard to Users::change_password(), was added to address a previous authorization flaw that allowed a secondary administrator (user_type=1, user_id != 1) to directly change the password of the primary administrator (user_id=1) through users/change_password/{id}. That remediation, however, protects only the direct password-change operation. It does not protect the ",
       "cvss": {
         "score": null,
         "vector": null,
@@ -60,170 +382,277 @@
         "ESET"
       ],
       "references": [
-        "https://github.com/wolfSSL/wolfssl/pull/10687"
+        "https://github.com/InvoicePlane/InvoicePlane/commit/8616fa45a61c1694b55bb9116e293269a0ced06a",
+        "https://github.com/InvoicePlane/InvoicePlane/pull/1638",
+        "https://github.com/InvoicePlane/InvoicePlane/security/advisories/GHSA-77hm-22wp-96wp"
       ],
-      "published": "2026-09-27T10:16:58.900"
+      "published": "2026-09-28T21:17:11.653"
     },
     {
-      "id": "CVE-2026-94417",
-      "description": "When an application enables both OCSP and CRL revocation checking on one WOLFSSL_CTX or certificate manager, wolfSSL skips the CRL check for any peer certificate that carries no Authority Information Access OCSP URL, and accepts a certificate the loaded CRL lists as revoked. The soft-fail policy for a missing responder collapses the OCSP result onto success before the code decides whether the CRL fallback is still needed, so \"no responder exists\" becomes indistinguishable from \"the responder ans",
+      "id": "CVE-2026-92142",
+      "description": "Apache Karaf exposes a JMX MBeanServer guarded by\u00a0KarafMBeanServerGuard, which enforces role-based access control (RBAC) on MBean operations invoked over the remote JMX connector (RMI registry/server, enabled by default on ports 1099 and 44444). The guard is implemented as a java.lang.reflect.Proxy\u00a0around the MBeanServer, and only forwards a fixed list of operation names to the RBAC check, defined in\u00a0MBeanInvocationHandler#guarded:\n\n\n\u00a0 private final List<String> guarded = Collections.unmodifiabl",
       "cvss": {
         "score": null,
         "vector": null,
         "severity": "UNKNOWN"
       },
       "tier": 1,
+      "matchedProducts": [
+        "Oracle Java"
+      ],
+      "references": [
+        "https://karaf.apache.org/security/cve-2026-92142.txt"
+      ],
+      "published": "2026-09-29T09:17:10.497"
+    },
+    {
+      "id": "CVE-2026-102276",
+      "description": "The brace-expansion library generates arbitrary strings containing a common prefix and suffix. Prior to 1.1.19, 2.1.5, 3.0.7, and 5.0.10, crafted brace patterns can exhaust the native stack in parseCommaParts because parseCommaParts recursively processes the remainder once per brace group and uses push.apply to pass every element of a very large comma-part array as a function argument. Patterns containing many comma-separated brace groups trigger the recursive path, while the large array trigger",
+      "cvss": {
+        "score": 7.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "Node.js"
+      ],
+      "references": [
+        "https://github.com/juliangruber/brace-expansion/commit/0bcbfc0a5928c3073d48f42999d1ce4fc1c42fbc",
+        "https://github.com/juliangruber/brace-expansion/commit/316359e6019c39b3254c8ba8e25dc586a480652c",
+        "https://github.com/juliangruber/brace-expansion/commit/5171e681c0922b7ae8bfaf9a331e309107be6edc",
+        "https://github.com/juliangruber/brace-expansion/commit/6735c94873ca570bcdd6a0690033bdd3126379d3",
+        "https://github.com/juliangruber/brace-expansion/security/advisories/GHSA-6j4f-fj2g-mc7p"
+      ],
+      "published": "2026-09-28T21:17:16.033"
+    },
+    {
+      "id": "CVE-2026-102278",
+      "description": "The brace-expansion library generates arbitrary strings containing a common prefix and suffix. Prior to 1.1.20, 2.1.6, 3.0.8, and 5.0.11, deeply nested brace groups cause expand_() to recurse once per nesting level at comma-member and single-set expansion sites, exhausting the native stack before output limits can apply and potentially terminating the Node.js process. expand_ performs uncontrolled recursion for nested brace alternatives and single-part sets. deeply nested brace groups supplied a",
+      "cvss": {
+        "score": 7.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "Node.js"
+      ],
+      "references": [
+        "https://github.com/juliangruber/brace-expansion/commit/1efee7c397c191da6287a78ec19512476a966a7b",
+        "https://github.com/juliangruber/brace-expansion/commit/935d78f32f335b2ff76578e5c5e877d31ae9888c",
+        "https://github.com/juliangruber/brace-expansion/commit/de84f144e9816f30e25fc8179e2e1249ab6df0db",
+        "https://github.com/juliangruber/brace-expansion/security/advisories/GHSA-qhr7-859c-m2p7"
+      ],
+      "published": "2026-09-28T21:17:16.517"
+    },
+    {
+      "id": "CVE-2026-102281",
+      "description": "Nest is a framework for building scalable Node.js server-side applications. Prior to 11.2.4 and 12.0.2, a single message with a deeply nested object in its pattern can terminate a NestJS microservice using the TCP or RabbitMQ transport. ServerTCP#handleMessage and ServerRMQ#handleMessage pass a client-controlled non-string pattern to JSON.stringify to derive the handler lookup key; sufficiently deep nesting throws RangeError: Maximum call stack size exceeded, and the unhandled promise rejection ",
+      "cvss": {
+        "score": 7.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "RabbitMQ",
+        "Node.js"
+      ],
+      "references": [
+        "https://github.com/nestjs/nest/commit/aa97b5144d8dff1ce700aac521eb86449a679d6f",
+        "https://github.com/nestjs/nest/commit/e9dcd4c7ac64361fbfe79461da85f5b3fc3e02da",
+        "https://github.com/nestjs/nest/pull/17737",
+        "https://github.com/nestjs/nest/releases/tag/v11.2.4",
+        "https://github.com/nestjs/nest/releases/tag/v12.0.2"
+      ],
+      "published": "2026-09-28T22:17:32.050"
+    },
+    {
+      "id": "CVE-2026-101878",
+      "description": "Bitwarden Server 2025.6.0 before 2026.5.0 declares the @ExternalId parameter of the User_ReadBySsoUserOrganizationIdExternalId stored procedure as NVARCHAR(50) while the column it queries stores NVARCHAR(300), silently truncating the SSO login identifier on SQL Server deployments and allowing a user whose identity-provider identifier begins with another organization member's full 50-character identifier to authenticate as that member and obtain a victim-scoped access token.",
+      "cvss": {
+        "score": 7.5,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "MSSQL"
+      ],
+      "references": [
+        "https://github.com/bitwarden/server/commit/27ae3d5455f723975fac03819eaeba8710666bc4",
+        "https://github.com/bitwarden/server/pull/7501",
+        "https://github.com/bitwarden/server/releases/tag/v2026.5.0",
+        "https://sanjokkarki.com.np/blog/bitwarden-sso-externalid-truncation",
+        "https://www.vulncheck.com/advisories/bitwarden-server-authentication-bypass-via-sso-identifier-truncation"
+      ],
+      "published": "2026-09-29T02:16:54.990"
+    },
+    {
+      "id": "CVE-2026-96326",
+      "description": "The HT Contact Form \u2013 Drag & Drop Form Builder for WordPress plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the Rich Text Editor Field in all versions up to, and including, 2.10.2 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+      "cvss": {
+        "score": 7.2,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N",
+        "severity": "HIGH"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://plugins.trac.wordpress.org/changeset/3714946/",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/782bcc9b-222e-4fee-a9c4-563e64dda1fd?source=cve"
+      ],
+      "published": "2026-09-29T02:16:55.957"
+    },
+    {
+      "id": "CVE-2026-102335",
+      "description": "Nginx Proxy Manager through 2.16.0 fails to restrict the advanced_config field to administrators, allowing non-admin users with manage permissions to inject arbitrary nginx directives. Attackers can inject malicious nginx configuration such as alias directives to serve arbitrary files or control routing for their assigned hosts.",
+      "cvss": {
+        "score": 7.1,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:N",
+        "severity": "HIGH"
+      },
+      "tier": 2,
       "matchedProducts": [
         "Nginx"
       ],
       "references": [
-        "https://github.com/wolfSSL/wolfssl/pull/11500"
+        "https://github.com/NginxProxyManager/nginx-proxy-manager",
+        "https://github.com/NginxProxyManager/nginx-proxy-manager/blob/v2.16.0/README.md#L36",
+        "https://github.com/NginxProxyManager/nginx-proxy-manager/blob/v2.16.0/backend/internal/user.js#L52-L62",
+        "https://github.com/NginxProxyManager/nginx-proxy-manager/blob/v2.16.0/backend/templates/proxy_host.conf#L28",
+        "https://github.com/NginxProxyManager/nginx-proxy-manager/issues/5749"
       ],
-      "published": "2026-09-27T10:16:59.700"
+      "published": "2026-09-28T23:17:02.007"
     },
     {
-      "id": "CVE-2026-101049",
-      "description": "Heym before 0.0.53 fails to verify Slack request signatures when trigger nodes lack credential IDs or have empty signing secrets. Remote unauthenticated attackers can send forged Slack events to known webhook URLs to trigger workflows with the owner's credentials.",
+      "id": "CVE-2026-102333",
+      "description": "httpdbg before 2.2.1 fails to validate URL schemes in recorded HTTP request URLs rendered as clickable links in the web interface. Attackers controlling traffic recorded by httpdbg can supply javascript: scheme URLs that execute malicious scripts in the application origin when clicked, allowing access to captured request and response data including headers and tokens.",
       "cvss": {
-        "score": 6.5,
-        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:H/A:N",
+        "score": 6.1,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
         "severity": "MEDIUM"
       },
       "tier": 2,
       "matchedProducts": [
-        "Slack"
+        "Apache HTTP Server"
       ],
       "references": [
-        "https://github.com/heymrun/heym/commit/341d1012367cd74f85c617e1c98dd49e3fcb5e83",
-        "https://github.com/heymrun/heym/security/advisories/GHSA-pm6h-x3h5-j38h",
-        "https://www.vulncheck.com/advisories/heym-before-0.0.53-slack-webhook-signature-verification-bypass"
+        "https://github.com/cle-b/httpdbg",
+        "https://github.com/cle-b/httpdbg/blob/v2.2.0/httpdbg/hooks/recordhttp2.py#L88-L97",
+        "https://github.com/cle-b/httpdbg/blob/v2.2.0/httpdbg/webapp/static/index.htm#L302",
+        "https://github.com/cle-b/httpdbg/commit/121845b41c19ddaf30b51be0797bc2ff4847d8b3",
+        "https://github.com/cle-b/httpdbg/issues/220"
       ],
-      "published": "2026-09-27T17:16:55.967"
+      "published": "2026-09-28T23:17:01.677"
     },
     {
-      "id": "CVE-2026-84744",
-      "description": "The WPForms Lite WordPress plugin from 1.5.0.1 to 2.0.2 does not remove shortcode delimiters from submitted field values before writing them back into the rendered form, allowing unauthenticated users to execute arbitrary shortcodes registered on the site and read the details of attachments belonging to non-public posts.",
-      "cvss": {
-        "score": 6.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "WordPress"
-      ],
-      "references": [
-        "https://wpscan.com/vulnerability/99c4a9fc-114e-4d39-80aa-0e9544125794/"
-      ],
-      "published": "2026-09-28T07:17:20.827"
-    },
-    {
-      "id": "CVE-2026-86838",
-      "description": "The Bookly WordPress plugin before 28.3 does not validate client-supplied booking quantity values on the server before computing the appointment total, allowing unauthenticated users to reduce the total to zero and book paid services for free while bypassing the payment step.",
+      "id": "CVE-2026-55156",
+      "description": "Token Optimizer MCP measures token savings per AI coding agent, optimizes context, and shares a live local knowledge graph across 16 CLI clients. Prior to version 5.1.0, the dashboard HTTP server in token-optimizer-mcp exposes /api/session-summary and /api/session-events with no authentication middleware \u2014 any network-accessible client can reach them without credentials. Both handlers concatenate the caller-supplied sessionId query parameter directly into a filesystem path via path.join, and Nod",
       "cvss": {
         "score": 5.3,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N",
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
         "severity": "MEDIUM"
       },
       "tier": 2,
       "matchedProducts": [
-        "WordPress"
+        "Node.js"
       ],
       "references": [
-        "https://wpscan.com/vulnerability/1c8a53e7-5556-4dcb-a461-c6df253d0b7a/"
+        "https://github.com/ooples/token-optimizer-mcp/commit/b4ee96dac799cbfba0a9f9c17844ce9d613cbcc7",
+        "https://github.com/ooples/token-optimizer-mcp/releases/tag/v5.1.0",
+        "https://github.com/ooples/token-optimizer-mcp/security/advisories/GHSA-76pc-mqxp-3rq5",
+        "https://github.com/ooples/token-optimizer-mcp/security/advisories/GHSA-76pc-mqxp-3rq5"
       ],
-      "published": "2026-09-28T07:17:20.953"
+      "published": "2026-09-28T18:17:23.203"
     },
     {
-      "id": "CVE-2026-89411",
-      "description": "The Paymattic WordPress plugin from 4.6.20 before 4.6.26 does not verify that a confirmed Stripe payment belongs to the order it is applied to, allowing unauthenticated users to mark an arbitrary pending order as paid by confirming a smaller payment of their own against it.",
+      "id": "CVE-2026-102277",
+      "description": "The brace-expansion library generates arbitrary strings containing a common prefix and suffix. Prior to 1.1.21, 2.1.7, 3.0.9, and 5.0.12, the expand function handles untrusted {a},b}-shaped patterns with many trailing closing braces by restarting its scan once for each trailing closing brace. The successive full-input rescans with linear working-string growth cause quadratic CPU time and memory pressure that can block the Node.js event loop. The process eventually recovers, making the impact a r",
       "cvss": {
         "score": 5.3,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N",
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
         "severity": "MEDIUM"
       },
       "tier": 2,
       "matchedProducts": [
-        "WordPress"
+        "Node.js"
       ],
       "references": [
-        "https://wpscan.com/vulnerability/240a0440-7892-4c03-b282-2fdb6f086bb6/"
+        "https://github.com/juliangruber/brace-expansion/commit/33a5ef17b8d800bbfa8c52b14c39043b6aac1a96",
+        "https://github.com/juliangruber/brace-expansion/commit/bdff773f98e5988616b7039cc9b508df5d640b22",
+        "https://github.com/juliangruber/brace-expansion/commit/c55e67d8d8b1c56a2474afff15c2891166b2d364",
+        "https://github.com/juliangruber/brace-expansion/commit/ffdfa3e3806bed17c0874b8f1439b084de354a7e",
+        "https://github.com/juliangruber/brace-expansion/security/advisories/GHSA-q2hr-2g5m-vwhr"
       ],
-      "published": "2026-09-28T07:17:21.387"
+      "published": "2026-09-28T21:17:16.300"
     },
     {
-      "id": "CVE-2026-92996",
-      "description": "The Verge3D WordPress plugin from 4.1.0 through 4.13.0 does not verify with the payment provider that a payment was actually made, and does not check order ownership, allowing unauthenticated users to mark any order as paid.",
+      "id": "CVE-2026-101858",
+      "description": "A flaw has been found in RaspAP raspap-webgui up to 3.5.5. Affected is the function WiFiManager::writeWpaSupplicant of the file src/RaspAP/Networking/Hotspot/WiFiManager.php of the component SSID Processing. This manipulation of the argument ssid causes os command injection. The attack can be initiated remotely. The exploit has been published and may be used. The vendor was contacted early about this disclosure but did not respond in any way.",
       "cvss": {
-        "score": 5.3,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N",
+        "score": 4.7,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:L/I:L/A:L",
         "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "WordPress"
-      ],
-      "references": [
-        "https://wpscan.com/vulnerability/c97c7466-ea48-47d0-b562-c26127be3bcc/"
-      ],
-      "published": "2026-09-28T07:17:21.500"
-    },
-    {
-      "id": "CVE-2026-94285",
-      "description": "An out-of-bounds read in libX11's byte-oriented codeset parser in libX11 before 1.8.14 could be used by malicious X servers to crash attached X clients.",
-      "cvss": {
-        "score": 5.1,
-        "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:L",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://gitlab.freedesktop.org/xorg/lib/libx11/-/merge_requests/310/diffs?commit_id=980868483446f24f9658d26aa5bfa42f3da6dd3a"
-      ],
-      "published": "2026-09-28T09:17:08.353"
-    },
-    {
-      "id": "CVE-2026-89135",
-      "description": "A failed X509_verify_cert call permanently plants an unverified attacker CA in the shared CertManager, bypassing certificate validation in every type-blind sibling consumer (native TLS, OCSP, CRL, direct CM verify). This affects version 5.8.4 through 5.9.2 of wolfSSL with the macros (OPENSSL_EXTRA && !NO_CERTS && !WOLFCRYPT_ONLY) defined or built with --enable-opensslextra and the application is specifically making calls to the X509_verify_cert function.",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
       },
       "tier": 3,
       "matchedProducts": [
-        "OpenSSL"
+        "OpenJDK"
       ],
       "references": [
-        "https://github.com/wolfSSL/wolfssl/pull/11009"
+        "https://gist.github.com/simyat/10422042d6d5225b2beb87754de4b68c",
+        "https://vuldb.com/cve/CVE-2026-101858",
+        "https://vuldb.com/submit/930246",
+        "https://vuldb.com/vuln/411092",
+        "https://vuldb.com/vuln/411092/cti"
       ],
-      "published": "2026-09-27T10:16:59.157"
+      "published": "2026-09-29T02:16:54.417"
     },
     {
-      "id": "CVE-2026-93302",
-      "description": "MatchTrustedPeer ignores the public key used, leading to forged CA clones passing verification. Affected builds are any that enable the macro WOLFSSL_TRUST_PEER_CERT and load CA certificates with wolfSSL_CTX_trust_peer_cert() or wolfSSL_trust_peer_cert(). The peer must know the certificates being loaded to either of those APIs to take advantage of the issue. When OPENSSL_COMPATIBLE_DEFAULTS is also defined this widens the affected API to include all CA certificate loading. Both macros are define",
+      "id": "CVE-2026-13018",
+      "description": "Insufficient validation of untrusted input in Codecs in Google Chrome prior to 147.0.7727.55 allowed a remote attacker to potentially perform out of bounds memory access via a crafted video file. (Chromium security severity: Low)",
       "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
+        "score": 4.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:N",
+        "severity": "MEDIUM"
       },
       "tier": 3,
       "matchedProducts": [
-        "OpenSSL",
-        "Apache HTTP Server",
-        "Nginx"
+        "Google Chrome"
       ],
       "references": [
-        "https://github.com/wolfSSL/wolfssl/commit/22bcd51d553eaac1de37bee91fdac80cc47961e1"
+        "https://chromereleases.googleblog.com/2026/04/stable-channel-update-for-desktop.html",
+        "https://issues.chromium.org/issues/487950074"
       ],
-      "published": "2026-09-27T10:16:59.417"
+      "published": "2026-09-28T19:16:49.033"
     },
     {
-      "id": "CVE-2026-101041",
-      "description": "The account recovery (password reset) functionality in the vulnerability-lookup web application contains a time-of-check-to-time-of-use (TOCTOU) race condition in the consumption of single-use recovery tokens. The original implementation verified the token nonce against the stored digest and then consumed (cleared) it in separate database operations. Two concurrent HTTP requests presenting the same valid recovery token could both pass the verification check before either transaction committed, a",
+      "id": "CVE-2026-86334",
+      "description": "Path traversal in the CLI client image export and copy functionality in Canonical LXD from 4.0.2 before 4.0.14, 5.0.10, 5.21.8, and 6.10 on all platforms allows a remote malicious or machine-in-the-middle image server to overwrite arbitrary local files and execute code on the client system via a crafted Content-Disposition header filename parameter during unified image export or copy operations into a local directory target.",
+      "cvss": {
+        "score": 4.2,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:N/I:L/A:L",
+        "severity": "MEDIUM"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "Ubiquiti/UniFi"
+      ],
+      "references": [
+        "https://github.com/canonical/lxd/pull/18940",
+        "https://github.com/canonical/lxd/pull/18974",
+        "https://github.com/canonical/lxd/pull/18975",
+        "https://github.com/canonical/lxd/pull/18976",
+        "https://github.com/canonical/lxd/pull/18977"
+      ],
+      "published": "2026-09-28T14:17:20.590"
+    },
+    {
+      "id": "CVE-2026-82928",
+      "description": "mH-DEVELOPER smart home module contains a hardcoded SSH public key in /root/.ssh/authorized_keys, serving as a potential backdoor. The SSH daemon allows root login via key authentication and starts automatically. An attacker with the matching private key can gain a root shell on any affected device, resulting in full system compromise. The key cannot be removed without remounting the file system and survives a factory reset. Vendor notes that this functionality was used only for service purposes",
       "cvss": {
         "score": null,
         "vector": null,
@@ -234,14 +663,14 @@
         "ESET"
       ],
       "references": [
-        "https://github.com/vulnerability-lookup/vulnerability-lookup/commit/5462bab62d76df852619e01eb67da36c023c8c40",
-        "https://github.com/vulnerability-lookup/vulnerability-lookup/commit/ad6f22882975516adf193a1a920aaa54025c71d4"
+        "https://cert.pl/posts/2026/09/CVE-2026-82928/",
+        "https://www.fif.com.pl/pl/strona-glowna/1367-mh-developer.html"
       ],
-      "published": "2026-09-27T15:16:27.190"
+      "published": "2026-09-28T13:17:23.253"
     },
     {
-      "id": "CVE-2026-89300",
-      "description": "The WP Verify API WordPress plugin through 1.0.0 does not have any authorisation check in one of its REST routes, allowing unauthenticated users to insert arbitrary data into its own database table, as well as to make the site send templated verification emails to arbitrary email addresses. The route is not rate limited either.",
+      "id": "CVE-2026-101898",
+      "description": "Axios is a promise-based HTTP client for the browser and Node.js. From 1.13.0 until 1.20.0, Axios HTTP/2 request setup does not consistently apply proxy settings and caller-supplied DNS lookup policy. An HTTPS request uses httpVersion: 2 with explicit config.proxy or environment-derived proxy settings, or relies on caller-supplied config.lookup DNS policy. The HTTP/2 path can connect without the configured proxy behavior or without applying the caller-supplied config.lookup policy before http2.c",
       "cvss": {
         "score": null,
         "vector": null,
@@ -249,16 +678,20 @@
       },
       "tier": 3,
       "matchedProducts": [
-        "WordPress"
+        "Node.js"
       ],
       "references": [
-        "https://wpscan.com/vulnerability/a5ad8171-83c1-4c2e-83ac-24f008fadb82/"
+        "https://github.com/axios/axios/commit/d19040bda7a8be2f82c3c6e1a5bc03917daee39a",
+        "https://github.com/axios/axios/pull/11141",
+        "https://github.com/axios/axios/releases/tag/v1.20.0",
+        "https://github.com/axios/axios/security/advisories/GHSA-3pq3-5fj3-cg6v",
+        "https://github.com/axios/axios/security/advisories/GHSA-3pq3-5fj3-cg6v"
       ],
-      "published": "2026-09-28T07:17:21.180"
+      "published": "2026-09-28T18:17:17.860"
     },
     {
-      "id": "CVE-2026-89303",
-      "description": "The Post Voting System WordPress plugin through 1.0 does not properly sanitize and escape a parameter before using it in a SQL query, allowing any authenticated user to perform SQL injection attacks.",
+      "id": "CVE-2026-101900",
+      "description": "Axios is a promise-based HTTP client for the browser and Node.js. From 1.12.0 until 1.20.0, ResolveConfig reads inherited Symbol.toStringTag, append, and getHeaders properties while resolving FormData headers. A separate same-process prototype-pollution flaw supplies an array or non-plain class instance whose inherited properties make it appear FormData-like; plain objects are blocked. The inherited getHeaders function can return attacker-controlled headers that resolveConfig merges into a fetch",
       "cvss": {
         "score": null,
         "vector": null,
@@ -266,16 +699,20 @@
       },
       "tier": 3,
       "matchedProducts": [
-        "WordPress"
+        "Node.js"
       ],
       "references": [
-        "https://wpscan.com/vulnerability/dbe62e96-6493-4385-92a2-6281c5428a9f/"
+        "https://github.com/axios/axios/commit/d19040bda7a8be2f82c3c6e1a5bc03917daee39a",
+        "https://github.com/axios/axios/pull/11141",
+        "https://github.com/axios/axios/releases/tag/v1.20.0",
+        "https://github.com/axios/axios/security/advisories/GHSA-4hqw-qxg8-jxx2",
+        "https://github.com/axios/axios/security/advisories/GHSA-4hqw-qxg8-jxx2"
       ],
-      "published": "2026-09-28T07:17:21.283"
+      "published": "2026-09-28T18:17:18.050"
     },
     {
-      "id": "CVE-2026-93000",
-      "description": "The SPS-Suite WordPress plugin through 1.4.0 does not sanitise the search query before using it in a SQL query when its static-page search feature is enabled, allowing unauthenticated attackers to perform SQL injection attacks.",
+      "id": "CVE-2026-101901",
+      "description": "Axios is a promise-based HTTP client for the browser and Node.js. From 1.13.0 until 1.20.0, Http2Sessions does not install adequate error handling for a ClientHttp2Session during Axios HTTP/2 session initialization or reuse. A request uses httpVersion: 2 and the ClientHttp2Session emits an error during session initialization or reuse. The unhandled session error escapes normal Promise rejection handling. The uncaught error can terminate the Node.js process and cause denial of service. This issue",
       "cvss": {
         "score": null,
         "vector": null,
@@ -283,12 +720,119 @@
       },
       "tier": 3,
       "matchedProducts": [
-        "WordPress"
+        "Node.js"
       ],
       "references": [
-        "https://wpscan.com/vulnerability/a6f90424-46df-4f44-9491-76c75b5ab5eb/"
+        "https://github.com/axios/axios/commit/d19040bda7a8be2f82c3c6e1a5bc03917daee39a",
+        "https://github.com/axios/axios/pull/11141",
+        "https://github.com/axios/axios/releases/tag/v1.20.0",
+        "https://github.com/axios/axios/security/advisories/GHSA-542g-h47m-68v8"
       ],
-      "published": "2026-09-28T07:17:21.613"
+      "published": "2026-09-28T18:17:18.233"
+    },
+    {
+      "id": "CVE-2026-101903",
+      "description": "Axios is a promise-based HTTP client for the browser and Node.js. From 1.16.1 until 1.20.0, the RFC 2397 regular expression allows slash characters on both sides of the media-type separator. An application passes an attacker-controlled malformed data URL containing many slash characters and no comma. the JavaScript regular-expression engine explores many separator placements before rejecting the URL. Synchronous excessive backtracking can block the Node.js event loop and cause denial of service.",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "Node.js"
+      ],
+      "references": [
+        "https://github.com/axios/axios/commit/d19040bda7a8be2f82c3c6e1a5bc03917daee39a",
+        "https://github.com/axios/axios/pull/11141",
+        "https://github.com/axios/axios/releases/tag/v1.20.0",
+        "https://github.com/axios/axios/security/advisories/GHSA-c29m-xwm3-cm6r",
+        "https://github.com/axios/axios/security/advisories/GHSA-c29m-xwm3-cm6r"
+      ],
+      "published": "2026-09-28T18:17:18.560"
+    },
+    {
+      "id": "CVE-2026-101905",
+      "description": "Axios is a promise-based HTTP client for the browser and Node.js. From 1.15.2 until 1.20.0, the Node HTTP adapter in lib/adapters/http.js supplies request options without an own createConnection value. A separate same-process prototype-pollution flaw places a function on Object.prototype.createConnection. Node resolves and invokes the inherited createConnection socket factory, allowing the attacker-controlled function to select the transport endpoint. The attacker endpoint can receive request he",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "Node.js"
+      ],
+      "references": [
+        "https://github.com/axios/axios/commit/d19040bda7a8be2f82c3c6e1a5bc03917daee39a",
+        "https://github.com/axios/axios/pull/11141",
+        "https://github.com/axios/axios/releases/tag/v1.20.0",
+        "https://github.com/axios/axios/security/advisories/GHSA-m8m8-qj5v-23w3"
+      ],
+      "published": "2026-09-28T18:17:18.923"
+    },
+    {
+      "id": "CVE-2026-101906",
+      "description": "Axios is a promise-based HTTP client for the browser and Node.js. From 1.15.0 until 1.20.0, Axios shouldBypassProxy applies a quadratic trailing-dot regular expression to redirect hostnames. HTTP_PROXY or HTTPS_PROXY is configured, NO_PROXY or no_proxy is non-empty, redirects are followed, and a crafted redirect Location contains many dots followed by a non-dot character. Hostname.replace(/.+$/, '') backtracks quadratically while processing the crafted redirect hostname. Synchronous regular-expr",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "Node.js"
+      ],
+      "references": [
+        "https://github.com/axios/axios/commit/d19040bda7a8be2f82c3c6e1a5bc03917daee39a",
+        "https://github.com/axios/axios/pull/11141",
+        "https://github.com/axios/axios/releases/tag/v1.20.0",
+        "https://github.com/axios/axios/security/advisories/GHSA-mghh-pgcx-3jjj",
+        "https://github.com/axios/axios/security/advisories/GHSA-mghh-pgcx-3jjj"
+      ],
+      "published": "2026-09-28T18:17:19.100"
+    },
+    {
+      "id": "CVE-2026-101907",
+      "description": "Axios is a promise-based HTTP client for the browser and Node.js. From 1.17.0 until 1.20.0, the fetch adapter bypasses the maxRedirects: 0 redirect policy. An Axios request uses the fetch adapter with maxRedirects set to zero and receives a redirect response. The underlying fetch implementation follows the redirect instead of returning the redirect response unchanged. The redirected request can access internal responses or reach state-changing internal endpoints despite redirects being disabled.",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "Node.js"
+      ],
+      "references": [
+        "https://github.com/axios/axios/commit/d19040bda7a8be2f82c3c6e1a5bc03917daee39a",
+        "https://github.com/axios/axios/pull/11141",
+        "https://github.com/axios/axios/releases/tag/v1.20.0",
+        "https://github.com/axios/axios/security/advisories/GHSA-r4gj-5m52-g5wh",
+        "https://github.com/axios/axios/security/advisories/GHSA-r4gj-5m52-g5wh"
+      ],
+      "published": "2026-09-28T18:17:19.270"
+    },
+    {
+      "id": "CVE-2026-101908",
+      "description": "Axios is a promise-based HTTP client for the browser and Node.js. From 1.7.0 until 1.20.0, the fetch adapter constructs a Request with sanitized resolvedOptions but then calls fetch with the original fetchOptions. A separate same-process prototype-pollution flaw populates Object.prototype.headers so fetchOptions.headers resolves through inheritance. The inherited fetchOptions.headers value overrides the sanitized Request headers through the second argument to fetch after Request construction. At",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "Node.js"
+      ],
+      "references": [
+        "https://github.com/axios/axios/commit/d19040bda7a8be2f82c3c6e1a5bc03917daee39a",
+        "https://github.com/axios/axios/pull/11141",
+        "https://github.com/axios/axios/releases/tag/v1.20.0",
+        "https://github.com/axios/axios/security/advisories/GHSA-vh66-26gq-q6x8",
+        "https://github.com/axios/axios/security/advisories/GHSA-vh66-26gq-q6x8"
+      ],
+      "published": "2026-09-28T18:17:19.440"
     }
   ]
 }
