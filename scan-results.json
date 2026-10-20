@@ -1,291 +1,458 @@
 {
-  "scanTime": "2026-10-19 09:09:57 UTC",
-  "totalMatched": 69,
+  "scanTime": "2026-10-20 08:45:22 UTC",
+  "totalMatched": 55,
   "productsMonitored": 147,
   "tierCounts": {
-    "0": 8,
-    "1": 7,
-    "2": 12,
-    "3": 42
+    "0": 5,
+    "1": 13,
+    "2": 15,
+    "3": 22
   },
   "vulnerabilities": [
     {
-      "id": "CVE-2026-103311",
-      "description": "The Coinbase Commerce Payment Gateway for WooCommerce WordPress plugin through 1.4.1 does not verify the authenticity of incoming payment webhook notifications, because the shared secret used to validate the request signature is empty by default and nothing rejects an unconfigured secret, allowing unauthenticated attackers to forge notifications that mark arbitrary orders as paid or cancel already-paid orders.",
+      "id": "CVE-2026-111862",
+      "description": "Rank Math SEO PRO for WordPress is affected by a supply-chain compromise in a subset of version 3.0.123 packages downloaded or updated between October 15, 2026 at 20:02 UTC and October 16, 2026 at 07:12 UTC. Rank Math states that the affected plugin files contained malware that could compromise a website if the plugin was activated and directs sites that activated an affected package to treat the website as compromised. The malware may establish persistent access, communicate with rank1cdn[.]com",
       "cvss": {
-        "score": 5.3,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N",
-        "severity": "MEDIUM"
+        "score": 9.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "CRITICAL"
       },
       "tier": 0,
       "matchedProducts": [
         "WordPress"
       ],
       "references": [
-        "https://wpscan.com/vulnerability/3d43ae6a-ca0d-49f9-aa3a-a584e5155efe/"
+        "https://rankmath.com/changelog/",
+        "https://rankmath.com/kb/pro-3-0-123-security-incident/",
+        "https://rdap.verisign.com/com/v1/domain/rank1cdn.com",
+        "https://urlscan.io/result/01a145c2-8dc8-72ff-a65d-21209ca29c4f/",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/81cd7a2c-ad0c-4dbc-b5dc-07ec866d5c1f?source=cve"
       ],
-      "published": "2026-10-19T07:16:30.260"
+      "published": "2026-10-19T17:17:04.507"
     },
     {
-      "id": "CVE-2026-106010",
-      "description": "The BDM Digital Payment Gateway WordPress plugin through 1.3.12 does not verify the credentials on its public payment-status update route and treats unset credentials as valid, allowing unauthenticated attackers to mark arbitrary WooCommerce orders as paid without payment in the default configuration.",
+      "id": "CVE-2026-77933",
+      "description": "DB-GPT through 0.8.2 contains a hardcoded credentials vulnerability in its default docker-compose.yml that sets a static MYSQL_ROOT_PASSWORD and publishes port 3306 on all interfaces. Attackers reaching port 3306 or the shared dbgptnet network can authenticate as root@% to gain full database access including FILE and SUPER privileges.",
       "cvss": {
-        "score": 5.3,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N",
-        "severity": "MEDIUM"
+        "score": 9.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "CRITICAL"
       },
       "tier": 0,
+      "matchedProducts": [
+        "MySQL"
+      ],
+      "references": [
+        "https://github.com/eosphoros-ai/DB-GPT/blob/83609c471266607490b24e72188311efa23a0d16/docker-compose.yml#L9",
+        "https://www.lasso.security/vulnerability-database/cve-2026-77933",
+        "https://www.vulncheck.com/advisories/db-gpt-through-0.8.2-hardcoded-mysql-root-credentials-in-docker-compose-deployment"
+      ],
+      "published": "2026-10-20T01:17:19.670"
+    },
+    {
+      "id": "CVE-2026-77936",
+      "description": "Letta through 0.16.8 ships a compose.yaml that does not enable LETTA_SERVER_SECURE, so the password middleware is never added and all API routes are unauthenticated, and it exposes a superuser PostgreSQL port with default credentials. Remote attackers can execute arbitrary Python via POST /v1/tools/run, manage /v1/admin users, or run OS commands via COPY PROGRAM.",
+      "cvss": {
+        "score": 9.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "CRITICAL"
+      },
+      "tier": 0,
+      "matchedProducts": [
+        "PostgreSQL"
+      ],
+      "references": [
+        "https://github.com/letta-ai/letta/blob/1131535716e8a31c9a437f8695e25ac98f203a24/compose.yaml#L17",
+        "https://github.com/letta-ai/letta/blob/1131535716e8a31c9a437f8695e25ac98f203a24/letta/server/rest_api/app.py#L799",
+        "https://www.lasso.security/vulnerability-database/cve-2026-77936",
+        "https://www.vulncheck.com/advisories/letta-through-0.16.8-insecure-default-configuration-unauthenticated-api-and-postgresql-access"
+      ],
+      "published": "2026-10-20T01:17:20.107"
+    },
+    {
+      "id": "CVE-2026-107567",
+      "description": "Use of a less trusted source in the DKIM signing of Progressive Robot hMailServer 6.0.0 through 6.3.6 allows a remote unauthenticated attacker to have mail they write signed with the DKIM key of a domain the server hosts, so that it passes DKIM and DMARC for that domain at other receivers. With DKIM signing enabled for a hosted domain, the server signed every message on its first delivery pass as the domain named in its From header, before local delivery, whatever the message's origin and withou",
+      "cvss": {
+        "score": 7.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N",
+        "severity": "HIGH"
+      },
+      "tier": 0,
+      "matchedProducts": [
+        "hMailServer"
+      ],
+      "references": [
+        "https://gitlab.com/hmailserver/hmailserver/-/releases/v6.3.7",
+        "https://gitlab.com/hmailserver/hmailserver/-/work_items/84"
+      ],
+      "published": "2026-10-19T16:17:01.587"
+    },
+    {
+      "id": "CVE-2026-112368",
+      "description": "An uncontrolled recursion weakness in the BSON decoding logic of the MongoDB PHP driver may allow an unauthenticated party who can supply crafted binary document data to the decoder to exhaust the process stack. This may cause the PHP process using the driver to terminate unexpectedly, resulting in a loss of availability for that process. The condition occurs below the PHP layer and cannot be intercepted by application-level error handling.",
+      "cvss": {
+        "score": 7.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 0,
+      "matchedProducts": [
+        "MongoDB"
+      ],
+      "references": [
+        "https://jira.mongodb.org/browse/PHPC-276"
+      ],
+      "published": "2026-10-19T16:17:07.650"
+    },
+    {
+      "id": "CVE-2026-78165",
+      "description": "Deserialization of Untrusted Data vulnerability in Apache Camel Spring Redis component.\n\n\n\nThis issue affects Apache Camel: from 2.11.0 before 4.18.5, from 4.19.0 before 4.22.1.\n\n\n\nRedisConfiguration.getSerializer lazily built a bare JdkSerializationRedisSerializer whenever no serializer option was configured, and that instance was used for every read the component performs. Spring's implementation delegates through DeserializingConverter to DefaultDeserializer, which reads the bytes with a Conf",
+      "cvss": {
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Redis",
+        "Oracle Java"
+      ],
+      "references": [
+        "https://camel.apache.org/security/CVE-2026-78165.html",
+        "https://github.com/apache/camel/pull/25587",
+        "https://github.com/apache/camel/pull/25588",
+        "https://github.com/apache/camel/pull/25589",
+        "https://github.com/apache/camel/pull/25734"
+      ],
+      "published": "2026-10-19T11:17:19.643"
+    },
+    {
+      "id": "CVE-2026-112305",
+      "description": "Semaphore UI through 2.19.16 contains a remote code execution vulnerability that allows users with the task_runner role to override protected Ansible variables by supplying arbitrary keys in the task environment JSON. Attackers can POST tasks setting ansible_ssh_common_args with a ProxyCommand or ansible_connection=local to execute commands as the Semaphore server user, exposing encryption keys, SSH keys and stored secrets.",
+      "cvss": {
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Ansible"
+      ],
+      "references": [
+        "https://github.com/semaphoreui/semaphore",
+        "https://github.com/semaphoreui/semaphore/blob/v2.19.16/api/projects/tasks.go#L39-L75",
+        "https://github.com/semaphoreui/semaphore/blob/v2.19.16/services/tasks/TaskRunner.go#L395-L431",
+        "https://github.com/semaphoreui/semaphore/pull/3888",
+        "https://www.vulncheck.com/advisories/semaphore-ui-through-2.19.16-rce-via-task-environment-ansible-variable-override"
+      ],
+      "published": "2026-10-19T16:17:06.400"
+    },
+    {
+      "id": "CVE-2026-109444",
+      "description": "OpenSRE through 0.1.2026.10.19 contains an approval gate bypass vulnerability that allows attackers to execute shell_run commands without confirmation because the headless presenter's execution_allowed() always returns True. Attackers can inject instructions into alerts or Slack messages triaged by the agent to run commands on the host and exfiltrate LLM, Slack and cloud credentials.",
+      "cvss": {
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Slack"
+      ],
+      "references": [
+        "https://github.com/Tracer-Cloud/opensre/blob/8eba8c9301fa954d9eecb1693b7e2021215ec2ec/gateway/transports/slack/processing/dispatcher.py#L276",
+        "https://github.com/Tracer-Cloud/opensre/blob/8eba8c9301fa954d9eecb1693b7e2021215ec2ec/tools/interactive_shell/subprocess_presenter.py#L41",
+        "https://www.lasso.security/vulnerability-database/cve-2026-109444",
+        "https://www.vulncheck.com/advisories/opensre-through-0.1.2026.10.19-approval-gate-bypass-via-shell-run-prompt-injection"
+      ],
+      "published": "2026-10-20T01:17:10.673"
+    },
+    {
+      "id": "CVE-2026-77934",
+      "description": "Coze Studio before 0.5.0 contains an insecure default configuration that allows any registered user to execute commands by running workflow code nodes in an unsandboxed python3 subprocess. Attackers can bypass the regex import filter with __import__('subprocess') to run commands, stealing environment variables, model API keys, and accessing MySQL, MinIO, Redis and etcd.",
+      "cvss": {
+        "score": 8.8,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "MySQL",
+        "Redis"
+      ],
+      "references": [
+        "https://github.com/coze-dev/coze-studio/blob/ffec252d9e2600f61d49b8228a642335e84d5496/docker/.env.example#L234",
+        "https://github.com/coze-dev/coze-studio/commit/fcf40d1008c100108c23be051a49950283f2c2cf",
+        "https://www.lasso.security/vulnerability-database/cve-2026-77934",
+        "https://www.vulncheck.com/advisories/coze-studio-before-0.5.0-rce-via-unsandboxed-local-python-code-runner"
+      ],
+      "published": "2026-10-20T01:17:19.823"
+    },
+    {
+      "id": "CVE-2026-105299",
+      "description": "Summary\n\n\n\nBefore version 0.9.0, the HTTP/1 upstream path in pingora-proxy passed the downstream request through upstream_request_filter and wrote it to the upstream without removing the client's Connection header, other hop-by-hop headers, or the headers Connection nominated, although RFC 9110 Section 7.6.1 requires intermediaries to remove them. The HTTP/2 upstream path already removed Connection and related HTTP/1-specific headers. A client could therefore nominate a header that the applicati",
+      "cvss": {
+        "score": 8.7,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:N",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Apache HTTP Server"
+      ],
+      "references": [
+        "https://github.com/cloudflare/pingora"
+      ],
+      "published": "2026-10-20T02:17:08.703"
+    },
+    {
+      "id": "CVE-2026-85250",
+      "description": "Improper Restriction of XML External Entity Reference vulnerability in Apache Camel XPath component.\n\nThis issue affects Apache Camel: from 4.0.0 before 4.18.5, from 4.19.0 before 4.22.1.\n\nWith documentType set to InputSource, XPathBuilder handed the payload straight to javax.xml.xpath, which builds a DocumentBuilder of its own using the JDK defaults. The hardening applied to Camel's default document type was therefore bypassed: a DOCTYPE declaration that is refused on the default type was accep",
+      "cvss": {
+        "score": 7.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+        "severity": "HIGH"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Oracle Java"
+      ],
+      "references": [
+        "https://camel.apache.org/security/CVE-2026-85250.html",
+        "https://github.com/apache/camel/pull/25683",
+        "https://github.com/apache/camel/pull/25940",
+        "https://github.com/apache/camel/pull/25942",
+        "https://issues.apache.org/jira/browse/CAMEL-24475"
+      ],
+      "published": "2026-10-19T11:17:23.257"
+    },
+    {
+      "id": "CVE-2026-91858",
+      "description": "FopProducer transforms the incoming XSL-FO message body by creating a javax.xml.transform.TransformerFactory through TransformerFactory.newInstance() and enabling only FEATURE_SECURE_PROCESSING before running an identity transform over the body. On the JDK's built-in transformer, that feature alone already empties the accessExternalDTD and accessExternalStylesheet limits, so an external DTD or entity is refused. When a third-party JAXP TransformerFactory such as Saxon-HE is on the classpath, for",
+      "cvss": {
+        "score": 6.5,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Oracle Java"
+      ],
+      "references": [
+        "https://camel.apache.org/security/CVE-2026-91858.html",
+        "https://github.com/apache/camel/pull/26108",
+        "https://github.com/apache/camel/pull/26168",
+        "https://github.com/apache/camel/pull/26169",
+        "https://issues.apache.org/jira/browse/CAMEL-24605"
+      ],
+      "published": "2026-10-19T11:17:25.683"
+    },
+    {
+      "id": "CVE-2026-110306",
+      "description": "fast-uri is a dependency-free RFC 3986 URI parser and serializer for Node.js. In versions before 2.4.8, from 3.0.0 through 3.1.8, and from 4.0.0 through 4.2.2, fast-uri percent-decodes the scheme component with the legacy global unescape() function before validating it, so an input whose decoded scheme is a dangerous token is emitted as a live scheme even though RFC 3986 does not allow percent-encoding in a scheme and no other parser accepts it. An application that screens dangerous schemes on t",
+      "cvss": {
+        "score": 6.1,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Node.js"
+      ],
+      "references": [
+        "https://cna.openjsf.org/security-advisories.html",
+        "https://github.com/fastify/fast-uri/security/advisories/GHSA-w74x-v6f9-j3xg"
+      ],
+      "published": "2026-10-20T07:17:08.810"
+    },
+    {
+      "id": "CVE-2026-110180",
+      "description": "fast-uri is a dependency-free RFC 3986 URI parser and serializer for Node.js. In versions from 2.4.2 through 2.4.7, from 3.1.3 through 3.1.8, and from 4.0.1 through 4.2.2, for HTTP-family schemes the canonicalizeHost() function passes the parsed host to the WHATWG URL parser and adopts its hostname without checking that the parser consumed the entire input as a host, so the authority can be silently rewritten: data before an at-sign is dropped and tab, carriage-return, and line-feed characters a",
+      "cvss": {
+        "score": 4.8,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Node.js"
+      ],
+      "references": [
+        "https://cna.openjsf.org/security-advisories.html",
+        "https://github.com/fastify/fast-uri/security/advisories/GHSA-wjr9-j795-jxcr"
+      ],
+      "published": "2026-10-20T07:17:08.687"
+    },
+    {
+      "id": "CVE-2026-112329",
+      "description": "The Sensei LMS WordPress plugin before 4.26.4 contains a broken access control vulnerability in the legacy save_new_message handler hooked on the init action, which validates only a generic nonce without verifying course enrollment or restricting post_id to valid post types. Authenticated attackers, including unprivileged Subscribers, can supply an arbitrary post_id for any course, lesson, or quiz to create a private message addressed to that post's author, bypassing the enrollment checks enforc",
+      "cvss": {
+        "score": 4.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 1,
       "matchedProducts": [
         "WordPress"
       ],
       "references": [
-        "https://wpscan.com/vulnerability/fba20275-4836-4f19-aad9-c6f4e2c53b88/"
+        "https://senseilms.com/release-notes/",
+        "https://www.vulncheck.com/advisories/sensei-lms-broken-access-control-via-save-new-message"
       ],
-      "published": "2026-10-19T07:16:30.397"
+      "published": "2026-10-19T15:17:06.420"
     },
     {
-      "id": "CVE-2026-86791",
-      "description": "The iPOSpays Payment Gateway for WooCommerce WordPress plugin before 1.4.7 does not verify that a payment was actually completed before recording an order as paid, allowing unauthenticated users to mark any unpaid order as paid and to rewrite its total.",
-      "cvss": {
-        "score": 5.3,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 0,
-      "matchedProducts": [
-        "WordPress"
-      ],
-      "references": [
-        "https://wpscan.com/vulnerability/04e70988-b0af-4f78-8e75-5e76976b1797/"
-      ],
-      "published": "2026-10-19T07:16:32.043"
-    },
-    {
-      "id": "CVE-2026-94272",
-      "description": "The Snap Finance WordPress plugin before 3.12.0 does not verify that a request to change a WooCommerce order's status comes from an authorised source, allowing unauthenticated attackers to move any order into a paid state or force it to fail.",
-      "cvss": {
-        "score": 5.3,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 0,
-      "matchedProducts": [
-        "WordPress"
-      ],
-      "references": [
-        "https://wpscan.com/vulnerability/e3a4931a-3678-46ac-9ad0-3cc6a1ed5d90/"
-      ],
-      "published": "2026-10-19T07:16:32.830"
-    },
-    {
-      "id": "CVE-2026-110034",
-      "description": "The Salon Booking System WordPress plugin before 10.31.11 does not enforce a minimum of zero when subtracting a fixed-amount discount from a booking's total, allowing an unauthenticated visitor who knows a valid discount code to create a confirmed booking stored with a negative total.",
+      "id": "CVE-2026-110095",
+      "description": "fast-uri is a dependency-free RFC 3986 URI parser and serializer for Node.js. In versions before 2.4.8, from 3.0.0 through 3.1.8, and from 4.0.0 through 4.2.2, the normalize() and serialize() functions apply RFC 3986 dot-segment removal to the path of a relative-path reference, even though that algorithm is defined only for the merged target path during resolution, so a leading parent-directory segment can be dropped and a document-relative reference can become root-relative. An application that",
       "cvss": {
         "score": 3.7,
         "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:N",
         "severity": "LOW"
       },
-      "tier": 0,
+      "tier": 1,
+      "matchedProducts": [
+        "Node.js"
+      ],
+      "references": [
+        "https://cna.openjsf.org/security-advisories.html",
+        "https://github.com/fastify/fast-uri/security/advisories/GHSA-xhq7-xmqj-769h"
+      ],
+      "published": "2026-10-20T07:17:08.550"
+    },
+    {
+      "id": "CVE-2026-110725",
+      "description": "fast-uri is a dependency-free RFC 3986 URI parser and serializer for Node.js. In versions before 2.4.8, from 3.0.0 through 3.1.8, and from 4.0.0 through 4.2.2, when serialize(), normalize(), or resolve() are called with the non-default option reference set to suffix on a reference that has no authority, the emitted relative reference can contain a bare colon in its first path segment without escaping it, even though RFC 3986 forbids that because it makes the string reparse as an absolute URI wit",
+      "cvss": {
+        "score": 3.7,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:N",
+        "severity": "LOW"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Node.js"
+      ],
+      "references": [
+        "https://cna.openjsf.org/security-advisories.html",
+        "https://github.com/fastify/fast-uri/security/advisories/GHSA-333x-w4r6-6crp"
+      ],
+      "published": "2026-10-20T07:17:08.937"
+    },
+    {
+      "id": "CVE-2026-78162",
+      "description": "Deserialization of Untrusted Data vulnerability in Apache Camel.\n\n\n\nThis issue affects Apache Camel: from 4.0.0 before 4.18.5, from 4.19.0 before 4.22.1.\n\n\n\nThe camel-hazelcast component applies a default Hazelcast JavaSerializationFilterConfig to the instances it creates from its own configuration, a protection introduced by CVE-2026-43865. That change did not reach two of the configuration paths Camel builds itself, so those paths continued to create Hazelcast instances whose Java deserializat",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 1,
+      "matchedProducts": [
+        "Oracle Java"
+      ],
+      "references": [
+        "https://camel.apache.org/security/CVE-2026-43865.html",
+        "https://camel.apache.org/security/CVE-2026-78162.html",
+        "https://github.com/apache/camel/pull/25566",
+        "https://github.com/apache/camel/pull/25595",
+        "https://github.com/apache/camel/pull/25599"
+      ],
+      "published": "2026-10-19T11:17:19.037"
+    },
+    {
+      "id": "CVE-2026-107571",
+      "description": "Incorrect default permissions in the Windows installer of Progressive Robot hMailServer 6.0.0 through 6.3.6 allow a local authenticated user to run code as the mail server's high-privileged accounts when the product is installed in a folder whose permissions are inherited from a writable parent, such as the root of a drive. The installer places the server's programs in the Bin folder of the program folder and gives neither the program folder nor Bin any permissions of their own, so they inherit ",
+      "cvss": {
+        "score": 7.8,
+        "vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "hMailServer"
+      ],
+      "references": [
+        "https://gitlab.com/hmailserver/hmailserver/-/releases/v6.3.7",
+        "https://gitlab.com/hmailserver/hmailserver/-/work_items/78"
+      ],
+      "published": "2026-10-19T16:17:01.970"
+    },
+    {
+      "id": "CVE-2026-107569",
+      "description": "Unchecked input for a loop condition in Progressive Robot hMailServer 6.0.0 through 6.3.6 allows a remote unauthenticated attacker to stop the server carrying mail. The server bounds the mail it generates in response to a message - a rule forward, reply or copy, an account forward, a Sieve redirect, vacation or notify, a bounce, an out-of-office reply - by a counter it carries in the message's X-hMailServer-LoopCount header, and makes no more once the counter reaches the configured rule loop lim",
+      "cvss": {
+        "score": 7.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "hMailServer",
+        "ESET"
+      ],
+      "references": [
+        "https://gitlab.com/hmailserver/hmailserver/-/releases/v6.3.7",
+        "https://gitlab.com/hmailserver/hmailserver/-/work_items/81"
+      ],
+      "published": "2026-10-19T16:17:01.830"
+    },
+    {
+      "id": "CVE-2026-112366",
+      "description": "Picomatch through 4.0.7 contains a regular expression denial of service vulnerability that allows attackers to block the event loop by supplying single-branch repeated extglob patterns. Attackers can provide globs like +(*) or +(*a), which analyzeRepeatedExtglob in lib/parse.js skips, causing exponential backtracking against short crafted strings and denying service to Node.js applications.",
+      "cvss": {
+        "score": 7.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+        "severity": "HIGH"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "Node.js"
+      ],
+      "references": [
+        "https://github.com/micromatch/picomatch/blob/4.0.7/lib/parse.js#L287-L307",
+        "https://github.com/micromatch/picomatch/pull/194",
+        "https://www.vulncheck.com/advisories/picomatch-through-4.0.7-redos-via-single-branch-repeated-extglob-patterns"
+      ],
+      "published": "2026-10-19T16:17:07.500"
+    },
+    {
+      "id": "CVE-2026-112775",
+      "description": "Craft CMS from 5.0.0 before 5.11.0 contains an authentication bypass vulnerability that allows attackers to reuse verification codes because users/verify-email does not invalidate them for active users. Attackers who obtain a victim's emailed code can submit it to users/set-password after the victim verifies an email change, resetting the password and taking over the account.",
+      "cvss": {
+        "score": 7.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+        "severity": "HIGH"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "ESET"
+      ],
+      "references": [
+        "https://github.com/craftcms/cms/security/advisories/GHSA-xh42-494x-2xgv",
+        "https://www.vulncheck.com/advisories/craft-cms-5.0.0-before-5.11.0-verification-code-reuse-via-users-set-password"
+      ],
+      "published": "2026-10-19T20:17:54.757"
+    },
+    {
+      "id": "CVE-2026-93300",
+      "description": "The EventON - Subscriber plugin for WordPress is vulnerable to generic SQL Injection via the 'email' parameter in all versions up to, and including, 1.4.5 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for unauthenticated attackers to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database.",
+      "cvss": {
+        "score": 7.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+        "severity": "HIGH"
+      },
+      "tier": 2,
       "matchedProducts": [
         "WordPress"
       ],
       "references": [
-        "https://wpscan.com/vulnerability/e3a64d4d-92db-4dbc-a0b5-58bca4d8b5c4/"
+        "https://myeventon.com/",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/0f6b6b32-bcde-4c40-a954-c5c62eb3436e?source=cve"
       ],
-      "published": "2026-10-19T07:16:30.513"
+      "published": "2026-10-20T06:16:57.913"
     },
     {
-      "id": "CVE-2026-106028",
-      "description": "The ActiveTrail for WooCommerce WordPress plugin through 1.2.6 does not perform any authorization check before creating WooCommerce coupons, allowing unauthenticated attackers to create arbitrary coupons, including 100%-off and free-shipping coupons.",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 0,
-      "matchedProducts": [
-        "WordPress"
-      ],
-      "references": [
-        "https://wpscan.com/vulnerability/0865bdd3-8ce9-4a3b-a174-07076dee8565/"
-      ],
-      "published": "2026-10-19T06:17:20.510"
-    },
-    {
-      "id": "CVE-2026-91047",
-      "description": "The ElementsReady Addons for Elementor WordPress plugin through 6.7.2 does not properly restrict access to protected WooCommerce product downloads, allowing unauthenticated users to bypass the payment requirement and retrieve any product's paid downloadable file.",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 0,
-      "matchedProducts": [
-        "WordPress"
-      ],
-      "references": [
-        "https://wpscan.com/vulnerability/08afea88-4268-40b3-b5fb-0ac2546c3100/"
-      ],
-      "published": "2026-10-19T06:17:25.390"
-    },
-    {
-      "id": "CVE-2026-94273",
-      "description": "The Snap Finance WordPress plugin through 3.11.0 does not verify that the payment provider's response actually confirms a completed, approved transaction before marking a WooCommerce order as paid, allowing unauthenticated attackers to mark arbitrary orders as paid without completing payment.",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 0,
-      "matchedProducts": [
-        "WordPress"
-      ],
-      "references": [
-        "https://wpscan.com/vulnerability/62c8b34a-44f3-4739-9ca6-fce0f2a5ffaf/"
-      ],
-      "published": "2026-10-19T06:17:25.523"
-    },
-    {
-      "id": "CVE-2026-112047",
-      "description": "OneUptime 14.0.2 before 14.0.69 contains an incorrect authorization vulnerability that allows authenticated project members to act on clusters outside their scope by exploiting project-wide permission checks. Attackers can call the AI access test, agent reset, kubectl plan approval and incident AI conversation features to learn agent RBAC permissions, disconnect agents, approve kubectl changes, or run commands on unauthorized resources.",
-      "cvss": {
-        "score": 5.4,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://github.com/OneUptime/oneuptime/blob/14.0.68/packages/Common/Server/API/KubernetesClusterAiAccessAPI.ts#L188-L207",
-        "https://github.com/OneUptime/oneuptime/commit/264e1ba13149cbd4c80cb22f2177b405886b0452",
-        "https://github.com/OneUptime/oneuptime/releases/tag/14.0.69",
-        "https://github.com/OneUptime/oneuptime/security/advisories/GHSA-8fph-9j9f-xxgc",
-        "https://www.vulncheck.com/advisories/oneuptime-14.0.2-before-14.0.69-incorrect-authorization-in-kubernetes-ai-actions"
-      ],
-      "published": "2026-10-18T13:16:36.607"
-    },
-    {
-      "id": "CVE-2026-98433",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: PPC: Book3S HV: fix secure device page leak on uv_page_in() failure\n\nIn kvmppc_svm_page_in(), if uv_page_in() fails after\nkvmppc_uvmem_get_page() has succeeded, the secure device page is never\nreleased.  kvmppc_uvmem_get_page() sets a bit in kvmppc_uvmem_bitmap,\nallocates a kvmppc_uvmem_page_pvt struct, marks the GFN as\nKVMPPC_GFN_UVMEM_PFN, and calls zone_device_page_init() which sets\nrefcount=1 and locks the page.  The s",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/0a416ee20bcccddf91ca5b63696a23b9d11d73aa",
-        "https://git.kernel.org/stable/c/8f3b7746874b39fc20e0363c9076c7787d4765ba",
-        "https://git.kernel.org/stable/c/a933d7024359e2e566b07903d1294b84f90482ae",
-        "https://git.kernel.org/stable/c/c41088b2765af1e97e7bb05f906ae1823eca0388",
-        "https://git.kernel.org/stable/c/dfb84274932737e338ff5eb27f34b4c8ecb01b50"
-      ],
-      "published": "2026-10-18T15:16:53.047"
-    },
-    {
-      "id": "CVE-2026-98473",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ns390/vfio-ap: fix KVM GISC and page leak when queue removed from host config\n\nThree related problems exist in the handling of KVM interrupt and page\nresources when a queue is removed from the host's AP configuration\nwhile assigned to a mediated device (mdev).\n\nProblem 1:\n~~~~~~~~~\nAP_RESPONSE_Q_NOT_AVAIL not handled in vfio_ap_mdev_reset_queue()\n\nWhen the AP bus removes a queue device whose adapter or domain has\nbeen removed fr",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/3c3433657c82f200dae36c29e2b80681c81b85be",
-        "https://git.kernel.org/stable/c/65e05ec252a9b79e75930d3c4dd42d8877db04c5",
-        "https://git.kernel.org/stable/c/cf441a0db681dfad5e89b015d6be11365159d7a9",
-        "https://git.kernel.org/stable/c/da69d3ac53490724eba0ade9deb4e539a6ae9034"
-      ],
-      "published": "2026-10-18T16:16:57.793"
-    },
-    {
-      "id": "CVE-2026-98603",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\novpn: replace bind when clearing stale local source\n\nThe UDP output fallback clears bind->local in place when the remembered\nsource address is no longer usable. The bind is RCU-published and read\nlocklessly by concurrent TX, so an IPv6 reader can observe a torn\naddress.\n\nRetry the route lookup with source address autoselection without\nmodifying the bind. After a successful lookup, revalidate the bind and\nroute key under peer->l",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/72bd1bea37ea2c8553938f086bf48ccd2147dfe1",
-        "https://git.kernel.org/stable/c/7d8104988f423572df1f3347ce578037b1043f34",
-        "https://git.kernel.org/stable/c/c44a04722f7dae9a45a101b8e100931ab59f1c18"
-      ],
-      "published": "2026-10-18T16:17:13.040"
-    },
-    {
-      "id": "CVE-2026-98684",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb: client: flush and commit data before querying allocated ranges\n\nThe mode 0 / FALLOC_FL_KEEP_SIZE fallocate emulation for small interior\nranges in smb3_simple_fallocate_range() issues\nFSCTL_QUERY_ALLOCATED_RANGES and zero-fills any sub-range the server\nreports as an unallocated hole, to force block allocation without\nchanging file contents.\n\nThis is unsafe against Windows servers.  Per the Win32 documentation,\nFSCTL_QUERY_A",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "Samba"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/aa994489bd835547c191827acc460192e147032d",
-        "https://git.kernel.org/stable/c/bf84e44ff0ed802778eafd7ecb623635379cb506",
-        "https://git.kernel.org/stable/c/f82242fe3109a3ef72f429540b5bdde08fbfb0e4"
-      ],
-      "published": "2026-10-18T16:17:21.770"
-    },
-    {
-      "id": "CVE-2026-98715",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: SVM: Preserve TLB control (i.e. pending TLB flush) on failed VMRUN\n\nDon't reset the VMCB's TLB control back to \"do nothing\" on a failed VMRUN,\nas empirical testing shows that the CPU performs the requested TLB flush if\nand only if VMRUN is successful, i.e. clearing TLB control on a failed\nVMRUN effectively drops a TLB flush.\n\nExplicitly track the need to flush all ASIDs on a per-CPU basis, as the\nASID reuse condition is ti",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/60d93c27859fb3ec5b5a689e24de303f166477d0",
-        "https://git.kernel.org/stable/c/fd873c3d1b5240e80365f09e758e8c96b88a7cdb"
-      ],
-      "published": "2026-10-18T16:17:25.050"
-    },
-    {
-      "id": "CVE-2026-98779",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu: fix ACP MFD device leak on init failure\n\nacp_hw_init() registers ACP child devices with mfd_add_devices() before\nattaching them to the ACP power domain and initializing the hardware.\n\nIf attaching a child to the power domain fails, or if the ACP reset or\nclock enable operation times out, the failure path frees only the\nsource cell, resource, and platform-data allocations. The child\nplatform devices already registere",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 1,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/2b9a53940a2bc063ea4cd09ee49220a503a0170c",
-        "https://git.kernel.org/stable/c/587469076e4ffb617f7ad1a0c4a13072a3e87113",
-        "https://git.kernel.org/stable/c/abf854513bc19e6e24d45353ac99ec5627ee0acc",
-        "https://git.kernel.org/stable/c/f0013046151b7467e62c471c1c83d63ea255799c"
-      ],
-      "published": "2026-10-18T16:17:31.853"
-    },
-    {
-      "id": "CVE-2026-111990",
-      "description": "A weakness has been identified in kishan0725 Hospital Management System up to 777fda46b77a820977a5ba616283dbfbc40bf7e1. This affects the function mysqli_query of the file admin-panel.php of the component Appointment Cancellation Handler. Executing a manipulation of the argument ID can lead to sql injection. The attack may be launched remotely. The exploit has been made available to the public and could be used for attacks. The project was informed of the problem early through an issue report but",
+      "id": "CVE-2026-112141",
+      "description": "A vulnerability was determined in satya-vinay Events-Management-System up to 437c77ceb69bf9fe2e3f4f46f7871b83f425383a. Affected is the function mysqli_query of the file doedit.php of the component Registration-Edit Handler. This manipulation of the argument id/name/title/year/gender/fromdate/todate/people causes sql injection. Remote exploitation of the attack is possible. The exploit has been publicly disclosed and may be utilized. This product follows a rolling release approach for continuous ",
       "cvss": {
         "score": 7.3,
         "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L",
@@ -296,17 +463,17 @@
         "MySQL"
       ],
       "references": [
-        "https://github.com/kishan0725/Hospital-Management-System/issues/75",
-        "https://vuldb.com/cve/CVE-2026-111990",
-        "https://vuldb.com/submit/1007402",
-        "https://vuldb.com/vuln/421655",
-        "https://vuldb.com/vuln/421655/cti"
+        "https://github.com/satya-vinay/Events-Management-System/",
+        "https://github.com/satya-vinay/Events-Management-System/issues/2",
+        "https://vuldb.com/cve/CVE-2026-112141",
+        "https://vuldb.com/submit/1013207",
+        "https://vuldb.com/vuln/422246"
       ],
-      "published": "2026-10-18T15:16:52.693"
+      "published": "2026-10-19T13:16:57.140"
     },
     {
-      "id": "CVE-2026-112044",
-      "description": "A security vulnerability has been detected in dotnet eShop up to 913acea66708a59595351174cee9b29f37179d29. The affected element is the function AddApplicationServices of the file src/Catalog.API/Extensions/Extensions.cs of the component Catalog API. The manipulation leads to improper authentication. The attack can be initiated remotely. The project was informed of the problem early through an issue report but has not responded yet.",
+      "id": "CVE-2026-112152",
+      "description": "A security vulnerability has been detected in vraj404 Criminal-Management-System up to 2808d057e7ddc5295519a487365b0cacfd0ba8c4. Affected by this issue is the function mysqli_query of the file Officers/searchOff.php of the component Search Page. Such manipulation of the argument Search leads to sql injection. The attack may be performed from remote. The exploit has been disclosed publicly and may be used. This product utilizes a rolling release system for continuous delivery, and as such, versio",
       "cvss": {
         "score": 7.3,
         "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L",
@@ -314,40 +481,134 @@
       },
       "tier": 2,
       "matchedProducts": [
-        "Microsoft .NET"
+        "MySQL"
       ],
       "references": [
-        "https://github.com/dotnet/eShop/",
-        "https://github.com/dotnet/eShop/issues/997",
-        "https://vuldb.com/cve/CVE-2026-112044",
-        "https://vuldb.com/submit/1009026",
-        "https://vuldb.com/vuln/421692"
+        "https://github.com/vraj404/Criminal-Management-System/",
+        "https://github.com/vraj404/Criminal-Management-System/issues/4",
+        "https://vuldb.com/cve/CVE-2026-112152",
+        "https://vuldb.com/submit/1014022",
+        "https://vuldb.com/vuln/422259"
       ],
-      "published": "2026-10-19T03:16:59.153"
+      "published": "2026-10-19T16:17:05.403"
     },
     {
-      "id": "CVE-2026-111440",
-      "description": "\u5728 openGauss-connector-jdbc \u7684 pgjdbc/src/main/java/org/postgresql/log/LogFactory.java \u4e2d\uff0cLogFactory \u6839\u636e JDBC \u8fde\u63a5\u53c2\u6570\u4e2d\u7684 logger \u7c7b\u540d\u8c03\u7528 Class.forName \u52a0\u8f7d\u7c7b\u540e\uff0c\u76f4\u63a5\u53cd\u5c04\u8c03\u7528\u4ee5 String \u4e3a\u53c2\u6570\u7684\u6784\u9020\u51fd\u6570\uff0c\u518d\u8f6c\u6362\u4e3a Log\u3002\u7f3a\u5c11 asSubclass(Log.class) \u6821\u9a8c\uff0c\u975e Log \u5b9e\u73b0\u7c7b\u4e5f\u4f1a\u5728\u7c7b\u578b\u68c0\u67e5\u524d\u88ab\u5b9e\u4f8b\u5316\u3002\u56e0\u6b64\uff0c\u5f53\u653b\u51fb\u8005\u53ef\u63a7\u5236 JDBC URL \u6216\u8fde\u63a5\u5c5e\u6027\u4e2d\u7684 logger \u7c7b\u540d\uff0c\u4e14\u5ba2\u6237\u7aef classpath \u4e2d\u5b58\u5728\u53ef\u88ab\u52a0\u8f7d\u7684\u7c7b\u65f6\uff0c\u53ef\u80fd\u5728\u5ba2\u6237\u7aef\u89e6\u53d1\u975e\u9884\u671f\u7684\u7c7b\u52a0\u8f7d\u4e0e\u6784\u9020\u526f\u4f5c\u7528\u3002\n\n\u6b64\u6f0f\u6d1e\u81ea JDBC 1.1.0\u5f15\u5165\uff0c\u5f71\u54cd 1.1.0 \u53ca\u4e4b\u540e\u7684 2.x\u30013.x\u30015.x\u30016.x \u5404\u7248\u672c\u53ca\u8865\u4e01\uff08\u542b 6.0.0 \u5206\u652f\u6700\u65b0 6.0.6\uff09\uff0c\u4ee5\u53ca 7.0.0-RC1\u30017.0.0-RC2\u30017.0.0-RC3\uff0c\u5e76\u5728 7.0.0-LTS \u7248\u672c\u4fee\u590d\u3002\u4fee\u590d\u5728 Class.forName \u4e4b\u540e\u5148\u6267\u884c asSubclass(Log.class)\uff0c\u4ec5\u5141\u8bb8 Log \u5b50\u7c7b\u8fdb\u5165\u6784",
+      "id": "CVE-2026-112153",
+      "description": "A vulnerability was detected in vraj404 Criminal-Management-System up to 2808d057e7ddc5295519a487365b0cacfd0ba8c4. This affects the function mysqli_error of the file Officers/addOfficer.php of the component Officer Registration Form. Performing a manipulation of the argument offName/offID/ID/contact/gender/weapon/role results in sql injection. It is possible to initiate the attack remotely. The exploit is now public and may be used. This product is using a rolling release to provide continious d",
       "cvss": {
-        "score": 7.0,
-        "vector": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+        "score": 7.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L",
         "severity": "HIGH"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "MySQL"
+      ],
+      "references": [
+        "https://github.com/vraj404/Criminal-Management-System/",
+        "https://github.com/vraj404/Criminal-Management-System/issues/5",
+        "https://vuldb.com/cve/CVE-2026-112153",
+        "https://vuldb.com/submit/1014023",
+        "https://vuldb.com/vuln/422260"
+      ],
+      "published": "2026-10-19T16:17:05.567"
+    },
+    {
+      "id": "CVE-2026-111829",
+      "description": "Improper Control of Filename for Include/Require Statement in PHP Program ('PHP Remote File Inclusion') vulnerability in WP Mailster WP Mailster wp-mailster allows PHP Local File Inclusion.This issue affects WP Mailster: from n/a through 1.9.1.0.",
+      "cvss": {
+        "score": 6.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "WordPress"
+      ],
+      "references": [
+        "https://patchstack.com/database/wordpress/plugin/wp-mailster/vulnerability/wordpress-wp-mailster-plugin-1-9-1-0-local-file-inclusion-vulnerability?_s_id=cve"
+      ],
+      "published": "2026-10-19T14:17:00.300"
+    },
+    {
+      "id": "CVE-2026-107566",
+      "description": "Missing authorization in the Sieve editheader action (6.2.22 through 6.3.6) and in the mail-rule Set header value action (6.0.0 through 6.3.6) of Progressive Robot hMailServer allows an authenticated user to make the server send mail as any address, DKIM-signed where the address is at a domain the server signs for. A Sieve script's editheader (addheader/deleteheader) could add or delete any header field except Received and Return-Path, and the server applies a script's header edits before it que",
+      "cvss": {
+        "score": 6.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "hMailServer"
+      ],
+      "references": [
+        "https://gitlab.com/hmailserver/hmailserver/-/releases/v6.3.7",
+        "https://gitlab.com/hmailserver/hmailserver/-/work_items/83"
+      ],
+      "published": "2026-10-19T16:17:01.460"
+    },
+    {
+      "id": "CVE-2026-107568",
+      "description": "Missing authorization in the Sieve notify action (6.2.22 through 6.3.6) and in the mail-rule Reply action (6.0.0 through 6.3.6) of Progressive Robot hMailServer allows an authenticated user to send mail through the server as any address. A Sieve notify sends a notification message, and its :from tag names the sender; the server set the notification's From header to that :from as the script wrote it, without checking that the address belongs to the account - the check that the Sieve vacation acti",
+      "cvss": {
+        "score": 6.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "hMailServer"
+      ],
+      "references": [
+        "https://gitlab.com/hmailserver/hmailserver/-/releases/v6.3.7",
+        "https://gitlab.com/hmailserver/hmailserver/-/work_items/82"
+      ],
+      "published": "2026-10-19T16:17:01.717"
+    },
+    {
+      "id": "CVE-2026-112781",
+      "description": "Grav from 2.0.0 before 2.2.2 contains an information disclosure vulnerability that allows page editors to read protected configuration by adding config-*@ directives to page frontmatter forms. Attackers with page-edit permission can bypass the Twig sandbox config_denied_paths redaction to expose security.salt, plugin credentials, and Redis passwords to all visitors.",
+      "cvss": {
+        "score": 6.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
+        "severity": "MEDIUM"
+      },
+      "tier": 2,
+      "matchedProducts": [
+        "Redis"
+      ],
+      "references": [
+        "https://github.com/getgrav/grav/security/advisories/GHSA-8wwq-x3w5-fxmw",
+        "https://www.vulncheck.com/advisories/grav-2.0.0-before-2.2.2-information-disclosure-via-form-config-directives"
+      ],
+      "published": "2026-10-19T20:17:55.633"
+    },
+    {
+      "id": "CVE-2026-77938",
+      "description": "Letta through 0.16.8 contains an information disclosure vulnerability that allows users running tools to read server secrets because LocalSandbox subprocesses inherit the full server environment. Attackers can run code via POST /v1/tools/run or custom tools to read LETTA_PG_URI, POSTGRES_PASSWORD, and provider API keys, then access cross-tenant database data.",
+      "cvss": {
+        "score": 6.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
+        "severity": "MEDIUM"
       },
       "tier": 2,
       "matchedProducts": [
         "PostgreSQL"
       ],
       "references": [
-        "https://gitcode.com/opengauss/openGauss-connector-jdbc/pull/423"
+        "https://github.com/letta-ai/letta/blob/1131535716e8a31c9a437f8695e25ac98f203a24/letta/services/tool_sandbox/base.py#L487",
+        "https://www.lasso.security/vulnerability-database/cve-2026-77938",
+        "https://www.vulncheck.com/advisories/letta-through-0.16.8-credential-exposure-via-tool-sandbox-environment-inheritance"
       ],
-      "published": "2026-10-19T04:17:03.657"
+      "published": "2026-10-20T01:17:20.410"
     },
     {
-      "id": "CVE-2026-74921",
-      "description": "The Document Gallery WordPress plugin through 5.1.1 does not sanitise or escape several gallery shortcode attributes before embedding them in a single-quoted HTML attribute in the rendered gallery markup, allowing users with the Contributor role and above to inject arbitrary event handlers that execute when a higher privileged user views the content.",
+      "id": "CVE-2026-93878",
+      "description": "The DiviGear Carousel plugin for WordPress is vulnerable to Stored Cross-Site Scripting via update_license AJAX Action in all versions up to, and including, 5.2.0 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with subscriber-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. The injected payload executes when an administrator visits the DiviGear > Activatio",
       "cvss": {
-        "score": 6.8,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:R/S:U/C:H/I:H/A:H",
+        "score": 6.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
         "severity": "MEDIUM"
       },
       "tier": 2,
@@ -355,195 +616,381 @@
         "WordPress"
       ],
       "references": [
-        "https://wpscan.com/vulnerability/b0b97661-c671-420c-8fca-22666862b379/"
+        "https://www.divigear.com/",
+        "https://www.wordfence.com/threat-intel/vulnerabilities/id/f482cda1-fe38-455a-b913-bebb21b7bda4?source=cve"
       ],
-      "published": "2026-10-19T07:16:31.613"
+      "published": "2026-10-20T07:17:09.947"
     },
     {
-      "id": "CVE-2026-112088",
-      "description": "A weakness has been identified in Dav-ee dairy-management-system 31ace9692d1e1e6d64339a42c463b361319c615c/f31a584c3330c013b61f8b0306d9e0849c6d693d. This affects the function mysqli_query of the file farmers/add.php. Executing a manipulation of the argument f_no/f_id/f_name/f_locallity/f_ac/f_phone can lead to sql injection. The attack can be launched remotely. The exploit has been made available to the public and could be used for attacks. This product does not use versioning. This is why inform",
+      "id": "CVE-2026-111883",
+      "description": "Locust through 2.46.7 contains a cross-site request forgery vulnerability that allows remote attackers to stop load tests or reset statistics via GET requests to /stop and /stats/reset. Attackers can lure an operator to a malicious page triggering cross-site GET requests, terminating running swarms and wiping recorded performance results.",
       "cvss": {
-        "score": 6.3,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L",
+        "score": 5.4,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:L",
         "severity": "MEDIUM"
       },
       "tier": 2,
       "matchedProducts": [
-        "MySQL"
+        "ESET"
       ],
       "references": [
-        "https://github.com/Dav-ee/dairy-management-system/",
-        "https://github.com/Dav-ee/dairy-management-system/issues/2",
-        "https://vuldb.com/cve/CVE-2026-112088",
-        "https://vuldb.com/submit/1011414",
-        "https://vuldb.com/vuln/421853"
+        "https://github.com/locustio/locust/blob/2.46.7/locust/web.py",
+        "https://github.com/locustio/locust/commit/3a1d0caa5bde59494ede55f513fcb4becbf406a0",
+        "https://github.com/locustio/locust/issues/3566",
+        "https://www.vulncheck.com/advisories/locust-through-2.46.7-csrf-via-web-ui-stop-and-stats-reset"
       ],
-      "published": "2026-10-19T07:16:30.873"
+      "published": "2026-10-19T14:17:00.437"
     },
     {
-      "id": "CVE-2026-112090",
-      "description": "A vulnerability was detected in Dav-ee dairy-management-system 31ace9692d1e1e6d64339a42c463b361319c615c/f31a584c3330c013b61f8b0306d9e0849c6d693d. This issue affects the function mysqli_real_escape_string of the file payment/pay.php. The manipulation of the argument f_no/farmer results in sql injection. The attack may be launched remotely. The exploit is now public and may be used. This product operates on a rolling release basis, ensuring continuous delivery. Consequently, there are no version d",
+      "id": "CVE-2026-112328",
+      "description": "The Sensei LMS WordPress plugin before 4.26.4 contains a broken access control vulnerability in the add_new_module_term AJAX handler that allows authenticated Teacher-role attackers to assign module taxonomy terms to arbitrary courses by supplying a crafted course_id, since the handler validates only a generic nonce and checks manage_options solely for slug prefixing rather than verifying course edit permissions. Attackers can reuse a nonce obtained from their own course metabox to call wp_set_o",
       "cvss": {
-        "score": 6.3,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "MySQL"
-      ],
-      "references": [
-        "https://github.com/Dav-ee/dairy-management-system/",
-        "https://github.com/Dav-ee/dairy-management-system/issues/4",
-        "https://vuldb.com/cve/CVE-2026-112090",
-        "https://vuldb.com/submit/1011469",
-        "https://vuldb.com/vuln/421855"
-      ],
-      "published": "2026-10-19T08:17:02.813"
-    },
-    {
-      "id": "CVE-2026-74922",
-      "description": "The Document Gallery WordPress plugin through 5.1.1 does not verify the signature on one of its unauthenticated webhook endpoints when no shared secret has been configured, which is the default state, allowing unauthenticated users to replace the thumbnail image the site publishes for any document.",
-      "cvss": {
-        "score": 5.3,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "WordPress"
-      ],
-      "references": [
-        "https://wpscan.com/vulnerability/850aaa4e-82ff-479f-bdcd-6cb8089325bd/"
-      ],
-      "published": "2026-10-19T07:16:31.760"
-    },
-    {
-      "id": "CVE-2026-94228",
-      "description": "The TrueBooker WordPress plugin before 1.3.0 does not perform any capability check on one of its setup handlers, and the token it does check is issued to unauthenticated visitors, allowing anyone to overwrite the plugin's entire configuration and to discard any setting they do not supply.",
-      "cvss": {
-        "score": 5.3,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "WordPress"
-      ],
-      "references": [
-        "https://wpscan.com/vulnerability/fda8b7cb-2e7b-4aa1-9d9e-c6d93bf47332/"
-      ],
-      "published": "2026-10-19T07:16:32.320"
-    },
-    {
-      "id": "CVE-2026-94229",
-      "description": "The TrueBooker WordPress plugin before 1.3.0 does not verify that the requester owns a booking before rendering its confirmation summary, allowing unauthenticated attackers to enumerate booking identifiers and retrieve the personal information of customers who booked an appointment, as well as invalidate the customer's own confirmation link.",
-      "cvss": {
-        "score": 5.3,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "WordPress"
-      ],
-      "references": [
-        "https://wpscan.com/vulnerability/6041298d-1e66-4fba-9cc1-7b55e591ffaf/"
-      ],
-      "published": "2026-10-19T07:16:32.450"
-    },
-    {
-      "id": "CVE-2026-94230",
-      "description": "The TrueBooker WordPress plugin before 1.3.0 does not have authorisation checks in some of its AJAX actions, and does not validate the submitted service price server-side, allowing unauthenticated users to create bookings at a price of their choosing and to attach them to arbitrary customer accounts.",
-      "cvss": {
-        "score": 5.3,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "WordPress"
-      ],
-      "references": [
-        "https://wpscan.com/vulnerability/05881cde-313e-47d5-a176-2b0b0051bca9/"
-      ],
-      "published": "2026-10-19T07:16:32.580"
-    },
-    {
-      "id": "CVE-2026-94231",
-      "description": "The TrueBooker WordPress plugin before 1.3.0 does not have authorisation checks in place in some of its functionality, allowing unauthenticated users to create and modify booking services and categories, including their prices.",
-      "cvss": {
-        "score": 5.3,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "WordPress"
-      ],
-      "references": [
-        "https://wpscan.com/vulnerability/d90ad3f4-4d58-43bc-8f17-0f6b8dfdde4f/"
-      ],
-      "published": "2026-10-19T07:16:32.710"
-    },
-    {
-      "id": "CVE-2026-94294",
-      "description": "The App Builder WordPress plugin before 5.7.1 does not require authentication or authorisation before writing attacker-supplied data to one of its options and, on a separate unauthenticated request, redirecting the visitor's browser to a URI built from that stored data.",
-      "cvss": {
-        "score": 5.3,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N",
-        "severity": "MEDIUM"
-      },
-      "tier": 2,
-      "matchedProducts": [
-        "WordPress"
-      ],
-      "references": [
-        "https://wpscan.com/vulnerability/26ac49f1-657b-49ab-937b-1ceabde1e891/"
-      ],
-      "published": "2026-10-19T07:16:32.950"
-    },
-    {
-      "id": "CVE-2026-112089",
-      "description": "A security vulnerability has been detected in Dav-ee dairy-management-system 31ace9692d1e1e6d64339a42c463b361319c615c/f31a584c3330c013b61f8b0306d9e0849c6d693d. This vulnerability affects the function mysqli_query of the file employees/delete.php. The manipulation of the argument e_payroll_no leads to sql injection. The attack may be initiated remotely. The exploit has been disclosed publicly and may be used. This product uses a rolling release model to deliver continuous updates. As a result, sp",
-      "cvss": {
-        "score": 4.7,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:L/I:L/A:L",
+        "score": 4.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N",
         "severity": "MEDIUM"
       },
       "tier": 3,
       "matchedProducts": [
-        "MySQL"
+        "WordPress"
       ],
       "references": [
-        "https://github.com/Dav-ee/dairy-management-system/",
-        "https://github.com/Dav-ee/dairy-management-system/issues/3",
-        "https://vuldb.com/cve/CVE-2026-112089",
-        "https://vuldb.com/submit/1011415",
-        "https://vuldb.com/vuln/421854"
+        "https://senseilms.com/release-notes/",
+        "https://www.vulncheck.com/advisories/sensei-lms-broken-access-control-via-add-new-module-term-ajax"
       ],
-      "published": "2026-10-19T07:16:31.050"
+      "published": "2026-10-19T15:17:06.280"
     },
     {
-      "id": "CVE-2026-91831",
-      "description": "The Subscribe to Comments WordPress plugin before 2.3.3 does not sanitise newline characters from a notification sender-name setting before using it in e-mail headers, allowing users with Author-level access and above to inject arbitrary e-mail headers, such as a hidden Bcc, and to spoof the sender.",
+      "id": "CVE-2026-111766",
+      "description": "markdown-it is a Markdown parser. Prior to 14.3.3 and 15.0.3, when the html option or commonmark preset is enabled and the constructs occur inside a paragraph, attacker-controlled Markdown containing repeated unterminated inline HTML comments, processing instructions, declarations, or CDATA sections reaches src/rules_inline/html_inline.ts. Its HTML_TAG_RE match searches the remaining suffix for the appropriate terminator; when no terminator is present, parsing advances to the next opener and rep",
       "cvss": {
-        "score": 3.8,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:L/I:L/A:N",
+        "score": 3.7,
+        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:L",
         "severity": "LOW"
       },
       "tier": 3,
       "matchedProducts": [
-        "WordPress"
+        "ESET"
       ],
       "references": [
-        "https://wpscan.com/vulnerability/6cd60f78-f5e2-4b4a-8d50-7d2bc4f981ee/"
+        "https://github.com/markdown-it/markdown-it/commit/928bc8c11ded60181c0e7fc5aa954eec582e8e79",
+        "https://github.com/markdown-it/markdown-it/commit/d99f48839d37af6fd8a2617516c43dab90755503",
+        "https://github.com/markdown-it/markdown-it/releases/tag/14.3.3",
+        "https://github.com/markdown-it/markdown-it/releases/tag/15.0.3",
+        "https://github.com/markdown-it/markdown-it/security/advisories/GHSA-vfgh-jcmw-g37q"
       ],
-      "published": "2026-10-19T07:16:32.187"
+      "published": "2026-10-19T20:17:52.247"
     },
     {
-      "id": "CVE-2026-98438",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmptcp: options: fix uninit-value in mptcp_write_data_fin\n\nWhen sending a DATA_FIN without data, and because the DATA_FIN occupies\n1 octet of the connection-level sequence space [1], it is then required\nto add a DSS mapping with specific values.\n\nIf the checksum has been negotiated, it also needs to be computed, and\nincluded in the outgoing packet, and thus the initial csum data needs to\nbe reset to 0 as well. This is no longer ",
+      "id": "CVE-2026-112188",
+      "description": "MISP contains a vulnerability in its server settings lookup mechanism that allows an authenticated user to retrieve sensitive configuration data that should have been redacted.\n\nThe settings lookup function resolves a dotted setting name to a node in the configuration tree. When a branch name (such as Security, MISP, or Plugin) is supplied instead of a specific leaf setting, the function returns the entire sub-tree. Because a branch node does not carry a redaction flag, the redaction check in th",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "Redis"
+      ],
+      "references": [
+        "https://github.com/MISP/MISP/commit/30b849102"
+      ],
+      "published": "2026-10-19T10:16:47.413"
+    },
+    {
+      "id": "CVE-2026-111755",
+      "description": "follow-redirects is a Node.js HTTP and HTTPS client wrapper that automatically follows redirects. From 1.16.0 until 1.16.1, escapeRegex leaves valid header-name metacharacters unescaped in sensitiveHeaders. When an application declares a sensitive header whose name contains ^ or | and follows a cross-origin or HTTPS-to-HTTP redirect, unescaped regular-expression metacharacters prevent the generated filter from matching the declared header name, and the credential header is forwarded to an attack",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "Node.js"
+      ],
+      "references": [
+        "https://github.com/follow-redirects/follow-redirects/commit/080a76d0e125b37bf81717368a61d5dc37aa56c8",
+        "https://github.com/follow-redirects/follow-redirects/releases/tag/v1.16.1",
+        "https://github.com/follow-redirects/follow-redirects/security/advisories/GHSA-8r9p-f939-6h3c",
+        "https://github.com/follow-redirects/follow-redirects/security/advisories/GHSA-8r9p-f939-6h3c"
+      ],
+      "published": "2026-10-19T18:17:00.260"
+    },
+    {
+      "id": "CVE-2026-110672",
+      "description": "Cpanel::JSON::XS versions before 4.80 for Perl leak the decoded key of an object rejected for a duplicate key or a missing colon in decode_hv.\n\nA quoted key of 24 or more bytes, or one containing a non-ASCII byte or an escape sequence, is decoded into a new scalar. Nothing frees that scalar when the object is rejected for a missing ':' after the key or, from 4.09, for a duplicate key. Duplicate keys are an error unless allow_dupkeys, dupkeys_as_arrayref or relaxed is set.\n\nA process that keeps r",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "cPanel"
+      ],
+      "references": [
+        "https://github.com/rurban/Cpanel-JSON-XS/commit/532b53cf8d2ca5ab6bc24048325566d1f7132425.patch",
+        "https://metacpan.org/release/RURBAN/Cpanel-JSON-XS-4.80/changes"
+      ],
+      "published": "2026-10-19T19:17:20.753"
+    },
+    {
+      "id": "CVE-2026-110673",
+      "description": "Cpanel::JSON::XS versions before 4.80 for Perl allow stack exhaustion via nested tagged values under allow_tags in decode_tag.\n\nWith allow_tags, \"(\" starts a tagged value. Its tag and value are decoded recursively, and each can start another tagged value. Unlike arrays and objects, this nesting is not counted against max_depth.\n\nA run of \"(\" bytes exhausts the C stack and triggers an uncatchable segmentation fault regardless of max_depth.",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "cPanel"
+      ],
+      "references": [
+        "https://github.com/rurban/Cpanel-JSON-XS/commit/995eb484a9351753e2a8ec3317918b5b4a4e086a.patch",
+        "https://metacpan.org/release/RURBAN/Cpanel-JSON-XS-4.80/changes"
+      ],
+      "published": "2026-10-19T19:17:20.877"
+    },
+    {
+      "id": "CVE-2026-110674",
+      "description": "Cpanel::JSON::XS versions from 4.33 before 4.80 for Perl miss duplicate non-ASCII bare keys, allowing type confusion under dupkeys_as_arrayref in decode_hv.\n\nWith allow_barekey, which relaxed enables, a bare key containing a non-ASCII byte is stored as UTF-8 but looked up as raw bytes, so a repeated key escapes the duplicate-key check and replaces the earlier value.\n\nFrom 4.41, under dupkeys_as_arrayref, a bare repeat replaces the array that collects a key's values with a plain value, and the ne",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "cPanel"
+      ],
+      "references": [
+        "https://github.com/rurban/Cpanel-JSON-XS/commit/c52037857d6a99d96ebd1ce3e2fa769505f028cf.patch",
+        "https://metacpan.org/release/RURBAN/Cpanel-JSON-XS-4.80/changes",
+        "https://www.cve.org/CVERecord?id=CVE-2026-9334"
+      ],
+      "published": "2026-10-19T19:17:21.090"
+    },
+    {
+      "id": "CVE-2026-110675",
+      "description": "Cpanel::JSON::XS versions from 4.33 before 4.80 for Perl accept malformed UTF-8 in bare hash keys under allow_barekey in decode_hv.\n\nWith utf8 and allow_barekey, which relaxed enables, a quoted key is validated as UTF-8 but a bare key's bytes are stored as a UTF-8 flagged string without any check. Malformed UTF-8, control bytes and backslashes reach the decoded hash, while malformed UTF-8 and control bytes in a quoted key or a value are rejected.\n\nLater operations on the key, including lc, uc or",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "cPanel"
+      ],
+      "references": [
+        "https://github.com/rurban/Cpanel-JSON-XS/commit/c2cd02281b9d6904ca0aff2740154e742abc070c.patch",
+        "https://metacpan.org/release/RURBAN/Cpanel-JSON-XS-4.80/changes"
+      ],
+      "published": "2026-10-19T19:17:21.210"
+    },
+    {
+      "id": "CVE-2026-110676",
+      "description": "Cpanel::JSON::XS versions before 4.80 for Perl allow memory exhaustion by encoding exponent notation as full decimal digits under allow_bignum.\n\nWith allow_bignum, a JSON number with a fraction or exponent decodes to a Math::BigFloat, which stores the exponent separately and so decodes cheaply. Encoding it untyped or as JSON_TYPE_FLOAT writes the plain decimal form with one digit per unit of exponent. Nothing bounds the exponent, so the 12-byte text [1e30000000] encodes to 30 MB.\n\nUntrusted JSON",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "cPanel"
+      ],
+      "references": [
+        "https://github.com/rurban/Cpanel-JSON-XS/commit/996ab96972b967a917536d291947b5f3cf42e960.patch",
+        "https://metacpan.org/release/RURBAN/Cpanel-JSON-XS-4.80/changes"
+      ],
+      "published": "2026-10-19T19:17:21.320"
+    },
+    {
+      "id": "CVE-2026-110677",
+      "description": "Cpanel::JSON::XS versions from 4.28 before 4.80 for Perl leak the array collecting duplicate key values under dupkeys_as_arrayref in decode_hv.\n\nWith dupkeys_as_arrayref, the values of a duplicate object key are collected into a new array. An extra reference is never released, so the array and every value in it outlive the decoded structure. The array also leaks when decoding fails after a duplicate key.\n\nRepeatedly decoding untrusted JSON with a duplicate key holding a large value exhausts proc",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "cPanel"
+      ],
+      "references": [
+        "https://github.com/rurban/Cpanel-JSON-XS/commit/edb13030a708afc2cde0d2629fb6bdd31288ce6c.patch",
+        "https://metacpan.org/release/RURBAN/Cpanel-JSON-XS-4.80/changes"
+      ],
+      "published": "2026-10-19T19:17:21.437"
+    },
+    {
+      "id": "CVE-2026-110678",
+      "description": "Cpanel::JSON::XS versions before 4.80 for Perl allow memory exhaustion by buffering incremental input past max_size in incr_parse.\n\nThe parser appends each chunk to its buffer. In scalar or list context, it compares max_size with how far it has progressed, not with the buffer length. A chunk that starts with a NUL byte stops the parser before it progresses, and a call in void context skips the check, so the buffer grows without limit.\n\nA peer streaming data to an incr_parse consumer can exhaust ",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "cPanel"
+      ],
+      "references": [
+        "https://github.com/rurban/Cpanel-JSON-XS/commit/d516f296b1714e06b0fb9eaae72f4558ae3d83d6.patch",
+        "https://metacpan.org/release/RURBAN/Cpanel-JSON-XS-4.80/changes"
+      ],
+      "published": "2026-10-19T19:17:21.550"
+    },
+    {
+      "id": "CVE-2026-110680",
+      "description": "Cpanel::JSON::XS versions from 4.20 before 4.80 for Perl write out of bounds when a tied or shared hash grows during canonical encoding in encode_hv.\n\nWith canonical, the keys of a tied or threads::shared hash are counted before a second pass collects them for sorting. The encoder uses a fixed 64-entry stack array or, for larger counts, a heap array sized from the first pass. If the second pass exceeds that capacity, entries are written out of bounds before the counts are compared.\n\nThis corrupt",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "cPanel"
+      ],
+      "references": [
+        "https://github.com/rurban/Cpanel-JSON-XS/commit/44c4591cc62ea7f453a0ed931abf24394e1560a1.patch",
+        "https://metacpan.org/release/RURBAN/Cpanel-JSON-XS-4.80/changes"
+      ],
+      "published": "2026-10-19T19:17:21.657"
+    },
+    {
+      "id": "CVE-2026-110681",
+      "description": "Cpanel::JSON::XS versions before 4.80 for Perl use the parent interpreter's scalars from a parser object cloned into a new ithread.\n\nA parser object holds its callbacks and its incremental parse buffer as raw scalar pointers. When a thread is created, these are copied into the new interpreter unchanged, so the child's parser uses, and later frees, scalars that belong to the parent and may already have been freed there.\n\nA parser created before a thread starts and used inside it can call freed ca",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "cPanel"
+      ],
+      "references": [
+        "https://github.com/rurban/Cpanel-JSON-XS/commit/c53eefbaa59c344abd4c71762118da04280987e8.patch",
+        "https://metacpan.org/release/RURBAN/Cpanel-JSON-XS-4.80/changes"
+      ],
+      "published": "2026-10-19T19:17:21.767"
+    },
+    {
+      "id": "CVE-2026-110682",
+      "description": "Cpanel::JSON::XS versions from 4.42 before 4.80 for Perl let input chunking change the decoded value of top-level numbers in incr_parse.\n\nallow_nonref is enabled by default and incr_parse inherits it. A top-level number, true, false or null has no closing delimiter, so the incremental parser decodes whatever has arrived. The bytes 12 decode as one value when read together, but as 1 and then 2 when split across two reads.\n\nA peer that can influence read boundaries can change how many messages a s",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "cPanel"
+      ],
+      "references": [
+        "https://github.com/rurban/Cpanel-JSON-XS/commit/f632d6690d82c14cd2d76d648805325201c52b83.patch",
+        "https://metacpan.org/release/RURBAN/Cpanel-JSON-XS-4.80/changes"
+      ],
+      "published": "2026-10-19T19:17:21.880"
+    },
+    {
+      "id": "CVE-2026-110684",
+      "description": "Cpanel::JSON::XS versions from 3.0202 before 4.80 for Perl leak memory and retain overloaded objects when encoding values as strings in encode_stringify.\n\nencode_stringify writes a value in its string form under allow_stringify, under convert_blessed for objects without TO_JSON, and under allow_bignum. For an array or hash object with a \"\" overload, and from 4.20 a scalar object, it takes an extra reference that is never released, so the object and everything it references are never freed. From ",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "cPanel"
+      ],
+      "references": [
+        "https://github.com/rurban/Cpanel-JSON-XS/commit/5b15916b5e7841e447664ace51fb50c12d1e0f39.patch",
+        "https://metacpan.org/release/RURBAN/Cpanel-JSON-XS-4.80/changes"
+      ],
+      "published": "2026-10-19T19:17:21.990"
+    },
+    {
+      "id": "CVE-2026-110685",
+      "description": "Cpanel::JSON::XS versions before 4.80 for Perl leak the decoded arguments of a tagged value when its THAW method dies in decode_tag.\n\nWith allow_tags, a tagged value's class name and argument array are decoded and passed to the class's THAW method. Both are released only after THAW returns, so a THAW that dies leaves the whole decoded argument structure allocated.\n\nEach rejected document leaks data of a size the sender chooses, so a process that catches the error and keeps running exhausts its m",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "cPanel"
+      ],
+      "references": [
+        "https://github.com/rurban/Cpanel-JSON-XS/commit/9ab010221c069a7af9ef7463454ecd3b8ace9c58.patch",
+        "https://metacpan.org/release/RURBAN/Cpanel-JSON-XS-4.80/changes"
+      ],
+      "published": "2026-10-19T19:17:22.097"
+    },
+    {
+      "id": "CVE-2026-110686",
+      "description": "Cpanel::JSON::XS versions before 4.80 for Perl use freed filter callbacks when a filter removes itself during decoding in decode_hv.\n\nA decode copies the parser's filter_json_object and filter_json_single_key_object callbacks without taking references to them. A filter callback that removes the last single-key filter frees the callback table while the decode in progress still uses it. The next object is dispatched through freed memory and can crash the process.",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "cPanel"
+      ],
+      "references": [
+        "https://github.com/rurban/Cpanel-JSON-XS/commit/c3e7e3c5b0b72d82b072c6a7cfb8c34cec4c7ea2.patch",
+        "https://metacpan.org/release/RURBAN/Cpanel-JSON-XS-4.80/changes"
+      ],
+      "published": "2026-10-19T19:17:22.200"
+    },
+    {
+      "id": "CVE-2026-110687",
+      "description": "Cpanel::JSON::XS versions from 4.43 before 4.80 for Perl misorder byte-string keys during canonical encoding in utf16_cmp.\n\ncanonical sorts keys by UTF-16 code units. When any key in a hash is UTF-8 flagged, every key is decoded as UTF-8 for the comparison, including byte-string keys that the encoder writes out as Latin-1 characters. A byte-string key whose bytes are valid UTF-8 is sorted out of order, and two keys that encode differently can compare equal and are left in hash order.\n\nThe same d",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "cPanel"
+      ],
+      "references": [
+        "https://github.com/rurban/Cpanel-JSON-XS/commit/bb9da30b67f637f4d57922f0e043376363f28f0c.patch",
+        "https://metacpan.org/release/RURBAN/Cpanel-JSON-XS-4.80/changes"
+      ],
+      "published": "2026-10-19T19:17:22.307"
+    },
+    {
+      "id": "CVE-2026-110688",
+      "description": "Cpanel::JSON::XS versions from 4.51 before 4.80 for Perl allow quadratic CPU use by revalidating the remaining buffer per value in incr_parse.\n\nAt the first non-ASCII byte in a string, the decoder validates UTF-8 from there to the end of its input. incr_parse decodes each buffered value with a fresh decoder, so every value revalidates the rest of the buffer, and doubling the input quadruples the work.\n\nA peer that sends about a megabyte of ordinary non-ASCII JSON in one read ties up the process ",
+      "cvss": {
+        "score": null,
+        "vector": null,
+        "severity": "UNKNOWN"
+      },
+      "tier": 3,
+      "matchedProducts": [
+        "cPanel"
+      ],
+      "references": [
+        "https://github.com/rurban/Cpanel-JSON-XS/commit/384309f6a297384e69c851b5d64e1c421d9b2dcc.patch",
+        "https://metacpan.org/release/RURBAN/Cpanel-JSON-XS-4.80/changes"
+      ],
+      "published": "2026-10-19T19:17:22.420"
+    },
+    {
+      "id": "CVE-2026-112390",
+      "description": "Pillow is a Python imaging library. From 7.2.0 until 13.0.0, Pillow can enter an infinite loop while determining the frame count of a MIC image. MicImageFile inherits TIFF frame traversal, but MicImageFile.tell reports the OLE stream index and its seek() resets TIFF frame state, so an embedded TIFF with at least three IFDs never advances. When an application with olefile installed reads n_frames or saves all frames from a crafted MIC file, the non-advancing traversal can hold a worker at full CP",
       "cvss": {
         "score": null,
         "vector": null,
@@ -554,667 +1001,15 @@
         "ESET"
       ],
       "references": [
-        "https://git.kernel.org/stable/c/9a682067dd7b9dce6b94a0a05661dcc921446402",
-        "https://git.kernel.org/stable/c/b110f1dd6cb6a9930503354a01a315e0a821eaa7"
+        "https://github.com/python-pillow/Pillow/commit/26cb3ed061173b817b9ee4b6f507cb0e1e293218",
+        "https://github.com/python-pillow/Pillow/releases/tag/13.0.0",
+        "https://github.com/python-pillow/Pillow/security/advisories/GHSA-22hg-r758-rrw9"
       ],
-      "published": "2026-10-18T15:16:53.590"
+      "published": "2026-10-19T21:17:07.340"
     },
     {
-      "id": "CVE-2026-98441",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/sched: act_ct: avoid modifying shared unconfirmed ct entry\n\nIn a case where skb with an unconfirmed ct entry gets cloned, we may\nend up processing both again but with different sets of extensions.\n\nThe series of events:\n\n 1. The first clone wants to commit and runs the helpers wiring up\n    the extension pointer into the expectation list.\n 2. Then it looses the confirmation keeping the entry unconfirmed.\n 3. Second clone no",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/2b783c562c3238ff50c34fd7a72a735c9cc73d9a",
-        "https://git.kernel.org/stable/c/4a04ed91575819fb1859311113e95700b709bec7",
-        "https://git.kernel.org/stable/c/b097d9d7a5b09c8ec5c4c1a08e35ac5a66b06b44",
-        "https://git.kernel.org/stable/c/f85009dfcd65e5969526b0db7a49b5413746e630"
-      ],
-      "published": "2026-10-18T16:16:54.393"
-    },
-    {
-      "id": "CVE-2026-98487",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: bridge: mdb: restart port group walk after deletion\n\nbr_mdb_flush_pgs() keeps a pointer-to-pointer cursor while walking\nmp->ports. br_multicast_del_pg() can re-enter the same MDB entry through\nbr_multicast_sg_del_exclude_ports() and unlink other port groups. If the\ncursor points into one of those groups, the next iteration dereferences a\nstale cursor and can leave mp->ports pointing at freed memory.\n\nA following RTM_GETMDB",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/46ec55855c972504258c371677ac039ba20e5d12",
-        "https://git.kernel.org/stable/c/ab1404ac81154a89fb61ac50ae9a04cd8d4834dc",
-        "https://git.kernel.org/stable/c/ab3c4a4c85f2e1e8d04b5c1770dea8412d21c7fe",
-        "https://git.kernel.org/stable/c/fe2a42789c12eb7c5d3a42191e2cc735a6c35ead"
-      ],
-      "published": "2026-10-18T16:16:59.423"
-    },
-    {
-      "id": "CVE-2026-98488",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: atl1e: fix soft lockup on out-of-range hw_next_to_clean read\n\nSame issue as atl1c (see the first commit in this series, \"net:\natl1c: fix soft lockup on out-of-range tpd_cons read\"): the hardware\ncan report an out-of-range hw_next_to_clean (seen as 0xffff) while\nthe PCIe link/MAC is resetting. An out-of-range value can never be\nreached and the loop below would spin forever. Treat it as \"nothing\nnew to clean\" instead.",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/1d8c85359b5075c7937925b673add7ed00e57ec8",
-        "https://git.kernel.org/stable/c/34bc747a61bef572244b01b095552b629cd8d2a2",
-        "https://git.kernel.org/stable/c/374bf9e4b90f979e052332c4faca2d745c491a12",
-        "https://git.kernel.org/stable/c/3a7d9271b37c80fb7db04aff3bc5621cfdaf9bee",
-        "https://git.kernel.org/stable/c/4b7161804d8f31227551901f93947bb4eea4690b"
-      ],
-      "published": "2026-10-18T16:16:59.613"
-    },
-    {
-      "id": "CVE-2026-98489",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: atl1c: fix soft lockup on out-of-range tpd_cons read\n\nThe hardware can report an out-of-range tpd_cons (seen as 0xffff)\nwhile the PCIe link/MAC is resetting. An out-of-range value can\nnever be reached and the loop below would spin forever. To avoid\na soft lockup treat it as \"nothing new to clean\" instead.\n\nReproduced on two machines, same NIC (Qualcomm Atheros AR8151 v2.0,\n4-port), triggered by rebooting a Mikrotik CCR2004",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "Ubuntu",
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/36c2009d90f2210ef92e6f4f2850e8b57b09e754",
-        "https://git.kernel.org/stable/c/4daf80da0c38b8cd92c111ad96cb38322aabf586",
-        "https://git.kernel.org/stable/c/57b55367b6e3accc55a989afeaf127063e3614dc",
-        "https://git.kernel.org/stable/c/586847400b1168a88917287ac02c2c91a620b841",
-        "https://git.kernel.org/stable/c/5ea2576a4f5ec476f33169fdbe9090d2b038ad13"
-      ],
-      "published": "2026-10-18T16:16:59.733"
-    },
-    {
-      "id": "CVE-2026-98491",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: openvswitch: conntrack: avoid modifying shared unconfirmed ct entry\n\nIn a case where skb with an unconfirmed ct entry gets cloned, we may\nend up committing both but with different sets of extensions.\n\nThe series of events:\n\n 1. The first clone wants to commit and runs the helpers wiring up\n    the extension pointer into the expectation list.\n 2. Then it looses the confirmation keeping the entry unconfirmed.\n 3. Second clon",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/26b2bd70d22457556e2fa01cbf1192cb1a94d619",
-        "https://git.kernel.org/stable/c/37e3c878b183a115f9a114067f9ef3b408ad27fb",
-        "https://git.kernel.org/stable/c/457e0df1b5711fbeb7ba1b6bfd826f5ef30e7e55",
-        "https://git.kernel.org/stable/c/55e5256adf3940e71802e2f749cacf81518726b0",
-        "https://git.kernel.org/stable/c/707c2dc77891a874f4e8c52c285a511079164ec8"
-      ],
-      "published": "2026-10-18T16:17:00.020"
-    },
-    {
-      "id": "CVE-2026-98494",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: atl1: fix soft lockup on out-of-range cmb_tpd_next_to_clean read\n\nSame issue as atl1c (see the first commit in this series, \"net:\natl1c: fix soft lockup on out-of-range tpd_cons read\"): the hardware\ncan report an out-of-range cmb_tpd_next_to_clean (seen as 0xffff)\nwhile the PCIe link/MAC is resetting. An out-of-range value can\nnever be reached and the loop below would spin forever. Treat it as\n\"nothing new to clean\" instea",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/0f573b0576252d44fb27ab8470ea873bc6408ef3",
-        "https://git.kernel.org/stable/c/43e746821f5f5afbbf68e388bf9fbe221e03bfca",
-        "https://git.kernel.org/stable/c/5d7ac337d37cb97d77e4c910d37746694b606661",
-        "https://git.kernel.org/stable/c/6285919d4c06254d257d24dc980f6332e1984a82",
-        "https://git.kernel.org/stable/c/632cd7b81cb7bab36112f02eb2ee7f7cc1214fb1"
-      ],
-      "published": "2026-10-18T16:17:00.370"
-    },
-    {
-      "id": "CVE-2026-98507",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmm/rmap: fix missing barrier between anon_vma init and vma->anon_vma publish\n\nOn arm64 server, we find that a task trying to grab the anon_vma lock\ntriggers hungtask.\n\nINFO: task main:2354726 blocked for more than 120 seconds.\n      Tainted: G            E     5.10.0-0021.aarch64 #1\n\"echo 0 > /proc/sys/kernel/hung_task_timeout_secs\" disables this message.\ntask:main            state:D stack:    0 pid:2354726 ppid:2350673 flags:0",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/4cef512a955e4008ae4436a4fc97726976df1fdf",
-        "https://git.kernel.org/stable/c/a500df43cde075f6ea4b8bae495d89f2c35b3e16",
-        "https://git.kernel.org/stable/c/b6ac0b3f6013c168f22cad97e79967accacb08e1",
-        "https://git.kernel.org/stable/c/d348a715380bfcc6a611bdf722169d53fd01e735"
-      ],
-      "published": "2026-10-18T16:17:01.817"
-    },
-    {
-      "id": "CVE-2026-98519",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu: Fix runtime PM leak in amdgpu_debugfs_test_ib_show()\n\namdgpu_debugfs_test_ib_show() resumes the device with\npm_runtime_get_sync() before taking the reset domain semaphore with\ndown_write_killable().  If the write lock acquisition is interrupted,\nthe function returns without calling pm_runtime_put_autosuspend(),\nleaking the runtime PM reference acquired for the device and keeping\nthe GPU awake.\n\nDrop the runtime PM r",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/2556dd3a36beb3a11041ef01b5e9762e2157909f",
-        "https://git.kernel.org/stable/c/2b86ab1bd6673c525adda88819d7658ba9e784ec",
-        "https://git.kernel.org/stable/c/2c1a643942caae938ea84df2648a9b0c136e09be",
-        "https://git.kernel.org/stable/c/c28e74395ab09922bbf5be42bc5a6ed1ba4f3c37",
-        "https://git.kernel.org/stable/c/e016347fb1829489e062ea51a98a51f48b1d582d"
-      ],
-      "published": "2026-10-18T16:17:03.260"
-    },
-    {
-      "id": "CVE-2026-98520",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdkfd: fix use-after-free and multi-container gap in kfd_dev_mapping\n\nkfd_dev_mapping caches the address_space of the first /dev/kfd opener\nso that the GPU reset path can call unmap_mapping_range() to zap all\nuserspace mappings of doorbell and MMIO ranges.  This design has two\nbugs that both manifest under SRIOV with multiple containers:\n\n1. Use-after-free / rwsem deadlock.  The cached pointer refers to an\n   inode owned b",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/02b74891624e09a5512c6d84f267d01fcc306a3b",
-        "https://git.kernel.org/stable/c/c3a31087b1c8df679b653c1a09d9abe5ff7ec8ef"
-      ],
-      "published": "2026-10-18T16:17:03.370"
-    },
-    {
-      "id": "CVE-2026-98523",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/client: fix restore of partially initialized client\n\nI got a null-ptr-deref report when closing a DRM file descriptor:\n\nWARNING: drivers/gpu/drm/drm_atomic.c:2031 at\n__drm_atomic_helper_set_config+0x18e/0x1b0 [drm]\n\nCall Trace:\ndrm_client_modeset_commit_atomic+0x16b/0x220 [drm]\ndrm_client_modeset_commit_locked+0x56/0x160 [drm]\ndrm_client_modeset_commit+0x21/0x40 [drm]\n__drm_fb_helper_restore_fbdev_mode_unlocked.part.0+0x7b/",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/11edd5b6735d2e1069ddce672b1836713647f7fb",
-        "https://git.kernel.org/stable/c/1fca688e9443003e33cf30453e7a7560367656c9",
-        "https://git.kernel.org/stable/c/a69c4b678db808c0d89abb8cedeaaac38d1ef182",
-        "https://git.kernel.org/stable/c/fcbedba553a9c430079ee225df2dc7ab556a2f83"
-      ],
-      "published": "2026-10-18T16:17:03.700"
-    },
-    {
-      "id": "CVE-2026-98530",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nkprobes: Fix permanent hang when flushing the kprobe optimizer\n\nWriting 0 to /proc/sys/debug/kprobes-optimization while a kprobe is\njump-optimized never returns. The writer sleeps in D state forever with\nkprobe_sysctl_mutex held, so any later read or write of that sysctl\nhangs as well. For example, with vfs_read+9 as an optimizable address\nin this build:\n\n  # cd /sys/kernel/tracing\n  # echo 'p:myprobe vfs_read+9' >> kprobe_even",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/5bfa9f1a9dcb6ecb607adbc1c0226605c972935b",
-        "https://git.kernel.org/stable/c/f05a01fc7d4f731b4c100d2aef1e85ad77728862"
-      ],
-      "published": "2026-10-18T16:17:04.530"
-    },
-    {
-      "id": "CVE-2026-98539",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nfs/ntfs3: use d_instantiate_new() in ntfs_create_inode() and murder syzbot's \"WARNING in do_new_mount\" saga\n\nntfs_create_inode() creates a new inode via ntfs_new_inode(). It hashes\nit with insert_inode_locked() and so it's marked as I_NEW until\nunlock_new_inode().\n\nntfs 3 calls d_instantiate() in between though... Since the dentry was\nalready hashed by the lookup before the create any path walk finds it\nwithout touching the par",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/1abd643f3783ea8f8e273c18697ff0413aa92dc7",
-        "https://git.kernel.org/stable/c/1ae2a242c15b03470b1b16289298e597bbe3bb29",
-        "https://git.kernel.org/stable/c/37ec7353f4ac495b28284b0fcb0e53d21d1b3f3f",
-        "https://git.kernel.org/stable/c/6fda7121cb6a8ea6fbd77d0f787f04b8e8b5358e"
-      ],
-      "published": "2026-10-18T16:17:05.733"
-    },
-    {
-      "id": "CVE-2026-98558",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: flush skb_defer_nodes in dev_cpu_dead()\n\nWhen a CPU goes offline, dev_cpu_dead() drains its softnet queues\n(completion_queue, output_queue, poll_list, process_queue, and\ninput_pkt_queue), but leaves net_hotdata.skb_defer_nodes untouched.\n\nIf oldcpu goes offline while holding pending skbs in its\nskb_defer_nodes lists (e.g. below the sysctl_skb_defer_max >> 1 IPI\nthreshold, or if the IPI races with CPU teardown), those skbs ",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/06e3f54e8b22040ada01a28343badf1990b4dd7d",
-        "https://git.kernel.org/stable/c/c68f4157463448a76893223e117170be8374d773"
-      ],
-      "published": "2026-10-18T16:17:07.933"
-    },
-    {
-      "id": "CVE-2026-98567",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: xps: reject an out of range traffic class\n\nOnly the entries below dev->num_tc are valid in dev->tc_to_txq[], and\ndev->prio_tc_map[] may only name classes below it. netdev_set_num_tc()\nlowers dev->num_tc without touching either array.\n\nnetdev_txq_to_tc() walks all TC_MAX_QUEUE slots and\nnetdev_get_prio_tc_map() returns the entry as it stands, so a leftover\nentry is handed out as a traffic class >= dev->num_tc. Taking that\nc",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/1cb8e40525a72c9f1e1cf94c68c172b3b9bbdc81",
-        "https://git.kernel.org/stable/c/2cc1c3977acbffc417fb5b57699d1df3dcffb5fd",
-        "https://git.kernel.org/stable/c/4da3b7b8b50f3e2fde54a4c18a82a8e3f6223910",
-        "https://git.kernel.org/stable/c/6ea8f643053f33622f9116e4e1db58306ece45e3",
-        "https://git.kernel.org/stable/c/930318290d8509e864c015fe6c9239470b3c579c"
-      ],
-      "published": "2026-10-18T16:17:08.870"
-    },
-    {
-      "id": "CVE-2026-98604",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\novpn: replace bind when learning local endpoint\n\nstruct ovpn_bind is published through peer->bind with RCU, but local\nendpoint learning updates bind->local in place under peer->lock. UDP TX\nreads the field without that lock. In particular, a concurrent IPv6\nupdate can therefore result in a torn address read.\n\nUse ovpn_peer_reset_sockaddr to publish a replacement bind when learning\na new local endpoint, just as a remote endpoint",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/21dbc9f4d0bdd3b22f91beabc7840064bf11594f",
-        "https://git.kernel.org/stable/c/aea934a221ec6a867221e5b765f65f1857befd53",
-        "https://git.kernel.org/stable/c/e283009151d3d131447c2edda500199c5fda5f72"
-      ],
-      "published": "2026-10-18T16:17:13.140"
-    },
-    {
-      "id": "CVE-2026-98610",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/sched: sch_hfsc: bound the classify inner-filter walk with a drift budget\n\nhfsc_classify() applies the \"filter may only point downwards\" level check\nonly when the filter result carries no bound class. A filter created with\na flowid gets res.class set once at bind time, so the check never runs for\nit during classification. hfsc_adjust_levels() can later raise a class's\nlevel without revalidating existing bindings, leaving tw",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/0fa25ba50a382d79c0cf060214c2095756836f5f",
-        "https://git.kernel.org/stable/c/1301a1292c6742b4c96a18715d49f89c3caca0d7",
-        "https://git.kernel.org/stable/c/2bd20245dd658789d8cccb37697967b4caba6ad8",
-        "https://git.kernel.org/stable/c/30d7fea767e830bd81ac2f73d2e33c877cb2e679",
-        "https://git.kernel.org/stable/c/8a60ade2277e1f0e0d0578d565354e52292fa46d"
-      ],
-      "published": "2026-10-18T16:17:13.793"
-    },
-    {
-      "id": "CVE-2026-98615",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\neth: fbnic: Set AW_FLUSH_MODE alongside AW_FLUSH when flushing the mailbox\n\nWhen tearing down the FW mailbox Rx ring, fbnic_mbx_reset_desc_ring()\nwrites AW_CFG with FLUSH set and everything else, BME included, cleared.\nClearing BME halts the device's writes to the host but leaves the staged\nrequests parked in the PUL write pipeline rather than draining them, so\non the write path FLUSH alone never terminates the outstanding requ",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/8947f13e436a4ff5eed9f8f019b2865a07af4bb2",
-        "https://git.kernel.org/stable/c/8a052cd4b2caee1f90cf0e3874377066939c90e7",
-        "https://git.kernel.org/stable/c/a969db6548a1b046cd1423701f5f9c3f5794e90d",
-        "https://git.kernel.org/stable/c/ed4163f6ba9b52bfd6216d5215ee7b8eb5072411"
-      ],
-      "published": "2026-10-18T16:17:14.387"
-    },
-    {
-      "id": "CVE-2026-98616",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\neth: fbnic: reset num_napi when the napi vectors are freed\n\nfbn->num_napi is the count of live napi vectors, each of which owns an\nIRQ.  The PM path had freed them without clearing the count.\nfbnic_pm_suspend() tears the datapath down via ndo_stop() and frees the\nIRQs, but leaves netif_running() true so resume knows to re-open.  Resume\nrebuilds the datapath in __fbnic_pm_resume() and fbnic_reset_queues() sets\nnum_napi and __fbn",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/4bcc4a92c603fe7f062cea22e20da2e0ad6b12c3",
-        "https://git.kernel.org/stable/c/4f4b767ffea7653a00904383908536e754f8ef5b",
-        "https://git.kernel.org/stable/c/c5b5aee41b9f5ed0743344be1c7b544555fa3cb9"
-      ],
-      "published": "2026-10-18T16:17:14.497"
-    },
-    {
-      "id": "CVE-2026-98617",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\neth: fbnic: use the Rx queue napi pointer to find the napi vector\n\nThe queue management ndos pick the napi vector for an Rx queue with:\n\tnv = fbn->napi[idx % fbn->num_napi];\n\nThe issue is this is only correct in the cases where there are no\nstandalone Tx vectors. In those cases we were allocating the Tx vectors\nfirst and then the Rx so the queues would be pointing to Tx NAPI vectors\ninstead of the Rx ones.\n\nThe mapping the ndos",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/1fb569cf3bf97e552f465b2c719e36b48ae7c18b",
-        "https://git.kernel.org/stable/c/b5d9e9d4d0c13bc8b60d8d97e7a07fb25fea639e"
-      ],
-      "published": "2026-10-18T16:17:14.600"
-    },
-    {
-      "id": "CVE-2026-98633",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: btnxpuart: Fix skb leak in nxp_process_fw_dump()\n\nWhen CONFIG_DEV_COREDUMP=n, hci_devcd_append() returns -EOPNOTSUPP\nwithout freeing its skb argument. This leaks the cloned skb and also\nprevents nxp_set_ind_reset() from being called to perform recovery.\n\nFix by guarding the hci_devcd_append(hdev, skb_clone(skb, GFP_ATOMIC))\ncall with IS_ENABLED(CONFIG_DEV_COREDUMP).",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/8a36598050cd1e5abb1d5ed42cc224cfcb538c4f",
-        "https://git.kernel.org/stable/c/edcb84ee607a9ddfc6f2771a7f399115f0b0f19d",
-        "https://git.kernel.org/stable/c/f2bbb36426581045a8bf7793da5419b9375e4348"
-      ],
-      "published": "2026-10-18T16:17:16.410"
-    },
-    {
-      "id": "CVE-2026-98650",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: s390: Fix potential races in dat skey functions\n\nWhen dat_cond_set_storage_key() finds a large page, it will\nconditionally set the storage key in absolute memory using\nlarge_crste_to_phys() to get the absolute address.\n\nThere is a race window between dat_entry_walk() and\nlarge_crste_to_phys(): the large page could have been split\nconcurrently, and large_crste_to_phys() might be called with a crste\nthat does not designate a",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/27554b9505ddfc0aeab466aeb60929dfa17284c7",
-        "https://git.kernel.org/stable/c/c958f0498891203fddf2764b28f8b102c6bfd719"
-      ],
-      "published": "2026-10-18T16:17:18.290"
-    },
-    {
-      "id": "CVE-2026-98750",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ntty: fix saved termios reset race\n\nResetting saved termios state on device registration is needed where a\nminor number can be reused for an entirely different device and where\nthe old settings may prevent the port from even being opened (e.g. when\nCLOCAL is not set).\n\nNot all TTY drivers guarantee that the minor number is no longer in use\nwhen registering devices however, something which can lead to a\nuse-after-free when closin",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/08bf919f041af9de372428bb0c938157ea144164",
-        "https://git.kernel.org/stable/c/1572d86bcf0bcb848d20fc5e5de7ed6963034c2b",
-        "https://git.kernel.org/stable/c/8df07fe93573e9e548d6645273e9bcb6eb74059e",
-        "https://git.kernel.org/stable/c/dcaf0251f847a45861e94c6617024a9455687d2f"
-      ],
-      "published": "2026-10-18T16:17:28.767"
-    },
-    {
-      "id": "CVE-2026-98761",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: typec: tcpm: recover after failure to start the frs ams\n\nReset the port if the tcpm fails to start the FAST_ROLE_SWAP AMS by\ninitiating error recovery on it.\n\nThis helps in cases where some cables (incorrectly) signal an FRS to\nan FRS capable port during disconnection. The TCPC autonomously starts\nsourcing VBUS on detecting the FRS signal. However, the VBUS sourcing is\nleft on when the FAST_ROLE_SWAP AMS fails to start (as",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/184d842121e7d1fbc3a81895f36f72fa27444163",
-        "https://git.kernel.org/stable/c/90156585765b29304f07b0e4a1c56a969876fcfc",
-        "https://git.kernel.org/stable/c/b2ed8643face247e513fad12e193378ba67a61a1",
-        "https://git.kernel.org/stable/c/d6b0cce612636f79f2cf0652fce40a0cbff7f0ed"
-      ],
-      "published": "2026-10-18T16:17:29.900"
-    },
-    {
-      "id": "CVE-2026-98763",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: core: clear both ep_in and ep_out for non-ep0 control endpoints\n\nIn usb_enable_endpoint(), non-zero control endpoints (where\nusb_endpoint_xfer_control(&ep->desc) is true) populate both\ndev->ep_in[epnum] and dev->ep_out[epnum] with the same struct\nusb_host_endpoint pointer.\n\nHowever, usb_disable_endpoint() only clears either dev->ep_out[epnum] or\ndev->ep_in[epnum] depending on the direction bit of epaddr when\nreset_hardware",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/0e8baa78d872f2db440d8b9ded946ab8dceb89eb",
-        "https://git.kernel.org/stable/c/1da16c46b8d7101b74bc2d72a04e23cf5c7ddea1",
-        "https://git.kernel.org/stable/c/7a9f61476b0e8002092a52ee8295edeeb0a28d1e",
-        "https://git.kernel.org/stable/c/c50413ecb662ea43c7f487632c8114721743a277"
-      ],
-      "published": "2026-10-18T16:17:30.113"
-    },
-    {
-      "id": "CVE-2026-98776",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbinderfs: fix UAF write in binder_add_device\n\nbinderfs_binder_device_create() publishes the new dentry with\nd_make_persistent() and then calls simple_done_creating(), which drops\nthe parent directory lock and the creator's dentry reference. It then\ncalls binder_add_device() to register the device in the global\nbinder_devices list.\n\nAfter simple_done_creating() releases the parent directory lock, a\nconcurrent unlinkat() can remo",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "Ubuntu"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/30d15f44a9e513ec2f257fdf192d9d1fa5af0799",
-        "https://git.kernel.org/stable/c/885bbbe52d31856768de439e9720f1ffa474a93a"
-      ],
-      "published": "2026-10-18T16:17:31.540"
-    },
-    {
-      "id": "CVE-2026-98785",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amd/display: check dc_state_create_copy() for NULL in dm_suspend\n\ndc_state_create_copy() can return NULL on allocation failure.\ndm_suspend() only conditionally skips dm_gpureset_toggle_interrupts()\nand continues execution, returning success.  dm_resume() then\ndereferences the NULL cached_dc_state in link_enc_cfg_copy() and the\nfollowing dc_state->stream_count loop, crashing during GPU reset\nrecovery.\n\nReturn -ENOMEM immedia",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/015e72cde567d2450e282c2790773463156b2d0a",
-        "https://git.kernel.org/stable/c/197946faa1b7968046ba475ae2f266847c6f51ed",
-        "https://git.kernel.org/stable/c/686baa1f4ec43b33e39e3d4b4a4539a91d17e883",
-        "https://git.kernel.org/stable/c/7283b78ca07ce491984a63f6288f3f8de5bdcb22"
-      ],
-      "published": "2026-10-18T16:17:32.467"
-    },
-    {
-      "id": "CVE-2026-98796",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: ethernet: mtk_eth_soc: allocate dummy netdev sooner\n\nThe RX rings and the shared NAPI are carried by an internal \"dummy\" netdev\n(eth->dummy_dev). mtk_probe() creates that dummy device, and adds the\nshared tx/rx NAPI to it, only after the MAC netdevs have been registered.\nThat order has been there since the MT7623 support was added and leaves a\nwindow in which the netdevs are visible to the network core before the\nshared NA",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/17eafd74de5a31e30361420a2e3ebf64186b77e5",
-        "https://git.kernel.org/stable/c/42001839e425b2564b7297be579073a13a8fddf6",
-        "https://git.kernel.org/stable/c/6f0c2c4f5e7143eba75153ecc8af3a03f7b6a98b",
-        "https://git.kernel.org/stable/c/82be3d08de9e14d5aed72377f051adb4f09fd540"
-      ],
-      "published": "2026-10-18T16:17:33.583"
-    },
-    {
-      "id": "CVE-2026-98798",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: bcmgenet: fix NULL dereference in set_coalesce before first open\n\nThe Rx ring priv and index are only set in bcmgenet_init_rx_ring(),\nwhich runs at open. Setting the Rx coalescing parameters on an interface\nthat was never opened, e.g. \"ethtool -C eth0 rx-usecs 50\", dereferences\na NULL ring->priv. The oops happens with RTNL held, so networking\nstays stuck until a reboot:\n\n  Unable to handle kernel paging request at virtual ",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/0d867b91598b6ed2f75998c34f4e2869631da31e",
-        "https://git.kernel.org/stable/c/19419faf58dfe5bcc8a9e60e622976c5f8e3ddc1",
-        "https://git.kernel.org/stable/c/2294b62eaec6fd3c76a261d287f66641eeafd5f0",
-        "https://git.kernel.org/stable/c/d870102b5425390cab42eebbf3d19ec6a43c6734"
-      ],
-      "published": "2026-10-18T16:17:33.807"
-    },
-    {
-      "id": "CVE-2026-98805",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ntipc: prevent GCM nonce reuse on peer key changes\n\nTIPC can encrypt traffic between nodes using a different transmit key\nfor each node. In this mode, the AES-GCM nonce for a packet sent to a\nknown peer consists of a 32-bit prefix (a per-key salt XOR the peer's\naddress) followed by a 64-bit counter. That counter is stored in the\npeer's RX crypto object. When the peer reports a change in which key\nit uses to receive packets, TIPC",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/512ccd3d0e91e791fb37442aa0a2599aca19783d",
-        "https://git.kernel.org/stable/c/5c8ce13c792e28d56f9ec3cd6728d8225bc0e3a2",
-        "https://git.kernel.org/stable/c/60e0c2aeaa605ff19ca4e65126a35643d4d7ee1c",
-        "https://git.kernel.org/stable/c/f74f100e49588c1dbdc6ab3ba9e2c67b36d015d0"
-      ],
-      "published": "2026-10-18T16:17:34.567"
-    },
-    {
-      "id": "CVE-2026-98831",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nof/overlay: don't leak fragment references when changeset init fails\n\ninit_overlay_changeset() stores the number of initialized fragments\nin ovcs->count only on full success. When find_target() or the\n__symbols__ lookup fails partway through, the target and overlay\nreferences taken for the fragments initialized so far are never\ndropped: free_overlay_changeset() bounds its cleanup loop by\novcs->count, which is still 0.\n\nStore th",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/1d62f0f2bc7edb12ed09f71203df0e47fa4efca4",
-        "https://git.kernel.org/stable/c/3a23fb158ba517b77a2e5258263bdfdaa480f758",
-        "https://git.kernel.org/stable/c/7a46f1917b320cc8762183b802301da02a191b6a",
-        "https://git.kernel.org/stable/c/894573e2fdaeb1b15030b7eebc22615edf28a6cd"
-      ],
-      "published": "2026-10-18T16:17:37.347"
-    },
-    {
-      "id": "CVE-2026-98845",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ntpm: Disable TPM on null key name mismatch\n\nThe null key name check exists to protect against TPM reset attacks, so\na mismatch should stop the device from serving further requests.\nCurrently it does not disable the chip when it finds a mismatch.\n\nThe mismatch is logged:\n\n    tpm tpm0: null key integrity check failed\n\nbut the chip keeps serving commands:\n\n    / # tpm2_getcap -c properties-fixed\n    TPM_PT_FAMILY_INDICATOR:\n     ",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/015fb29a748342a186f37b602ac70017098c8251",
-        "https://git.kernel.org/stable/c/96c46c75b0d470b4204f9fe1bdb075cd2ebaebfa",
-        "https://git.kernel.org/stable/c/a03d0c64cd827a622578623a78defd66b6593b82",
-        "https://git.kernel.org/stable/c/f6599d8830fe7ddab7334cc17846fd9ac9a7fa50"
-      ],
-      "published": "2026-10-18T16:17:38.833"
-    },
-    {
-      "id": "CVE-2026-98854",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nof/overlay: only treat a positive changeset id as registered\n\nof_overlay_fdt_apply() stores the idr_alloc() return value in\novcs->id before checking it. On failure the stored id is negative,\nfree_overlay_changeset()'s \"if (ovcs->id)\" check passes, idr_remove()\nis called with a negative id and list_del() runs on ovcs->ovcs_list,\nwhich is not initialized until after the id allocation. An allocation\nfailure at that point dereferen",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/0d1525fdcd3355672b7485d61e55df6824ab5ad1",
-        "https://git.kernel.org/stable/c/44081d708b5b885487bac792db78324b7b4c267d",
-        "https://git.kernel.org/stable/c/c08a54df9d33dcd6ff089adc9434b2c008af3a39",
-        "https://git.kernel.org/stable/c/c875407c34dadaef0599834ad9c815f4c9f50d15"
-      ],
-      "published": "2026-10-18T16:17:39.833"
-    },
-    {
-      "id": "CVE-2026-98855",
-      "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nof/overlay: put property on deadprops only after changeset add succeeds\n\nadd_changeset_property() links a new property of a not-yet-live\ntarget node into the node's deadprops list before handing it to\nof_changeset_add_property(). If that fails, the error path frees the\nproperty but leaves the freed pointer linked in deadprops, and\nof_node_release() frees it a second time when the aborted overlay's\nnode is released.\n\nRecord the ",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "ESET"
-      ],
-      "references": [
-        "https://git.kernel.org/stable/c/5857035a3b53a4e7b5a0d5a740189901ece0b079",
-        "https://git.kernel.org/stable/c/7dc6a769153c0457077a0da4888a00f61e66de15",
-        "https://git.kernel.org/stable/c/814f2da6995772c07a7c9c2cc6028b6e3f3ecc9c",
-        "https://git.kernel.org/stable/c/d5151496a0a2b19c9c0c7b0ebf86b3de55a8fa3a"
-      ],
-      "published": "2026-10-18T16:17:39.937"
-    },
-    {
-      "id": "CVE-2026-112111",
-      "description": "The Bootstrap Shortcodes plugin for WordPress before 3.4.6 is vulnerable to stored XSS via the id attribute of the [bs_tcontent] shortcode. The bs_tcontent() shortcode handler in inc/bs_tabs.php emits the id attribute value into an unquoted HTML attribute. esc_attr() is applied, but it does not encode space characters, so a space in the supplied value terminates the attribute and any following text is parsed as additional HTML attributes, including JavaScript event handlers. This allows authenti",
+      "id": "CVE-2026-96902",
+      "description": "The Easy Property Listings WordPress plugin before 3.5.28 does not restrict which listing fields it adds to the public REST API output, allowing unauthenticated users to read details a site has chosen to hide on published listings, such as the asking price, sold price, street address and exact map coordinates.",
       "cvss": {
         "score": null,
         "vector": null,
@@ -1225,17 +1020,13 @@
         "WordPress"
       ],
       "references": [
-        "https://github.com/TheWebShop/bootstrap-shortcodes/commit/c26659ccb6ddb871c7dee1b77cb81cad63e7a75b",
-        "https://github.com/TheWebShop/bootstrap-shortcodes/releases/tag/3.4.6",
-        "https://plugins.trac.wordpress.org/browser/bootstrap-shortcodes/tags/3.4.4/inc/bs_tabs.php#L84",
-        "https://wordpress.org/plugins/bootstrap-shortcodes/",
-        "https://wordpress.org/plugins/bootstrap-shortcodes/#developers"
+        "https://wpscan.com/vulnerability/b89e410b-982d-44e0-850d-8325a51db365/"
       ],
-      "published": "2026-10-18T23:16:56.583"
+      "published": "2026-10-20T06:16:58.073"
     },
     {
-      "id": "CVE-2026-106014",
-      "description": "The Gateway for Vantiv on WC WordPress plugin through 1.0.1 does not verify the authenticity of the payment notification received on its hosted-payment return handler, allowing unauthenticated attackers to mark orders as paid without actually paying.",
+      "id": "CVE-2026-96903",
+      "description": "The Easy Property Listings WordPress plugin before 3.5.27 does not perform authorisation checks on several of its contact-management read AJAX actions, allowing any authenticated user with a role as low as subscriber to read other users' CRM contact and lead records, including their private activity notes.",
       "cvss": {
         "score": null,
         "vector": null,
@@ -1246,77 +1037,9 @@
         "WordPress"
       ],
       "references": [
-        "https://wpscan.com/vulnerability/30ccd424-a0a1-40a9-93ab-5def94eb0073/"
+        "https://wpscan.com/vulnerability/52b63cac-2730-4395-bf68-3a55aceb0e14/"
       ],
-      "published": "2026-10-19T06:17:17.607"
-    },
-    {
-      "id": "CVE-2026-106933",
-      "description": "The Blaze Demo Importer WordPress plugin before 1.0.17 does not sanitize uploaded SVG files and registers the SVG MIME type for the WordPress media library unconditionally, allowing authenticated users with the Author role or higher to upload a crafted SVG that executes arbitrary JavaScript in the browser of any user who opens the file.",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "WordPress"
-      ],
-      "references": [
-        "https://wpscan.com/vulnerability/4f85834c-30e4-451f-9616-70dc8eaf9c41/"
-      ],
-      "published": "2026-10-19T06:17:20.817"
-    },
-    {
-      "id": "CVE-2026-108121",
-      "description": "Brian Mariani from DigitalCanion SA has discovered\u00a0a\u00a0 vulnerability in the domain creation functionality of koozali's \nSME Server version 11.0rc1-215, allowing an attacker with high privileges \nto inject reserved Apache configuration directives, corrupting \nhttpd.conf and preventing Apache from starting after a server reboot, \nresulting in a denial-of-service (DoS) condition affecting the web \nserver and its hosted virtual hosts.",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "Apache HTTP Server"
-      ],
-      "references": [
-        "https://digitalcanion.com/en/security-research/#vendor=koozali"
-      ],
-      "published": "2026-10-19T06:17:22.163"
-    },
-    {
-      "id": "CVE-2026-89286",
-      "description": "The FormFlow for GoHighLevel (GHL)  WordPress plugin through 1.0.0 does not restrict access to a log file it writes inside the publicly accessible uploads directory, allowing unauthenticated attackers to read its contents, which include connected-CRM identifiers and, on sites that have linked the integration, a third-party access token.",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "WordPress"
-      ],
-      "references": [
-        "https://wpscan.com/vulnerability/e564870a-c124-4c11-90ba-907517155cd0/"
-      ],
-      "published": "2026-10-19T06:17:25.050"
-    },
-    {
-      "id": "CVE-2026-91046",
-      "description": "The ElementsReady Addons for Elementor WordPress plugin through 6.7.2 does not perform authorization checks that halt execution in several of its settings-save handlers, allowing users with subscriber-level access and above to overwrite the ElementsReady Addons for Elementor WordPress plugin through 6.7.2's stored settings, including its stored API credentials and its feature and template configuration.",
-      "cvss": {
-        "score": null,
-        "vector": null,
-        "severity": "UNKNOWN"
-      },
-      "tier": 3,
-      "matchedProducts": [
-        "WordPress"
-      ],
-      "references": [
-        "https://wpscan.com/vulnerability/ed5271e4-3e8d-49b6-9118-2f4ef5116043/"
-      ],
-      "published": "2026-10-19T06:17:25.223"
+      "published": "2026-10-20T06:16:58.190"
     }
   ]
 }
